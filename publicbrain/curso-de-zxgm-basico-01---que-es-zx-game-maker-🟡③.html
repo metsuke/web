@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Curso de ZXGM Básico 01 - ¿Qué es ZX Game Maker? 🟡③</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_819d1a832dd77d86f5f41a57bde90e4d_MD5.jpg" alt="Que es ZXGM"></p>
+<ul>
+<li><a class='internal' href='./curso-de-zx-game-maker-⚫①.html'>Curso de ZX Game Maker ⚫①</a></li>
+<li><a class='internal' href='./curso-de-zxgm-basico-02---descarga-e-instalacion-del-software-🟡③.html'>Siguiente >></a></li>
+</ul>
+<p>ZX Game Maker es una herramienta innovadora diseñada para crear videojuegos compatibles con el ZX Spectrum, la emblemática computadora doméstica de los años 80. Este motor permite a usuarios de todos los niveles, desde principiantes hasta desarrolladores experimentados, diseñar videojuegos en 2D de forma visual e intuitiva, sin requerir conocimientos avanzados de programación.</p>
+<h2>Definición y propósito</h2>
+<p>ZX Game Maker, desarrollado por Juntelart (aunque <a href="https://juntelart.itch.io/zx-game-maker">en fechas recientes se han incorporado varios miembros al equipo  🌐🟡③</a>), es un entorno de desarrollo que simplifica la creación de videojuegos para el ZX Spectrum. Su objetivo es hacer accesible el desarrollo de juegos para esta plataforma retro, permitiendo a usuarios sin experiencia técnica diseñar títulos mediante una interfaz gráfica amigable. El motor respeta las limitaciones técnicas del ZX Spectrum, como su paleta de colores restringida y su capacidad de memoria, pero utiliza herramientas modernas para facilitar el proceso creativo.</p>
+<p>Actualmente en fase beta, ZX Game Maker es funcional y ha dado lugar a juegos como <em>Cursed Castle</em> y <em>Crazy Christmas</em>. Como proyecto de código abierto bajo la licencia GNU Affero General Public License, permite contribuciones de la comunidad, siempre que se respeten condiciones como incluir el logo del motor en los juegos creados.</p>
+<h2>Características principales</h2>
+<ol>
+<li>
+<p><strong>Interfaz visual e intuitiva</strong>: Utiliza herramientas como Tiled para diseñar escenarios y editores gráficos como ZX Paintbrush, aunque permite emplear otros programas compatibles con las limitaciones del ZX Spectrum. Esto elimina la necesidad de programar en lenguajes complejos, haciendo el desarrollo accesible para principiantes.</p>
+</li>
+<li>
+<p><strong>Compatibilidad con ZX Spectrum</strong>: El motor genera juegos optimizados para los modelos de 48k y 128k del ZX Spectrum, respetando restricciones como la paleta de colores y la memoria. Incluye funciones para monitorizar el uso de recursos, generando gráficos de consumo de memoria en la carpeta <em>dist</em>.</p>
+</li>
+<li>
+<p><strong>Tecnologías modernas</strong>: A diferencia de motores retro como Arcade Game Designer (AGD), ZX Game Maker opera en sistemas operativos actuales (Windows Mac OS y Linux), utilizando Boriel’s ZX Basic, la librería GuSprites para sprites y Python para scripting. Esto combina la estética retro con herramientas contemporáneas.</p>
+</li>
+<li>
+<p><strong>Soporte comunitario</strong>: La comunidad puede interactuar a través de un grupo de Telegram, donde se resuelven dudas y se comparten proyectos. Tutoriales en vídeo y documentación detallada están disponibles, siendo esta última la fuente más actualizada debido a las mejoras continuas.</p>
+</li>
+<li>
+<p><strong>Flexibilidad para desarrolladores</strong>: Aunque está orientado a principiantes, los usuarios avanzados pueden personalizar proyectos modificando el código fuente o integrando herramientas adicionales, siempre cumpliendo con la licencia.</p>
+</li>
+</ol>
+<h2>Proceso de desarrollo con ZX Game Maker</h2>
+<p>El flujo de trabajo es sencillo y se centra en la carpeta <em>assets</em>, donde se editan mapas (<em>maps.tiled-project</em>), tiles (<em>tiles.zxp</em>) y otros recursos gráficos. Una vez configurados, se genera el juego ejecutando un script específico para el sistema operativo (por ejemplo, <em>make-game-win.bat</em> en Windows), que produce el archivo final en la carpeta <em>dist</em>, acompañado de un mapa de memoria para optimizar recursos.</p>
+<p>Los usuarios pueden elegir editores gráficos, siempre que respeten las restricciones del ZX Spectrum, como la resolución y la paleta de colores. Aunque ZX Paintbrush es la herramienta recomendada, el motor ofrece flexibilidad para usar otras soluciones.</p>
+<h2>Comparación con otras herramientas</h2>
+<p>ZX Game Maker destaca frente a herramientas como Arcade Game Designer (AGD) o La Churrera por su enfoque visual, similar al motor RedPill para Amiga. Mientras que AGD requiere ejecutar código en un emulador de ZX Spectrum, ZX Game Maker funciona en sistemas modernos, siendo más accesible. A diferencia de GameMaker Studio, que soporta juegos 2D y 3D para plataformas modernas, ZX Game Maker está especializado en el ZX Spectrum, preservando su estética y limitaciones retro.</p>
+<h2>Comunidad y eventos</h2>
+<p>La popularidad de ZX Game Maker crece en la comunidad retro, como demuestra el <em>1er Concurso Internacional de Creación de Videojuegos ZXGM24</em>, organizado por Ready and Play y Spectrum and Retronews. Este evento premia categorías como mejor juego, pantalla de presentación, banda sonora, historia, diseño de niveles y jugabilidad. Foros como Spectrum Computing y plataformas como Reddit reflejan su impacto, con debates sobre los resultados de concursos y la calidad de los juegos creados.</p>
+<h2>Relevancia y aplicaciones</h2>
+<p>ZX Game Maker es una herramienta esencial para entusiastas del retrocomputing y desarrolladores indie interesados en el ZX Spectrum. Su accesibilidad permite a nuevos creadores iniciarse en el desarrollo de videojuegos, mientras que su naturaleza de código abierto fomenta la colaboración comunitaria. Juegos como <em>Cursed Castle</em> y <em>Crazy Christmas</em> destacan su potencial, y la creciente disponibilidad de tutoriales y recursos facilita su adopción.</p>
+<h2>Conclusión</h2>
+<p>ZX Game Maker combina la nostalgia del ZX Spectrum con la facilidad de las tecnologías modernas, ofreciendo una herramienta poderosa y accesible para crear videojuegos retro. Su interfaz visual, compatibilidad con sistemas actuales y soporte comunitario lo hacen ideal para principiantes y expertos por igual. Aunque en fase beta, su desarrollo activo y la comunidad que lo respalda aseguran un futuro prometedor, consolidándolo como un referente en el desarrollo de juegos para el ZX Spectrum.</p>
+<h2>Referencias Bibliográficas</h2>
+<ul>
+<li>Mis pruebas de campo ⚫①</li>
+<li><a href="https://gm.retrojuegos.org/index.html">Documentación oficial del proyecto 🌐🟡③</a></li>
+<li><a href="https://github.com/rtorralba/zx-game-maker">Repositorio de Github de ZX Game Maker 🌐🟡③</a> .- Proporciona información técnica sobre el motor, incluyendo su licencia GNU Affero y detalles de desarrollo.</li>
+<li><a href="https://juntelart.itch.io/zx-game-maker">Página de Itch.io del proyecto 🌐🟡③</a></li>
+</ul>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-3, Raúl Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Fri Aug 08 2025 04:23:02 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.5</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-3, Raúl Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-07-29T11:42:28.559Z
+modified: 2025-08-08T02:23:02.354Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 5
+nav_primary: null
+nav_secondary: null
+tags: null
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>

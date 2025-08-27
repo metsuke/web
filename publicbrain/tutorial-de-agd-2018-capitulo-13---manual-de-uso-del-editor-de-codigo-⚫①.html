@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Tutorial de AGD 2018 Capítulo 13 - Manual de uso del Editor de Código ⚫①</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_41d7db1408ace939af5b63f34e9ed78a_MD5.jpg" alt="Aprendiendo a manejar el editor de código"></p>
+<ul>
+<li><a class='internal' href='./tutorial-de-agd-2018-edition-⚫①.html'>Tutorial de AGD 2018 Edition ⚫①</a></li>
+<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-12---cargar-juegos-de-agd-desde-cinta-⚫①.html'><< Anterior</a> | <a class='internal' href='./tutorial-de-agd-2018-capitulo-14---conectando-panallas-entre-si-⚫①.html'>Siguiente >></a></li>
+</ul>
+<p>Hoy les traigo uno de esos capítulos que pueden parecer superfluos, pero que son todo lo contrario. Vamos a comentar algunas cuestiones y trucos para trabajar con el editor de código de AGD.</p>
+<p>Seguramente para los más experimentados esta información esté de más, pero no es raro encontrar personas que se enfrentan por primera vez a las combinaiones de teclas de speccy dentro de un emulador en otro sistema operativo y que se vuelven locos al tratar de trabajar el código de su juego.</p>
+<p>Empiezo por el final, incluyendo las combinaciones de teclas que el propio autor de AGD nos aporta en su manual:</p>
+<pre class='pre'>
+Teclas del Editor de Código
+============================
+* SYM+Y Cortar Línea
+* SYM+U Pegar Linea
+* SYM+Q Inicio
+* SYM+E Fin
+* CAPS+2 Bloqueo Mayúsculas On/Off
+* CAPS+3 Borrar carácter seleccionado.
+* CAPS+4 Cambiar entre Insertar y Sobreescribir.
+* SYM+CAPS Modo Extendido (E) On/Off
+* SYM+A Compilar evento y volver al menú de eventos.
+</pre>
+<h2>Navegando entre eventos</h2>
+<p>Vemos primero la rutina de "entrada y salida" desde el menú principal al codigo y entre los eventos, sirva decir que os recomiendo cargar una instancia nueva de AGD para practicar sin riesgo.</p>
+<p>Lo primero, <em>acceder al menú de eventos</em> desde el menú principal, tan simple como pulsar la tecla <em>E</em>. Para volver al menú principal desde los eventos, tan sencillo como pulsar <em>INTRO</em>.</p>
+<p>Para recorrer el menú de eventos, se usan los <em>CURSORES</em>, para entrar a ver y/o editar el código de cualquiera de ellos, usamos <em>SPACE</em>.</p>
+<p>Una vez dentro del propio editor, volvemos al menú de eventos con <em>CTRL + A</em> ... ¿no pone las teclas SYM+A en la referencia de teclado?.. Si, en el siguiente bloque explico de que va esto.</p>
+<h2>CONTROL y SYM, Emulación y Teclado original.</h2>
+<p>Por resumirlo de forma introductoria <em>SYM</em> significa SYMBOL SHIFT, y es la tecla real del Spectrum, la que tiene físicamente su teclado. <em>CONTROL</em> es el equivalente que se usa en los teclados físicos actuales para emular esta tecla (al menos en RVM Mac y Win , así como en Zesarux Mac) que, a día de hoy, ya no existe .</p>
+<p>Del mismo modo <em>CAPS</em> es la tecla física del Speccy y su equivalente suele ser <em>SHIFT IZQUIERDO</em> en los teclados actuales. Cualquier variación debe venir especificada en la documentación del emulador (o en su caso el ZX-UNO por ejemplo), incluso puedes reasignar teclas en algunos o usar las funciones del sistema operativo para cambiar ciertos atajos. Tus necesidades y gustos personales te guiarán en esto, pero te sugiero que al menos una vez lo manejes sin reconfigurar nada.</p>
+<h2>Editando Código</h2>
+<p>En sí, el editor de código de AGD creo que está relativamente bien planteado, sin embargo, la ventaja que supone el que AGD corra en la máquina directamente, se torna en desventaja a la hora de atender a las combinaciones de teclado, y es que los layouts de teclado han cambiado bastante desde los 80 y no siempre es intuitivo manejar un spectrum , por muy bien que esté integrado un emulador.</p>
+<p>Para tratar de subsanar esta brecha digital, trataré de darles algunos consejos básicos:</p>
+<h3>Escribir y Borrar</h3>
+<p>En sí escribir es muy similar a un editor actual, con algunas particularidades:</p>
+<p>Hay dos modos de borrado, al que estamos habituados, que se realiza mediante la tecla borrar habitual, y otro en que borra "hacia delante" desde el carácter seleccionado, que no recomiendo usar.</p>
+<p>Intro funciona tal cual, insertando un salto de linea, de ahí que para volver al menu de eventos no se use esta tecla, sin la combinacion SYM+A</p>
+<p>Insertar y Sobrescribir es algo que, si no sabemos reaccionar, puede ser fuente de frustración hasta el punto de abandonar el trabajo. Sirva decir que el editor tiene do "modos", uno de ellos inserta caracteres en la posición del cursor (a lo que estamos acostumbrados), y otro va sobreescribiendo caracteres ya existentes, esto último puede ser útil en ciertas ocasiones, pero si nos ocurre que estamos "atrapados" en él y no sabemos salir, SHIFT IZQUIERDO + 4 es tu billete de vuelta al modo normal.</p>
+<p>El modo <em>E</em>xtendido del Spectrum es algo que puede dar lugar a confusión también, es algo así como el equivalente a pulsar la tecla AlT en un teclado actual, dándonos acceso a caracteres adicionales, pero en el Speccy es un "modo permanente" en el que se entra y se sale. Si te quedas atrapado y no puedes escribir normalmente o insertar saltos de línea, probar con SYM+CAPS (CONTROL + SHIFT IZQUIERDO) puede ser, de nuevo, tu billete a la normalidad.</p>
+<h3>Caracteres Especiales</h3>
+<p>Cosas tan sencillas como escribir un signo igual , si no estamos acostumbrados al teclado de un spectrum pueden ser un gran quebradero de cabeza (el caso del Igual se saca usando <em>CTRL + L</em>), personalmente programo con el manual de mi +2A (el físico) en la mesa, esto me permite consultar la referencia de caracteres y pulsaciones de teclas que contiene, cuando la combinaciones que me son naturales, no obtienen el resultado deseado en el editor.</p>
+<p>Si no tienes el libro físico, quizá te interese <a href="http://slady.net/Sinclair-ZX-Spectrum-keyboard">esta web que contiene dicha información sobre el layout de ZX Spectrum 🌐🟡③</a>.</p>
+<h3>Cortar y Pegar</h3>
+<p>Desconozco si existe Copiar, pero no he encontrado como hacerlo. Solo podemos cortar y pegar.</p>
+<p>Cortar y Pegar si, pero linea a linea, de una en una, por lo que os recomiendo que penseis bien antes de escribir xD.</p>
+<p>Las combinaciones son CTRL+Y para cortar y CTRL+U para pegar, nada intuitiva, por lo que, de nuevo, no es lo que mejor hecho está en AGD.</p>
+<p>Lo dicho, una vez dominado, es facil, pero hay que trabajarlo un poco para ser eficaz editando código, si tienes alguna duda y no encuentras solución, ¡no dudes en consultarme y trato de daros una mano!</p>
+<h2>Y ahora que?</h2>
+<ul>
+<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-01---el-comienzo-⚫①.html'>Si no tienes claro porqué querrias editar código, pasa a la página 1</a></li>
+<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-13---manual-de-uso-del-editor-de-codigo-⚫①.html'>Si no quieres mas "código" en tu vida, aunque sepas que es necesario lánzate a tirar código en la página 13</a></li>
+<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-14---conectando-panallas-entre-si-⚫①.html'>Si has estado "conectando" con tu niño interior y estás listo para construir jardines, pasa a la página 14</a></li>
+</ul>
+<h2>Referencias Bibliográficas</h2>
+<ul>
+<li><strong>Ninguna fuente verificable disponible</strong>.</li>
+</ul>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Fri Jul 18 2025 22:10:16 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.4</li></ul><!--(iaStatus: 8
+iaStatus_Model: Raúl Carrillo Garrido aka metsuke
+iaStatus_Generado: H
+iaStatus_Supervisado: '-'
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-07-12T20:02:55.651Z
+modified: 2025-07-18T20:10:16.560Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 4
+nav_primary: null
+nav_secondary: null
+tags: null
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>

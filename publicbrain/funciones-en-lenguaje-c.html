@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Funciones en Lenguaje C</h1>
+<p><a class='internal' href='./aprender-el-lenguaje-c-desde-cero-⚫①.html'>Aprender el Lenguaje C desde Cero ⚫①</a></p>
+<p>¡Por supuesto! Las funciones son bloques de código que realizan una tarea específica y pueden ser llamadas desde otras partes del programa para ejecutar esa tarea. En C, las funciones son una parte fundamental del lenguaje y se utilizan para dividir el código en partes más pequeñas y manejables, lo que facilita la organización y la reutilización del código. Aquí tienes una explicación detallada sobre las funciones en C:</p>
+<h3>Declaración de Funciones</h3>
+<p>En C, una función se declara con la siguiente sintaxis:</p>
+<pre><code class="language-c">tipo_de_retorno nombre_de_la_función(argumentos) {
+    // Cuerpo de la función
+}
+</code></pre>
+<ul>
+<li><code class='language-html'>tipo_de_retorno</code>: Es el tipo de dato que devuelve la función. Puede ser <code class='language-html'>void</code> si la función no devuelve ningún valor.</li>
+<li><code class='language-html'>nombre_de_la_función</code>: Es el nombre de la función que estás definiendo.</li>
+<li><code class='language-html'>argumentos</code>: Son los valores que se pasan a la función para que realice su tarea. Pueden ser opcionales.</li>
+</ul>
+<h3>Ejemplo de Declaración de una Función</h3>
+<pre><code class="language-c">int suma(int a, int b) {
+    int resultado = a + b;
+    return resultado;
+}
+</code></pre>
+<p>En este ejemplo, la función <code class='language-html'>suma</code> toma dos argumentos de tipo <code class='language-html'>int</code> (<code class='language-html'>a</code> y <code class='language-html'>b</code>) y devuelve un valor de tipo <code class='language-html'>int</code>. La función calcula la suma de <code class='language-html'>a</code> y <code class='language-html'>b</code> y devuelve el resultado.</p>
+<h3>Llamada a Funciones</h3>
+<p>Para llamar a una función en C, simplemente escribe el nombre de la función seguido de paréntesis que contienen los argumentos (si los hay).</p>
+<pre><code class="language-c">int resultado = suma(5, 3);
+</code></pre>
+<p>En este ejemplo, la función <code class='language-html'>suma</code> se llama con los argumentos <code class='language-html'>5</code> y <code class='language-html'>3</code>, y el resultado se asigna a la variable <code class='language-html'>resultado</code>.</p>
+<h3>Funciones de Tipo <code class='language-html'>void</code></h3>
+<p>Las funciones de tipo <code class='language-html'>void</code> no devuelven ningún valor. Pueden ser usadas para realizar tareas sin necesidad de devolver un resultado.</p>
+<pre><code class="language-c">void saludar() {
+    printf("¡Hola, mundo!\n");
+}
+</code></pre>
+<h3>Prototipos de Funciones</h3>
+<p>Es posible declarar el prototipo de una función antes de su definición. Esto permite al compilador saber que la función existe antes de que se llame.</p>
+<pre><code class="language-c">int suma(int a, int b); // Prototipo de la función
+
+int main() {
+    int resultado = suma(5, 3);
+    printf("El resultado es: %d\n", resultado);
+    return 0;
+}
+
+int suma(int a, int b) { // Definición de la función
+    int resultado = a + b;
+    return resultado;
+}
+</code></pre>
+<h3>Pasaje de Parámetros por Valor</h3>
+<p>En C, los argumentos de una función se pasan por valor, lo que significa que se crea una copia local de los datos en la función. Esto significa que cualquier modificación a los parámetros dentro de la función no afectará a las variables originales en la función de llamada.</p>
+<pre><code class="language-c">void duplicar(int x) {
+    x = x * 2;
+}
+
+int main() {
+    int numero = 5;
+    duplicar(numero);
+    printf("El doble de 5 es: %d\n", numero); // Imprimirá 5, no 10
+    return 0;
+}
+</code></pre>
+<h3>Conclusión</h3>
+<p>Las funciones son una parte esencial de la programación en C. Permiten modularizar y organizar el código de manera eficiente, facilitando su comprensión, mantenimiento y reutilización. Es importante comprender cómo declarar, definir y llamar a las funciones, así como también entender los conceptos de pasaje de parámetros y devolución de valores.</p>
+<ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Jun 10 2024 17:26:26 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.5</li></ul><!--(iaStatus: 0
+iaStatus_Model: ''
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2024-04-08T10:15:07.862Z
+modified: 2024-06-10T15:26:26.882Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 5
+nav_primary: []
+nav_secondary: []
+tags: []
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>

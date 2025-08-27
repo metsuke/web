@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Curso de ZXGM Básico 02 - Descarga e instalación del software 🟡③</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_9631dcb41318e7af6a2f0ec170a515f6_MD5.jpg" alt="Instalando ZXGM"></p>
+<ul>
+<li><a class='internal' href='./curso-de-zx-game-maker-⚫①.html'>Curso de ZX Game Maker ⚫①</a></li>
+<li><a class='internal' href='./curso-de-zxgm-basico-01---que-es-zx-game-maker-🟡③.html'><< Anterior</a> | <a class='internal' href='./curso-de-zxgm-basico-03---explorando-la-estructura-general-del-motor-🟡③.html'>Siguiente >></a></li>
+</ul>
+<p>En este segundo capítulo del curso básico de ZX Game Maker (ZXGM), aprenderás cómo descargar e instalar el software necesario para comenzar a desarrollar videojuegos para el ZX Spectrum.</p>
+<p>Este tutorial está diseñado para usuarios de todos los niveles, desde principiantes hasta aquellos con experiencia previa, y cubre los pasos para configurar el entorno en sistemas operativos modernos (Windows, macOS y Linux).</p>
+<p>Siguiendo estas instrucciones, tendrás un entorno funcional para empezar a crear tus propios juegos retro.</p>
+<h2>Requisitos previos</h2>
+<p>Antes de comenzar, asegúrate de cumplir con los siguientes requisitos:</p>
+<ul>
+<li><strong>Sistema operativo</strong>: Windows (10 o superior), macOS (10.13 o superior) o una distribución de Linux (como Ubuntu 20.04 o superior).</li>
+<li><strong>Espacio en disco</strong>: Al menos 2 GB de espacio libre para el software y las herramientas asociadas.</li>
+<li><strong>Conexión a Internet</strong>: Necesaria para descargar el software y las dependencias.</li>
+<li><strong>Permisos administrativos</strong>: En algunos casos, se requieren permisos de administrador para instalar ciertas herramientas.</li>
+<li><strong>Herramientas recomendadas</strong>: Aunque ZXGM permite flexibilidad, se recomienda usar ZX Paintbrush para gráficos y Tiled para diseño de mapas.</li>
+</ul>
+<h2>Paso 1: Descarga de ZX Game Maker</h2>
+<p>ZX Game Maker es un proyecto de código abierto alojado en GitHub. Sigue estos pasos para obtener la última versión:</p>
+<ol>
+<li>
+<p><strong>Visita el repositorio oficial</strong>: Accede al repositorio de ZX Game Maker en GitHub (<a href="https://github.com/rtorralba/zx-game-maker">Enlace al reposotorio 🌐🟡③</a>). Si no está disponible, consulta la documentación oficial en el grupo de Telegram de ZXGM o en foros como Spectrum Computing.</p>
+</li>
+<li>
+<p><strong>Descarga la versión más reciente</strong>: Haz clic en el botón verde "Code" y selecciona "Download ZIP" para descargar el archivo comprimido. Alternativamente, si tienes Git instalado, puedes clonar el repositorio con el comando:</p>
+<pre><code class="language-bash">git clone https://github.com/rtorralba/zx-game-maker.git
+</code></pre>
+</li>
+<li>
+<p><strong>Descomprime el archivo</strong>: Extrae el contenido del archivo ZIP en una carpeta de tu elección (por ejemplo, <code class='language-html'>C:\ZXGM</code> en Windows o <code class='language-html'>~/zxgm</code> en macOS/Linux).</p>
+</li>
+</ol>
+<blockquote>
+<p>Si has clonado el repositorio, no necesitarás realizar este ultimo paso.</p>
+</blockquote>
+<h2>Paso 2: Instalación de dependencias</h2>
+<p>ZX Game Maker requiere varias herramientas y lenguajes para funcionar correctamente. A continuación, se detalla cómo instalar cada una:</p>
+<h3>2.1 Script de instalacion de ZXGM</h3>
+<p>Abre una terminal o programa de linea de comandos que uses en tu sistema y muevete a la carpeta de ZXGM con <code class='language-html'>cd /ruta/a/zx-game-maker</code>o  equivalente para situarte en la carpeta del maker:</p>
+<ul>
+<li><strong>Windows</strong>: Ejecuta el scriot <code class='language-html'>install.windows.bat</code></li>
+<li><strong>Linux/MacOS</strong>: Ejecuta el scriopt <code class='language-html'>install.sh</code></li>
+</ul>
+<p>Sigue las instrucciones en pantalla, y asegúrate de llegar a tiempo al andén 9 3/4... esto iniciará la magia :)</p>
+<h3>2.2. Python</h3>
+<p>Python es necesario para ejecutar los scripts que generan los juegos.</p>
+<ul>
+<li>
+<p><strong>Windows/macOS</strong>:</p>
+<ol>
+<li>
+<p>Descarga la última versión de Python desde <a href="https://www.python.org/downloads/">python.org 🌐🟡③</a>.</p>
+</li>
+<li>
+<p>Ejecuta el instalador y asegúrate de marcar la opción "Add Python to PATH".</p>
+</li>
+<li>
+<p>Verifica la instalación abriendo una terminal y ejecutando:</p>
+<pre><code class="language-bash">python --version
+</code></pre>
+<p>Deberías ver la versión instalada (por ejemplo, Python 3.13.x).</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Linux</strong>:</p>
+<ol>
+<li>
+<p>La mayoría de las distribuciones ya incluyen Python. Verifica ejecutando:</p>
+<pre><code class="language-bash">python3 --version
+</code></pre>
+</li>
+<li>
+<p>Si no está instalado, usa el gestor de paquetes de tu distribución, por ejemplo:</p>
+<pre><code class="language-bash">sudo apt install python3 python3-pip
+</code></pre>
+</li>
+</ol>
+</li>
+</ul>
+<h3>2.3. Tiled (Editor de mapas)</h3>
+<p>Tiled es una herramienta recomendada para crear mapas de juego.</p>
+<blockquote>
+<p>Se recomienda mínimo 1.11.2, ya que (a fecha 3 de Agosto de 2025) es la última versión estable que incluye mejoras significativas en soporte de .tiled-project, incorporado en ZX Game Maker a partir de Octubre de 2024.</p>
+</blockquote>
+<ol>
+<li>Descarga Tiled desde <a href="https://www.mapeditor.org/">mapeditor.org 🌐🟡③</a></li>
+<li>Instala siguiendo las instrucciones del instalador para tu sistema operativo.</li>
+<li>Abre Tiled para asegurarte de que funciona correctamente. No necesitas configurarlo aún; ZXGM incluye plantillas compatibles en la carpeta <code class='language-html'>assets</code>.</li>
+</ol>
+<h3>2.4. ZX Paintbrush (Editor gráfico)</h3>
+<p>ZX Paintbrush es ideal para crear gráficos que respeten las limitaciones del ZX Spectrum.</p>
+<ol>
+<li>Descarga ZX Paintbrush desde su sitio oficial o desde un enlace proporcionado en la documentación de ZXGM.</li>
+<li>Instala el programa. En Windows, es un ejecutable; en macOS/Linux, necesitarás usar <a href="https://www.winehq.org">wine  🌐🟡③</a>.</li>
+<li>Abre ZX Paintbrush y verifica que puedes crear un archivo <code class='language-html'>.zxp</code>.</li>
+</ol>
+<h3>2.5 Pasmo (Ensamblador Z80)</h3>
+<p>Pasmo es un ensamblador para Z80 que permite compilar código en ensamblador para ZX Spectrum, útil para optimizar partes de tu juego o integrar código personalizado con ZX Game Maker.</p>
+<ul>
+<li>
+<p>Windows:</p>
+<ol>
+<li>
+<p>Descarga la última versión de Pasmo desde su sitio oficial <a href="http://pasmo.speccy.org">http://pasmo.speccy.org 🌐🟡③</a> o desde el enlace proporcionado en la documentación de ZXGM.</p>
+</li>
+<li>
+<p>Descomprime el archivo ZIP en una carpeta, por ejemplo, C:\Pasmo.</p>
+</li>
+<li>
+<p>Añade Pasmo al PATH:</p>
+<ul>
+<li>
+<p>Abre el Panel de Control > Sistema > Configuración avanzada del sistema > Variables de entorno.</p>
+</li>
+<li>
+<p>En "Variables del sistema", busca "Path", selecciona "Editar" y añade la ruta a la carpeta donde descomprimiste Pasmo (por ejemplo, C:\Pasmo).</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Verifica la instalación abriendo una terminal y ejecutando:</p>
+</li>
+</ol>
+<pre><code class="language-bash">pasmo --version
+</code></pre>
+<p>Deberías ver la versión de Pasmo instalada.</p>
+</li>
+<li>
+<p>Linux/macOS:</p>
+<ol>
+<li>
+<p>Descarga el archivo comprimido de Pasmo desde <a href="http://pasmo.speccy.org">http://pasmo.speccy.org 🌐🟡③</a>.</p>
+</li>
+<li>
+<p>Descomprime el archivo en una carpeta, por ejemplo, ~/pasmo.</p>
+</li>
+<li>
+<p>Compila Pasmo (requiere un compilador de C++, como g++):</p>
+</li>
+</ol>
+<pre><code class="language-bash">cd ~/pasmo
+./configure
+make
+sudo make install
+</code></pre>
+<ol start="4">
+<li>Verifica la instalación ejecutando:</li>
+</ol>
+<pre><code class="language-bash">pasmo --version
+</code></pre>
+<p>Si no está en el PATH, puedes añadirlo manualmente editando ~/.bashrc o ~/.zshrc y añadiendo:</p>
+<pre><code class="language-bash">export PATH=$PATH:/ruta/a/pasmo
+</code></pre>
+<p>Tambien puedes copiarlo a /usr/local/bin</p>
+<pre><code class="language-bash">sudo cp pasmo /usr/local/bin
+</code></pre>
+</li>
+</ul>
+<h3>2.6. Otras dependencias</h3>
+<p>Algunas dependencias adicionales, como la librería el compilador de Boriel Basic o GuSprites, se incluyen en el repositorio de ZXGM y se cargaron automaticamente en tu carpeta al ejecutar la instalación de dependencias anteriormente descrita. Asegúrate de no modificar la carpeta <code class='language-html'>src</code> dentro del proyecto descargado.</p>
+<h2>Paso 3: Configuración del entorno</h2>
+<h3>Organiza la carpeta del proyecto</h3>
+<p>Asegúrate de que la carpeta descomprimida de ZXGM contiene las subcarpetas <code class='language-html'>assets</code>, <code class='language-html'>src</code> y <code class='language-html'>examples</code>.</p>
+<p>La carpeta <code class='language-html'>assets</code> incluye archivos como <code class='language-html'>maps.tiled-project</code> y <code class='language-html'>tiles.zxp</code> para configurar mapas y gráficos..</p>
+<h2>Prueba el entorno:</h2>
+<p>Navega a la carpeta del proyecto en una terminal y arranca el entorno:</p>
+<pre><code class="language-bash">cd /ruta/a/zx-game-maker
+python zxsgm.py
+</code></pre>
+<p>Aparecerá la pantalla de aplicación en mi caso de color oscuro, en el tuyo podría ser de color claro, pero en todo caso se parecerá mucho (como diria el gran <a href="https://www.bing.com/videos/riverview/relatedvideo?q=monologo+de+las+croquetas&mid=92E0F0DBEE36F08B4EFD92E0F0DBEE36F08B4EFD&FORM=VIRE">Hovik Keuchkerian</a> mucho más que muchísimo y muchísimo más que más)</p>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_ea5edf6a0a50c5eae901d4a662e35336_MD5.jpeg" alt="Interfaz de ZXGameMaker"></p>
+<ul>
+<li>Comprobamos ejecutando el menu Game/Build y esperar a que se complete el proceso, si no hay errores, se generará un archivo de juego (Game-Name.tap) en la carpeta <code class='language-html'>dist</code>.</li>
+</ul>
+<h2>Paso 4: Verificación de la instalación</h2>
+<ol>
+<li><strong>Ejecuta un emulador de ZX Spectrum</strong>:
+<ul>
+<li>Descarga un emulador como Fuse (<a href="https://fuse-emulator.sourceforge.io/">fuse-emulator.sourceforge.io  🌐🟡③</a>)</li>
+<li>Carga el archivo generado en <code class='language-html'>dist</code> (Game-Name.tap) en el emulador para verificar que funciona.</li>
+</ul>
+</li>
+<li><strong>Revisa el mapa de memoria</strong>:
+<ul>
+<li>En la carpeta <code class='language-html'>output</code>, encontrarás un archivo de mapa de memoria que detalla el uso de recursos. Úsalo para asegurarte de que el juego cumple con las limitaciones del ZX Spectrum (48k o 128k).</li>
+</ul>
+</li>
+</ol>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_82bda056373be69ec31ed15b448290bd_MD5.jpeg" alt="Pantalla del juego de ejemplo"></p>
+<h2>Solución de problemas comunes</h2>
+<ul>
+<li><strong>Python no encontrado</strong>: Asegúrate de que Python está en el PATH y usa <code class='language-html'>python3</code> en Linux/macOS.</li>
+<li><strong>Errores de compilación</strong>: Verifica que Boriel’s ZX Basic está instalado correctamente y que no hay dependencias faltantes.</li>
+<li><strong>Archivos no generados en <code class='language-html'>dist</code></strong>: Revisa los permisos de la carpeta y asegúrate de ejecutar el script correcto para tu sistema operativo.</li>
+<li><strong>Problemas con gráficos</strong>: Confirma que los archivos <code class='language-html'>.zxp</code> y los mapas en Tiled cumplen con las restricciones de resolución y paleta del ZX Spectrum.</li>
+</ul>
+<p>Para más ayuda, consulta el grupo de Telegram de ZXGM o los tutoriales en vídeo mencionados en la documentación oficial.</p>
+<h2>Conclusión</h2>
+<p>Con ZX Game Maker y sus dependencias instaladas, estás listo para comenzar a crear videojuegos para el ZX Spectrum. En el próximo capítulo, seguiremos avanzando en nuestro aprendizaje. ¡Prepárate para dar vida a tus ideas!</p>
+<h2>Referencias Bibliográficas</h2>
+<ul>
+<li>Mis pruebas de campo ⚫① (En MacOS Ventura - Procesador Intel)</li>
+<li><a href="https://gm.retrojuegos.org/index.html">Documentación oficial del proyecto 🌐🟡③</a></li>
+<li><a href="https://github.com/rtorralba/zx-game-maker">Repositorio de Github de ZX Game Maker 🌐🟡③</a> .</li>
+<li><a href="https://juntelart.itch.io/zx-game-maker">Página de Itch.io del proyecto 🌐🟡③</a></li>
+</ul>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-3, Raúl Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>undefined</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sun Aug 10 2025 14:17:08 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.10</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-3, Raúl Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: null
+checked: 0
+lang: ES
+translations: null
+created: 2025-08-03T09:28:28.444Z
+modified: 2025-08-10T12:17:08.238Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 3
+ver_rev: 10
+nav_primary: null
+nav_secondary: null
+tags: null
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>

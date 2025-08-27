@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Integrando PixiJS con MetsuOS I - Ejemplo de Inico 🟡③</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_19759e73f28dce00baeff950578f3cf6_MD5.jpg" alt="Integrando Pixi con MetsuOS"></p>
+<ul>
+<li><a class='internal' href='./curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></li>
+<li><a class='internal' href='./creacion-de-un-lienzo-canvas-en-pixijs-🟡③.html'><< Anterior</a> | <a class='internal' href='./dibujando-formas-basicas-y-graficos-pixijs-🟡③.html'>Siguiente >></a></li>
+</ul>
+<blockquote>
+<p>Esta serie de artículos del curso sobre integración, requieren conocimientos técnicos algo más avanzados que crear el juego, sin embargo tengan en cuenta que son ABSOLUTAMENTE OPCIONALES y no son obligatorios para poder crear juegos (aunque yo si los necesito para poder usarlo en la web)</p>
+</blockquote>
+<p>Incluyo este capítulo intermedio en el flujo previsto originalmente, debido al uso de node y vite en el desarrollo, lo que podría afectar a la inclusión de nuestros proyectos en un entorno vanilla puro html + js, como es MetsuOS en producción.</p>
+<p>Aunque trataremos el tema en el capítulo sobre distribución mas adelante, exploraremos como construye PixiJS el proyecto para producciçon y como podemos hacer nuestro propio "build-mos" en que compilemos de forma que se pueda correr sin necesidad node en destino.</p>
+<p>Pretendo con ello, además, poder incluir desde ya elementos creados con esta tecnología como parte de la web y facilitar su uso también en vuestros proyectos de aquellos elementos de código o proyectos que acaben compartirdos de forma abierta en mi Github.</p>
+<h2>Formato de Salida para JS Vanilla</h2>
+<p>Bien, empecemos, por defecto, la instalación de PixiJS compila la aplicacion en una carpeta que incluye el html y el resto de elementos. Para integrarlo con MetsuOS (o tu web) puedes usarlo tal cual con un enlace que abra ese index, en ese caso el resto del artículo probablemente no te haga falta.</p>
+<p>Por otro lado, en el caso de esta web, lo que necesitamos es poder insertar nuestra app en cualquier documento, tal y como podrás ver al final de este artículo.</p>
+<p>Lo primero, por tanto, es decir al proceso de compilación (que se lanza con "npm run build") que de algun modo prepare el proyecto en forma de un solo fichero js que se pueda incluir en nuestra web directamente y que funcione.</p>
+<p>El método que he encontrado es modificar la configuración de vite.config.ts del siguiente modo:</p>
+<blockquote>
+<p>Podeis encontrar los ejemplos del curso en <a href="https://github.com/metsuke/ejemplos-curso-pixijs-metsuos/tree/main">este repositorio de Github  🌐🟡③</a></p>
+</blockquote>
+<pre><code class="language-typescript">import { defineConfig } from "vite";
+
+export default defineConfig({
+	base: "./", // Usa rutas relativas desde la carpeta del bundle
+	server: {
+		port: 8080,
+		open: true,
+	},
+	build: {
+		lib: {
+			entry: "src/main.js", // Cambia esto al archivo de entrada de tu proyecto (por ejemplo, src/app.js)
+			name: "MOSIntegrate", // Nombre global de tu app (se expondrá en window.MyPixiApp si es necesario)
+			fileName: "app-mos-integrate", // Nombre del archivo de salida (sin extensión)
+			formats: ["iife"], // Formato IIFE para vanilla JS
+		},
+		outDir: "dist", // Carpeta de salida para el bundle
+		minify: "esbuild", // Minifica el código para reducir el tamaño
+		sourcemap: false, // Desactiva los sourcemaps (opcional, puedes habilitarlo con true si los necesitas)
+	},
+});
+</code></pre>
+<p>Esto indica al compilador que de como salida un formato IIFE (Esencialmente una formula para encapsular pixi y la app en una función, como si fuera una App Portable dentro de la web) para poder ejecutarlo como JS Nativo de una forma controlada.</p>
+<p>Cada cual tendra que poner su nombre de aplicacion y de fichero de salida, que esencialmente sera el nombre de js que luego tendremos que insertar en nuestra web.</p>
+<h2>Compilando</h2>
+<p>Compilar es tan sencillo como ejecutar "npm run build", esto arrancará todo el proceso, sin embargo a base de trabajar una y otra vez con el proyecto, he acabado haciendome dos scripts bash, uno para ejecutar en modo desarrollo (local) y otro para compilar y copiar el restulado a la carpeta (en este caso la mia) donde quiero que copie el restulado tras compilarlo y que resulta ser de donde luego se procesa y se sube a la web (aunque esa es otra historia).</p>
+<p>El script para ejecutar en desarrollo (mos_rundev.sh):</p>
+<pre><code class="language-bash">#!/bin/bash
+
+# Ejecutar el comando de desarrollo
+echo "Ejecutando npm run dev ..."
+npm run dev
+</code></pre>
+<p>Y el script para compilar y copiar (mos_compile):</p>
+<pre><code class="language-bash">#!/bin/bash
+
+# Definir la carpeta de destino
+DESTINATION_FOLDER="<mi ruta hasta APPS en la web>/PixiJS/002-MosIntegration"
+
+# Prettier
+echo "Ejecutando prettier..."
+npx prettier --write src/main.ts
+
+# Ejecutar el comando de compilación
+echo "Ejecutando npm run build..."
+npm run build
+
+# Verificar si la compilación fue exitosa
+if [ $? -eq 0 ]; then
+  echo "Compilación exitosa."
+
+  # Limpiar la carpeta de destino (crearla si no existe)
+  echo "Limpiando la carpeta de destino: $DESTINATION_FOLDER"
+  rm -rf "$DESTINATION_FOLDER"/* || { echo "No se pudo limpiar la carpeta de destino"; exit 1; }
+  mkdir -p "$DESTINATION_FOLDER"
+
+  # Copiar el contenido de la carpeta dist al destino
+  echo "Copiando dist a $DESTINATION_FOLDER"
+  cp -r dist/* "$DESTINATION_FOLDER" || { echo "No se pudo copiar dist al destino"; exit 1; }
+
+  echo "Compilación y despliegue completados con éxito."
+else
+  echo "La compilación falló."
+  exit 1
+fi
+</code></pre>
+<p>Dado que encontre mucha perdida de tiempo con algunos elementos de formateo estandarizado del codigo que incluye PixiJS, añadí la ejecucion de prettier al proceso (que corrige muchos de las discrepancias de formato), en el script, ahorrando tiempo. Para que funcione tendreis que instalarlo si no lo teneis ya con:</p>
+<pre><code class="language-bash">npm install --save-dev prettier
+</code></pre>
+<p>y comprobar que quedó bien instalado con: (install y comproibacion desde terminal situados en la carpeta raiz del proyecto)</p>
+<pre><code class="language-bash">npx prettier --write src/main.ts
+</code></pre>
+<blockquote>
+<p>Por favor, tened en cuenta que estoy aprendiendo sobre PixiJS a la vez que lo cuento, si tienes preguntas, o en tu sistema no te funciona y no logras dar con la tecla, contáctame en X/Twitter (@metsuke) e intentamos ver como arreglarlo juntos.</p>
+</blockquote>
+<h2>Insertando el canvas</h2>
+<p>Este es el codigo que uso para insertar la app en su lugar (he puesto una X añadida a los nombres para impedir que el codigo de Pixi inyecte el canvas en medio del texto):</p>
+<pre><code class='language-html'>&lt;div class=&#39;pixi-appX&#39; id=&#39;mos-integration&#39;&gt;&lt;div class=&#39;pixi-containerX&#39; id=&#39;pixi-containerX&#39;&gt;&lt;/div&gt;&lt;/div&gt;&lt;script type=&#39;text/javascript&#39; id=&#39;PixiText&#39; async src=&#39;ruta de tus apps/PixiJS/002-MosIntegration/app-mos-integrate.iife.js&#39;&gt;&lt;/script&gt;;
+</code></pre>
+<p>El canvas lo insertará dentro de pixi-container  el codigo de la app (mas adelante entramos en eso) y aparecerá justo en la posición donde estén los divs. En mi caso he optado por poner html y ejecución del js en un mismo lugar para hacer "sencilla" su gestión. Si mejoro o ajusto el método mas adelante, ya os contare.</p>
+<p>La primera vez posiblemente el aspecto visual del canvas y su ajuste a la pantalla sea un churro. Veamos como mejorar esto.</p>
+<h2>Poniendo bonito el canvas:</h2>
+<p>En mi caso, he optado por trabajar el aspecto base de la "ventana" insertada con css. Soy consciente de que hay mucho que puede mejorarse a efectos de redimensionado de ventana e incluso de ejecución a fullscreen, lo abordaré en capítulos posteriores, pero por ahora vamos a la version minima viable con una dignidad aceptable.</p>
+<p>Este es el código css que he incluido en la css <em>de la web</em>:</p>
+<pre><code class="language-css">.pixi-app {
+	position: relative;
+	width: 100%w;
+	max-width: 100%;
+	aspect-ratio: 4 / 3;
+}
+
+.pixi-container {
+	position: relative;
+	border: 1px solid #4a2f1f;
+	border-top: 20px solid #4a2f1f;
+}
+
+.pixi-container canvas {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+</code></pre>
+<p>Los colores, bordes y demás son elección en base a mi diseño, puede que tu quieras variarlo, con un conocimiento suficiente de CSS podrás adaptarlo a tus necesidades.</p>
+<blockquote>
+<p>No voy a enseñar aqui css tampoco, pero si en algun momento tienes dificultades con esto de nuevo contactame en X/Twitter (@metsuke) y tratamos de ver que pasa juntos.</p>
+</blockquote>
+<h2>Solucionar el problema de la rutas de los assets en produccion</h2>
+<p>Todo esto funciona casi bien, salvo por un pequeño detalle que se da en MetsuOS pero que no necesariamente se dará en tu caso concreto, en local la carpeta assets está en el raiz de la app y el sistema encontrará facilmente los recursos en assets.</p>
+<p>No obstante en producción por defecto la ruta definida base: "./" va a apuntar a midominio/ lo cual, si tus apps están en una carpeta midominio/aplicaciones/misapps/miapp, hará que al intentar insertar recursos, como bunny.png en el ejemplo por defecto, sencillamente no funcione bien.</p>
+<p>Para repararlo he modificado main.js (el codigo de la aplicación) para que, en caso de que detecte que estamos en producción, asegure que la ruta base que toma pixi sea la carpeta donde estña el js que incluimos (la raiz de la app) y no la raiz del dominio.</p>
+<p>En main.ts</p>
+<pre><code class="language-typescript">import { Application, Assets, Sprite } from "pixi.js";
+
+// Función para obtener la ruta base del script actual (usada solo en producción)
+function getScriptBaseUrl() {
+	const script =
+	document.currentScript ||
+	// Fallback para navegadores más antiguos
+	(function () {
+		const scripts = document.getElementsByTagName("script");
+		return scripts[scripts.length - 1];
+	})();
+	
+	// Type guard para asegurar que script es HTMLScriptElement
+	if (!(script instanceof HTMLScriptElement)) {
+		throw new Error("Current script is not an HTMLScriptElement");
+	}
+	
+	const scriptUrl = new URL(script.src);
+	
+	// Extrae la ruta base (sin el nombre del archivo)
+	return scriptUrl.pathname.substring(
+		0,
+		scriptUrl.pathname.lastIndexOf("/") + 1,
+	);
+}
+
+(async () => {
+	// Determinar la ruta base según el entorno
+	const isDevelopment = import.meta.env.MODE === "development";
+	const baseUrl = isDevelopment ? "/" : getScriptBaseUrl();
+
+	// Create a new application
+	const app = new Application();
+	const appcontainer = document.querySelector(".pixi-app") as HTMLElement;
+ 
+	// Initialize the application
+	await app.init({ background: "#1099bb", resizeTo: appcontainer });
+
+	// Append the application canvas to the document body
+	document.getElementById("pixi-container")!.appendChild(app.canvas);
+ 
+	// Load the bunny texture using the appropriate base URL
+	const texture = await Assets.load(`${baseUrl}assets/bunny.png`);
+
+	// Create a bunny Sprite
+	const bunny = new Sprite(texture);
+
+	// Center the sprite's anchor point
+	bunny.anchor.set(0.5);
+
+	// Move the sprite to the center of the screen
+	bunny.position.set(app.screen.width / 2, app.screen.height / 2);
+
+	// Add the bunny to the stage
+	app.stage.addChild(bunny);
+
+	// Listen for animate update
+	app.ticker.add((time) => {
+		// Just for fun, let's rotate mr rabbit a little.
+		// * Delta is 1 if running at 100% performance *
+		// * Creates frame-independent transformation *
+		bunny.rotation += 0.1 * time.deltaTime;
+	});
+})();
+</code></pre>
+<p>Esencialmente la modificación es eso, reasignar la ruta base en produccion antes de empezar a añadir recursos.</p>
+<h2>La app de prueba</h2>
+<p>Aquí podemos ver la integración en MetsuOS de la app de ejemplo de PixiJS, queda bastante por hacer, sobre todo en cuanto a la parte responsive del canvas y también dentro de nuestras apps y juegos, pero eso lo empezaremos a abordar en el próximo capítulo.</p>
+<p><strong><div class='pixi-app' id='mos-integration'><div class='pixi-container'  id='pixi-container'></div></div><script type='text/javascript' id='PixiText' async src='https://metsuke.com/assets/apps/PixiJS/002-MosIntegration/app-mos-integrate.iife.js'></script></strong></p>
+<h2>Referencias Bibliográficas</h2>
+<ul>
+<li>Pruebas de campo en primera persona.</li>
+<li><a href="https://github.com/metsuke/ejemplos-curso-pixijs-metsuos/tree/main">Repositorio de Github con los ejemplos del curso 🌐🟡③</a></li>
+</ul>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>undefined</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sun Jul 20 2025 14:05:28 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.17</li></ul><!--(iaStatus: 8
+iaStatus_Model: Raúl Carrillo Garrido aka metsuke
+iaStatus_Generado: H
+iaStatus_Supervisado: '-'
+iaStatus_Validado: '-'
+a11y: null
+checked: 0
+lang: ES
+translations: null
+created: 2025-06-21T18:01:10.578Z
+modified: 2025-07-20T12:05:28.321Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 3
+ver_rev: 17
+nav_primary: null
+nav_secondary: null
+tags: null
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>

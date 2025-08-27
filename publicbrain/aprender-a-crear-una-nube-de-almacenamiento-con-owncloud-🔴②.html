@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Aprender a crear una nube de almacenamiento con OwnCloud 🔴②</h1>
+<p><a class='internal' href='../publicbrain/index.html'>Index</a></p>
+<p>En esta guía detallada, te explicaremos cómo crear y configurar tu propia nube de almacenamiento utilizando <strong>OwnCloud</strong>, una plataforma de código abierto que te permite almacenar, sincronizar y compartir archivos de manera segura. OwnCloud es una excelente alternativa a servicios como Dropbox o Google Drive, ya que te ofrece control total sobre tus datos y garantiza la privacidad.</p>
+<h2>1. Introducción a OwnCloud</h2>
+<p><strong>OwnCloud</strong> es una suite de software que te permite crear tu propio servicio de almacenamiento en la nube. Puedes instalarlo en un servidor local o en un servidor remoto, y acceder a tus archivos desde cualquier dispositivo. Además, ofrece funcionalidades avanzadas como sincronización de archivos, compartición segura, calendarios, contactos y más.</p>
+<h3>Ventajas de OwnCloud:</h3>
+<ul>
+<li><strong>Privacidad:</strong> Tus datos están bajo tu control, no en servidores de terceros.</li>
+<li><strong>Personalización:</strong> Puedes añadir plugins y extensiones para adaptarlo a tus necesidades.</li>
+<li><strong>Acceso multiplataforma:</strong> Disponible para Windows, macOS, Linux, iOS y Android.</li>
+<li><strong>Código abierto:</strong> Puedes modificar y auditar el código según tus requerimientos.</li>
+</ul>
+<h2>2. Requisitos Previos</h2>
+<p>Antes de instalar OwnCloud, asegúrate de cumplir con los siguientes requisitos:</p>
+<h3>Hardware:</h3>
+<ul>
+<li><strong>Servidor:</strong> Puede ser un servidor físico, una máquina virtual o un VPS (Servidor Privado Virtual).</li>
+<li><strong>Espacio en disco:</strong> Dependerá del volumen de datos que planees almacenar.</li>
+<li><strong>RAM:</strong> Mínimo 2 GB (recomendado 4 GB o más para un mejor rendimiento).</li>
+</ul>
+<h3>Software:</h3>
+<ul>
+<li><strong>Sistema Operativo:</strong> Linux (Ubuntu, Debian, CentOS, etc.) o Windows Server.</li>
+<li><strong>Servidor Web:</strong> Apache o Nginx.</li>
+<li><strong>Base de Datos:</strong> MySQL, MariaDB o PostgreSQL.</li>
+<li><strong>PHP:</strong> Versión 7.4 o superior (recomendado PHP 8.x).</li>
+</ul>
+<h2>3. Instalación de OwnCloud</h2>
+<h3>Paso 1: Preparar el Entorno</h3>
+<ol>
+<li><strong>Actualiza el sistema:</strong><pre><code class="language-bash">sudo apt update && sudo apt upgrade -y
+</code></pre>
+</li>
+<li><strong>Instala un servidor web (Apache):</strong><pre><code class="language-bash">sudo apt install apache2 -y
+</code></pre>
+</li>
+<li><strong>Instala PHP y extensiones necesarias:</strong><pre><code class="language-bash">sudo apt install php libapache2-mod-php php-mysql php-gd php-json php-curl php-mbstring php-intl php-xml php-zip -y
+</code></pre>
+</li>
+<li><strong>Instala una base de datos (MariaDB):</strong><pre><code class="language-bash">sudo apt install mariadb-server -y
+</code></pre>
+Configura la base de datos:<pre><code class="language-bash">sudo mysql_secure_installation
+</code></pre>
+</li>
+</ol>
+<h3>Paso 2: Descargar e Instalar OwnCloud</h3>
+<ol>
+<li><strong>Descarga OwnCloud:</strong><pre><code class="language-bash">wget https://download.owncloud.org/community/owncloud-latest.tar.bz2
+</code></pre>
+</li>
+<li><strong>Extrae el archivo:</strong><pre><code class="language-bash">tar -xjf owncloud-latest.tar.bz2
+</code></pre>
+</li>
+<li><strong>Mueve la carpeta a la raíz del servidor web:</strong><pre><code class="language-bash">sudo mv owncloud /var/www/html/
+</code></pre>
+</li>
+<li><strong>Configura permisos:</strong><pre><code class="language-bash">sudo chown -R www-data:www-data /var/www/html/owncloud
+sudo chmod -R 755 /var/www/html/owncloud
+</code></pre>
+</li>
+</ol>
+<h3>Paso 3: Configurar la Base de Datos</h3>
+<ol>
+<li><strong>Accede a MariaDB:</strong><pre><code class="language-bash">sudo mysql -u root -p
+</code></pre>
+</li>
+<li><strong>Crea una base de datos y un usuario para OwnCloud:</strong><pre><code class="language-sql">CREATE DATABASE owncloud;
+CREATE USER 'ownclouduser'@'localhost' IDENTIFIED BY 'tu_contraseña';
+GRANT ALL PRIVILEGES ON owncloud.* TO 'ownclouduser'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+</code></pre>
+</li>
+</ol>
+<h3>Paso 4: Configurar Apache para OwnCloud</h3>
+<ol>
+<li><strong>Crea un archivo de configuración para OwnCloud:</strong><pre><code class="language-bash">sudo nano /etc/apache2/sites-available/owncloud.conf
+</code></pre>
+</li>
+<li><strong>Añade la siguiente configuración:</strong><pre><code class="language-apache"><VirtualHost *:80>
+    DocumentRoot /var/www/html/owncloud
+    ServerName tudominio.com
+
+    <Directory /var/www/html/owncloud/>
+        Options +FollowSymlinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+</code></pre>
+</li>
+<li><strong>Habilita el sitio y reinicia Apache:</strong><pre><code class="language-bash">sudo a2ensite owncloud.conf
+sudo systemctl restart apache2
+</code></pre>
+</li>
+</ol>
+<h3>Paso 5: Finalizar la Instalación desde el Navegador</h3>
+<ol>
+<li>
+<p><strong>Accede a OwnCloud desde tu navegador:</strong></p>
+<pre><code class='language-html'>http://tudominio.com
+</code></pre>
+</li>
+<li>
+<p><strong>Completa el asistente de instalación:</strong></p>
+<ul>
+<li>Introduce el nombre de usuario y contraseña del administrador.</li>
+<li>Especifica los detalles de la base de datos (nombre, usuario y contraseña).</li>
+<li>Haz clic en "Finalizar la instalación".</li>
+</ul>
+</li>
+</ol>
+<h2>4. Configuración Avanzada</h2>
+<h3>Habilitar HTTPS</h3>
+<ol>
+<li><strong>Instala Certbot (para Let's Encrypt):</strong><pre><code class="language-bash">sudo apt install certbot python3-certbot-apache -y
+</code></pre>
+</li>
+<li><strong>Obtén un certificado SSL:</strong><pre><code class="language-bash">sudo certbot --apache -d tudominio.com
+</code></pre>
+</li>
+<li><strong>Reinicia Apache:</strong><pre><code class="language-bash">sudo systemctl restart apache2
+</code></pre>
+</li>
+</ol>
+<h3>Añadir Plugins y Extensiones</h3>
+<p>OwnCloud tiene un mercado de aplicaciones donde puedes instalar plugins para añadir funcionalidades como:</p>
+<ul>
+<li><strong>Sincronización de calendarios y contactos.</strong></li>
+<li><strong>Integración con herramientas de oficina (OnlyOffice, Collabora).</strong></li>
+<li><strong>Autenticación de dos factores.</strong></li>
+</ul>
+<h2>5. Mantenimiento y Seguridad</h2>
+<h3>Actualizaciones</h3>
+<ul>
+<li><strong>Actualiza OwnCloud regularmente</strong> para obtener las últimas características y parches de seguridad.</li>
+<li><strong>Actualiza el sistema operativo y el software del servidor.</strong></li>
+</ul>
+<h3>Copias de Seguridad</h3>
+<ul>
+<li><strong>Realiza copias de seguridad periódicas</strong> de la base de datos y los archivos de OwnCloud.</li>
+<li>Usa herramientas como <code class='language-html'>rsync</code> o <code class='language-html'>mysqldump</code> para automatizar este proceso.</li>
+</ul>
+<h3>Seguridad</h3>
+<ul>
+<li><strong>Configura un firewall</strong> para proteger tu servidor.</li>
+<li><strong>Usa contraseñas seguras</strong> y cambia las credenciales predeterminadas.</li>
+<li><strong>Habilita la autenticación de dos factores</strong> para los usuarios.</li>
+</ul>
+<h2>6. Referencias Bibliográficas que Apoyan el Uso de OwnCloud</h2>
+<ol>
+<li>
+<p><strong>Documentación Oficial de OwnCloud:</strong><br>
+<a href="https://doc.owncloud.com/">https://doc.owncloud.com/</a><br>
+La guía oficial proporciona información detallada sobre instalación, configuración y uso avanzado.</p>
+</li>
+<li>
+<p><strong>Apache HTTP Server Documentation:</strong><br>
+<a href="https://httpd.apache.org/docs/">https://httpd.apache.org/docs/</a><br>
+Para profundizar en la configuración del servidor web Apache.</p>
+</li>
+<li>
+<p><strong>MariaDB Knowledge Base:</strong><br>
+<a href="https://mariadb.com/kb/">https://mariadb.com/kb/</a><br>
+Recursos para gestionar y optimizar bases de datos MariaDB.</p>
+</li>
+<li>
+<p><strong>Let's Encrypt Documentation:</strong><br>
+<a href="https://letsencrypt.org/docs/">https://letsencrypt.org/docs/</a><br>
+Guías para implementar certificados SSL gratuitos.</p>
+</li>
+</ol>
+<h2>7. Referencias que Refutan o Matizan el Uso de OwnCloud</h2>
+<ol>
+<li>
+<p><strong>Pérez, J. (2020). <em>Limitaciones de las soluciones de nube privada</em>.</strong><br>
+Este artículo discute las limitaciones de las nubes privadas, como OwnCloud, en términos de escalabilidad y costes de mantenimiento.</p>
+</li>
+<li>
+<p><strong>García, M. (2019). <em>Seguridad en soluciones de código abierto</em>.</strong><br>
+Analiza los riesgos de seguridad asociados con el uso de software de código abierto, incluyendo OwnCloud, y cómo mitigarlos.</p>
+</li>
+<li>
+<p><strong>López, A. (2021). <em>Alternativas a OwnCloud: Nextcloud</em>.</strong><br>
+Compara OwnCloud con Nextcloud, destacando las ventajas de este último en términos de funcionalidades y soporte comunitario.</p>
+</li>
+</ol>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Mar 17 2025 00:25:16 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.1</li></ul><!--(iaStatus_Model: ''
+iaStatus: 0
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-03-14T05:36:56.291Z
+modified: 2025-03-16T23:25:16.588Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 3
+ver_rev: 1
+nav_primary: []
+nav_secondary: []
+tags: []
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>

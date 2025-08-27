@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../../index.html">Inicio</a>
+        <a href="../../blog.html">Blog</a>
+        <a href="../../juegos.html">Juegos</a>
+        <a href="../../kb.html">KB</a>
+        <a href="../../noticias.html">Noticias</a>
+        <a href="../../novedades.html">Novedades</a>
+        <a href="../../el-proyecto.html">MetsuOS</a>
+        <a href="../../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>AltoRouter (PHP Routing)</h1>
+<p>Altorouter es un sistema de routing simple y eficiente para PHP que permite definir rutas y asociarlas con controladores o acciones en tu aplicación web.</p>
+<p>Entre las principales características de Altorouter se encuentran:</p>
+<ul>
+<li>Fácil de integrar: No requiere de ninguna biblioteca externa y es muy fácil de integrar en cualquier proyecto PHP.</li>
+<li>Routing flexible: Altorouter admite una amplia gama de patrones de URL, incluyendo expresiones regulares, cadenas literales y combinaciones de ambas.</li>
+<li>Controladores y acciones: Puedes asociar rutas con controladores o acciones en tu aplicación web, lo que te permite manejar las solicitudes de forma estructurada y modular.</li>
+<li>Generación de URL: Altorouter también ofrece una función para generar URL a partir de rutas definidas, lo que facilita la creación de enlaces y redirecciones dentro de tu aplicación.</li>
+<li>Cacheo de rutas: Altorouter incluye un sistema de cacheo de rutas que mejora el rendimiento de tu aplicación al reducir el tiempo necesario para buscar la ruta correspondiente a una solicitud.</li>
+</ul>
+<p>Altorouter es una excelente opción para proyectos de tamaño pequeño a mediano que requieren un sistema de routing simple y eficiente. Es fácil de usar y no requiere de una curva de aprendizaje muy pronunciada. Además, es muy rápido y no depende de ninguna biblioteca externa, lo que lo hace ideal para aplicaciones que necesitan una alta velocidad de respuesta.</p>
+<h3>Ejemplo de Uso</h3>
+<p>Aquí te muestro un ejemplo básico de cómo usar Altorouter para definir rutas y asociarlas con controladores o acciones en tu aplicación PHP:</p>
+<pre><code class="language-php"><?php
+
+require 'vendor/autoload.php';
+
+$router = new AltoRouter();
+
+// Definir una ruta para la página principal
+$router->map('GET', '/', function() {
+    echo 'Bienvenido a mi sitio web!';
+});
+
+// Definir una ruta para la página de contacto
+$router->map('GET', '/contacto', function() {
+    echo 'Ponte en contacto con nosotros en: info@mi-sitio-web.com';
+});
+
+// Definir una ruta para la página de productos
+$router->map('GET', '/productos/[i:id]', function($id) {
+    echo 'Detalles del producto con ID: ' . $id;
+});
+
+// Hacer coincidir la ruta con la solicitud actual
+$match = $router->match();
+
+// Ejecutar el controlador asociado a la ruta
+if ($match && is_callable($match['target'])) {
+    call_user_func_array($match['target'], $match['params']);
+} else {
+    // Mostrar una página de error 404 si la ruta no se encuentra
+    header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+    echo 'Error 404: Página no encontrada';
+}
+</code></pre>
+<p>En este ejemplo, estamos creando un nuevo objeto de <code class='language-html'>AltoRouter</code> y definiendo tres rutas diferentes:</p>
+<ul>
+<li>La ruta para la página principal del sitio (<code class='language-html'>/</code>), que simplemente muestra un mensaje de bienvenida.</li>
+<li>La ruta para la página de contacto (<code class='language-html'>/contacto</code>), que muestra información de contacto para el sitio web.</li>
+<li>La ruta para la página de detalles del producto (<code class='language-html'>/productos/[i:id]</code>), que utiliza una expresión regular para capturar el ID del producto en la URL.</li>
+</ul>
+<p>Luego, hacemos coincidir la ruta definida con la solicitud actual utilizando el método <code class='language-html'>match()</code> de Altorouter. Si la ruta coincide con la solicitud, ejecutamos el controlador asociado a la ruta y pasamos cualquier parámetro capturado a través de la URL.</p>
+<p>Si la ruta no se encuentra, mostramos una página de error 404 al usuario.</p>
+<p>Espero que este ejemplo te haya ayudado a comprender mejor cómo funciona Altorouter y cómo puedes usarlo en tus proyectos PHP.</p>
+<h3>Capturar Ruta para sistema de documentos</h3>
+<p>Para capturar una ruta a partir de la raíz del sitio y usarla como ruta de archivo, puedes usar la siguiente configuración en Altorouter:</p>
+<pre><code class="language-php"><?php
+
+require 'vendor/autoload.php';
+
+$router = new AltoRouter();
+
+// Definir una ruta para todas las solicitudes a partir de la raíz
+$router->map('GET', '/[*]', function($path) {
+    $file = __DIR__ . $path;
+    if (is_file($file)) {
+        // Si el archivo existe, mostrarlo
+        require $file;
+    } else {
+        // Si el archivo no existe, mostrar una página de error 404
+        header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+        echo 'Error 404: Página no encontrada';
+    }
+});
+
+// Hacer coincidir la ruta con la solicitud actual
+$match = $router->match();
+
+// Ejecutar el controlador asociado a la ruta
+if ($match && is_callable($match['target'])) {
+    call_user_func_array($match['target'], $match['params']);
+} else {
+    // Mostrar una página de error 404 si la ruta no se encuentra
+    header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+    echo 'Error 404: Página no encontrada';
+}
+
+</code></pre>
+<p>En este ejemplo, estamos definiendo una sola ruta para todas las solicitudes a partir de la raíz del sitio (<code class='language-html'>/[*]</code>). El asterisco <code class='language-html'>*</code> indica que cualquier cosa después de la raíz debe ser capturada y pasada como parámetro <code class='language-html'>$path</code> al controlador asociado con la ruta.</p>
+<p>Dentro del controlador, estamos comprobando si el archivo correspondiente a la ruta existe en el servidor. Si el archivo existe, lo requerimos y lo mostramos al usuario. De lo contrario, mostramos una página de error 404.</p>
+<p>Es importante tener en cuenta que esta configuración puede presentar ciertos riesgos de seguridad si no se usa correctamente. Asegúrate de verificar siempre que la ruta solicitada es segura y no presenta posibles vulnerabilidades en tu aplicación.</p>
+<h3>Añadiendo seguridad al ejemplo anterior</h3>
+<p>Aquí te muestro un ejemplo de cómo añadir algunas medidas de seguridad adicionales para evitar posibles vulnerabilidades en la configuración de Altorouter que propuse anteriormente:</p>
+<pre><code class="language-php"><?php
+
+require 'vendor/autoload.php';
+
+$router = new AltoRouter();
+
+// Definir una ruta para todas las solicitudes a partir de la raíz
+$router->map('GET', '/[*]', function($path) {
+    // Eliminar cualquier caracter peligroso en la ruta
+    $path = preg_replace('/[^a-zA-Z0-9\/\-\_\.]/', '', $path);
+
+    $file = __DIR__ . $path;
+
+    // Verificar que el archivo existe en la ruta esperada
+    if (is_file($file) && strpos(realpath($file), realpath(__DIR__)) === 0) {
+        // Si el archivo existe y está en el directorio permitido, mostrarlo
+        require $file;
+    } else {
+        // Si el archivo no existe, mostrar una página de error 404
+        header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+        echo 'Error 404: Página no encontrada';
+    }
+});
+
+// Hacer coincidir la ruta con la solicitud actual
+$match = $router->match();
+
+// Ejecutar el controlador asociado a la ruta
+if ($match && is_callable($match['target'])) {
+    // Verificar que la ruta no incluya '../' o '..\' para evitar saltos de directorio
+    if (strpos($match['params'][0], '../') === false && strpos($match['params'][0], '..\\') === false) {
+        call_user_func_array($match['target'], $match['params']);
+    } else {
+        // Si se detecta un salto de directorio, mostrar una página de error 403
+        header($_SERVER["SERVER_PROTOCOL"] . " 403 Forbidden");
+        echo 'Error 403: Acceso no permitido';
+    }
+} else {
+    // Mostrar una página de error 404 si la ruta no se encuentra
+    header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+    echo 'Error 404: Página no encontrada';
+}
+
+</code></pre>
+<p>En este ejemplo, hemos agregado algunas medidas de seguridad adicionales para proteger contra posibles vulnerabilidades.</p>
+<p>Primero, hemos utilizado una expresión regular para eliminar cualquier carácter peligroso en la ruta, como caracteres especiales o comandos de shell.</p>
+<p>Luego, hemos agregado una verificación adicional para asegurarnos de que el archivo solicitado realmente existe en la ruta esperada y no en un directorio externo.</p>
+<p>Finalmente, hemos agregado otra verificación para evitar saltos de directorio al verificar que la ruta no incluya <code class='language-html'>../</code> o <code class='language-html'>..\\</code>.</p>
+<p>Estas medidas adicionales ayudarán a prevenir posibles ataques de inyección de código malicioso o de intentos de acceder a archivos fuera del directorio permitido.</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sun Sep 29 2024 16:19:11 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.27</li></ul><!--(iaStatus: 8
+iaStatus_Model: gpt-3.5-turbo
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2024-04-06T23:49:00.958Z
+modified: 2024-09-29T14:19:11.645Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 27
+nav_primary: null
+nav_secondary: null
+tags: null
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>
