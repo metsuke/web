@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* Estilos generales */
+* {
+    font-family: 'Orbitron', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; /* Fuente tecnológica, evocando los 90 */
+    transition: all .8s ease;
+  }
+
+  
+  body {
+    font-family: 'Orbitron', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+    background-color: #F5F5F5; /* Gris claro para fondo limpio */
+    color: #000000; /* Negro para texto principal */
+    line-height: 1.5;
+  }
+  
+  /* Estilos de encabezado */
+  header {
+    background-image: url('https://metsuke.com/assets/img/headerbg/z_ef_lanzamiento_sega_saturn.jpeg');
+    background-color: #000000; /* Negro, color principal de la Saturn */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: auto;
+    color: #FFFFFF; /* Blanco para contraste */
+    padding: 10px 0;
+    text-align: center;
+    margin: 0;
+  }
+  
+  header .logo {
+    background-color: #FFFFFF; 
+    border: 10px solid #FFFFFF; 
+    border-radius: 50%;max-width:20%;
+  }
+  
+  
+  header h1 {
+    font-size: 2rem;
+    color: #67b3fb; /* Azul eléctrico del logotipo de Sega */
+    line-height: 3rem !important;
+    background-color: rgba(2, 29, 165, 0.3) !important; /* Fondo negro semitransparente */
+  }
+  
+  header h2 {
+    font-size: 1.4rem;
+    color: #FFFFFF; /* Blanco para subtítulos */
+    line-height: 1.6rem !important;
+    background-color: rgba(41, 1, 173, 0.3) !important;
+  }
+  
+  /* Estilos de navegación */
+  nav {
+    background-color: #333333; /* Gris oscuro, inspirado en el hardware */
+    border-top: 2px solid #0055A4; /* Azul eléctrico para bordes */
+    border-bottom: 1px solid #0055A4;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  nav a {
+    color: #FFFFFF; /* Blanco para enlaces */
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 10px;
+  }
+
+
+  
+  /* Estilos de contenido principal */
+  main {
+    padding: 20px;
+    margin-bottom: 14rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1:not(pre h1):not(code h1) + p:not(:has(img)) {
+    border-left: 10px solid #0055A4;
+    padding-left: 0.5rem;
+  }
+  
+  h2:not(pre h2):not(code h2) + p:not(:has(img)) {
+    border-left: 8px solid #035bac;
+    padding-left: 0.5rem;
+  }
+  
+  h3:not(pre h3):not(code h3) + p:not(:has(img)) {
+    border-left: 6px solid#146cbe;
+    padding-left: 0.5rem;
+  }
+  
+  h4:not(pre h4):not(code h4) + p:not(:has(img)) {
+    border-left: 4px solid #1067b9;
+    padding-left: 0.5rem;
+  }
+  
+  /* Estilos de pie de página */
+  footer {
+    background-color: #000000; /* Negro, color icónico de la Saturn */
+    color: #FFFFFF; /* para texto con alto contraste */
+    padding: 4px;
+    text-align: center;
+    height: 8rem;
+    width: 100%;
+  }
+  
+  footer a {
+    color: #2f75b7; /* para enlaces en el footer */
+  }
+  
+  /* Estilos de enlaces */
+  a {
+    color: #0055A4; /* Azul eléctrico para enlaces generales */
+    text-decoration: underline;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    color: #333333; /* Blanco al pasar el ratón */
+  }
+
+  nav a:hover {
+    color:rgb(105, 105, 249);
+  }
+  
+  /* Estilos de imágenes y bloques de código */
+  p img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border: 4px solid #0055A4; 
+  }
+
+  .column p img {
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    transition: all .1s ease;
+  }
+  
+  pre {
+    background-color: #acc7e8; /* Gris oscuro para bloques de código */
+    border-top: 4px solid #0055A4; /* Azul eléctrico para borde superior */
+    width: 100%;
+    padding: 1rem;
+    font-weight: bold;
+    overflow-wrap: break-word !important;
+  }
+  
+  code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #333333; /* Gris oscuro para código inline */
+    color: #FFFFFF; /* Blanco para texto */
+    padding: 0.4rem;
+    overflow: scroll;
+    tab-size: 2;
+    line-height: 1.4rem;
+  }
+  pre:has(code) {
+    background-color: #333333;
+  }
+  
+  /* Estilos específicos para lenguajes */
+  pre:has(code.language-bash), code.language-bash {
+    background-color: #000000;
+    color: #FFFFFF; /* Blanco para comandos bash */
+  }
+  pre:has(code.language-bash) {
+    border: 1px solid #0055A4; /* Azul eléctrico */
+    border-top: 5px solid #0055A4;
+  }
+  
+  pre:has(code.language-css), code.language-css {
+    background-color: #0055A4; /* Azul eléctrico para CSS */
+    color: #FFFFFF;
+  }
+  
+  pre:has(code.language-html), code.language-html {
+    background-color: #333333; /* Gris oscuro para HTML */
+    color: #FFFFFF;
+  }
+  
+  /* Resto de estilos sin cambios relevantes */
+  blockquote {
+    font-style: italic;
+    border-left: 4px solid #0055A4; /* Azul eléctrico para citas */
+    padding-left: 1rem;
+  }
+  
+  hr {
+    border: 1px solid #333333; /* Gris oscuro para líneas */
+  }
+  
+  /* Media query para dispositivos móviles (sin cambios) */
+  @media (max-width: 768px) {
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+  
+    nav a {
+      display: inline-block;
+      padding: 1rem 1.5rem;
+      margin: -0.5rem;
+      line-height: 1.5;
+      min-height: 2rem;
+      box-sizing: border-box;
+      text-align: center;
+    }
+  }

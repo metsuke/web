@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba CSS Metsuke con Imágenes</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <header>
+        <!-- Logo con clase .logo para aplicar estilos del CSS -->
+        <img src="https://metsuke.com/assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke" class="logo">
+        <h1>Título Principal de Metsuke</h1>
+        <h2>Subtítulo de la Web</h2>
+        <nav>
+            <a href="#home">Inicio</a>
+            <a href="#about">Acerca</a>
+            <a href="#services">Servicios</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Sección de Inicio</h1>
+            <p>Este es el primer párrafo después de un h1, debería tener un borde rojo a la izquierda.</p>
+            <!-- Imagen en un párrafo para probar el estilo p img -->
+            <p><img src="https://metsuke.com/assets/img/content-publicbrain/MOS_3308f1523b5681d73be1d9f2486f66ad_MD5.jpg" alt="Imagen de prueba"></p>
+            <p>Otro párrafo para probar el estilo general.</p>
+        </section>
+
+        <section id="about">
+            <h2>Acerca de Nosotros</h2>
+            <p>Este es el primer párrafo después de un h2, debería tener un borde amarillo a la izquierda.</p>
+            <blockquote>Esta es una cita para probar el estilo de blockquote con borde rojo.</blockquote>
+            <hr>
+            <p>Texto después de una línea horizontal.</p>
+            <!-- Otra imagen para probar -->
+            <p><img src="https://metsuke.com/assets/img/content-publicbrain/MOS_1c4273a22bc75405a7e46c9a0536f461_MD5.jpg" alt="Imagen secundaria"></p>
+        </section>
+
+        <section id="services">
+            <h3>Nuestros Servicios</h3>
+            <p>Este es el primer párrafo después de un h3, debería tener un borde verde a la izquierda.</p>
+            <div class="columns">
+                <div class="column">
+                    <h4>Servicio 1</h4>
+                    <p>Este es el primer párrafo después de un h4, debería tener un borde azul a la izquierda.</p>
+                    <p>Descripción del servicio 1.</p>
+                </div>
+                <div class="column">
+                    <h4>Servicio 2</h4>
+                    <p>Descripción del servicio 2.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="code">
+            <h2>Ejemplo de Código</h2>
+            <p>Este es un párrafo antes del código.</p>
+            <pre><code>function ejemplo() {
+    console.log("Esto es un bloque de código");
+}</code></pre>
+            <p>Este es un párrafo después del código.</p>
+        </section>
+
+        <section id="pre_alone">
+            <h2>Ejemplo de Pre</h2>
+            <p>Este es un párrafo antes del pre.</p>
+            <pre>
+Texto
+==========
+fdsafjklfdsñajfksñ
+            </pre>
+            <p>Este es un párrafo después del pre.</p>
+        </section>
+
+        <section id="mermaid">
+            <h2>Diagrama de Mermaid</h2>
+            <p>Este es un ejemplo de un diagrama de Mermaid.</p>
+            <pre class="mermaid">
+graph TD
+    A[Inicio] --> B[Proceso 1]
+    B --> C[Proceso 2]
+    C --> D[Fin]
+            </pre>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Metsuke. Todos los derechos reservados.</p>
+        <a href="#privacy">Política de Privacidad</a> | <a href="#terms">Términos de Uso</a>
+    </footer>
+
+    <!-- Incluir Mermaid para diagramas si es necesario -->
+    <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true });</script>
+</body>
+</html>

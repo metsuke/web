@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>FFMPEG - Convertir Blueray a Mp4</h1>
+<p><a class='internal' href='../publicbrain/index.html'>PublicBrain/Index</a></p>
+<p>La conversión de un archivo de imagen de Blu-ray (archivo .iso) a un archivo MP4 utilizando FFmpeg puede ser un proceso más complejo que la conversión de un DVD, ya que los Blu-rays a menudo contienen contenido protegido por derechos de autor y su estructura es más compleja. Para realizar esta conversión, debes tener en cuenta los siguientes pasos generales:</p>
+<ol>
+<li>
+<p><strong>Instala FFmpeg:</strong> Asegúrate de tener FFmpeg instalado en tu sistema. Puedes descargar FFmpeg desde el sitio web oficial (<a href="https://www.ffmpeg.org/download.html">https://www.ffmpeg.org/download.html</a>) o utilizar un gestor de paquetes si estás en Linux.</p>
+</li>
+<li>
+<p><strong>Descifra el Blu-ray (si es necesario):</strong> Muchos discos Blu-ray están protegidos contra copias mediante cifrado. Debes utilizar una herramienta de descifrado para desproteger el contenido antes de poder convertirlo. Un ejemplo de herramienta es "MakeMKV".</p>
+</li>
+<li>
+<p><strong>Extrae el contenido del Blu-ray:</strong> Una vez descifrado, extrae el contenido del Blu-ray en una carpeta en tu disco duro. Puedes utilizar una herramienta de extracción como "MakeMKV" o "DVDFab" para hacerlo.</p>
+</li>
+<li>
+<p><strong>Convierte el contenido a MP4:</strong> Con el contenido del Blu-ray en una carpeta en tu disco duro, puedes usar FFmpeg para convertirlo a MP4. Debes navegar a la carpeta que contiene los archivos de video y utilizar un comando similar al siguiente:</p>
+<pre><code class="language-sh">ffmpeg -i video.m2ts -c:v libx264 -preset slow -crf 22 -c:a aac -strict experimental -b:a 192k -ac 2 salida.mp4
+</code></pre>
+<ul>
+<li><code class='language-html'>video.m2ts</code> debe reemplazarse con el nombre del archivo de video principal del Blu-ray en la carpeta. Los Blu-rays contienen varios archivos de video en diferentes formatos, así que asegúrate de seleccionar el archivo de video correcto.</li>
+</ul>
+</li>
+<li>
+<p><strong>Personaliza la conversión:</strong> Puedes personalizar los parámetros de conversión según tus preferencias, como la calidad de video, la resolución, el códec de audio, etc.</p>
+</li>
+<li>
+<p><strong>Inicia la conversión:</strong> Ejecuta el comando de conversión en la carpeta que contiene el archivo de video principal del Blu-ray.</p>
+</li>
+<li>
+<p><strong>Obtén el archivo MP4:</strong> Una vez que la conversión esté completa, tendrás un archivo MP4 en la carpeta especificada. Este archivo contendrá el contenido del Blu-ray convertido al formato MP4.</p>
+</li>
+</ol>
+<p>Es importante mencionar que la conversión de discos Blu-ray puede ser un proceso largo y que, en algunos casos, podrías necesitar software adicional para descifrar y extraer el contenido del Blu-ray. Además, ten en cuenta las leyes de derechos de autor y las restricciones regionales al realizar la conversión de discos Blu-ray, ya que puede haber limitaciones legales en algunos casos.</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (null). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Jun 10 2024 17:26:26 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.29</li></ul><!--(iaStatus: 8
+iaStatus_Model: null
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2024-04-06T23:48:59.339Z
+modified: 2024-06-10T15:26:26.921Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 29
+nav_primary: null
+nav_secondary: null
+tags: null
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>

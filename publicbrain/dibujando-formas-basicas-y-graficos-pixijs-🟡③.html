@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Dibujando formas básicas y gráficos (PixiJS) 🟡③</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_50ff92b24210175073c429285ad684dc_MD5.jpg" alt="Dibujando formas básicas y gráficos"></p>
+<ul>
+<li><a class='internal' href='./curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></li>
+<li><a class='internal' href='./integrando-pixijs-con-metsuos-i---ejemplo-de-inico-🟡③.html'><< Anterior</a> | Siguiente >></li>
+</ul>
+<p>PixiJS es una biblioteca de JavaScript para gráficos 2D que aprovecha WebGL para un renderizado rápido y eficiente, con Canvas como alternativa si WebGL no está disponible. Comenzaremos hoy con el dibujado de formas básicas</p>
+<blockquote>
+<p>Podeis encontrar los ejemplos del curso en <a href="https://github.com/metsuke/ejemplos-curso-pixijs-metsuos/tree/main">este repositorio de Github  🌐🟡③</a></p>
+</blockquote>
+<h2>Dibujando formas básicas con PIXI.Graphics</h2>
+<p>La clase <code class='language-html'>PIXI.Graphics</code> es ideal para crear formas primitivas como líneas, rectángulos, círculos o polígonos. Aquí tienes ejemplos prácticos para que los pongas en marcha.</p>
+<p>Como ya hemos instalado y configurado nuestra base de trabajo, este código lo crearemos directamente en nuestra aplicacion main.ts</p>
+<h3>Dibujar un rectángulo</h3>
+<p>Dibujamos un rectángulo rojo en la posición (50, 50) con un tamaño de 100x80 píxeles.</p>
+<pre><code class="language-javascript">const graphics = new PIXI.Graphics();
+graphics.beginFill(0xff0000, 1); // Relleno rojo, opacidad completa
+graphics.drawRect(50, 50, 100, 80); // Posición (x, y), ancho, alto
+graphics.endFill();
+app.stage.addChild(graphics);
+</code></pre>
+<h3>Dibujar un círculo</h3>
+<p>Creamos un círculo verde centrado en (200, 200) con un radio de 50 píxeles.</p>
+<pre><code class="language-javascript">const graphics = new PIXI.Graphics();
+graphics.beginFill(0x00ff00); // Relleno verde
+graphics.drawCircle(200, 200, 50); // Centro (x, y), radio
+graphics.endFill();
+app.stage.addChild(graphics);
+</code></pre>
+<h3>Dibujar una línea</h3>
+<p>Trazamos una línea azul de 4 píxeles de grosor desde (300, 50) hasta (400, 150).</p>
+<pre><code class="language-javascript">const graphics = new PIXI.Graphics();
+graphics.lineStyle(4, 0x0000ff, 1); // Grosor, color azul, opacidad
+graphics.moveTo(300, 50); // Punto inicial
+graphics.lineTo(400, 150); // Punto final
+app.stage.addChild(graphics);
+</code></pre>
+<h3>Dibujar un polígono</h3>
+<p>Dibujamos un triángulo amarillo definido por tres vértices.</p>
+<pre><code class="language-javascript">const graphics = new PIXI.Graphics();
+graphics.beginFill(0xffff00); // Relleno amarillo
+graphics.drawPolygon([500, 50, 550, 150, 450, 150]); // Vértices del triángulo
+graphics.endFill();
+app.stage.addChild(graphics);
+</code></pre>
+<h2>Combinando formas en un solo objeto Graphics</h2>
+<p>Para mejorar el rendimiento, puedes dibujar varias formas en un único objeto <code class='language-html'>PIXI.Graphics</code>.</p>
+<pre><code class="language-javascript">const graphics = new PIXI.Graphics();
+
+// Rectángulo
+graphics.beginFill(0xff0000);
+graphics.drawRect(50, 50, 100, 80);
+graphics.endFill();
+
+// Círculo
+graphics.beginFill(0x00ff00);
+graphics.drawCircle(200, 200, 50);
+graphics.endFill();
+
+// Línea
+graphics.lineStyle(4, 0x0000ff);
+graphics.moveTo(300, 50);
+graphics.lineTo(400, 150);
+
+// Polígono
+graphics.beginFill(0xffff00);
+graphics.drawPolygon([500, 50, 550, 150, 450, 150]);
+graphics.endFill();
+
+app.stage.addChild(graphics);
+</code></pre>
+<h2>Animando formas básicas</h2>
+<p>Puedes animar gráficos con el bucle <code class='language-html'>app.ticker</code>. Aquí, un círculo se mueve hacia la derecha y vuelve al inicio al salir del lienzo.</p>
+<pre><code class="language-javascript">const graphics = new PIXI.Graphics();
+graphics.beginFill(0xff0000);
+graphics.drawCircle(0, 0, 30);
+graphics.endFill();
+app.stage.addChild(graphics);
+
+// Posición inicial
+graphics.x = 100;
+graphics.y = 100;
+
+// Animación
+app.ticker.add(() => {
+    graphics.x += 2; // Mover a la derecha
+    if (graphics.x > app.screen.width) graphics.x = 0; // Reiniciar
+});
+</code></pre>
+<h2>Añadiendo interactividad</h2>
+<p>Hacemos un rectángulo que cambia de color al hacer clic.</p>
+<pre><code class="language-javascript">const graphics = new PIXI.Graphics();
+graphics.beginFill(0xff0000);
+graphics.drawRect(50, 50, 100, 100);
+graphics.endFill();
+
+// Habilitar interactividad
+graphics.interactive = true;
+graphics.cursor = 'pointer'; // Use cursor instead of buttonMode
+graphics.on('pointerdown', () => {
+    graphics.clear();
+    graphics.beginFill(0x00ff00); // Cambiar a verde
+    graphics.drawRect(50, 50, 100, 100);
+    graphics.endFill();
+});
+
+app.stage.addChild(graphics);
+</code></pre>
+<h2>El ejemplo en acción</h2>
+<p>Con la tonteria, y siendo que he implementado lo descrito en un solo ejemplo a mi propio estilo (lo teneis en GitHub), tenemos ya nuestro primer juego (no accesible, no se puede jugar a ciegas, con dificultades motoras, tampoco), pero un juego (mierdijuego) al fin y al cabo :)</p>
+<pre class='pre'>
+Instrucciones: pulse el circulo azul en movimiento para que sea verde, vuelva a pulsar para que retorne al azul ... ¿alguien necesita POKEs? xDD
+</pre>
+<p>Hale pues ya está, hasta aquí el curso... no no no jajajjaaj acabamos de empezar, ¡veamos donde nos lleva la madriguera de conejos!
+<strong><div class='pixi-app' id='mos-formas-basicas'><div class='pixi-container'  id='pixi-container'></div></div><script type='text/javascript' id='PixiText' async src='https://metsuke.com/assets/apps/PixiJS/003-MosFormasGeometricas/app-mosformasgeometricas.iife.js'></script></strong></p>
+<p>Como ex-maquetador web (tengo unos años me ha dado tiempo a hacer reroll bastantes veces), me chirria el tema del "responsive" dentro del canvas, pero eso creo que tendré que investigarlo a fondo por si existe algo hecho, o acabar implementarndolo personalmente.</p>
+<h2>Consejos prácticos para gráficos en PixiJS</h2>
+<ul>
+<li><strong>Optimización</strong>: Usa un solo <code class='language-html'>PIXI.Graphics</code> para varias formas si no necesitas controlarlas por separado; esto reduce la carga de renderizado.</li>
+<li><strong>Colores</strong>: Usa colores en formato hexadecimal (0xRRGGBB) y ajusta la opacidad con <code class='language-html'>beginFill(color, alpha)</code>.</li>
+<li><strong>Interactividad</strong>: Activa <code class='language-html'>graphics.interactive = true</code> y usa eventos como <code class='language-html'>pointerdown</code> para clics o <code class='language-html'>pointermove</code> para arrastrar.</li>
+<li><strong>Texturas</strong>: Aplica texturas con <code class='language-html'>beginTextureFill</code> para efectos visuales más avanzados.</li>
+<li><strong>Depuración</strong>: Prueba tus gráficos en herramientas como CodePen o Vite para experimentar rápidamente.</li>
+</ul>
+<h2>Referencias bibliográficas</h2>
+<h3>Fuentes que apoyan el contenido</h3>
+<ul>
+<li>Pruebas de campo en primera persona.</li>
+<li><a href="https://github.com/metsuke/ejemplos-curso-pixijs-metsuos/tree/main">Repositorio de Github con los ejemplos del curso 🌐🟡③</a></li>
+<li><a href="https://api.pixijs.io/@pixi/graphics.html">PixiJS Documentation. (2025). PIXI.Graphics 🌐🟡③</a> - Explica en detalle la clase <code class='language-html'>PIXI.Graphics</code>, con métodos como <code class='language-html'>beginFill</code>, <code class='language-html'>drawRect</code> y <code class='language-html'>drawCircle</code>, esenciales para este curso.</li>
+<li><a href="https://pixijs.com/8.x/examples/graphics/simple">Goodboy Digital (2025). PixiJS Examples 🌐🟡③</a> - Muestra ejemplos prácticos de formas y animaciones, en línea con los ejemplos del curso.</li>
+</ul>
+<h3>Fuentes que refutan o matizan el contenido</h3>
+<ul>
+<li><strong>Ninguna fuente verificable disponible</strong>.</li>
+</ul>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-3, Raúl Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sun Jul 20 2025 13:58:53 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Mon May 27 2024 15:38:01 GMT+0200 (hora de verano de Europa central)</li><li><b> Versión Documento: </b>0.4.19</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-3, Raúl Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2024-04-06T23:48:59.105Z
+modified: 2025-07-20T11:58:53.483Z
+supervisado: 2024-05-27T13:38:01.062Z
+ACCION: null
+ver_major: 0
+ver_minor: 4
+ver_rev: 19
+nav_primary: null
+nav_secondary: null
+tags: null
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>

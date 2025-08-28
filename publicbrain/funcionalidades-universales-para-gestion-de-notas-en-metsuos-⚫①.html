@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Funcionalidades Universales para gestión de notas en MetsuOS ⚫①</h1>
+<p><a class='internal' href='./index.html'>Index</a> | <a class='internal' href='./creando-metsuos-⚫①.html'>Creando MetsuOS ⚫①</a> | <a class='internal' href='./funcionalidades-universales-para-un-programa-de-gestion-notas-segun-emowe-⚫①.html'>Funcionalidades Universales para un programa de gestión notas según Emowe  ⚫①</a></p>
+<p>Como muchos de vosotros sabéis, la base de mi PublicBrain está disponible online, casi en tiempo real, en este <a href="https://github.com/metsuke/23-MetsuOS-PublicBrain">repositorio de GitHub/Metsuke/PublicBrain</a>), en forma de Vault de Obsidian (plugins y css incluidos), para que puedas ver los datos en que se basa el despliegue online de MetsuOS (el contenido en sí está registrado en Safe Creative, así que úsalo como ejemplo unicamente)</p>
+<p>Una parte importante de MetsuOS se base en la creación y uso de diferentes cerebros digitales, como ejemplo podemos destacar PublicBrain con contenido público que se convierte en web, y PrivateBrain que sirve para uso propio y gestión de libros físicos y su contenido, y, en general elementos no publicables en abierto.</p>
+<p>No obstante no serán esos dos los únicos Cerebros Digitales que contendrá, si bien MetsuOS es una herramienta con funciones específicas, concretas y no genericas, si quisiera mantener una forma de funcionar que aprendí de Emowe cuando empecé con Notion y sobre todo Obsidian, basado en sus principios universales de forma que, cualquier usuario de MetsuOS no esté atado a el de forma obligatoria y sobre todo, que pueda usarlo con parte de su sistema, teniendo la libertad de trabajar sus datos como considere oportuno.</p>
+<p>MetsuOS aporta funcionalidad, pero no se apropia de los datos, de hecho, tiene entre sus objetivos protegerte de la marabunta de datos externos y del bombardeo constante de desinformación, pero de eso, ya hablaremos.</p>
+<p>Paso a comeraros de forma introductoria en que se traduce esto a la hora de construir MetsuOS:</p>
+<h2>No dependencia de un proveedor</h2>
+<p>Puede sonar ilógico siendo que MetsuOS también aspira a ser una linea de productos, pero no quiero acabar haciendo lo que Spotify, o mejor dicho , no hacerlo por exigencias de accionistas. Eso requiere que el centro siempre sea el usuario de forma que, en cuanto el proyecto no vaya en la direccion eticamente correcta, los usuarios puedan abandonarlo.</p>
+<p>Además, no viviré para siempre, así que puede que ayude a muchos a avanzar su camino, pero mas gente tendrá que tomar el relevo, y la naturaleza del proyecto implica que no sea software libre en su totalidad, para poder mantener una dirección firme.</p>
+<p>Eso no quiere decir que no haya elementos que puedan llegar a ser GNU, pero por ejemplo, la accesibilidad no es opcional y, si ya es problematica en software comercial, en SL entran los egos y comodidad de los componentes y eso lamentablemente acaba siendo mortal para la accesibilidad.</p>
+<h2>No dependencia de internet (para acceder a tus datos)</h2>
+<p>El modelo de MetsuOS tendrá una parte coordinadora en servidor , pero eso no quiere decir que tengas que perder acceso a tus datos desde el servidor, el mejor modo para esto, es hacer que los datos estén bajo el control del usuario, no de la aplicación.</p>
+<h2>Orientación a Notas Atónicas y Conectividad (Zettelcasten)</h2>
+<p>En tiempos de IA, es VITAL poder gestionar, trazar y controlar no solo tus datos, sino tu conocimiento. Esta metodología es base tanto de mi trabajo personal como de MetsuOS, y esencialmente es la bae de obsidian, aunque no apliquemos la metodologia de forma 100% canónica (Ya vereiis porqué más adelante),</p>
+<h2>Contenido en ficheros de texto planos (markdown de preferencia) que podamos trabajar también desde fuera de la aplicacion.</h2>
+<p>De nuevo, los datos son tuyos y, siempre que respetes lo que requiere MetsuOS para entenderlos, deberías poder modificarlos a tu antojo, así como emplear tu propio código o incluso IAs para modificar y trabajr con - insisto - TUS DATOS.</p>
+<h2>Conectoma (enlaces entre notas) limpio y en claro, en las notas, de forma que sean perfectamente trazables y modificables desde fuera de la aplicación.</h2>
+<p>De nuevo obsidian, que usa el sistema de enlaces internos de Wikipedia y el de enlaces externos de Markdown, me ha desmostrado que es el más eficaz, y, por tanto, MetsuOS es quien interpretará los datos, no tomará control obligatorio sobre ello.</p>
+<h2>Metadatos asociados directamente con las notas.</h2>
+<p>De nuevo, asumo la metodología del propio obsidian, aunque, obviamente MetsuOS lo afina y define sus propios elementos.</p>
+<h2>Facilidad de refactorización abriendo varias notas a la vez.</h2>
+<p>Aunque obsidian es la base sobre la que trabajar con datos, me apunto hacer esto para el editor que probablemente lleve en paralelo MetsuOS.</p>
+<h2>Plugins de comunidad que expandan la funcionalidad</h2>
+<p>Aquí es donde difiero un poco del concepto de SL, la extensión vendrá de la mano de aquello que se cree para trabajar con los datos y que complementen a MetsuOS, pero, al menos en primera fase, no habrá plugins.</p>
+<p>Lo que si es posible haya posteriormente es aceso parcial a una parte de la API, mediante un facade que exponga publicamente (para usuarios con cuenta claro), determinadas funciones ya consolidadas, esto es un concepto inicial que ya se desarrollará llegado el momento.</p>
+<h2>Conclusion</h2>
+<p>Esto es un documento vivo, que irá evolucionando iteración tras iteración, pero es la fuente de verdad para MetsuOS o, al menos, la más actualizada posible.</p>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado por Humano. Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Sep 10 2024 01:42:30 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.4.4</li></ul><!--(iaStatus: 8
+iaStatus_Model: Raúl Carrillo Garrido aka metsuke
+iaStatus_Generado: H
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2024-07-11T19:55:25.675Z
+modified: 2024-09-09T23:42:30.485Z
+supervisado: ''
+ACCION: S
+ver_major: 0
+ver_minor: 4
+ver_rev: 4
+nav_primary: null
+nav_secondary: null
+tags: null
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>

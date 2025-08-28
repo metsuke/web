@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Tutorial de AGD 2018 Capítulo 17 - Puntuación y Vidas ⚫①</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_de50fdb8c54a66c181e9c8473d6eaddc_MD5.jpg" alt="Game Over en JBA"></p>
+<ul>
+<li><a class='internal' href='./tutorial-de-agd-2018-edition-⚫①.html'>Tutorial de AGD 2018 Edition ⚫①</a></li>
+<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-16---nuestro-primer-enemigo-⚫①.html'><< Anterior</a> | <a class='internal' href='./tutorial-de-agd-2018-capitulo-18---optimiza-tu-codigo-⚫①.html'>Siguiente >></a></li>
+</ul>
+<p>En el anterior capítulo creamos nuestro primer enemigo, es hora de gestionar el proceso cuando un enemigo, o el escenario "nos mata", no es dificil, pero hay que pensarlo con cuidado.</p>
+<h2>Gestionando la Puntuación</h2>
+<p>Empecemos por lo menos controvertido, "los puntos", en realidad con AGD es extremadamente sencillo, contamos con dos instrucciones básicas: SCORE y SHOWSCORE.</p>
+<p>SCORE nos permite añadir una determinada cantidad de puntos a la puntuación general, se suele utilizar por ejemplo en código que gestiona la muerte de un enemigo, o la adquisición de un objeto, depende íntegramente del creador del juego decidir cuales son las acciones que se recompensan con una determinada cantidad de puntos en su juego.</p>
+<p>SHOWSCORE sirve para mostrar la puntuación total actual en la posición del cursor (que podemos ajustar apropiadamente antes de ejecutar esta instrucción). Dependiendo del juego, se puede refrescar la puntuación una sola vez por ciclo en algún punto del bucle principal, o justo tras sumar puntos, el método concreto nuevamente depende de tu juego y de donde puedes tu tener cuellos de botella, o no.</p>
+<p>Hay una tercera instrucción, BIGSCORE, que a priori parece pensada para mostrar, por ejemplo, la puntuación al final del juego, pero si se gestiona correctamente podría usarse perfectamente para mostrar la puntuación en un marcador más grande de lo habitual, la imaginación es el límite.</p>
+<p>Desconozco, en el momento de escribir estas líneas, que límite superior tiene la puntuación, de existir esa información pública, no he logrado localizarla. (Si tu conoces el dato, por favor aporta esta información en los comentarios). La hipótesis con la que yo trabajo es que esta puntuacion máxima es 999.999, dado que al imprimir con SHOSCORE, aparecen seis digitos (como en el ejemplo de la imagen de cabecera).</p>
+<h2>Gestionando las vidas</h2>
+<p>Es un tema a gestionar con cuidado, pero en realidad se basa en herramientas sencillas, disponemos de la variable global LIVES que contiene el número de vidas actual y permite trabajar operaciones y condicionales con ella, la instrucción DISPLAY que permite mostrar el valor de esta variable donde sea necesario, y el evento «Kill Player» que es donde escribiremos el código para restar las vidas, y mostrar el número de estas tras una muerte.</p>
+<p>Esencialmente todos los lugares (colisiones o caidas principalmente) donde nuestro personaje deba perder una vida contendrán la instrucción KILL, esto provoca la ejecución del evento Kill Player. Es este evento el que se encarga de:</p>
+<ol>
+<li>Restar una vida al jugador</li>
+<li>Si las vidas han llegado a cero entonces AGD ejecutara automáticamente el evento «Lost Game», en el que se finaliza el juego y se vuelve a menú principal.</li>
+<li>Mostrar cualesquiera efectos , o actualizaciones (como el contador de vidas) que proceda.</li>
+<li>Bien esperar un tiempo o bien una tecla y terminar, AGD volverá a cargar la pantalla en la que has muerto con el protagonista en la posicion inicial definida para la pantalla actual (lo explico más abajo).</li>
+<li></li>
+</ol>
+<p>Poco más, el que quede más o menos bonito, con más o menos sonido, ya dende de nuestra imaginación, ¡como os digo siempre!</p>
+<h3>El evento «Lost Game»</h3>
+<p>Es el bloque de código que se ejecuta al perder todas las vidas y justo después de el se regresa al menú principal del juego, es el evento en que se efectúan los efectos adecuados al final del juego, se muestran carteles de Game Over y/o la puntuación final, o incluso se puede ejecutar algún tipo de sonido (el sonido lo explicare en capítulos muy avanzados del tutorial, pues quiero cubrir los métodos nativos de AGD y también la inclusión de música AY)</p>
+<p>Tras este evento, el protagonista aparecerá en la "posición por defecto para el sprite de tipo 0" de cada pantalla, que hemos de definir específicamente para esto, hemos de acceder a «Sprite Positions» y, para cada pantalla del juego en que se pueda morir, definir una posición por defecto para nuestro protagonista. En ese punto aparecemos si perdemos una vida.</p>
+<h3>Vidas Extra</h3>
+<p>El decidir en qué condiciones se puede premiar al jugador con una vida extra depende de multitud de factores: la dificultad, el tipo de juego, el diseño del mapeado, etc. En esencia tú, como creador debes decidir como debe ser.</p>
+<p>Se puede adjudicar una vida extra al llegar a determinada puntuación, o al lograr hacerse con un objeto determinado (los objetos los trataré en capítulos específicos más adelante), cuando la condición que hemos decidido como adecuada para obtener una vida extra se cumple, tan solo tendremos que ejecutar ADD sobre la variable LIVES (y actualizar el contador de vidas en pantalla para reflejar el cambio). En el fondo es sencillo, solo requiere planificación.</p>
+<p>Y por supuesto, un buen testeo para no hacer el juego demasiado fácil, o imposible, es de vital importancia, recordemos que estamos en el siglo 21 con una amplia oferta y si nos empeñamos en dificultar la vida al jugador en demasía, este no jugará a nuestro juego.</p>
+<p>Aprovechando que hemos comentado parte del ciclo de vida del juego, en futuros capítulos lo trataré a nivel global, de forma que ya prosigamos con una visión de conjunto de como «funciona» el juego, lo que nos facilitará decidir donde situar cada bloque de código en función de su objetivo, pero eso, como digo, en próximas entregas :)</p>
+<h2>Referencias Bibliográficas</h2>
+<ul>
+<li><strong>Ninguna fuente verificable disponible</strong>.</li>
+</ul>
+<h2>Y ahora que?</h2>
+<ul>
+<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-01---el-comienzo-⚫①.html'>Si tienes muchos puntos, presentate en enfermería en la página 1</a></li>
+<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-17---puntuacion-y-vidas-⚫①.html'>Si no te da la vida, espera que aparezca el mensaje Game Over, y pasa a la página 17</a></li>
+<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-18---optimiza-tu-codigo-⚫①.html'>Si has logrado que te de la vida para más, pasa a la página 18 en cuanto la puntuación te lo permita.</a></li>
+</ul>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Thu Aug 07 2025 00:54:13 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.3</li></ul><!--(iaStatus: 8
+iaStatus_Model: Raúl Carrillo Garrido aka metsuke
+iaStatus_Generado: H
+iaStatus_Supervisado: '-'
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-07-26T05:42:37.582Z
+modified: 2025-08-06T22:54:13.481Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 3
+nav_primary: null
+nav_secondary: null
+tags: null
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>

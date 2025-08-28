@@ -1,0 +1,320 @@
+tab-size/* Estilos generales */
+
+* {
+  font-family:  "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+
+* {
+   transition: all .8s ease;
+}
+
+body {
+  font-family:  "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  background-color: #fff;
+  color: #000;
+  line-height: 1.5;
+}
+
+/* Estilos de encabezado */
+
+header {
+  background-image: url('https://metsuke.com/assets/img/headerbg/z_ef_lanzamiento_mh218.jpeg');
+  background-color: #000;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: auto;
+  color: #fff;
+  padding: 10px 0 10px 0;
+  text-align: center;
+  margin: 0;
+}
+
+header .logo {
+  background-color: rgb(251, 191, 52);
+  border: 10px solid rgb(240, 149, 29);
+  border-radius: 50%;max-width:20%;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: white;
+  line-height: 3rem !important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+header h2 {
+  font-size: 1.4rem;
+  color: #d6f8cf;
+  line-height: 1.6rem !important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Estilos de navegación */
+
+nav {
+  background-color: #000;
+  border-top: 2px solid #b10505;;
+  border-bottom: 1px solid #b10505;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0 10px;
+}
+
+/* Estilos de contenido principal */
+
+main {
+  padding: 20px;
+  margin-bottom: 14rem;
+  display: flex;
+  flex-direction: column;
+}
+
+main .columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+main .column {
+  flex-basis: 48%;
+  padding: 10px;
+}
+
+@media (max-width: 1200px) {
+  main .column {
+    flex-basis: 100%;
+  }
+}
+
+/* Estilos de pie de página */
+
+footer {
+  background-color: #000;
+  color: #fff;
+  padding: 4px;
+  text-align: center;
+  height: 8rem;
+  width: 100%;
+}
+
+/* Estilos de enlaces */
+
+a {
+  color: #a31600;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+footer a {
+  color: #fff;
+}
+
+/* Estilos de imágenes y bloques de código */
+
+p img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border: 2px solid #a31600;
+}
+
+.column p img {
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  transition: all .1s ease;
+}
+
+pre {
+  background-color: #eef53f;
+  border-top: 4px solid #000;
+  width: 100%;
+  padding: 1rem;
+  font-weight: bold;
+  overflow-wrap: break-word!important;
+}
+
+pre:not(:has(code)) {
+  background-color: #B2FFFF;
+  border:1px solid black;
+  border-top: 8px solid #000;
+}
+
+pre.mermaid {
+  background-color: white;
+  color:#023b8b;
+  border-top: 2px solid #b10505;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #eef53f;
+  color: #000;
+  padding: 0.4rem;
+  overflow: scroll;
+  tab-size: 2;
+  line-height:1.4rem;
+}
+
+pre:has(code.language-bash),code.language-bash {
+  background-color: #000000;
+  color: #4adf47;
+}
+pre:has(code.language-bash){
+  border:1px solid #4adf47;
+  border-top:5px solid #4adf47;
+}
+
+pre:has(code.language-css),code.language-css {
+  background-color: #1a6fe5; color: #ffffff;
+}
+
+pre:has(code.language-html),code.language-html {
+  background-color: #8B0000; color: #ffffff;
+}
+pre:has(code.language-html) {
+  border-right:1px solid black;
+  border-bottom:1px solid black;
+  border-left:1px solid black;
+}
+
+pre:has(code.language-typescript),code.language-typescript {
+  background-color: #ffffff;  color: #000000;
+}
+pre:has(code.language-typescript) {
+  border-right:1px solid black;
+  border-bottom:1px solid black;
+  border-left:1px solid black;
+}
+
+/* Estilos de citas y líneas horizontales */
+
+blockquote {
+  font-style: italic;
+  border-left: 4px solid #ab0404;
+  padding-left: 1rem;
+}
+
+hr {
+  border: 1px solid #000;
+}
+
+/* Estilos de márgenes y ancho máximo */
+
+body, header, footer {
+  max-width: 1280px;
+  margin: auto;
+}
+
+/* Estilos de espaciado y sangría */
+
+pre, code {
+  max-width: 95%;
+  white-space: pre-wrap;
+  white-space: break-spaces;
+  overflow-wrap: break-word;
+}
+
+code code, code pre code {
+  border-top: 0;
+}
+
+code pre {
+  padding: 0;
+}
+
+/* Estilos de colores para diagramas de mente */
+
+.theme-light .mermaid {
+  --color-red: #ff7777;
+  --color-orange: #ffbb99;
+  --color-yellow: #ffeeaa;
+  --color-green: #bbffbb;
+  --color-cyan: #bbffee;
+  --color-blue: #aaccff;
+  --color-purple: #ddbbff;
+  --color-pink: #ffcccc;
+}
+
+.theme-light .mermaid .mindmap-node {
+  border: 2px solid black !important;
+  font-weight: bold !important;
+
+}
+
+h1:not(pre h1):not(code h1) + p:not(:has(img)) {
+  border-left: 10px solid #b10505;
+  padding-left: 0.5rem;
+}
+
+h2:not(pre h2):not(code h2) + p:not(:has(img)) {
+  border-left: 8px solid #b10505;
+  padding-left: 0.5rem;
+}
+
+h3:not(pre h3):not(code h3) + p:not(:has(img)) {
+  border-left: 6px solid #04985b;
+  padding-left: 0.5rem;
+}
+
+h4:not(pre h4):not(code h4) + p:not(:has(img)) {
+  border-left: 4px solid #0013bb;
+  padding-left: 0.5rem;
+}
+
+.pixi-app {
+  position: relative;
+  width: 100%w;
+  max-width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.pixi-container {
+  position: relative;
+  border: 1px solid #4a2f1f;
+  border-top: 20px solid #4a2f1f;
+}
+
+.pixi-container canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  nav {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los enlaces se distribuyan en varias filas */
+    justify-content: center; /* Centra los enlaces horizontalmente */
+    gap: 1rem; /* Espacio uniforme de 1rem (~16px en fuentes estándar) */
+  }
+
+  nav a {
+    display: inline-block; /* Permite varios enlaces por línea */
+    padding: 1rem 1.5rem; /* Padding vertical de 1rem (~16px) y horizontal de 1.5rem (~24px) */
+    margin: -0.5rem; /* Margen de 0.5rem (~8px) para separación adicional */
+    line-height: 1.5; /* Mejora legibilidad */
+    min-height: 2rem; /* Aumenta altura mínima a 2rem (~48px) para mejor área de toque */
+    box-sizing: border-box; /* Incluye padding en el tamaño total */
+    text-align: center; /* Centra el texto dentro del enlace */
+  }
+
+  .pixi-app {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    border: 1px solid #4a2f1f;
+  }
+}
+
