@@ -1,1 +1,0 @@
-fetch(`https://metsuke.com/counter.php?referer=${encodeURIComponent(location.href)}`).catch(() => {});
