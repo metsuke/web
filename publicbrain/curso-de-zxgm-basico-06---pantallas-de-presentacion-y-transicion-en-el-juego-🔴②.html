@@ -37,12 +37,14 @@
 
     <main>
 <h1>Curso de ZXGM Básico 06 - Pantallas de presentación y transición en el juego 🔴②</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_b85ed565d16525f912d382f516a9bf47_MD5.jpeg" alt="El punto de partida en resolucion y colores reales de la pantalla de carga"></p>
 <ul>
 <li><a class='internal' href='./curso-de-zx-game-maker-⚫①.html'>Curso de ZX Game Maker ⚫①</a></li>
+<li><a class='internal' href='./pixel-art-attack---cursed-zapatilla---zx-spectrum-⚫①.html'>Pixel Art Attack - Cursed Zapatilla - ZX Spectrum ⚫①</a></li>
 <li><a class='internal' href='./curso-de-zxgm-basico-05---calibrando-funcionalidad-y-memoria-para-nuestro-juego-🔴②.html'><< Anterior</a> | Siguiente >></li>
 </ul>
 <blockquote>
-<p>OJO WIP</p>
+<p>Este es un "Live Post" ya que nos vamos a tomar nuestro tiempo para hacer las pantallas con mimo, y así dar tiempo para la salida de la siguiente - espectacular - versión del engine, y que trae novedades que me interesa incorporar al juego.</p>
 </blockquote>
 <p>En el capítulo de hoy, nos centraremos en las pantallas de presentación y transición de tu juego. Los detalles sobre cómo trabajar con ZX Paintbrush se tratarán en el <a class='internal' href='./curso-de-zx-paintbrush---creacion-de-graficos-para-zx-spectrum-⚫①.html'>Curso de ZX Paintbrush - Creación de Gráficos para ZX Spectrum  ⚫①</a>, aquí nos enfocaremos en qué pantallas puedes incluir, dónde deben ubicarse y cómo gestionar el espacio en memoria que ocupan. Estas pantallas son esenciales para mejorar la experiencia del usuario, ofrecer retroalimentación visual y garantizar un juego pulido.</p>
 <p>Básicamente, se parte de una imagen base, que puede ser creada por ti, por un artista profesional o, como haré en esta ocasión, generada mediante IA. Esta imagen se reduce al tamaño requerido en 1 bit (monocromo) con un programa de edición de imágenes, para luego ajustarla manualmente y colorearla según las limitaciones gráficas del ZX Spectrum.</p>
@@ -61,19 +63,17 @@
 </li>
 <li><strong>Consideraciones</strong>:
 <ul>
-<li>Usa ZX Paintbrush para crear o editar la imagen. Puedes partir de ejemplos en la carpeta assets/screens.</li>
+<li>Usa Retro-X para crear o editar la imagen. Puedes partir de ejemplos en la carpeta assets/screens.</li>
 <li>Optimiza para minimizar conflictos de color (color clash) debido a las limitaciones de atributos del ZX Spectrum.</li>
+<li>A Partir de ahí trabajar con ZX-Paintbrush iterando sobre la imagen (puedes ver los pasos intermedios en <a class='internal' href='./pixel-art-attack---cursed-zapatilla---zx-spectrum-⚫①.html'>Pixel Art Attack - Cursed Zapatilla - ZX Spectrum ⚫①</a>)</li>
 </ul>
 </li>
 </ul>
-<p>Resultado actual (1 iteración):</p>
+<h3>Estado actual (Iteración 001):</h3>
 <p>Ahora es cuando empieza el <a href="https://youtu.be/r_t6IBm8-Ac?si=bB0Ae1R50DPvP5eQ">Pixel Art Attack al mas puro estilo Errazkin</a> XD</p>
 <p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_f5ae0ef26feaa587831f514988771420_MD5.jpeg" alt="Loading Screen Cursed Zapatilla 0001"></p>
 <hr>
 <h3>Menú (Pantalla Principal)</h3>
-<blockquote>
-<p>OJO TEXTO SIN AFINAR</p>
-</blockquote>
 <ul>
 <li><strong>Archivo</strong>: assets/screens/title.scr</li>
 <li><strong>Propósito</strong>: Se muestra tras la carga, presentando las opciones de control al usuario antes de iniciar el juego. Incluye opciones como:
@@ -90,18 +90,14 @@
 <li>Tamaño: 6912 bytes (6,75 KB).</li>
 </ul>
 </li>
-<li><strong>Consideraciones</strong>:</li>
-<li>Se debe incluir el logo de ZX Game Maker, disponible en la carpeta de recursos o en la documentación.
+<li><strong>Consideraciones</strong>:
 <ul>
-<li>Diseña un layout claro para mostrar las opciones de control, asegurándote de que el texto sea legible (fuentes monocromas o con alto contraste).</li>
-<li>La pantalla debe ser estática y no animada para ahorrar memoria y ciclos de CPU.</li>
+<li>Se debe incluir el logo de ZX Game Maker, disponible en la carpeta de recursos o en la documentación.</li>
+<li>Diseña un layout claro para mostrar las opciones de control, asegurándote de que el texto sea legible (fuentes monocromas y/o con alto contraste).</li>
 </ul>
 </li>
 </ul>
 <h3>Ending</h3>
-<blockquote>
-<p>OJO TEXTO SIN AFINAR</p>
-</blockquote>
 <ul>
 <li><strong>Archivo</strong>: assets/screens/ending.scr</li>
 <li><strong>Propósito</strong>: Se muestra cuando el jugador completa el juego, ofreciendo una conclusión visual satisfactoria.</li>
@@ -114,18 +110,13 @@
 <li><strong>Consideraciones</strong>:
 <ul>
 <li>Puede incluir mensajes de felicitación, créditos o un resumen del logro del jugador.</li>
-<li>Usa ZX Paintbrush para diseñar una imagen que refleje el tema del juego y evite conflictos de color.</li>
-<li>Al igual que la pantalla de carga, su impacto en la memoria es fijo y predecible.</li>
 </ul>
 </li>
 </ul>
 <h3>HUD</h3>
-<blockquote>
-<p>OJO TEXTO SIN AFINAR</p>
-</blockquote>
 <ul>
 <li><strong>Archivo</strong>: assets/screens/hud.scr</li>
-<li><strong>Propósito</strong>: Se muestra en la parte inferior de la pantalla durante el juego para indicar información como vida, munición, llaves, ítems, marcador, combustible y mensajes.</li>
+<li><strong>Propósito</strong>: Se muestra en la parte inferior (el tercio inferior) de la pantalla durante el juego para indicar información como vida, munición, llaves, ítems, marcador, combustible y mensajes.</li>
 <li><strong>Especificaciones</strong>:
 <ul>
 <li>Formato SCR, resolución de 256x192 píxeles, pero solo se diseña la parte inferior (aproximadamente un tercio de la pantalla, ~64 píxeles de altura).</li>
@@ -147,18 +138,15 @@
 </li>
 </ul>
 </li>
-<li><strong>Consideraciones</strong>:</li>
-<li>Diseña solo la parte inferior para ahorrar esfuerzo y optimizar el uso de memoria.
+<li><strong>Consideraciones</strong>:
 <ul>
+<li>Diseña solo la parte inferior para ahorrar esfuerzo y optimizar el uso de memoria.</li>
 <li>Asegúrate de que los elementos sean claros y no se solapen visualmente.</li>
 <li>La edición en Tiled permite ajustar las posiciones sin modificar el código del juego.</li>
 </ul>
 </li>
 </ul>
 <h2>Pantallas Opcionales (Solo 128K)</h2>
-<blockquote>
-<p>OJO TEXTO SIN AFINAR</p>
-</blockquote>
 <h3>Intro</h3>
 <ul>
 <li><strong>Archivo</strong>: assets/screens/intro.scr</li>
@@ -178,9 +166,6 @@
 </li>
 </ul>
 <h3>Game Over</h3>
-<blockquote>
-<p>OJO TEXTO SIN AFINAR</p>
-</blockquote>
 <ul>
 <li><strong>Archivo</strong>: assets/screens/gameover.scr</li>
 <li><strong>Propósito</strong>: Se muestra cuando el jugador pierde todas sus vidas, antes de volver al menú principal. El usuario debe pulsar <em>Enter</em> para continuar.</li>
@@ -265,7 +250,7 @@
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado por Humano. Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Thu Aug 28 2025 17:15:11 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.2</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado por Humano. Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Sep 01 2025 20:05:15 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.4</li></ul><!--(iaStatus: 8
 iaStatus_Model: Raúl Carrillo Garrido aka metsuke
 iaStatus_Generado: H
 iaStatus_Supervisado: H
@@ -275,12 +260,12 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-08-28T13:37:23.615Z
-modified: 2025-08-28T15:15:11.100Z
+modified: 2025-09-01T18:05:15.529Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 2
-ver_rev: 2
+ver_rev: 4
 nav_primary: []
 nav_secondary: []
 tags: []
