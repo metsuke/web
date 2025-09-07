@@ -42,6 +42,9 @@
 <li><a class='internal' href='./curso-de-zx-game-maker-⚫①.html'>Curso de ZX Game Maker ⚫①</a></li>
 <li><a class='internal' href='./curso-de-zxgm-basico-01---que-es-zx-game-maker-🟡③.html'><< Anterior</a> | <a class='internal' href='./curso-de-zxgm-basico-03---explorando-la-estructura-general-del-motor-🟡③.html'>Siguiente >></a></li>
 </ul>
+<blockquote>
+<p>Nota importante, el proyecto se encuentra en una fase de transicion entre la anteriormente consoldidada y la que está a punto de salir, trataré de mantener esto ajustado, pero podria haber desajustes. Para detalles lo mas actualizados posibles, consulta la documentación oficial del proyecto.</p>
+</blockquote>
 <p>En este segundo capítulo del curso básico de ZX Game Maker (ZXGM), aprenderás cómo descargar e instalar el software necesario para comenzar a desarrollar videojuegos para el ZX Spectrum.</p>
 <p>Este tutorial está diseñado para usuarios de todos los niveles, desde principiantes hasta aquellos con experiencia previa, y cubre los pasos para configurar el entorno en sistemas operativos modernos (Windows, macOS y Linux).</p>
 <p>Siguiendo estas instrucciones, tendrás un entorno funcional para empezar a crear tus propios juegos retro.</p>
@@ -72,9 +75,12 @@
 <blockquote>
 <p>Si has clonado el repositorio, no necesitarás realizar este ultimo paso.</p>
 </blockquote>
-<h2>Paso 2: Instalación de dependencias</h2>
+<h2>Paso 2: Instalación de dependencias (legacy)</h2>
 <p>ZX Game Maker requiere varias herramientas y lenguajes para funcionar correctamente. A continuación, se detalla cómo instalar cada una:</p>
 <h3>2.1 Script de instalacion de ZXGM</h3>
+<blockquote>
+<p>Si tu versión no incluye los ficheros install.sh e install.windows.bat, puedes saltarte este paso e ir a la parte de python directamente, pues tu versión está actualizada a la que en el momento de revisar este texto, era verion Preview. ¡Enhorabuena tienes muchos mas juguetes para construir!</p>
+</blockquote>
 <p>Abre una terminal o programa de linea de comandos que uses en tu sistema y muevete a la carpeta de ZXGM con <code class='language-html'>cd /ruta/a/zx-game-maker</code>o  equivalente para situarte en la carpeta del maker:</p>
 <ul>
 <li><strong>Windows</strong>: Ejecuta el scriot <code class='language-html'>install.windows.bat</code></li>
@@ -134,6 +140,7 @@
 <li>Instala el programa. En Windows, es un ejecutable; en macOS/Linux, necesitarás usar <a href="https://www.winehq.org">wine  🌐🟡③</a>.</li>
 <li>Abre ZX Paintbrush y verifica que puedes crear un archivo <code class='language-html'>.zxp</code>.</li>
 </ol>
+<p>También puedes usar la herramienta (en etapa alpha, pero funcional en este aspecto), <a href="https://github.com/metsuke/mos-retrotools-launcher">MetsuOS Retro Tools Launcher 🌐</a>, que te facilita la tarea con un panel de botones para esta y alguna herrramienta más del tipo "Windows only", usando wine solo si es necesario.</p>
 <h3>2.5 Pasmo (Ensamblador Z80)</h3>
 <p>Pasmo es un ensamblador para Z80 que permite compilar código en ensamblador para ZX Spectrum, útil para optimizar partes de tu juego o integrar código personalizado con ZX Game Maker.</p>
 <ul>
@@ -303,7 +310,7 @@ python zxsgm.py
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-3, Raúl Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>undefined</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sun Aug 10 2025 14:17:08 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.10</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-3, Raúl Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>undefined</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sun Sep 07 2025 02:41:24 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.11</li></ul><!--(iaStatus: 8
 iaStatus_Model: Grok-3, Raúl Carrillo aka Metsuke
 iaStatus_Generado: I
 iaStatus_Supervisado: H
@@ -313,12 +320,12 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-08-03T09:28:28.444Z
-modified: 2025-08-10T12:17:08.238Z
+modified: 2025-09-07T00:41:24.903Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 3
-ver_rev: 10
+ver_rev: 11
 nav_primary: null
 nav_secondary: null
 tags: null
