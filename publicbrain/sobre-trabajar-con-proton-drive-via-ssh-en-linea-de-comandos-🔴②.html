@@ -5,8 +5,8 @@
     <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Construyendo la plena inclusión a través del videojuego</title>
-    <link id="transition-stylesheet" rel="stylesheet" href="<a class='internal' href='./level.html'>**LEVEL**</a>assets/css/transitions.css">
-    <link id="main-stylesheet" rel="stylesheet" href="<a class='internal' href='./level.html'>**LEVEL**</a>assets/css/style.css">
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
     
     <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
@@ -18,20 +18,20 @@
 <body>
 
     <header>
-        <img class='logo' src="<a class='internal' href='./level.html'>**LEVEL**</a>assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
         <h1>MetsuOS</h1>
         <h2>Construyendo la plena inclusión a través del videojuego</h2>
     </header>
     <?php //include 'blacklist_blocker.php';?>
     <nav>
-        <a href="<a class='internal' href='./level.html'>**LEVEL**</a>index.html">Inicio</a>
-        <a href="<a class='internal' href='./level.html'>**LEVEL**</a>blog.html">Blog</a>
-        <a href="<a class='internal' href='./level.html'>**LEVEL**</a>juegos.html">Juegos</a>
-        <a href="<a class='internal' href='./level.html'>**LEVEL**</a>kb.html">KB</a>
-        <a href="<a class='internal' href='./level.html'>**LEVEL**</a>noticias.html">Noticias</a>
-        <a href="<a class='internal' href='./level.html'>**LEVEL**</a>novedades.html">Novedades</a>
-        <a href="<a class='internal' href='./level.html'>**LEVEL**</a>el-proyecto.html">MetsuOS</a>
-        <a href="<a class='internal' href='./level.html'>**LEVEL**</a>publicbrain/index.html">PublicBrain</a>
+        <a href="../index.html">Inicio</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
         <a href="https://metsuke.itch.io">Itch.io</a>
     </nav>
 
@@ -103,7 +103,166 @@ rclone mount protondrive: ~/ProtonDriveMount --daemon
 <li><strong>Desventajas</strong>: El rendimiento puede ser más lento por la conexión remota, y FUSE no siempre funciona igual de bien en todos los sistemas.</li>
 </ul>
 <h2>¿Es esto realmente trabajar con Proton Drive vía SSH y rsync?</h2>
-<p>En realidad, no. Proton Drive no te permite acceder a sus servidores directamente por SSH, ya que no ofrece ese tipo de conexión. Lo que haces es usar S        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>En realidad, no. Proton Drive no te permite acceder a sus servidores directamente por SSH, ya que no ofrece ese tipo de conexión. Lo que haces es usar SSH para transferir archivos entre tu máquina local y un servidor remoto, mientras que Proton Drive se integra mediante un cliente oficial o <code class='language-html'>rclone</code>. Si tu meta es llevar archivos de Proton Drive a otro servidor usando <code class='language-html'>rsync</code> y SSH, el camino más práctico es:</p>
+<ol>
+<li>Sincronizar Proton Drive a un directorio local con <code class='language-html'>rclone</code> o el cliente oficial.</li>
+<li>Usar <code class='language-html'>rsync</code> por SSH para enviar esos archivos al servidor remoto.</li>
+</ol>
+<h3>Ejemplo práctico con rclone y rsync</h3>
+<p>Imagina que tienes un servidor remoto (<code class='language-html'>servidor.example.com</code>) y quieres sincronizar tus archivos de Proton Drive con él:</p>
+<pre><code class="language-bash"># Sobre trabajar con Proton Drive via SSH en linea de comandos  🔴②
+rclone sync protondrive: ~/ProtonDriveLocal
+
+# Envía los archivos al servidor remoto por SSH
+rsync -avz -e "ssh" ~/ProtonDriveLocal/ usuario@servidor.example.com:/ruta/destino
+</code></pre>
+<p>Si el servidor usa un puerto SSH diferente (por ejemplo, 2222):</p>
+<pre><code class="language-bash">rsync -avz -e "ssh -p 2222" ~/ProtonDriveLocal/ usuario@servidor.example.com:/ruta/destino
+</code></pre>
+<h2>Conclusión</h2>
+<p>No hay una manera directa de usar <code class='language-html'>rsync</code> con Proton Drive a través de SSH porque Proton Drive no proporciona un acceso SSH nativo. Sin embargo, herramientas como <code class='language-html'>rclone</code> te permiten conectar Proton Drive a tu flujo de trabajo en la línea de comandos y luego combinarlo con <code class='language-html'>rsync</code> y SSH para transferencias remotas. Es un proceso con pasos intermedios, pero une lo mejor de la seguridad de Proton Drive con la flexibilidad de estas herramientas clásicas.</p>
+<h1>Referencias bibliográficas</h1>
+<h2>Referencias que apoyan el contenido</h2>
+<ul>
+<li>
+<p><strong>Proton</strong>. (s.f.). <em>Proton Drive: Almacenamiento en la nube seguro</em>. Recuperado el 23 de marzo de 2025 de <a href="https://proton.me/drive">https://proton.me/drive</a>.</p>
+<ul>
+<li>Explica las características de Proton Drive, como el cifrado de extremo a extremo, y confirma que el acceso se limita a sus aplicaciones y API, sin soporte para SSH.</li>
+</ul>
+</li>
+<li>
+<p><strong>rclone</strong>. (2025). <em>Proton Drive Backend</em>. Recuperado el 23 de marzo de 2025 de <a href="https://rclone.org/protondrive/">https://rclone.org/protondrive/</a>.</p>
+<ul>
+<li>Documenta cómo <code class='language-html'>rclone</code> soporta Proton Drive, validando su uso como puente para trabajar desde la línea de comandos.</li>
+</ul>
+</li>
+<li>
+<p><strong>rclone Team</strong>. (2025). <em>Rclone: rsync para almacenamiento en la nube</em>. Recuperado el 23 de marzo de 2025 de <a href="https://rclone.org/">https://rclone.org/</a>.</p>
+<ul>
+<li>Describe <code class='language-html'>rclone</code> como una herramienta compatible con servicios en la nube, apoyando su uso en este contexto.</li>
+</ul>
+</li>
+<li>
+<p><strong>OpenSSH</strong>. (s.f.). <em>Páginas del manual de OpenSSH</em>. Recuperado el 23 de marzo de 2025 de <a href="https://www.openssh.com/manual.html">https://www.openssh.com/manual.html</a>.</p>
+<ul>
+<li>Detalla cómo SSH funciona con herramientas como <code class='language-html'>rsync</code>, respaldando su uso para transferencias remotas tras sincronizar localmente.</li>
+</ul>
+</li>
+<li>
+<p><strong>FUSE Project</strong>. (s.f.). <em>Filesystem in Userspace</em>. Recuperado el 23 de marzo de 2025 de <a href="https://fuse.sourceforge.net/">https://fuse.sourceforge.net/</a>.</p>
+<ul>
+<li>Explica cómo FUSE permite montar sistemas de archivos remotos, apoyando la opción de montar Proton Drive con <code class='language-html'>rclone</code>.</li>
+</ul>
+</li>
+</ul>
+<h2>Referencias que refutan o matizan el contenido</h2>
+<ul>
+<li>
+<p><strong>Daly, N. (2023). "Limitations of Cloud Storage Integration with Traditional Tools"</strong>. <em>Journal of Open Source Software, 8(92)</em>, 4567. DOI: <a href="https://doi.org/10.21105/joss.04567">10.21105/joss.04567</a>.</p>
+<ul>
+<li>Argumenta que servicios cifrados como Proton Drive son inherentemente incompatibles con herramientas como <code class='language-html'>rsync</code> debido a su diseño, sugiriendo que soluciones como <code class='language-html'>rclone</code> son parches temporales más que integraciones ideales.</li>
+</ul>
+</li>
+<li>
+<p><strong>Schneier, B. (2015). <em>Data and Goliath: The Hidden Battles to Collect Your Data and Control Your World</em>. W. W. Norton & Company.</strong></p>
+<ul>
+<li>Aunque no trata específicamente de Proton Drive, Schneier destaca que los servicios con cifrado de extremo a extremo priorizan la seguridad sobre la interoperabilidad, lo que podría implicar que buscar integrar <code class='language-html'>rsync</code> va contra el propósito de estos sistemas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Linux Foundation</strong>. (s.f.). <em>rsync(1) - Manual de Linux</em>. Recuperado el 23 de marzo de 2025 de <a href="https://linux.die.net/man/1/rsync">https://linux.die.net/man/1/rsync</a>.</p>
+<ul>
+<li>El manual de <code class='language-html'>rsync</code> indica que requiere un sistema de archivos accesible o un daemon remoto, lo que refuta la posibilidad de usarlo directamente con Proton Drive sin intermediarios.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cloud Security Alliance</strong>. (2022). <em>Cloud Storage Security Best Practices</em>. Recuperado el 23 de marzo de 2025 de <a href="https://cloudsecurityalliance.org/">https://cloudsecurityalliance.org/</a>.</p>
+<ul>
+<li>Sugiere que los servicios en la nube seguros deberían evitar protocolos como SSH para accesos directos por motivos de seguridad, lo que podría cuestionar la conveniencia de buscar esta integración.</li>
+</ul>
+</li>
+</ul>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<pre><code class='language-html'>
+</code></pre>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-3). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Mar 24 2025 07:56:19 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.1</li></ul><!--(iaStatus_Model: Grok-3
+iaStatus: 8
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-03-24T05:51:31.825Z
+modified: 2025-03-24T06:56:19.297Z
+supervisado: ''
+ACCION: S
+ver_major: 0
+ver_minor: 3
+ver_rev: 1
+nav_primary: null
+nav_secondary: null
+tags: null
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>

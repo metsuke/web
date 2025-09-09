@@ -1,8 +1,167 @@
-        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Tutorial de AGD 2018 Capitulo 05 - Animando sprites ⚫①</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_94373ec992915b406d15e7d2c4c2b131_MD5.jpg" alt="Los lemmings estilo monty python en diversas posiciones y colores"></p>
+<ul>
+<li><a class='internal' href='./tutorial-de-agd-2018-edition-⚫①.html'>Tutorial de AGD 2018 Edition ⚫①</a></li>
+<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-04---los-sprites-aka-creando-el-muñequito-y-los-bichos-⚫①.html'><< Anterior</a>  | <a class='internal' href='./tutorial-de-agd-2018-capitulo-06---importar-sprite-sheets-⚫①.html'>Siguiente >></a></li>
+</ul>
+<p><a class='internal' href='./tutorial-de-agd-2018-capitulo-04---los-sprites-aka-creando-el-muñequito-y-los-bichos-⚫①.html'>En el capítulo anterior, comentábamos los fundamentos de manejo del editor de sprites de AGD</a>, en esta ocasión querría centrar mi atención en la animacion de sprites.</p>
+<p>Puede parecer una cuestión baladí, pero personalmente creo que el 50% de la conexion con un juego se produce debido a la calidad de la animación (⚫①) , imaginen sino una película de Disney con animaciones estilo South Park... digno de verse sin duda, pero esa magia que hace que los más pequeños de la casa empaticen con los personajes se esfumaria inmediatamente.</p>
+<p>He de hacer constar que yo no soy animador, por lo que no puedo dar clases al respecto, es por ello que he dedicado un tiempo a localizar y seleccionar algunos contenidos que, estudiados con atención, pondrán en contexto mis comentarios posteriores, y espero ayuden con ello a comprender el proceso de forma general, así como dar a conocer recursos excelentes que ya existen en la red.</p>
+<h2>Material de Estudio</h2>
+<p>En primer lugar os propongo un <a href="https://www.youtube.com/watch?v=yVngSlsMEk8">video de Adderly Céspedes 🌐🟡③</a> (Es un gran canal, os recomiendo darle un vistazo) de cómo se anima "actualmente", aunque no tenga que ver con AGD si nos pone en contacto con aspectos generales de la animación (y de la creación de sprites), con el resto del contenido iremos acercándonos a las limitaciones de un ordenador de 8Bits.</p>
+<p><strong><iframe width="100%" height="480" src="https://www.youtube.com/embed/yVngSlsMEk8?si=eN55bxHlAPh27Kox" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<p>Una vez tengáis claro el concepto general, avanzamos <a href="http://www.pixelsmil.com/2012/04/crear-y-animar-un-sprite-tutorial-paso.html">siguiendo este espectacular tutorial que muestra el proceso de creacion y animacion de sprites ya usando pixels 🌐🟡③</a>, aunque sin un limite de tamaño y colores como el que tendremos en Speccy.</p>
+<p><a href="https://2ddentertainment.com/products_pag/p0006.htm">Una herramienta que podeis usar es esta llamada Pixela 🌐</a> que yo también estoy testeando (en una maquina virtual Windows) porque no encuentro nada potente para Mac.</p>
+<h2>¡Ahora exprimamos AGD!</h2>
+<p>Hay que tomar en consideración que estamos ante un entorno 8Bits, con unas limitaciones a nivel de color bastante duras, no solo por la máquina sino por cómo funciona el entorno de AGD. Para no marear con cuestiones tecnias sirva decir que los sprites son de un color determinado (todos, aunque luego se pueda jugar por codigo) y solo de uno, o todo el sprite es blanco o todo es rojo, por ejemplo, lo cual nos obliga a ser ingeniosos.</p>
+<p>Lo que no podemos expresar con colores, en Spectrum se suele expresar con pixels separando áreas o delimitando objetos, es obvio que la limitación es grande, pero se pueden lograr cosas muy chulas. Ejemplo de esto de "dejar huecos" es el sprite de las antorchas que uso en el juego, en otras plataformas usaríamos amarillos y rojos en la llama, o tonos metalicos o tierra para el portaantorchas, aquí al tener un solo color, hemos de recurrir a eso de pintar o no pintar un pixel. Requiere tiempo pero no s tan complicado como pueda parecer.</p>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_b3bbeaa2d42affc8f37f1ebf347588b8_MD5.jpeg" alt="Sprite de la llama"></p>
+<p>Y lo mismo sucede por ejemplo con este gráfico de uno de los enemigos, en lugar de pintar lineas de color para separar los elementos, dejamos líneas sin dibujar. Esto tiene el hándicap de que reduce los ya escasos pixeles con que contamos, pero ahí está la parte en que cada uno hemos de desarrollar nuestro arte con la práctica. De hecho, aunque el resultado pueda no ser mejor que el de un profesional, es la parte que más disfruto de la creación de mis propios juegos, el expandir mis propias capacidades creando algo mejor que lo que era capaz de hacer anteriormente.</p>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_c523a9ddf4680d84637f7c3f5c2c1a7e_MD5.jpeg" alt="Sprite Nave Enemiga"></p>
+<h2>Frames, frames, frames</h2>
+<p>Como comentamos en <a class='internal' href='./tutorial-de-agd-2018-capitulo-04---los-sprites-aka-creando-el-muñequito-y-los-bichos-⚫①.html'>el capítulo 4 de este curso</a>, se pueden crear varios frames por cada sprite, la secuencia de estos es lo que dotará de vida a nuestras creaciones, según creemos varios frames de animación, podremos pulsar f a la velocidad que deseemos para ver la animación en el cuadro en que editamos el sprite. Mas adelante veremos como verlo en el escenario pero por ahora usaremos este método.</p>
+<p>Hemos de tomar en consideración que, en una maquina de estas características no solo los colores son limitados, la velocidad de la máquina también así como la memoria. Si usamos demasiados frames, la animacion sera genial pero ocupara muchisima memoria y tardara mucho en ejecutarse, por el contrario si usamos demasiado pocos, la animacion ira a saltos y nuestro personajes parecera congelarse continuamente como en un videojuego online cuando hay cortes de conexión.</p>
+<p>Personalmente suelo usar 3 máximo 4 frames en los casos más extremos, para equilibrar, y tambien me he fijado muchiiiiiisimo en los graficos de animaciones Japonesas de la epoca, en gran medida en los RPG de 8 y 16 bits que solian animar con mucho arte usando a veces solo dos frames.</p>
+<blockquote>
+<p><a href="https://www.youtube.com/channel/UCSdIAKvPxlB3VlFDCBvI46A">No hay mas secreto que practicar, practica y practicar</a>, como dice siempre el maestro profesor Retroman.</p>
+</blockquote>
+<h2>Menos es Mas</h2>
+<p>Os pongo a continuacion los cuatro frames de los mini lemmings de JBA, quisiera con ello trasmitir una ultima cuestión en este capítulo y es que cuando las limitaciones son tan grandes hay que jugar con la imaginacion del jugador, así como optimizar la animacion, dotando del mayor carisma posible a nuestras creaciones. Si yo, que soy un perfecto novato, he logrado crear unos mini personajes con muy pocos pixeles, seguro que tu también puedes, y recuerda, esto lo hacemos por diversión, así que cero verguenza y cero miedos, la única competición es contra nosotros mismos para ser mejores cada vez.</p>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_4fc5f1e5ed8dd95a2330e052bf8ad85a_MD5.gif" alt="Animacion de los Lemmings, usando una ligera vibracion para enfatizar el objetivo de la animación"></p>
+<p>En el próximo capítulo exploraremos la importación de spritesheets en forma de screens y más adelante empezaremos a usar los sprites en la pantalla que creamos. Mientras tanto !disfruten creando sus propias animaciones!</p>
+<h2>¿Y ahora que?</h2>
+<ul>
+<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-01---el-comienzo-⚫①.html'>Si tienes miedo, ve a esconderte a la página 1</a></li>
+<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-05---animando-sprites-⚫①.html'>Si has logrado entrar en la sala de entrnamiento de Goku, quedate un par de años en la página 5</a></li>
+<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-06---importar-sprite-sheets-⚫①.html'>Si quieres ir al instructor de clase y aprender 'Invocar Sprite Sheet' pasa a la página 6</a></li>
+</ul>
+<h2>Referencias Bibliográficas</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=yVngSlsMEk8">Video de Adderly Céspedes sobre las bases de la animación de sprites 🌐🟡③</a></li>
+<li><a href="http://www.pixelsmil.com/2012/04/crear-y-animar-un-sprite-tutorial-paso.html">Tutorial que muestra el proceso de creacion y animacion de sprites usando pixels en pixelsmil.com 🌐🟡③</a></li>
+</ul>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Fri Aug 29 2025 20:29:52 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.7</li></ul><!--(iaStatus: 8
+iaStatus_Model: Raúl Carrillo Garrido aka metsuke
+iaStatus_Generado: H
+iaStatus_Supervisado: '-'
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-06-11T16:26:25.753Z
+modified: 2025-08-29T18:29:52.057Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 7
+nav_primary: null
+nav_secondary: null
+tags: null
+MOS_TopImg_Video: CursoAGD005B.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoAGD005B.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>&copy; 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->
