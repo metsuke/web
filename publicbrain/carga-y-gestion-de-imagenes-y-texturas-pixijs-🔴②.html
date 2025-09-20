@@ -37,68 +37,226 @@
 
     <main>
 <h1>Carga y gestión de imágenes y texturas (PixiJS) 🔴②</h1>
-<p><a class='internal' href='./curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
-<p>En el contexto de aprender PixiJS, la carga y gestión de imágenes y texturas es un aspecto fundamental para crear contenido visual en tus aplicaciones o juegos. PixiJS proporciona una manera fácil y eficiente de cargar y manejar imágenes y texturas.</p>
-<h2>Cargar una Imagen</h2>
-<p>Para cargar una imagen en PixiJS, puedes utilizar la clase <code class='language-html'>PIXI.Loader</code>. A continuación, te presento un ejemplo básico:</p>
-<pre><code class="language-javascript">// Crear un cargador
-const loader = PIXI.Loader.shared;
-
-// Agregar la imagen que deseas cargar
-loader.add('nombre', 'ruta/a/la/imagen.png');
-
-// Escuchar eventos de carga
-loader.onProgress.add((loader, recurso) => {
-  console.log(`Cargando ${recurso.url}`);
-  console.log(`Progreso: ${loader.progress}%`);
-});
-
-loader.onComplete.add(() => {
-  console.log('¡Carga completa!');
-  // Una vez que la carga esté completa, puedes usar la imagen
-  const sprite = PIXI.Sprite.from('nombre');
-  app.stage.addChild(sprite); // Añadir el sprite al escenario
-});
-
-// Comenzar la carga
-loader.load();
-</code></pre>
-<h2>Usar una Textura</h2>
-<p>Una vez que la imagen esté cargada, puedes usarla para crear texturas. A continuación, te presento un ejemplo de cómo crear una textura y un sprite:</p>
-<pre><code class="language-javascript">// Crear una textura a partir de la imagen cargada
-const texture = PIXI.Texture.from('nombre');
-
-// Crear un sprite usando la textura
-const sprite = new PIXI.Sprite(texture);
-
-// Añadir el sprite al escenario
-app.stage.addChild(sprite);
-</code></pre>
-<h2>Gestión de Múltiples Imágenes</h2>
-<p>Si necesitas cargar múltiples imágenes, simplemente repite el proceso de agregar imágenes al cargador y usa las texturas correspondientes donde sea necesario.</p>
-<h2>Gestión de Texturas Atlas</h2>
-<p>En aplicaciones más complejas, a menudo se utilizan texturas atlas, que son imágenes que contienen múltiples texturas individuales. PixiJS tiene soporte incorporado para texturas atlas, lo que permite cargar y usar múltiples texturas desde un solo archivo.</p>
-<pre><code class="language-javascript">// Cargar un atlas
-loader.add('atlas', 'ruta/al/atlas.json');
-
-loader.onComplete.add(() => {
-  console.log('¡Carga de atlas completa!');
-  // Crear un sprite usando una textura de atlas
-  const sprite = PIXI.Sprite.from('nombreDeTexturaEnAtlas.png');
-  app.stage.addChild(sprite);
-});
-</code></pre>
-<h2>Referencias Bibliográficas</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_fb89498a19570fba6d7a5e8de0260eaa_MD5.jpg" alt="Imagenes y Texturas en PixiJS"></p>
 <ul>
-<li><a href="https://pixijs.com/docs/">PixiJS Documentation</a></li>
-<li><a href="https://pixijs.com/docs/v5/docs/loader.html">PixiJS Loader</a></li>
+<li><a class='internal' href='./curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></li>
+<li><a class='internal' href='./dibujando-formas-basicas-y-graficos-pixijs-🟡③.html'><< Anterior</a> |  <a class='internal' href='./carga-y-gestion-de-imagenes-y-texturas-pixijs-🔴②.html'>Siguiente >></a>]]</li>
 </ul>
-<h3>Referencias que refutan</h3>
+<blockquote>
+<p>WIP: Revisando Fuentes</p>
+</blockquote>
+<p>PixiJS es una biblioteca de renderizado 2D en JavaScript que brilla por su habilidad para manejar gráficos interactivos con un rendimiento excepcional. En el corazón del desarrollo de juegos y aplicaciones visuales con esta herramienta se encuentra la carga y gestión de imágenes y texturas, elementos clave que sirven de base para sprites, mallas y otros objetos que se renderizan en pantalla.</p>
+<p>En este capítulo, vamos a sumergirnos de forma exhaustiva y detallada en cómo cargar, crear, gestionar y optimizar estas imágenes y texturas en PixiJS. Abordaremos el ciclo de vida completo de las texturas, los métodos de carga asíncrona, los tipos de fuentes de datos compatibles, las mejores prácticas para el manejo de la memoria y el rendimiento, junto con ejemplos prácticos de código. Todo esto se inspira en la documentación oficial de PixiJS versión 8.x, adaptado al entorno de MetsuOS, donde damos prioridad a configuraciones vanilla con HTML y JS puro en producción, sin dependencias como Node.js durante la ejecución.</p>
+<h2>Introducción a las Texturas en PixiJS</h2>
+<p>Las texturas en PixiJS son piezas fundamentales en el proceso de renderizado. Ellas definen el contenido visual que se aplica a objetos como los Sprites (para imágenes sencillas) o las Meshes (para gráficos más elaborados). El sistema de texturas gira en torno a dos clases principales:</p>
 <ul>
-<li><a href="https://www.alternativeto.net/software/pixijs/">Alternativas a PixiJS</a></li>
-<li><a href="https://www.toptal.com/javascript/2d-rendering-libraries">Comparación de bibliotecas de renderizado 2D</a></li>
+<li><strong>TextureSource</strong>: Representa la fuente subyacente de píxeles, como una imagen, un lienzo o un vídeo. Es el "origen" puro de los datos visuales.</li>
+<li><strong>Texture</strong>: Ofrece una "vista" sobre un TextureSource, permitiendo subregiones (como en un sprite sheet), recortes (trims) y transformaciones. Varias Textures pueden compartir el mismo TextureSource para ahorrar memoria de forma eficiente.</li>
 </ul>
-<p>Espero que esta guía te haya sido útil para aprender a cargar y gestionar imágenes y texturas en PixiJS. Recuerda que cargar imágenes puede llevar tiempo, por lo que es importante manejar los eventos de carga apropiadamente para asegurarte de que tu aplicación o juego se ejecute de manera suave y eficiente.</p>
+<p>El flujo habitual en su ciclo de vida es el siguiente:</p>
+<p>Archivo de origen (imagen o vídeo) → TextureSource → Texture → Objeto visual (por ejemplo, un Sprite).</p>
+<p>Estas texturas aprovechan WebGL para un renderizado rápido y fluido, con un respaldo a Canvas en caso de que WebGL no esté disponible. En el contexto de MetsuOS, esto resulta perfecto para entornos compatibles con tecnología retro, ya que no exige dependencias extra en producción.</p>
+<h3>Propiedades Comunes de Texture</h3>
+<ul>
+<li><strong>frame</strong>: Rectángulo que delimita la porción visible dentro de la fuente.</li>
+<li><strong>orig</strong>: Dimensiones originales sin aplicar recortes.</li>
+<li><strong>trim</strong>: Define áreas a recortar para eliminar espacios transparentes (ideal para atlas de sprites).</li>
+<li><strong>uvs</strong>: Coordenadas UV generadas a partir de <code class='language-html'>frame</code> y <code class='language-html'>rotate</code>.</li>
+<li><strong>rotate</strong>: Valor de rotación (GroupD8) para compatibilidad con atlas.</li>
+<li><strong>defaultAnchor</strong>: Punto de anclaje predeterminado para Sprites.</li>
+<li><strong>defaultBorders</strong>: Usado en escalados de tipo 9-slice.</li>
+<li><strong>source</strong>: La instancia asociada de TextureSource.</li>
+</ul>
+<h3>Propiedades Comunes de TextureSource</h3>
+<ul>
+<li><strong>resolution</strong>: Influye en el tamaño de renderizado relativo a los píxeles reales (útil para escalados en pantallas retina).</li>
+<li><strong>format</strong>: Formato de la textura (por ejemplo, <code class='language-html'>rgba8unorm</code> o <code class='language-html'>bgra8unorm</code>).</li>
+<li><strong>alphaMode</strong>: Controla la interpretación del canal alfa al subir a la GPU (por ejemplo, <code class='language-html'>premultiply-alpha</code>).</li>
+<li><strong>wrapMode / scaleMode</strong>: Modos de envoltura (wrap) y escalado (por ejemplo, <code class='language-html'>repeat</code> o <code class='language-html'>linear</code> para un filtrado suave).</li>
+<li><strong>autoGenerateMipmaps</strong>: Genera mipmaps de forma automática para optimizar el rendimiento en escalados.</li>
+</ul>
+<p>Puedes configurar estas propiedades al crear la textura o modificarlas dinámicamente según necesites.</p>
+<h2>Carga de Imágenes y Texturas</h2>
+<p>PixiJS emplea el singleton <code class='language-html'>Assets</code> para cargar recursos de manera asíncrona, basado en Promises, con soporte integrado para caché y parsers automáticos. Es una opción más moderna y eficiente que los loaders antiguos. <code class='language-html'>Assets</code> detecta automáticamente el tipo de archivo por su extensión y gestiona imágenes, vídeos, JSON para sprite sheets y texturas comprimidas.</p>
+<h3>Inicialización de Assets</h3>
+<p>Antes de empezar a cargar, es recomendable inicializar <code class='language-html'>Assets</code> con opciones globales, especialmente en MetsuOS para definir rutas base sin recurrir a Node.js:</p>
+<pre><code class="language-javascript">import { Assets } from 'pixi.js';
+await Assets.init({
+  basePath: './assets/',  // Ruta base para recursos relativos
+  defaultSearchParams: 'v=1.0',  // Parámetros URL por defecto (ej. para cache-busting)
+  texturePreference: { resolution: 2, format: 'png' }  // Preferencias para texturas (ej. alta resolución)
+});
+</code></pre>
+<h3>Carga de una Sola Textura</h3>
+<p>La carga es sencilla: llama a <code class='language-html'>Assets.load()</code> con la URL. Devuelve una Promise que se resuelve con la textura cargada.</p>
+<pre><code class="language-javascript">import { Assets, Sprite, Texture } from 'pixi.js';
+
+// Carga asíncrona
+const texture = await Assets.load<Texture>('assets/bunny.png');  // URL absoluta o relativa
+
+// Crea un Sprite con la textura
+const sprite = new Sprite(texture); app.stage.addChild(sprite);
+</code></pre>
+<p>Para usar alias (nombres cortos en vez de URLs largas):</p>
+<pre><code class="language-javascript">await Assets.load<Texture>({ alias: 'bunny', src: 'assets/bunny.png' });
+const bunnyTexture = Assets.get('bunny');  // Recupera por alias
+</code></pre>
+<h3>Carga de Múltiples Texturas</h3>
+<p>Puedes cargar un array de URLs o un objeto con alias. Devuelve un objeto con las texturas indexadas por URL o alias.</p>
+<pre><code class="language-javascript">const textures = await Assets.load<Texture>([
+  'assets/bunny.png',
+  'assets/cat.png'
+]);
+
+const bunnySprite = new Sprite(textures['assets/bunny.png']);
+const catSprite = new Sprite(textures['assets/cat.png']);
+app.stage.addChild(bunnySprite, catSprite);
+</code></pre>
+<p>O con alias para varios:</p>
+<pre><code class="language-javascript">const assetsToLoad = [
+  { alias: 'bunny', src: 'assets/bunny.png' },
+  { alias: 'cat', src: 'assets/cat.png' }
+];
+await Assets.load(assetsToLoad);
+const bunny = Assets.get('bunny');
+</code></pre>
+<h3>Carga en Segundo Plano (Background Loading)</h3>
+<p>Para evitar bloquear la interfaz durante cargas pesadas, usa <code class='language-html'>Assets.backgroundLoad()</code>. No espera a que termine, pero puedes verificar el progreso.</p>
+<pre><code class="language-javascript">Assets.backgroundLoad(['assets/large-image.png', 'assets/another.png']);
+// Más tarde, accede cuando esté listo
+const texture = await Assets.load('assets/large-image.png');  // Espera si no ha terminado
+</code></pre>
+<h3>Tipos de Fuentes de Datos Soportadas</h3>
+<p>PixiJS soporta una variedad de fuentes para TextureSource, adaptadas a distintos escenarios:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo de TextureSource</th>
+<th>Descripción</th>
+<th>Ejemplo de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ImageSource</strong></td>
+<td>HTMLImageElement, ImageBitmap, SVG, VideoFrame, etc.</td>
+<td>Imágenes estáticas: <code class='language-html'>new ImageSource({ resource: myImageElement })</code></td>
+</tr>
+<tr>
+<td><strong>CanvasSource</strong></td>
+<td>HTMLCanvasElement o OffscreenCanvas</td>
+<td>Gráficos generados dinámicamente: dibujar en canvas y usarlo como textura.</td>
+</tr>
+<tr>
+<td><strong>VideoSource</strong></td>
+<td>HTMLVideoElement</td>
+<td>Texturas de vídeo: <code class='language-html'>new VideoSource({ resource: myVideo, autoPlay: true, updateFPS: 30 })</code></td>
+</tr>
+<tr>
+<td><strong>BufferImageSource</strong></td>
+<td>TypedArray o ArrayBuffer con width/height/format explícitos</td>
+<td>Datos raw de píxeles: útil para generación procedural.</td>
+</tr>
+<tr>
+<td><strong>CompressedSource</strong></td>
+<td>Array de mipmaps comprimidos (Uint8Array[])</td>
+<td>Texturas optimizadas para GPU: soporta .basis, .dds, .ktx.</td>
+</tr>
+</tbody>
+</table>
+<p>Para texturas comprimidas (mejor rendimiento en móviles):</p>
+<pre><code class="language-javascript">const compressedTexture = await Assets.load('assets/texture.ktx2');
+</code></pre>
+<h2>Gestión y Optimización de Texturas</h2>
+<h3>Caché y Reutilización</h3>
+<p><code class='language-html'>Assets</code> cachea automáticamente por URL o alias. Las cargas repetidas devuelven la misma instancia, lo que ahorra ancho de banda y memoria.</p>
+<pre><code class="language-javascript">const tex1 = await Assets.load('bunny.png');
+const tex2 = await Assets.load('bunny.png');
+console.log(tex1 === tex2);  // true
+</code></pre>
+<h3>Descarga y Destrucción</h3>
+<p>Para liberar memoria (esencial en MetsuOS para entornos con recursos limitados):</p>
+<ul>
+<li><code class='language-html'>Assets.unload(&#39;bunny.png&#39;)</code>: Descarga y elimina del caché.</li>
+<li><code class='language-html'>texture.destroy()</code>: Destruye manualmente (para texturas no cargadas por Assets).</li>
+<li><code class='language-html'>texture.source.unload()</code>: Descarga de la GPU pero mantiene en memoria (útil para reutilizar después).</li>
+</ul>
+<p>Ejemplo:</p>
+<pre><code class="language-javascript">await Assets.load('temp.png');
+const tempTexture = Assets.get('temp.png');
+// Usar...
+await Assets.unload('temp.png');  // Libera completamente
+</code></pre>
+<h3>Preparación de Texturas (Plugin Prepare)</h3>
+<p>Para evitar picos de lag al subir muchas texturas a la GPU, usa el plugin Prepare para precargar.</p>
+<pre><code class="language-javascript">import { PrepareSystem } from 'pixi.js';  // Asegúrate de importar si es necesario
+app.renderer.addSystem(PrepareSystem, 'prepare');  // Agrega al renderer
+
+// Prepara texturas antes de mostrar
+await app.renderer.prepare.upload([texture1, texture2]);
+</code></pre>
+<h3>Creación Manual de Texturas</h3>
+<p>Si prefieres no usar <code class='language-html'>Assets</code> (por ejemplo, para generación dinámica en MetsuOS vanilla):</p>
+<pre><code class="language-javascript">const myImage = new Image();
+myImage.src = 'assets/bunny.png';
+myImage.onload = () => {
+  const source = new TextureSource({ resource: myImage });
+  const texture = new Texture({ source, frame: new Rectangle(0, 0, 100, 100) });  // Sub-región opcional
+  const sprite = new Sprite(texture);
+};
+</code></pre>
+<p>Para texturas dinámicas (actualizaciones en tiempo de ejecución):</p>
+<pre><code class="language-javascript">const texture = new Texture({ source: mySource, dynamic: true });
+texture.frame = new Rectangle(10, 10, 50, 50);  // Modifica dinámicamente
+</code></pre>
+<h3>Manejo de Errores</h3>
+<p><code class='language-html'>Assets</code> gestiona errores mediante Promises. Usa <code class='language-html'>try-catch</code> o <code class='language-html'>.catch()</code>:</p>
+<pre><code class="language-javascript">try {
+  const texture = await Assets.load('invalid.png');
+} catch (error) {
+  console.error('Error cargando textura:', error);
+  // Fallback: usa una textura placeholder
+  const fallback = Texture.EMPTY;  // Textura vacía predeterminada de PixiJS
+}
+</code></pre>
+<p>Si una carga falla, <code class='language-html'>Texture.from()</code> crea una textura válida de 1x1 píxel por defecto.</p>
+<h2>La app de prueba</h2>
+<p>Un ejemplo cargando texturas de MetsuOS
+**<div class='pixi-app' id='mos-integration'><div class='pixi-container'  id='pixi-container'></div></div><script type='text/javascript' id='PixiText' async src='https://metsuke.com/assets/apps/PixiJS/004-Texturas/app-texturas.iife.js'></script></p>
+<h2>Referencias Bibliográficas que Apoyan el Contenido</h2>
+<blockquote>
+<p>WIP: Revisando Fuentes</p>
+</blockquote>
+<ul>
+<li>Documentación oficial de PixiJS sobre Textures (v8.x): <a href="https://pixijs.com/8.x/guides/components/textures">https://pixijs.com/8.x/guides/components/textures</a> – Proporciona una guía detallada sobre la carga y uso de texturas, alineada con el ciclo de vida descrito.</li>
+<li>Documentación oficial de PixiJS sobre Assets (v8.x): <a href="https://pixijs.com/8.x/guides/components/assets">https://pixijs.com/8.x/guides/components/assets</a> – Explica el sistema de carga asíncrona y caché, respaldando los ejemplos de código proporcionados.</li>
+<li>Tutorial en YouTube: "Pixi.js Tutorial for Absolute Beginners - Assets" por Wael Yasmina (2024): <a href="https://www.youtube.com/watch?v=JRYU6-CgHU4">https://www.youtube.com/watch?v=JRYU6-CgHU4</a> – Demuestra la carga de assets de forma práctica, coincidiendo con los métodos descritos.</li>
+<li>Tutorial en YouTube: "PixiJS Part 4: Texture Loading" (2019): <a href="https://www.youtube.com/watch?v=EDEUsXqPTI0">https://www.youtube.com/watch?v=EDEUsXqPTI0</a> – Cubre la carga de texturas en versiones anteriores, pero compatible con v8.x en principios básicos.</li>
+<li>Tutorial de PixiJS para principiantes por Wael Yasmina (2024): <a href="https://waelyasmina.net/articles/pixi-js-tutorial-for-complete-beginners/">https://waelyasmina.net/articles/pixi-js-tutorial-for-complete-beginners/</a> – Refuerza conceptos de carga y gestión con ejemplos accesibles.</li>
+<li>Tutoriales para PixiJS y TexturePacker por CodeAndWeb: <a href="https://www.codeandweb.com/texturepacker/tutorials/pixijs">https://www.codeandweb.com/texturepacker/tutorials/pixijs</a> – Enfocado en optimización de texturas y sprite sheets, apoyando las prácticas de rendimiento.</li>
+</ul>
+<h2>Referencias Bibliográficas que Refutan el Contenido</h2>
+<blockquote>
+<p>WIP: Revisando Fuentes</p>
+</blockquote>
+<ul>
+<li>Discusión en GitHub sobre Pixi Asset Pack 1.0 – Beneficios y Limitaciones actuales (2024): <a href="https://github.com/pixijs/pixijs/discussions/10917">https://github.com/pixijs/pixijs/discussions/10917</a> – Señala limitaciones en el workflow de assets, como la necesidad de mejoras en la generación de manifests, lo que podría cuestionar la simplicidad absoluta del sistema Assets en escenarios complejos.</li>
+<li>Comparación Pixi.js vs Phaser 3 por Selina Byeon (2021): <a href="https://selinabyeon.medium.com/pixi-js-vs-phaser-3-519eba2f9817">https://selinabyeon.medium.com/pixi-js-vs-phaser-3-519eba2f9817</a> – Argumenta que Phaser ofrece más funcionalidades integradas (como física), lo que implica que PixiJS requiere más trabajo manual en gestión de texturas para juegos completos, refutando la idea de que sea siempre la opción más eficiente.</li>
+<li>Artículo "Phaser vs PixiJS for making 2D games" en DEV Community (2022): <a href="https://dev.to/ritza/phaser-vs-pixijs-for-making-2d-games-2j8c">https://dev.to/ritza/phaser-vs-pixijs-for-making-2d-games-2j8c</a> – Destaca que Phaser incluye física incorporada, a diferencia de PixiJS, sugiriendo que la gestión de texturas en Pixi podría ser menos integrada en entornos de juegos avanzados.</li>
+<li>Pregunta en Stack Overflow: "Decide Pixi.js or Phaser" (2016): <a href="https://stackoverflow.com/questions/38509629/decide-pixi-js-or-phaser">https://stackoverflow.com/questions/38509629/decide-pixi-js-or-phaser</a> – Menciona que Phaser usa una versión modificada y más antigua de Pixi para renderizado, lo que podría implicar que las optimizaciones de texturas en Pixi v8 no siempre superan a frameworks más completos en rendimiento real.</li>
+<li>Comparación PixiJS vs Phaser: The Gold Standard por Aircada (2023): <a href="https://aircada.com/blog/pixijs-vs-phaser">https://aircada.com/blog/pixijs-vs-phaser</a> – Enfatiza que Phaser despliega Canvas y WebGL de manera más holística para juegos, cuestionando la superioridad de PixiJS en gestión de texturas para aplicaciones no puramente renderizadas.</li>
+</ul>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
 <h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
 <p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
 <ul>
@@ -147,8 +305,8 @@ loader.onComplete.add(() => {
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo, llama3-70b-8192). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Jun 10 2025 23:14:03 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Mon May 27 2024 15:38:00 GMT+0200 (hora de verano de Europa central)</li><li><b> Versión Documento: </b>0.4.9</li></ul><!--(iaStatus: 8
-iaStatus_Model: gpt-3.5-turbo, llama3-70b-8192
+<ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo, llama3-70b-8192, grpk-4, Raúl Carrillo aka metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sat Sep 20 2025 08:44:11 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Mon May 27 2024 15:38:00 GMT+0200 (hora de verano de Europa central)</li><li><b> Versión Documento: </b>0.4.12</li></ul><!--(iaStatus: 8
+iaStatus_Model: gpt-3.5-turbo, llama3-70b-8192, grpk-4, Raúl Carrillo aka metsuke
 iaStatus_Generado: I
 iaStatus_Supervisado: H
 iaStatus_Validado: '-'
@@ -157,16 +315,17 @@ checked: 0
 lang: ES
 translations: null
 created: 2024-04-07T07:43:18.747Z
-modified: 2025-06-10T21:14:03.252Z
+modified: 2025-09-20T06:44:11.871Z
 supervisado: 2024-05-27T13:38:00.569Z
 ACCION: null
 ver_major: 0
 ver_minor: 4
-ver_rev: 9
+ver_rev: 12
 nav_primary: null
 nav_secondary: null
 tags: null
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+MOS_TopImg_Video: CursoPixiJS_ImagenesTexturas.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoPixiJS_ImagenesTexturas.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
