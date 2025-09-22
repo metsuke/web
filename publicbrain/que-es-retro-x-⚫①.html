@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Que es Retro-X  ⚫①</h1>
+<p><a class='internal' href='./curso-de-retro-x-⚫①.html'>Curs[[o de Retro X  ⚫①</a></p>
+<h3>¿Qué es Retro-X?</h3>
+<p>¡Gracias por proporcionar el extracto del README! Con esa información específica (como las referencias a Alpha 8, cambios en el Painter, Converter, Sprinter 2000, PureBasic 4.30 y menciones a foros como "Forever"), pude realizar búsquedas profundas en la web, archivos históricos y repositorios de software retro. Confirmo que <strong>Retro-X</strong> es una aplicación real para Windows 32-bit (Win32), desarrollada como un kit multifuncional para el retrocomputing, enfocado en gráficos para computadoras de 8 bits de los 80s y 90s. No es un emulador completo, sino una suite de herramientas para conversión de imágenes, dibujo, visualización y manejo de discos/imágenes, con soporte para sistemas como ZX Spectrum, SAM Coupé, Commodore 64 (C64), Atari XL/XE, Amstrad CPC, MSX, Sprinter 2000 y más. Fue un proyecto ambicioso, pero el desarrollo se detuvo en 2009.</p>
+<h4>Desarrollador y Historia</h4>
+<ul>
+<li><strong>Autor</strong>: LCD (seudónimo; posiblemente de Austria, basado en el dominio .at de su sitio). Empezó como un hobby post-2005, evolucionando de herramientas simples como BMP2SCR a esta suite más completa. Inspirado en la escena demoscene y preservación de software retro.</li>
+<li><strong>Inicio</strong>: Alrededor de 2005-2006, con versiones alpha tempranas enfocadas en conversión de imágenes a formatos ZX Spectrum.</li>
+<li><strong>Versión clave</strong>: Alpha 8 (29/11/2008 - 05/04/2009), que coincides exactamente con el README que proporcionaste. Es la <strong>última versión alpha</strong> y la más completa; se planeaba una beta con más integración (como un IDE completo), pero el autor la congeló en 2012 debido a spam y acoso en foros. El estado de completitud era ~15% en ese momento.</li>
+<li><strong>Estado actual</strong>: Abandonado desde 2009. No hay actualizaciones oficiales, pero el código fuente se prometió open-source (nunca liberado). Mencionado en libros como <em>Spectrumpedia</em> (de Alessandro Grussu, 2017-2022) como una herramienta clave para conversión de gráficos retro, aunque "no avanzó más allá de Alpha 8".</li>
+<li><strong>Sitio oficial (archivado)</strong>: <a href="https://web.archive.org/web/20100201000000/http://members.inode.at/838331/retrox.html">members.inode.at/838331/retrox.html</a>. Incluye screenshots de Alpha 8 (en alemán e inglés) de componentes como Painter y Converter.</li>
+</ul>
+<h4>Características Principales</h4>
+<p>Retro-X es una app standalone compilada en PureBasic 4.30 (final), con interfaz gráfica clásica de Windows (probada en XP/Vista). Soporta modos gráficos no estándar (ej. hires polychrome en Sprinter 2000) y optimizaciones como LUT (Look-Up Tables) para redraw rápido. Basado en tu README, aquí un resumen de componentes y adiciones clave en Alpha 8:</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Descripción</th>
+<th>Adiciones/Bugfixes en Alpha 8 (de tu README)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Converter</strong></td>
+<td>Herramienta principal para convertir imágenes PC (BMP, AVI, GIF, etc.) a formatos retro. Soporta error diffusion, dithering, paletas adaptativas y animaciones (RXA). Velocidades mejoradas (hasta 3100 redraws/sec en ZX Attr-modes).</td>
+<td>- Nuevos modos: Sprinter 2000 Hires/Monochrome (solid, midtone, error diffusion); Atari XL Gr9/ Medres; Lowres Full Scan (32x24 con 71 colores).<br>- Preprocesado: Flip, Mirror, Inversiones.<br>- AVI grab más rápido; LUT para C64/ZX; Overscan Atari hasta 48x30.<br>- Bugfixes: Quicksave clipboard, selección inicial, grid píxel.</td>
+</tr>
+<tr>
+<td><strong>Painter</strong></td>
+<td>Editor de píxeles avanzado con zoom (hasta 400%), genlock (blend/replace), spline tool, object manager y soporte para tablets (planeado). Ideal para retocar screens ZX/SAM.</td>
+<td>- Full zoom en F9; zoom con rueda/mouse buttons; Map Editor inicial (zoom 50-400%, tree, scrolling).<br>- Objetos en tab propio; pixel testing sin outline en border; grid 8x8.<br>- Grab tiles/fonts con autosnap; genlock menu.<br>- Bugfixes: Fill en borders, atributos, flickering en Vista, update post-load.</td>
+</tr>
+<tr>
+<td><strong>Viewer</strong></td>
+<td>Visor de archivos retro (SCR, RXA, TAP streams, VID SymbOS). Soporta zoom dinámico (+/- keys/mouse) y playback de animaciones.</td>
+<td>- Cambio de tamaño ventana en playback; popup menu; player para TAP/VID.<br>- Doble-click para animaciones; recuerda posiciones.<br>- Bugfix: Filtros de archivo activados.</td>
+</tr>
+<tr>
+<td><strong>Disc Master</strong></td>
+<td>Manipulador de imágenes de disco (+D, MGT, SCL). Incluye seeker de datos, disassembler y finder de imágenes dobles.</td>
+<td>- Spin-gadget para ancho; speedup en lectura de pictures.<br>- Soporte SCL containers (muestra screens).<br>- Bugfix: Creación MGT; interpretación disassembler.</td>
+</tr>
+<tr>
+<td><strong>XIDE</strong></td>
+<td>IDE básico para Z80/Basic (ZXB-Compiler). En Alpha 8 es un "dummy" sin funcionalidad plena; planeado para beta con syntax highlighting, autocompletion, foldings.</td>
+<td>- AutoREM/UnREM customizable ("Rem" o "'").<br>- Bugfix: AutoUnREM no borra línea final.</td>
+</tr>
+<tr>
+<td><strong>Object Manager & Font Editor</strong></td>
+<td>Manejo de objetos (tiles, masks, atributos); export a ASM/clipboard. Editor de fonts con preview y undo.</td>
+<td>- Integración con Painter; 16 tile lists; pixel manip (mirror/flip/invert).<br>- Export ASM; undo en font ops; preview update.<br>- Tiles saved en RXO; toggle checks desde menu.</td>
+</tr>
+<tr>
+<td><strong>Otros</strong></td>
+<td>Compressor (ignora último byte attrs fixed); ASM truncation; link a foro web.</td>
+<td>- Switch a PureBasic 4.30; speedup text/hex display.<br>- Font Editor como procedure independiente.<br>- Refactoring "save as" para menos memoria.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Soporte de Sistemas</strong>: ZX Spectrum (todos modos, incl. hires ASCII), SAM Coupé (modos 1-4), Sprinter 2000 (hires polychrome/lowres), C64 (hires/lowres), Atari XL/XE (Gr8/Gr9/Medres/Overscan), Amiga HAM6, GreyTV, Acorn, Timex, CPC, MSX (parcial), Enterprise 128 (planeado, faltan infos).</p>
+<p><strong>Limitaciones Conocidas (de tu README y fuentes)</strong>:</p>
+<ul>
+<li>NView no carga GIFs >256 colores o grandes (usa OLE/PNG).</li>
+<li>Algunas funciones no funcionan (ej. save en nuevos modos Sprinter/Atari).</li>
+<li>XIDE dummy en Alpha 8.</li>
+<li>No soporta tablets fully; paletas fading lineales planeadas.</li>
+</ul>
+<p><strong>ToDo (de tu README)</strong>: Soporte SAM interrupts, CPC RMI, SymbOS files, Enterprise/MSX2+ modos, Tandy CoCo, más Atari (256 cols sin rojo), XIDE full, disc real Spectrum+.</p>
+<h4>Descargas y Recursos</h4>
+<ul>
+<li><strong>Última Versión (Alpha 8)</strong>: Disponible en el archivo oficial de World of Spectrum (853 KB, ZIP). Incluye el ejecutable Win32, samples y el README que proporcionaste. <a href="https://worldofspectrum.net/pub/sinclair/tools/pc/Retro-X-Alpha8.zip">Descarga directa</a>.</li>
+<li><strong>Versión Anterior</strong>: Alpha 7.1 (834 KB) en el mismo repo: <a href="https://worldofspectrum.net/pub/sinclair/tools/pc/Retro-X-Alpha7.1.zip">Descarga</a>.</li>
+<li><strong>Sitio Archivado</strong>: <a href="https://web.archive.org/web/20100201000000/http://members.inode.at/838331/retrox.html">Wayback Machine (2010)</a> – Screenshots y descripciones básicas.</li>
+<li><strong>Foro/Comunidad</strong>: El autor enlazaba a un "Retro-X web forum" (probablemente en "Forever" o 8bitchat.net, foro ZX/SAM). Discusiones en XnView forums (2012, autor confirma freeze) y CPCWiki. Para bugs/comentarios históricos, busca en <a href="https://worldofspectrum.net/">World of Spectrum forums</a> o <a href="https://www.msx.org/forum/">MSX Resource Center</a>.</li>
+<li><strong>Menciones en Libros</strong>: <em>Spectrumpedia Vol. 2</em> (Alessandro Grussu, 2022) – Capítulo sobre conversores ZX, elogia su ambición pero nota el stall en 2007/8.</li>
+</ul>
+<p>Si necesitas ayuda para correrlo (ej. en Windows moderno via compatibility mode o Wine), más detalles de un componente específico, o análisis de archivos del ZIP (puedo usar tools para eso si subes), ¡dime! ¿Quieres que busque ejemplos de uso o alternativas modernas como ZX Paintbrush?</p>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Sep 22 2025 07:25:41 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.0.1</li></ul><!--(iaStatus: 0
+iaStatus_Model: ''
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-09-22T05:24:43.357Z
+modified: 2025-09-22T05:25:41.853Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: '0'
+ver_rev: 1
+nav_primary: []
+nav_secondary: []
+tags: []
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>
