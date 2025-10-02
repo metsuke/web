@@ -25,6 +25,7 @@
     <?php //include 'blacklist_blocker.php';?>
     <nav>
         <a href="index.html">Inicio</a>
+        <a href="apps.html">Apps</a>
         <a href="blog.html">Blog</a>
         <a href="juegos.html">Juegos</a>
         <a href="kb.html">KB</a>
@@ -37,6 +38,8 @@
 
     <main>
 <h1>Apps</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_153129cb093b963dcb3c314f5f80c977_MD5.jpg" alt="MetsuOS Base Icon"></p>
+<p><a class='internal' href='../publicbrain/publicbrain/index.html'>Index</a></p>
 <blockquote>
 <p>WIP</p>
 </blockquote>
@@ -50,21 +53,29 @@
 </ul>
 <p>En algunos casos, <a href="https://x.com/metsuke/status/1971099781633130801">como propuse en este tweet con el conversor de imagenes 🌐</a>, es posible que proponga alguna forma de uso gratuito limitado de las versiones pro, a modo de prueba y como regalo a los que siguen el proyecto con atención, pero siempre como servicio sin acceso al código.</p>
 <p>Este planteamiento está vivo, pero es algo que he reflexionado  bastante, ni quiero dejar en la estacada a los que colaboran con el software libre construyendo una base sólida que evita que los desarrolladores se enquisten en monopolios ni quiero someter el proyecto a la falta de profesionalidad real del desarrollo al estilo "do it yourself". En el equilibrio y la variedad de opciones, está el punto medio.</p>
+<h2>MetsuOS System Core</h2>
+<p>Este es el núcleo del sistema operativo, incluye el sistema operativo como tal sobre el que trabaja una libreria sobre la que se asientan el resto de elementos.  Esto permite que MetsuOS, a futuro, pueda correr tanto como sistema operativo nativo o como algo asentado sobre la versione de la mosLib correspondiente a nuestro sistema.</p>
 <div class="columns"><div class="column">
-<p>App1 
+<p>!<a class='internal' href='../publicbrain/-resources/44c1f46d745c51f385f88f004bec044a-md5jpg.html'>_resources/44c1f46d745c51f385f88f004bec044a_MD5.jpg</a></p>
+<h2>MetsuOS</h2>
+<p>Representa tanto el nombre generico del sistema como-un sistema operativo real, basado en GNI/Linux sobre el que poder ejecutar el resto del sistema en cualquier entorno en que podamos implementarlo.</p>
+<p>Sobre el se asienta mosLib que es la base del sistema tanto para esta ejecución desde sistema operativo como aquellas ejecuciones que se basan em sistemas operativos al uso, como podria ser Windows, Mac u otras distros Linux.</p>
+<p>Un SO que debe permitirnos automatizar todo proceso repetitivo para que nosotros nos dediquemos a ser humanos.</p>
 </div><div class="column">
-App2
+<h2>mosLib</h2>
 </div><div class="column">
-App3
+<h2>mosSystemCore</h2>
 </div><div class="column">
-App4
+<h2>mosSystemUI</h2>
 </div></div>
 <ul>
-<li>MetsuOS
+<li>MetsuOS*
 <ul>
-<li>mosLib
+<li>mosLib*
 <ul>
-<li>mosSystemCore
+<li>mosSystemCore*
+<ul>
+<li>mosSystemUI*
 <ul>
 <li>mosA11YChecker</li>
 <li>mosAutomationManager</li>
@@ -88,6 +99,8 @@ App4
 <li>mosIAManager
 <ul>
 <li>mosIAPromtManager</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -158,7 +171,7 @@ App4
 <li><a class='internal' href='./publicbrain/sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Sep 30 2025 18:26:28 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.36</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Thu Oct 02 2025 03:39:05 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.40</li></ul><!--(iaStatus: 8
 iaStatus_Model: Raúl Carrillo Garrido aka metsuke
 iaStatus_Generado: H
 iaStatus_Supervisado: '-'
@@ -168,16 +181,17 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-09-30T10:16:07.557Z
-modified: 2025-09-30T16:26:28.469Z
+modified: 2025-10-02T01:39:05.523Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 3
-ver_rev: 36
+ver_rev: 40
 nav_primary: null
 nav_secondary: null
 tags: null
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+MOS_TopImg_Video: MetsuOSBaseIcon.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/MetsuOSBaseIcon.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
