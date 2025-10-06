@@ -38,71 +38,295 @@
 
     <main>
 <h1>Creación y manipulación de sprites en PixiJS 🔴②</h1>
-<p><a class='internal' href='./curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
-<h2>Introducción</h2>
-<p>En PixiJS, los sprites son elementos fundamentales para representar gráficos en la pantalla. Los sprites pueden ser imágenes, texturas o incluso objetos gráficos que pueden ser manipulados y animados en tu aplicación o juego.</p>
-<h2>Creación de un Sprite</h2>
-<p>Para crear un sprite en PixiJS, puedes utilizar la clase <code class='language-html'>PIXI.Sprite</code>. Aquí tienes un ejemplo básico:</p>
-<pre><code class="language-javascript">// Crear un sprite a partir de una imagen
-const sprite = PIXI.Sprite.from('ruta/a/la/imagen.png');
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3c671f8c502b676c4341adde15035570_MD5.jpg" alt="PixiJS Trabajo con Sprites"></p>
+<ul>
+<li><a class='internal' href='./curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></li>
+<li><a class='internal' href='./carga-y-gestion-de-imagenes-y-texturas-pixijs-🔴②.html'><< Anterior</a> |  Siguiente >></li>
+</ul>
+<blockquote>
+<p>WIP Revisando texto</p>
+</blockquote>
+<p>Vamos a sumergirnos en profundidad y de forma detallada en la creación y manipulación de sprites. PixiJS es una biblioteca de JavaScript muy potente para renderizar gráficos 2D interactivos directamente en el navegador. Los sprites son uno de sus elementos clave, ya que permiten crear visuales dinámicos en juegos, animaciones o apps interactivas. Básicamente, un sprite es una imagen o textura que puedes posicionar, escalar, rotar y modificar a tu antojo en el escenario (stage).</p>
+<p>En esta guía, iremos desde lo más básico hasta técnicas más avanzadas, con ejemplos de código, propiedades, métodos, interactividad y hasta sprites animados. Suponemos que ya tienes nociones básicas de PixiJS, como configurar una aplicación simple con <code class='language-html'>PIXI.Application</code>. Si no, échale un vistazo a las secciones previas del curso. ¡Empecemos!</p>
+<h2>1. ¿Qué es un sprite en PixiJS?</h2>
+<p>En PixiJS, un sprite es un objeto visual que representa una imagen o textura que se renderiza en la pantalla. Hereda de <code class='language-html'>PIXI.Container</code>, lo que le permite contener otros objetos si es necesario, aunque su rol principal es mostrar una textura (como una imagen) y aplicar transformaciones como posición, escala, rotación o tinte. Son ideales para renderizar muchos elementos de forma eficiente, como personajes en un juego o partículas en una animación.</p>
+<ul>
+<li><strong>Ventajas principales</strong>: Ofrecen un alto rendimiento, soporte para texturas optimizadas, interactividad nativa y compatibilidad con WebGL o WebGPU.</li>
+<li><strong>Diferencias con otros objetos</strong>: A diferencia de <code class='language-html'>PIXI.Graphics</code>, que se usa para dibujos vectoriales, los sprites trabajan con texturas rasterizadas, lo que los hace más rápidos para imágenes predefinidas.</li>
+</ul>
+<h2>2. Creación de sprites</h2>
+<p>Para crear un sprite, lo primero que necesitas es una textura. PixiJS ofrece varias maneras de cargar y generar sprites de forma sencilla.</p>
+<h3>2.1. Cargar texturas</h3>
+<p>Utiliza el sistema de assets de PixiJS para cargar imágenes. En versiones recientes (v8 y superiores), se recomienda usar <code class='language-html'>Assets</code> como cargador principal.</p>
+<p>Aquí va un ejemplo básico:</p>
+<pre><code class="language-javascript">import { Application, Assets, Sprite } from 'pixi.js';
 
-// Añadir el sprite al escenario
+// Crear la aplicación
+const app = new Application();
+await app.init({ width: 800, height: 600 });
+document.body.appendChild(app.canvas);
+
+// Cargar textura
+const texture = await Assets.load('ruta/a/imagen.png');
+
+// Crear sprite
+const sprite = new Sprite(texture);
+
+// Agregar al stage
 app.stage.addChild(sprite);
 </code></pre>
-<p>En este ejemplo, <code class='language-html'>ruta/a/la/imagen.png</code> es la ruta de la imagen que deseas usar como sprite. Puedes cargar la imagen previamente usando el cargador de PixiJS, como se mencionó en la respuesta anterior, o puedes usar una textura existente.</p>
-<h2>Posicionamiento y Escala</h2>
-<p>Puedes establecer la posición y la escala de un sprite utilizando las propiedades <code class='language-html'>x</code>, <code class='language-html'>y</code>, <code class='language-html'>width</code> y <code class='language-html'>height</code>. Aquí tienes un ejemplo:</p>
-<pre><code class="language-javascript">// Establecer la posición del sprite
-sprite.x = 100;
-sprite.y = 200;
-
-// Establecer la escala del sprite
-sprite.scale.x = 2;
-sprite.scale.y = 2;
-</code></pre>
-<p>Esto colocará el sprite en la posición <code class='language-html'>(100, 200)</code> y lo escalará al doble de su tamaño original.</p>
-<h2>Rotación</h2>
-<p>Puedes rotar un sprite utilizando la propiedad <code class='language-html'>rotation</code>. Por ejemplo:</p>
-<pre><code class="language-javascript">// Rotar el sprite 45 grados en sentido antihorario
-sprite.rotation = Math.PI / 4; // 45 grados en radianes
-</code></pre>
-<h2>Animación</h2>
-<p>Los sprites también pueden ser animados cambiando su textura o sus propiedades en el tiempo. Por ejemplo, para crear una animación simple de cambio de textura:</p>
-<pre><code class="language-javascript">// Crear un array de texturas para la animación
-const texturas = [];
-texturas.push(PIXI.Texture.from('imagen1.png'));
-texturas.push(PIXI.Texture.from('imagen2.png'));
-// Agregar más texturas si es necesario
-
-// Crear un sprite de animación
-const animacion = new PIXI.AnimatedSprite(texturas);
-
-// Configurar la velocidad de la animación
-animacion.animationSpeed = 0.1;
-
-// Comenzar la animación
-animacion.play();
-
-// Añadir el sprite de animación al escenario
-app.stage.addChild(animacion);
-</code></pre>
-<p>En este ejemplo, <code class='language-html'>imagen1.png</code> y <code class='language-html'>imagen2.png</code> son las imágenes que componen la animación. Puedes agregar más texturas al array <code class='language-html'>texturas</code> si deseas una animación más larga.</p>
-<h2>Referencias</h2>
 <ul>
-<li><a href="https://pixijs.com/docs/">PixiJS Documentation</a></li>
-<li><a href="https://pixijs.com/tutorials/">PixiJS Tutorials</a></li>
+<li>
+<p><strong>Assets.load</strong>: Carga la textura de manera asíncrona y soporta promesas para gestionar la espera.</p>
+</li>
+<li>
+<p><strong>Sprite.from(url o texture)</strong>: Un método estático práctico para crear un sprite directamente desde una URL o textura ya cargada.</p>
+<pre><code class="language-javascript">const sprite = Sprite.from('ruta/a/imagen.png'); // Se carga automáticamente si no está en caché
+</code></pre>
+</li>
 </ul>
-<h2>Bibliografía</h2>
+<h3>2.2. Creación desde texturas existentes</h3>
+<p>Si ya dispones de una textura (por ejemplo, de un spritesheet), puedes reutilizarla fácilmente.</p>
+<pre><code class="language-javascript">const texture = Assets.get('imagen.png'); // Obtener de la caché
+const sprite = new Sprite(texture);
+</code></pre>
+<h3>2.3. Sprites desde spritesheets</h3>
+<p>Un spritesheet es una imagen grande que agrupa múltiples frames. Usa <code class='language-html'>PIXI.Spritesheet</code> para analizarlo y extraer texturas individuales.</p>
+<p>Ejemplo (suponiendo un archivo JSON generado con herramientas como TexturePacker):</p>
+<pre><code class="language-javascript">const sheet = await Assets.load('ruta/a/spritesheet.json');
+const texture = sheet.textures['frame1.png'];
+const sprite = new Sprite(texture);
+</code></pre>
+<h2>3. Manipulación de propiedades</h2>
+<p>Los sprites heredan propiedades de <code class='language-html'>Container</code> y añaden otras específicas para el control visual. Aquí tienes una lista completa, basada en la documentación de PixiJS v8.</p>
+<h3>3.1. Propiedades básicas de transformación</h3>
 <ul>
-<li><a href="https://www.smashingmagazine.com/2014/06/pixijs-high-performance-html5-canvas-library/">PixiJS: A High-Performance HTML5 Canvas Library</a></li>
-<li><a href="https://www.gamedev.net/articles/programming/general-programming/creating-a-pixijs-game-r3014/">Creating a PixiJS Game</a></li>
+<li>
+<p><strong>position</strong> (ObservablePoint, por defecto: {x:0, y:0}): Posición relativa al contenedor padre.</p>
+<pre><code class="language-javascript">sprite.position.set(100, 200); // O bien: sprite.x = 100; sprite.y = 200;
+</code></pre>
+</li>
+<li>
+<p><strong>scale</strong> (ObservablePoint, por defecto: {x:1, y:1}): Escala en los ejes X e Y.</p>
+<pre><code class="language-javascript">sprite.scale.set(2, 2); // Duplica el tamaño
+</code></pre>
+</li>
+<li>
+<p><strong>rotation</strong> (number, por defecto: 0): Rotación en radianes. Usa <code class='language-html'>angle</code> si prefieres grados.</p>
+<pre><code class="language-javascript">sprite.rotation = Math.PI / 4; // 45 grados
+sprite.angle = 45; // Lo mismo
+</code></pre>
+</li>
+<li>
+<p><strong>pivot</strong> (ObservablePoint, por defecto: {x:0, y:0}): Punto central para rotaciones y escalas.</p>
+<pre><code class="language-javascript">sprite.pivot.set(50, 50); // Centro para un sprite de 100x100
+</code></pre>
+</li>
+<li>
+<p><strong>skew</strong> (ObservablePoint, por defecto: {x:0, y:0}): Distorsión en radianes.</p>
+<pre><code class="language-javascript">sprite.skew.set(0.1, 0.1);
+</code></pre>
+</li>
+<li>
+<p><strong>anchor</strong> (ObservablePoint, por defecto: basado en la textura): Punto de anclaje (de 0 a 1) para alineaciones. Influye en posición y rotación.</p>
+<pre><code class="language-javascript">sprite.anchor.set(0.5, 0.5); // Centrado
+</code></pre>
+</li>
 </ul>
-<h2>Bibliografía que refuta el contenido</h2>
+<h3>3.2. Propiedades visuales</h3>
 <ul>
-<li><a href="https://github.com/pixijs/pixi.js/issues/4444">PixiJS Limitations</a>: Este issue en GitHub destaca algunas limitaciones de PixiJS, como la falta de soporte para WebGL 2.0 y la limitación en el uso de shaders.</li>
-<li><a href="https://www.gamedev.net/articles/programming/general-programming/pixijs-vs-phaser-a-comparison-r3015/">PixiJS vs. Phaser: A Comparison</a>: Este artículo de GameDev.net compara PixiJS con Phaser, otro framework de juegos, y destaca algunas limitaciones de PixiJS en comparación con Phaser.</li>
-<li><a href="https://www.smashingmagazine.com/2019/02/pixijs-performance-issues/">PixiJS Performance Issues</a>: Este artículo de Smashing Magazine destaca algunos problemas de rendimiento comunes en PixiJS y ofrece consejos para mejorar el rendimiento.</li>
+<li>
+<p><strong>texture</strong> (Texture): La textura que se muestra. Cambiarla actualiza automáticamente el ancho y alto.</p>
+<pre><code class="language-javascript">sprite.texture = newTexture;
+</code></pre>
+</li>
+<li>
+<p><strong>width</strong> / <strong>height</strong> (number): Ancho y alto en píxeles. Ajustan la escala de forma automática.</p>
+<pre><code class="language-javascript">sprite.width = 200; // Mantiene la proporción si no se establece height
+</code></pre>
+</li>
+<li>
+<p><strong>alpha</strong> (number, por defecto: 1): Opacidad (de 0 a 1).</p>
+<pre><code class="language-javascript">sprite.alpha = 0.5; // Semi-transparente
+</code></pre>
+</li>
+<li>
+<p><strong>tint</strong> (number, por defecto: 0xFFFFFF): Tinte de color (en hexadecimal o ColorSource).</p>
+<pre><code class="language-javascript">sprite.tint = 0xFF0000; // Rojo
+</code></pre>
+</li>
+<li>
+<p><strong>blendMode</strong> (BLEND_MODES, por defecto: 'normal'): Modo de mezcla (por ejemplo, 'add' o 'multiply').</p>
+<pre><code class="language-javascript">sprite.blendMode = 'add';
+</code></pre>
+</li>
+<li>
+<p><strong>visible</strong> (boolean, por defecto: true): Controla la visibilidad.</p>
+</li>
+<li>
+<p><strong>renderable</strong> (boolean, por defecto: true): Indica si se renderiza (útil para optimizaciones).</p>
+</li>
+<li>
+<p><strong>roundPixels</strong> (boolean, por defecto: false): Redondea la posición para un renderizado más nítido.</p>
+</li>
 </ul>
+<h3>3.3. Propiedades de accesibilidad y eventos</h3>
+<ul>
+<li><strong>accessible</strong> (boolean): Activa la accesibilidad para lectores de pantalla.</li>
+<li><strong>cursor</strong> (string): Estilo del cursor al pasar el ratón (por ejemplo, 'pointer').</li>
+</ul>
+<h3>3.4. Propiedades avanzadas</h3>
+<ul>
+<li><strong>cullable</strong> (boolean): Optimiza el culling para objetos fuera de la vista.</li>
+<li><strong>filterArea</strong> (Rectangle): Área específica para aplicar filtros.</li>
+<li><strong>hitArea</strong> (IHitArea): Área personalizada para detectar clics.</li>
+<li><strong>mask</strong> (Mask): Máscara para recortar la visibilidad.</li>
+<li><strong>filters</strong> (Filter[]): Aplica efectos como desenfoque o matriz de color.</li>
+</ul>
+<h2>4. Métodos principales</h2>
+<ul>
+<li>
+<p><strong>addChild(child)</strong> / <strong>removeChild(child)</strong>: Añade o quita hijos, ya que es un contenedor.</p>
+</li>
+<li>
+<p><strong>destroy(options)</strong>: Destruye el sprite y libera recursos.</p>
+<pre><code class="language-javascript">sprite.destroy({ texture: true }); // Destruye también la textura
+</code></pre>
+</li>
+<li>
+<p><strong>getBounds()</strong>: Devuelve los límites (Bounds).</p>
+</li>
+<li>
+<p><strong>containsPoint(point)</strong>: Comprueba si un punto está dentro del sprite.</p>
+</li>
+<li>
+<p><strong>updateTransform()</strong>: Actualiza las transformaciones manualmente (poco común).</p>
+</li>
+<li>
+<p><strong>getGlobalPosition()</strong>: Obtiene la posición global en el escenario.</p>
+</li>
+</ul>
+<p>Para una lista exhaustiva, consulta la documentación oficial de PIXI.Sprite.</p>
+<h2>5. Interactividad en sprites</h2>
+<p>Los sprites pueden reaccionar a eventos del usuario, como clics, hover o arrastres. Para activar la interactividad, configura <code class='language-html'>eventMode</code>.</p>
+<h3>5.1. Configuración básica</h3>
+<pre><code class="language-javascript">sprite.eventMode = 'static'; // O 'dynamic' para eventos continuos
+sprite.cursor = 'pointer'; // Cambia el cursor al pasar por encima
+</code></pre>
+<h3>5.2. Eventos comunes</h3>
+<p>PixiJS maneja eventos unificados (pointer, mouse, touch).</p>
+<pre><code class="language-javascript">sprite.on('pointerdown', (event) => {
+  console.log('¡Sprite clicado!', event);
+  sprite.scale.set(1.5); // Ejemplo de cambio
+});
+
+sprite.on('pointerover', () => {
+  sprite.tint = 0xFFFF00; // Amarillo al hover
+});
+
+sprite.on('pointerout', () => {
+  sprite.tint = 0xFFFFFF; // Reset
+});
+</code></pre>
+<ul>
+<li>
+<p><strong>Eventos disponibles</strong>: pointerdown, pointerup, pointermove, click, mousedown, etc.</p>
+</li>
+<li>
+<p><strong>Sprite arrastrable</strong>: Usa pointerdown para empezar el arrastre y pointermove para actualizar la posición.</p>
+<pre><code class="language-javascript">let dragging = false;
+sprite.on('pointerdown', () => dragging = true);
+app.stage.on('pointermove', (event) => {
+  if (dragging) sprite.position = event.global;
+});
+sprite.on('pointerup', () => dragging = false);
+</code></pre>
+</li>
+</ul>
+<h2>6. Sprites animados (AnimatedSprite)</h2>
+<p><code class='language-html'>PIXI.AnimatedSprite</code> extiende <code class='language-html'>Sprite</code> para animaciones frame a frame, perfectas para personajes o efectos.</p>
+<h3>6.1. Creación</h3>
+<p>Desde un array de texturas o un spritesheet.</p>
+<pre><code class="language-javascript">const frames = [];
+for (let i = 1; i <= 10; i++) {
+  frames.push(Texture.from(`frame${i}.png`));
+}
+const animatedSprite = new AnimatedSprite(frames);
+app.stage.addChild(animatedSprite);
+animatedSprite.play();
+</code></pre>
+<p>Desde un spritesheet:</p>
+<pre><code class="language-javascript">const sheet = await Assets.load('spritesheet.json');
+const anim = new AnimatedSprite(sheet.animations['walk']); // 'walk' es el nombre de la animación
+</code></pre>
+<h3>6.2. Propiedades específicas</h3>
+<ul>
+<li><strong>animationSpeed</strong> (number, por defecto: 1): Velocidad (por ejemplo, 0.5 para más lento).</li>
+<li><strong>loop</strong> (boolean, por defecto: true): Repite la animación.</li>
+<li><strong>autoUpdate</strong> (boolean, por defecto: true): Actualiza automáticamente con el ticker.</li>
+<li><strong>currentFrame</strong> (number): Frame actual.</li>
+<li><strong>playing</strong> (boolean): Indica si se está reproduciendo.</li>
+<li><strong>onComplete</strong> / <strong>onLoop</strong> / <strong>onFrameChange</strong>: Callbacks para eventos.</li>
+</ul>
+<h3>6.3. Métodos</h3>
+<ul>
+<li><strong>play()</strong>: Inicia la animación.</li>
+<li><strong>stop()</strong>: Detiene la animación.</li>
+<li><strong>gotoAndPlay(frame)</strong> / <strong>gotoAndStop(frame)</strong>: Salta a un frame y reproduce o detiene.</li>
+<li><strong>update(delta)</strong>: Actualiza manualmente (si autoUpdate es false).</li>
+</ul>
+<p>Ejemplo completo:</p>
+<pre><code class="language-javascript">animatedSprite.animationSpeed = 0.2;
+animatedSprite.loop = false;
+animatedSprite.onComplete = () => console.log('Animación terminada');
+animatedSprite.play();
+</code></pre>
+<h2>7. Mejores prácticas y optimizaciones</h2>
+<ul>
+<li><strong>Gestión de texturas</strong>: Aprovecha <code class='language-html'>Assets</code> para el caché y cargas asíncronas. Evita recargar la misma imagen una y otra vez.</li>
+<li><strong>Rendimiento</strong>: Para manejar muchos sprites, considera <code class='language-html'>PIXI.ParticleContainer</code> en vez de añadirlos directamente al stage. Activa <code class='language-html'>cullable</code> para ignorar objetos fuera de pantalla.</li>
+<li><strong>Spritesheets</strong>: Usa siempre spritesheets en animaciones para minimizar peticiones HTTP y mejorar la velocidad.</li>
+<li><strong>Destrucción</strong>: No olvides destruir sprites innecesarios para liberar memoria: <code class='language-html'>sprite.destroy({ texture: true, children: true })</code>.</li>
+<li><strong>Escalabilidad</strong>: Emplea <code class='language-html'>anchor</code> para alinear sprites correctamente en distintas resoluciones.</li>
+<li><strong>Herramientas</strong>: TexturePacker es genial para crear spritesheets optimizados.</li>
+<li><strong>Errores comunes</strong>: No agregar al stage, olvidar esperar la carga de texturas (usa await) o ignorar las proporciones al escalar.</li>
+</ul>
+<h2>8. Ejercicio práctico</h2>
+<p>Prueba a crear un sprite de un personaje, hazlo interactivo (por ejemplo, que rote al clicar) y añade una animación de caminata con un spritesheet. Juega con tint y scale para ver los efectos. ¡Experimenta para afianzar lo aprendido!</p>
+<p>Para más información, consulta la documentación oficial de PixiJS v8. ¡Sigue practicando para dominar los sprites!</p>
+<h2>Referencias bibliográficas que apoyan el contenido</h2>
+<blockquote>
+<p>WIP Revisando fuentes</p>
+</blockquote>
+<p>Estas fuentes confirman y amplían los conceptos explicados, como la creación con Assets, propiedades de transformación y animaciones.</p>
+<ul>
+<li>Documentación oficial de PixiJS v8.13.2: <a href="https://pixijs.download/v8.13.2/docs/index.html">https://pixijs.download/v8.13.2/docs/index.html</a></li>
+<li>Guía de sprites en PixiJS v8: <a href="https://pixijs.com/8.x/guides/components/scene-objects/sprite">https://pixijs.com/8.x/guides/components/scene-objects/sprite</a></li>
+<li>Tutorial en vídeo: Sprites - Pixi.js Tutorial for Absolute Beginners (Wael Yasmina): <a href="https://www.youtube.com/watch?v=gcy3JydsKPg">https://www.youtube.com/watch?v=gcy3JydsKPg</a></li>
+<li>Tutorial en vídeo: PixiJS Part 5: Sprites (Dower Chin): <a href="https://www.youtube.com/watch?v=99O671QWL9o">https://www.youtube.com/watch?v=99O671QWL9o</a></li>
+<li>Tutorial en vídeo: PixiJS Part 8: Animated Spritesheets (Dower Chin): <a href="https://www.youtube.com/watch?v=FjiQSwohBVs">https://www.youtube.com/watch?v=FjiQSwohBVs</a></li>
+</ul>
+<h2>Referencias bibliográficas que refutan el contenido</h2>
+<blockquote>
+<p>WIP Revisando fuentes</p>
+</blockquote>
+<p>Estas fuentes destacan limitaciones o problemas que contradicen afirmaciones como el "alto rendimiento" para grandes cantidades de sprites sin optimizaciones adicionales, o el rendimiento en móviles.</p>
+<ul>
+<li>Discusión sobre creación y destrucción de muchos sprites (limitaciones en rendimiento y GC): <a href="https://www.html5gamedevs.com/topic/43650-creating-and-destroying-lots-of-sprites/">https://www.html5gamedevs.com/topic/43650-creating-and-destroying-lots-of-sprites/</a></li>
+<li>Pregunta en Stack Overflow sobre rendimiento lento en móviles comparado con CSS: <a href="https://stackoverflow.com/questions/49119066/pixijs-very-slow-in-mobile-compared-to-css">https://stackoverflow.com/questions/49119066/pixijs-very-slow-in-mobile-compared-to-css</a></li>
+<li>Issue en GitHub sobre límite máximo de sprites en batch (16384 por limitaciones de WebGL): <a href="https://github.com/pixijs/pixi.js/issues/91">https://github.com/pixijs/pixi.js/issues/91</a></li>
+</ul>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
 <h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
 <p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
 <ul>
@@ -151,23 +375,24 @@ app.stage.addChild(animacion);
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>undefined</li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Jun 10 2025 23:14:04 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Mon May 27 2024 15:38:00 GMT+0200 (hora de verano de Europa central)</li><li><b> Versión Documento: </b>0.4.9</li></ul><!--(iaStatus: 8
-iaStatus_Model: gpt-3.5-turbo, llama3-70b-8192
+<ul><li><b>Información IA: </b>undefined</li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sat Oct 04 2025 05:07:04 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Mon May 27 2024 15:38:00 GMT+0200 (hora de verano de Europa central)</li><li><b> Versión Documento: </b>0.4.10</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
 a11y: 0
 checked: 0
 lang: ES
 translations: null
 created: 2024-04-07T07:46:24.979Z
-modified: 2025-06-10T21:14:04.077Z
+modified: 2025-10-04T03:07:04.660Z
 supervisado: 2024-05-27T13:38:00.872Z
 ACCION: null
 ver_major: 0
 ver_minor: 4
-ver_rev: 9
+ver_rev: 10
 nav_primary: null
 nav_secondary: null
 tags: null
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+MOS_TopImg_Video: CursoPixiJSSprites.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoPixiJSSprites.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
