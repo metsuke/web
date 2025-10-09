@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Curso sobre Patrones y Calidad del Software 🔴②</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_21f22e00084c6932dd97ea0d27c492d4_MD5.jpg" alt="Curso Patrones y Calidad del Softwarre"></p>
+<p><a class='internal' href='./kb.html'>KB</a></p>
+<blockquote>
+<p>WIP Validando contenido y fuentes</p>
+</blockquote>
+<p>En este curso trataremos las cuestiones relacionadas con patrones de diseño y calidad del software. Comenzaremos con las bases e iremos avanzando hacia una serie de prompts de contexto que nos sirvan en nuestro desarrollo en el dia a dia.</p>
+<h2>Módulo 1: Introducción a los Patrones y la Calidad de Software (Semanas 1-2)</h2>
+<p>El objetivo principal aquí es sentar las bases, explicando por qué surgen los patrones y cómo se relacionan con la calidad del software. Es como el punto de partida para que todo el mundo entienda el "porqué" antes de entrar en detalles técnicos.</p>
+<h3>Unidad 1.1: Conceptos Básicos de Patrones de Software</h3>
+<p>Definimos un patrón como una solución probada y reutilizable para problemas comunes en el diseño de software. Hablamos de su historia, desde las ideas de Christopher Alexander en arquitectura hasta su adaptación al software por el "Gang of Four" (GoF). Clasificamos los patrones en tipos: de diseño, arquitectónicos, idiomáticos y, por supuesto, los antipatrones (esos errores que todos cometemos alguna vez). Por ejemplo, comparamos el patrón Singleton con el antipatrón "God Object", que puede convertir tu código en un lío ingobernable.</p>
+<h3>Unidad 1.2: Fundamentos de la Calidad de Software</h3>
+<p>Exploramos los atributos clave de calidad según el estándar ISO 25010, como la funcionalidad, el rendimiento, la compatibilidad, la usabilidad, la fiabilidad, la seguridad, la mantenibilidad y la portabilidad. También vemos métricas prácticas, como la complejidad ciclomática, el acoplamiento, la cohesión, las líneas de código (LOC) o la deuda técnica. Tocamos modelos como CMMI o la evolución de ISO/IEC 9126.</p>
+<h3>Unidad 1.3: La Relación entre Patrones y Calidad</h3>
+<p>Aquí conectamos los puntos: cómo los patrones ayudan a mejorar la calidad al reducir la complejidad y promover principios como SOLID (responsabilidad única, abierto-cerrado, etc.). Analizamos casos reales, como la refactorización de sistemas legacy donde un patrón bien aplicado salva el día.</p>
+<p><strong>Actividades sugeridas</strong>: Una discusión en foro sobre un antipatrón que hayas visto en tu experiencia; lectura inicial de los capítulos 1-2 del libro del GoF o secciones de "Clean Code" de Robert C. Martin.</p>
+<h2>Módulo 2: Patrones de Diseño Creacionales (Semanas 3-4)</h2>
+<p>En este módulo nos centramos en patrones que facilitan la creación de objetos, evaluando cómo impactan en la flexibilidad y reutilización del código. Es ideal para entender cómo evitar código rígido desde el principio.</p>
+<h3>Unidad 2.1: Singleton y Factory Method</h3>
+<p>El Singleton asegura una única instancia de una clase, con pros y contras (por ejemplo, problemas en entornos multihilo). El Factory Method abstrae la creación de objetos, con ejemplos en lenguajes como Java o C#. En términos de calidad, estos patrones centralizan la lógica y mejoran la mantenibilidad.</p>
+<h3>Unidad 2.2: Abstract Factory y Builder</h3>
+<p>Abstract Factory para familias de objetos relacionados, y Builder para construir objetos complejos paso a paso (piensa en interfaces fluidas). Ayudan a reducir el acoplamiento y simplifican las métricas de complejidad.</p>
+<h3>Unidad 2.3: Prototype y Otros Patrones Creacionales</h3>
+<p>Prototype para clonar objetos y optimizar eficiencia. Analizamos su efecto en el rendimiento y el uso de memoria.</p>
+<p><strong>Actividades sugeridas</strong>: Implementa un Factory en tu lenguaje favorito y compara la deuda técnica antes y después. Lecturas: Capítulos 3-5 del GoF o "Head First Design Patterns" para ejemplos visuales y divertidos.</p>
+<h2>Módulo 3: Patrones de Diseño Estructurales (Semanas 5-6)</h2>
+<p>Aquí hablamos de cómo componer clases y objetos para lograr escalabilidad y fácil mantenimiento. Son patrones que ayudan a que tu código crezca sin romperse.</p>
+<h3>Unidad 3.1: Adapter y Bridge</h3>
+<p>Adapter para interfaces incompatibles, y Bridge para separar abstracción de implementación. Mejoran la portabilidad y la extensibilidad.</p>
+<h3>Unidad 3.2: Composite y Decorator</h3>
+<p>Composite trata estructuras como árboles de forma uniforme, y Decorator añade responsabilidades dinámicamente. Promueven el principio abierto-cerrado y una buena cohesión.</p>
+<h3>Unidad 3.3: Facade, Flyweight y Proxy</h3>
+<p>Facade simplifica subsistemas complejos, Flyweight optimiza memoria con objetos compartidos, y Proxy controla accesos (como carga perezosa). Impactan positivamente en rendimiento y seguridad.</p>
+<p><strong>Actividades sugeridas</strong>: Refactoriza un código antiguo usando Adapter y evalúa métricas con herramientas como SonarQube. Lecturas: Capítulos 6-8 del GoF o "Refactoring" de Martin Fowler.</p>
+<h2>Módulo 4: Patrones de Diseño Comportamentales (Semanas 7-8)</h2>
+<p>Nos adentramos en patrones para la comunicación entre objetos, con énfasis en fiabilidad y usabilidad. Estos son geniales para sistemas dinámicos.</p>
+<h3>Unidad 4.1: Chain of Responsibility y Command</h3>
+<p>Chain pasa solicitudes por una cadena, y Command encapsula solicitudes como objetos (útil para undo/redo). Aumentan la flexibilidad y facilitan las pruebas.</p>
+<h3>Unidad 4.2: Iterator, Mediator y Memento</h3>
+<p>Iterator para acceso secuencial sin exponer estructuras, Mediator para centralizar comunicaciones complejas, y Memento para capturar estados. Reducen acoplamiento y mejoran fiabilidad.</p>
+<h3>Unidad 4.3: Observer, State, Strategy, Template Method y Visitor</h3>
+<p>Observer para notificaciones (estilo pub/sub), State para comportamientos por estado, Strategy para algoritmos intercambiables, Template Method para algoritmos con pasos variables, y Visitor para operaciones sin modificar estructuras. Enfocados en usabilidad y mantenibilidad.</p>
+<p><strong>Actividades sugeridas</strong>: Crea un sistema de notificaciones con Observer y haz pruebas unitarias para medir cobertura. Lecturas: Capítulos 9-11 del GoF o "Patterns of Enterprise Application Architecture" de Fowler.</p>
+<h2>Módulo 5: Patrones Arquitectónicos y de Integración (Semanas 9-10)</h2>
+<p>Ampliamos a patrones a nivel de sistema entero, evaluando calidad en escalabilidad y rendimiento. Perfecto para proyectos grandes.</p>
+<h3>Unidad 5.1: MVC, MVP y MVVM</h3>
+<p>Model-View-Controller y sus variantes. Separan preocupaciones para una mejor mantenibilidad.</p>
+<h3>Unidad 5.2: Microservices, Layered Architecture y Event-Driven</h3>
+<p>Microservices para servicios independientes, Layered para capas (presentación, negocio, datos), y Event-Driven para comunicaciones asíncronas. Métricas de escalabilidad y manejo de fallos.</p>
+<h3>Unidad 5.3: Repository, Unit of Work y CQRS</h3>
+<p>Patrones de persistencia y segregación de comandos/consultas. Optimizan rendimiento y consistencia.</p>
+<p><strong>Actividades sugeridas</strong>: Diseña una arquitectura de microservices y simula cargas para medir calidad. Lecturas: "Building Microservices" de Sam Newman o "Domain-Driven Design" de Eric Evans.</p>
+<h2>Módulo 6: Calidad de Software Avanzada y Herramientas (Semanas 11-12)</h2>
+<p>Profundizamos en prácticas y herramientas para integrar patrones con calidad real.</p>
+<h3>Unidad 6.1: Métricas y Análisis de Calidad</h3>
+<p>Herramientas como SonarQube, Checkstyle o PMD. Análisis estático/dinámico, olores de código y refactorización.</p>
+<h3>Unidad 6.2: Pruebas y Aseguramiento de Calidad</h3>
+<p>Tipos de pruebas (unitarias, integración, sistema) y enfoques como TDD/BDD. Integración con patrones, como mocks en Strategy.</p>
+<h3>Unidad 6.3: DevOps y Calidad Continua</h3>
+<p>CI/CD, monitoreo (Prometheus, ELK Stack). Calidad en metodologías ágiles: revisiones de código, programación en pares.</p>
+<p><strong>Actividades sugeridas</strong>: Proyecto grupal aplicando patrones en una app y midiendo calidad. Lecturas: "Continuous Delivery" de Jez Humble o "The DevOps Handbook".</p>
+<h2>Módulo 7: Temas Avanzados, Casos de Estudio y Proyecto Final (Semanas 13-16)</h2>
+<p>Aplicamos todo de forma integrada y exploramos tendencias actuales.</p>
+<h3>Unidad 7.1: Antipatrones y Mejores Prácticas</h3>
+<p>Identificamos y corregimos antipatrones comunes, como el "Spaghetti Code".</p>
+<h3>Unidad 7.2: Patrones en Contextos Modernos</h3>
+<p>Patrones cloud-native, en IA/ML o de seguridad (como Zero Trust). Calidad en software distribuido: resiliencia y observabilidad.</p>
+<h3>Unidad 7.3: Casos de Estudio Reales</h3>
+<p>Análisis de proyectos open-source, como Spring Framework o Netflix OSS.</p>
+<p><strong>Proyecto Final</strong>: Desarrolla un sistema aplicando al menos cinco patrones, con informe de calidad (métricas, pruebas). Actividades: Presentaciones y revisiones entre pares. Lecturas: "Release It!" de Michael T. Nygård o artículos recientes de IEEE Software.</p>
+<p><strong>Evaluación General</strong>: 30% exámenes teóricos, 40% proyectos prácticos, 20% actividades y 10% participación.<br>
+<strong>Requisitos Previos</strong>: Conocimientos básicos de programación orientada a objetos (por ejemplo, en Java o Python) y desarrollo de software.<br>
+<strong>Recursos Adicionales</strong>: GitHub para ejemplos prácticos, o plataformas como Coursera para vídeos complementarios. Esta estructura es flexible y se puede ajustar al nivel de los participantes.</p>
+<h2>Referencias Bibliográficas que Apoyan el Contenido</h2>
+<blockquote>
+<p>WIP Validando Fuentes</p>
+</blockquote>
+<p>Estas referencias respaldan los conceptos de patrones de diseño y calidad de software, promoviendo su uso para mejorar la mantenibilidad y eficiencia. He verificado su existencia y vigencia actual (a fecha de octubre de 2025), priorizando enlaces oficiales o de editores.</p>
+<ul>
+<li>Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>. Addison-Wesley. Enlace: <a href="https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612">https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612</a>.</li>
+<li>Martin, R. C. (2008). <em>Clean Code: A Handbook of Agile Software Craftsmanship</em>. Prentice Hall. Enlace: <a href="https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882</a> (versión corregida y vigente).</li>
+<li>Freeman, E., Robson, E., Bates, B., & Sierra, K. (2004). <em>Head First Design Patterns</em>. O'Reilly Media. Enlace: <a href="https://www.oreilly.com/library/view/head-first-design/9781492077992/">https://www.oreilly.com/library/view/head-first-design/9781492077992/</a>.</li>
+<li>Fowler, M. (1999). <em>Refactoring: Improving the Design of Existing Code</em>. Addison-Wesley. Enlace: <a href="https://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672">https://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672</a>.</li>
+<li>Fowler, M. (2002). <em>Patterns of Enterprise Application Architecture</em>. Addison-Wesley. Enlace: <a href="https://www.amazon.com/Patterns-Enterprise-Application-Architecture-Martin/dp/0321127420">https://www.amazon.com/Patterns-Enterprise-Application-Architecture-Martin/dp/0321127420</a>.</li>
+<li>Newman, S. (2015). <em>Building Microservices: Designing Fine-Grained Systems</em>. O'Reilly Media. Enlace: <a href="https://www.oreilly.com/library/view/building-microservices/9781491950340/">https://www.oreilly.com/library/view/building-microservices/9781491950340/</a>.</li>
+<li>Evans, E. (2003). <em>Domain-Driven Design: Tackling Complexity in the Heart of Software</em>. Addison-Wesley. Enlace: <a href="https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215">https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215</a>.</li>
+<li>Humble, J., & Farley, D. (2010). <em>Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation</em>. Addison-Wesley. Enlace: <a href="https://www.oreilly.com/library/view/continuous-delivery-reliable/9780321670250/">https://www.oreilly.com/library/view/continuous-delivery-reliable/9780321670250/</a>.</li>
+<li>Kim, G., Humble, J., Debois, P., & Willis, J. (2016). <em>The DevOps Handbook: How to Create World-Class Agility, Reliability, and Security in Technology Organizations</em>. IT Revolution Press. Enlace: <a href="https://itrevolution.com/product/the-devops-handbook-second-edition/">https://itrevolution.com/product/the-devops-handbook-second-edition/</a> (edición actualizada).</li>
+<li>Nygård, M. T. (2018). <em>Release It!: Design and Deploy Production-Ready Software</em> (2ª ed.). Pragmatic Bookshelf. Enlace: <a href="https://pragprog.com/titles/mnee2/release-it-second-edition/">https://pragprog.com/titles/mnee2/release-it-second-edition/</a>.</li>
+<li>ISO/IEC 25010:2011. <em>Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models</em>. Enlace: <a href="https://www.iso.org/standard/35733.html">https://www.iso.org/standard/35733.html</a>.</li>
+<li>Artículo: "Software Design Patterns and Architecture Patterns – A Study Explored" (2023). IEEE Xplore. Enlace: <a href="https://ieeexplore.ieee.org/document/10073279/">https://ieeexplore.ieee.org/document/10073279/</a>.</li>
+<li>Vídeo: "Strategy Pattern - Design Patterns - Programming in Spanish" (2025). Canal: Programación en español. Enlace: <a href="https://www.youtube.com/watch?v=j0I_hzEhfTE">https://www.youtube.com/watch?v=j0I_hzEhfTE</a>.</li>
+</ul>
+<h2>Referencias Bibliográficas que Refutan el Contenido</h2>
+<blockquote>
+<p>WIP Validando Fuentes</p>
+</blockquote>
+<p>Estas fuentes critican aspectos como el abuso de patrones, argumentando que pueden añadir complejidad innecesaria, ralentizar el desarrollo o no ser siempre óptimos. He comprobado su validez y actualidad, enfocándome en críticas científicas o prácticas reales.</p>
+<ul>
+<li>Artículo: "Criticism of patterns" (vigente en 2025). Refactoring.Guru. Enlace: <a href="https://refactoring.guru/design-patterns/criticism">https://refactoring.guru/design-patterns/criticism</a> (critica soluciones ineficientes y dogmatismo).</li>
+<li>Artículo: "Rethinking Design Patterns" (2007, aún relevante). Coding Horror. Enlace: <a href="https://blog.codinghorror.com/rethinking-design-patterns/">https://blog.codinghorror.com/rethinking-design-patterns/</a> (advierte contra la complejidad añadida).</li>
+<li>Wiki: "Design Patterns Considered Harmful" (vigente). C2 Wiki. Enlace: <a href="https://wiki.c2.com/?DesignPatternsConsideredHarmful">https://wiki.c2.com/?DesignPatternsConsideredHarmful</a> (discute flexibilidad excesiva y dificultad de mantenimiento).</li>
+<li>Artículo: "Why Most Design Patterns Are Overused and Misunderstood" (2024). LinkedIn. Enlace: <a href="https://www.linkedin.com/pulse/why-most-design-patterns-overused-misunderstood-carlos-santana-rold%C3%A1n-txscf">https://www.linkedin.com/pulse/why-most-design-patterns-overused-misunderstood-carlos-santana-rold%C3%A1n-txscf</a> (habla de optimización prematura).</li>
+<li>Artículo: "Design patterns feel completely obsolete now" (2018, discusión vigente). Hacker News. Enlace: <a href="https://news.ycombinator.com/item?id=16351750">https://news.ycombinator.com/item?id=16351750</a> (critica su obsolescencia con lenguajes funcionales).</li>
+<li>Artículo: "Our Over Obsession With Patterns" (vigente). Dan Goslen Blog. Enlace: <a href="https://dangoslen.me/blog/our-obsession-with-patterns/">https://dangoslen.me/blog/our-obsession-with-patterns/</a> (advierte contra el uso excesivo como solución universal).</li>
+<li>Artículo: "Shortcomings of ISO 25010" (vigente). arc42 Quality Model. Enlace: <a href="https://quality.arc42.org/articles/iso-25010-shortcomings">https://quality.arc42.org/articles/iso-25010-shortcomings</a> (critica la falta de pragmatismo en modelos de calidad como ISO 25010).</li>
+</ul>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Thu Oct 09 2025 13:08:26 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.0.2</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-10-09T06:17:58.164Z
+modified: 2025-10-09T11:08:26.933Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: '0'
+ver_rev: 2
+nav_primary: []
+nav_secondary: []
+tags: []
+MOS_TopImg_Video: PatronesCalidadSoftware.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/PatronesCalidadSoftware.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        mermaid.initialize({ startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+            
+    </script>
+
+</body>
+
+</html>
