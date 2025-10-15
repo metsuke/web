@@ -55,6 +55,12 @@
 <p>Este planteamiento está vivo, pero es algo que he reflexionado  bastante, ni quiero dejar en la estacada a los que colaboran con el software libre construyendo una base sólida que evita que los desarrolladores se enquisten en monopolios ni quiero someter el proyecto a la falta de profesionalidad real del desarrollo al estilo "do it yourself". En el equilibrio y la variedad de opciones, está el punto medio.</p>
 <h2>MetsuOS System Core</h2>
 <p>Este es el núcleo del sistema operativo, incluye el sistema operativo como tal sobre el que trabaja una libreria sobre la que se asientan el resto de elementos.  Esto permite que MetsuOS, a futuro, pueda correr tanto como sistema operativo nativo o como algo asentado sobre la versione de la mosLib correspondiente a nuestro sistema.</p>
+<pre class='mermaid'>
+graph LR
+    A[MetsuOS] --> B[mosLib]
+    B --> C[mosSystemCore]
+    C --> D[mosSystemUI]
+</pre>
 <div class="columns"><div class="column">
 <p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_44c1f46d745c51f385f88f004bec044a_MD5.jpg" alt="MetsuOS Icon"></p>
 <h3>MetsuOS: El Sistema Operativo que Libera tu Potencial</h3>
@@ -75,24 +81,50 @@
 <p><em>mosSystemCore : Unificación sin fronteras. Eficiencia en cualquier entorno.</em></p>
 </div><div class="column">
 <p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_ff83acc613b0ecaf57d45bf283768012_MD5.jpg" alt="mosSystemUI"></p>
-<h3>## mosSystemUI: La Interfaz que Conecta tu Visión con la Realidad</h3>
+<h3>mosSystemUI: La Interfaz que Conecta tu Visión con la Realidad</h3>
 <p>mosSystemUI es el lienzo vivo de MetsuOS, una interfaz de usuario intuitiva y adaptable que transforma la complejidad subyacente del sistema en una experiencia visual y táctil accesible para todos. Construida sobre las bases sólidas de mosSystemCore, esta capa proporciona elementos de UI unificados —como paneles dinámicos, menús contextuales y dashboards personalizables— que se renderizan de manera consistente en cualquier entorno host, desde entornos nativos GNU/Linux hasta aplicaciones en Windows o macOS.</p>
 <p>Con mosSystemUI, la accesibilidad no es un añadido, sino el núcleo: integra herramientas como lectores de pantalla integrados, navegación por gestos y modos de alto contraste que se adaptan automáticamente al usuario, garantizando que creadores de videojuegos y jugadores por igual puedan interactuar sin barreras. Desde la gestión de tareas hasta la supervisión de automatizaciones, mosSystemUI orquesta la armonía entre el usuario y el sistema, haciendo que lo abstracto sea tangible y lo técnico, humano.</p>
 <p>mosSystemUI: Interfaz sin límites. Donde la accesibilidad encuentra la innovación.</p>
 </div></div>
 <h2>MetsuOS Base System: El Pilar Accesible de la Interfaz Unificada</h2>
-<p>MetsuOS Base System es la base estructural y accesible que se construye directamente sobre mosSystemUI, integrando módulos clave como mosA11YChecker, mosAutomationManager, mosSecurityManager, mosTaskManager y mosAppManager en un núcleo cohesivo y dinámico. Este sistema fundamental transforma la interfaz intuitiva de mosSystemUI en un puente hacia la inclusión, asegurando una verificación constante de accesibilidad para una experiencia equitativa, automatizando procesos repetitivos para liberar el potencial creativo, reforzando la seguridad con capas robustas, gestionando tareas con precisión y coordinando aplicaciones como mosGameMaker o mosRetroLauncher con fluidez en cualquier entorno. En el corazón de MetsuOS, Base System encarna la esencia de un sistema sin barreras, donde la accesibilidad impulsa la innovación y convierte la complejidad técnica en un espacio humano de empoderamiento para creadores y usuarios.</p>
-<p>MetsuOS Base System: Fundación accesible. Innovación ilimitada.</p>
+<h2>MetsuOS Base System Icon</h2>
+<h2>MetsuOS Base System: El Pilar Accesible de la Interfaz Unificada</h2>
+<p>MetsuOS Base System es la base estructural y accesible que se edifica directamente sobre mosSystemUI, integrando una capa intermedia de módulos clave como mosA11YManager, mosAutomationManager, mosBrainManager, mosIAManager, mosLegalManager, mosNetManager, mosRTManager, mosSecurityManager, y mosTaskManager en un núcleo cohesivo y dinámico.</p>
+<p>Este sistema fundamental transforma la interfaz intuitiva de mosSystemUI en un puente hacia la inclusión, asegurando una verificación constante de accesibilidad a través de herramientas como mosA11YTool, automatizando procesos repetitivos con mosAutomationManager, reforzando la seguridad con mosSecurityManager, gestionando tareas con precisión mediante mosTaskManager, y facilitando un ecosistema de aplicaciones coordinado por mosAppEcosystem, que integra herramientas como mosGameTool para mosGameMaker y mosRetroLauncher en cualquier entorno.</p>
+<p>En el corazón de MetsuOS, Base System encarna la esencia de un sistema sin barreras, donde la accesibilidad impulsa la innovación y convierte la complejidad técnica en un espacio humano de empoderamiento para creadores y usuarios.</p>
+<p>Los módulos Manager integran funcionalidad y configuración, y mediante mosBrainManager aplican la metodología de validación de contenidos de MetsuOS, persiguiendo el máximo rigor científico con un enfoque adaptativo que evalúa credibilidad y solidez, mientras neutralizan dogmas "científicos", religiosos e ideológicos, buscando ofrecer al usuario información validada, neutral y contextualizada.</p>
+<p>MetsuOS Base System: Accesibilidad ilimitada. Innovación sin fronteras.</p>
+<pre class='mermaid'>
+graph LR
+	D[mosSystemUI]
+    D --> E[mosA11YManager]
+    D --> F[mosAutomationManager]
+    D --> G[mosBrainManager]
+    D --> H[mosIAManager]
+    D --> I[mosLegalManager]
+    D --> J[mosNetManager]
+    D --> K[mosRTManager]
+    D --> L[mosSecurityManager]
+    D --> M[mosTaskManager]
+</pre>
 <div class="columns"><div class="column">
-<h3>mosA11YChecker</h3>
+<h3>mosA11YManager</h3>
 </div><div class="column">
 <h3>mosAutomationManager</h3>
+</div><div class="column">
+<h3>mosBrainManager</h3>
+</div><div class="column">
+<h3>mosIAManager</h3>
+</div><div class="column">
+<h3>mosLegalManager</h3>
+</div><div class="column">
+<h3>mosNetManager</h3>
+</div><div class="column">
+<h3>mosRTManager</h3>
 </div><div class="column">
 <h3>mosSecutityManager</h3>
 </div><div class="column">
 <h3>mosTaskManager</h3>
-</div><div class="column">
-<h3>mosAppManager</h3>
 </div></div>
 <h2>MetsuOS in a Nutshell</h2>
 <pre class='mermaid'>
@@ -100,20 +132,34 @@ graph LR
     A[MetsuOS] --> B[mosLib]
     B --> C[mosSystemCore]
     C --> D[mosSystemUI]
-    D --> E[mosA11YChecker]
+    D --> E[mosA11YManager]
     D --> F[mosAutomationManager]
-    D --> G[mosSecutityManager]
-    D --> H[mosTaskManager]
-    D --> I[mosAppManager]
-    I --> J[mosBrainManager]
-    I --> K[mosDevManager]
-    K --> L[mosGitSync]
-    I --> M[mosGameMaker]
-    M --> N[mosImageConverter]
-    M --> O[mosRetroLauncher]
-    I --> P[mosGameManager]
-    I --> Q[mosIAManager]
-    Q --> R[mosIAPromtManager]
+    D --> G[mosBrainManager]
+    D --> H[mosIAManager]
+    D --> I[mosLegalManager]
+    D --> J[mosNetManager]
+    D --> K[mosRTManager]
+    D --> L[mosSecurityManager]
+    D --> M[mosTaskManager]
+    E --> N[mosAppEcosystem]
+    F --> N[mosAppEcosystem]
+    G --> N[mosAppEcosystem]
+    H --> N[mosAppEcosystem]
+    I --> N[mosAppEcosystem]
+    J --> N[mosAppEcosystem]
+    K --> N[mosAppEcosystem]
+    L --> N[mosAppEcosystem]
+    M --> N[mosAppEcosystem]
+    N --> O[mosA11YTool]
+    N --> P[mosBrainTool]
+    N --> Q[mosDevTool]
+    Q --> R[mosGitSync]
+    N --> S[mosGameTool]
+    S --> T[mosImageConverter]
+    S --> U[mosRetroLauncher]
+    N --> V[mosGameMaker]    
+    N --> W[mosIATool]
+    W --> X[mosIAPromtManager]
 </pre>
 <h2>One More Thing</h2>
 <p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
@@ -174,7 +220,7 @@ graph LR
 <li><a class='internal' href='./publicbrain/sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Oct 14 2025 23:39:50 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.46</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Wed Oct 15 2025 07:25:05 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.48</li></ul><!--(iaStatus: 8
 iaStatus_Model: Raúl Carrillo Garrido aka metsuke
 iaStatus_Generado: H
 iaStatus_Supervisado: '-'
@@ -184,12 +230,12 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-09-30T10:16:07.557Z
-modified: 2025-10-14T21:39:50.661Z
+modified: 2025-10-15T05:25:05.211Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 3
-ver_rev: 46
+ver_rev: 48
 nav_primary: null
 nav_secondary: null
 tags: null
