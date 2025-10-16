@@ -155,9 +155,9 @@ graph LR
     N --> Q[mosDevTool]
     Q --> R[mosGitSync]
     N --> S[mosGameTool]
-    S --> T[mosImageConverter]
-    S --> U[mosRetroLauncher]
-    N --> V[mosGameMaker]    
+    V --> T[mosImageConverter]
+    V --> U[mosRetroLauncher]
+    S --> V[mosGameMaker]    
     N --> W[mosIATool]
     W --> X[mosIAPromtManager]
 </pre>
@@ -220,7 +220,7 @@ graph LR
 <li><a class='internal' href='./publicbrain/sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Wed Oct 15 2025 07:25:05 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.48</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Wed Oct 15 2025 14:32:53 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.49</li></ul><!--(iaStatus: 8
 iaStatus_Model: Raúl Carrillo Garrido aka metsuke
 iaStatus_Generado: H
 iaStatus_Supervisado: '-'
@@ -230,12 +230,12 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-09-30T10:16:07.557Z
-modified: 2025-10-15T05:25:05.211Z
+modified: 2025-10-15T12:32:53.858Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 3
-ver_rev: 48
+ver_rev: 49
 nav_primary: null
 nav_secondary: null
 tags: null
@@ -261,15 +261,68 @@ MOS_TopImg_Video: MetsuOSBaseIcon.mp4
 
     <!-- mermaid -->
     <script type="module">
-        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
-        mermaid.initialize({ startOnLoad: true,theme:'base'
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: false,startOnLoad: true,theme:'base'
             ,themeVariables: { 
                 primaryColor: '#000000'
                 ,primaryTextColor: '#ffffff'
             }
         });
+        function optimizeMermaidSVG() {
+            const mermaids = document.querySelectorAll('.mermaid');
             
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: false
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
     </script>
 
 </body>

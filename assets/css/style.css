@@ -153,7 +153,20 @@ pre:not(:has(code)) {
 pre.mermaid {
   background-color: white;
   color:#023b8b;
-  border-top: 2px solid #b10505;
+  border-top: 8px solid #b10505;
+  height: auto !important;
+  max-height: none !important;
+  width:100%;
+  overflow: visible;
+  display: block;
+}
+
+pre.mermaid svg {
+  width:100%;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible;
+  display: block;
 }
 
 code {
