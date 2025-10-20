@@ -1,16 +1,11 @@
-/* Importamos una fuente pixelada para emular Shining Force II */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 /* Estilos generales */
 * {
-    font-family: 'Press Start 2P', monospace; /* Fuente pixelada para estilo retro */
     box-sizing: border-box;
     transition: all 0.2s ease; /* Transiciones más rápidas para un toque retro */
 }
 
 /* Cuerpo */
 body {
-    font-family: 'Press Start 2P', monospace;
     background-color: #1a1a3d; /* Azul oscuro de fondo, típico de pantallas de Mega Drive */
     color: #ffffff; /* Blanco para texto, como en diálogos del juego */
     line-height: 1.6;
@@ -37,7 +32,6 @@ header .logo {
 }
 
 header h1 {
-    font-size: 1.5rem; /* Tamaño ajustado para pantallas pequeñas */
     color: #ffd700; /* Dorado para títulos, inspirado en el logo del juego */
     text-shadow: 2px 2px #000000; /* Sombra pixelada */
     background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
@@ -46,7 +40,6 @@ header h1 {
 }
 
 header h2 {
-    font-size: 1rem;
     color: #ffffff; /* Blanco para subtítulos */
     text-shadow: 1px 1px #000000;
     background-color: rgba(0, 0, 0, 0.5);
@@ -163,12 +156,10 @@ pre {
     border: 4px solid #00ff00; /* Borde verde, como en pantallas de stats */
     padding: 10px;
     color: #ffffff;
-    font-family: 'Press Start 2P', monospace;
     overflow-x: auto;
 }
 
 code {
-    font-family: 'Press Start 2P', monospace;
     background-color: #000000;
     color: #00ff00; /* Verde retro para código inline */
     padding: 2px 5px;
@@ -198,7 +189,6 @@ pre:has(code.language-html), code.language-html {
 
 /* Citas */
 blockquote {
-    font-style: normal; /* Sin cursiva, para mantener el estilo pixelado */
     border-left: 4px solid #ff4040; /* Rojo para citas */
     padding-left: 10px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -212,14 +202,6 @@ hr {
 
 /* Media query para móviles */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 1.2rem;
-    }
-
-    header h2 {
-        font-size: 0.9rem;
-    }
-
     nav {
         display: flex;
         flex-wrap: wrap;
@@ -229,7 +211,6 @@ hr {
 
     nav a {
         padding: 8px 12px;
-        font-size: 0.8rem;
     }
 
     main {
