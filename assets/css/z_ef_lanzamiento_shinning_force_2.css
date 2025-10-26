@@ -24,9 +24,9 @@ header {
 }
 
 header .logo {
-    background-color: #000000; /* Fondo negro para el logo */
+    background-color: #ffd700; 
     border: 1px solid #ffd700; /* Borde dorado, como los marcos de sprites */
-    border-radius: 0; /* Cuadrado para estilo pixelado */
+    border-radius: 50%;max-width:20%;
     max-width: 150px; /* Tamaño limitado para imitar sprites */
     image-rendering: pixelated; /* Renderizado pixelado para imágenes */
 }

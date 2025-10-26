@@ -131,6 +131,18 @@ tags: []
                 // Remover atributos problemáticos
                 svg.removeAttribute('style');
                 svg.style.height = 'auto';
+                   const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
                 svg.style.width = 'auto';
                 svg.style.maxWidth = '100%';
                 
