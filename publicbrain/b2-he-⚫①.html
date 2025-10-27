@@ -134,7 +134,10 @@ tags: []
             }
         });
         function optimizeMermaidSVG() {
-            cons const svg = container.querySelector('svg');
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
                 if (!svg) return;
                 
                 // Obtener el bounding box real del contenido

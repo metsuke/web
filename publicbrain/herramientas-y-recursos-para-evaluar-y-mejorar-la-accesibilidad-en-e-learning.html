@@ -154,3 +154,11 @@ tags: []
             const originalParse = mermaid.parse;
             mermaid.parse = function() {
             return originalParse.apply(this, arguments).then(() => {
+                setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>

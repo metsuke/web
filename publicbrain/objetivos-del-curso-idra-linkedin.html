@@ -159,7 +159,12 @@ tags: []
             // Configuración que reduce padding interno
             flowchart: {
                 diagramPadding: 8,
-       rse = mermaid.parse;
+                useMaxWidth: false
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
             mermaid.parse = function() {
             return originalParse.apply(this, arguments).then(() => {
                 setTimeout(optimizeMermaidSVG, 50);

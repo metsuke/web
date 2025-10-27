@@ -1,8 +1,122 @@
-        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Creación y gestión de escenas en PixiJS</h1>
+<p><a class='internal' href='./curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
+<p>En PixiJS, las escenas son entornos independientes donde se muestran los elementos gráficos y se manejan las interacciones del usuario. La creación y gestión de escenas son fundamentales para desarrollar juegos y aplicaciones interactivas. Aquí te explico cómo puedes crear y gestionar escenas en PixiJS:</p>
+<h3>1. Creación de una escena:</h3>
+<p>Para crear una nueva escena en PixiJS, puedes utilizar la clase <code class='language-html'>PIXI.Container</code>, que actúa como un contenedor para los elementos gráficos de la escena. Aquí tienes un ejemplo de cómo crear una nueva escena:</p>
+<pre><code class="language-javascript">// Crear una nueva escena
+let escena = new PIXI.Container();
+</code></pre>
+<h3>2. Agregar elementos a la escena:</h3>
+<p>Una vez que has creado una escena, puedes agregar elementos gráficos como sprites, formas geométricas o texto a la escena utilizando los métodos de la clase <code class='language-html'>PIXI.Container</code>, como <code class='language-html'>addChild()</code>. Por ejemplo:</p>
+<pre><code class="language-javascript">// Crear un sprite
+let sprite = PIXI.Sprite.from('imagen.png');
+
+// Agregar el sprite a la escena
+escena.addChild(sprite);
+</code></pre>
+<h3>3. Renderizado de la escena:</h3>
+<p>Después de crear la escena y agregar elementos a ella, necesitas renderizarla en el lienzo utilizando el renderizador de PixiJS. Esto generalmente se hace en un bucle de animación o de juego para actualizar y mostrar la escena en la pantalla. Aquí tienes un ejemplo básico de cómo renderizar una escena:</p>
+<pre><code class="language-javascript">// Crear un nuevo renderizador
+let renderizador = PIXI.autoDetectRenderer({
+    width: 800,
+    height: 600,
+    antialias: true,
+    transparent: false,
+    resolution: 1
+});
+
+// Agregar el lienzo al DOM
+document.body.appendChild(renderizador.view);
+
+// Función de animación del juego
+function animar() {
+    requestAnimationFrame(animar);
+    
+    // Renderizar la escena
+    renderizador.render(escena);
+}
+
+// Iniciar la animación
+animar();
+</code></pre>
+<h3>4. Gestión de múltiples escenas:</h3>
+<p>En muchos casos, es posible que necesites gestionar múltiples escenas en tu aplicación o juego. Puedes hacerlo creando varias instancias de la clase <code class='language-html'>PIXI.Container</code> y alternando entre ellas según sea necesario. Por ejemplo, podrías tener una escena para el menú principal, otra para el juego en sí y otra para la pantalla de puntuación. Simplemente renderiza la escena activa en cada cuadro de animación.</p>
+<pre><code class="language-javascript">// Crear múltiples escenas
+let escenaMenu = new PIXI.Container();
+let escenaJuego = new PIXI.Container();
+let escenaPuntuacion = new PIXI.Container();
+
+// Función para cambiar de escena
+function cambiarEscena(nuevaEscena) {
+    escena.visible = false;
+    nuevaEscena.visible = true;
+    escena = nuevaEscena;
+}
+
+// Renderizar la escena activa
+renderizador.render(escena);
+</code></pre>
+<p>Con estos pasos, puedes crear y gestionar escenas de manera efectiva en PixiJS, lo que te permite desarrollar juegos y aplicaciones interactivas más complejos y organizados.</p>
+<ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Jun 10 2025 23:14:03 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.5</li></ul><!--(iaStatus: 0
+iaStatus_Model: ''
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2024-04-11T11:30:38.163Z
+modified: 2025-06-10T21:14:03.971Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 5
+nav_primary: []
+nav_secondary: []
+tags: []
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>&copy; 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

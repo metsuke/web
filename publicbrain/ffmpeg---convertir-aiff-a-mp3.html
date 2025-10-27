@@ -1,8 +1,89 @@
-        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>FFMPEG - Convertir Aiff a Mp3</h1>
+<p><a class='internal' href='../publicbrain/index.html'>PublicBrain/Index</a></p>
+<p>Para convertir archivos de audio de formato AIFF a MP3 utilizando la herramienta de línea de comandos <code class='language-html'>ffmpeg</code>, puedes seguir estos pasos:</p>
+<ol>
+<li>
+<p><strong>Instalación de ffmpeg</strong>: Si aún no tienes <code class='language-html'>ffmpeg</code> instalado en tu sistema, debes instalarlo. Los métodos de instalación varían según el sistema operativo que estés utilizando. Por ejemplo, en sistemas basados en Unix (como Linux) puedes usar el gestor de paquetes. En Windows, puedes descargar el ejecutable desde el sitio web de ffmpeg.</p>
+</li>
+<li>
+<p><strong>Ejecución del comando</strong>: Una vez que tengas <code class='language-html'>ffmpeg</code> instalado, abre una terminal o línea de comandos y navega hasta la ubicación donde se encuentra el archivo AIFF que deseas convertir. Luego, utiliza el siguiente comando para realizar la conversión:</p>
+</li>
+</ol>
+<p>´´´sh
+ffmpeg -i entrada.aiff -c:a libmp3lame -q:a 2 salida.mp3
+´´´</p>
+<p>Explicación de los parámetros:</p>
+<ul>
+<li><code class='language-html'>-i entrada.aiff</code>: Especifica el nombre del archivo de entrada AIFF.</li>
+<li><code class='language-html'>-c:a libmp3lame</code>: "I"ndica que se utilizará el códec de audio <code class='language-html'>libmp3lame</code> para la compresión en formato MP3.</li>
+<li><code class='language-html'>-q:a 2</code>: Establece la calidad de audio para la salida MP3. El valor puede estar en el rango de 0 (mejor calidad) a 9 (peor calidad), donde 2 es una buena opción para una relación calidad-tamaño de archivo adecuada.</li>
+<li><code class='language-html'>salida.mp3</code>: Define el nombre del archivo de salida MP3.</li>
+</ul>
+<p>Asegúrate de reemplazar <code class='language-html'>entrada.aiff</code> con el nombre del archivo AIFF que deseas convertir y <code class='language-html'>salida.mp3</code> con el nombre que desees para el archivo de salida en formato MP3. Una vez que ingreses el comando y presiones Enter, <code class='language-html'>ffmpeg</code> realizará la conversión y crearás un archivo MP3 a partir del archivo AIFF original.</p>
+<p>Recuerda que los nombres de archivo y las ubicaciones deben coincidir con la estructura de tu sistema de archivos, por lo que puede ser necesario ajustar las rutas según sea necesario.</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Jun 10 2024 17:26:26 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.29</li></ul><!--(iaStatus: 8
+iaStatus_Model: ''
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2024-04-06T23:48:59.336Z
+modified: 2024-06-10T15:26:26.922Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 29
+nav_primary: null
+nav_secondary: null
+tags: null
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>&copy; 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->
