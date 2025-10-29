@@ -88,7 +88,7 @@
 <li>
 <p><strong>Cuadernillo <em>Cristalis: El regreso de Johnny Jones</em></strong></p>
 <ul>
-<li>Investigación sobre un **juego cancelado para Spectrum.</li>
+<li>Investigación sobre   **juego cancelado para Spectrum.</li>
 <li>¿Entrevistas, bocetos inéditos y el <em>making-of</em> de su resurrección? ¡tendrás que descubrirlo!</li>
 </ul>
 </li>
@@ -105,7 +105,7 @@
 </blockquote>
 <hr>
 <h2>MisCincoDuros: más que un hashtag, un movimiento</h2>
-<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_d220d3bd2235cf59c98072794538318e_MD5.jpeg" alt="Mi pequeño papel en la teoria de la evolución"></p>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_d220d3bd2235cf59c98072794538318e_MD5.jpeg" alt="Mi pequeño papel en la teoria de la evolución - Foto por Robunrell - Modelo Metsuke"></p>
 <p><strong>#MisCincoDuros</strong> no es marketing. Es <strong>memoria viva</strong>. Cada reserva es:</p>
 <ul>
 <li>Un <strong>voto contra el olvido</strong> de una industria que generó miles de empleos.</li>
@@ -192,7 +192,7 @@
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Oct 27 2025 12:51:19 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.5</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Oct 27 2025 21:41:39 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.6</li></ul><!--(iaStatus: 8
 iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
 iaStatus_Generado: I
 iaStatus_Supervisado: H
@@ -202,12 +202,12 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-10-25T20:09:41.575Z
-modified: 2025-10-27T11:51:19.120Z
+modified: 2025-10-27T20:41:39.688Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 2
-ver_rev: 5
+ver_rev: 6
 nav_primary: []
 nav_secondary: []
 tags: []
@@ -233,15 +233,16 @@ MOS_TopImg_Video: NoticiasCincoDurosPreventaVol3.mp4
 
     <!-- mermaid -->
     <script type="module">
-        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
-        mermaid.initialize({ useMaxWidth: false,startOnLoad: true,theme:'base'
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
             ,themeVariables: { 
                 primaryColor: '#000000'
                 ,primaryTextColor: '#ffffff'
             }
         });
         function optimizeMermaidSVG() {
+            return
             const mermaids = document.querySelectorAll('.mermaid');
             
             mermaids.forEach(container => {
@@ -284,7 +285,7 @@ MOS_TopImg_Video: NoticiasCincoDurosPreventaVol3.mp4
             // Configuración que reduce padding interno
             flowchart: {
                 diagramPadding: 8,
-                useMaxWidth: false
+                useMaxWidth: true
             }
             });
 
@@ -292,7 +293,7 @@ MOS_TopImg_Video: NoticiasCincoDurosPreventaVol3.mp4
             const originalParse = mermaid.parse;
             mermaid.parse = function() {
             return originalParse.apply(this, arguments).then(() => {
-                setTimeout(optimizeMermaidSVG, 50);
+                //setTimeout(optimizeMermaidSVG, 50);
             });
             };
     </script>

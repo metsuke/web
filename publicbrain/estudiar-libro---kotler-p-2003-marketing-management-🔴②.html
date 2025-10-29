@@ -547,15 +547,16 @@ tags: null
 
     <!-- mermaid -->
     <script type="module">
-        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
-        mermaid.initialize({ useMaxWidth: false,startOnLoad: true,theme:'base'
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
             ,themeVariables: { 
                 primaryColor: '#000000'
                 ,primaryTextColor: '#ffffff'
             }
         });
         function optimizeMermaidSVG() {
+            return
             const mermaids = document.querySelectorAll('.mermaid');
             
             mermaids.forEach(container => {
@@ -598,7 +599,7 @@ tags: null
             // Configuración que reduce padding interno
             flowchart: {
                 diagramPadding: 8,
-                useMaxWidth: false
+                useMaxWidth: true
             }
             });
 
@@ -606,7 +607,7 @@ tags: null
             const originalParse = mermaid.parse;
             mermaid.parse = function() {
             return originalParse.apply(this, arguments).then(() => {
-                setTimeout(optimizeMermaidSVG, 50);
+                //setTimeout(optimizeMermaidSVG, 50);
             });
             };
     </script>

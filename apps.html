@@ -127,11 +127,17 @@ graph LR
 <h3>mosTaskManager</h3>
 </div></div>
 <h2>MetsuOS in a Nutshell</h2>
+<h3>Capas de Infraestructura</h3>
 <pre class='mermaid'>
 graph LR
     A[MetsuOS] --> B[mosLib]
     B --> C[mosSystemCore]
     C --> D[mosSystemUI]
+</pre>
+<h3>Capa de Servicios</h3>
+<pre class='mermaid'>
+graph LR
+    D[mosSystemUI]
     D --> E[mosA11YManager]
     D --> F[mosAutomationManager]
     D --> G[mosBrainManager]
@@ -150,6 +156,11 @@ graph LR
     K --> N[mosAppEcosystem]
     L --> N[mosAppEcosystem]
     M --> N[mosAppEcosystem]
+</pre>
+<h3>Capa de Aplicaciones</h3>
+<pre class='mermaid'>
+graph LR
+    N[mosAppEcosystem]
     N --> O[mosA11YTool]
     N --> P[mosBrainTool]
     N --> Q[mosDevTool]
@@ -220,7 +231,7 @@ graph LR
 <li><a class='internal' href='./publicbrain/sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Wed Oct 15 2025 14:32:53 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.49</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Oct 28 2025 22:45:33 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.50</li></ul><!--(iaStatus: 8
 iaStatus_Model: Raúl Carrillo Garrido aka metsuke
 iaStatus_Generado: H
 iaStatus_Supervisado: '-'
@@ -230,12 +241,12 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-09-30T10:16:07.557Z
-modified: 2025-10-15T12:32:53.858Z
+modified: 2025-10-28T21:45:33.641Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 3
-ver_rev: 49
+ver_rev: 50
 nav_primary: null
 nav_secondary: null
 tags: null
@@ -261,15 +272,16 @@ MOS_TopImg_Video: MetsuOSBaseIcon.mp4
 
     <!-- mermaid -->
     <script type="module">
-        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
-        mermaid.initialize({ useMaxWidth: false,startOnLoad: true,theme:'base'
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
             ,themeVariables: { 
                 primaryColor: '#000000'
                 ,primaryTextColor: '#ffffff'
             }
         });
         function optimizeMermaidSVG() {
+            return
             const mermaids = document.querySelectorAll('.mermaid');
             
             mermaids.forEach(container => {
@@ -312,7 +324,7 @@ MOS_TopImg_Video: MetsuOSBaseIcon.mp4
             // Configuración que reduce padding interno
             flowchart: {
                 diagramPadding: 8,
-                useMaxWidth: false
+                useMaxWidth: true
             }
             });
 
@@ -320,7 +332,7 @@ MOS_TopImg_Video: MetsuOSBaseIcon.mp4
             const originalParse = mermaid.parse;
             mermaid.parse = function() {
             return originalParse.apply(this, arguments).then(() => {
-                setTimeout(optimizeMermaidSVG, 50);
+                //setTimeout(optimizeMermaidSVG, 50);
             });
             };
     </script>
