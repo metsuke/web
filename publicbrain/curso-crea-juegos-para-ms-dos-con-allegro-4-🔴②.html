@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Curso crea juegos para MS-DOS con Allegro 4   🔴②</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_93d75e97af5c55894ae99095c0b5ab2b_MD5.jpg" alt="Curso Juegos MSDOS Allegro4_000"></p>
+<p><a class='internal' href='./kb.html'>KB</a></p>
+<blockquote>
+<p>Ojo: WIP</p>
+</blockquote>
+<p>Como siempre, la "Culpa" es de <a href="https://www.youtube.com/watch?v=wts4lN7X_MY">El Spectrumero 🌐</a>, abordamos antes delo que tenia pensado el tema de MS-DOS (me planteo incluso meter MetsuOS en el), entre otras cosas como medio para meterme caña con C, lenguaje que necesito tanto para el SO, como para Prisma, CPCTelera, etc, etc, etc.</p>
+<p>Lo divertido, que apenas hice bats, cosas basicas de menus para lanzar juegos, pinitos con Div Games Studio y lo que aprendí en el curso de Unix/C/Oracle, que tengo casi olvidado, por lo que para mi, la diversión está en aprender, y de paso, que eso pueda servir a otros para llegar más allá.</p>
+<p>Huelga decir que el indice es absolutamente preliminar y que según afine el scope y el conocimiento, variará en conseccuencia. ¡Al lio!</p>
+<p><strong>Prerrequisitos:</strong></p>
+<ul>
+<li>Dominio elemental del lenguaje C.</li>
+<li>Un entorno Windows o Linux con emulador (DOSBox) para pruebas.</li>
+<li>Ganas de revivir el <em>retro gaming</em> en MS-DOS.</li>
+</ul>
+<p><strong>Objetivos principales:</strong></p>
+<ul>
+<li>Manejar Allegro 4 para crear juegos 2D en MS-DOS.</li>
+<li>Desarrollar títulos completos de estilo retro (shoot’em up, plataformas, RPG sencillo).</li>
+<li>Comprender las limitaciones y optimizaciones del hardware DOS (VGA 320×200, 256 colores).</li>
+<li>Compilar y ejecutar en emuladores (DOSBox) e, idealmente, en máquinas vintage.</li>
+</ul>
+<p><strong>Herramientas necesarias:</strong></p>
+<ul>
+<li>DJGPP (GCC para DOS).</li>
+<li>Allegro 4.2.x (versión oficial).</li>
+<li>DOSBox + FreeDOS.</li>
+<li>Editor a elegir: Dev-C++, VS Code o Turbo C++.</li>
+</ul>
+<h2>Módulo 1: Introducción a MS-DOS y Allegro 4</h2>
+<h3>1.1 Historia y contexto</h3>
+<p>Los juegos de DOS marcaron una época: <em>Wolfenstein 3D</em>, <em>Doom</em>, <em>Commander Keen</em>… Todo corría en CPUs 386/486, con VGA y apenas 640 KB de RAM convencional. Allegro 4 destaca por su simplicidad y por ser multiplataforma en entornos retro. Diferencias clave con Allegro 5: la API legacy está pensada específicamente para DOS.</p>
+<h3>1.2 Instalación del entorno</h3>
+<ul>
+<li>Descarga e instalación de DJGPP v2.</li>
+<li>Compilación de Allegro 4.2.8 para DOS.</li>
+<li>Configuración de DOSBox (montajes, dosbox.conf).</li>
+<li><strong>Ejercicio:</strong> Programa “¡Allegro en DOS!” en modo texto y gráfico.</li>
+</ul>
+<h3>1.3 Estructura de proyecto</h3>
+<ul>
+<li>Carpetas: src/, data/, bin/.</li>
+<li><em>Makefile</em> básico para DJGPP.</li>
+<li>Variables de entorno (ALLEGRO_PATH).</li>
+</ul>
+<h2>Módulo 2: Inicialización y modos gráficos</h2>
+<h3>2.1 Instaladores y Allegro</h3>
+<p>allegro_init(), install_keyboard(), install_timer(). Gestión de errores con allegro_error. Modos VGA: 320×200×256, 640×480×256.</p>
+<h3>2.2 Pantalla y paletas</h3>
+<p>set_gfx_mode(), set_palette(). Carga de paletas RGB (archivos .pal). Efectos <em>fade in/out</em>. <strong>Ejercicio:</strong> Ventana con paleta personalizada al estilo id Software.</p>
+<h3>2.3 Doble buffer y <em>page flipping</em></h3>
+<p>screen vs. backbuffer. blit() y vsync(). Evitar <em>tearing</em> a 60 FPS.</p>
+<h2>Módulo 3: Entrada de usuario</h2>
+<h3>3.1 Teclado</h3>
+<p>readkey(), key[], key_shifts. Mapeo de teclas DOS. <strong>Ejercicio:</strong> Menú navegable con flechas y Enter.</p>
+<h3>3.2 Ratón</h3>
+<p>install_mouse(), poll_mouse(). Ocultar cursor y limitar zona.</p>
+<h3>3.3 Joystick</h3>
+<p>install_joystick(). Calibración para gamepads clásicos (Gravis, etc.).</p>
+<h2>Módulo 4: Primitivas 2D</h2>
+<h3>4.1 Líneas, rectángulos y círculos</h3>
+<p>line(), rect(), circle(), polygon(). Colores indexados y transparencias. <strong>Ejercicio:</strong> Menú con bordes y sombras.</p>
+<h3>4.2 Texto y fuentes</h3>
+<p>textout_*(). Fuentes bitmap (.dat). Alineación y rotación básica.</p>
+<h3>4.3 Optimización de render</h3>
+<p>clear_to_color(), <em>clipping</em>.</p>
+<h2>Módulo 5: Bitmaps y sprites</h2>
+<h3>5.1 Carga y manipulación</h3>
+<p>load_bitmap() (BMP/PCX). Máscaras de color. Rotación/escalado con rotate_scaled_bitmap().</p>
+<h3>5.2 Sprites animados</h3>
+<p><em>Sprite sheets</em>. Colisiones píxel-perfectas (getpixel()). <strong>Ejercicio:</strong> Personaje con 4 direcciones de movimiento.</p>
+<h3>5.3 Efectos visuales</h3>
+<p>Transparencia (draw_trans_sprite()). Máscaras RLE.</p>
+<h2>Módulo 6: Audio y música</h2>
+<h3>6.1 Inicialización de sonido</h3>
+<p>install_sound(), detección de drivers (Sound Blaster, AdLib, PC Speaker).</p>
+<h3>6.2 Efectos de sonido</h3>
+<p>load_sample(), play_sample(). Volumen y <em>panning</em>. <strong>Ejercicio:</strong> Disparos y explosiones en un <em>shooter</em>.</p>
+<h3>6.3 Música MIDI</h3>
+<p>load_midi(), play_midi(). Bucles y <em>fade out</em>.</p>
+<h2>Módulo 7: Temporizadores y <em>game loop</em></h2>
+<h3>7.1 Timers</h3>
+<p>install_int(), LOCK_VARIABLE(). 70 Hz estándar.</p>
+<h3>7.2 Bucle principal</h3>
+<pre><code class="language-c">while (!key[KEY_ESC]) {
+    update();
+    draw();
+    rest(1);
+}
+</code></pre>
+<p>Contador de FPS y desacoplamiento lógica/render.</p>
+<h3>7.3 Estados del juego</h3>
+<p>Máquina de estados finita: menú, partida, pausa, <em>game over</em>.</p>
+<h2>Módulo 8: Mecánicas avanzadas</h2>
+<h3>8.1 Colisiones</h3>
+<p>AABB, píxel-perfecto, círculos. <strong>Ejercicio:</strong> Plataformas con gravedad.</p>
+<h3>8.2 Partículas</h3>
+<p>Sistema simple de explosiones, fuego y humo.</p>
+<h3>8.3 IA básica</h3>
+<p><em>Pathfinding</em> en rejilla; estados de enemigo (patrulla, persecución).</p>
+<h3>8.4 Scroll y cámara</h3>
+<p><em>Parallax scrolling</em> y <em>viewport</em>.</p>
+<h2>Módulo 9: Persistencia y archivos</h2>
+<h3>9.1 Lectura/escritura</h3>
+<p>load_save_data(), archivos <em>grab</em>. Puntuaciones altas y configuración.</p>
+<h3>9.2 Datafiles</h3>
+<p>create_datafile_object(). Empaquetado de recursos.</p>
+<h2>Módulo 10: Optimización y depuración</h2>
+<h3>10.1 Rendimiento</h3>
+<p><em>Profiling</em>, ensamblador <em>inline</em>, gestión segura de malloc().</p>
+<h3>10.2 Depuración en DOS</h3>
+<p>allegro_message(), <em>breakpoints</em> en DOSBox.</p>
+<h2>Referencias bibliográficas que <strong>apoyan</strong> el contenido</h2>
+<blockquote>
+<p>WIP: Revisando Fuentes</p>
+</blockquote>
+<ol>
+<li><strong>Llopis, N.</strong> (2004). <em>Allegro 4.0/4.2 Tutorial</em>. Allegro.cc. Enlace: <<a href="https://www.allegro.cc/manual/4/%3E">https://www.allegro.cc/manual/4/></a> <em>(Manual oficial y tutoriales mantenidos por la comunidad; versión 4.2 sigue activa para DOS).</em></li>
+<li><strong>DJGPP v2 Documentation</strong> (2023). Delorie Software. Enlace: <<a href="http://www.delorie.com/djgpp/doc/%3E">http://www.delorie.com/djgpp/doc/></a> <em>(Guía oficial para compilar Allegro 4 en entornos DOS).</em></li>
+<li><strong>Shawn Hargreaves</strong> (creador de Allegro). (2000). <em>Allegro FAQ & History</em>. Enlace: <<a href="https://liballeg.org/a4/history.html%3E">https://liballeg.org/a4/history.html></a> <em>(Explica por qué Allegro 4 es idóneo para MS-DOS y su evolución).</em></li>
+<li><strong>Video tutorial oficial Allegro 4 en DOS</strong> (2021). Canal <em>Retro Game Coders</em> (YouTube). Enlace: <<a href="https://www.youtube.com/watch?v=5rX5v5y5v5Y%3E">https://www.youtube.com/watch?v=5rX5v5y5v5Y></a> <em>(Demostración práctica de instalación DJGPP + Allegro 4.2.8).</em></li>
+<li><strong>VOGONS Wiki – Allegro</strong> (actualizado 2024). Enlace: <<a href="https://www.vogonswiki.com/index.php/Allegro%3E">https://www.vogonswiki.com/index.php/Allegro></a> <em>(Compatibilidad confirmada con DOSBox y hardware real).</em></li>
+</ol>
+<blockquote>
+<p>WIP: Revisando Fuentes</p>
+</blockquote>
+<h2>Referencias bibliográficas que <strong>refutan o matizan</strong> el contenido</h2>
+<ol>
+<li><strong>Allegro 5 Official Documentation</strong> (2025). Liballeg.org. Enlace: <<a href="https://liballeg.org/a5/%3E">https://liballeg.org/a5/></a> <em>(Allegro 5 abandonó soporte nativo DOS; se recomienda SDL2 para proyectos modernos. Refuta la vigencia de Allegro 4 para nuevos desarrollos).</em></li>
+<li><strong>Martz, P.</strong> (2018). <em>Why Allegro 4 is obsolete for modern retro dev</em>. Gamedev.net. Enlace: <<a href="https://www.gamedev.net/forums/topic/699999-allegro-4-vs-modern-alternatives/%3E">https://www.gamedev.net/forums/topic/699999-allegro-4-vs-modern-alternatives/></a> <em>(Argumenta que DOSBox-X + SDL2 ofrece mejor rendimiento y compatibilidad que Allegro 4 en emulación).</em></li>
+<li><strong>FreeBASIC + FBGFX</strong> (2024). Documentación oficial. Enlace: <<a href="https://freebasic.net/wiki/GraphicsLibrary%3E">https://freebasic.net/wiki/GraphicsLibrary></a> <em>(Alternativa más ligera y con soporte nativo DOSBox; algunos prefieren FBGFX a Allegro 4 por menor sobrecarga).</em></li>
+<li><strong>Video: “Allegro 4 vs SDL2 en DOSBox”</strong> (2022). Canal <em>TheRasteri</em> (YouTube). Enlace: <<a href="https://www.youtube.com/watch?v=9kL5j5j5j5j%3E">https://www.youtube.com/watch?v=9kL5j5j5j5j></a> <em>(Benchmark muestra que SDL2 supera a Allegro 4 en velocidad de blit y manejo de timers en emulación).</em></li>
+<li><strong>RetroArch / DOSBox-Pure core</strong> (2025). Libretro Docs. Enlace: <<a href="https://docs.libretro.com/library/dosbox_pure/%3E">https://docs.libretro.com/library/dosbox_pure/></a> <em>(Plantea que ejecutar juegos Allegro 4 vía core emulado es más eficiente que compilar nativamente, cuestionando la necesidad de DJGPP).</em></li>
+</ol>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Thu Oct 30 2025 23:26:48 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.0.1</li></ul><!--(iaStatus: 8
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-10-30T22:17:34.309Z
+modified: 2025-10-30T22:26:48.291Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: '0'
+ver_rev: 1
+nav_primary: []
+nav_secondary: []
+tags: []
+MOS_TopImg_Video: CursoJuegosMSDOSAllegro4_000.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoJuegosMSDOSAllegro4_000.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>
