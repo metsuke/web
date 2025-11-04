@@ -38,9 +38,9 @@ header h1 {
 }
 
 header h2 {
-  color: #4adf47;                   /* Verde lima */
+  color: #000000;                   
   line-height: 1.6rem !important;
-  background-color: rgba(0, 0, 0, 0.7) !important;
+  background-color: #dfc347 !important;
 }
 
 /* Estilos de navegación */
@@ -120,7 +120,7 @@ p img {
   object-fit: cover;
   aspect-ratio: 4 / 3;
   transition: all .1s ease;
-  border:3px solid #1a6fe5;
+  border:5px solid #1a6fe5;
 }
 
 pre {
