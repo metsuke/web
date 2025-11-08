@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>mosLib - El Corazón de MetsuOS  ⚫①</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_4b08d9c1c1d378d5df3ac0dd6de347a0_MD5.jpg" alt="mosLib Icon"></p>
+<blockquote>
+<p>OJO WIP texto absolutamente en bruto todavia es posible que acabe reescribiendolo a mano XD</p>
+</blockquote>
+<p><a href="https://metsuke.com/apps.html">Apps</a></p>
+<p><strong>Licencia Community:</strong> MIT<br>
+<strong>Estado:</strong> En desarrollo activo (WIP)</p>
+<h2>1. Resumen Ejecutivo</h2>
+<p><code class='language-html'>mosLib</code> es la <strong>biblioteca esencial</strong> que impulsa todo el ecosistema MetsuOS. Desarrollada en <strong>Python 3.12 o superior</strong>, funciona como una capa de abstracción universal que permite a los distintos módulos —desde <code class='language-html'>mosSystemCore</code> hasta <code class='language-html'>mosGameMaker</code>— operar de manera uniforme en <strong>cualquier sistema operativo</strong>: GNU/Linux, Windows, macOS e, incluso, entornos futuros como sistemas embebidos o WebAssembly (WASM).</p>
+<blockquote>
+<p><strong>mosLib no es un framework pesado.</strong> Es un <strong>núcleo ligero, ejecutable y altamente extensible</strong> que unifica:</p>
+<ul>
+<li>Llamadas al sistema operativo</li>
+<li>Gestión eficiente de recursos</li>
+<li>Accesibilidad integrada desde el primer bit</li>
+<li>Ejecución segura y asíncrona</li>
+<li>Comunicación fluida entre componentes</li>
+</ul>
+</blockquote>
+<hr>
+<h2>2. Objetivos de Diseño</h2>
+<table>
+<thead>
+<tr>
+<th>Principio</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Portabilidad absoluta</strong></td>
+<td>El mismo código funciona sin cambios en Linux, Windows o macOS</td>
+</tr>
+<tr>
+<td><strong>Ligereza extrema</strong></td>
+<td>Menos de 500 KB instalado (edición Community)</td>
+</tr>
+<tr>
+<td><strong>Extensibilidad real</strong></td>
+<td>Sistema de plugins y adaptadores específicos por plataforma</td>
+</tr>
+<tr>
+<td><strong>Seguridad por defecto</strong></td>
+<td>Sandboxing, validación de entradas y modelo <em>zero-trust</em></td>
+</tr>
+<tr>
+<td><strong>Accesibilidad desde el núcleo</strong></td>
+<td>Primitivas A11Y integradas, no como complemento</td>
+</tr>
+<tr>
+<td><strong>Ediciones diferenciadas</strong></td>
+<td>Community (código abierto), Pro y Enterprise (licencias comerciales)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>3. Arquitectura y Estructura del Paquete</h2>
+<pre><code class='language-html'>moslib/
+├── src/moslib/
+│   ├── __init__.py
+│   ├── core/              # Núcleo unificado
+│   │   ├── platform.py    # Detección y abstracción del SO
+│   │   ├── executor.py    # Ejecución asíncrona/síncrona + colas
+│   │   └── eventbus.py    # Pub/sub ligero y eficiente
+│   ├── resources/         # Gestión de recursos del sistema
+│   │   ├── memory.py
+│   │   ├── cpu.py
+│   │   └── sandbox.py
+│   ├── accessibility/     # Primitivas de accesibilidad
+│   │   ├── voice.py
+│   │   ├── gestures.py
+│   │   └── wcag.py
+│   ├── utils/
+│   │   ├── logger.py      # Registro con niveles ⚫🔴🟡🟢🔵⚪
+│   │   ├── validator.py   # Sistema de validación de contenido
+│   │   └── metrics.py
+│   ├── adapters/          # Implementaciones específicas por SO
+│   │   ├── linux.py
+│   │   ├── windows.py
+│   │   └── macos.py
+│   └── edition.py         # Control de ediciones (Community/Pro/Enterprise)
+├── tests/
+├── docs/
+├── examples/
+├── pyproject.toml
+└── LICENSE
+</code></pre>
+<hr>
+<h2>4. Funcionalidades Clave</h2>
+<h3>4.1. <code class='language-html'>moslib.core.platform</code></h3>
+<pre><code class="language-python">from moslib.core.platform import get_host, PlatformInfo
+
+host = get_host()
+print(host.os)        # 'linux' | 'windows' | 'darwin'
+print(host.arch)      # 'x86_64' | 'arm64'
+print(host.distro)    # 'ubuntu', 'fedora', etc. (solo en Linux)
+</code></pre>
+<ul>
+<li>Detección automática del entorno</li>
+<li>Normalización de rutas con <code class='language-html'>Pathlib</code> unificado</li>
+<li>Soporte para entornos virtuales (WSL, Docker, etc.)</li>
+</ul>
+<hr>
+<h3>4.2. <code class='language-html'>moslib.core.executor</code></h3>
+<pre><code class="language-python">from moslib.core.executor import run_async, schedule
+
+await run_async(tarea_pesada, arg1, arg2)
+schedule(delay=5.0, task=copia_seguridad)
+</code></pre>
+<ul>
+<li>Soporte nativo para <code class='language-html'>asyncio</code></li>
+<li>Colas inteligentes con prioridad (preparadas para <code class='language-html'>mosTaskManager</code>)</li>
+<li>Timeouts y cancelación segura</li>
+<li>Ejecución opcional en <em>sandbox</em></li>
+</ul>
+<hr>
+<h3>4.3. <code class='language-html'>moslib.resources.memory</code></h3>
+<pre><code class="language-python">from moslib.resources.memory import monitor, optimize
+
+if monitor.usage_percent() > 80:
+    optimize(aggressive=True)
+</code></pre>
+<ul>
+<li>Monitoreo en tiempo real mediante <code class='language-html'>psutil</code></li>
+<li>Liberación automática de caché</li>
+<li>Alertas vinculadas con <code class='language-html'>mosBrainManager</code></li>
+</ul>
+<hr>
+<h3>4.4. <code class='language-html'>moslib.accessibility.voice</code></h3>
+<pre><code class="language-python">from moslib.accessibility.voice import VoiceNavigator
+
+nav = VoiceNavigator()
+nav.on("abrir editor", lambda: mosDevTool.open())
+nav.start()
+</code></pre>
+<ul>
+<li>Comandos por voz <em>offline-first</em> (Vosk / PocketSphinx)</li>
+<li>Retroalimentación háptica y sonora</li>
+<li>Integración directa con <code class='language-html'>mosA11YManager</code></li>
+</ul>
+<hr>
+<h3>4.5. <code class='language-html'>moslib.utils.validator</code></h3>
+<pre><code class="language-python">from moslib.utils.validator import ValidationLevel, annotate
+
+level = ValidationLevel.YELLOW3
+annotated = annotate("El cielo es azul", level, source="observación personal")
+</code></pre>
+<pre><code class="language-python">class ValidationLevel(Enum):
+    DARK1   = "⚫①"
+    RED2    = "🔴②"
+    YELLOW3 = "🟡③"
+    GREEN4  = "🟢④"
+    BLUE5   = "🔵⑤"
+    LIGHT6  = "⚪⑥"
+</code></pre>
+<ul>
+<li>Integración con el estándar OTAN: <code class='language-html'>A1</code>, <code class='language-html'>F6</code>, etc.</li>
+<li>Persistencia en metadatos de archivos y objetos</li>
+</ul>
+<hr>
+<h3>4.6. <code class='language-html'>moslib.edition</code></h3>
+<pre><code class="language-python">from moslib.edition import Edition, require
+
+if Edition.current() == Edition.PRO:
+    enable_gpu_acceleration()
+else:
+    require(Edition.PRO, "Aceleración GPU")
+</code></pre>
+<ul>
+<li>Detección mediante:
+<ul>
+<li>Variable de entorno: <code class='language-html'>METSUOS_EDITION=pro</code></li>
+<li>Archivo de licencia: <code class='language-html'>~/.metsuos/license.key</code></li>
+<li>Servicio online (Enterprise)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>5. Comparativa de Ediciones</h2>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Community</th>
+<th>Pro</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Código abierto</td>
+<td>Sí</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Multiplataforma</td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>IA local</td>
+<td>Limitada</td>
+<td>Completa</td>
+<td>Completa + clúster</td>
+</tr>
+<tr>
+<td>Sandboxing avanzado</td>
+<td>Básico</td>
+<td>Sí</td>
+<td>Sí + auditoría</td>
+</tr>
+<tr>
+<td>Actualizaciones automáticas</td>
+<td>No</td>
+<td>Sí</td>
+<td>Sí + <em>rollback</em></td>
+</tr>
+<tr>
+<td>Soporte técnico</td>
+<td>Comunidad</td>
+<td>Email</td>
+<td>24/7 + SLA</td>
+</tr>
+<tr>
+<td>Licencia</td>
+<td>MIT</td>
+<td>Comercial</td>
+<td>Empresarial</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>6. Plan de Trabajo (Roadmap)</h2>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Duración</th>
+<th>Objetivos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fase 0</strong></td>
+<td>1 día</td>
+<td>Estructura del repositorio + Poetry + <em>pre-commit</em></td>
+</tr>
+<tr>
+<td><strong>Fase 1</strong></td>
+<td>1 semana</td>
+<td>Módulo <code class='language-html'>core/</code> + pruebas unitarias (cobertura ≥80 %)</td>
+</tr>
+<tr>
+<td><strong>Fase 2</strong></td>
+<td>1 semana</td>
+<td>Módulos <code class='language-html'>resources/</code> y <code class='language-html'>accessibility/</code> básicos</td>
+</tr>
+<tr>
+<td><strong>Fase 3</strong></td>
+<td>1 semana</td>
+<td>Adaptadores para Linux y Windows</td>
+</tr>
+<tr>
+<td><strong>Fase 4</strong></td>
+<td>3 días</td>
+<td>Sistema de validación + registro estructurado</td>
+</tr>
+<tr>
+<td><strong>Fase 5</strong></td>
+<td>2 días</td>
+<td>Edición Community lista para <code class='language-html'>pip install moslib</code></td>
+</tr>
+<tr>
+<td><strong>Fase 6</strong></td>
+<td>1 semana</td>
+<td>Documentación con Sphinx + ejemplos prácticos</td>
+</tr>
+<tr>
+<td><strong>Fase 7</strong></td>
+<td>Continua</td>
+<td>Integración con <code class='language-html'>mosSystemCore</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tiempo total estimado:</strong> <strong>4–5 semanas</strong> (20–25 h/semana)</p>
+<hr>
+<h2>7. Herramientas y Dependencias</h2>
+<pre><code class="language-toml"># pyproject.toml
+[tool.poetry]
+name = "moslib"
+version = "0.1.0"
+description = "Biblioteca fundacional de MetsuOS"
+authors = ["@metsuke <yo@metsuke.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+psutil = "^6.0"
+blinker = "^1.7"
+vosk = { version = "^0.3", optional = true }  # para voz offline
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+pytest-asyncio = "^0.23"
+black = "^24.0"
+mypy = "^1.11"
+sphinx = "^7.0"
+pre-commit = "^3.0"
+</code></pre>
+<hr>
+<h2>8. Ejemplo de Uso (Edición Community)</h2>
+<pre><code class="language-python"># examples/hello_moslib.py
+from moslib.core.platform import get_host
+from moslib.utils.logger import log
+from moslib.utils.validator import ValidationLevel as L
+
+host = get_host()
+log.info(f"Ejecutando en {host}", level=L.GREEN4)
+
+if host.os == "windows":
+    from moslib.adapters.windows import beep
+    beep()
+</code></pre>
+<pre><code class="language-bash">pip install -e .
+python examples/hello_moslib.py
+</code></pre>
+<hr>
+<h2>9. Próximos Pasos</h2>
+<ol>
+<li>Copia esta estructura en <code class='language-html'>docs/moslib.md</code> o en un archivo independiente.</li>
+<li>Crea el repositorio: <code class='language-html'>git init moslib &amp;&amp; cd moslib</code></li>
+<li>Ejecuta: <code class='language-html'>poetry new . --name moslib</code></li>
+<li>Pega el <code class='language-html'>pyproject.toml</code> y genera la estructura de carpetas.</li>
+<li>Comienza por <code class='language-html'>src/moslib/core/platform.py</code></li>
+</ol>
+<hr>
+<p><strong>mosLib: La base sólida para un sistema sin límites.</strong></p>
+<hr>
+<h2>Referencias Bibliográficas que Apoyan el Contenido</h2>
+<ol>
+<li>
+<p><strong>Python Software Foundation</strong>. (2025). <em>PEP 8 – Style Guide for Python Code</em>.<br>
+<a href="https://peps.python.org/pep-0008/">https://peps.python.org/pep-0008/</a></p>
+</li>
+<li>
+<p><strong>Python Software Foundation</strong>. (2025). <em>PEP 621 – Storing project metadata in pyproject.toml</em>.<br>
+<a href="https://peps.python.org/pep-0621/">https://peps.python.org/pep-0621/</a></p>
+</li>
+<li>
+<p><strong>Lutz, M.</strong> (2013). <em>Learning Python</em> (5.ª ed.). O'Reilly Media.<br>
+ISBN: 978-1449355739<br>
+<a href="https://www.oreilly.com/library/view/learning-python-5th/9781449355722/">https://www.oreilly.com/library/view/learning-python-5th/9781449355722/</a></p>
+</li>
+<li>
+<p><strong>Ramalho, L.</strong> (2021). <em>Fluent Python</em> (2.ª ed.). O'Reilly Media.<br>
+ISBN: 978-1492056352<br>
+<a href="https://www.oreilly.com/library/view/fluent-python-2nd/9781492056348/">https://www.oreilly.com/library/view/fluent-python-2nd/9781492056348/</a></p>
+</li>
+<li>
+<p><strong>Giampaolo, D.</strong> (2023). <em>psutil documentation</em> (v6.0).<br>
+<a href="https://psutil.readthedocs.io/en/latest/">https://psutil.readthedocs.io/en/latest/</a></p>
+</li>
+<li>
+<p><strong>Beazley, D.</strong> (2022). <em>Python Asyncio Mastery</em> (Curso en vídeo).<br>
+YouTube: <a href="https://www.youtube.com/watch?v=6RrR9sQ_kew">https://www.youtube.com/watch?v=6RrR9sQ_kew</a></p>
+</li>
+<li>
+<p><strong>WCAG 2.2 – Web Content Accessibility Guidelines</strong>. (2023). W3C Recommendation.<br>
+<a href="https://www.w3.org/TR/WCAG22/">https://www.w3.org/TR/WCAG22/</a></p>
+</li>
+<li>
+<p><strong>Vosk Offline Speech Recognition API</strong>. (2024). Alpha Cephei Inc.<br>
+<a href="https://alphacephei.com/vosk/">https://alphacephei.com/vosk/</a></p>
+</li>
+</ol>
+<hr>
+<h2>Referencias Bibliográficas que Refutan o Cuestionan el Contenido</h2>
+<ol>
+<li>
+<p><strong>Van Rossum, G.</strong> (2020). <em>Python's "batteries included" philosophy is outdated in 2020</em> (Charla en PyCon).<br>
+YouTube: <a href="https://www.youtube.com/watch?v=7lmCu8wz8ro">https://www.youtube.com/watch?v=7lmCu8wz8ro</a><br>
+→ Argumenta que depender solo del estándar es insuficiente para aplicaciones modernas de alto rendimiento.</p>
+</li>
+<li>
+<p><strong>Reitz, K., & Schlusser, T.</strong> (2023). <em>The Hitchhiker’s Guide to Python</em> – Sección sobre gestión de dependencias.<br>
+<a href="https://docs.python-guide.org/writing/structure/">https://docs.python-guide.org/writing/structure/</a><br>
+→ Recomienda evitar dependencias externas siempre que sea posible; <code class='language-html'>psutil</code> podría considerarse innecesario en entornos restringidos.</p>
+</li>
+<li>
+<p><strong>Fowler, M.</strong> (2019). <em>Refactoring: "I"mproving the Design of Existing Code</em> (2.ª ed.). Addison-Wesley.<br>
+ISBN: 978-0134757599<br>
+→ Cuestiona la viabilidad de capas de abstracción excesivas en sistemas pequeños; podría aplicarse a <code class='language-html'>moslib.adapters</code>.</p>
+</li>
+<li>
+<p><strong>Real Python</strong>. (2024). <em>Why You Should Avoid Asyncio for Simple Scripts</em>.<br>
+<a href="https://realpython.com/async-io-python/">https://realpython.com/async-io-python/</a><br>
+→ Advierte sobre la complejidad innecesaria de <code class='language-html'>asyncio</code> en aplicaciones que no requieren concurrencia real.</p>
+</li>
+<li>
+<p><strong>OWASP Foundation</strong>. (2025). <em>OWASP Python Security Project</em> – Sandboxing en Python.<br>
+<a href="https://github.com/owasp/python-security">https://github.com/owasp/python-security</a><br>
+→ Señala que el <em>sandboxing</em> nativo en Python es limitado y requiere contenedores externos (Docker, Firejail) para seguridad real.</p>
+</li>
+</ol>
+<hr>
+<p><strong>mosLib: Un núcleo ambicioso, pero con retos técnicos reales.</strong><br>
+¿Quieres que genere el esqueleto del <code class='language-html'>__init__.py</code> o el primer módulo <code class='language-html'>platform.py</code>?</p>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Thu Nov 06 2025 23:38:49 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.0.1</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-11-06T22:37:45.290Z
+modified: 2025-11-06T22:38:49.635Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: '0'
+ver_rev: 1
+nav_primary: []
+nav_secondary: []
+tags: []
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>
