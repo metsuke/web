@@ -37,32 +37,13 @@
     </nav>
 
     <main>
-<h1>mosLib - El Corazón de MetsuOS  ⚫①</h1>
-<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_4b08d9c1c1d378d5df3ac0dd6de347a0_MD5.jpg" alt="mosLib Icon"></p>
-<blockquote>
-<p>OJO WIP</p>
-</blockquote>
-<p><a href="https://metsuke.com/apps.html">Apps</a></p>
-<p>No me ha gustado nada la deriva que las IA querian darle a este proyecto, en eso se nota que siguen la trayectoria mayoritaria, que es justo un camino que no pretendo recorrer con MetsuOS. Es por eso que, aunque me lleve mas tiempo y formalmente sea quizá menos eficiente,  voy a diseñar y construir la estructura a mano.</p>
-<p>En esencia mosLib debe ser la base que unifique las funciones de forma que se ejecuten de forma identica en todos los sistemas operativos, incluido MetsuOS puro, encapsulará las diferencias entre sistemas operativos aportando una coleccion de funciones en modulos (ya veremos que nivel de orientación a objetos) y seran estas las que se emplearán en los modulos y aplicaciones del sistema.</p>
-<h2>Estructura y Ediciones</h2>
-<p>Definiré aqui la estructura general de la libreria y su morfología:</p>
+<h1>Sobre Tivolización - Significado e implicaciones  🔴②</h1>
 <ul>
-<li><em>GFan Edition</em> (Licencias GPL y compatibles) .- Esta edicion contiene en forma de modulos con funciones funcionando como appps independientes, las primitivas básicas, modulos con funciones para leer y escribir archivos, leer y escribir el sistema de ficheros, y todo lo que sea necesario, incluyendo accesibilidad.</li>
-<li><em>Community Edition</em> (Licencias MIT y compatibles) .- Esta edición usa las apps indepenmdientes de GFan y construye apps mas complejas o aquellas sencillas que no tienen forma de ser creadas GFan.</li>
-<li><em>Pro Edition (Privativo)</em> .- Crea herencia y polimorfismo sobre los conceptos y apps de las ediciones GFan y Community aportando metodos mejorados de trabao en bloque monousuario.</li>
-<li><em>Enterprise Edition</em> (Privativo) .- Crea herencia y polimorfismo avanzados sobre los concepptos y apps de las ediciones GFan, Community y Pro, orientada a la gestion de tareas y procesos multiusuario distribuido, de forma que equipos puedan trabajar juntos manteniendo cada uno sus instancias de MetsuOS.</li>
+<li><a class='internal' href='./licencias-de-software-y-compatibilidad-entre-ellas-🟡③.html'>Licencias de Software y compatibilidad entre ellas 🟡③</a></li>
 </ul>
-<h2>La implementación real</h2>
-<h3>Generalidades</h3>
-<p>Toda app de mosLib tiene, de base una pila donde se almacenan las peticiones, gestionada por tres funcionalides, recepcion, ordenación y procesamiento.</p>
-<p>La primera funcion toma nota de las acciones solicitadas y las guarda en un formato de pila basado en fichero de texto plano, con campos de datos en forma de tupla específico de la app y sus opciones).</p>
-<p>La segunda se encarga de leer esos parametros y trasladar las peticones a tres subpilas: TiempoReal, Fast y Slow, la primera gestiona las peticiones mas urgentes, la segunda las de ejecucion corta (menor de 3 segundos - decidio arbitrariamente), y la tercera para aquellas tareas que tardan más de 3 segundos. Tomará datos de ejecicion de la tercera para evaluar que configuraciones debe mandar a uno u otro. Existirá tambien la posibilidad de asignar RT, F o S a las tareas al solicitarlas para aquellos lugares que requieran configuración específica.</p>
-<p>La tercera  se encarga de ejecutar los pendientes, primero todo el RT, segundo todo lo de fast y finalemnte lo de slow. Guardará estadíticas de parametrizacion vs tiempo de ejecucion para indicarle a la parte de ordenación como debe actuar cuando no se especifique el parametro RT, F, o S.</p>
-<h3>GFan Apps</h3>
-<h3>Community Apps</h3>
-<h3>Pro Apps</h3>
-<h3>Enterprise Edition Apps</h3>
+<blockquote>
+<p>WIP</p>
+</blockquote>
 <h2>One More Thing</h2>
 <p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
 <p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
@@ -122,21 +103,18 @@
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado por Humano. Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Nov 10 2025 23:28:28 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.3</li></ul><!--(iaStatus: 8
-iaStatus_Model: Raul Carrillo aka Metsuke
-iaStatus_Generado: H
-iaStatus_Supervisado: H
-iaStatus_Validado: '-'
+<ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Wed Nov 12 2025 08:24:28 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.1.3</li></ul><!--(iaStatus: 0
+iaStatus_Model: ''
 a11y: 0
 checked: 0
 lang: ES
 translations: null
-created: 2025-11-06T22:37:45.290Z
-modified: 2025-11-10T22:28:28.834Z
+created: 2025-11-11T07:16:12.161Z
+modified: 2025-11-12T07:24:28.632Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
-ver_minor: 2
+ver_minor: 1
 ver_rev: 3
 nav_primary: []
 nav_secondary: []

@@ -51,12 +51,17 @@
 <h2>Estructura de licencias propuesta</h2>
 <p>Para evitar estos extremos, organizo mis desarrollos en <strong>cuatro capas licenciales</strong>:</p>
 <ul>
-<li><strong>GFan Edition</strong>: Núcleo bajo licencias GNU, formado por primitivas genéricas y unificadas al estilo de las utilidades Unix. Actúa como base interoperable y sólida.</li>
+<li><strong>GFan Edition</strong>: Núcleo bajo licencias GNU, formado por primitivas genéricas y unificadas al estilo de las utilidades Unix. Actúa como base interoperable y sólida de modulos básicos (ver consecuencoias del <a class='internal' href='./blog---el-antiintromisionismo-una-propuesta-filosofica-y-practica-🟡③.html'>principio de no intromisión</a> que exige liberar el código del yugo de GPL siempre que sea posible, si no hay una razón lógica para mantener las restricciones.)
+<ul>
+<li>Salvo excepciones, la preferencia serán licencias GPLv3, GPLv2, MIT y compatibles, si alguna de las licencias GPL (especialmente la v3 impide alguna cuestion de MetsuOS se reimplementará como GPTv2 con código MIT, atendiendo al principio de no intromisión)</li>
+<li>Del mismo modo, esta capa quedará con el contenido mínimo imprescindible, cualquier cosa que pueda ser implementado en la Community Edition, por el principio de no intromisión, será implemenmtado en aquella, salvo que la lógica implique la necesidad de usar esta capa para proteger o hacer viable el proyecto MetsuOS.</li>
+</ul>
+</li>
 <li><strong>Community Edition</strong>: Capa bajo licencias permisivas (MIT y equivalentes), que extiende GFan con código adicional para ofrecer herramientas y funciones de alto nivel accesibles a toda la comunidad.</li>
 <li><strong>Pro Edition</strong>: Componente privativo que integra las capas anteriores para proporcionar a profesionales herramientas especializadas, eficientes y optimizadas para entornos exigentes.</li>
 <li><strong>Enterprise Edition</strong>: Código privativo que aprovecha las tres capas previas para ofrecer soluciones escalables a empresas y equipos de trabajo.</li>
 </ul>
-<p>Este enfoque busca fomentar una innovación continua, respetar la diversidad de usuarios y evitar dogmatismos, adaptándose con flexibilidad a entornos VUCA.</p>
+<p>Este enfoque busca fomentar una innovación continua, respetar la diversidad de usuarios y evitar dogmatismos, adaptándose con flexibilidad a entornos VUCA. Se tomarán en cuenta las <a class='internal' href='./licencias-de-software-y-compatibilidad-entre-ellas-🟡③.html'>Licencias de Software y compatibilidad entre ellas 🟡③</a> a la hora de usar librerias en cada app de cada edición.</p>
 <h2>Referencias que apoyan esta visión</h2>
 <ol>
 <li><a href="https://www.amazon.com/Just-Fun-Story-Accidental-Revolutionary/dp/0066620732">Torvalds, L. (2001). Just for Fun: The Story of an Accidental Revolutionary  🟡③🌐</a> - HarperBusiness. .- En este libro, Linus Torvalds defiende un pragmatismo en el desarrollo de software abierto (Linux bajo GPL), pero también critica el dogmatismo ideológico del movimiento GNU, priorizando la utilidad práctica sobre la pureza filosófica.</li>
@@ -131,7 +136,7 @@ Estudio académico que muestra cómo la diversidad de licencias (permissivas y c
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Nov 10 2025 22:33:25 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.10</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Wed Nov 12 2025 08:24:28 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.13</li></ul><!--(iaStatus: 8
 iaStatus_Model: Raúl Carrillo Garrido aka metsuke
 iaStatus_Generado: H
 iaStatus_Supervisado: '-'
@@ -141,12 +146,12 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-11-07T07:21:12.998Z
-modified: 2025-11-10T21:33:25.756Z
+modified: 2025-11-12T07:24:28.602Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 2
-ver_rev: 10
+ver_rev: 13
 nav_primary: []
 nav_secondary: []
 tags: []
