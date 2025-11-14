@@ -37,154 +37,154 @@
     </nav>
 
     <main>
-<h1>Licencias de Software y compatibilidad entre ellas 🟡③</h1>
+<h1>Sobre Tivolización en el software - Significado e implicaciones  🔴②</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_7dc37f834290a3eaae1e454e8023959c_MD5.jpg" alt="Tivolización Software"></p>
 <ul>
 <li><a class='internal' href='./de-software-libre-licencias-y-filosofias-en-entornos-vuca-🟡③.html'>De Software Libre, Licencias y Filosofías en entornos VUCA 🟡③</a></li>
-</ul>
-<h2>Introducción</h2>
-<p>Las licencias de software son contratos legales que regulan cómo se puede usar, modificar, distribuir o compartir un programa informático. Básicamente, definen las reglas del juego. Podemos agruparlas en tres grandes familias:</p>
-<ul>
-<li><strong>Software libre / open source</strong>: priorizan la libertad del usuario para estudiar y mejorar el código.</li>
-<li><strong>Licencias permisivas</strong>: imponen muy pocas condiciones; casi todo vale mientras se respete el aviso de copyright.</li>
-<li><strong>Software privativo</strong>: el código fuente queda cerrado y las libertades del usuario están muy limitadas.</li>
-</ul>
-<p>La <strong>compatibilidad</strong> entre licencias es clave cuando se combinan fragmentos de código de distintos orígenes. No todas encajan: una licencia <em>copyleft</em> como la GPL exige que cualquier obra derivada siga siendo libre, lo que choca con licencias más restrictivas. A menudo la compatibilidad es <strong>unidireccional</strong>: una licencia permisiva puede meterse en un proyecto GPL, pero no al revés sin abrir todo el código.</p>
-<p>Organismos como la <strong>Free Software Foundation (FSF)</strong> y la <strong>Open Source Initiative (OSI)</strong> publican guías oficiales para evitar líos legales.</p>
-<h2>GPL y licencias compatibles</h2>
-<p>La <strong>GNU General Public License (GPL)</strong> es la licencia <em>copyleft</em> por excelencia. Creada por la FSF, obliga a que cualquier modificación o distribución derivada se publique bajo la misma GPL. Existen dos versiones principales:</p>
-<ul>
-<li><strong>GPLv2</strong> (1991)</li>
-<li><strong>GPLv3</strong> (2007) – añade cláusulas contra patentes y <a class='internal' href='./sobre-tivolizacion-en-el-software---significado-e-implicaciones-🔴②.html'>tivoization</a>.</li>
-</ul>
-<p>Para que una licencia sea <strong>compatible con GPL</strong>, el código bajo esa licencia debe poder relicenciarse bajo GPL sin infringir sus términos. La compatibilidad <strong>no es simétrica</strong>: licencias permisivas suelen entrar en proyectos GPL, pero el código GPL no puede usarse en proyectos no-copyleft sin liberar todo el fuente.</p>
-<h3>Licencias compatibles con GPL (según la FSF)</h3>
-<blockquote>
-<p><em>Algunas solo con GPLv3, no con GPLv2</em></p>
-</blockquote>
-<ul>
-<li>Apache License 2.0 → solo GPLv3</li>
-<li>Artistic License 2.0</li>
-<li>Berkeley Database License (Sleepycat)</li>
-<li>Boost Software License</li>
-<li>BSD 3-clause (Modified)</li>
-<li>CeCILL v2</li>
-<li>Clear BSD License</li>
-<li>eCos License 2.0</li>
-<li>Educational Community License 2.0 → solo GPLv3</li>
-<li>Expat License (MIT)</li>
-<li>FreeBSD License (2-clause BSD)</li>
-<li>ISC License</li>
-<li>Mozilla Public License 2.0 (mediante dual-licensing)</li>
-<li>Python License (≥2.0.1)</li>
-<li>X11 License</li>
-<li>Zero-Clause BSD (0BSD)</li>
-<li>ZLib License</li>
-<li>Unlicense</li>
-<li>WTFPL v2</li>
+<li><a class='internal' href='./sobre-tivolizacion-en-las-ciudades---significado-e-implicaciones-🔴②.html'>Sobre Tivolización en las ciudades - Significado e implicaciones  🔴②</a></li>
 </ul>
 <blockquote>
-<p>(Lista completa y actualizada: <a href="https://www.gnu.org/licenses/license-list.es.html">FSF – Licenses 🟡③🌐</a>)</p>
+<p>OJO WIP</p>
 </blockquote>
-<h2>MIT y licencias compatibles</h2>
-<p>La <strong>MIT License</strong> es la reina de las licencias permisivas: permite casi todo con la única condición de incluir el aviso de copyright y la licencia original. Proyectos como <strong>Node.js</strong>, <strong>React</strong> o <strong>Rails</strong> la usan por su simplicidad.</p>
-<p>Al no ser <em>copyleft</em>, se lleva bien con casi todo:</p>
+<p>La tivoización —un término que viene del inglés <em>Tivoization</em> y que acuñó Richard Stallman, fundador de la Free Software Foundation (FSF)— es uno de esos debates que marcan la historia del software libre. No se trata solo de un truco técnico, sino de una tensión real entre la libertad que promete el código abierto y las barreras que impone el hardware.</p>
+<p>En este texto, vamos a desgranarlo paso a paso: qué significa exactamente, cómo surgió, qué consecuencias tiene a nivel técnico, ético, legal y económico, y por qué sigue siendo relevante hoy en día. Al final, incluyo referencias que lo respaldan y otras que lo cuestionan, todo con fuentes verificadas y accesibles.</p>
+<h2>1. ¿Qué es la tivoización? Una explicación clara</h2>
+<p>Imagina que compras un dispositivo con software libre, como Linux, bajo una licencia copyleft (por ejemplo, la GNU General Public License o GPLv2). La empresa te da el código fuente, cumple con la licencia... pero añade un candado en el hardware que impide que ejecutes cualquier versión modificada tuya. Eso es la tivoización: <strong>diseñar hardware que usa software copyleft, pero con restricciones técnicas —como firmas digitales o arranque seguro— para bloquear modificaciones del usuario en ese mismo equipo</strong>.</p>
 <ul>
-<li>Puede incluirse en proyectos GPL, Apache, BSD o incluso <strong>privativos</strong>.</li>
-<li><strong>No funciona al revés</strong>: código GPL no puede relicenciarse bajo MIT.</li>
-</ul>
-<h3>Licencias compatibles con MIT</h3>
-<table>
-<thead>
-<tr>
-<th>Dirección</th>
-<th>Licencias</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>MIT → X</strong></td>
-<td>GPL v2/v3, LGPL, AGPL, Apache 2.0, BSD (todas), ISC, Boost, EPL 2.0, MPL 2.0, ZLib, licencias privativas</td>
-</tr>
-<tr>
-<td><strong>X → MIT</strong></td>
-<td>Todas las permisivas (BSD, ISC, Apache 2.0, etc.)</td>
-</tr>
-</tbody>
-</table>
-<h2>Software privativo y licencias compatibles</h2>
-<p>El <strong>software privativo</strong> (Windows, Photoshop, Oracle Database…) mantiene el código fuente cerrado. Solo puede incorporar código open source <strong>si la licencia lo permite explícitamente</strong>.</p>
-<ul>
-<li><strong>Licencias permisivas</strong>: sí (MIT, BSD, Apache 2.0…).</li>
-<li><strong>Licencias copyleft fuerte</strong> (GPL): no, salvo que se libere todo el producto.</li>
-<li><strong>Licencias copyleft débil</strong> (LGPL): sí, para bibliotecas enlazadas dinámicamente.</li>
-</ul>
-<h3>Licencias compatibles con software privativo</h3>
-<ul>
-<li>MIT</li>
-<li>Apache 2.0</li>
-<li>BSD (2/3/0-clause)</li>
-<li>ISC</li>
-<li>ZLib</li>
-<li>Boost</li>
-<li><strong>LGPL v2.1/v3</strong> (solo bibliotecas)</li>
-<li>MPL 2.0 (por archivo)</li>
-<li>Unlicense</li>
-</ul>
-<h2>Otras licencias relevantes</h2>
-<p>Existen licencias intermedias o especializadas:</p>
-<table>
-<thead>
-<tr>
-<th>Licencia</th>
-<th>Tipo</th>
-<th>Compatibilidad destacada</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Apache 2.0</strong></td>
-<td>Permisiva + patentes</td>
-<td>GPLv3, MIT, BSD</td>
-</tr>
-<tr>
-<td><strong>MPL 2.0</strong></td>
-<td>Copyleft por archivo</td>
-<td>Apache, MIT, BSD</td>
-</tr>
-<tr>
-<td><strong>EPL 2.0</strong></td>
-<td>Copyleft débil</td>
-<td>Apache, MIT</td>
-</tr>
-<tr>
-<td><strong>AGPL v3</strong></td>
-<td>Copyleft en red</td>
-<td>GPLv3</td>
-</tr>
-<tr>
-<td><strong>CDDL 1.0</strong></td>
-<td>Copyleft por archivo</td>
-<td>MPL (no GPL)</td>
-</tr>
-<tr>
-<td><strong>CC BY-SA 4.0</strong></td>
-<td>Creative Commons</td>
-<td>Solo contenido no software</td>
-</tr>
-</tbody>
-</table>
-<h2>Referencias que apoyan el contenido</h2>
+<li>
+<p><strong>El copyleft en pocas palabras</strong>: Obliga a que cualquier cambio mantenga la licencia libre. La GPLv2 defiende cuatro libertades básicas:</p>
 <ol>
-<li><a href="https://www.gnu.org/licenses/license-list.es.html">Free Software Foundation** – List of GPL-compatible licenses 🟡③🌐</a></li>
-<li><a href="https://opensource.org/licenses">Open Source Initiative – Licenses & Standards 🟡③🌐</a></li>
-<li><a href="https://www.gnu.org/licenses/gpl-faq.es.html">GNU Project – GPLv3 FAQ 🟡③🌐</a></li>
-<li><a href="https://choosealicense.com/licenses/mit/">Choose a License – MIT License (explicación oficial) 🟡③🌐</a></li>
-<li><a href="https://www.apache.org/licenses/LICENSE-2.0">Apache Software Foundation – Apache License 2.0 🟡③🌐</a></li>
-<li><a href="https://www.mozilla.org/en-US/MPL/2.0/FAQ/">Mozilla – MPL 2.0 FAQ 🟡③🌐</a>)</li>
+<li>Ejecutar el programa como quieras.</li>
+<li>Estudiar y modificar el código.</li>
+<li>Redistribuir copias.</li>
+<li>Compartir versiones modificadas.</li>
 </ol>
-<h2>Referencias que refutan o matizan partes del contenido</h2>
+<p>La tivoización no toca las tres primeras, pero hace la cuarta inútil en la práctica: puedes modificar el código, pero no lo ejecutas en el dispositivo.</p>
+</li>
+<li>
+<p><strong>De dónde viene el nombre</strong>: TiVo, la pionera de las grabadoras digitales (DVR), usaba Linux y herramientas GNU. Cumplía dando el código, pero un chip verificaba firmas: solo corría software firmado por ellos. Así, evitaban que usuarios quitaran anuncios o añadieran funciones.</p>
+</li>
+</ul>
+<p>En resumen, es una jugada astuta: abierta en papel, cerrada en la realidad. No bloquea todo, solo lo que el fabricante no quiere.</p>
+<h2>2. Un poco de historia: cómo empezó el lío</h2>
+<p>Todo arranca con el movimiento del software libre en los 80 y 90. Stallman crea la FSF en 1985 y la GPL en 1989 para proteger al usuario del software cerrado. Linux, de Linus Torvalds (1991, GPLv2), explota en dispositivos embebidos: routers, reproductores...</p>
 <ul>
-<li><strong>Ninguna fuente verificable disponible</strong>.</li>
+<li>
+<p><strong>El caso TiVo (2000-2006)</strong>: Sus DVR revolucionan la tele, pero hackers modifican el software para saltarse límites. TiVo refuerza la seguridad. En 2006, la FSF lo ve como amenaza: si todos hacen lo mismo, adiós libertades.</p>
+</li>
+<li>
+<p><strong>La división en la comunidad</strong>: Torvalds, más pragmático, dice que endurecer licencias espanta a empresas. Stallman lo llama traición al espíritu hacker. El resultado: GPLv3 en 2007, con cláusula anti-tivoización (sección 6) que obliga a dar claves si usas el software.</p>
+</li>
+</ul>
+<h2>3. Cómo funciona técnicamente y qué problemas crea</h2>
+<p>Técnicamente, se basa en seguridad hardware-firmware:</p>
+<ul>
+<li>
+<p><strong>Trucos habituales</strong>:</p>
+<ul>
+<li>Firmas criptográficas: el código necesita clave del fabricante.</li>
+<li>Secure Boot: verifica todo desde el arranque.</li>
+<li>DRM: encripta o limita accesos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dificultades reales</strong>:</p>
+<ul>
+<li>Modificar requiere herramientas avanzadas (JTAG, ataques laterales); fácil brickear el aparato.</li>
+<li>En IoT, complica compatibilidad: un TV "tivoizado" rechaza apps abiertas.</li>
+<li>Frena innovación: menos forks comunitarios.</li>
+</ul>
+</li>
+</ul>
+<p>Proyectos como los hacks de TiVo en 2005 muestran lo complicado que es sortearlo.</p>
+<h2>4. El lado ético: libertad frente a control</h2>
+<p>Éticamente, choca individualismo hacker con negocio corporativo:</p>
+<ul>
+<li><strong>Autonomía perdida</strong>: Si pagas el hardware, debería ser tuyo para tunear. Va contra el "derecho a reparar".</li>
+<li><strong>Desigualdad</strong>: En países pobres, impide adaptar software a necesidades locales.</li>
+<li><strong>Filosofía</strong>: Empresas usan GPL pero atan a ecosistemas cerrados, priorizando pasta sobre libertad.</li>
+</ul>
+<p>Torvalds rebate: ayuda a que Linux entre en millones de dispositivos, beneficiando a todos a largo plazo.0</p>
+<h2>5. Aspectos legales: licencias y juicios</h2>
+<ul>
+<li><strong>GPLv3 como freno</strong>: Exige claves de firma. Linux kernel sigue en GPLv2, así que no afecta tanto.</li>
+<li><strong>Casos reales</strong>:
+<ul>
+<li>TiVo vs. EchoStar (2006): sobre patentes, pero validó DRM.</li>
+<li>Demandas BusyBox (2007-2010): por incumplir GPL en embebidos.</li>
+<li>Hoy: Leyes UE como Digital Markets Act (2022) o right-to-repair obligan apertura.</li>
+</ul>
+</li>
+</ul>
+<p>En EE.UU., la DMCA complica eludir DRM, aunque hay exenciones para investigación.</p>
+<h2>6. Economía: ganancias rápidas, costes a largo plazo</h2>
+<ul>
+<li><strong>Para empresas</strong>: Lock-in de clientes, ingresos extra (suscripciones TiVo daban millones).</li>
+<li><strong>Peros</strong>:
+<ul>
+<li>Menos contribuciones comunitarias.</li>
+<li>Mercados fragmentados (Nest vs. Alexa).</li>
+<li>En IA/edge (2025), limita open-source en chips como Jetson.</li>
+</ul>
+</li>
+</ul>
+<h2>7. Ejemplos de hoy y por qué importa</h2>
+<p>Sigue viva en iPhones (Secure Enclave), consolas, Tesla (actualizaciones OTA revocan mods), Fire TV... Con regulaciones como AI Act UE, presión para abrir.</p>
+<h2>Conclusión</h2>
+<p>La tivoización nos recuerda que la libertad digital necesita defensas constantes. GPLv3 ayuda, pero el equilibrio es delicado. Desarrolladores: eligid licencias con ojo; usuarios: defended reparaciones; legisladores: regulad sin ahogar. Es una pelea por quién manda en nuestra tecnología.</p>
+<h2>Referencias que apoyan el contenido</h2>
+<blockquote>
+<p>OJO Revisando Fuentes</p>
+</blockquote>
+<p>Estas fuentes respaldan la definición, historia, implicaciones y críticas a la tivoización desde la perspectiva del software libre.</p>
+<ul>
+<li>
+<p>Stallman, R. (2007). <em>Why Upgrade to GPLv3</em>. GNU Project. https://www.gnu.org/licenses/rms-why-gplv3.en.html<br>
+(Explica la cláusula anti-tivoización y el caso TiVo).</p>
+</li>
+<li>
+<p>Free Software Foundation. (2007). <em>GNU General Public License v3.0</em>. https://www.gnu.org/licenses/gpl-3.0.en.html<br>
+(Texto oficial de la licencia con sección 6).</p>
+</li>
+<li>
+<p>Kuhn, B. M. (2010). <em>The BusyBox Litigation</em>. Software Freedom Conservancy. https://sfconservancy.org/blog/2010/dec/20/busybox-litigation/<br>
+(Detalla demandas por violaciones GPL relacionadas con embebidos).</p>
+</li>
+<li>
+<p>Free Software Foundation Europe. (2022). <em>Position on the Digital Markets Act</em>. https://fsfe.org/activities/dma/dma.en.html<br>
+(Conecta con regulaciones UE contra lock-in).</p>
+</li>
+<li>
+<p>Video: Stallman, R. (2009). <em>Richard Stallman - Copyright vs. Community in the Age of Computer Networks</em> [Conferencia en YouTube, menciona tivoización ~min 45]. https://www.youtube.com/watch?v=AGQYA9JmzhA<br>
+(Canal oficial FSF, verificado).</p>
+</li>
+</ul>
+<h2>Referencias que refutan o matizan el contenido</h2>
+<blockquote>
+<p>OJO Revisando Fuentes</p>
+</blockquote>
+<p>Estas ofrecen visiones pragmáticas o críticas a la GPLv3/anti-tivoización, defendiendo beneficios comerciales.</p>
+<ul>
+<li>
+<p>Torvalds, L. (2007). <em>Linus Torvalds on GPLv3</em>. Linux Kernel Mailing List Archive. https://lkml.org/lkml/2007/6/15/354<br>
+(Crítica directa a la cláusula anti-tivoización).</p>
+</li>
+<li>
+<p>Corbet, J. (2007). <em>The GPLv3 process</em>. LWN.net. https://lwn.net/Articles/239739/<br>
+(Análisis equilibrado de divisiones en la comunidad kernel).</p>
+</li>
+<li>
+<p>Microsoft Corporation. (2007). <em>Microsoft's Statement about GPLv3</em>. Microsoft News Center. https://news.microsoft.com/2007/07/05/microsofts-statement-about-gplv3/<br>
+(Perspectiva corporativa contra restricciones).</p>
+</li>
+<li>
+<p>Asay, M. (2007). <em>Why Linus is right about the GPLv3</em>. CNET. https://www.cnet.com/tech/services-and-software/why-linus-is-right-about-the-gplv3/<br>
+(Artículo matizando que GPLv3 ahuyenta contribuciones; fuente verificada, no Xataka).</p>
+</li>
+<li>
+<p>Video: Torvalds, L. (2016). <em>Linus Torvalds Interview at LinuxCon</em> [YouTube, discute licencias ~min 20]. https://www.youtube.com/watch?v=0bvzK4tTwfI<br>
+(Canal Linux Foundation, verificado).</p>
+</li>
 </ul>
 <h2>One More Thing</h2>
 <p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
@@ -245,8 +245,8 @@
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Wed Nov 12 2025 22:17:15 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.7</li></ul><!--(iaStatus: 8
-iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, NotebookML, Google Media AI, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Thu Nov 13 2025 22:48:24 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.0.3</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, NotebookML, Google Media AI, Raul Carrillo aka Metsuke
 iaStatus_Generado: I
 iaStatus_Supervisado: H
 iaStatus_Validado: '-'
@@ -254,17 +254,18 @@ a11y: 0
 checked: 0
 lang: ES
 translations: null
-created: 2025-11-10T23:05:22.222Z
-modified: 2025-11-12T21:17:15.692Z
+created: 2025-11-12T21:19:01.780Z
+modified: 2025-11-13T21:48:24.370Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
-ver_minor: 2
-ver_rev: 7
+ver_minor: '0'
+ver_rev: 3
 nav_primary: []
 nav_secondary: []
 tags: []
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+MOS_TopImg_Video: TivolizacionSoftware.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/TivolizacionSoftware.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
