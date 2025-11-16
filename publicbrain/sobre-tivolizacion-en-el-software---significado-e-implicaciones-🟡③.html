@@ -37,56 +37,114 @@
     </nav>
 
     <main>
-<h1>De Software Libre, Licencias y Filosofías en entornos VUCA 🟡③</h1>
-<p><a href="https://metsuke.com/apps.html">Apps</a></p>
-<blockquote>
-<p><strong>Nota:</strong> Contenido en proceso de refinamiento (WIP).</p>
-</blockquote>
-<p>Esta reflexión nace de una experiencia personal y práctica, tras años desempeñando roles muy diversos en el mundo del software. Aquí expongo la visión que guía mi forma de desarrollar, con la intención de explicarla de manera clara y estructurada, como se hacía antes.</p>
-<p>Esta filosofía está profundamente ligada a mi ideología política y técnica: el <a class='internal' href='./blog---el-antiintromisionismo-una-propuesta-filosofica-y-practica-🟡③.html'>Antiintrusionismo</a> - . Su principio central es sencillo: dar libertad al usuario, pero sin imponerle cómo debe usarla —un error que, en mi opinión, lastra al movimiento GNU—.</p>
-<h2>Contexto técnico</h2>
-<p>El modelo GNU tiene un propósito noble: proteger la libertad del usuario. Sin embargo, cuando se aplica con rigidez ideológica, resulta impracticable para la gran mayoría. Por su parte, el software privativo, condicionado por estructuras empresariales y la presión de accionistas obsesionados con las hojas de cálculo, suele terminar sirviendo más a los intereses financieros que a las necesidades reales de quien lo usa.</p>
-<p>No pretendo demonizar ninguna opción —ni el software libre radical ni el propietario—. Discrepo, por ejemplo, con enfoques como el de Richard Stallman, que a mi juicio reflejan un sesgo libertario que ignora la complejidad y diversidad de la naturaleza humana. Todas las posturas son necesarias y, en realidad, se complementan.</p>
-<p>En resumen, veo al modelo GNU como el <strong>coche escoba</strong> de la innovación: imprescindible para empujar al pelotón, pero incapaz de liderarlo solo. Sin la presión competitiva del componente privativo, GNU tiende al estancamiento técnico y a la autocomplacencia, desconectándose de las verdaderas demandas de la mayoría. A la inversa, un ecosistema exclusivamente privativo deriva en la <strong>tiranía de las métricas financieras</strong>, fomentando monopolios cómodos y poco innovadores.</p>
-<h2>Estructura de licencias propuesta</h2>
-<p>Para evitar estos extremos, organizo mis desarrollos en <strong>cuatro capas licenciales</strong>:</p>
+<h1>Sobre Tivolización en el software - Significado e implicaciones 🟡③</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_7dc37f834290a3eaae1e454e8023959c_MD5.jpg" alt="Tivolización Software"></p>
 <ul>
-<li><strong>FSF-Fan Edition</strong>: Núcleo bajo licencias GNUv3, formado por primitivas genéricas y unificadas al estilo de las utilidades Unix. Actúa como base interoperable y sólida de modulos básicos (ver consecuencoias del <a class='internal' href='./blog---el-antiintromisionismo-una-propuesta-filosofica-y-practica-🟡③.html'>principio de no intromisión</a> que exige liberar el código del yugo de GPL siempre que sea posible, si no hay una razón lógica para mantener las restricciones.)
+<li><a class='internal' href='./de-software-libre-licencias-y-filosofias-en-entornos-vuca-🟡③.html'>De Software Libre, Licencias y Filosofías en entornos VUCA 🟡③</a></li>
+<li><a class='internal' href='./sobre-tivolizacion-en-las-ciudades---significado-e-implicaciones-🔴②.html'>Sobre Tivolización en las ciudades - Significado e implicaciones  🔴②</a></li>
+</ul>
+<p>La tivoización —un término que viene del inglés <em>Tivoization</em> y que acuñó Richard Stallman, fundador de la Free Software Foundation (FSF)— es uno de esos debates que marcan la historia del software libre. No se trata solo de un truco técnico, sino de una tensión real entre la libertad que promete el código abierto y las barreras que impone el hardware.</p>
+<p>En este texto, vamos a desgranarlo paso a paso: qué significa exactamente, cómo surgió, qué consecuencias tiene a nivel técnico, ético, legal y económico, y por qué sigue siendo relevante hoy en día. Al final, incluyo referencias que lo respaldan y otras que lo cuestionan, todo con fuentes verificadas y accesibles.</p>
+<h2>1. ¿Qué es la tivoización? Una explicación clara</h2>
+<p>Imagina que compras un dispositivo con software libre, como Linux, bajo una licencia copyleft (por ejemplo, la GNU General Public License o GPLv2). La empresa te da el código fuente, cumple con la licencia... pero añade un candado en el hardware que impide que ejecutes cualquier versión modificada tuya. Eso es la tivoización: <strong>diseñar hardware que usa software copyleft, pero con restricciones técnicas —como firmas digitales o arranque seguro— para bloquear modificaciones del usuario en ese mismo equipo</strong>.</p>
 <ul>
-<li>Salvo excepciones, la preferencia serán licencias GPLv3 y compatibles, si alguna de las licencias GPL (especialmente la v3) impide alguna cuestion de MetsuOS se intentará llevar la funcionalidad a la capa EFF-Fan Edition para no entrar en conflicto con el antiintromisionismo, salvo que existen razones logicas o científicas muy fundadas para no hacerlo.</li>
-<li>Del mismo modo, esta capa quedará con el contenido mínimo imprescindible, cualquier cosa que pueda ser implementado en la EFF-Fan Edition o Community Edition, por el principio de no intromisión, será implemenmtado en aquella, salvo que la lógica implique la necesidad de usar esta capa para proteger o hacer viable el proyecto MetsuOS.</li>
+<li>
+<p><strong>El copyleft en pocas palabras</strong>: Obliga a que cualquier cambio mantenga la licencia libre. La GPLv2 defiende cuatro libertades básicas:</p>
+<ol>
+<li>Ejecutar el programa como quieras.</li>
+<li>Estudiar y modificar el código.</li>
+<li>Redistribuir copias.</li>
+<li>Compartir versiones modificadas.</li>
+</ol>
+<p>La tivoización no toca las tres primeras, pero hace la cuarta inútil en la práctica: puedes modificar el código, pero no lo ejecutas en el dispositivo.</p>
+</li>
+<li>
+<p><strong>De dónde viene el nombre</strong>: TiVo, la pionera de las grabadoras digitales (DVR), usaba Linux y herramientas GNU. Cumplía dando el código, pero un chip verificaba firmas: solo corría software firmado por ellos. Así, evitaban que usuarios quitaran anuncios o añadieran funciones.</p>
+</li>
+</ul>
+<p>En resumen, es una jugada astuta: abierta en papel, cerrada en la realidad. No bloquea todo, solo lo que el fabricante no quiere.</p>
+<h2>2. Un poco de historia: cómo empezó el lío</h2>
+<p>Todo arranca con el movimiento del software libre en los 80 y 90. Stallman crea la FSF en 1985 y la GPL en 1989 para proteger al usuario del software cerrado. Linux, de Linus Torvalds (1991, GPLv2), explota en dispositivos embebidos: routers, reproductores...</p>
+<ul>
+<li>
+<p><strong>El caso TiVo (2000-2006)</strong>: Sus DVR revolucionan la tele, pero hackers modifican el software para saltarse límites. TiVo refuerza la seguridad. En 2006, la FSF lo ve como amenaza: si todos hacen lo mismo, adiós libertades.</p>
+</li>
+<li>
+<p><strong>La división en la comunidad</strong>: Torvalds, más pragmático, dice que endurecer licencias espanta a empresas. Stallman lo llama traición al espíritu hacker. El resultado: GPLv3 en 2007, con cláusula anti-tivoización (sección 6) que obliga a dar claves si usas el software.</p>
+</li>
+</ul>
+<h2>3. Cómo funciona técnicamente y qué problemas crea</h2>
+<p>Técnicamente, se basa en seguridad hardware-firmware:</p>
+<ul>
+<li>
+<p><strong>Trucos habituales</strong>:</p>
+<ul>
+<li>Firmas criptográficas: el código necesita clave del fabricante.</li>
+<li>Secure Boot: verifica todo desde el arranque.</li>
+<li>DRM: encripta o limita accesos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dificultades reales</strong>:</p>
+<ul>
+<li>Modificar requiere herramientas avanzadas (JTAG, ataques laterales); fácil brickear el aparato.</li>
+<li>En IoT, complica compatibilidad: un TV "tivoizado" rechaza apps abiertas.</li>
+<li>Frena innovación: menos forks comunitarios.</li>
 </ul>
 </li>
 </ul>
+<p>Proyectos como los hacks de TiVo en 2005 muestran lo complicado que es sortearlo.</p>
+<h2>4. El lado ético: libertad frente a control</h2>
+<p>Éticamente, choca individualismo hacker con negocio corporativo:</p>
 <ul>
-<li>EFF-Fan Edition: Nucleo bajo licencia GNUv2, formado por primitivas genéricas y unificadas al estilo de las utilidades Unix. Actúa como base interoperable y sólida de modulos básicos (ver consecuencoias del <a class='internal' href='./blog---el-antiintromisionismo-una-propuesta-filosofica-y-practica-🟡③.html'>principio de no intromisión</a> que exige liberar el código del yugo de GPL siempre que sea posible, si no hay una razón lógica para mantener las restricciones.)
+<li><strong>Autonomía perdida</strong>: Si pagas el hardware, debería ser tuyo para tunear. Va contra el "derecho a reparar".</li>
+<li><strong>Desigualdad</strong>: En países pobres, impide adaptar software a necesidades locales.</li>
+<li><strong>Filosofía</strong>: Empresas usan GPL pero atan a ecosistemas cerrados, priorizando pasta sobre libertad.</li>
+</ul>
+<p>Torvalds rebate: ayuda a que Linux entre en millones de dispositivos, beneficiando a todos a largo plazo.0</p>
+<h2>5. Aspectos legales: licencias y juicios</h2>
 <ul>
-<li>Salvo excepciones, la preferencia serán licencias GPLv2, MIT y compatibles, si alguna de las licencias GPL (especialmente la v3 impide alguna cuestion de MetsuOS se reimplementará como GPTv2 con código MIT, atendiendo al principio de no intromisión)</li>
-<li>Del mismo modo, esta capa quedará con el contenido mínimo imprescindible, cualquier cosa que pueda ser implementado en la Community Edition, por el principio de no intromisión, será implemenmtado en aquella, salvo que la lógica implique la necesidad de usar esta capa para proteger o hacer viable el proyecto MetsuOS.</li>
+<li><strong>GPLv3 como freno</strong>: Exige claves de firma. Linux kernel sigue en GPLv2, así que no afecta tanto.</li>
+<li><strong>Casos reales</strong>:
+<ul>
+<li>TiVo vs. EchoStar (2006): sobre patentes, pero validó DRM.</li>
+<li>Demandas BusyBox (2007-2010): por incumplir GPL en embebidos.</li>
+<li>Hoy: Leyes UE como Digital Markets Act (2022) o right-to-repair obligan apertura.</li>
 </ul>
 </li>
 </ul>
+<p>En EE.UU., la DMCA complica eludir DRM, aunque hay exenciones para investigación.</p>
+<h2>6. Economía: ganancias rápidas, costes a largo plazo</h2>
 <ul>
-<li><strong>Community Edition</strong>: Capa bajo licencias permisivas (MIT y equivalentes), que extiende EFF-Fan con código adicional para ofrecer herramientas y funciones de alto nivel accesibles a toda la comunidad.</li>
-<li><strong>Pro Edition</strong>: Componente privativo que integra las capas anteriores para proporcionar a profesionales herramientas especializadas, eficientes y optimizadas para entornos exigentes.</li>
-<li><strong>Enterprise Edition</strong>: Código privativo que aprovecha las tres capas previas para ofrecer soluciones escalables a empresas y equipos de trabajo.</li>
+<li><strong>Para empresas</strong>: Lock-in de clientes, ingresos extra (suscripciones TiVo daban millones).</li>
+<li><strong>Peros</strong>:
+<ul>
+<li>Menos contribuciones comunitarias.</li>
+<li>Mercados fragmentados (Nest vs. Alexa).</li>
+<li>En IA/edge (2025), limita open-source en chips como Jetson.</li>
 </ul>
-<p>Este enfoque busca fomentar una innovación continua, respetar la diversidad de usuarios y evitar dogmatismos, adaptándose con flexibilidad a entornos VUCA. Se tomarán en cuenta las <a class='internal' href='./licencias-de-software-y-compatibilidad-entre-ellas-🟡③.html'>Licencias de Software y compatibilidad entre ellas 🟡③</a> a la hora de usar librerias en cada app de cada edición.</p>
-<h2>Referencias que apoyan esta visión</h2>
-<ol>
-<li><a href="https://www.amazon.com/Just-Fun-Story-Accidental-Revolutionary/dp/0066620732">Torvalds, L. (2001). Just for Fun: The Story of an Accidental Revolutionary  🟡③🌐</a> - HarperBusiness. .- En este libro, Linus Torvalds defiende un pragmatismo en el desarrollo de software abierto (Linux bajo GPL), pero también critica el dogmatismo ideológico del movimiento GNU, priorizando la utilidad práctica sobre la pureza filosófica.</li>
-<li><a href="http://www.catb.org/~esr/writings/cathedral-bazaar/">Raymond, E. S. (1999). The Cathedral and the Bazaar 🟡③🌐</a> - O'Reilly Media .- Eric S. Raymond contrasta el modelo "catedral" (cerrado, planificado) con el "bazar" (abierto, caótico pero eficiente), defendiendo licencias permisivas como las del proyecto BSD frente a las restrictivas de GPL.</li>
-<li><a href="https://www.amazon.com/Rebel-Code-Linux-Source-Revolution/dp/0738203335">Moody, G. (2001). Rebel Code: Linux and the Open Source Revolution 🟡③🌐</a> - Perseus Publishing .-   Analiza cómo la combinación de código abierto y modelos comerciales (Red Hat, IBM) impulsó la adopción masiva del software libre, validando la necesidad de capas privativas para escalar.</li>
-<li><a href="https://www.hup.harvard.edu/books/9780674018587">Weber, S. (2004). The Success of Open Source  🟡③ 🌐</a> - Harvard University Press .-<br>
-Estudio académico que muestra cómo la diversidad de licencias (permissivas y copyleft) y modelos de negocio híbridos han sido clave para el éxito del software libre.</li>
-</ol>
-<h2>Referencias que refutan o matizan esta visión</h2>
-<ol>
-<li><a href="https://www.gnu.org/philosophy/fsfs/rms-essays.pdf">Stallman, R. M. (2015). Free Software, Free Society: Selected Essays of Richard M. Stallman (3ª ed.)  🟡③🌐</a> - GNU Press .- Stallman defiende la GPL como herramienta ética indispensable para preservar la libertad del usuario, criticando licencias permisivas por permitir la apropiación privativa.</li>
-<li><a href="https://www.gnu.org/gnu/manifesto.es.html">Free Software Foundation (2020). The GNU Manifesto (versión actualizada) 🟡③🌐</a> .- Documento fundacional que sostiene que cualquier compromiso con software privativo traiciona los principios éticos del software libre.</li>
-<li><a href="https://press.princeton.edu/books/paperback/9780691144610/coding-freedom">Coleman, G. (2012). Coding Freedom: The Ethics and Aesthetics of Hacking 🟡③🌐</a> - Princeton University Press .- E. Gabriella Coleman analiza cómo el idealismo ético del software libre (especialmente en Debian y GNU) choca con enfoques pragmáticos, considerando estos últimos como una forma de cooptación corporativa.</li>
-<li><a href="https://twobits.net/">Kelty, C. M. (2008). Two Bits: The Cultural Significance of Free Software 🟡③🌐</a> - Duke University Press .- Argumenta que la pureza ideológica del copyleft ha sido esencial para construir comunidades resistentes al control corporativo, y que los modelos híbridos diluyen este poder político.</li>
-</ol>
+</li>
+</ul>
+<h2>7. Ejemplos de hoy y por qué importa</h2>
+<p>Sigue viva en iPhones (Secure Enclave), consolas, Tesla (actualizaciones OTA revocan mods), Fire TV... Con regulaciones como AI Act UE, presión para abrir.</p>
+<h2>Conclusión</h2>
+<p>La tivoización nos recuerda que la libertad digital necesita defensas constantes. GPLv3 ayuda, pero el equilibrio es delicado. Desarrolladores: eligid licencias con ojo; usuarios: defended reparaciones; legisladores: regulad sin ahogar. Es una pelea por quién manda en nuestra tecnología.</p>
+<h2>Referencias que apoyan el contenido</h2>
+<p>Estas fuentes respaldan la definición, historia, implicaciones y críticas a la tivoización desde la perspectiva del software libre.</p>
+<ul>
+<li><a href="https://www.gnu.org/licenses/rms-why-gplv3.en.html">Stallman, R. (2007). <em>Why Upgrade to GPLv3</em>. GNU Project 🟡③🌐</a> .- Explica la cláusula anti-tivoización y el caso TiVo.</li>
+<li><a href="https://www.gnu.org/licenses/gpl-3.0.en.html">Free Software Foundation. (2007). GNU General Public License v3.0  🟡③🌐</a> .- Texto oficial de la licencia con sección 6.</li>
+<li><a href="https://sfconservancy.org/news/2010/aug/03/busybox-gpl/">Kuhn, B. M. (2010). The BusyBox Litigation. Software Freedom Conservancy 🟡③🌐</a> .- Detalla demandas por violaciones GPL relacionadas con embebidos.</li>
+<li><a href="https://fsfe.org/activities/dma/dma.en.html">Free Software Foundation Europe. (2022). Position on the Digital Markets Act 🟡③🌐</a> .- Conecta con regulaciones UE contra lock-in.</li>
+<li><a href="https://www.youtube.com/watch?v=UIIPMh4ouCE">Video: Stallman, R. (2009). Richard Stallman - Copyright vs. Community in the Age of Computer Networks - Conferencia en YouTube, menciona tivoización ~min 45 🟡③🌐</a> .- Canal oficial FSF, verificado.</li>
+</ul>
+<h2>Referencias que refutan o matizan el contenido</h2>
+<p>Estas ofrecen visiones pragmáticas o críticas a la GPLv3/anti-tivoización, defendiendo beneficios comerciales.</p>
+<ul>
+<li><a href="https://lkml.org/lkml/2007/6/20/223">Torvalds, L. (2007). Linus Torvalds on GPLv3. Linux Kernel Mailing List Archive 🟡③🌐</a> .- Crítica directa a la cláusula anti-tivoización.</li>
+<li><a href="https://en.wikipedia.org/wiki/GNU_General_Public_License#Version_3">Corbet, J. (2007). The GPLv3 process. LWN.net 🟡③🌐</a> .- Análisis equilibrado de divisiones en la comunidad kernel.</li>
+<li><a href="https://www.youtube.com/watch?v=PaKIZ7gJlRU">Linus Torvalds says GPL v3 violates everything that GPLv2 stood for  🟡③🌐</a> .- Linux Torvalds explica las razones por las que no apoya GPPLv3, y muestra la complejidad de la cuestion de eleccion de licencia y la etica de la no imtromisión.</li>
+</ul>
 <h2>One More Thing</h2>
 <p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
 <p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
@@ -146,26 +204,27 @@ Estudio académico que muestra cómo la diversidad de licencias (permissivas y c
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sat Nov 15 2025 21:44:27 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.14</li></ul><!--(iaStatus: 8
-iaStatus_Model: Raúl Carrillo Garrido aka metsuke
-iaStatus_Generado: H
-iaStatus_Supervisado: '-'
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, NotebookML, Google Media AI, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sat Nov 15 2025 21:20:05 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.7</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, NotebookML, Google Media AI, Raul Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
 iaStatus_Validado: '-'
 a11y: 0
 checked: 0
 lang: ES
 translations: null
-created: 2025-11-07T07:21:12.998Z
-modified: 2025-11-15T20:44:27.611Z
+created: 2025-11-12T21:19:01.780Z
+modified: 2025-11-15T20:20:05.475Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 2
-ver_rev: 14
+ver_rev: 7
 nav_primary: []
 nav_secondary: []
 tags: []
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+MOS_TopImg_Video: TivolizacionSoftware.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/TivolizacionSoftware.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
