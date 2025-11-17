@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Sobre cláusulas contra patentes en GPLv3 🔴②</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_5a7834dedd1d62060fa63bc554922154_MD5.jpg" alt="Softrware Patents"></p>
+<ul>
+<li><a class='internal' href='./licencias-de-software-y-compatibilidad-entre-ellas-🟡③.html'>Licencias de Software y compatibilidad entre ellas 🟡③</a></li>
+<li><a class='internal' href='./de-software-libre-licencias-y-filosofias-en-entornos-vuca-🟡③.html'>De Software Libre, Licencias y Filosofías en entornos VUCA 🟡③</a></li>
+</ul>
+<blockquote>
+<p>OJO WIP</p>
+</blockquote>
+<h2>Introducción</h2>
+<p>La GNU General Public License versión 3 (GPLv3), lanzada por la Free Software Foundation (FSF) en junio de 2007, supuso un avance importante respecto a su predecesora, la GPLv2 de 1991. Mientras que la GPLv2 se centraba en las "cuatro libertades" del software libre —usar, estudiar, modificar y distribuir el software—, la GPLv3 incorpora protecciones más sólidas contra amenazas modernas, como las patentes de software, la "<a class='internal' href='./sobre-tivolizacion-en-el-software---significado-e-implicaciones-🟡③.html'>tivoización</a>" (restricciones técnicas que impiden cambios) y acuerdos comerciales que podrían minar la libertad del software.</p>
+<p>Las cláusulas contra patentes en la GPLv3 son uno de sus elementos clave. Su meta principal es evitar que las patentes se usen para limitar las libertades que ofrece la licencia, garantizando que el software bajo GPLv3 siga siendo realmente libre y accesible para todos. Estas medidas responden a un contexto histórico en el que las patentes de software se han visto como una amenaza grave para el movimiento del software libre. Por ejemplo, en los años 2000, compañías como Microsoft acumularon patentes relacionadas con tecnologías abiertas, como Linux, y las emplearon para intimidar a usuarios o rivales. Un caso destacado fue el acuerdo de 2006 entre Microsoft y Novell, en el que Microsoft se comprometió a no demandar por infracción de patentes a clientes de Novell que usaban SUSE Linux, pero esto creaba un trato discriminatorio que podría perjudicar a otros usuarios de GPL. La FSF interpretó esto como un intento de dividir la comunidad y respondió añadiendo cláusulas anti-discriminación en la GPLv3.</p>
+<p>Básicamente, estas cláusulas contra patentes pretenden:</p>
+<ul>
+<li>Conceder licencias de patentes automáticas y no exclusivas a todos los usuarios y distribuidores.</li>
+<li>Disuadir demandas por patentes mediante mecanismos de respuesta.</li>
+<li>Impedir acuerdos que utilicen patentes para restringir las libertades de la GPL.</li>
+</ul>
+<p>A continuación, exploraremos en detalle estas cláusulas, basándonos en el texto oficial de la licencia y en análisis de expertos.</p>
+<h2>Antecedentes Históricos y Motivaciones</h2>
+<p>El proceso de creación de la GPLv3 fue abierto y colaborativo, durando más de un año e involucrando a la comunidad, empresas y juristas. Según Richard Fontana, quien participó en la redacción como asesor de la Software Freedom Law Center (SFLC), el panorama estaba marcado por la hostilidad de Microsoft hacia Linux, litigios como el de SCO contra IBM (que alegaba violaciones de propiedad intelectual en Linux) y un boom en modelos de negocio de código abierto. Las patentes se convirtieron en un foco principal porque representaban una "amenaza existencial": en lugares como Estados Unidos, donde las patentes de software son válidas, un titular podría demandar a usuarios de software libre por infracción, aunque el código sea público.</p>
+<p>La FSF, guiada por Richard Stallman, buscaba neutralizar las patentes contra el software GPL. El primer borrador de la GPLv3 (enero de 2006) ya incluía disposiciones contra patentes, pero se pulieron gracias a las opiniones recibidas. Por instancia, el acuerdo Microsoft-Novell impulsó la adición de condiciones permanentes en la sección de patentes para contrarrestar la agresión por patentes. Estas cláusulas no solo protegen a los usuarios, sino que también promueven la colaboración al obligar a los contribuyentes con patentes a compartirlas de forma justa.</p>
+<p>Algunos críticos, especialmente en el sector empresarial, argumentaban que complicaban la adopción para compañías con carteras de patentes, limitando su capacidad para monetizar o defenderse. Sin embargo, sus defensores destacan que refuerzan el copyleft (el sistema que obliga a que las derivadas sean libres) al integrar las patentes en el ecosistema libre.</p>
+<h2>Análisis Detallado de las Cláusulas Relevantes</h2>
+<p>Las disposiciones contra patentes se concentran sobre todo en las <strong>secciones 10 y 11</strong> de la GPLv3. Vamos a citar el texto oficial (en inglés, con traducción aproximada al español para mayor claridad) y explicar su significado.</p>
+<h3>Sección 10: Licencias Automáticas a Receptores Downstream</h3>
+<p>Esta sección garantiza que todo receptor de una obra bajo GPLv3 obtenga automáticamente una licencia para ejecutar, modificar y propagar el software, sin restricciones extras. Incluye una prohibición clara contra litigios por patentes:</p>
+<p><strong>Texto clave (traducción aproximada):</strong></p>
+<blockquote>
+<p>Cada vez que transmitas una obra cubierta, el receptor recibe automáticamente una licencia del licenciante original para ejecutar, modificar y propagar esa obra, sujeta a esta Licencia. No estás autorizado a imponer restricciones adicionales a los derechos otorgados por esta Licencia. No eres responsable de hacer cumplir el cumplimiento de esta Licencia por terceros.</p>
+<p>No puedes imponer ninguna restricción adicional a los derechos otorgados por esta Licencia. Por ejemplo, no puedes imponer una tarifa de licencia, regalía o cargo por el ejercicio de los derechos otorgados bajo esta Licencia, y no puedes iniciar litigios (incluyendo contrademandas o reconvenciones en un juicio) alegando que cualquier patente es infringida por hacer, usar, vender, ofrecer para la venta, o importar el Programa o cualquier porción del mismo.</p>
+</blockquote>
+<ul>
+<li><strong>Protección contra litigios</strong>: Si un distribuidor inicia una demanda por infracción de patente relacionada con el software GPL, pierde sus derechos bajo la licencia. Esto funciona como una "cláusula de retaliación" (patent retaliation clause), que desalienta a las empresas a usar patentes de forma ofensiva. En el borrador inicial de la GPLv3, esta cláusula no era tan robusta, pero se reforzó para abarcar no solo la distribución, sino también el uso y la modificación.</li>
+<li><strong>Ventajas</strong>: Protege a la comunidad al convertir las patentes en herramientas defensivas, no agresivas. Empresas como IBM o Red Hat, que contribuyen a proyectos GPL, lo ven como un beneficio porque fomenta la innovación conjunta sin temor a demandas.</li>
+<li><strong>Riesgos</strong>: Para productores con patentes, reduce su capacidad para demandar por infracciones no relacionadas, lo que podría afectar su posición competitiva. No obstante, análisis como los de LWN.net (2006) indican que la cláusula no es "absoluta": no revoca derechos de mero uso sin copia, y permite términos adicionales opcionales para respuestas limitadas.</li>
+</ul>
+<h3>Sección 11: Patentes</h3>
+<p>Esta es la sección principal contra patentes. Define términos clave y establece la concesión obligatoria de licencias de patentes.</p>
+<p><strong>Texto completo (traducción aproximada, manteniendo la estructura):</strong></p>
+<blockquote>
+<p>Un "contribuyente" es un titular de derechos de autor que autoriza el uso bajo esta Licencia del Programa o una obra en la que se basa el Programa. La obra así licenciada se llama la "versión del contribuyente".</p>
+<p>Las "reclamaciones de patente esenciales" de un contribuyente son todas las reclamaciones de patente poseídas o controladas por el contribuyente, ya adquiridas o por adquirir, que serían infringidas por algún modo, permitido por esta Licencia, de hacer, usar o vender su versión del contribuyente, pero no incluyen reclamaciones que serían infringidas solo como consecuencia de modificaciones adicionales a la versión del contribuyente. Para propósitos de esta definición, "control" incluye el derecho a otorgar sublicencias de patente de manera consistente con los requisitos de esta Licencia.</p>
+<p>Cada contribuyente te otorga una licencia de patente no exclusiva, mundial, libre de regalías bajo las reclamaciones de patente esenciales del contribuyente, para hacer, usar, vender, ofrecer para la venta, importar y de otra manera ejecutar, modificar y propagar el contenido de su versión del contribuyente.</p>
+<p>Siguen párrafos sobre "licencia de patente", "dependencia consciente" en licencias de patentes, extensión automática de licencias, y prohibición de licencias discriminatorias.</p>
+<p>Una licencia de patente es "discriminatoria" si no incluye dentro de su ámbito de cobertura, prohíbe el ejercicio de, o está condicionada al no ejercicio de uno o más de los derechos específicamente otorgados bajo esta Licencia. No puedes transmitir una obra cubierta si eres parte de un arreglo con un tercero que está en el negocio de distribuir software, bajo el cual haces pago al tercero basado en la extensión de tu actividad de transmitir la obra, y bajo el cual el tercero otorga, a cualquiera de las partes que recibirían la obra cubierta de ti, una licencia de patente discriminatoria (a) en conexión con copias de la obra cubierta transmitidas por ti (o copias hechas de esas copias), o (b) principalmente para y en conexión con productos específicos o compilaciones que contienen la obra cubierta, a menos que entraras en ese arreglo, o que esa licencia de patente fuera otorgada, antes del 28 de marzo de 2007.</p>
+<p>Nada en esta Licencia se interpretará como excluyendo o limitando cualquier licencia implícita u otras defensas contra infracción que de otra manera pudieran estar disponibles para ti bajo la ley de patentes aplicable.</p>
+</blockquote>
+<p><strong>Explicación detallada:</strong></p>
+<ul>
+<li><strong>Concesión de licencia de patentes</strong>: Todo contribuyente (quien añade código) concede automáticamente una licencia de sus "reclamaciones esenciales" (patentes que cubren el software tal como se distribuye). Es libre de regalías y global, abarcando uso, modificación y distribución. A diferencia de la GPLv2, que no mencionaba patentes de forma explícita, esto cierra lagunas donde un contribuyente podría demandar por sus propias patentes.</li>
+<li><strong>Dependencia consciente y extensión automática</strong>: Si distribuyes software sabiendo que depende de una licencia de patente (por ejemplo, un acuerdo implícito), debes asegurar que la fuente esté disponible o extender la licencia a todos. Esto evita "trampas" donde las patentes se usan para forzar el cumplimiento.</li>
+<li><strong>Anti-discriminación</strong>: Prohíbe arreglos donde se pagan regalías por distribución y el tercero concede licencias de patentes que restringen derechos GPL. La fecha de corte (28 de marzo de 2007) "abuela" acuerdos previos como el de Microsoft-Novell, pero impide nuevos. Esto fue una respuesta directa al acuerdo de 2006, como relata Fontana.</li>
+<li><strong>Ventajas y riesgos</strong>: Las ventajas incluyen mayor protección contra "trolls de patentes" y el fomento de ecosistemas libres. Los riesgos, según informes como los de BearingPoint, radican en limitaciones para empresas a la hora de proteger su propiedad intelectual o monetizar vía patentes. En foros como Patents Stack Exchange, se debate que reduce demandas contra usuarios GPL, pero no impide patentar innovaciones nuevas.</li>
+</ul>
+<h2>Comparación con la GPLv2</h2>
+<p>La GPLv2 carecía de cláusulas explícitas contra patentes, lo que dejaba vulnerabilidades. Por ejemplo, un contribuyente podía patentar partes del software y demandar a usuarios. La GPLv3 corrige esto con concesiones explícitas y mecanismos de retaliación, haciendo la licencia más resistente a patentes. Esto ha resultado en una adopción mixta: proyectos como el núcleo de Linux se mantuvieron en GPLv2 por compatibilidad, mientras que otros como Samba migraron a GPLv3.</p>
+<h2>Implicaciones, Ejemplos y Controversias</h2>
+<p><strong>Implicaciones prácticas</strong>:</p>
+<ul>
+<li><strong>Para desarrolladores</strong>: Mayor seguridad al contribuir; sus patentes se comparten de manera automática.</li>
+<li><strong>Para empresas</strong>: Favorece modelos de código abierto sin temor a demandas, pero exige precaución en el cumplimiento. Por ejemplo, Google usa GPLv3 en algunos proyectos, pero la evita en el núcleo de Android por cuestiones de compatibilidad.</li>
+<li><strong>Ejemplos</strong>: El acuerdo Microsoft-Novell impulsó la cláusula anti-discriminación. En la década de 2010, disputas como Oracle contra Google (sobre APIs de Java) ilustraron cómo las patentes afectan al código abierto, aunque no directamente a GPL.</li>
+</ul>
+<p><strong>Controversias</strong>:</p>
+<ul>
+<li>Algunos critican su complejidad: LWN.net apuntó que la retaliación no es "total" y podría no disuadir a todos.</li>
+<li>Empresas temen que, si las demandan por patentes en código GPLv3, no puedan reconciliar con sus obligaciones (según Black Duck Blog).</li>
+<li>Aun así, sus contribuciones perduran, influyendo en licencias como MPL 2.0, con periodos de gracia para violaciones.</li>
+</ul>
+<h2>Conclusión</h2>
+<p>Las cláusulas contra patentes en la GPLv3 suponen un paso estratégico para salvaguardar el software libre en un mundo plagado de patentes. Al forzar el reparto equitativo y desincentivar agresiones, fortalecen el copyleft y estimulan la innovación colaborativa. Aunque añaden algo de complejidad, su impacto ha sido positivo, mitigando riesgos y adaptándose a desafíos actuales. Para más información, consulta el texto oficial en gnu.org. S</p>
+<h2>Referencias que Apoyan el Contenido</h2>
+<p>Estas fuentes respaldan las ventajas y la necesidad de las cláusulas contra patentes en la GPLv3, destacando su rol en la protección del software libre.</p>
+<ul>
+<li><a href="https://fsfe.org/activities/gplv3/patents-and-gplv3.en.html">Free Software Foundation Europe (FSFE). "Patents and GPLv3" 🟡③🌐</a>. Este documento explica cómo las cláusulas abordan las amenazas de patentes.</li>
+<li><a href="https://bearingpoint.services/foss/en/newsblogs/dont-be-afraid-of-gplv3/">BearingPoint. "Understanding GPL v3: Risks, benefits, and compliance" 🟡③🌐</a> .- Analiza los beneficios de las provisiones de patentes para empresas.</li>
+<li><a href="https://fossa.com/blog/open-source-software-licenses-101-gpl-v3/">FOSSA. "Open Source Software Licenses 101: GPL v3" 🟡③🌐</a> .- Resalta la concesión explícita de derechos de patentes como una mejora clave.</li>
+<li><a href="https://patentpc.com/blog/understanding-the-patent-provisions-in-popular-open-source-licenses">PatentPC. "Understanding the Patent Provisions in Popular Open Source Licenses" 🟡③🌐</a> .-Enfatiza el rol protector de la cláusula de retaliación.</li>
+<li><a href="https://www.youtube.com/watch?v=WNknNScP0tg">Vídeo: Richard Stallman. "Welcome to GPLv3" 🟡③🌐</a> .- Stallman defiende el propósito de las cláusulas contra patentes.</li>
+</ul>
+<h2>Referencias que Refutan el Contenido</h2>
+<p>Estas fuentes critican las cláusulas, argumentando que limitan la innovación empresarial, complican la adopción o no son tan efectivas como se afirma.</p>
+<ul>
+<li><a href="https://www.blackduck.com/blog/whos-afraid-gpl3.html">Black Duck (Synopsys). "Who's Afraid of GPL3? All About GPL Version 3" 🟡③🌐</a> .- Señala que las cláusulas de patentes pueden asustar a contribuyentes y limitar la monetización.</li>
+<li><a href="https://klarasystems.com/articles/gpl-3-the-controversial-licensing-model-and-potential-solutions/">Klara Systems. "GPL 3: The Controversial Licensing Model and Potential Solutions" 🟡③🌐</a> .- Critica las provisiones por riesgos legales y limitaciones en la distribución.</li>
+<li><a href="https://lwn.net/Articles/167825/">LWN.net. "GPLv3: a first look"</a> .- Apunta que la cláusula de retaliación no es tan fuerte como parece.</li>
+<li><a href="https://phys.org/news/2007-03-controversy-swirls-gplv3.html">Phys.org. "Controversy Swirls Around Changes in GPLv3" 🟡③🌐</a> .- Discute preocupaciones sobre cómo preserva derechos de patentes no GPL.</li>
+<li><a href="https://www.youtube.com/watch?v=PaKIZ7gJlRU">Vídeo: Linus Torvalds. "Linus Torvalds says GPL v3 violates everything that GPLv2 stood for" 🟡③🌐</a></li>
+</ul>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sun Nov 16 2025 23:16:33 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.0.6</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-11-16T06:24:54.964Z
+modified: 2025-11-16T22:16:33.968Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: '0'
+ver_rev: 6
+nav_primary: []
+nav_secondary: []
+tags: []
+MOS_TopImg_Video: SoftwarePatents.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/SoftwarePatents.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>
