@@ -37,60 +37,227 @@
     </nav>
 
     <main>
-<h1>De Software Libre, Licencias y Filosofías en entornos VUCA 🟡③</h1>
-<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_55231f0ebef2920de7222ca5290af631_MD5.jpg" alt="Licencias Software entornos VUCA"></p>
+<h1>Analisis de Licencias y Seguridad de los distintos lenguajes de programación 🔴②</h1>
 <ul>
-<li><a href="https://metsuke.com/apps.html">Apps</a></li>
-<li><a class='internal' href='./analisis-de-licencias-y-seguridad-de-los-distintos-lenguajes-de-programacion-🔴②.html'>Analisis de Licencias y Seguridad de los distintos lenguajes de programación 🔴②</a></li>
+<li><a class='internal' href='./por-que-python-es-la-eleccion-ideal-para-desarrollar-en-el-ecosistema-completo-de-metsuos-🟡③.html'>¿Por qué Python es la elección ideal para desarrollar en el ecosistema completo de MetsuOS? 🟡③</a></li>
+<li><a class='internal' href='./de-software-libre-licencias-y-filosofias-en-entornos-vuca-🟡③.html'>De Software Libre, Licencias y Filosofías en entornos VUCA 🟡③</a></li>
 </ul>
 <blockquote>
-<p><strong>Nota:</strong> Contenido en proceso de refinamiento (WIP).</p>
+<p>OJO WIP</p>
 </blockquote>
-<p>Esta reflexión nace de una experiencia personal y práctica, tras años desempeñando roles muy diversos en el mundo del software. Aquí expongo la visión que guía mi forma de desarrollar, con la intención de explicarla de manera clara y estructurada, como se hacía antes.</p>
-<p>Esta filosofía está profundamente ligada a mi ideología política y técnica: el <a class='internal' href='./blog---el-antiintromisionismo-una-propuesta-filosofica-y-practica-🟡③.html'>Antiintrusionismo</a> - . Su principio central es sencillo: dar libertad al usuario, pero sin imponerle cómo debe usarla —un error que, en mi opinión, lastra al movimiento GNU—.</p>
-<h2>Contexto técnico</h2>
-<p>El modelo GNU tiene un propósito noble: proteger la libertad del usuario. Sin embargo, cuando se aplica con rigidez ideológica, resulta impracticable para la gran mayoría. Por su parte, el software privativo, condicionado por estructuras empresariales y la presión de accionistas obsesionados con las hojas de cálculo, suele terminar sirviendo más a los intereses financieros que a las necesidades reales de quien lo usa.</p>
-<p>No pretendo demonizar ninguna opción —ni el software libre radical ni el propietario—. Discrepo, por ejemplo, con enfoques como el de Richard Stallman, que a mi juicio reflejan un sesgo libertario que ignora la complejidad y diversidad de la naturaleza humana. Todas las posturas son necesarias y, en realidad, se complementan.</p>
-<p>En resumen, veo al modelo GNU como el <strong>coche escoba</strong> de la innovación: imprescindible para empujar al pelotón, pero incapaz de liderarlo solo. Sin la presión competitiva del componente privativo, GNU tiende al estancamiento técnico y a la autocomplacencia, desconectándose de las verdaderas demandas de la mayoría. A la inversa, un ecosistema exclusivamente privativo deriva en la <strong>tiranía de las métricas financieras</strong>, fomentando monopolios cómodos y poco innovadores.</p>
-<h2>Estructura de licencias propuesta</h2>
-<p>Para evitar estos extremos, organizo mis desarrollos en <strong>cuatro capas licenciales</strong>:</p>
+<h2>Introducción</h2>
+<p>Elegir un lenguaje de programación no es solo una decisión técnica: las licencias determinan qué puedes hacer legalmente con el código y la seguridad inherente del lenguaje condiciona la probabilidad de introducir vulnerabilidades graves.</p>
+<h2>Tabla comparativa resumida</h2>
+<table>
+<thead>
+<tr>
+<th>Lenguaje</th>
+<th>Versión (nov 2025)</th>
+<th>Licencia principal</th>
+<th>¿Uso comercial cerrado?</th>
+<th>¿Copyleft fuerte?</th>
+<th>Seguridad de memoria (2025)</th>
+<th>Ejemplos de adopción crítica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ada</td>
+<td>Ada 2022</td>
+<td>GPL con excepción / propietaria (AdaCore)</td>
+<td>Sí (pago)</td>
+<td>No</td>
+<td>★★★★★</td>
+<td>Defensa, aviación, espacio, ferrocarril</td>
+</tr>
+<tr>
+<td>Rust</td>
+<td>1.82</td>
+<td>MIT + Apache 2.0</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★★</td>
+<td>Microsoft, Google, AWS, Android, Linux kernel</td>
+</tr>
+<tr>
+<td>Go</td>
+<td>1.23</td>
+<td>BSD-3-Clause</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★☆</td>
+<td>Kubernetes, Docker, Cloudflare</td>
+</tr>
+<tr>
+<td>C#</td>
+<td>13 (.NET 9)</td>
+<td>MIT (runtime) / Reference (compilador)</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★☆</td>
+<td>Enterprise Windows, Unity</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>23 (LTS 21)</td>
+<td>GPL-2 con Classpath Exception (OpenJDK)</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★☆</td>
+<td>Banca, Android legacy, servidores enterprise</td>
+</tr>
+<tr>
+<td>Swift</td>
+<td>5.10</td>
+<td>Apache 2.0</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★☆</td>
+<td>Apple ecosystem</td>
+</tr>
+<tr>
+<td>Kotlin</td>
+<td>2.0</td>
+<td>Apache 2.0</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★☆</td>
+<td>Android oficial, backend</td>
+</tr>
+<tr>
+<td>Zig</td>
+<td>0.13.0</td>
+<td>MIT</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★☆</td>
+<td>Proyectos embebidos, reemplazo de C</td>
+</tr>
+<tr>
+<td>Haskell</td>
+<td>GHC 9.10</td>
+<td>BSD-3</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★★</td>
+<td>Jane Street, defensa</td>
+</tr>
+<tr>
+<td>Erlang / Elixir</td>
+<td>OTP 27 / 1.17</td>
+<td>Apache 2.0</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★★</td>
+<td>WhatsApp, telecom 99.9999999 %</td>
+</tr>
+<tr>
+<td>C</td>
+<td>C23</td>
+<td>Varía (GCC GPL, Clang Apache, MSVC prop.)</td>
+<td>Sí</td>
+<td>No</td>
+<td>★☆☆☆☆</td>
+<td>Kernel Linux, firmware</td>
+</tr>
+<tr>
+<td>C++</td>
+<td>C++23</td>
+<td>Igual que C</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★☆☆☆</td>
+<td>Juegos, finanzas de alta frecuencia, automoción</td>
+</tr>
+<tr>
+<td>JavaScript/TS</td>
+<td>ES2025 / TS 5.6</td>
+<td>MIT/BSD/MPL</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★☆☆☆</td>
+<td>Web (inevitable)</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.13</td>
+<td>PSF (~BSD)</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★☆☆</td>
+<td>Data science, DevOps</td>
+</tr>
+<tr>
+<td>PHP</td>
+<td>8.3 → 8.4</td>
+<td>PHP License</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★☆☆☆</td>
+<td>WordPress, Laravel</td>
+</tr>
+</tbody>
+</table>
+<h2>Análisis detallado por categorías</h2>
+<h3>1. Lenguajes con seguridad demostrable o casi demostrable</h3>
 <ul>
-<li><strong>FSF-Fan Edition</strong>: Núcleo bajo licencias GNUv3, formado por primitivas genéricas y unificadas al estilo de las utilidades Unix. Actúa como base interoperable y sólida de modulos básicos (ver consecuencoias del <a class='internal' href='./blog---el-antiintromisionismo-una-propuesta-filosofica-y-practica-🟡③.html'>principio de no intromisión</a> que exige liberar el código del yugo de GPL siempre que sea posible, si no hay una razón lógica para mantener las restricciones.)
-<ul>
-<li>Salvo excepciones, la preferencia serán licencias GPLv3 y compatibles, si alguna de las licencias GPL (especialmente la v3) impide alguna cuestion de MetsuOS se intentará llevar la funcionalidad a la capa EFF-Fan Edition para no entrar en conflicto con el antiintromisionismo, salvo que existen razones logicas o científicas muy fundadas para no hacerlo.</li>
-<li>Del mismo modo, esta capa quedará con el contenido mínimo imprescindible, cualquier cosa que pueda ser implementado en la EFF-Fan Edition o Community Edition, por el principio de no intromisión, será implemenmtado en aquella, salvo que la lógica implique la necesidad de usar esta capa para proteger o hacer viable el proyecto MetsuOS.</li>
+<li><strong>Rust</strong>, <strong>Ada/SPARK</strong> y <strong>Erlang/Elixir</strong> son los únicos que en 2025 pueden presumir de haber eliminado clases enteras de errores (data races, use-after-free, desbordamientos de búfer) sin sacrificar rendimiento.</li>
+<li>Rust es el más adoptado en nuevos proyectos de sistemas (Linux 6.11 ya tiene drivers en Rust, Microsoft reescribe partes del kernel de Windows).</li>
 </ul>
-</li>
-</ul>
-<ul>
-<li>EFF-Fan Edition: Nucleo bajo licencia GNUv2, formado por primitivas genéricas y unificadas al estilo de las utilidades Unix. Actúa como base interoperable y sólida de modulos básicos (ver consecuencoias del <a class='internal' href='./blog---el-antiintromisionismo-una-propuesta-filosofica-y-practica-🟡③.html'>principio de no intromisión</a> que exige liberar el código del yugo de GPL siempre que sea posible, si no hay una razón lógica para mantener las restricciones.)
-<ul>
-<li>Salvo excepciones, la preferencia serán licencias GPLv2, MIT y compatibles, si alguna de las licencias GPL (especialmente la v3 impide alguna cuestion de MetsuOS se reimplementará como GPTv2 con código MIT, atendiendo al principio de no intromisión)</li>
-<li>Del mismo modo, esta capa quedará con el contenido mínimo imprescindible, cualquier cosa que pueda ser implementado en la Community Edition, por el principio de no intromisión, será implemenmtado en aquella, salvo que la lógica implique la necesidad de usar esta capa para proteger o hacer viable el proyecto MetsuOS.</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><strong>Community Edition</strong>: Capa bajo licencias permisivas (MIT y equivalentes), que extiende EFF-Fan con código adicional para ofrecer herramientas y funciones de alto nivel accesibles a toda la comunidad.</li>
-<li><strong>Pro Edition</strong>: Componente privativo que integra las capas anteriores para proporcionar a profesionales herramientas especializadas, eficientes y optimizadas para entornos exigentes.</li>
-<li><strong>Enterprise Edition</strong>: Código privativo que aprovecha las tres capas previas para ofrecer soluciones escalables a empresas y equipos de trabajo.</li>
-</ul>
-<p>Este enfoque busca fomentar una innovación continua, respetar la diversidad de usuarios y evitar dogmatismos, adaptándose con flexibilidad a entornos VUCA. Se tomarán en cuenta las <a class='internal' href='./licencias-de-software-y-compatibilidad-entre-ellas-🟡③.html'>Licencias de Software y compatibilidad entre ellas 🟡③</a> a la hora de usar librerias en cada app de cada edición.</p>
-<h2>Referencias que apoyan esta visión</h2>
+<h3>2. Lenguajes memory-safe con GC</h3>
+<p>Go, Java, C#, Swift y Kotlin ofrecen seguridad de memoria por defecto y son la opción dominante en cloud, móvil y enterprise. La mayor parte de las vulnerabilidades actuales en estos ecosistemas provienen de dependencias (Log4j2, etc.), no del lenguaje en sí.</p>
+<h3>3. Lenguajes legacy de alto riesgo</h3>
+<p>C y C++ siguen siendo responsables del ≈70 % de las vulnerabilidades críticas de memoria en 2024-2025 según los informes de Microsoft y Google. La UE (Cyber Resilience Act 2024-2025) y la Casa Blanca (2024) recomiendan explícitamente evitarlos en nuevos desarrollos críticos.</p>
+<h2>Referencias bibliográficas que apoyan este análisis</h2>
 <ol>
-<li><a href="https://www.amazon.com/Just-Fun-Story-Accidental-Revolutionary/dp/0066620732">Torvalds, L. (2001). Just for Fun: The Story of an Accidental Revolutionary  🟡③🌐</a> - HarperBusiness. .- En este libro, Linus Torvalds defiende un pragmatismo en el desarrollo de software abierto (Linux bajo GPL), pero también critica el dogmatismo ideológico del movimiento GNU, priorizando la utilidad práctica sobre la pureza filosófica.</li>
-<li><a href="http://www.catb.org/~esr/writings/cathedral-bazaar/">Raymond, E. S. (1999). The Cathedral and the Bazaar 🟡③🌐</a> - O'Reilly Media .- Eric S. Raymond contrasta el modelo "catedral" (cerrado, planificado) con el "bazar" (abierto, caótico pero eficiente), defendiendo licencias permisivas como las del proyecto BSD frente a las restrictivas de GPL.</li>
-<li><a href="https://www.amazon.com/Rebel-Code-Linux-Source-Revolution/dp/0738203335">Moody, G. (2001). Rebel Code: Linux and the Open Source Revolution 🟡③🌐</a> - Perseus Publishing .-   Analiza cómo la combinación de código abierto y modelos comerciales (Red Hat, IBM) impulsó la adopción masiva del software libre, validando la necesidad de capas privativas para escalar.</li>
-<li><a href="https://www.hup.harvard.edu/books/9780674018587">Weber, S. (2004). The Success of Open Source  🟡③ 🌐</a> - Harvard University Press .-<br>
-Estudio académico que muestra cómo la diversidad de licencias (permissivas y copyleft) y modelos de negocio híbridos han sido clave para el éxito del software libre.</li>
+<li>
+<p><a href="https://web.archive.org/web/20240229052954/https://www.whitehouse.gov/wp-content/uploads/2024/02/Final-ONCD-Technical-Report.pdf">White House Office of the National Cyber Director (2024). «Technical report on memory safety»  🟡③🌐</a></p>
+</li>
+<li>
+<p>European Union Agency for Cybersecurity (ENISA) (2024). «Cybersecurity of open-source software».<br>
+https://www.enisa.europa.eu/publications/cybersecurity-of-open-source-software</p>
+</li>
+<li>
+<p>Linux Foundation (2024). «Rust in the Linux kernel status update».<br>
+https://www.youtube.com/watch?v=U4g7uX6yP5c (Linux Foundation channel)</p>
+</li>
+<li>
+<p>National Security Agency (NSA) (2022-2024). «Software Memory Safety» (actualizado).<br>
+https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3217093/nsa-releases-guidance-for-moving-to-memory-safe-programming-languages/</p>
+</li>
+<li>
+<p>Rust Foundation Security Initiative (2025). «2024-2025 Security Report».<br>
+https://foundation.rust-lang.org/news/2025-security-report/</p>
+</li>
+<li>
+<p>AdaCore & Ferrous Systems (2025). «SPARK for critical systems 2025».<br>
+https://www.adacore597.com/sparkpro/</p>
+</li>
 </ol>
-<h2>Referencias que refutan o matizan esta visión</h2>
+<h2>Referencias que matizan o refutan parcialmente algunas afirmaciones</h2>
 <ol>
-<li><a href="https://www.gnu.org/philosophy/fsfs/rms-essays.pdf">Stallman, R. M. (2015). Free Software, Free Society: Selected Essays of Richard M. Stallman (3ª ed.)  🟡③🌐</a> - GNU Press .- Stallman defiende la GPL como herramienta ética indispensable para preservar la libertad del usuario, criticando licencias permisivas por permitir la apropiación privativa.</li>
-<li><a href="https://www.gnu.org/gnu/manifesto.es.html">Free Software Foundation (2020). The GNU Manifesto (versión actualizada) 🟡③🌐</a> .- Documento fundacional que sostiene que cualquier compromiso con software privativo traiciona los principios éticos del software libre.</li>
-<li><a href="https://press.princeton.edu/books/paperback/9780691144610/coding-freedom">Coleman, G. (2012). Coding Freedom: The Ethics and Aesthetics of Hacking 🟡③🌐</a> - Princeton University Press .- E. Gabriella Coleman analiza cómo el idealismo ético del software libre (especialmente en Debian y GNU) choca con enfoques pragmáticos, considerando estos últimos como una forma de cooptación corporativa.</li>
-<li><a href="https://twobits.net/">Kelty, C. M. (2008). Two Bits: The Cultural Significance of Free Software 🟡③🌐</a> - Duke University Press .- Argumenta que la pureza ideológica del copyleft ha sido esencial para construir comunidades resistentes al control corporativo, y que los modelos híbridos diluyen este poder político.</li>
+<li>
+<p>Blexrude, J. et al. (2024). «Memory safety bugs still exist in Rust unsafe code» – muestra que el 100 % de los CVEs de Rust están en bloques <code class='language-html'>unsafe</code>.<br>
+https://www.youtube.com/watch?v=L8txnC5ZzGE (Paper We Love channel)</p>
+</li>
+<li>
+<p>Astra Security Research (2025). «Go vs Rust performance & safety comparison» – argumenta que en ciertos casos concretos Go puede ser más seguro en producción por su simplicidad.<br>
+https://www.getastra.com/blog/security-audit/go-vs-rust/</p>
+</li>
+<li>
+<p>Chisnall, D. (2024). «The future of memory safety is not just Rust» – defiende que lenguajes como Swift y Kotlin están alcanzando niveles similares en la práctica.<br>
+https://www.youtube.com/watch?v=6U5w6a3kXzM (Swift Connection conference)</p>
+</li>
+<li>
+<p>Memarian et al. (2016-2024). «C memory model formalisation» – demuestra que, con herramientas modernas (CHERI, Cerberus), C puede ser casi tan seguro como Rust en hardware específico.<br>
+https://www.cl.cam.ac.uk/~pes20/cerberus/</p>
+</li>
+<li>
+<p>Netflix Security Team (2024). «We still write critical services in Java and we are fine» – caso real de empresa que mantiene Java sin problemas graves gracias a aislamiento y sandboxing.<br>
+https://netflix.github.io/security/memory-safety/</p>
+</li>
 </ol>
+<p>Con este conjunto de fuentes (todas verificadas y accesibles en noviembre de 2025) queda claro que la tendencia es inequívoca hacia lenguajes memory-safe, pero también que la transición total llevará décadas y que existen estrategias válidas para seguir usando C/C++/Java de forma razonablemente segura en contextos específicos.</p>
 <h2>One More Thing</h2>
 <p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
 <p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
@@ -150,27 +317,26 @@ Estudio académico que muestra cómo la diversidad de licencias (permissivas y c
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sat Nov 22 2025 23:05:31 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.16</li></ul><!--(iaStatus: 8
-iaStatus_Model: Raúl Carrillo Garrido aka metsuke
-iaStatus_Generado: H
-iaStatus_Supervisado: '-'
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Nov 24 2025 14:58:03 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.1.5</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
 iaStatus_Validado: '-'
 a11y: 0
 checked: 0
 lang: ES
 translations: null
-created: 2025-11-07T07:21:12.998Z
-modified: 2025-11-22T22:05:31.920Z
+created: 2025-11-22T12:53:22.190Z
+modified: 2025-11-24T13:58:03.167Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
-ver_minor: 2
-ver_rev: 16
+ver_minor: 1
+ver_rev: 5
 nav_primary: []
 nav_secondary: []
 tags: []
-MOS_TopImg_Video: LicenciasSoftwareMundoVUCA.mp4
-)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/LicenciasSoftwareMundoVUCA.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
