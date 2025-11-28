@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Analisis de Licencias y Seguridad de los distintos lenguajes de programación 🟡③</h1>
+<ul>
+<li><a class='internal' href='./por-que-python-es-la-eleccion-ideal-para-desarrollar-en-el-ecosistema-completo-de-metsuos-🟡③.html'>¿Por qué Python es la elección ideal para desarrollar en el ecosistema completo de MetsuOS? 🟡③</a></li>
+<li><a class='internal' href='./de-software-libre-licencias-y-filosofias-en-entornos-vuca-🟡③.html'>De Software Libre, Licencias y Filosofías en entornos VUCA 🟡③</a></li>
+</ul>
+<blockquote>
+<p>OJO WIP</p>
+</blockquote>
+<h2>Introducción</h2>
+<p>Elegir un lenguaje de programación no es solo una decisión técnica: las licencias determinan qué puedes hacer legalmente con el código y la seguridad inherente del lenguaje condiciona la probabilidad de introducir vulnerabilidades graves.</p>
+<h2>Tabla comparativa resumida</h2>
+<table>
+<thead>
+<tr>
+<th>Lenguaje</th>
+<th>Versión (nov 2025)</th>
+<th>Licencia principal</th>
+<th>¿Uso comercial cerrado?</th>
+<th>¿Copyleft fuerte?</th>
+<th>Seguridad de memoria (2025)</th>
+<th>Ejemplos de adopción crítica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ada</td>
+<td>Ada 2022</td>
+<td>GPL con excepción / propietaria (AdaCore)</td>
+<td>Sí (pago)</td>
+<td>No</td>
+<td>★★★★★</td>
+<td>Defensa, aviación, espacio, ferrocarril</td>
+</tr>
+<tr>
+<td>Rust</td>
+<td>1.82</td>
+<td>MIT + Apache 2.0</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★★</td>
+<td>Microsoft, Google, AWS, Android, Linux kernel</td>
+</tr>
+<tr>
+<td>Go</td>
+<td>1.23</td>
+<td>BSD-3-Clause</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★☆</td>
+<td>Kubernetes, Docker, Cloudflare</td>
+</tr>
+<tr>
+<td>C#</td>
+<td>13 (.NET 9)</td>
+<td>MIT (runtime) / Reference (compilador)</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★☆</td>
+<td>Enterprise Windows, Unity</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>23 (LTS 21)</td>
+<td>GPL-2 con Classpath Exception (OpenJDK)</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★☆</td>
+<td>Banca, Android legacy, servidores enterprise</td>
+</tr>
+<tr>
+<td>Swift</td>
+<td>5.10</td>
+<td>Apache 2.0</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★☆</td>
+<td>Apple ecosystem</td>
+</tr>
+<tr>
+<td>Kotlin</td>
+<td>2.0</td>
+<td>Apache 2.0</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★☆</td>
+<td>Android oficial, backend</td>
+</tr>
+<tr>
+<td>Zig</td>
+<td>0.13.0</td>
+<td>MIT</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★☆</td>
+<td>Proyectos embebidos, reemplazo de C</td>
+</tr>
+<tr>
+<td>Haskell</td>
+<td>GHC 9.10</td>
+<td>BSD-3</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★★</td>
+<td>Jane Street, defensa</td>
+</tr>
+<tr>
+<td>Erlang / Elixir</td>
+<td>OTP 27 / 1.17</td>
+<td>Apache 2.0</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★★★</td>
+<td>WhatsApp, telecom 99.9999999 %</td>
+</tr>
+<tr>
+<td>C</td>
+<td>C23</td>
+<td>Varía (GCC GPL, Clang Apache, MSVC prop.)</td>
+<td>Sí</td>
+<td>No</td>
+<td>★☆☆☆☆</td>
+<td>Kernel Linux, firmware</td>
+</tr>
+<tr>
+<td>C++</td>
+<td>C++23</td>
+<td>Igual que C</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★☆☆☆</td>
+<td>Juegos, finanzas de alta frecuencia, automoción</td>
+</tr>
+<tr>
+<td>JavaScript/TS</td>
+<td>ES2025 / TS 5.6</td>
+<td>MIT/BSD/MPL</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★☆☆☆</td>
+<td>Web (inevitable)</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.13</td>
+<td>PSF (~BSD)</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★★☆☆</td>
+<td>Data science, DevOps</td>
+</tr>
+<tr>
+<td>PHP</td>
+<td>8.3 → 8.4</td>
+<td>PHP License</td>
+<td>Sí</td>
+<td>No</td>
+<td>★★☆☆☆</td>
+<td>WordPress, Laravel</td>
+</tr>
+</tbody>
+</table>
+<h2>Análisis detallado por categorías</h2>
+<h3>1. Lenguajes con seguridad demostrable o casi demostrable</h3>
+<ul>
+<li><strong>Rust</strong>, <strong>Ada/SPARK</strong> y <strong>Erlang/Elixir</strong> son los únicos que en 2025 pueden presumir de haber eliminado clases enteras de errores (data races, use-after-free, desbordamientos de búfer) sin sacrificar rendimiento.</li>
+<li>Rust es el más adoptado en nuevos proyectos de sistemas (Linux 6.11 ya tiene drivers en Rust, Microsoft reescribe partes del kernel de Windows).</li>
+</ul>
+<h3>2. Lenguajes memory-safe con GC</h3>
+<p>Go, Java, C#, Swift y Kotlin ofrecen seguridad de memoria por defecto y son la opción dominante en cloud, móvil y enterprise. La mayor parte de las vulnerabilidades actuales en estos ecosistemas provienen de dependencias (Log4j2, etc.), no del lenguaje en sí.</p>
+<h3>3. Lenguajes legacy de alto riesgo</h3>
+<p>C y C++ siguen siendo responsables del ≈70 % de las vulnerabilidades críticas de memoria en 2024-2025 según los informes de Microsoft y Google. La UE (Cyber Resilience Act 2024-2025) y la Casa Blanca (2024) recomiendan explícitamente evitarlos en nuevos desarrollos críticos.</p>
+<h2>Referencias bibliográficas que apoyan este análisis</h2>
+<ol>
+<li><a href="https://web.archive.org/web/20240229052954/https://www.whitehouse.gov/wp-content/uploads/2024/02/Final-ONCD-Technical-Report.pdf">White House Office of the National Cyber Director (2024). «Technical report on memory safety»  🟡③🌐</a></li>
+<li>
+<ul>
+<li>[ENISA Threat Landscape 2024 🟡③🌐](https://www.enisa.europa.eu/publications/enisa-threat-landscape-2024](https://www.enisa.europa.eu/publications/enisa-threat-landscape-2024) .- Identifica siete amenazas principales (como ransomware, DDoS y ataques a la cadena de suministro), analiza más de 11.000 incidentes reportados y destaca el aumento de ataques patrocinados por estados a software open-source, incluyendo casos como el backdoor en XZ Utils. Incluye análisis de vulnerabilidades (más de 19.700 identificadas) y medidas de mitigación.</li>
+</ul>
+</li>
+<li><a href="https://www.youtube.com/watch?v=HX0GH-YJbGw">Keynote: Rust in the Linux Kernel, Why? - Greg Kroah-Hartman 🟡③🌐</a> . – Charla keynote de Greg Kroah-Hartman, mantenedor principal del kernel Linux y fellow de la Linux Foundation, grabada en noviembre de 2025. Explica las razones para integrar Rust en el kernel, avances en el soporte experimental, beneficios en seguridad de memoria y roadmap futuro, incluyendo integración con drivers existentes. Duración: 25 minutos, canal oficial de la Linux Foundation.</li>
+<li><a href="https://media.defense.gov/2022/Nov/10/2003112742/-1/-1/0/CSI_SOFTWARE_MEMORY_SAFETY.PDF">National Security Agency (NSA) (2023). «Software Memory Safety» 🟡③🌐</a></li>
+<li><a href="https://rustfoundation.org/wp-content/uploads/2024/06/security-initiative-report-february-2024.pdf">Rust Foundation Security Initiative (2025). «2024 Security Report» 🟡③🌐</a></li>
+<li><a href="https://blog.adacore.com/proving-safety-at-scale-spark-risc-v-and-nvidias-security-strategy">AdaCore & NVIDIA (2025). «Proving Safety at Scale: SPARK, RISC-V, and NVIDIA’s Security Strategy» 🟡③🌐</a> . – Artículo de AdaCore publicado en noviembre de 2025, enfocado en la aplicación de SPARK para probar la ausencia de fallos en sistemas críticos como firmware de centros de datos y dispositivos embebidos. Incluye discusiones sobre adopción práctica (no 100% en SPARK, sino en módulos clave), integración con C/ensamblador, y beneficios en prevención de exploits de memoria. Menciona colaboraciones con NVIDIA para ISO-26262 en automoción.</li>
+</ol>
+<h2>Referencias que matizan o refutan parcialmente algunas afirmaciones</h2>
+<ol>
+<li><a href="https://arxiv.org/abs/2412.06251">Cui, M. et al. (2024). «Fearless Unsafe: A More User-friendly Document for Unsafe Rust Programming Based on Refined Safety Properties» 🟡③🌐</a> . – Análisis extendido de todos los CVEs de Rust hasta enero de 2024 (419 en total), categorizando sus causas raíz en propiedades de seguridad y confirmando que todos los memory safety bugs violan reglas en bloques unsafe. Propone herramientas como un plugin para rust-analyzer para asistir en la escritura segura de unsafe code.</li>
+<li><a href="https://www.cl.cam.ac.uk/~pes20/cerberus/">Memarian et al. (2016-2024). «C memory model formalisation» 🟡③🌐</a> .– demuestra que, con herramientas modernas (CHERI, Cerberus), C puede ser casi tan seguro como Rust en hardware específico.</li>
+<li><a href="https://www.cl.cam.ac.uk/~pes20/cerberus/">Netguru (2025). «Golang vs Rust: Which Language Wins for Backend in 2025?» 🟡③🌐</a>](https://www.netguru.com/blog/golang-vs-rust) . – Comparación detallada que argumenta que Go puede ser más seguro en producción para servicios backend escalables gracias a su simplicidad (bounds checking y type switches integrados), reduciendo errores humanos en equipos grandes, a diferencia de la complejidad de Rust; incluye benchmarks de performance y casos reales.</li>
+<li><a href="https://www.cl.cam.ac.uk/~pes20/cerberus/">Google Security Blog (2024). «Safer with Google: Advancing Memory Safety» 🟡③🌐</a>](https://security.googleblog.com/2024/10/safer-with-google-advancing-memory.html) . – Artículo oficial que defiende que lenguajes como Kotlin y Swift (junto a Java y Go) alcanzan niveles similares de memory safety en la práctica para Android y servidores, con interoperabilidad gradual en lugar de rewrites totales, reduciendo vulnerabilidades en un 68% sin abandonar ecosistemas existentes.</li>
+<li><a href="https://www.cl.cam.ac.uk/~pes20/cerberus/">InfoQ (2024). «Netflix Adopts Virtual Threads: a Case Study on Performance and Pitfalls» 🟡③🌐</a>](https://www.infoq.com/news/2024/08/netflix-performance-case-study/) . – Caso real del equipo de Netflix sobre el uso de Java 21 en servicios críticos de streaming (2800+ microservicios), donde mantienen operaciones sin problemas graves mediante aislamiento (virtual threads y ZGC para GC eficiente), sandboxing en contenedores y monitoreo, evitando pausas que causen timeouts en producción.</li>
+</ol>
+<p>Con este conjunto de fuentes (todas verificadas y accesibles en noviembre de 2025) queda claro que la tendencia es inequívoca hacia lenguajes memory-safe, pero también que la transición total llevará décadas y que existen estrategias válidas para seguir usando C/C++/Java de forma razonablemente segura en contextos específicos.</p>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Thu Nov 27 2025 21:28:12 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.11</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-11-22T12:53:22.190Z
+modified: 2025-11-27T20:28:12.471Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 11
+nav_primary: []
+nav_secondary: []
+tags: []
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>
