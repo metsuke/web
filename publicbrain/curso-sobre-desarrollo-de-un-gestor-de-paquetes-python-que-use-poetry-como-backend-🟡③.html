@@ -37,7 +37,7 @@
     </nav>
 
     <main>
-<h1>Curso sobre desarrollo de un gestor de paquetes python que use poetry como backend 🔴②</h1>
+<h1>Curso sobre desarrollo de un gestor de paquetes python que use poetry como backend 🟡③</h1>
 <p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_d3e9395c77920e9be0ed34f672534abb_MD5.jpg" alt="Curso sobre desarrollo de un gestor de paquetes python que use poetry como backend"></p>
 <ul>
 <li><a class='internal' href='./metsudepmanager--gestor-de-dependencias-etico-para-metsuos-🟡③.html'>MetsuDepManager – Gestor de Dependencias Ético para MetsuOS 🟡③</a></li>
@@ -51,7 +51,7 @@
 <h3>0.1 ¿Realmente es necesario?</h3>
 <p>En el mundo del desarrollo con Python, donde herramientas como <em>pip</em>, <em>Poetry</em> o <em>Conda</em> han evolucionado hasta convertirse en aliados imprescindibles, es normal que surja esta duda: ¿por qué demonios íbamos a crear un nuevo gestor de dependencias si ya tenemos Poetry, que parece resolverlo todo con elegancia? Poetry, que vio la luz en 2018 y sigue puliéndose en 2025, es una joya: resuelve conflictos de dependencias con astucia, genera entornos reproducibles y se alinea con los estándares modernos como PEP 517 y 518.</p>
 <p>Pero cuando entramos en terrenos específicos como <strong>MetsuOS</strong> —ese sistema operativo modular, adaptable a cualquier plataforma y centrado en la inclusión ética a través de videojuegos, construido sobre la biblioteca <em>mosLib</em>—, la cosa cambia. Aquí, la respuesta no es un sí rotundo ni un no tajante, sino un "depende... pero en este caso, sí". Vamos a desgranarlo con calma, reconociendo lo que Poetry hace de maravilla y por qué, para MetsuOS, necesitamos algo como <strong>MetsuDepManager</strong>: un gestor que toma a Poetry como base sólida, pero lo envuelve con capas de control ético y auditoría que van más allá.</p>
-<p>Continuar leyendo en ...  <a class='internal' href='./de-verdad-hace-falta-otro-gestor-de-paquetes-cuando-ya-existe-poetry-🔴②.html'>¿De verdad hace falta otro gestor de paquetes cuando ya existe Poetry? 🔴②</a></p>
+<p>Continuar leyendo en ...  <a class='internal' href='./de-verdad-hace-falta-otro-gestor-de-paquetes-cuando-ya-existe-poetry-🟡③.html'>¿De verdad hace falta otro gestor de paquetes cuando ya existe Poetry?  🟡③</a></p>
 </div><div class="column">
 <p>0.2. Casos reales en los que tiene sentido crear uno propio: empresas con políticas estrictas, entornos educativos, auditorías de seguridad, cumplimiento normativo (RGPD, NIS2, etc.) y air-gapped environments<br>
 0.3. Objetivo del curso: terminar con un gestor funcional, ético y altamente configurable llamado <strong>MetsuDepManager</strong><br>
@@ -134,76 +134,21 @@
 <li>Glosario y recursos adicionales</li>
 </ul>
 <h2>Referencias bibliográficas que apoyan el contenido</h2>
-<blockquote>
-<p>OJO WIP</p>
-</blockquote>
 <ol>
-<li>
-<p>Documentación oficial de Poetry (2025) – Arquitectura y API pública<br>
-https://python-poetry.org/docs/</p>
-</li>
-<li>
-<p>PEP 517 – A build-system independent packaging format<br>
-https://peps.python.org/pep-0517/</p>
-</li>
-<li>
-<p>PEP 518 – Specifying Minimum Build System Requirements<br>
-https://peps.python.org/pep-0518/</p>
-</li>
-<li>
-<p>PEP 621 – Storing project metadata in pyproject.toml<br>
-https://peps.python.org/pep-0621/</p>
-</li>
-<li>
-<p>Safety (pyup.io) – Documentación oficial y base de datos de vulnerabilidades<br>
-https://github.com/pyupio/safety</p>
-</li>
-<li>
-<p>OSV – Open Source Vulnerabilities database (Google)<br>
-https://osv.dev/</p>
-</li>
-<li>
-<p>CycloneDX – Especificación oficial de SBOM<br>
-https://cyclonedx.org/</p>
-</li>
-<li>
-<p>SPDX – Licencias y formato SBOM<br>
-https://spdx.dev/</p>
-</li>
-<li>
-<p>Typer – Documentación oficial (creado por el autor de FastAPI)<br>
-https://typer.tiangolo.com/</p>
-</li>
-<li>
-<p>Rich – Biblioteca de renderizado en terminal<br>
-https://github.com/Textualize/rich</p>
-</li>
+<li><a href="https://python-poetry.org/docs/">Documentación oficial de Poetry (2025) – Arquitectura y API pública 🟡③🌐</a> .- Documentación oficial completa de Poetry con comandos, configuración, plugins y detalles internos sobre su arquitectura y API pública.</li>
+<li><a href="https://peps.python.org/pep-0517/">PEP 517 – A build-system independent packaging format 🟡③🌐</a> .- PEP oficial que define el formato de construcción independiente para paquetes Python mediante pyproject.toml y hooks de backend.</li>
+<li><a href="https://peps.python.org/pep-0518/">PEP 518 – Specifying Minimum Build System Requirements 🟡③🌐</a> .- PEP oficial que establece cómo especificar requisitos mínimos del sistema de construcción en proyectos Python usando pyproject.toml.</li>
+<li><a href="https://peps.python.org/pep-0621/">PEP 621 – Storing project metadata in pyproject.toml 🟡③🌐</a> .- PEP oficial que detalla el almacenamiento de metadatos centrales del proyecto en el archivo pyproject.toml para herramientas de empaquetado.</li>
+<li><a href="https://github.com/pyupio/safety">Safety (pyup.io) – Documentación oficial y base de datos de vulnerabilidades 🟡③🌐</a> .- Herramienta CLI oficial para verificar vulnerabilidades de seguridad en dependencias Python y sugerir remediaciones, con base de datos integrada.</li>
+<li><a href="https://osv.dev/">OSV – Open Source Vulnerabilities database (Google) 🟡③🌐</a> .- Base de datos distribuida de vulnerabilidades para software de código abierto, mantenida por Google con soporte para múltiples ecosistemas.</li>
+<li><a href="https://cyclonedx.org/">CycloneDX – Especificación oficial de SBOM 🟡③🌐</a> .- Estándar oficial ligero para Software Bill of Materials (SBOM) y BOMs relacionados en la cadena de suministro de software.</li>
+<li><a href="https://spdx.dev/">SPDX – Licencias y formato SBOM 🟡③🌐</a> .- Estándar abierto para Software Bill of Materials (SBOM), intercambio de información de licencias y componentes de software.</li>
+<li><a href="https://typer.tiangolo.com/">Typer – Documentación oficial (creado por el autor de FastAPI) 🟡③🌐</a> .- Documentación oficial de Typer, biblioteca para crear CLIs intuitivas en Python con type hints, desarrollada por el autor de FastAPI.</li>
+<li><a href="https://github.com/Textualize/rich">Rich – Biblioteca de renderizado en terminal 🟡③🌐</a> .- Biblioteca Python para texto enriquecido, formateo hermoso y elementos visuales en terminales.</li>
 </ol>
 <h2>Referencias que cuestionan o matizan la necesidad de crear otro gestor</h2>
-<blockquote>
-<p>OJO WIP</p>
-</blockquote>
 <ol>
-<li>
-<p>Brett Cannon (2021) – “Why you probably don’t need to write your own package manager” (PyCon US 2021)<br>
-https://www.youtube.com/watch?v=3v6KqDD5JYo</p>
-</li>
-<li>
-<p>Paul Moore (maintainer de pip) – Discusión sobre la fragmentación del ecosistema Python (2023)<br>
-https://discuss.python.org/t/should-we-consider-deprecating-requirements-txt/27945</p>
-</li>
-<li>
-<p>Dustin Ingram (PyPI & Google) – “The State of Python Packaging 2024” (PyCon US 2024)<br>
-https://www.youtube.com/watch?v=5nX9wX3_q9U</p>
-</li>
-<li>
-<p>Artículo “The Python packaging iceberg” – Henry Schreiner (2024)<br>
-https://henryschreiner.dev/blog/2024/python-packaging-iceberg/</p>
-</li>
-<li>
-<p>“Poetry 2.0 Roadmap” – Anuncio oficial (2024-2025) que incluye muchas mejoras de auditoría y políticas<br>
-https://github.com/python-poetry/poetry/issues/7088</p>
-</li>
+<li><a href="https://discuss.python.org/t/python-packaging-strategy-discussion-part-1/22420">Paul Moore (maintainer de pip) – Discusión sobre la fragmentación del ecosistema Python (2023) 🟡③🌐</a> .- Discusión liderada por Paul Moore sobre estrategias de empaquetado en Python, abordando la fragmentación del ecosistema y el rol de herramientas como pip.</li>
 </ol>
 <p>Estas referencias críticas no invalidan el curso (los casos de uso empresariales y educativos siguen siendo válidos), pero sí invitan a reflexionar sobre si en muchos casos basta con configurar bien Poetry + plugins existentes antes de crear una herramienta nueva.</p>
 <h2>One More Thing</h2>
@@ -265,7 +210,7 @@ https://github.com/python-poetry/poetry/issues/7088</p>
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sat Nov 29 2025 22:15:38 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.2</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sun Nov 30 2025 08:43:37 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.4</li></ul><!--(iaStatus: 8
 iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
 iaStatus_Generado: I
 iaStatus_Supervisado: H
@@ -275,12 +220,12 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-11-29T19:22:44.212Z
-modified: 2025-11-29T21:15:38.009Z
+modified: 2025-11-30T07:43:37.002Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 2
-ver_rev: 2
+ver_rev: 4
 nav_primary: []
 nav_secondary: []
 tags: []
