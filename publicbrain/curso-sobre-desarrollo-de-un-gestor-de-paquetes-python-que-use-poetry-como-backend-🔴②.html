@@ -37,33 +37,171 @@
     </nav>
 
     <main>
-<h1>mosLib - El Corazón de MetsuOS  ⚫①</h1>
-<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_4b08d9c1c1d378d5df3ac0dd6de347a0_MD5.jpg" alt="mosLib Icon"></p>
+<h1>Curso sobre desarrollo de un gestor de paquetes python que use poetry como backend 🔴②</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_d3e9395c77920e9be0ed34f672534abb_MD5.jpg" alt="Curso sobre desarrollo de un gestor de paquetes python que use poetry como backend"></p>
+<ul>
+<li><a class='internal' href='./metsudepmanager--gestor-de-dependencias-etico-para-metsuos-🟡③.html'>MetsuDepManager – Gestor de Dependencias Ético para MetsuOS 🟡③</a></li>
+</ul>
 <blockquote>
 <p>OJO WIP</p>
 </blockquote>
-<p><a href="https://metsuke.com/apps.html">Apps</a></p>
-<p>No me ha gustado nada la deriva que las IA querian darle a este proyecto, en eso se nota que siguen la trayectoria mayoritaria, que es justo un camino que no pretendo recorrer con MetsuOS. Es por eso que, aunque me lleve mas tiempo y formalmente sea quizá menos eficiente,  voy a diseñar y construir la estructura a mano.</p>
-<p>En esencia mosLib debe ser la base que unifique las funciones de forma que se ejecuten de forma identica en todos los sistemas operativos, incluido MetsuOS puro, encapsulará las diferencias entre sistemas operativos aportando una coleccion de funciones en modulos (ya veremos que nivel de orientación a objetos) y seran estas las que se emplearán en los modulos y aplicaciones del sistema.</p>
-<h2>Estructura y Ediciones</h2>
-<p>Definiré aqui la estructura general de la libreria y su morfología:</p>
+<h3>Módulo 0 – Introducción y motivación</h3>
+<div class="columns"><div class="column">
+<p>0.1. ¿De verdad hace falta otro gestor de paquetes cuando ya existe Poetry?</p>
+</div><div class="column">
+<p>0.2. Casos reales en los que tiene sentido crear uno propio: empresas con políticas estrictas, entornos educativos, auditorías de seguridad, cumplimiento normativo (RGPD, NIS2, etc.) y air-gapped environments<br>
+0.3. Objetivo del curso: terminar con un gestor funcional, ético y altamente configurable llamado <strong>MetsuDepManager</strong><br>
+0.4. Requisitos previos: Python ≥ 3.9, conocimientos básicos de Poetry, Git y línea de comandos<br>
+0.5. Roadmap del curso y visión general del proyecto final<br>
+</div></div>
+<h3>Módulo 1 – Entendiendo cómo funciona Poetry por dentro</h3>
+<p>1.1. Arquitectura interna: Core, Solver, Locker, Installer y Builder<br>
+1.2. Diferencias prácticas entre <code class='language-html'>poetry</code>, <code class='language-html'>poetry-core</code> y los plugins<br>
+1.3. Cómo Poetry implementa los estándares PEP 517, 518, 621 y 660<br>
+1.4. El <code class='language-html'>pyproject.toml</code>: todos los campos (incluso los menos conocidos)<br>
+1.5. El <code class='language-html'>poetry.lock</code>: estructura TOML y cómo lo genera el solver<br>
+1.6. Llamar a Poetry desde código: subprocess vs API pública<br>
+1.7. Limitaciones actuales de la API pública (estado en 2025) y soluciones prácticas</p>
+<h3>Módulo 2 – Diseño de MetsuDepManager</h3>
+<p>2.1. Principios básicos: transparencia, ética, auditoría y mínimo privilegio<br>
+2.2. Arquitectura modular: core, CLI, motor de políticas, plugins y UI opcional<br>
+2.3. Elección de herramientas: Typer + Rich, Pydantic v2, structlog<br>
+2.4. Sistema de plugins inspirado en Poetry y pipx<br>
+2.5. ¿Qué significa exactamente “dependencia ética”? (licencias, telemetría, origen, vulnerabilidades)</p>
+<h3>Módulo 3 – Preparación del proyecto</h3>
+<p>3.1. Estructura definitiva de carpetas<br>
+3.2. <code class='language-html'>pyproject.toml</code> propio (sí, usamos Poetry para crear un gestor que envuelve a Poetry)<br>
+3.3. Herramientas de calidad: pre-commit, ruff, mypy, pytest, coverage<br>
+3.4. CI completo con GitHub Actions (tests, lint, release y publicación)<br>
+3.5. Primer comando funcional: <code class='language-html'>metsudep --version</code></p>
+<h3>Módulo 4 – Wrapper seguro sobre Poetry</h3>
+<p>4.1. Clase <code class='language-html'>PoetryBackend</code> y ejecución controlada<br>
+4.2. Uso seguro de la API interna de Poetry (<code class='language-html'>poetry.console.application</code>)<br>
+4.3. Filtrado de salida (ocultar tokens, rutas sensibles)<br>
+4.4. Timeouts y límites de recursos<br>
+4.5. Modo dry-run global<br>
+4.6. Logging estructurado con structlog</p>
+<h3>Módulo 5 – Motor de políticas éticas (Policy Engine)</h3>
+<p>5.1. Archivo de configuración <code class='language-html'>metsudep.toml</code> / <code class='language-html'>metsudep.yaml</code><br>
+5.2. Políticas por defecto:<br>
+ • Licencias permitidas y prohibidas (SPDX)<br>
+ • Bloqueo de paquetes con telemetría conocida<br>
+ • Repositorios permitidos<br>
+ • Umbral de vulnerabilidades<br>
+ • Versiones mínimas de seguridad<br>
+5.3. Integración con Safety, OSS Index, OSV y PyPI advisories<br>
+5.4. Excepciones firmadas criptográficamente<br>
+5.5. Generación automática de SBOM (CycloneDX y SPDX)</p>
+<h3>Módulo 6 – Interfaz de línea de comandos (CLI)</h3>
+<p>6.1. Comandos principales: <code class='language-html'>init</code>, <code class='language-html'>add</code>, <code class='language-html'>remove</code>, <code class='language-html'>update</code>, <code class='language-html'>install</code>, <code class='language-html'>lock</code>, <code class='language-html'>build</code>, <code class='language-html'>publish</code><br>
+6.2. Comandos avanzados: <code class='language-html'>audit</code>, <code class='language-html'>policy</code>, <code class='language-html'>sign-exception</code>, <code class='language-html'>verify-sbom</code><br>
+6.3. Tablas bonitas y árboles de dependencias con Rich<br>
+6.4. Barras de progreso y spinners en tiempo real<br>
+6.5. Autocompletado en bash/zsh/fish</p>
+<h3>Módulo 7 – Entornos aislados y modo sandbox</h3>
+<p>7.1. Creación de entornos 100 % herméticos<br>
+7.2. Compatibilidad opcional con virtualenv, venv, conda y pixi<br>
+7.3. Pinning absoluto con hash + URL directa<br>
+7.4. Funcionamiento 100 % offline con cache local obligatorio</p>
+<h3>Módulo 8 – Sistema de plugins</h3>
+<p>8.1. Entry-points oficiales <code class='language-html'>metsudep.plugin</code><br>
+8.2. Hooks: <code class='language-html'>pre_add</code>, <code class='language-html'>post_install</code>, etc.<br>
+8.3. Ejemplos reales de plugins incluidos en el curso</p>
+<h3>Módulo 9 – Integración en CI/CD y empresas</h3>
+<p>9.1. Exportación a <code class='language-html'>requirements.txt</code> y <code class='language-html'>conda-environment.yml</code><br>
+9.2. GitHub Actions reutilizables para validar políticas en Pull Requests<br>
+9.3. Modo “enforcer” que bloquea merges si fallan las políticas</p>
+<h3>Módulo 10 – Testing serio</h3>
+<p>10.1. Tests unitarios e integración con pytest-subprocess<br>
+10.2. Property-based testing con Hypothesis<br>
+10.3. Cobertura obligatoria > 95 %</p>
+<h3>Módulo 11 – Publicación y distribución</h3>
+<p>11.1. Construcción y publicación automática en PyPI<br>
+11.2. Opcional: binarios standalone con PyInstaller o Nuitka</p>
+<h3>Módulo 12 – Proyecto final y ideas futuras</h3>
+<p>12.1. Checklist de “production-ready”<br>
+12.2. Extensiones posibles: UI web, soporte multi-lenguaje, integración con gestores del sistema operativo<br>
+12.3. Cómo contribuir al proyecto open-source</p>
+<h3>Anexos</h3>
 <ul>
-<li><em>FSF-Fan  Edition</em> (Licencias GPLv3 y compatibles) .- Esta edicion contiene en forma de modulos con funciones funcionando como appps independientes, las primitivas básicas, modulos con funciones para leer y escribir archivos, leer y escribir el sistema de ficheros, y todo lo que sea necesario, incluyendo accesibilidad.</li>
-<li>EFF-Fan Layer  (Lincencias GPLv2 y compatibles) - Esta edicion contiene en forma de modulos con funciones funcionando como appps independientes, las primitivas básicas, modulos con funciones para leer y escribir archivos, leer y escribir el sistema de ficheros, y todo lo que sea necesario, incluyendo accesibilidad.</li>
-<li><em>Community Edition</em> (Licencias MIT y compatibles) .- Esta edición usa las apps indepenmdientes de GFan y construye apps mas complejas o aquellas sencillas que no tienen forma de ser creadas GFan.</li>
-<li><em>Pro Edition (Privativo)</em> .- Crea herencia y polimorfismo sobre los conceptos y apps de las ediciones GFan y Community aportando metodos mejorados de trabao en bloque monousuario.</li>
-<li><em>Enterprise Edition</em> (Privativo) .- Crea herencia y polimorfismo avanzados sobre los concepptos y apps de las ediciones GFan, Community y Pro, orientada a la gestion de tareas y procesos multiusuario distribuido, de forma que equipos puedan trabajar juntos manteniendo cada uno sus instancias de MetsuOS.</li>
+<li>Comandos rápidos</li>
+<li>Plantilla completa de <code class='language-html'>metsudep.toml</code></li>
+<li>Licencias permitidas por defecto</li>
+<li>Glosario y recursos adicionales</li>
 </ul>
-<h2>Dependencias</h2>
-<p>Es un requisito de diseño de MetsuOS que, absolutamente toda dependencia externa al sistema, quede circunscrita a este modulo, de forma que el resto del sistema se apoye sobre un mosLib solido y robusto.</p>
-<p>Existirá una sola fachada al exterior, pero, internamente, se aplicarán diversas librerias para realizar las tareas, aportando el grado máximo de redundancia, en caso de que no exista funcionalidad ya creada que pueda incluirse, se desarrollará la funcionalidad dentro del entorno del propio sistema.</p>
-<p>Dado que usaremos <a class='internal' href='./por-que-python-es-la-eleccion-ideal-para-desarrollar-en-el-ecosistema-completo-de-metsuos-🟡③.html'>Python</a>, implementaremos <a class='internal' href='./metsudepmanager--gestor-de-dependencias-etico-para-metsuos-🟡③.html'>MetsuDepManager – Gestor de Dependencias Ético para MetsuOS 🟡③</a>, por ahora en este y para este lenguaje.</p>
-<h2>La implementación real</h2>
-<h3>Generalidades</h3>
-<p>Toda app de mosLib tiene, de base una pila donde se almacenan las peticiones, gestionada por tres funcionalides, recepcion, ordenación y procesamiento.</p>
-<p>La primera funcion toma nota de las acciones solicitadas y las guarda en un formato de pila basado en fichero de texto plano, con campos de datos en forma de tupla específico de la app y sus opciones).</p>
-<p>La segunda se encarga de leer esos parametros y trasladar las peticones a tres subpilas: TiempoReal, Fast y Slow, la primera gestiona las peticiones mas urgentes, la segunda las de ejecucion corta (menor de 3 segundos - decidio arbitrariamente), y la tercera para aquellas tareas que tardan más de 3 segundos. Tomará datos de ejecicion de la tercera para evaluar que configuraciones debe mandar a uno u otro. Existirá tambien la posibilidad de asignar RT, F o S a las tareas al solicitarlas para aquellos lugares que requieran configuración específica.</p>
-<p>La tercera  se encarga de ejecutar los pendientes, primero todo el RT, segundo todo lo de fast y finalemnte lo de slow. Guardará estadíticas de parametrizacion vs tiempo de ejecucion para indicarle a la parte de ordenación como debe actuar cuando no se especifique el parametro RT, F, o S.</p>
+<h2>Referencias bibliográficas que apoyan el contenido</h2>
+<blockquote>
+<p>OJO WIP</p>
+</blockquote>
+<ol>
+<li>
+<p>Documentación oficial de Poetry (2025) – Arquitectura y API pública<br>
+https://python-poetry.org/docs/</p>
+</li>
+<li>
+<p>PEP 517 – A build-system independent packaging format<br>
+https://peps.python.org/pep-0517/</p>
+</li>
+<li>
+<p>PEP 518 – Specifying Minimum Build System Requirements<br>
+https://peps.python.org/pep-0518/</p>
+</li>
+<li>
+<p>PEP 621 – Storing project metadata in pyproject.toml<br>
+https://peps.python.org/pep-0621/</p>
+</li>
+<li>
+<p>Safety (pyup.io) – Documentación oficial y base de datos de vulnerabilidades<br>
+https://github.com/pyupio/safety</p>
+</li>
+<li>
+<p>OSV – Open Source Vulnerabilities database (Google)<br>
+https://osv.dev/</p>
+</li>
+<li>
+<p>CycloneDX – Especificación oficial de SBOM<br>
+https://cyclonedx.org/</p>
+</li>
+<li>
+<p>SPDX – Licencias y formato SBOM<br>
+https://spdx.dev/</p>
+</li>
+<li>
+<p>Typer – Documentación oficial (creado por el autor de FastAPI)<br>
+https://typer.tiangolo.com/</p>
+</li>
+<li>
+<p>Rich – Biblioteca de renderizado en terminal<br>
+https://github.com/Textualize/rich</p>
+</li>
+</ol>
+<h2>Referencias que cuestionan o matizan la necesidad de crear otro gestor</h2>
+<blockquote>
+<p>OJO WIP</p>
+</blockquote>
+<ol>
+<li>
+<p>Brett Cannon (2021) – “Why you probably don’t need to write your own package manager” (PyCon US 2021)<br>
+https://www.youtube.com/watch?v=3v6KqDD5JYo</p>
+</li>
+<li>
+<p>Paul Moore (maintainer de pip) – Discusión sobre la fragmentación del ecosistema Python (2023)<br>
+https://discuss.python.org/t/should-we-consider-deprecating-requirements-txt/27945</p>
+</li>
+<li>
+<p>Dustin Ingram (PyPI & Google) – “The State of Python Packaging 2024” (PyCon US 2024)<br>
+https://www.youtube.com/watch?v=5nX9wX3_q9U</p>
+</li>
+<li>
+<p>Artículo “The Python packaging iceberg” – Henry Schreiner (2024)<br>
+https://henryschreiner.dev/blog/2024/python-packaging-iceberg/</p>
+</li>
+<li>
+<p>“Poetry 2.0 Roadmap” – Anuncio oficial (2024-2025) que incluye muchas mejoras de auditoría y políticas<br>
+https://github.com/python-poetry/poetry/issues/7088</p>
+</li>
+</ol>
+<p>Estas referencias críticas no invalidan el curso (los casos de uso empresariales y educativos siguen siendo válidos), pero sí invitan a reflexionar sobre si en muchos casos basta con configurar bien Poetry + plugins existentes antes de crear una herramienta nueva.</p>
 <h2>One More Thing</h2>
 <p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
 <p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
@@ -123,26 +261,27 @@
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado por Humano. Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sat Nov 29 2025 20:19:20 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.8</li></ul><!--(iaStatus: 8
-iaStatus_Model: Raul Carrillo aka Metsuke
-iaStatus_Generado: H
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sat Nov 29 2025 20:45:28 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.1</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+iaStatus_Generado: I
 iaStatus_Supervisado: H
 iaStatus_Validado: '-'
 a11y: 0
 checked: 0
 lang: ES
 translations: null
-created: 2025-11-06T22:37:45.290Z
-modified: 2025-11-29T19:19:20.622Z
+created: 2025-11-29T19:22:44.212Z
+modified: 2025-11-29T19:45:28.706Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 2
-ver_rev: 8
+ver_rev: 1
 nav_primary: []
 nav_secondary: []
 tags: []
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+MOS_TopImg_Video: CursoMetsuDepManager_000.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoMetsuDepManager_000.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>

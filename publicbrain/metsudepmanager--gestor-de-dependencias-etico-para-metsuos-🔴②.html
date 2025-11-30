@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>MetsuDepManager – Gestor de Dependencias Ético para MetsuOS  🔴②</h1>
+<ul>
+<li><a class='internal' href='./que-sistema-de-dependencias-para-python-es-apropiado-para-metsuos-🟡③.html'>¿Que sistema de dependencias para python es apropiado para MetsuOS? 🟡③</a></li>
+</ul>
+<p>Aprovechamos que sea el primer modulo para lanzar una implementación completa hecha por IA (y ajustada manualmente en lo necesario) de <strong>MetsuDepManager</strong> para MetsuOS</p>
+<p>Este documento contiene integro el codigo indicado por IA, la version real y con los posibles cambios y mejoras, estará en su propio repositorio, que enlazaré una vez exista realmente.</p>
+<h2>El sistema que garantiza que ningún paquete viole los principios de MetsuOS</h2>
+<p>MetsuOS es un sistema operativo modular cuya misión es la inclusión social a través de videojuegos educativos y software 100 % libre (a excepcion de versiones Pro y Enterprise, destinadas a obtener redito económico en el futuro)</p>
+<p>Para cumplir esa promesa, <strong>ningún paquete puede tener una licencia incompatible</strong> con la capa ética activa (por defecto <code class='language-html'>fsf-fan</code>: solo licencias copyleft fuertes).</p>
+<p>MetsuDepManager es la solución real: una capa ligera encima de <strong><a href="https://python-poetry.org/">Poetry  🌐</a></strong> que:</p>
+<ul>
+<li>Respeta al 100 % el estándar <code class='language-html'>pyproject.toml</code></li>
+<li>Verifica automáticamente licencias</li>
+<li>Resuelve grupos de dependencias “al menos una obligatoria”</li>
+<li>Aplica prioridades éticas y técnicas</li>
+<li>Añade dependencias específicas por sistema operativo</li>
+<li>Es completamente reproducible gracias a <code class='language-html'>poetry.lock</code></li>
+</ul>
+<h3>Ejemplo de <code class='language-html'>pyproject.toml</code> válido para MetsuOS</h3>
+<pre><code class="language-toml">  [tool.poetry]
+name = "metsuos-core"
+version = "0.2.0"
+description = "Núcleo del entorno operativo MetsuOS"
+authors = ["Raul Carrillo aka metsuke <rcarrillo@metsuke.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+# Dependencias normales de Poetry (pueden ser rechazadas por licencia)
+pillow = { version = "^10.4", optional = true }
+
+[build-system]
+requires = ["poetry-core>=1.8.0"]
+build-backend = "poetry.core.masonry.api"
+
+# ====================== CONFIGURACIÓN METSUDEP ======================
+[tool.metsudep.licenses]
+required_layer = "fsf-fan"        # Sólo GPL-3.0+, AGPL-3.0+, LGPL-3.0+
+
+# Grupo obligatorio: al menos un motor gráfico
+[tool.metsudep.groups.render]
+at_least_one = true
+
+<a class='internal' href='./toolmetsudepgroupsrenderalternatives.html'>tool.metsudep.groups.render.alternatives</a>
+name = "pygame"
+version = "^2.6"
+priority = "high"
+platform = "linux"
+
+<a class='internal' href='./toolmetsudepgroupsrenderalternatives.html'>tool.metsudep.groups.render.alternatives</a>
+name = "pyglet"
+version = "^2.0"
+priority = "medium"               # fallback universal
+
+<a class='internal' href='./toolmetsudepgroupsrenderalternatives.html'>tool.metsudep.groups.render.alternatives</a>
+name = "kivy"
+version = "^2.3"
+priority = "low"
+platform = "android"
+
+# Dependencias específicas del host
+[tool.metsudep.host_deps.linux]
+xkcdpass = "^1.0"
+
+[tool.metsudep.host_deps.android]
+python-for-android = "*"
+</code></pre>
+<h3>Código completo y definitivo: <code class='language-html'>metsudep_manager.py</code></h3>
+<pre><code class="language-python">#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+MetsuDepManager – Gestor de dependencias ético para MetsuOS
+Versión: 1.0.0 (2025-11-28)
+Licencia: GPL-3.0-or-later
+Autor: Comunidad MetsuOS (implementación completa por Grok + revisión humana)
+"""
+
+import toml
+import platform
+import subprocess
+import sys
+from pathlib import Path
+from typing import Dict, List, Any, Optional
+
+# ===================================================================
+# Mocks reemplazables cuando mosLib esté disponible (producción)
+# ===================================================================
+class MosLegalManagerMock:
+    """Simulación de mosLegalManager – verifica licencias según capa ética"""
+    LAYERS = {
+        "fsf-fan": {"GPL-3.0", "GPL-3.0-or-later", "AGPL-3.0", "AGPL-3.0-or-later", "LGPL-3.0", "LGPL-3.0-or-later"},
+        "community": {"MIT", "Apache-2.0", "BSD-3-Clause", "GPL-3.0", "AGPL-3.0", "LGPL-3.0"}
+    }
+
+    def __init__(self, layer: str = "fsf-fan"):
+        self.layer = layer
+
+    def permite(self, licencia: str) -> bool:
+        return licencia in self.LAYERS.get(self.layer, set())
+
+class MosTaskManagerMock:
+    """Simulación de mosTaskManager – resuelve conflictos por prioridad"""
+    @staticmethod
+    def elegir_mejor(opciones: List[Dict[str, Any]]) -> Dict[str, Any]:
+        prioridades = {"high": 3, "medium": 2, "low": 1}
+        return max(opciones, key=lambda x: prioridades.get(x.get("priority", "low"), 0))
+
+# ===================================================================
+# Gestor principal
+# ===================================================================
+class MetsuDepManager:
+    def __init__(self, ruta_pyproject: str = "pyproject.toml", directorio: str = "."):
+        self.ruta = Path(directorio) / ruta_pyproject
+        self.cfg = self._cargar_toml()
+        self.so = platform.system().lower()          # linux, windows, darwin, android
+        self.legal = MosLegalManagerMock(
+            self.cfg.get("tool", {}).get("metsudep", {}).get("licenses", {}).get("required_layer", "fsf-fan")
+        )
+        self.task = MosTaskManagerMock()
+
+    def _cargar_toml(self) -> Dict[str, Any]:
+        if not self.ruta.exists():
+            raise FileNotFoundError(f"No se encontró {self.ruta}")
+        return toml.load(self.ruta)
+
+    # ------------------------------------------------------------------
+    # Base de datos ligera de licencias (actualizada noviembre 2025)
+    # ------------------------------------------------------------------
+    LICENCIAS_CONOCIDAS = {
+        "pygame": "LGPL-2.1-or-later",
+        "pyglet": "BSD-3-Clause",
+        "kivy": "MIT",
+        "numpy": "BSD-3-Clause",
+        "pillow": "HPND",
+        "requests": "Apache-2.0",
+        "xkcdpass": "BSD-3-Clause",
+        "python-for-android": "MIT",
+        "flask": "BSD-3-Clause",
+        "django": "BSD-3-Clause",
+    }
+
+    def _licencia_de(self, paquete: str) -> str:
+        return self.LICENCIAS_CONOCIDAS.get(paquete.lower(), "Unknown")
+
+    # ------------------------------------------------------------------
+    def resolver_grupo(self, nombre: str, config: Dict) -> Optional[Dict]:
+        if not config.get("at_least_one", False):
+            return None
+
+        alternativas: List[Dict] = config.get("alternatives", [])
+        if not alternativas:
+            print(f"  Grupo '{nombre}' vacío")
+            return None
+
+        # Filtrar por plataforma
+        candidatas = [
+            alt for alt in alternativas
+            if not alt.get("platform") or alt.get("platform", "").lower() == self.so
+        ]
+
+        if not candidatas:
+            print(f"  No hay alternativa válida para {self.so} en grupo '{nombre}'")
+            return None
+
+        seleccionada = self.task.elegir_mejor(candidatas)
+        print(f"  Grupo '{nombre}' → {seleccionada['name']} (prioridad {seleccionada.get('priority', 'low')})")
+        return seleccionada
+
+    # ------------------------------------------------------------------
+    def generar_dependencias_poetry(self) -> Dict[str, Any]:
+        poetry_deps = self.cfg.get("tool", {}).get("poetry", {}).get("dependencies", {}).copy()
+        metsudep = self.cfg.get("tool", {}).get("metsudep", {})
+
+        print("Resolviendo grupos obligatorios...")
+        for nombre_grupo, config_grupo in metsudep.get("groups", {}).items():
+            sel = self.resolver_grupo(nombre_grupo, config_grupo)
+            if sel:
+                poetry_deps[sel["name"]] = sel.get("version", "*")
+
+        print("Añadiendo dependencias específicas del host...")
+        host_deps = metsudep.get(f"host_deps.{self.so}", {})
+        for nombre, spec in host_deps.items():
+            poetry_deps[nombre] = spec
+            print(f"  + {nombre} (host: {self.so})")
+
+        # Validación ética de licencias
+        print("\nValidando licencias según capa ética...")
+        deps_finales = {"python": poetry_deps.get("python", "^3.11")}
+        rechazados = 0
+
+        for nombre, spec in poetry_deps.items():
+            if nombre.lower() == "python":
+                continue
+            licencia = self._licencia_de(nombre)
+            if self.legal.permite(licencia):
+                deps_finales[nombre] = spec
+                print(f"  Aprobado {nombre} → {licencia}")
+            else:
+                print(f"  Rechazado {nombre} → {licencia} (incompatible con {self.legal.layer})")
+                rechazados += 1
+
+        print(f"\nResumen: {len(deps_finales)-1} paquetes aprobados, {rechazados} rechazados")
+        return deps_finales
+
+    # ------------------------------------------------------------------
+    def actualizar_pyproject(self, nuevas_deps: Dict[str, Any]):
+        if "tool" not in self.cfg:
+            self.cfg["tool"] = {}
+        if "poetry" not in self.cfg["tool"]:
+            self.cfg["tool"]["poetry"] = {}
+        self.cfg["tool"]["poetry"]["dependencies"] = nuevas_deps
+
+        with open(self.ruta, "w", encoding="utf-8") as f:
+            toml.dump(self.cfg, f)
+        print(f"\npyproject.toml actualizado correctamente")
+
+    # ------------------------------------------------------------------
+    def instalar(self, dry_run: bool = True):
+        print("\nLanzando Poetry...")
+        cmd = [sys.executable, "-m", "poetry", "install", "--no-interaction"]
+        if dry_run:
+            print("  Modo dry-run → no se ejecuta instalación real")
+            print("  Comando que se ejecutaría:", " ".join(cmd))
+            return
+        try:
+            subprocess.run(cmd, check=True, cwd=self.ruta.parent)
+            print("Instalación completada con éxito")
+        except subprocess.CalledProcessError as e:
+            print("Error durante la instalación con Poetry:", e)
+
+# ===================================================================
+# Uso directo (ejecutar con python metsudep_manager.py)
+# ===================================================================
+if __name__ == "__main__":
+    print("MetsuDepManager – Resolución ética de dependencias para MetsuOS\n")
+    manager = MetsuDepManager()
+    deps = manager.generar_dependencias_poetry()
+    manager.actualizar_pyproject(deps)
+    manager.instalar(dry_run=False)   # Cambia a True para pruebas
+</code></pre>
+<h3>Referencias bibliográficas que <strong>apoyan</strong> esta solución</h3>
+<ol>
+<li><a href="https://python-poetry.org/docs/pyproject/#tool-section"><strong>Poetry – Sección tool personalizada</strong> 🟡③🌐</a> .- Documentación oficial de Poetry que explica explícitamente que la sección [tool.*] de pyproject.toml está diseñada para ser extendida libremente por cualquier herramienta, lo que legitima y avala el uso de [tool.metsudep] como extensión oficial y conforme al estándar.</li>
+<li><a href="https://peps.python.org/pep-0621/"><strong>PEP 621 – Metadatos de proyecto en pyproject.toml</strong> 🟡③🌐</a> .- Estándar oficial de Python (aceptado en 2020 y vigente en 2025) que define pyproject.toml como el archivo único y extensible para metadatos de proyecto. Refuerza que cualquier herramienta puede añadir sus propias secciones sin romper compatibilidad.</li>
+<li><a href="https://www.gnu.org/licenses/license-list.en.html"><strong>GNU – Licencias compatibles con GPL</strong> 🟡③🌐</a> .- Lista oficial y permanentemente actualizada por la Free Software Foundation que clasifica las licencias según su compatibilidad con GPL-3.0 y versiones posteriores. Es la referencia canónica para cualquier proyecto que quiera restringir dependencias a copyleft fuerte (como la capa “fsf-fan” de MetsuOS).</li>
+<li><a href="https://reuse.software/"><strong>REUSE Initiative – Verificación automática de licencias</strong> 🟡③🌐</a> .- Proyecto respaldado por la Free Software Foundation Europe que establece el estándar de facto para declarar y comprobar automáticamente licencias en repositorios. Su enfoque (declarar licencia por archivo + herramientas de validación) sirve de inspiración y justificación técnica para la capa ética de MetsuDepManager.</li>
+<li><a href="https://hynek.me/articles/python-app-deps-2018/"><strong>Hynek Schlawack – “Python Application Dependency Management in 2018”</strong> 🟡③🌐</a> .- Artículo de referencia escrito por Hynek Schlawack (mantenedor de attrs, Twisted y experto en packaging) donde analiza en profundidad el estado del arte de la gestión de dependencias en aplicaciones Python. Recomienda explícitamente usar herramientas maduras como Poetry como base y extenderlas en lugar de crear nuevos sistemas desde cero —justificación perfecta para la arquitectura de MetsuDepManager— y sigue siendo una de las guías más citadas y vigentes en la comunidad profesional (accesible y verificado a 29 de noviembre de 2025).</li>
+</ol>
+<h3>Referencias bibliográficas que <strong>cuestionan o matizan</strong> la propuesta</h3>
+<ol>
+<li><a href="https://nanthony007.medium.com/stop-using-pip-use-poetry-instead-db7164f4fc72">Nick Anthony – “Stop using Pip, use Poetry Instead!” 🟡③🌐</a> .- Artículo de Medium (2021) que defiende el uso de Poetry sobre pip para la gestión de dependencias en proyectos Python, destacando su simplicidad, reproducibilidad y manejo de lockfiles —sirve como matiz positivo para la elección de Poetry como base en MetsuDepManager, contrastando con críticas generales al ecosistema de packaging y enfatizando por qué extender Poetry es una decisión sólida para proyectos modulares como MetsuOS (verificado y accesible a 29 de noviembre de 2025).</li>
+<li><a href="https://realpython.com/pipenv-guide/">Real Python – “Pipenv: A Guide to the Python Packaging Tool” 🟡③🌐</a> .- Guía detallada de Real Python (actualizada en 2022, con relevancia vigente en 2025) que explica cómo Pipenv resuelve problemas comunes de dependencias en Python, comparándolo implícitamente con workflows tradicionales como pip + requirements.txt y destacando su simplicidad para flujos básicos —sirve como matiz al argumentar que herramientas como Pipenv pueden ser preferibles en escenarios simples, cuestionando si la complejidad añadida por Poetry (y extensiones como MetsuDepManager) es siempre justificada en proyectos modulares (verificado y accesible a 29 de noviembre de 2025).</li>
+<li><a href="https://speakerdeck.com/uranusjr/lets-fix-extras-in-core-metadata-3-dot-0">Tzu-ping Chung – "Let’s fix extras in Core Metadata 3.0" 🟡③🌐</a> .- Presentación de Tzu-ping Chung en el Packaging Summit de PyCon US 2022, donde discute problemas fundamentales en el manejo de "extras" en el Core Metadata de Python (versión 2.4), destacando la fragmentación y la necesidad de normalización para resolver conflictos de compatibilidad —una crítica técnica que ilustra el "desorden" en el ecosistema de empaquetado y matiza la extensión de herramientas como Poetry con capas adicionales como MetsuDepManager, enfatizando la importancia de soluciones estandarizadas mínimas (verificado y accesible a 29 de noviembre de 2025).</li>
+<li><a href="https://medium.com/@aliabbasjaffri_/poetry-package-installation-woes-45c74fb5a11d">Ali Abbas Jaffri – “Poetry Package Installation Woes” 🟡③🌐</a> .- Artículo personal de Ali Abbas Jaffri (2022, vigente en 2025) que relata problemas reales al instalar Poetry en un proyecto Python, enfocándose en fallos graves del resolver de dependencias con paquetes como scipy, scikit-learn y numpy —una crítica práctica que matiza el uso de Poetry como base para MetsuDepManager, destacando cómo sus limitaciones en resolución de conflictos pueden requerir workarounds como versiones específicas de Python, aunque no invalida su adopción en proyectos éticos y modulares como MetsuOS (verificado y accesible a 29 de noviembre de 2025).</li>
+</ol>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sat Nov 29 2025 01:52:42 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.4</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-11-28T09:24:05.460Z
+modified: 2025-11-29T00:52:42.337Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 4
+nav_primary: []
+nav_secondary: []
+tags: []
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>
