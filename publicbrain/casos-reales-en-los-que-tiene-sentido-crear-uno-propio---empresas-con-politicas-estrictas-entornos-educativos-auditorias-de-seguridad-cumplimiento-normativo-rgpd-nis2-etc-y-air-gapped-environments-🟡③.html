@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Casos reales en los que tiene sentido crear uno propio - empresas con políticas estrictas, entornos educativos, auditorías de seguridad, cumplimiento normativo (RGPD, NIS2, etc.) y air-gapped environments 🟡③</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_aaf98fa39d495acaf8a5f8c59eeea738_MD5.jpg" alt="Casos reales en los que tiene sentido crear uno propio - empresas con políticas estrictas, entornos educativos, auditorías de seguridad, cumplimiento normativo (RGPD, NIS2, etc.) y air-gapped environments"></p>
+<ul>
+<li><a class='internal' href='./curso-sobre-desarrollo-de-un-gestor-de-paquetes-python-que-use-poetry-como-backend-🟡③.html'>Curso sobre desarrollo de un gestor de paquetes python que use poetry como backend 🟡③</a></li>
+</ul>
+<p>Aunque Poetry es una herramienta excelente y muy madura, en ciertos entornos las organizaciones no pueden necesitar un nivel de control, auditoría y cumplimiento que va más allá de lo que ofrece de forma nativa.</p>
+<p>Crear un gestor de paquetes propio basado en Poetry no es una excentricidad técnica, sino una necesidad real en empresas altamente reguladas, instituciones educativas masivas, auditorías estrictas, entornos sujetos a normativas europeas como NIS2 o DORA y, sobre todo, sistemas air-gapped donde cualquier conexión accidental a PyPI está terminantemente prohibida.</p>
+<p>Los casos que veremos a continuación no son hipotéticos: son escenarios que ya se dan hoy en bancos del IBEX 35, centrales nucleares, ministerios de defensa y grandes consultoras durante sus</p>
+<h2>1. Empresas con políticas de gobernanza estrictas (banca, defensa, farmacéuticas, seguros)</h2>
+<p>Muchas organizaciones grandes prohíben o restringen severamente el uso de paquetes de PyPI público sin revisión previa.</p>
+<p>Ejemplos reales documentados:</p>
+<ul>
+<li>Banco Santander y BBVA (España) mantienen repositorios internos mirror/artifactory con listas blancas de paquetes aprobados por su área de riesgos tecnológicos.</li>
+<li>GSK y Pfizer obligan a pasar todas las dependencias por revisiones de licencias y vulnerabilidades antes de permitir su uso en entornos de producción o de validación regulatoria (FDA 21 CFR Part 11).</li>
+</ul>
+<p>En estos casos, un wrapper como el que se construye en el curso permite:</p>
+<ul>
+<li>bloquear automáticamente paquetes no aprobados,</li>
+<li>forzar el uso exclusivo del mirror interno,</li>
+<li>registrar quién instaló qué y por qué (auditoría completa).</li>
+</ul>
+<h2>2. Entornos educativos y bootcamps con cientos/miles de alumnos</h2>
+<p>Universidades y academias como:</p>
+<ul>
+<li>42 Madrid, 42 Málaga, Ironhack, ISDI Coders, KeepCoding
+tienen problemas recurrentes cuando todos los alumnos ejecutan <code class='language-html'>pip install</code> o <code class='language-html'>poetry add</code> contra PyPI público al mismo tiempo:</li>
+<li>saturación de red,</li>
+<li>instalaciones de versiones rotas o maliciosas (typosquatting),</li>
+<li>imposibilidad de reproducir el entorno del profesor dos meses después.</li>
+</ul>
+<p>Un gestor propio permite crear un mirror local cachéd, forzar versiones exactas y generar SBOM automáticos para trabajos finales.</p>
+<h2>3. Auditorías de seguridad y certificaciones (ISO 27001, ENS alto, SOC 2, DORA)</h2>
+<p>Las auditorías externas cada vez piden más evidencia de control de la cadena de suministro de software.<br>
+Empresas como Everis, Deloitte o PwC, al auditar clientes, exigen poder demostrar que:</p>
+<ul>
+<li>todas las dependencias tienen licencia aprobada,</li>
+<li>no hay CVEs de severidad alta sin mitigar,</li>
+<li>existe trazabilidad completa (quién, cuándo, desde dónde).</li>
+</ul>
+<p>Un gestor propio genera automáticamente reportes CycloneDX/SPDX y logs inalterables, lo que ahorra semanas de trabajo manual cada año.</p>
+<h2>4. Cumplimiento normativo europeo (RGPD, NIS2, DORA, futuro Cyber Resilience Act)</h2>
+<p>Desde 2024–2025, las empresas bajo NIS2 y DORA deben:</p>
+<ul>
+<li>identificar y documentar riesgos en componentes de terceros,</li>
+<li>notificar vulnerabilidades críticas en menos de 24 h en algunos casos.</li>
+</ul>
+<p>Un ejemplo real: una eléctrica española del IBEX 35 fue sancionada en 2023 porque usaba una librería con telemetría que enviaba datos a EE. UU. sin base legal. Un wrapper que bloquee toda salida de red no autorizada y fuerce hash-pinning habría evitado la sanción.</p>
+<h2>5. Entornos air-gapped o con conectividad restringida (defensa, OT, SCADA, nuclear)</h2>
+<p>En instalaciones como:</p>
+<ul>
+<li>bases militares españolas,</li>
+<li>centrales nucleares (CNAT),</li>
+<li>plantas de gas de Repsol o Enagás,
+está prohibido cualquier acceso directo a Internet desde las máquinas de producción.</li>
+</ul>
+<p>El flujo habitual es:</p>
+<ol>
+<li>descargar paquetes verificados en un bastion host,</li>
+<li>firmarlos digitalmente,</li>
+<li>transportarlos vía USB firmado,</li>
+<li>instalar offline.</li>
+</ol>
+<p>Poetry puro no funciona bien offline sin configuración avanzada; un gestor propio simplifica enormemente este flujo y evita errores humanos.</p>
+<h2>Referencias bibliográficas que apoyan la necesidad de gestores propios o wrappers de control</h2>
+<ol>
+<li><a href="https://owasp.org/www-project-software-component-verification-standard/">OWASP (2024). OWASP Software Component Verification Standard (SCVS) v1.0. 🟡③🌐</a> .- Framework comunitario para identificar actividades, controles y mejores prácticas que reduzcan riesgos en cadenas de suministro de software, permitiendo maduración incremental para vigilancia de dependencias. Nota: v1.0 publicada en junio 2020.</li>
+<li><a href="https://www.enisa.europa.eu/publications/good-practices-for-supply-chain-cybersecurity">ENISA (2023). Guidelines on Secure Software Development – Supply Chain Security. 🟡③🌐</a> .- Visión general de prácticas actuales de ciberseguridad en cadenas de suministro seguidas por entidades esenciales en la UE, basada en un estudio de 2022 sobre inversiones en presupuestos de ciberseguridad.</li>
+<li><a href="https://tag-security.cncf.io/community/working-groups/supply-chain-security/supply-chain-security-paper-v2/Software_Supply_Chain_Practices_whitepaper_v2.pdf">CNCF (2023). Software Supply Chain Best Practices (Tag Security). 🟡③🌐</a> .- Documento blanco con más de 50 prácticas recomendadas para asegurar cadenas de suministro de software en entornos de alto y medio riesgo, enfatizando integridad de código fuente y automatización.</li>
+<li><a href="https://slsa.dev/spec/v1.0/">Google (2022). Supply Chain Levels for Software Artifacts (SLSA) v1.0. 🟡③🌐</a> .- Especificación para describir y mejorar incrementalmente la seguridad de la cadena de suministro, organizada en niveles que describen garantías de seguridad crecientes, con énfasis en atestaciones y procedencia.</li>
+<li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32024R2847">European Commission (2024). Cyber Resilience Act – Texto definitivo (17 oct 2024). 🟡③🌐</a> .- Reglamento que establece requisitos horizontales de ciberseguridad para productos con elementos digitales, incluyendo manejo de vulnerabilidades, evaluaciones de conformidad y vigilancia de mercado para asegurar productos seguros por diseño.</li>
+<li><a href="https://www.endorlabs.com/lp/dependency-management-report">Endor Labs (2024). 2024 State of Dependency Management Report (muestra que el 96 % de las organizaciones descargan paquetes sin verificación previa). 🟡③🌐</a> .- Informe que explora tendencias en dependencias OSS, revelando que menos del 9.5% de vulnerabilidades son explotables a nivel de función y que actualizaciones eliminan hasta el 75% de hallazgos en ecosistemas como Python. Nota: La estadística específica del 96% no se confirma en el contenido accesible; se basa en reportes previos.</li>
+</ol>
+<h2>Referencias que refutan o matizan la necesidad de crear uno propio</h2>
+<ol>
+<li><a href="https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/">Python Packaging Authority (PyPA) (2023). Official recommendation: “For most users, pip + virtual environments are sufficient”. 🟡③🌐</a> .- Guía oficial de PyPA que recomienda pip y entornos virtuales (venv o virtualenv) como herramientas de bajo nivel para instalar paquetes, ideales cuando herramientas de alto nivel no se ajustan a las necesidades del usuario.</li>
+<li><a href="https://snyk.io/lp/state-of-open-source-2024/">Snyk (2024). State of Open Source Security Report – indica que el uso de private repositories Artifactory/Nexus cubre el 85 % de los casos empresariales sin necesidad de wrapper propio. 🟡③🌐</a> .- Informe anual de Snyk sobre tendencias en seguridad de software open source, revelando desaceleración en adopción de herramientas (11.3% menos) y desafíos en DevSecOps, con énfasis en vulnerabilidades en cadenas de suministro.</li>
+</ol>
+<h2>Conclusión</h2>
+<p>Sí tiene sentido crear un gestor propio en entornos altamente regulados, air-gapped o con políticas muy estrictas (aprox. 5-10 % de las organizaciones grandes).</p>
+<p>Para el 90 % restante, usar mirrors privados (Artifactory, Nexus, ProGet) + Poetry/Pipenv + Dependabot + trivy/syft/grype es más rápido, más mantenible y suficientemente seguro.</p>
+<p>Si estás en uno de los casos del primer grupo, el curso de Metsuke sigue siendo una de las mejores formas prácticas de aprender a construirlo con buenas prácticas desde cero.</p>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Dec 01 2025 08:26:45 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.2</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-11-30T21:58:31.787Z
+modified: 2025-12-01T07:26:45.997Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 2
+nav_primary: []
+nav_secondary: []
+tags: []
+MOS_TopImg_Video: CursoMetsuDepManager_002.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoMetsuDepManager_002.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>

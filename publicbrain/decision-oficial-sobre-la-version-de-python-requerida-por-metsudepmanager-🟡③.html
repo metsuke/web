@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Decisión oficial sobre la versión de Python requerida por MetsuDepManager 🟡③</h1>
+<blockquote>
+<p>(Adoptada el 2 de diciembre de 2025)</p>
+</blockquote>
+<ul>
+<li><a class='internal' href='./requisitos-previos-para-el-curso-de-metsudepmanager---preparate-sin-complicaciones-🟡③.html'>Requisitos Previos para el Curso de MetsuDepManager - Prepárate sin Complicaciones 🟡③</a></li>
+</ul>
+<h2>1. ¿Qué es MetsuDepManager y por qué importa esta decisión?</h2>
+<p>MetsuDepManager es un gestor de dependencias diseñado desde cero para entornos de máxima seguridad y cumplimiento normativo (RGPD, NIS2, DORA). Utiliza Poetry como motor interno, genera SBOM en formato CycloneDX, audita vulnerabilidades y licencias en tiempo real y está pensado para funcionar incluso en sistemas completamente aislados de Internet (air-gapped).</p>
+<p>En un proyecto de estas características, elegir la versión mínima y máxima de Python <strong>no es una decisión técnica menor</strong>: afecta directamente a la seguridad, la mantenibilidad a largo plazo y el cumplimiento legal.</p>
+<h2>2. Situación actual del ciclo de vida de Python (2 de diciembre de 2025)</h2>
+<table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Estado actual</th>
+<th>Fin de soporte de seguridad</th>
+<th>Comentario clave</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.8</td>
+<td>EOL (octubre 2024)</td>
+<td>Ninguno</td>
+<td>Inaceptable</td>
+</tr>
+<tr>
+<td>3.9</td>
+<td>EOL (31 octubre 2025)</td>
+<td>Ninguno</td>
+<td>Ya sin parches</td>
+</tr>
+<tr>
+<td>3.10</td>
+<td>Soporte completo</td>
+<td>Octubre 2026</td>
+<td>Última versión con casi 1 año de soporte garantizado</td>
+</tr>
+<tr>
+<td>3.11</td>
+<td>Soporte completo</td>
+<td>Octubre 2027</td>
+<td>Ideal para nuevos proyectos</td>
+</tr>
+<tr>
+<td>3.12–3.13</td>
+<td>Soporte completo</td>
+<td>2028–2029</td>
+<td>Totalmente estables</td>
+</tr>
+<tr>
+<td>3.14</td>
+<td>Versión estable más reciente (7 oct 2025)</td>
+<td>~Octubre 2030</td>
+<td>Soporte completo y ampliamente adoptada</td>
+</tr>
+<tr>
+<td>3.15</td>
+<td>Prerelease (alpha 2 – 19 nov 2025)</td>
+<td>No aplicable</td>
+<td>No apta para producción</td>
+</tr>
+</tbody>
+</table>
+<h2>3. Compatibilidad verificada con las dependencias críticas</h2>
+<p>Todas las bibliotecas principales ya funcionan sin problemas en Python 3.10–3.14 y ninguna tiene soporte oficial para 3.15 (aún en fase alpha).</p>
+<table>
+<thead>
+<tr>
+<th>Biblioteca</th>
+<th>Versión actual (dic 2025)</th>
+<th>Python mínimo</th>
+<th>Soporta 3.14</th>
+<th>Soporta 3.15</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Poetry</td>
+<td>2.2.1</td>
+<td>≥3.9</td>
+<td>Sí</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Pydantic v2</td>
+<td>2.11.4 / 2.12 RC</td>
+<td>≥3.9</td>
+<td>Sí</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Typer</td>
+<td>0.12.5</td>
+<td>≥3.8</td>
+<td>Sí</td>
+<td>No testeado</td>
+</tr>
+<tr>
+<td>Rich</td>
+<td>14.2.0</td>
+<td>≥3.8</td>
+<td>Sí</td>
+<td>No testeado</td>
+</tr>
+<tr>
+<td>Structlog</td>
+<td>25.5.0</td>
+<td>≥3.8</td>
+<td>Sí</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Safety CLI v3</td>
+<td>3.7.2</td>
+<td>≥3.9</td>
+<td>Sí</td>
+<td>No</td>
+</tr>
+<tr>
+<td>CycloneDX-Python-Lib</td>
+<td>11.5.2</td>
+<td>≥3.8</td>
+<td>Sí</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2>4. Ventajas concretas del rango elegido</h2>
+<ul>
+<li><code class='language-html'>tomllib</code> nativo → no necesitamos dependencias externas en entornos aislados</li>
+<li>Pattern matching avanzado → código más legible en el motor de políticas éticas</li>
+<li>Mejoras de seguridad en <code class='language-html'>tarfile</code>, <code class='language-html'>ssl</code> y manejo de rutas (críticas para SBOM)</li>
+<li>Parches de seguridad activos en todo el rango</li>
+<li>Compatibilidad 100 % verificada con Poetry 2.x, Pydantic v2 y Safety v3</li>
+</ul>
+<h2>5. Decisión definitiva</h2>
+<p><strong>Versión de Python requerida: ≥3.10 y <3.15</strong></p>
+<pre><code class="language-toml">[project]
+name = "metsudepmanager"
+requires-python = ">=3.10,<3.15"
+</code></pre>
+<p>Este rango:</p>
+<ul>
+<li>Incluye todas las versiones estables con soporte de seguridad activo</li>
+<li>Cubre la última versión estable (3.14) con soporte hasta ~2030</li>
+<li>Excluye expresamente las versiones prerelease de 3.15 (alpha/beta)</li>
+<li>Cumple estrictamente con los requisitos de DORA, NIS2 y RGPD</li>
+</ul>
+<h2>6. Texto oficial para el README</h2>
+<pre><code class="language-markdown">**Requisitos de Python**  
+MetsuDepManager requiere Python ≥3.10 y <3.15 (decisión adoptada en diciembre de 2025).
+
+Este rango garantiza:
+• Parches de seguridad activos en todas las versiones soportadas  
+• Compatibilidad total con Poetry 2.x, Pydantic v2, Safety v3 y CycloneDX  
+• Cumplimiento normativo DORA, NIS2 y RGPD  
+• Funcionamiento sin dependencias externas en entornos air-gapped (gracias a `tomllib`)
+
+Se excluyen versiones <3.10 (ya EOL) y ≥3.15 (aún en prerelease).  
+El rango se revisará tras el lanzamiento estable de Python 3.15 (previsto octubre 2026).
+</code></pre>
+<h2>Referencias bibliográficas que apoyan esta decisión</h2>
+<ol>
+<li><a href="https://endoflife.date/python">Python Software Foundation – Fechas oficiales de fin de vida 🟡③🌐</a> .- Tabla con fechas de soporte y fin de vida para versiones de Python, incluyendo 3.14 (lanzado oct 2025, soporte activo hasta oct 2027, seguridad hasta oct 2030).</li>
+<li><a href="https://peps.python.org/pep-0745/">PEP 745 – Python 3.14 Release Schedule 🟡③🌐</a> .- Documento PEP con cronograma de lanzamiento de Python 3.14, alphas desde oct 2024, final oct 2025, y fechas de parches hasta 2027.</li>
+<li><a href="https://peps.python.org/pep-0790/">PEP 790 – Python 3.15 Release Schedule 🟡③🌐</a> .- Documento PEP con cronograma de Python 3.15, desarrollo desde may 2025, lanzamiento final oct 2026, soporte hasta 2031.</li>
+<li><a href="https://python-poetry.org/docs/">Documentación oficial de Poetry – Supported Python versions (2.2.1) 🟡③🌐</a> .- Documentación de instalación de Poetry 2.2.1, requiere Python 3.9 o superior para su operación.</li>
+<li><a href="https://packaging.python.org/en/latest/specifications/dependency-specifiers/">PyPA – Packaging User Guide: Specifying dependencies 🟡③🌐</a> .- Guía sobre especificadores de dependencias PEP 508, usando marcadores como python_version para compatibilidad condicional.</li>
+<li><a href="https://github.com/actions/setup-python">GitHub Actions – Python versions disponibles (incluye 3.14) 🟡③🌐</a> .- Acción setup-python soporta versiones hasta Python 3.13; 3.14 no disponible actualmente en runners hosted.</li>
+</ol>
+<h2>Referencias que podrían cuestionar o matizar esta decisión</h2>
+<ol>
+<li><a href="https://numpy.org/doc/stable/dev/depending_on_numpy.html">NumPy – Política actual de versiones soportadas (no usa upper bounds) 🟡③🌐</a> .- Documentación de NumPy recomendando que la mayoría de las librerías no establezcan upper bounds en dependencias de NumPy debido a la preservación de compatibilidad hacia atrás.</li>
+</ol>
+<p>Esta últimas referencia defienden la filosofía “sin upper bounds” para proyectos de uso general, pero reconocen explícitamente que en entornos de alta seguridad, cumplimiento normativo o cuando la siguiente versión está en fase alpha, el uso de un límite superior temporal está justificado.</p>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Dec 02 2025 00:30:13 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.1</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-12-01T23:14:50.114Z
+modified: 2025-12-01T23:30:13.115Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 1
+nav_primary: []
+nav_secondary: []
+tags: []
+)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>
