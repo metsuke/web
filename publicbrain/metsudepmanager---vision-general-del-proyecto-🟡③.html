@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>MetsuDepManager - Visión general del proyecto 🟡③</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_bcdb26b402ce1818f324f6b0247f7807_MD5.jpg" alt="MetsuDepManager - Visión general del proyecto"></p>
+<ul>
+<li><a class='internal' href='./curso-sobre-desarrollo-de-un-gestor-de-paquetes-python-que-use-poetry-como-backend-🟡③.html'>Curso sobre desarrollo de un gestor de paquetes python que use poetry como backend 🟡③</a></li>
+</ul>
+<p><strong>MetsuDepManager - Gestor de dependencias ético, seguro, accesible y listo para producción</strong></p>
+<p>El proyecto culminante del curso es MetsuDepManager, un gestor de dependencias para Python diseñado con un enfoque ético y altamente adaptable.</p>
+<p>Funciona como una capa de envoltura segura sobre Poetry, que actúa como su motor principal. Su propósito principal es resolver las carencias de las herramientas actuales en contextos estrictamente regulados, como empresas con normativas internas rigurosas, entornos educativos, auditorías de ciberseguridad o el cumplimiento de regulaciones europeas como el RGPD o la NIS2.</p>
+<p>Además, se adapta perfectamente a sistemas aislados o sin conexión a internet (air-gapped). En su núcleo, prioriza valores como la transparencia total, la auditoría automática, el principio de menor privilegio, la protección de la privacidad y –de forma explícita y no negociable– la accesibilidad universal.</p>
+<h2>1. ¿Qué es realmente MetsuDepManager?</h2>
+<p>MetsuDepManager no es “otro gestor de paquetes más”. Es una <strong>capa segura, ética y altamente configurable</strong> construida sobre Poetry que resuelve problemas complejos (CPS aplicado de forma sistemática a un conterxto extremadamente específico) que hoy no cubren ni pip, ni Poetry, ni PDM, ni Hatch en entornos exigentes:</p>
+<ul>
+<li>Empresas con políticas de seguridad estrictas (banca, defensa, sanidad, administraciones públicas).</li>
+<li>Entornos educativos públicos obligados por la LOMLOE y el Real Decreto 1112/2018 de accesibilidad.</li>
+<li>Sistemas air-gapped o con conexión restringida (industria, investigación clasificada).</li>
+<li>Proyectos sujetos a RGPD, NIS2, ENS Alto o Ciberseguridad Nacional.</li>
+<li>Equipos que necesitan auditoría automática, SBOM (Software Bill of Materials) y trazabilidad total.</li>
+</ul>
+<p>En resumen: <strong>es la herramienta que te gustaría haber tenido cuando tu jefe de seguridad, el delegado de protección de datos o el auditor te pidió “garantías” de lo que instalas</strong>.</p>
+<h3>2. Pilares Éticos y Técnicos No Negociables</h3>
+<table>
+<thead>
+<tr>
+<th>Pilar</th>
+<th>Qué significa en la práctica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ética</strong></td>
+<td>Ninguna dependencia puede violar licencias prohibidas, enviar telemetría no consentida ni introducir vulnerabilidades conocidas sin firma criptográfica de excepción.</td>
+</tr>
+<tr>
+<td><strong>Seguridad</strong></td>
+<td>Motor de políticas + integración automática con Safety, OSS Index, OSV y generación de SBOM (CycloneDX/SPDX).</td>
+</tr>
+<tr>
+<td><strong>Accesibilidad universal</strong></td>
+<td>Requisito desde el día cero, no un añadido posterior (ver sección completa más abajo).</td>
+</tr>
+<tr>
+<td><strong>Privacidad</strong></td>
+<td>Modo 100% offline, bloqueo de cualquier llamada externa no autorizada, caché local con pinning de hash+URL.</td>
+</tr>
+<tr>
+<td><strong>Transparencia</strong></td>
+<td>Todo el código es open-source, auditado y con logging estructurado (structlog).</td>
+</tr>
+</tbody>
+</table>
+<h3>3. Características Técnicas Principales</h3>
+<ul>
+<li>Comandos clásicos (<code class='language-html'>init</code>, <code class='language-html'>add</code>, <code class='language-html'>remove</code>, <code class='language-html'>install</code>, <code class='language-html'>update</code>, <code class='language-html'>build</code>, <code class='language-html'>publish</code>) + comandos éticos propios: <code class='language-html'>audit</code>, <code class='language-html'>policy</code>, <code class='language-html'>sign-exception</code>, <code class='language-html'>verify-sbom</code>, <code class='language-html'>enforce</code>.</li>
+<li>CLI profesional construida con <strong>Typer</strong> + <strong>Rich</strong>: tablas, barras de progreso, árboles de dependencias y tema oscuro/claro.</li>
+<li>Sistema de plugins vía entry-points (puedes crear tus propios hooks <code class='language-html'>pre_add</code>, <code class='language-html'>post_install</code>, etc.).</li>
+<li>Soporte completo para entornos virtuales (venv, virtualenv, conda, pixi).</li>
+<li>Exportación instantánea a <code class='language-html'>requirements.txt</code>, <code class='language-html'>conda-environment.yml</code> o <code class='language-html'>pip-compile</code>.</li>
+<li>Modo “enforcer” para CI/CD: bloquea merges si alguna dependencia rompe las políticas.</li>
+<li>Binarios standalone opcionales con PyInstaller o Nuitka.</li>
+<li>Testing serio: > 95 % cobertura con pytest + Hypothesis (property-based testing).</li>
+</ul>
+<h3>4. Accesibilidad: No es un Extra, es el Fundamento</h3>
+<p>MetsuDepManager nace dentro de <strong>MetsuOS</strong>, un sistema operativo modular cuya misión fundacional es <strong>la inclusión ética a través de los videojuegos y la tecnología</strong>. Por eso la accesibilidad no se negocia jamás.</p>
+<table>
+<thead>
+<tr>
+<th>Área</th>
+<th>Implementación real y verificable</th>
+<th>Norma cumplida</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CLI</td>
+<td>• Paleta WCAG AA/AAA y segura para daltonismo<br>• Flags <code class='language-html'>--no-color</code>, <code class='language-html'>--color=auto/always/never</code><br>• Salida estructurada 100 % compatible con NVDA, VoiceOver y Orca<br>• Mensajes claros en español neutro</td>
+<td>WCAG 2.1 – 1.4.1, 1.4.3, 1.4.11, 4.1.2</td>
+</tr>
+<tr>
+<td>Configuración accesible</td>
+<td>Sección oficial en <code class='language-html'>metsudep.toml</code>:<br>```toml:disable-run</td>
+<td></td>
+</tr>
+<tr>
+<td>Documentación</td>
+<td>MkDocs + Material for MkDocs (tema accesible por defecto)<br>• Contraste ≥ 7:1<br>• Navegación 100 % por teclado<br>• Etiquetas ARIA correctas</td>
+<td>WCAG 2.1 AA completo</td>
+</tr>
+<tr>
+<td>Internacionalización</td>
+<td>Mensajes con <code class='language-html'>gettext</code><br>Onjetivos a priori: español neutro, catalán e inglés (objetivos futuros leguas cooficiales y otros idiomas validando traducciones a través de humanos aun cuando se ayuden con IA, como medida extra de seguridad y accesibilidad)</td>
+<td>Ley 39/2015 (España)</td>
+</tr>
+<tr>
+<td>Pruebas de accesibilidad</td>
+<td>• Automatizadas con axe-core<br>• Revisión manual periódica con NVDA y VoiceOver<br>• Obligatorias en la checklist final</td>
+<td>Parte del estándar “production-ready”</td>
+</tr>
+<tr>
+<td>Política de contribuciones</td>
+<td>Cualquier PR que degrade la accesibilidad será rechazado automáticamente (regla explícita en CONTRIBUTING.md)</td>
+<td>Compromiso público verificable</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Declaración oficial del proyecto</strong> (está literalmente en el README):</p>
+<blockquote>
+<p>«Ninguna funcionalidad técnica podrá justificar la exclusión de personas con discapacidad. La accesibilidad no es opcional: es la base misma de la ética que defendemos.»</p>
+</blockquote>
+<h3>5. Roadmap Completo del Curso (12 + 1 módulos)</h3>
+<table>
+<thead>
+<tr>
+<th>Módulo</th>
+<th>Título</th>
+<th>Horas aproximadas</th>
+<th>Qué aprenderás (y harás)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>Introducción y motivación ética</td>
+<td>1-2 h</td>
+<td>Por qué necesitamos herramientas propias, casos reales, presentación de MetsuOS y accesibilidad como pilar</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>Cómo funciona Poetry por dentro</td>
+<td>4-6 h</td>
+<td>Arquitectura completa, poetry-core, solver, locker, API interna</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Diseño ético e inclusivo de MetsuDepManager</td>
+<td>3-4 h</td>
+<td>Principios éticos, arquitectura modular, accesibilidad desde el diseño</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Preparación del proyecto profesional</td>
+<td>2-3 h</td>
+<td>Estructura, pyproject.toml, ruff, mypy, pre-commit, CI, documentación accesible</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Wrapper seguro sobre Poetry</td>
+<td>4-5 h</td>
+<td>PoetryBackend, timeouts, dry-run, logging estructurado</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Motor de políticas éticas</td>
+<td>5-7 h</td>
+<td>Licencias, telemetría, vulnerabilidades, SBOM automático, excepciones criptográficas</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>CLI profesional y accesible</td>
+<td>4-6 h</td>
+<td>Typer + Rich, colores seguros, lectores de pantalla, autocompletado</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>Modo sandbox y entornos aislados</td>
+<td>3-5 h</td>
+<td>venv/conda/pixi, pinning hash+URL, caché 100 % offline</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>Sistema de plugins</td>
+<td>3-4 h</td>
+<td>Entry-points, hooks, ejemplos reales</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td>Integración CI/CD y entornos empresariales</td>
+<td>3-4 h</td>
+<td>GitHub Actions, exportación, modo enforcer</td>
+</tr>
+<tr>
+<td><strong>10</strong></td>
+<td>Testing serio y accesibilidad</td>
+<td>4-6 h</td>
+<td>pytest + Hypothesis, pruebas de accesibilidad obligatorias</td>
+</tr>
+<tr>
+<td><strong>11</strong></td>
+<td>Publicación y binarios standalone</td>
+<td>2-3 h</td>
+<td>PyPI, wheel, PyInstaller/Nuitka</td>
+</tr>
+<tr>
+<td><strong>12</strong></td>
+<td>Proyecto final y futuro</td>
+<td>3-5 h</td>
+<td>Checklist production-ready, ideas de extensión (UI web, multi-lenguaje)</td>
+</tr>
+</tbody>
+</table>
+<h3>6. Entregable Final</h3>
+<p>Un repositorio open-source 100 % funcional que incluye:</p>
+<ul>
+<li>Código completo y comentado.</li>
+<li>Documentación accesible y multilingüe.</li>
+<li>Configuración de políticas por defecto (<code class='language-html'>metsudep.toml</code>).</li>
+<li>Checklist de producción (seguridad + accesibilidad + calidad).</li>
+<li>Guía de contribución ética y accesible.</li>
+</ul>
+<h3>Referencias Bibliográficas que Apoyan el Proyecto</h3>
+<ol>
+<li><a href="https://realpython.com/dependency-management-python-poetry/">Real Python – Dependency Management with Python Poetry 🟡③🌐</a> .- Tutorial que valida Poetry como backend robusto para wrappers personalizados, destacando su resolver de dependencias y soporte para pyproject.toml.</li>
+<li><a href="https://cyclonedx.org/">CycloneDX – Especificación oficial SBOM 🟡③🌐</a> .- Herramienta open-source para generar SBOM en formato CycloneDX desde proyectos Python, confirmando la viabilidad de integración automática para cumplimiento normativo.</li>
+</ol>
+<h3>Referencias que Matizan o Cuestionan el Enfoque</h3>
+<ol>
+<li><a href="https://chriswarrick.com/blog/2023/01/15/how-to-improve-python-packaging/">Chris Warrick – How to Improve Python Packaging (2023) 🟡③🌐</a> – Crítica constructiva al exceso de herramientas y wrappers. .- Análisis que critica la proliferación de herramientas como Poetry por no adherirse completamente a estándares PEP, sugiriendo que wrappers éticos añaden complejidad innecesaria al ecosistema.</li>
+</ol>
+<p><strong>Conclusión</strong>: MetsuDepManager no pretende ser la herramienta que todo el mundo use a diario. Pretende ser la herramienta que <strong>sí o sí necesitas</strong> cuando ética, seguridad, cumplimiento normativo y accesibilidad universal no son negociables. Y el curso te lleva de la mano, paso a paso, para que seas capaz de crearla, entenderla y –si quieres– mejorarla o adaptarla a tu propia organización.</p>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Wed Dec 03 2025 00:14:50 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.3</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-12-02T19:08:48.633Z
+modified: 2025-12-02T23:14:50.677Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 3
+nav_primary: []
+nav_secondary: []
+tags: []
+MOS_TopImg_Video: CursoMetsuDepManager_005.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoMetsuDepManager_005.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>
