@@ -43,20 +43,23 @@
 <li><a class='internal' href='./curso-sobre-desarrollo-de-un-gestor-de-paquetes-python-que-use-poetry-como-backend-🟡③.html'>Curso sobre desarrollo de un gestor de paquetes python que use poetry como backend 🟡③</a></li>
 </ul>
 <p><strong>MetsuDepManager - Gestor de dependencias ético, seguro, accesible y listo para producción</strong></p>
-<p>El proyecto culminante del curso es MetsuDepManager, un gestor de dependencias para Python diseñado con un enfoque ético y altamente adaptable.</p>
-<p>Funciona como una capa de envoltura segura sobre Poetry, que actúa como su motor principal. Su propósito principal es resolver las carencias de las herramientas actuales en contextos estrictamente regulados, como empresas con normativas internas rigurosas, entornos educativos, auditorías de ciberseguridad o el cumplimiento de regulaciones europeas como el RGPD o la NIS2.</p>
-<p>Además, se adapta perfectamente a sistemas aislados o sin conexión a internet (air-gapped). En su núcleo, prioriza valores como la transparencia total, la auditoría automática, el principio de menor privilegio, la protección de la privacidad y –de forma explícita y no negociable– la accesibilidad universal.</p>
-<h2>1. ¿Qué es realmente MetsuDepManager?</h2>
-<p>MetsuDepManager no es “otro gestor de paquetes más”. Es una <strong>capa segura, ética y altamente configurable</strong> construida sobre Poetry que resuelve problemas complejos (CPS aplicado de forma sistemática a un conterxto extremadamente específico) que hoy no cubren ni pip, ni Poetry, ni PDM, ni Hatch en entornos exigentes:</p>
-<ul>
-<li>Empresas con políticas de seguridad estrictas (banca, defensa, sanidad, administraciones públicas).</li>
-<li>Entornos educativos públicos obligados por la LOMLOE y el Real Decreto 1112/2018 de accesibilidad.</li>
-<li>Sistemas air-gapped o con conexión restringida (industria, investigación clasificada).</li>
-<li>Proyectos sujetos a RGPD, NIS2, ENS Alto o Ciberseguridad Nacional.</li>
-<li>Equipos que necesitan auditoría automática, SBOM (Software Bill of Materials) y trazabilidad total.</li>
-</ul>
+<h2>Introducción</h2>
+<p>MetsuDepManager es un gestor de dependencias ético, seguro, accesible y listo para producción para Python, diseñado específicamente para entornos regulados como empresas con políticas de seguridad estrictas (banca, defensa, sanidad, administraciones públicas), entornos educativos obligados por normativas como la LOMLOE y el Real Decreto 1112/2018 de accesibilidad, sistemas air-gapped o con conexión restringida (industria, investigación clasificada), y proyectos sujetos a regulaciones como RGPD, NIS2, ENS Alto o Ciberseguridad Nacional. Como wrapper ligero sobre Poetry, que actúa como su motor principal, integra un motor de políticas avanzado que asegura cumplimiento normativo (vulnerabilidades, licencias, orígenes geográficos) sin comprometer la velocidad ni la usabilidad. Su enfoque offline-first y su soporte para SBOM (Software Bill of Materials) lo convierten en una herramienta indispensable para mitigar riesgos en la cadena de suministro de software, alineándose con regulaciones como NIS2, ENS Alto, DORA e ITAR/EAR.</p>
+<p>El proyecto culminante del curso sobre desarrollo de un gestor de paquetes Python que use Poetry como backend, MetsuDepManager nace dentro de <strong>MetsuOS</strong>, un sistema operativo modular cuya misión fundacional es <strong>la plena inclusión a través de los videojuegos y la tecnología</strong>. Por eso, la accesibilidad no se negocia jamás: es el fundamento ético y técnico no negociable desde el día cero. En un panorama donde las dependencias open-source representan hasta el 80% del código en aplicaciones modernas, pero introducen riesgos geopolíticos, de licencias y de seguridad, MetsuDepManager prioriza la soberanía tecnológica, la accesibilidad (ARIA-compliant) y la transparencia auditable. Este documento presenta la visión integral del proyecto, su arquitectura, características clave y roadmap, configurado para entornos de alta criticidad.</p>
+<h2>¿Qué es Realmente MetsuDepManager?</h2>
+<p>MetsuDepManager no es “otro gestor de paquetes más”. Es una <strong>capa segura, ética y altamente configurable</strong> construida sobre Poetry que resuelve problemas complejos (CPS aplicado de forma sistemática a un contexto extremadamente específico) que hoy no cubren ni pip, ni Poetry, ni PDM, ni Hatch en entornos exigentes. Su propósito principal es resolver las carencias de las herramientas actuales en contextos estrictamente regulados.</p>
 <p>En resumen: <strong>es la herramienta que te gustaría haber tenido cuando tu jefe de seguridad, el delegado de protección de datos o el auditor te pidió “garantías” de lo que instalas</strong>.</p>
-<h3>2. Pilares Éticos y Técnicos No Negociables</h3>
+<h2>Motivación</h2>
+<p>El ecosistema Python depende en gran medida de paquetes open-source, pero la gestión de dependencias tradicionales (pip, Poetry) ignora riesgos críticos:</p>
+<ul>
+<li><strong>Vulnerabilidades</strong>: Ataques como Log4Shell o SolarWinds destacan la fragilidad de la cadena de suministro.</li>
+<li><strong>Licencias</strong>: Conflictos con GPL en entornos propietarios o requisitos de disclosure en UE.</li>
+<li><strong>Orígenes Geográficos</strong>: En 2025, tensiones geopolíticas (e.g., sanciones UE a RU/CN, controles US ITAR/EAR) convierten las patentes y tecnologías en vectores de riesgo. Dependencias de orígenes "prohibidos" pueden violar export controls o NIS2.</li>
+<li><strong>Cumplimiento Sectorial</strong>: ENS Alto exige protección de supply chain en infraestructuras críticas españolas; DORA obliga a testing de dependencias OSS en finanzas.</li>
+<li><strong>Accesibilidad y Ética</strong>: Entornos educativos y públicos obligados por LOMLOE y RD 1112/2018; privacidad en RGPD sin telemetría no consentida.</li>
+</ul>
+<p>MetsuDepManager resuelve esto con políticas preconfiguradas, SBOM enriquecidos y hooks no-intrusivos, manteniendo la simplicidad de Poetry mientras añade capas de resiliencia. Prioriza valores como la transparencia total, la auditoría automática, el principio de menor privilegio, la protección de la privacidad y –de forma explícita y no negociable– la accesibilidad universal.</p>
+<h2>Pilares Éticos y Técnicos No Negociables</h2>
 <table>
 <thead>
 <tr>
@@ -67,7 +70,7 @@
 <tbody>
 <tr>
 <td><strong>Ética</strong></td>
-<td>Ninguna dependencia puede violar licencias prohibidas, enviar telemetría no consentida ni introducir vulnerabilidades conocidas sin firma criptográfica de excepción.</td>
+<td>Ninguna dependencia puede violar licencias prohibidas, enviar telemetría no consentida ni introducir vulnerabilidades conocidas sin firma criptográfica de excepción. Incluye perfiles geo para soberanía tecnológica.</td>
 </tr>
 <tr>
 <td><strong>Seguridad</strong></td>
@@ -85,21 +88,132 @@
 <td><strong>Transparencia</strong></td>
 <td>Todo el código es open-source, auditado y con logging estructurado (structlog).</td>
 </tr>
+<tr>
+<td><strong>Resiliencia Geopolítica</strong></td>
+<td>Metadatos geo-org en dependencias para bloqueos/prioridades; perfiles preestablecidos para compliance NIS2/ITAR.</td>
+</tr>
 </tbody>
 </table>
-<h3>3. Características Técnicas Principales</h3>
+<h2>Características Principales</h2>
+<h3>1. <strong>Wrapper Inteligente sobre Poetry</strong></h3>
 <ul>
-<li>Comandos clásicos (<code class='language-html'>init</code>, <code class='language-html'>add</code>, <code class='language-html'>remove</code>, <code class='language-html'>install</code>, <code class='language-html'>update</code>, <code class='language-html'>build</code>, <code class='language-html'>publish</code>) + comandos éticos propios: <code class='language-html'>audit</code>, <code class='language-html'>policy</code>, <code class='language-html'>sign-exception</code>, <code class='language-html'>verify-sbom</code>, <code class='language-html'>enforce</code>.</li>
-<li>CLI profesional construida con <strong>Typer</strong> + <strong>Rich</strong>: tablas, barras de progreso, árboles de dependencias y tema oscuro/claro.</li>
-<li>Sistema de plugins vía entry-points (puedes crear tus propios hooks <code class='language-html'>pre_add</code>, <code class='language-html'>post_install</code>, etc.).</li>
+<li>Comandos proxy: <code class='language-html'>metsudep add &lt;pkg&gt;</code>, <code class='language-html'>metsudep install</code>, <code class='language-html'>metsudep lock</code> → Aplica políticas pre-instalación.</li>
+<li>Comandos clásicos adicionales: <code class='language-html'>init</code>, <code class='language-html'>remove</code>, <code class='language-html'>update</code>, <code class='language-html'>build</code>, <code class='language-html'>publish</code>.</li>
+<li>Comandos éticos propios: <code class='language-html'>audit</code>, <code class='language-html'>policy</code>, <code class='language-html'>sign-exception</code>, <code class='language-html'>verify-sbom</code>, <code class='language-html'>enforce</code>.</li>
+<li>Offline-first: Resolución y caché local; fallback online solo con consentimiento (no-telemetría).</li>
+<li>Extensibilidad: Plugins via entry-points para resolvers custom (e.g., mirrors EU).</li>
 <li>Soporte completo para entornos virtuales (venv, virtualenv, conda, pixi).</li>
-<li>Exportación instantánea a <code class='language-html'>requirements.txt</code>, <code class='language-html'>conda-environment.yml</code> o <code class='language-html'>pip-compile</code>.</li>
-<li>Modo “enforcer” para CI/CD: bloquea merges si alguna dependencia rompe las políticas.</li>
-<li>Binarios standalone opcionales con PyInstaller o Nuitka.</li>
-<li>Testing serio: > 95 % cobertura con pytest + Hypothesis (property-based testing).</li>
+<li>Exportación instantánea a requirements.txt, conda-environment.yml o pip-compile.</li>
 </ul>
-<h3>4. Accesibilidad: No es un Extra, es el Fundamento</h3>
-<p>MetsuDepManager nace dentro de <strong>MetsuOS</strong>, un sistema operativo modular cuya misión fundacional es <strong>la inclusión ética a través de los videojuegos y la tecnología</strong>. Por eso la accesibilidad no se negocia jamás.</p>
+<h3>2. <strong>Motor de Políticas Multi-Capa</strong></h3>
+<ul>
+<li><strong>Vulnerabilidades</strong>: Integración con Safety DB y OSV; alertas reachability-based (solo deps explotables).</li>
+<li><strong>Licencias</strong>: Perfiles preestablecidos (<code class='language-html'>permissive</code>, <code class='language-html'>copyleft</code>, <code class='language-html'>eu-compliant</code>, <code class='language-html'>defense-restricted</code>).</li>
+<li><strong>Orígenes Geográficos (Geo-Org)</strong>: Metadatos de país/región en SBOM; políticas para bloqueos/prioridades basadas en regulaciones.</li>
+<li><strong>Perfiles Integrados</strong>: Combinación de licencias + geo para zero-config en sectores específicos.</li>
+<li>Configuración en <code class='language-html'>metsudep.toml</code>: Políticas declarativas, excepciones firmadas.</li>
+</ul>
+<h3>3. <strong>Generación y Verificación de SBOM</strong></h3>
+<ul>
+<li>Formatos: CycloneDX (con <code class='language-html'>geoOrigin</code> custom en "supplier") y SPDX 2.3.</li>
+<li>Enriquecimiento: Inclusión de hashes, licencias resueltas y orígenes geográficos para compliance NIS2/ENS.</li>
+<li>Comando: <code class='language-html'>metsudep sbom generate --format=cyclonedx --include-geo</code>.</li>
+</ul>
+<h3>4. <strong>CLI Profesional y Accesible</strong></h3>
+<ul>
+<li>Basada en Typer + Rich: Tablas coloridas, progresión ARIA, internacionalización (es/ca/en).</li>
+<li>Paleta WCAG AA/AAA y segura para daltonismo; flags <code class='language-html'>--no-color</code>, <code class='language-html'>--color=auto/always/never</code>.</li>
+<li>Salida estructurada 100% compatible con NVDA, VoiceOver y Orca; mensajes claros en español neutro.</li>
+<li>Autocompletado, barras de progreso, árboles de dependencias y tema oscuro/claro.</li>
+<li>Reportes: <code class='language-html'>metsudep audit --full</code> → Tabla unificada de riesgos (vuln/lic/geo).</li>
+<li>Modo CI/CD: Enforcer que falla builds no-compliant.</li>
+</ul>
+<h3>5. <strong>Resiliencia Geopolítica</strong></h3>
+<ul>
+<li><strong>Metadatos Geo-Org</strong>: Resueltos via DB local (SQLite con ~10k paquetes pre-cargados); fallback a APIs públicas (PyPI, ClearlyDefined).</li>
+<li><strong>Perfiles Geo Preestablecidos</strong>: Activables en config para cumplimiento inmediato.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Perfil</th>
+<th>Bloqueados</th>
+<th>Preferidos</th>
+<th>Warn >%</th>
+<th>Uso Típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class='language-html'>global-permissive</code></td>
+<td>—</td>
+<td>—</td>
+<td>80% cualquier país</td>
+<td>Open-source general</td>
+</tr>
+<tr>
+<td><code class='language-html'>eu-sovereign</code></td>
+<td>—</td>
+<td>["EU"]</td>
+<td>40% US, 20% CN</td>
+<td>Empresas UE estándar</td>
+</tr>
+<tr>
+<td><code class='language-html'>eu-sovereign-strict</code></td>
+<td>["CN","RU","IR","KP"]</td>
+<td>["EU","ES","DE","FR","NL"]</td>
+<td>25% US</td>
+<td>NIS2, ENS Alto, DORA</td>
+</tr>
+<tr>
+<td><code class='language-html'>defense-es</code></td>
+<td>["CN","RU","IR","KP","BY"]</td>
+<td>["ES","EU","US-ally"]</td>
+<td>10% fuera aliados</td>
+<td>Defensa española (CCN)</td>
+</tr>
+<tr>
+<td><code class='language-html'>us-itar-ear</code></td>
+<td>["CN","RU","IR","KP","SY","VE"]</td>
+<td>["US","NATO","FiveEyes"]</td>
+<td>—</td>
+<td>Export controls US</td>
+</tr>
+<tr>
+<td><code class='language-html'>cn-independent</code></td>
+<td>—</td>
+<td>["CN","HK","SG"]</td>
+<td>50% US</td>
+<td>Reducción riesgos CFIUS</td>
+</tr>
+<tr>
+<td><code class='language-html'>offline-airgap</code></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Entornos aislados (SCADA)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Excepciones: <code class='language-html'>metsudep sign-geo-exception &lt;pkg&gt; --reason=&quot;Auditado&quot;</code>.</li>
+<li>Integración: Hooks pre-resolución priorizan mirrors por perfil.</li>
+</ul>
+<h3>6. <strong>Modo Sandbox y Entornos Aislados</strong></h3>
+<ul>
+<li>Manejo de venv/conda/pixi, pinning hash+URL, caché 100% offline.</li>
+<li>Modo “enforcer” para CI/CD: bloquea merges si alguna dependencia rompe las políticas.</li>
+</ul>
+<h3>7. <strong>Sistema de Plugins</strong></h3>
+<ul>
+<li>Entry-points para hooks como <code class='language-html'>pre_add</code>, <code class='language-html'>post_install</code>.</li>
+<li>Ejemplos reales para resolvers custom.</li>
+</ul>
+<h3>8. <strong>Ética y Accesibilidad: No es un Extra, es el Fundamento</strong></h3>
+<p><strong>Declaración oficial del proyecto</strong> (está literalmente en el README):</p>
+<blockquote>
+<p>«Ninguna funcionalidad técnica podrá justificar la exclusión de personas con discapacidad. La accesibilidad no es opcional: es la base misma de la ética que defendemos.»</p>
+</blockquote>
 <table>
 <thead>
 <tr>
@@ -111,27 +225,27 @@
 <tbody>
 <tr>
 <td>CLI</td>
-<td>• Paleta WCAG AA/AAA y segura para daltonismo<br>• Flags <code class='language-html'>--no-color</code>, <code class='language-html'>--color=auto/always/never</code><br>• Salida estructurada 100 % compatible con NVDA, VoiceOver y Orca<br>• Mensajes claros en español neutro</td>
+<td>• Paleta WCAG AA/AAA y segura para daltonismo • Flags --no-color , --color=auto/always/never • Salida estructurada 100 % compatible con NVDA, VoiceOver y Orca • Mensajes claros en español neutro</td>
 <td>WCAG 2.1 – 1.4.1, 1.4.3, 1.4.11, 4.1.2</td>
 </tr>
 <tr>
 <td>Configuración accesible</td>
-<td>Sección oficial en <code class='language-html'>metsudep.toml</code>:<br>```toml:disable-run</td>
-<td></td>
+<td>Sección oficial en metsudep.toml : [accessibility] disable-run = true (para pausar en lectores de pantalla)</td>
+<td>WCAG 2.1 AA</td>
 </tr>
 <tr>
 <td>Documentación</td>
-<td>MkDocs + Material for MkDocs (tema accesible por defecto)<br>• Contraste ≥ 7:1<br>• Navegación 100 % por teclado<br>• Etiquetas ARIA correctas</td>
+<td>MkDocs + Material for MkDocs (tema accesible por defecto) • Contraste ≥ 7:1 • Navegación 100 % por teclado • Etiquetas ARIA correctas</td>
 <td>WCAG 2.1 AA completo</td>
 </tr>
 <tr>
 <td>Internacionalización</td>
-<td>Mensajes con <code class='language-html'>gettext</code><br>Onjetivos a priori: español neutro, catalán e inglés (objetivos futuros leguas cooficiales y otros idiomas validando traducciones a través de humanos aun cuando se ayuden con IA, como medida extra de seguridad y accesibilidad)</td>
+<td>Mensajes con gettext. Idiomas: español neutro, catalán e inglés (objetivos futuros: lenguas cooficiales y otros idiomas, validando traducciones a través de humanos aun cuando se ayuden con IA, como medida extra de seguridad y accesibilidad).</td>
 <td>Ley 39/2015 (España)</td>
 </tr>
 <tr>
 <td>Pruebas de accesibilidad</td>
-<td>• Automatizadas con axe-core<br>• Revisión manual periódica con NVDA y VoiceOver<br>• Obligatorias en la checklist final</td>
+<td>• Automatizadas con axe-core • Revisión manual periódica con NVDA y VoiceOver • Obligatorias en la checklist final</td>
 <td>Parte del estándar “production-ready”</td>
 </tr>
 <tr>
@@ -141,11 +255,49 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Declaración oficial del proyecto</strong> (está literalmente en el README):</p>
-<blockquote>
-<p>«Ninguna funcionalidad técnica podrá justificar la exclusión de personas con discapacidad. La accesibilidad no es opcional: es la base misma de la ética que defendemos.»</p>
-</blockquote>
-<h3>5. Roadmap Completo del Curso (12 + 1 módulos)</h3>
+<ul>
+<li>Cumplimiento RGPD: Consentimiento explícito para online.</li>
+<li>Logs estructurados (JSON) para auditorías; no tracking.</li>
+</ul>
+<h3>9. <strong>Publicación y Binarios Standalone</strong></h3>
+<ul>
+<li>Opcionales con PyInstaller o Nuitka.</li>
+<li>Publicación a PyPI, wheel.</li>
+</ul>
+<h2>Arquitectura</h2>
+<ul>
+<li><strong>Core</strong>: Python 3.11+; dependencias mínimas (Poetry, Tomlkit, Rich, Safety, Typer).</li>
+<li><strong>Hooks</strong>: Pre/post en Poetry resolver (GeoResolver, LicenseChecker).</li>
+<li><strong>DB Local</strong>: SQLite para caché geo/lic/vuln; actualizaciones offline.</li>
+<li><strong>Plugins</strong>: <code class='language-html'>metsudep.vuln_checker</code>, <code class='language-html'>metsudep.geo_resolver</code>.</li>
+<li>Diagrama ASCII:</li>
+</ul>
+<pre><code class='language-html'>[User CLI] --&gt; [Policy Engine] --&gt; [Poetry Wrapper]
+                   |                 |
+                   v                 v
+             [SBOM Generator]   [Geo/Lic Resolver]
+                   |                 |
+                   +--&gt; [DB Local: Vuln/Lic/Geo] &lt;--&gt; [Online Fallback (opt)]
+</code></pre>
+<ul>
+<li>Testing: Pytest >95% cobertura con Hypothesis (property-based testing); mocks para geo escenarios y accesibilidad.</li>
+</ul>
+<h2>Configuración Ejemplo: <code class='language-html'>metsudep.toml</code></h2>
+<pre><code class="language-toml">[tool.metsudep]
+geo_profile = "eu-sovereign-strict"  # NIS2/ENS compliance
+license_profile = "eu-compliant"
+
+[accessibility]
+disable-run = true  # Pausa para lectores de pantalla
+
+[policies.vuln]
+threshold_high = 0  # Bloquea CVSS >7
+
+[geoblock.exceptions]
+"numpy" = { country = "US", reason = "OSS auditado, licencia MIT" }
+</code></pre>
+<p>Uso: <code class='language-html'>metsudep add requests --geo-prefer=EU</code> → "Instalado (origen EU, compliant 100%)."</p>
+<h2>Roadmap Completo del Curso (12 + 1 Módulos)</h2>
 <table>
 <thead>
 <tr>
@@ -153,6 +305,7 @@
 <th>Título</th>
 <th>Horas aproximadas</th>
 <th>Qué aprenderás (y harás)</th>
+<th>Timeline</th>
 </tr>
 </thead>
 <tbody>
@@ -161,83 +314,97 @@
 <td>Introducción y motivación ética</td>
 <td>1-2 h</td>
 <td>Por qué necesitamos herramientas propias, casos reales, presentación de MetsuOS y accesibilidad como pilar</td>
+<td>Q1 2025</td>
 </tr>
 <tr>
 <td><strong>1</strong></td>
 <td>Cómo funciona Poetry por dentro</td>
 <td>4-6 h</td>
 <td>Arquitectura completa, poetry-core, solver, locker, API interna</td>
+<td>Q1 2025</td>
 </tr>
 <tr>
 <td><strong>2</strong></td>
 <td>Diseño ético e inclusivo de MetsuDepManager</td>
 <td>3-4 h</td>
 <td>Principios éticos, arquitectura modular, accesibilidad desde el diseño</td>
+<td>Q1 2025</td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
 <td>Preparación del proyecto profesional</td>
 <td>2-3 h</td>
 <td>Estructura, pyproject.toml, ruff, mypy, pre-commit, CI, documentación accesible</td>
+<td>Q1 2025</td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
 <td>Wrapper seguro sobre Poetry</td>
 <td>4-5 h</td>
 <td>PoetryBackend, timeouts, dry-run, logging estructurado</td>
+<td>Q2 2025</td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
 <td>Motor de políticas éticas</td>
 <td>5-7 h</td>
 <td>Licencias, telemetría, vulnerabilidades, SBOM automático, excepciones criptográficas</td>
+<td>Q2 2025</td>
 </tr>
 <tr>
 <td><strong>6</strong></td>
 <td>CLI profesional y accesible</td>
 <td>4-6 h</td>
 <td>Typer + Rich, colores seguros, lectores de pantalla, autocompletado</td>
+<td>Q2 2025</td>
 </tr>
 <tr>
 <td><strong>7</strong></td>
 <td>Modo sandbox y entornos aislados</td>
 <td>3-5 h</td>
-<td>venv/conda/pixi, pinning hash+URL, caché 100 % offline</td>
+<td>venv/conda/pixi, pinning hash+URL, caché 100 % offline; + Geo-Policies + Perfiles</td>
+<td>Q3 2025</td>
 </tr>
 <tr>
 <td><strong>8</strong></td>
 <td>Sistema de plugins</td>
 <td>3-4 h</td>
 <td>Entry-points, hooks, ejemplos reales</td>
+<td>Q3 2025</td>
 </tr>
 <tr>
 <td><strong>9</strong></td>
 <td>Integración CI/CD y entornos empresariales</td>
 <td>3-4 h</td>
-<td>GitHub Actions, exportación, modo enforcer</td>
+<td>GitHub Actions, exportación, modo enforcer; + SBOM + CI/CD Enforcer</td>
+<td>Q4 2025</td>
 </tr>
 <tr>
 <td><strong>10</strong></td>
 <td>Testing serio y accesibilidad</td>
 <td>4-6 h</td>
 <td>pytest + Hypothesis, pruebas de accesibilidad obligatorias</td>
+<td>Q1 2026</td>
 </tr>
 <tr>
 <td><strong>11</strong></td>
 <td>Publicación y binarios standalone</td>
 <td>2-3 h</td>
 <td>PyPI, wheel, PyInstaller/Nuitka</td>
+<td>Q1 2026</td>
 </tr>
 <tr>
 <td><strong>12</strong></td>
 <td>Proyecto final y futuro</td>
 <td>3-5 h</td>
-<td>Checklist production-ready, ideas de extensión (UI web, multi-lenguaje)</td>
+<td>Checklist production-ready, ideas de extensión (UI web, multi-lenguaje); + Plugins/UI Web + Multi-Idioma</td>
+<td>Q1 2026</td>
 </tr>
 </tbody>
 </table>
-<h3>6. Entregable Final</h3>
-<p>Un repositorio open-source 100 % funcional que incluye:</p>
+<p>Riesgos: Falsos positivos geo → Mitigados con excepciones. Alineación: ENS Alto (supply chain), NIS2 (terceros).</p>
+<h2>Entregable Final</h2>
+<p>Un repositorio open-source 100% funcional que incluye:</p>
 <ul>
 <li>Código completo y comentado.</li>
 <li>Documentación accesible y multilingüe.</li>
@@ -245,14 +412,42 @@
 <li>Checklist de producción (seguridad + accesibilidad + calidad).</li>
 <li>Guía de contribución ética y accesible.</li>
 </ul>
-<h3>Referencias Bibliográficas que Apoyan el Proyecto</h3>
+<h2>Fuentes Bibliográficas</h2>
+<h3>1. <strong>Regulaciones UE y Españolas</strong></h3>
 <ol>
-<li><a href="https://realpython.com/dependency-management-python-poetry/">Real Python – Dependency Management with Python Poetry 🟡③🌐</a> .- Tutorial que valida Poetry como backend robusto para wrappers personalizados, destacando su resolver de dependencias y soporte para pyproject.toml.</li>
-<li><a href="https://cyclonedx.org/">CycloneDX – Especificación oficial SBOM 🟡③🌐</a> .- Herramienta open-source para generar SBOM en formato CycloneDX desde proyectos Python, confirmando la viabilidad de integración automática para cumplimiento normativo.</li>
+<li><a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng">NIS2 Directive (EU) 2022/2555: Securing supply chains in critical sectors. 🟡③🌐</a> .- EU Directive establishing a high common level of cybersecurity across the EU, focusing on risk management, incident reporting, and supply chain security for critical sectors.</li>
+<li><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng">DORA (EU) 2022/2554: OSS dependencies testing in finance. 🟡③🌐</a> .- Regulation on digital operational resilience for the financial sector, including requirements for ICT risk management, incident reporting, and testing of third-party dependencies like OSS.</li>
+<li><a href="https://www.boe.es/eli/es/rd/2022/05/03/311/con">ENS Alto (RD 311/2022): Risk management in supply chain for public sector. 🟡③🌐</a> .- Royal Decree regulating Spain's National Security Framework (ENS) at high level, detailing risk management measures for supply chains in public sector information systems.</li>
+<li><a href="https://www.boe.es/buscar/doc.php?id=BOE-A-2020-17264">LOMLOE y Real Decreto 1112/2018: Accesibilidad en entornos educativos públicos. 🟡③🌐</a> .- Organic Law modifying the education system (LOMLOE) and Royal Decree on web and mobile app accessibility, ensuring inclusive access in public educational environments.</li>
+<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565">Ley 39/2015 (España): Internacionalización y accesibilidad administrativa. 🟡③🌐</a> .- Law on the common administrative procedure, promoting internationalization through electronic administration and accessibility for citizens' interactions with public bodies.</li>
 </ol>
-<h3>Referencias que Matizan o Cuestionan el Enfoque</h3>
+<h3>2. <strong>Regulaciones US</strong></h3>
 <ol>
-<li><a href="https://chriswarrick.com/blog/2023/01/15/how-to-improve-python-packaging/">Chris Warrick – How to Improve Python Packaging (2023) 🟡③🌐</a> – Crítica constructiva al exceso de herramientas y wrappers. .- Análisis que critica la proliferación de herramientas como Poetry por no adherirse completamente a estándares PEP, sugiriendo que wrappers éticos añaden complejidad innecesaria al ecosistema.</li>
+<li><a href="https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M/part-120">ITAR/EAR: Export controls on software/tech data. 🟡③🌐</a> .- US regulations governing the export of defense articles, services, software, and technical data (ITAR via Dept. of State for military items) and dual-use commodities, software, and technology (EAR via Dept. of Commerce), including licensing requirements, deemed exports to foreign persons, and controls on encryption and information security.</li>
+</ol>
+<h3>3. <strong>SBOM Standards</strong></h3>
+<ol>
+<li><a href="https://cyclonedx.org/docs/1.4/json/">CycloneDX 1.4: Geo metadata in supplier fields. 🟡③🌐</a> .- CycloneDX 1.4 JSON specification for software Bill of Materials (SBOM), detailing components, dependencies, licenses, and metadata; note: no geographic metadata is present in supplier fields.</li>
+<li><a href="https://spdx.github.io/spdx-spec/v2.3/">SPDX 2.3: License/compliance focus. 🟡③🌐</a> .- SPDX 2.3 specification providing a data exchange format for software packages, emphasizing license compliance analysis through identification of versions, licenses, and verification processes.</li>
+</ol>
+<h3>4. <strong>Accesibilidad y Ética</strong></h3>
+<ol>
+<li><a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1: Guidelines for web content accessibility. 🟡③🌐</a> .- Web Content Accessibility Guidelines (WCAG) 2.1, a W3C Recommendation extending WCAG 2.0, providing recommendations for making web content more accessible to people with disabilities, including success criteria at levels A, AA, and AAA.</li>
+<li><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng">RGPD (EU) 2016/679: Data protection and privacy. 🟡③🌐</a> .- Regulation (EU) 2016/679 (General Data Protection Regulation - GDPR) on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, repealing Directive 95/46/EC.</li>
+</ol>
+<h3>5. <strong>Reportes Geopolíticos 2025</strong></h3>
+<ol>
+<li><a href="https://www.everstream.ai/special-reports/2025-supply-chain-annual-risk-report/">Everstream Analytics 2025 Risk Report: Geo instability top threat. 🟡③🌐</a> .- Everstream Analytics' 2025 Annual Risk Report identifies the top five supply chain risks for 2025 with assigned scores: climate change/extreme weather (90%), geopolitical instability (80%), cybercrime (75%), rare metals and minerals shortages (65%), and forced labor crackdowns (60%), emphasizing geopolitical instability as a major threat due to political upheaval, conflicts, and tariff risks impacting sourcing, manufacturing, and logistics.</li>
+<li><a href="https://www.weforum.org/publications/global-risks-report-2025/">WEF Global Risks 2025: Supply chain vulnerabilities. 🟡③🌐</a> .- World Economic Forum's Global Risks Report 2025, based on the Global Risks Perception Survey 2024-2025 from over 900 experts, highlights an increasingly fractured global landscape with top immediate risks including state-based armed conflict (geopolitical), extreme weather events (environmental), and societal polarization, alongside long-term concerns like biodiversity loss and critical infrastructure disruptions, all posing significant vulnerabilities to global supply chains through instability, resource scarcity, and economic fragmentation.</li>
+</ol>
+<h3>6. <strong>Referencias Técnicas que Apoyan el Proyecto</strong></h3>
+<ol>
+<li><a href="https://realpython.com/dependency-management-python-poetry/">Real Python – Dependency Management with Python Poetry: Tutorial que valida Poetry como backend robusto para wrappers personalizados, destacando su resolver de dependencias y soporte para pyproject.toml. 🟡③🌐</a> .- Tutorial on Python Poetry for dependency management, validating it as a robust backend for custom wrappers through automatic virtual environment handling and conflict resolution; highlights its dependency resolver for satisfying constraints and transitive dependencies, and support for pyproject.toml including metadata, version constraints, groups, and extras for reproducible environments.</li>
+<li><a href="https://cyclonedx.org/specification/overview/">CycloneDX – Especificación oficial SBOM: Herramienta open-source para generar SBOM en formato CycloneDX desde proyectos Python, confirmando la viabilidad de integración automática para cumplimiento normativo. 🟡③🌐</a> .- Official CycloneDX SBOM specification, an open-source standard for representing supply chain components, dependencies, and vulnerabilities; supports generating SBOMs from Python projects in JSON, XML, and Protocol Buffers formats, with features like dependency graphs, provenance, and extensibility enabling automatic integration for regulatory compliance through machine-readable schemas and attestation support.</li>
+</ol>
+<h3>7. <strong>Referencias que Matizan o Cuestionan el Enfoque</strong></h3>
+<ol>
+<li><a href="https://chriswarrick.com/blog/2023/01/15/how-to-improve-python-packaging/">Chris Warrick – How to Improve Python Packaging (2023): Crítica constructiva al exceso de herramientas y wrappers. Análisis que critica la proliferación de herramientas como Poetry por no adherirse completamente a estándares PEP, sugiriendo que wrappers éticos añaden complejidad innecesaria al ecosistema. 🟡③🌐</a> .- Constructive critique of excessive Python packaging tools and wrappers, analyzing the proliferation of tools like Poetry for not fully adhering to PEP standards (e.g., using custom metadata instead of PEP 621 and non-standard dependency markers), suggesting that such wrappers add unnecessary complexity to the ecosystem; proposes unifying tools under PyPA for a single comprehensive solution, emphasizing standards like PEP 517 and PEP 582 to simplify workflows and reduce fragmentation.</li>
 </ol>
 <p><strong>Conclusión</strong>: MetsuDepManager no pretende ser la herramienta que todo el mundo use a diario. Pretende ser la herramienta que <strong>sí o sí necesitas</strong> cuando ética, seguridad, cumplimiento normativo y accesibilidad universal no son negociables. Y el curso te lleva de la mano, paso a paso, para que seas capaz de crearla, entenderla y –si quieres– mejorarla o adaptarla a tu propia organización.</p>
 <h2>One More Thing</h2>
@@ -314,7 +509,7 @@
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Wed Dec 03 2025 01:20:09 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.4</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Fri Dec 05 2025 02:06:56 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.5</li></ul><!--(iaStatus: 8
 iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
 iaStatus_Generado: I
 iaStatus_Supervisado: H
@@ -324,12 +519,12 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-12-02T19:08:48.633Z
-modified: 2025-12-03T00:20:09.954Z
+modified: 2025-12-05T01:06:56.507Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 2
-ver_rev: 4
+ver_rev: 5
 nav_primary: []
 nav_secondary: []
 tags: []

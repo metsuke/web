@@ -39,7 +39,7 @@
     <main>
 <h1>Decisión oficial sobre la versión de Python requerida por MetsuDepManager 🟡③</h1>
 <blockquote>
-<p>(Adoptada el 2 de diciembre de 2025)</p>
+<p>(Adoptada el 5 de diciembre de 2025)</p>
 </blockquote>
 <ul>
 <li><a class='internal' href='./requisitos-previos-para-el-curso-de-metsudepmanager---preparate-sin-complicaciones-🟡③.html'>Requisitos Previos para el Curso de MetsuDepManager - Prepárate sin Complicaciones 🟡③</a></li>
@@ -47,7 +47,7 @@
 <h2>1. ¿Qué es MetsuDepManager y por qué importa esta decisión?</h2>
 <p>MetsuDepManager es un gestor de dependencias diseñado desde cero para entornos de máxima seguridad y cumplimiento normativo (RGPD, NIS2, DORA). Utiliza Poetry como motor interno, genera SBOM en formato CycloneDX, audita vulnerabilidades y licencias en tiempo real y está pensado para funcionar incluso en sistemas completamente aislados de Internet (air-gapped).</p>
 <p>En un proyecto de estas características, elegir la versión mínima y máxima de Python <strong>no es una decisión técnica menor</strong>: afecta directamente a la seguridad, la mantenibilidad a largo plazo y el cumplimiento legal.</p>
-<h2>2. Situación actual del ciclo de vida de Python (2 de diciembre de 2025)</h2>
+<h2>2. Situación actual del ciclo de vida de Python (5 de diciembre de 2025)</h2>
 <table>
 <thead>
 <tr>
@@ -74,7 +74,7 @@
 <td>3.10</td>
 <td>Soporte completo</td>
 <td>Octubre 2026</td>
-<td>Última versión con casi 1 año de soporte garantizado</td>
+<td>Soporte menor de un año, desaconsejado</td>
 </tr>
 <tr>
 <td>3.11</td>
@@ -175,29 +175,29 @@
 <li>Compatibilidad 100 % verificada con Poetry 2.x, Pydantic v2 y Safety v3</li>
 </ul>
 <h2>5. Decisión definitiva</h2>
-<p><strong>Versión de Python requerida: ≥3.10 y <3.15</strong></p>
+<p><strong>Versión de Python requerida: ≥3.11 y <3.15</strong></p>
 <pre><code class="language-toml">[project]
 name = "metsudepmanager"
-requires-python = ">=3.10,<3.15"
+requires-python = ">=3.11,<3.15"
 </code></pre>
 <p>Este rango:</p>
 <ul>
-<li>Incluye todas las versiones estables con soporte de seguridad activo</li>
+<li>Incluye todas las versiones estables con soporte de seguridad activo por al menos un año</li>
 <li>Cubre la última versión estable (3.14) con soporte hasta ~2030</li>
 <li>Excluye expresamente las versiones prerelease de 3.15 (alpha/beta)</li>
 <li>Cumple estrictamente con los requisitos de DORA, NIS2 y RGPD</li>
 </ul>
 <h2>6. Texto oficial para el README</h2>
 <pre><code class="language-markdown">**Requisitos de Python**  
-MetsuDepManager requiere Python ≥3.10 y <3.15 (decisión adoptada en diciembre de 2025).
+MetsuDepManager requiere Python ≥3.11 y <3.15 (decisión adoptada en diciembre de 2025).
 
 Este rango garantiza:
-• Parches de seguridad activos en todas las versiones soportadas  
+• Parches de seguridad activos en todas las versiones soportadas de al menos un año al momento de tomar la decisión
 • Compatibilidad total con Poetry 2.x, Pydantic v2, Safety v3 y CycloneDX  
 • Cumplimiento normativo DORA, NIS2 y RGPD  
 • Funcionamiento sin dependencias externas en entornos air-gapped (gracias a `tomllib`)
 
-Se excluyen versiones <3.10 (ya EOL) y ≥3.15 (aún en prerelease).  
+Se excluyen versiones <3.10 (ya EOL), <3.11 (soporte de seguridad menor de un año) y ≥3.15 (aún en prerelease).  
 El rango se revisará tras el lanzamiento estable de Python 3.15 (previsto octubre 2026).
 </code></pre>
 <h2>Referencias bibliográficas que apoyan esta decisión</h2>
@@ -273,7 +273,7 @@ El rango se revisará tras el lanzamiento estable de Python 3.15 (previsto octub
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Dec 02 2025 00:30:13 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.1</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Fri Dec 05 2025 02:39:51 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.2</li></ul><!--(iaStatus: 8
 iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
 iaStatus_Generado: I
 iaStatus_Supervisado: H
@@ -283,12 +283,12 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-12-01T23:14:50.114Z
-modified: 2025-12-01T23:30:13.115Z
+modified: 2025-12-05T01:39:51.490Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 2
-ver_rev: 1
+ver_rev: 2
 nav_primary: []
 nav_secondary: []
 tags: []

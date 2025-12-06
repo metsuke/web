@@ -69,15 +69,18 @@
 </div><div class="column">
 <p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_bcdb26b402ce1818f324f6b0247f7807_MD5.jpg" alt="MetsuDepManager - Visión general del proyecto"></p>
 <h3>0.5. Roadmap del curso y visión general del proyecto final</h3>
-<p>El proyecto culminante del curso es MetsuDepManager, un gestor de dependencias para Python diseñado con un enfoque ético y altamente adaptable.</p>
-<p>Funciona como una capa de envoltura segura sobre Poetry, que actúa como su motor principal. Su propósito principal es resolver las carencias de las herramientas actuales en contextos estrictamente regulados, como empresas con normativas internas rigurosas, entornos educativos, auditorías de ciberseguridad o el cumplimiento de regulaciones europeas como el RGPD o la NIS2.</p>
-<p>Además, se adapta perfectamente a sistemas aislados o sin conexión a internet (air-gapped). En su núcleo, prioriza valores como la transparencia total, la auditoría automática, el principio de menor privilegio, la protección de la privacidad y –de forma explícita y no negociable– la accesibilidad universal.</p>
+<p>MetsuDepManager es un gestor de dependencias ético, seguro, accesible y listo para producción para Python, diseñado específicamente para entornos regulados como empresas con políticas de seguridad estrictas (banca, defensa, sanidad, administraciones públicas), entornos educativos obligados por normativas como la LOMLOE y el Real Decreto 1112/2018 de accesibilidad, sistemas air-gapped o con conexión restringida (industria, investigación clasificada), y proyectos sujetos a regulaciones como RGPD, NIS2, ENS Alto o Ciberseguridad Nacional.</p>
+<p>Como wrapper ligero sobre Poetry, que actúa como su motor principal, integra un motor de políticas avanzado que asegura cumplimiento normativo (vulnerabilidades, licencias, orígenes geográficos) sin comprometer la velocidad ni la usabilidad. Su enfoque offline-first y su soporte para SBOM (Software Bill of Materials) lo convierten en una herramienta indispensable para mitigar riesgos en la cadena de suministro de software, alineándose con regulaciones como NIS2, ENS Alto, DORA e ITAR/EAR.</p>
 <p>Continuar leyendo en ... <a class='internal' href='./metsudepmanager---vision-general-del-proyecto-🟡③.html'>MetsuDepManager - Visión general del proyecto 🟡③</a></p>
 </div></div><</p>
 <h2>Módulo 1 – Entendiendo cómo funciona Poetry por dentro</h2>
 <div class="columns"><div class="column">
-<p>1.1. Arquitectura interna: Core, Solver, Locker, Installer y Builder<br>
-</div><div class="column">
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_eed51a6d500a6542fd7fd31b326d7a8d_MD5.jpg" alt="Arquitectura Interna de un Gestor de Paquetes Python que Usa Poetry como Backend"></p>
+<h3>1.1. Arquitectura interna: Core, Solver, Locker, Installer y Builder</h3>
+<p>Crear un gestor de paquetes Python desde cero que delegue la mayor parte del trabajo pesado a <strong>Poetry</strong> (específicamente a <code class='language-html'>poetry-core</code>) es una estrategia muy potente para aprender cómo funcionan internamente herramientas modernas como Poetry, uv, pipenv o pdm.</p>
+<p>En lugar de reinventar la rueda, nos apoyamos en componentes ya probados y maduros de Poetry, pero los orquestamos con nuestra propia capa de alto nivel. Esta arquitectura nos permite tener un gestor ligero, extensible y perfectamente reproducible, ideal tanto para proyectos educativos como para entornos empresariales con requisitos muy específicos.</p>
+<p>Continuar leyendo en ... <a class='internal' href='./arquitectura-interna-de-un-gestor-de-paquetes-python-que-usa-poetry-como-backend-🔴②.html'>Arquitectura Interna de un Gestor de Paquetes Python que Usa Poetry como Backend 🔴②</a></p>
+<p>column-end ---
 1.2. Diferencias prácticas entre <code class='language-html'>poetry</code>, <code class='language-html'>poetry-core</code> y los plugins<br>
 </div><div class="column">
 1.3. Cómo Poetry implementa los estándares PEP 517, 518, 621 y 660<br>
@@ -234,7 +237,7 @@
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Wed Dec 03 2025 01:17:20 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.12</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Fri Dec 05 2025 20:32:42 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.15</li></ul><!--(iaStatus: 8
 iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
 iaStatus_Generado: I
 iaStatus_Supervisado: H
@@ -244,12 +247,12 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-11-29T19:22:44.212Z
-modified: 2025-12-03T00:17:20.145Z
+modified: 2025-12-05T19:32:42.985Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 2
-ver_rev: 12
+ver_rev: 15
 nav_primary: []
 nav_secondary: []
 tags: []
