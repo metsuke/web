@@ -79,11 +79,19 @@
 <h3>1.1. Arquitectura interna: Core, Solver, Locker, Installer y Builder</h3>
 <p>Crear un gestor de paquetes Python desde cero que delegue la mayor parte del trabajo pesado a <strong>Poetry</strong> (específicamente a <code class='language-html'>poetry-core</code>) es una estrategia muy potente para aprender cómo funcionan internamente herramientas modernas como Poetry, uv, pipenv o pdm.</p>
 <p>En lugar de reinventar la rueda, nos apoyamos en componentes ya probados y maduros de Poetry, pero los orquestamos con nuestra propia capa de alto nivel. Esta arquitectura nos permite tener un gestor ligero, extensible y perfectamente reproducible, ideal tanto para proyectos educativos como para entornos empresariales con requisitos muy específicos.</p>
-<p>Continuar leyendo en ... <a class='internal' href='./arquitectura-interna-de-un-gestor-de-paquetes-python-que-usa-poetry-como-backend-🔴②.html'>Arquitectura Interna de un Gestor de Paquetes Python que Usa Poetry como Backend 🔴②</a></p>
-<p>column-end ---
-1.2. Diferencias prácticas entre <code class='language-html'>poetry</code>, <code class='language-html'>poetry-core</code> y los plugins<br>
+<p>Continuar leyendo en ... <a class='internal' href='./arquitectura-interna-de-un-gestor-de-paquetes-python-que-usa-poetry-como-backend-🟡③.html'>Arquitectura Interna de un Gestor de Paquetes Python que Usa Poetry como Backend 🟡③</a></p>
 </div><div class="column">
-1.3. Cómo Poetry implementa los estándares PEP 517, 518, 621 y 660<br>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_ae6b1671a69e89a877bcf5f09fbc63d4_MD5.jpg" alt="Elegimos exactamente qué partes de Poetry vamos a usar en MetsuDepManager"></p>
+<h3>1.2. Diferencias prácticas entre <code class='language-html'>poetry</code>, <code class='language-html'>poetry-core</code> y los plugins</h3>
+<p>En este punto ya sabemos que no vamos a reinventar la rueda. Vamos a reutilizar lo mejor de Poetry, pero con control total: sin telemetría, con timeouts, con auditoría y funcionando en entornos air-gapped.</p>
+<p>La decisión práctica que tomamos hoy (y que vamos a codificar ya mismo) es ...</p>
+<p>Continuar leyendo en ... <a class='internal' href='./elegimos-exactamente-que-partes-de-poetry-vamos-a-usar-en-metsudepmanager-🟡③.html'>Elegimos exactamente qué partes de Poetry vamos a usar en MetsuDepManager 🟡③</a></p>
+</div><div class="column">
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_a1f5caf5bb1565420ee2485afb340d89_MD5.jpg" alt="Cómo Poetry implementa los estándares PEP 517, 518, 621 y 660 "></p>
+<h2>1.3. Cómo Poetry implementa los estándares PEP 517, 518, 621 y 660</h2>
+<p>Poetry no solo actúa como gestor de dependencias, sino también como backend de construcción que se alinea con los estándares modernos del ecosistema Python. Estos estándares, definidos en las PEPs (Python Enhancement Proposals) 517, 518, 621 y 660, permiten builds reproducibles, configuraciones declarativas y flujos de desarrollo más fluidos.</p>
+<p>En esta lección, desglosamos de manera clara y práctica cómo Poetry los pone en marcha, con ejemplos reales que puedes probar en tu propio proyecto. El enfoque del curso, resalta cómo estos PEPs convierten a Poetry en un aliado ideal para extensiones como MetsuDepManager, donde la auditoría y la reproducibilidad son clave.</p>
+<p>Continuar leyendo en ... <a class='internal' href='./como-poetry-implementa-los-estandares-pep-517-518-621-y-660-⚫①.html'>Cómo Poetry implementa los estándares PEP 517, 518, 621 y 660 ⚫①</a></p>
 </div><div class="column">
 1.4. El <code class='language-html'>pyproject.toml</code>: todos los campos (incluso los menos conocidos)<br>
 </div><div class="column">
@@ -237,7 +245,7 @@
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Fri Dec 05 2025 20:32:42 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.15</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Dec 08 2025 04:35:00 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.23</li></ul><!--(iaStatus: 8
 iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
 iaStatus_Generado: I
 iaStatus_Supervisado: H
@@ -247,12 +255,12 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-11-29T19:22:44.212Z
-modified: 2025-12-05T19:32:42.985Z
+modified: 2025-12-08T03:35:00.691Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 2
-ver_rev: 15
+ver_rev: 23
 nav_primary: []
 nav_secondary: []
 tags: []
