@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>El pyproject.toml - todos los campos (incluso los menos conocidos) 🔴②</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_2aa13ad84859df87b2816eab648b5790_MD5.jpg" alt="El pyproject.toml - todos los campos (incluso los menos conocidos)"></p>
+<p><a class='internal' href='./curso-sobre-desarrollo-de-un-gestor-de-paquetes-python-que-use-poetry-como-backend-🟡③.html'>Curso sobre desarrollo de un gestor de paquetes python que use poetry como backend 🟡③</a></p>
+<blockquote>
+<p>OJO WIP</p>
+</blockquote>
+<h1>Inicialización de un Proyecto Python desde Cero con Poetry</h1>
+<p>Si estás empezando un proyecto en Python y quieres usar Poetry como gestor de dependencias, no hace falta complicarse con comandos manuales uno a uno. En su lugar, he preparado un script sencillo en Python, llamado <code class='language-html'>inicializar.py</code>, que automatiza todo el proceso. Este script parte de un entorno Python 3.11 o superior con <code class='language-html'>pip</code> instalado (que viene de serie con Python). Primero, comprueba si Poetry está disponible; si no, lo instala automáticamente mediante <code class='language-html'>pip</code>. Luego, crea el proyecto en el directorio actual con <code class='language-html'>poetry new .</code>, genera la estructura básica y un fichero <code class='language-html'>pyproject.toml</code> preconfigurado. Por último, instala las dependencias iniciales y verifica que todo esté en orden.</p>
+<p>Para ponerlo en marcha:</p>
+<ol>
+<li>Crea un directorio vacío para tu proyecto (por ejemplo, <code class='language-html'>mkdir mi_proyecto &amp;&amp; cd mi_proyecto</code>).</li>
+<li>Crea el fichero <code class='language-html'>inicializar.py</code> en ese directorio con el código que te detallo a continuación.</li>
+<li>Ejecuta el script: <code class='language-html'>python inicializar.py</code>.
+<ul>
+<li>Si quieres personalizarlo (por ejemplo, el nombre del paquete), puedes pasar argumentos como <code class='language-html'>python inicializar.py --name mi-proyecto --python &quot;^3.11&quot;</code>.</li>
+</ul>
+</li>
+</ol>
+<p>El script gestiona errores habituales, como problemas de permisos o versiones incompatibles, y utiliza <code class='language-html'>subprocess</code> para ejecutar comandos de manera segura. Aquí va el código completo:</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+# initialize.py – Versión ULTRA-ROBUSTA para MetsuDepManager (maneja errores de venv y Python 3.13)
+
+import subprocess
+import sys
+import argparse
+import os
+import re
+
+def run_command(cmd, check=True, verbose=False):
+    """Ejecuta un comando shell, maneja errores y muestra output si verbose."""
+    try:
+        result = subprocess.run(cmd, shell=True, check=check, text=True, capture_output=True)
+        if verbose:
+            print(f"STDOUT: {result.stdout.strip()}")
+            if result.stderr:
+                print(f"STDERR: {result.stderr.strip()}")
+        return result.stdout.strip(), result.stderr.strip()
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Error ejecutando '{cmd}': Código {e.returncode}")
+        if e.stdout:
+            print(f"STDOUT: {e.stdout.strip()}")
+        if e.stderr:
+            print(f"STDERR: {e.stderr.strip()}")
+        sys.exit(1)
+
+def is_poetry_installed():
+    try:
+        run_command("poetry --version", check=False)
+        return True
+    except:
+        return False
+
+def install_poetry():
+    print("Instalando/Actualizando Poetry...")
+    run_command("pip install --upgrade poetry")
+
+def clean_cache():
+    """Limpia cache de Poetry para evitar corrupciones."""
+    print("Limpiando cache de Poetry...")
+    run_command("poetry cache clear --all pypi")
+
+def create_pyproject_if_needed(name):
+    if os.path.exists("pyproject.toml"):
+        print("pyproject.toml ya existe → se reutiliza")
+        return
+
+    print(f"Creando pyproject.toml básico para {name}...")
+    # poetry init sin interacción, con valores del curso
+    cmd = (
+        f"poetry init --no-interaction "
+        f"--name {name} "
+        f"--description 'Gestor de paquetes ético con Poetry como backend' "
+        f"--author 'Equipo Metsuke <dev@metsuke.com>' "
+        f"--license MIT "
+        f"--python '>=3.11,<3.15'"
+    )
+    run_command(cmd, verbose=True)
+
+def force_python_version(target=">=3.11,<3.15"):
+    """Fuerza versión de Python en pyproject.toml."""
+    with open("pyproject.toml", "r", encoding="utf-8") as f:
+        content = f.read()
+
+    cambios = 0
+
+    # [tool.poetry.dependencies] → python =
+    if re.search(r"^\s*python\s*=", content, flags=re.MULTILINE):
+        content = re.sub(
+            r'(python\s*=\s*["\']).*?(["\'])',
+            f'python = "{target}"',
+            content
+        )
+        cambios += 1
+    else:
+        content = re.sub(
+            r"(\[tool\.poetry\.dependencies\])",
+            f"\\1\npython = \"{target}\"",
+            content
+        )
+        cambios += 1
+
+    # [project] → requires-python
+    if "[project]" in content:
+        if re.search(r"^\s*requires-python\s*=", content, flags=re.MULTILINE):
+            content = re.sub(
+                r'(requires-python\s*=\s*["\']).*?(["\'])',
+                f'requires-python = "{target}"',
+                content
+            )
+        else:
+            content = re.sub(
+                r"(\[project\])",
+                f"\\1\nrequires-python = \"{target}\"",
+                content
+            )
+        cambios += 1
+
+    with open("pyproject.toml", "w", encoding="utf-8") as f:
+        f.write(content)
+
+    print(f"Versión de Python forzada a {target} en {cambios} lugar(es)")
+
+def setup_env_and_install():
+    """Configura venv y instala, con manejo de errores para Python 3.13 y volúmenes externos."""
+    # Fuerza uso de Python local (crucial para 3.13 y macOS)
+    print("Configurando entorno virtual con Python local...")
+    run_command("poetry env use $(which python3)", verbose=True)
+
+    # Verifica compatibilidad
+    run_command("poetry check", verbose=True)
+
+    # Instala sin --sync para proyectos vacíos (evita remociones)
+    print("Instalando dependencias (modo tolerante)...")
+    try:
+        run_command("poetry install", verbose=True)
+    except SystemExit:
+        # Retry con --no-root si es proyecto editable
+        print("Retry sin instalar root (proyecto editable)...")
+        run_command("poetry install --no-root", verbose=True)
+
+def main():
+    parser = argparse.ArgumentParser(description="Inicializa MetsuDepManager con manejo de errores robusto")
+    parser.add_argument("--name", default="metsudepmanager", help="Nombre del paquete")
+    parser.add_argument("--verbose", action="store_true", help="Modo debug detallado")
+    args = parser.parse_args()
+
+    print("Inicializador robusto para el curso de MetsuDepManager")
+    print(f"Proyecto: {args.name}")
+    print(f"Python detectado: {sys.version}")
+
+    if sys.version_info < (3, 11):
+        print("❌ Este script necesita Python 3.11 o superior")
+        sys.exit(1)
+
+    if not is_poetry_installed():
+        install_poetry()
+
+    clean_cache()  # Limpia al inicio para evitar corrupciones
+    create_pyproject_if_needed(args.name)
+    force_python_version(">=3.11,<3.15")
+    setup_env_and_install()
+
+    print("\n🎉 ¡Todo listo sin complicaciones!")
+    print("Comandos útiles:")
+    print("   poetry shell                  → entrar al entorno")
+    print("   poetry add typer rich pydantic → dependencias clave del curso")
+    print("   poetry run python -c 'print(\"¡Éxito!\")' → prueba rápida")
+    if args.verbose:
+        print("\nModo verbose activado: Revisa la salida arriba para detalles.")
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+<h3>Explicación breve del script (sin entrar en detalles manuales)</h3>
+<ul>
+<li><strong>Verificación e instalación</strong>: Comprueba con <code class='language-html'>poetry --version</code> si está instalado; si no, lo hace con <code class='language-html'>pip</code>.</li>
+<li><strong>Inicialización</strong>: Ejecuta <code class='language-html'>poetry init .</code> para crear la estructura con layout de fuentes y el <code class='language-html'>pyproject.toml</code> base. Luego, actualiza la versión de Python para adaptarla a tus necesidades.</li>
+<li><strong>Instalación y verificación</strong>: Genera el <code class='language-html'>poetry.lock</code>, instala todo en un entorno virtual y valida con <code class='language-html'>poetry check</code>.</li>
+<li><strong>Personalización</strong>: Usa argumentos en la línea de comandos para el nombre y la versión de Python (pensado para entornos con Python 3.11+ sin extras).</li>
+<li><strong>En el contexto del curso</strong>: Este script podría formar parte de MetsuDepManager como un comando inicial, garantizando entornos reproducibles sin pasos a mano. Si trabajas en entornos sin conexión, preinstala Poetry offline (por ejemplo, descargando wheels con <code class='language-html'>pip download poetry</code> y transfiriéndolos).</li>
+</ul>
+<p>Con esto, tienes el proyecto listo en un santiamén. Ahora, vamos a profundizar en el fichero <code class='language-html'>pyproject.toml</code>, explicando todos sus campos de forma detallada pero accesible.</p>
+<h1>El pyproject.toml: Todos los Campos (Incluso los Menos Conocidos)</h1>
+<p>El fichero <code class='language-html'>pyproject.toml</code> es el núcleo de cualquier proyecto Python moderno. Sustituye a los antiguos <code class='language-html'>setup.py</code>, <code class='language-html'>setup.cfg</code> o <code class='language-html'>requirements.txt</code>, y sigue el estándar PEP 518 para definir el sistema de construcción, metadatos y dependencias en un formato TOML claro y declarativo. En el mundo de Poetry (y, por extensión, en MetsuDepManager), amplía estos estándares con la sección <code class='language-html'>[tool.poetry]</code>, ofreciendo un control preciso sobre dependencias, scripts y extras, mientras deja el trabajo pesado a <code class='language-html'>poetry-core</code>.</p>
+<p>Poetry da prioridad a la sección <code class='language-html'>[project]</code> (compatible con PEP 621) para metadatos estáticos, pero conserva <code class='language-html'>[tool.poetry]</code> para opciones heredadas o avanzadas. Los campos dinámicos (indicados con <code class='language-html'>dynamic = [...]</code>) permiten calcular valores en tiempo de ejecución, como la versión desde un tag de Git. Entre los campos menos habituales, destacan las configuraciones para puntos de entrada personalizados, dependencias condicionales o plugins de construcción.</p>
+<p>Voy a estructurarlo por secciones principales, con una descripción del propósito (incluyendo su uso en el curso), el tipo de dato, si es obligatorio, un ejemplo realista y notas sobre comportamientos especiales, depreciaciones o consejos prácticos para MetsuDepManager.</p>
+<h2>1. [build-system] – Configuración del Sistema de Construcción (PEP 517/518)</h2>
+<p>Esta sección es esencial para construcciones independientes y define el backend (Poetry usa <code class='language-html'>poetry-core</code> para evitar ciclos de dependencias).</p>
+<ul>
+<li>
+<p><strong>requires</strong> (lista de cadenas):</p>
+<ul>
+<li><strong>Descripción</strong>: Paquetes necesarios para la construcción (por ejemplo, <code class='language-html'>poetry-core</code> resuelve dependencias y genera wheels).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>list[string]</code> (especificaciones PEP 508).</li>
+<li><strong>Obligatorio</strong>: Sí.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">requires = ["poetry-core>=1.0.0"]
+</code></pre>
+</li>
+<li><strong>Notas</strong>: En el curso, se emplea <code class='language-html'>poetry-core</code> como backend clave en MetsuDepManager para auditorías y límites de tiempo. Un campo menos común: puedes añadir extras como <code class='language-html'>[&quot;poetry-core[pep517]&gt;=1.0.0&quot;]</code> para construcciones híbridas. No se instalan en tiempo de ejecución; solo para la fase de build.</li>
+</ul>
+</li>
+<li>
+<p><strong>build-backend</strong> (cadena):</p>
+<ul>
+<li><strong>Descripción</strong>: Módulo invocable para la construcción (hook PEP 517).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>string</code> (por ejemplo, <code class='language-html'>&quot;poetry.core.masonry.api&quot;</code>).</li>
+<li><strong>Obligatorio</strong>: Sí.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">build-backend = "poetry.core.masonry.api"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Poetry lo utiliza para generar metadatos y wheels. Poco frecuente: para backends personalizados, usa <code class='language-html'>&quot;mi_backend.build:build_wheel&quot;</code>. En entornos aislados, asegúrate de que <code class='language-html'>poetry-core</code> esté preinstalado.</li>
+</ul>
+</li>
+<li>
+<p><strong>backend-path</strong> (lista de cadenas, menos conocido):</p>
+<ul>
+<li><strong>Descripción</strong>: Rutas relativas para localizar el backend (útil en monorepos).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>list[string]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">backend-path = ["src", "vendor"]
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Se ignora si no hace falta. En MetsuDepManager, práctico para subproyectos.</li>
+</ul>
+</li>
+</ul>
+<h2>2. [project] – Metadatos del Proyecto (PEP 621)</h2>
+<p>Esta es la sección principal para metadatos estáticos. Poetry la prefiere para compatibilidad con herramientas como <code class='language-html'>pip</code> o <code class='language-html'>twine</code>.</p>
+<ul>
+<li>
+<p><strong>name</strong> (cadena):</p>
+<ul>
+<li><strong>Descripción</strong>: Nombre único del paquete (en minúsculas, sin espacios).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>string</code>.</li>
+<li><strong>Obligatorio</strong>: Sí.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">name = "metsudepmanager"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Debe cumplir PEP 503. En el curso, se usa "metsudepmanager" para el gestor ético.</li>
+</ul>
+</li>
+<li>
+<p><strong>version</strong> (cadena):</p>
+<ul>
+<li><strong>Descripción</strong>: Versión semántica (PEP 440).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>string</code>.</li>
+<li><strong>Obligatorio</strong>: Sí (o dinámico).</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">version = "0.1.0"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Para dinámico: <code class='language-html'>dynamic = [&quot;version&quot;]</code> y actualiza con <code class='language-html'>poetry version patch</code> o tags de Git. Menos conocido: soporta prelanzamientos como <code class='language-html'>0.1.0a1</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>description</strong> (cadena):</p>
+<ul>
+<li><strong>Descripción</strong>: Resumen breve (menos de 512 caracteres).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>string</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">description = "Gestor de paquetes Python ético con Poetry como backend"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Aparece en PyPI. En el curso: centrado en "ético y configurable".</li>
+</ul>
+</li>
+<li>
+<p><strong>readme</strong> (cadena o lista de cadenas):</p>
+<ul>
+<li><strong>Descripción</strong>: Fichero(s) README para la descripción larga.</li>
+<li><strong>Tipo</strong>: <code class='language-html'>string</code> o <code class='language-html'>list[string]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">readme = {file = "README.md", content-type = "text/markdown"}
+# O múltiple (dinámico):
+dynamic = ["readme"]
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Soporta tipo de contenido (por defecto: text/plain). Raro: múltiples para internacionalización.</li>
+</ul>
+</li>
+<li>
+<p><strong>license</strong> (cadena o tabla):</p>
+<ul>
+<li><strong>Descripción</strong>: "I"dentificador SPDX o diccionario con texto/ficheros.</li>
+<li><strong>Tipo</strong>: <code class='language-html'>string</code> o <code class='language-html'>table</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">license = {text = "MIT"}
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Depreciado <code class='language-html'>text</code>; usa <code class='language-html'>license-files</code>. Lista SPDX con más de 400 licencias.</li>
+</ul>
+</li>
+<li>
+<p><strong>license-files</strong> (lista de cadenas):</p>
+<ul>
+<li><strong>Descripción</strong>: Patrones glob para ficheros de licencia.</li>
+<li><strong>Tipo</strong>: <code class='language-html'>list[string]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">license-files = ["LICENSE", "LICENSES/*"]
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Por defecto incluye LICENSE*. En el curso: para cumplimiento ético.</li>
+</ul>
+</li>
+<li>
+<p><strong>authors</strong> (lista de tablas):</p>
+<ul>
+<li><strong>Descripción</strong>: Lista de autores con nombre, correo y URL.</li>
+<li><strong>Tipo</strong>: <code class='language-html'>list[table{name: string, email?: string, url?: string}]</code>.</li>
+<li><strong>Obligatorio</strong>: No (recomendado al menos uno).</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">authors = [
+  {name = "Equipo Metsuke", email = "dev@metsuke.com"}
+]
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Correo opcional; URL para perfiles.</li>
+</ul>
+</li>
+<li>
+<p><strong>maintainers</strong> (lista de tablas, menos conocido):</p>
+<ul>
+<li><strong>Descripción</strong>: Mantenedores aparte de autores.</li>
+<li><strong>Tipo</strong>: <code class='language-html'>list[table{name: string, email?: string}]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">maintainers = [
+  {name = "Mantenedor Principal", email = "maintainer@metsuke.com"}
+]
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Útil en proyectos grandes como MetsuDepManager.</li>
+</ul>
+</li>
+<li>
+<p><strong>keywords</strong> (lista de cadenas):</p>
+<ul>
+<li><strong>Descripción</strong>: Etiquetas para búsquedas en PyPI.</li>
+<li><strong>Tipo</strong>: <code class='language-html'>list[string]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">keywords = ["poetry", "dependencias", "paquetes", "etico"]
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Máximo 5-10; no indexadas directamente en PyPI.</li>
+</ul>
+</li>
+<li>
+<p><strong>classifiers</strong> (lista de cadenas):</p>
+<ul>
+<li><strong>Descripción</strong>: Clasificadores Trove para categorización en PyPI.</li>
+<li><strong>Tipo</strong>: <code class='language-html'>list[string]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Topic :: Software Development :: Build Tools",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3 :: Only"
+]
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Poetry añade automáticamente basados en <code class='language-html'>requires-python</code> si dinámico. Lista completa en PyPI. Raro: "Private :: Do Not Upload".</li>
+</ul>
+</li>
+<li>
+<p><strong>requires-python</strong> (cadena):</p>
+<ul>
+<li><strong>Descripción</strong>: Especificador de versión de Python (PEP 440).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>string</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">requires-python = ">=3.8"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Complementa <code class='language-html'>[tool.poetry.dependencies.python]</code>. En el curso: ">=3.8" para <code class='language-html'>poetry-core</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>dependencies</strong> (lista de cadenas):</p>
+<ul>
+<li><strong>Descripción</strong>: Dependencias obligatorias en tiempo de ejecución.</li>
+<li><strong>Tipo</strong>: <code class='language-html'>list[string]</code> (PEP 508).</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">dependencies = [
+  "requests >= 2.31.0"
+]
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Usadas en metadatos de wheel; Poetry las sincroniza con el lockfile.</li>
+</ul>
+</li>
+<li>
+<p><strong>optional-dependencies</strong> (tabla de listas de cadenas):</p>
+<ul>
+<li><strong>Descripción</strong>: Extras opcionales (por ejemplo, "dev", "docs").</li>
+<li><strong>Tipo</strong>: <code class='language-html'>table[list[string]]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">[project.optional-dependencies]
+dev = ["pytest >= 7.0", "black"]
+docs = ["sphinx"]
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Instalables con <code class='language-html'>pip install .[dev]</code>. En el curso: para grupos como "audit".</li>
+</ul>
+</li>
+<li>
+<p><strong>urls</strong> (tabla de cadenas):</p>
+<ul>
+<li><strong>Descripción</strong>: Enlaces personalizados (página principal, repositorio, etc.).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>table[string]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">[project.urls]
+Homepage = "https://metsuke.com/metsudepmanager"
+Repository = "https://github.com/metsuke/metsudepmanager"
+"Bug Tracker" = "https://github.com/metsuke/metsudepmanager/issues"
+Documentation = "https://metsuke.com/docs"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Las claves con espacios están permitidas; se muestran en PyPI.</li>
+</ul>
+</li>
+<li>
+<p><strong>scripts</strong> (tabla de cadenas):</p>
+<ul>
+<li><strong>Descripción</strong>: Puntos de entrada para interfaces de línea de comandos (CLI) de consola.</li>
+<li><strong>Tipo</strong>: <code class='language-html'>table[string]</code> (módulo:función).</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">[project.scripts]
+metsudep = "metsudepmanager.cli:main"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Se instalan como ejecutables. En el curso: para la CLI de MetsuDepManager con Typer.</li>
+</ul>
+</li>
+<li>
+<p><strong>gui-scripts</strong> (tabla de cadenas, menos conocido):</p>
+<ul>
+<li><strong>Descripción</strong>: Puntos de entrada para CLI gráficas.</li>
+<li><strong>Tipo</strong>: <code class='language-html'>table[string]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">[project.gui-scripts]
+metsudep-gui = "metsudepmanager.gui:launch"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Similar a scripts, pero adaptado para interfaces gráficas (poco común en Python puro).</li>
+</ul>
+</li>
+<li>
+<p><strong>entry-points</strong> (tabla de tablas de cadenas):</p>
+<ul>
+<li><strong>Descripción</strong>: Plugins y hooks genéricos (PEP 566).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>table[table[string]]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml"><a class='internal' href='./projectentry-pointsconsole-scripts.html'>project.entry points."console_scripts"</a>
+custom-tool = "metsudepmanager.tools:custom_func"
+
+[project.entry-points."poetry.plugin"]
+metsudep-plugin = "metsudepmanager.plugin:PluginClass"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Estructura anidada; ideal para plugins de Poetry. Menos conocido: soporta listas para valores múltiples.</li>
+</ul>
+</li>
+<li>
+<p><strong>dynamic</strong> (lista de cadenas, menos conocido):</p>
+<ul>
+<li><strong>Descripción</strong>: Campos calculados durante la construcción (por ejemplo, versión desde dynaconf).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>list[string]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">dynamic = ["version", "readme", "classifiers"]
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Requiere un backend que los resuelva (Poetry lo hace). En el curso: para versiones dinámicas en lanzamientos.</li>
+</ul>
+</li>
+</ul>
+<h2>3. [tool.poetry] – Configuración Específica de Poetry</h2>
+<p>Amplía <code class='language-html'>[project]</code> con características propias de Poetry. Muchos campos están depreciados en favor de <code class='language-html'>[project]</code>, pero se mantienen por compatibilidad. En MetsuDepManager, se usa para delegar a <code class='language-html'>poetry-core</code> sin telemetría.</p>
+<ul>
+<li>
+<p><strong>name</strong>, <strong>version</strong>, <strong>description</strong>, <strong>license</strong>, <strong>authors</strong>, <strong>maintainers</strong>, <strong>readme</strong>, <strong>keywords</strong>, <strong>classifiers</strong>:</p>
+<ul>
+<li><strong>Descripción</strong>: Equivalentes a <code class='language-html'>[project]</code> (ver arriba).</li>
+<li><strong>Tipo</strong>: Igual.</li>
+<li><strong>Obligatorio</strong>: No (depreciados).</li>
+<li><strong>Ejemplo</strong>: Similar a <code class='language-html'>[project]</code>.</li>
+<li><strong>Notas</strong>: Poetry los migra automáticamente. Úsalos solo para compatibilidad antigua.</li>
+</ul>
+</li>
+<li>
+<p><strong>homepage</strong>, <strong>repository</strong>, <strong>documentation</strong> (cadenas, depreciados):</p>
+<ul>
+<li><strong>Descripción</strong>: URLs básicas.</li>
+<li><strong>Tipo</strong>: <code class='language-html'>string</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">homepage = "https://metsuke.com"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Sustituidos por <code class='language-html'>[project.urls]</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>packages</strong> (lista de tablas, menos conocido):</p>
+<ul>
+<li><strong>Descripción</strong>: Especifica paquetes a incluir (para layout de fuentes o multipaquete).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>list[table{include: string, from?: string}]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">[tool.poetry.packages]
+include = "metsudepmanager"
+from = "src"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Por defecto: raíz. Raro: <code class='language-html'>exclude = [&quot;tests&quot;]</code> para filtros.</li>
+</ul>
+</li>
+<li>
+<p><strong>include</strong> y <strong>exclude</strong> (lista de cadenas, menos conocido):</p>
+<ul>
+<li><strong>Descripción</strong>: Ficheros a incluir/excluir en distribuciones.</li>
+<li><strong>Tipo</strong>: <code class='language-html'>list[string]</code> (globs).</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">[tool.poetry]
+include = ["src/**/*.py", "data/*.json"]
+exclude = ["tests/*", "*.pyc"]
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Sobrescribe valores por defecto. En el curso: excluye telemetría.</li>
+</ul>
+</li>
+<li>
+<p><strong>dependencies</strong> (tabla de listas de cadenas):</p>
+<ul>
+<li><strong>Descripción</strong>: Dependencias en tiempo de ejecución (incluye <code class='language-html'>python</code>).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>table[list[string]]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Subsección: python (cadena)</strong>:
+<ul>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">[tool.poetry.dependencies]
+python = ">=3.8,<3.12"
+requests = "^2.31.0"
+typer = {version = "^0.12.0", python = ">=3.9"}
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Especificadores condicionales (por ejemplo, markers). Poetry resuelve conflictos.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>group</strong> (tabla anidada de tablas de listas de cadenas, desde 1.2):</p>
+<ul>
+<li><strong>Descripción</strong>: Grupos de dependencias (dev, test, docs).</li>
+<li><strong>Tipo</strong>: Anidado.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml"><a class='internal' href='./toolpoetrygroupdevdependencies.html'>tool.poetry.group.dev.dependencies</a>
+name = "pytest"
+version = "^7.4.0"
+
+<a class='internal' href='./toolpoetrygroupauditdependencies.html'>tool.poetry.group.audit.dependencies</a>  # Personalizado para el curso
+name = "bandit"
+version = "^1.7.5"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Instalables con <code class='language-html'>poetry install --only dev</code>. En MetsuDepManager: grupos para "audit" y "airgapped".</li>
+</ul>
+</li>
+<li>
+<p><strong>dev-dependencies</strong> (lista de cadenas, depreciado):</p>
+<ul>
+<li><strong>Descripción</strong>: "H"eredado para dependencias de desarrollo.</li>
+<li><strong>Tipo</strong>: <code class='language-html'>list[string]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">[tool.poetry.dev-dependencies]
+pytest = "^7.4.0"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Migra a <code class='language-html'>group.dev.dependencies</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>extras</strong> (tabla de listas de cadenas):</p>
+<ul>
+<li><strong>Descripción</strong>: Dependencias opcionales (extras).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>table[list[string]]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">[tool.poetry.extras]
+mysql = ["mysqlclient"]
+security = ["cryptography"]
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Se sincroniza con <code class='language-html'>[project.optional-dependencies]</code>. Raro: extras con subdependencias.</li>
+</ul>
+</li>
+<li>
+<p><strong>scripts</strong> (tabla de cadenas):</p>
+<ul>
+<li><strong>Descripción</strong>: CLI locales (no instalados globalmente).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>table[string]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">[tool.poetry.scripts]
+test = "pytest"
+lint = "ruff check ."
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Ejecutables con <code class='language-html'>poetry run test</code>. En el curso: para hooks de auditoría.</li>
+</ul>
+</li>
+<li>
+<p><strong>plugins</strong> (tabla de cadenas, menos conocido):</p>
+<ul>
+<li><strong>Descripción</strong>: Plugins de Poetry (por ejemplo, para exportar a requirements.txt).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>table[string]</code>.</li>
+<li><strong>Obligatorio</strong>: No.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">[tool.poetry.plugins."poetry.application.plugin"]
+export-plugin = "poetry_plugin_export:ExportPlugin"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Extiende Poetry. En MetsuDepManager: para solvers personalizados sin telemetría.</li>
+</ul>
+</li>
+<li>
+<p><strong>package-mode</strong> (booleano):</p>
+<ul>
+<li><strong>Descripción</strong>: Modo paquete vs. aplicación (false para scripts puros).</li>
+<li><strong>Tipo</strong>: <code class='language-html'>bool</code>.</li>
+<li><strong>Obligatorio</strong>: No (por defecto: true).</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">package-mode = false
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Afecta la instalación del código fuente.</li>
+</ul>
+</li>
+</ul>
+<h2>4. Otras Secciones Menos Conocidas o Extendidas</h2>
+<ul>
+<li>
+<p><strong>[tool.poetry-dynamic-versioning]</strong> (específico de plugin, raro):</p>
+<ul>
+<li><strong>Descripción</strong>: Para versiones dinámicas desde Git.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+</code></pre>
+</li>
+<li><strong>Notas</strong>: Requiere plugin; útil para CI en el curso.</li>
+</ul>
+</li>
+<li>
+<p><strong>[tool.setuptools]</strong> (si usas setuptools como backend alternativo):</p>
+<ul>
+<li><strong>Descripción</strong>: Configuración para campos dinámicos.</li>
+<li><strong>Ejemplo</strong>:<pre><code class="language-toml">[tool.setuptools.dynamic]
+version = {attr = "metsudepmanager.__version__"}
+</code></pre>
+</li>
+<li><strong>Notas</strong>: No para Poetry puro; solo en híbridos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Comentarios y metadatos adicionales</strong>:</p>
+<ul>
+<li>TOML permite comentarios (#). Poetry ignora secciones no reconocidas (por ejemplo, <code class='language-html'>[tool.black]</code> para formateadores).</li>
+<li>En MetsuDepManager: integra <code class='language-html'>[tool.ruff]</code> para linting ético, excluyendo fugas.</li>
+</ul>
+</li>
+</ul>
+<h2>Consideraciones Finales y Mejores Prácticas</h2>
+<ul>
+<li><strong>Validación</strong>: Siempre ejecuta <code class='language-html'>poetry check</code> y <code class='language-html'>poetry lock --no-update</code> para reproducibilidad.</li>
+<li><strong>Migración</strong>: Pasa de heredados a <code class='language-html'>[project]</code> con <code class='language-html'>poetry self show plugins</code>.</li>
+<li><strong>En el curso</strong>: Esta estructura facilita el wrapping de <code class='language-html'>poetry-core</code> para control (límites de tiempo, sin telemetría), haciendo MetsuDepManager más extensible.</li>
+<li><strong>Longitud</strong>: Un <code class='language-html'>pyproject.toml</code> completo puede superar las 200 líneas; usa herramientas como <code class='language-html'>toml-sort</code> para organizarlo.</li>
+</ul>
+<p>Este análisis abarca todos los campos conocidos hasta 2025, basado en documentación oficial. Si necesitas ejemplos concretos de MetsuDepManager, echa un vistazo a las páginas del curso. ¡Si surge alguna duda, avísame!</p>
+<h1>Referencias Bibliográficas que Apoyan</h1>
+<p>Estas fuentes respaldan el uso de Poetry y la estructura de <code class='language-html'>pyproject.toml</code>, con énfasis en su eficiencia y estándares PEP. He verificado su existencia, vigencia (actuales a 2025) y relevancia científica mediante búsquedas en web y documentación oficial.</p>
+<ul>
+<li>Documentación oficial de Poetry sobre pyproject.toml: <a href="https://python-poetry.org/docs/pyproject/">https://python-poetry.org/docs/pyproject/</a>  (detalla todos los campos y su integración con PEPs).</li>
+<li>PEP 517 – A build-system independent format for source trees: <a href="https://peps.python.org/pep-0517/">https://peps.python.org/pep-0517/</a>  (base para el sistema de construcción en pyproject.toml).</li>
+<li>PEP 518 – Specifying Minimum Build System Requirements: <a href="https://peps.python.org/pep-0518/">https://peps.python.org/pep-0518/</a>  (define requisitos de build).</li>
+<li>PEP 621 – Storing project metadata in pyproject.toml: <a href="https://peps.python.org/pep-0621/">https://peps.python.org/pep-0621/</a>  (metadatos en pyproject.toml).</li>
+<li>Tutorial de Real Python sobre Dependency Management with Poetry: <a href="https://realpython.com/dependency-management-python-poetry/">https://realpython.com/dependency-management-python-poetry/</a>  (guía práctica para inicialización y uso).</li>
+<li>Vídeo en YouTube: Gestión de dependencias en Python con Poetry: <a href="https://www.youtube.com/watch?v=j3PzCdmbxEE">https://www.youtube.com/watch?v=j3PzCdmbxEE</a>  (tutorial en español sobre inicialización).</li>
+<li>Vídeo en YouTube: Cómo Gestionar Tus Proyectos De Python Con Poetry: <a href="https://www.youtube.com/watch?v=sYtXjiCua48">https://www.youtube.com/watch?v=sYtXjiCua48</a>  (explicación accesible en español).</li>
+</ul>
+<h1>Referencias Bibliográficas que Refutan</h1>
+<p>Estas fuentes destacan críticas a Poetry, como lentitud en resolución de dependencias, problemas de compatibilidad o preferencia por alternativas más rápidas como UV o PDM. He confirmado su validez y vigencia (2023-2025) mediante búsquedas.</p>
+<ul>
+<li>Discusión en Reddit sobre críticas a Poetry: <a href="https://www.reddit.com/r/learnpython/comments/10jb11n/what_do_you_feel_about_using_poetry_package/">https://www.reddit.com/r/learnpython/comments/10jb11n/what_do_you_feel_about_using_poetry_package/</a>  (usuarios reportan inestabilidad y problemas de fiabilidad).</li>
+<li>Artículo en Medium: Python's Package Management is a Mess: <a href="https://medium.com/@yashbatra11111/pythons-package-management-is-a-mess-b0bb9c1055bf">https://medium.com/@yashbatra11111/pythons-package-management-is-a-mess-b0bb9c1055bf</a>  (critica fragmentación y conflictos en gestores como Poetry).</li>
+<li>Comparativa en DEV Community: A Review: Pipenv vs. Poetry vs. PDM: <a href="https://dev.to/frostming/a-review-pipenv-vs-poetry-vs-pdm-39b4">https://dev.to/frostming/a-review-pipenv-vs-poetry-vs-pdm-39b4</a>  (señala lentitud en caches de Poetry comparado con PDM).</li>
+<li>Tutorial en DataCamp sobre UV como alternativa: <a href="https://www.datacamp.com/es/tutorial/python-uv">https://www.datacamp.com/es/tutorial/python-uv</a>  (destaca que UV es más rápido que Poetry en 2025).</li>
+<li>Vídeo en YouTube: why I will never use python-poetry: <a href="https://www.youtube.com/watch?v=Gr9o8MW_pb0">https://www.youtube.com/watch?v=Gr9o8MW_pb0</a>  (crítica personal a políticas de depreciación y usabilidad).</li>
+<li>Artículo en GeeksforGeeks: How to fix "Python Poetry Install Failure": <a href="https://www.geeksforgeeks.org/python/how-to-fix-python-poetry-install-failure/">https://www.geeksforgeeks.org/python/how-to-fix-python-poetry-install-failure/</a>  (aborda problemas comunes de instalación en 2025).</li>
+</ul>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🟡③-⚖️🔴②.html'>Elementos del conocimiento humano y científico  🟡③ ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Dec 09 2025 17:01:35 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.3</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-12-09T00:11:58.993Z
+modified: 2025-12-09T16:01:35.462Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 3
+nav_primary: []
+nav_secondary: []
+tags: []
+MOS_TopImg_Video: CursoMetsuDepManager_014.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoMetsuDepManager_014.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>
