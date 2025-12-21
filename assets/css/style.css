@@ -156,6 +156,7 @@ pre.mermaid {
   border-top: 8px solid #b10505;
   height: auto !important;
   max-height: none !important;
+  padding-bottom: 2rem;
   width:100%;
   overflow: visible;
   display: block;
