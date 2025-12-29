@@ -39,10 +39,10 @@
 
     <main>
 <h1>Pixel Art Attack - Cursed Zapatilla - ZX Spectrum - Pantalla de Carga ⚫①</h1>
-<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_f1139e8c8ab76b7f55c6cc2f25dd559e_MD5.jpeg" alt="El punto al que he llegado con MetsuOS Game Maker Tools"></p>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_f0679c5d61a4dde79174bc8fcb57d218_MD5.jpg" alt="Conversion 1:1 de la imagen origen"></p>
 <ul>
 <li><a class='internal' href='./pixel-art-attack---cursed-zapatilla---zx-spectrum-⚫①.html'>Pixel Art Attack - Cursed Zapatilla - ZX Spectrum ⚫①</a></li>
-<li><a class='internal' href='./mos-games---cursed-zapatilla---la-excentrica-cruzada-de-sir-patillas-2025.html'>MOS Games - Cursed Zapatilla - La Excéntrica Cruzada de Sir Patillas (2025)</a></li>
+<li><a class='internal' href='./mos-games---cursed-zapatilla---la-excentrica-cruzada-de-sir-patillas-en-desarrollo-desde-2025---release-previsto-2026.html'>MOS Games - Cursed Zapatilla - La Excéntrica Cruzada de Sir Patillas (En desarrollo desde 2025 - Release previsto 2026)</a></li>
 </ul>
 <p>Iniciamos con esta pantalla que nos introduce en el juego durante la carga desde cinta o disco.</p>
 <h2>Iteración 000 : El intento de conversión con ZX-PaintBrush</h2>
@@ -83,6 +83,36 @@
 <h3>Resultado de la iteración</h3>
 <p>Un punto muy cercano al anterior, personalmente pienso que mejor, pues he logrado respetar las calaveras mucho mejor, pero que trataré de mejorar antes de publicar el script</p>
 </div></div>
+<h2>Iteración 003 : Evaluando el camino para continuar mejorando el conversor de imagenes a ZX Spectrum</h2>
+<p>Todo este tiempo he estado haciendo algunas pruebas, la conversion 1-1 parece excelente, sin embargo, al reducir el numero de pixels, la cuestión se complica, siempre tengo la opcion de hacerlo a mano, pero por ahora sigamos explorando la metodología, ya que pretendo convertir todo tipo de elementos y a una escala que dificilmente es soportable mediante colaboraciones de pago, mucho menos abusando de la confianza de nadie.</p>
+<p>Como vemos, he aplicado diferentes tipos de tramado, y algunos recortes básicos, los resultados actuales son los siguientes...</p>
+<div class="columns"><div class="column">
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_33d90a6b2fb87f43d9c3829c4f53814e_MD5.jpg" alt="Caratula de Cursed Zapatillas"></p>
+<h3>Punto de partida</h3>
+<p>Nuevamente, la imagen de partida, generada por Grok, descartando el resultado del intento anterior.</p>
+</div><div class="column">
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_f0679c5d61a4dde79174bc8fcb57d218_MD5.jpg" alt="Conversion 1:1 de la imagen origen"></p>
+<h2>State of the art en conversión 1:1</h2>
+<p>El resultado me parece mas que satisfactorio, aun tengo que trabajar el control del dither y el suavizado de bordes (me inspiraré en lo que se hace en 3D probablemente) pero por ahora es un resultado que me encanta.</p>
+</div><div class="column">
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_6259107da7626ad85cd9a6626a855798_MD5.jpg" alt="NoDitherVersion"></p>
+<h2>Reduccion 256x192 Sin Dither</h2>
+<p>Bien pero parece mas un mapa de atributos que una imagen nitida.</p>
+</div><div class="column">
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_49b00172a858aae17f95f5a0ce8ccaeb_MD5.jpg" alt="Soft Dither Version"></p>
+<h2>Reduccion 256x192 con Dither "Soft"</h2>
+<p>Mejora sustancial pero aun carece de la definicion que me gustaria., y que he visto en imagenes convertidas a mano.</p>
+</div><div class="column">
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_644676818135af544cb4f5ac1ad1f72e_MD5.jpg" alt="Medium Dither Version"></p>
+<h2>Reduccion 256x192 con Dither "Medium"</h2>
+<p>La resolucion no da de si para tanto detalle y el dither no ayuda</p>
+</div><div class="column">
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_d352930b7db563e9824b12ffa73e9b22_MD5.jpg" alt="Hard Dither Version"></p>
+<h2>Reduccion 256x192 con Dither "Hard"</h2>
+<p>Por favor que alguien llame al antenista que arregle la trasmision xD</p>
+</div></div>
+<h3>Resultado de la iteración</h3>
+<p>Esta claro que debo trabajar en dos asppectos, el primero en torno a la versión 1:1 el control del dither y el suavizado de bordes, por otro, una estrategia (probablemente a base de cropping en este primer intento) para quedarme con la parte relevante de la imagen y que la reducción sea mas adecuada a la resolucion objetivo y cuanto puede mostrar. ¡Seguiremos informando!</p>
 <h2>One More Thing</h2>
 <p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
 <p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
@@ -142,7 +172,7 @@
 <li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
 </ul>
 <p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Sep 09 2025 08:14:58 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.3</li></ul><!--(iaStatus: 8
+<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Thu Dec 25 2025 21:46:35 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.5</li></ul><!--(iaStatus: 8
 iaStatus_Model: Raúl Carrillo Garrido aka metsuke
 iaStatus_Generado: H
 iaStatus_Supervisado: '-'
@@ -152,12 +182,12 @@ checked: 0
 lang: ES
 translations: null
 created: 2025-09-01T18:06:52.967Z
-modified: 2025-09-09T06:14:58.414Z
+modified: 2025-12-25T20:46:35.687Z
 supervisado: ''
 ACCION: ''
 ver_major: 0
 ver_minor: 2
-ver_rev: 3
+ver_rev: 5
 nav_primary: []
 nav_secondary: []
 tags: []
