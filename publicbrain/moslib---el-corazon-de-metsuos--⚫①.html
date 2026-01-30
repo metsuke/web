@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../npl.html">NPL</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>mosLib - El Corazón de MetsuOS  ⚫①</h1>
+<p><img alt="mosLib Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_4b08d9c1c1d378d5df3ac0dd6de347a0_MD5.jpg" /></p>
+<blockquote>
+<p>OJO WIP </p>
+</blockquote>
+<p><a href="https://metsuke.com/apps.html">Apps</a></p>
+<p>No me ha gustado nada la deriva que las IA querian darle a este proyecto, en eso se nota que siguen la trayectoria mayoritaria, que es justo un camino que no pretendo recorrer con MetsuOS. Es por eso que, aunque me lleve mas tiempo y formalmente sea quizá menos eficiente,  voy a diseñar y construir la estructura a mano. </p>
+<p>En esencia mosLib debe ser la base que unifique las funciones de forma que se ejecuten de forma identica en todos los sistemas operativos, incluido MetsuOS puro, encapsulará las diferencias entre sistemas operativos aportando una coleccion de funciones en modulos (ya veremos que nivel de orientación a objetos) y seran estas las que se emplearán en los modulos y aplicaciones del sistema.</p>
+<h2>Estructura y Ediciones</h2>
+<p>Definiré aqui la estructura general de la libreria y su morfología:</p>
+<ul>
+<li>FSF-Fan Layer (Licencias GPLv3 y compatibles) .- Esta edicion contiene en forma de modulos con funciones funcionando como appps independientes, las primitivas básicas, modulos con funciones para leer y escribir archivos, leer y escribir el sistema de ficheros, y todo lo que sea necesario, incluyendo accesibilidad.</li>
+<li>EFF-Fan Layer  (Lincencias GPLv2 y compatibles) - Esta edicion contiene en forma de modulos con funciones funcionando como appps independientes, las primitivas básicas, modulos con funciones para leer y escribir archivos, leer y escribir el sistema de ficheros, y todo lo que sea necesario, incluyendo accesibilidad.</li>
+<li><em>Community Edition</em> (Licencias MIT y compatibles) .- Esta edición usa las apps indepenmdientes de GFan y construye apps mas complejas o aquellas sencillas que no tienen forma de ser creadas GFan.</li>
+<li><em>Pro Edition (Privativo)</em> .- Crea herencia y polimorfismo sobre los conceptos y apps de las ediciones GFan y Community aportando metodos mejorados de trabao en bloque monousuario.</li>
+<li><em>Enterprise Edition</em> (Privativo) .- Crea herencia y polimorfismo avanzados sobre los concepptos y apps de las ediciones GFan, Community y Pro, orientada a la gestion de tareas y procesos multiusuario distribuido, de forma que equipos puedan trabajar juntos manteniendo cada uno sus instancias de MetsuOS.</li>
+</ul>
+<h2>Dependencias</h2>
+<p>Es un requisito de diseño de MetsuOS que, absolutamente toda dependencia externa al sistema, quede circunscrita a este modulo, de forma que el resto del sistema se apoye sobre un mosLib solido y robusto.</p>
+<p>Existirá una sola fachada al exterior, pero, internamente, se aplicarán diversas librerias para realizar las tareas, aportando el grado máximo de redundancia, en caso de que no exista funcionalidad ya creada que pueda incluirse, se desarrollará la funcionalidad dentro del entorno del propio sistema.</p>
+<p>Dado que usaremos <a class='internal' href='../publicbrain/por-que-python-es-la-eleccion-ideal-para-desarrollar-en-el-ecosistema-completo-de-metsuos-🟡③.html'>Python</a>, implementaremos <a class='internal' href='../publicbrain/metsudepmanager--gestor-de-dependencias-etico-para-metsuos-🟡③.html'>MetsuDepManager – Gestor de Dependencias Ético para MetsuOS 🟡③</a>, por ahora en este y para este lenguaje.</p>
+<h2>La implementación real</h2>
+<h3>Generalidades</h3>
+<p>Toda app de mosLib tiene, de base una pila donde se almacenan las peticiones, gestionada por tres funcionalides, recepcion, ordenación y procesamiento.</p>
+<p>La primera funcion toma nota de las acciones solicitadas y las guarda en un formato de pila basado en fichero de texto plano, con campos de datos en forma de tupla específico de la app y sus opciones).</p>
+<p>La segunda se encarga de leer esos parametros y trasladar las peticones a tres subpilas: TiempoReal, Fast y Slow, la primera gestiona las peticiones mas urgentes, la segunda las de ejecucion corta (menor de 3 segundos - decidio arbitrariamente), y la tercera para aquellas tareas que tardan más de 3 segundos. Tomará datos de ejecicion de la tercera para evaluar que configuraciones debe mandar a uno u otro. Existirá tambien la posibilidad de asignar RT, F o S a las tareas al solicitarlas para aquellos lugares que requieran configuración específica.</p>
+<p>La tercera  se encarga de ejecutar los pendientes, primero todo el RT, segundo todo lo de fast y finalemnte lo de slow. Guardará estadíticas de parametrizacion vs tiempo de ejecucion para indicarle a la parte de ordenación como debe actuar cuando no se especifique el parametro RT, F, o S.</p>
+<p>!<a class='internal' href='../publicbrain/plantilla---1mt#one-more-thing.html'>Plantilla   1MT#One More Thing</a></p><ul><li><b>Información IA: </b>Generado por Humano. Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2025-11-29 20:49:20.314000+00:00</li><li><b>Versión Documento: </b>0.2.9</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>

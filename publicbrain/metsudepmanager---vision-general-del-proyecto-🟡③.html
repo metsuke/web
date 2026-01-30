@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,9 +40,9 @@
 
     <main>
 <h1>MetsuDepManager - Visión general del proyecto 🟡③</h1>
-<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_bcdb26b402ce1818f324f6b0247f7807_MD5.jpg" alt="MetsuDepManager - Visión general del proyecto"></p>
+<p><img alt="MetsuDepManager - Visión general del proyecto"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_bcdb26b402ce1818f324f6b0247f7807_MD5.jpg" /></p>
 <ul>
-<li><a class='internal' href='./curso-sobre-desarrollo-de-un-gestor-de-paquetes-python-que-use-poetry-como-backend-🟡③.html'>Curso sobre desarrollo de un gestor de paquetes python que use poetry como backend 🟡③</a></li>
+<li><a class='internal' href='../publicbrain/curso-sobre-desarrollo-de-un-gestor-de-paquetes-python-que-use-poetry-como-backend-🟡③.html'>Curso sobre desarrollo de un gestor de paquetes python que use poetry como backend 🟡③</a></li>
 </ul>
 <p><strong>MetsuDepManager - Gestor de dependencias ético, seguro, accesible y listo para producción</strong></p>
 <h2>Introducción</h2>
@@ -51,14 +52,12 @@
 <p>MetsuDepManager no es “otro gestor de paquetes más”. Es una <strong>capa segura, ética y altamente configurable</strong> construida sobre Poetry que resuelve problemas complejos (CPS aplicado de forma sistemática a un contexto extremadamente específico) que hoy no cubren ni pip, ni Poetry, ni PDM, ni Hatch en entornos exigentes. Su propósito principal es resolver las carencias de las herramientas actuales en contextos estrictamente regulados.</p>
 <p>En resumen: <strong>es la herramienta que te gustaría haber tenido cuando tu jefe de seguridad, el delegado de protección de datos o el auditor te pidió “garantías” de lo que instalas</strong>.</p>
 <h2>Motivación</h2>
-<p>El ecosistema Python depende en gran medida de paquetes open-source, pero la gestión de dependencias tradicionales (pip, Poetry) ignora riesgos críticos:</p>
-<ul>
-<li><strong>Vulnerabilidades</strong>: Ataques como Log4Shell o SolarWinds destacan la fragilidad de la cadena de suministro.</li>
-<li><strong>Licencias</strong>: Conflictos con GPL en entornos propietarios o requisitos de disclosure en UE.</li>
-<li><strong>Orígenes Geográficos</strong>: En 2025, tensiones geopolíticas (e.g., sanciones UE a RU/CN, controles US ITAR/EAR) convierten las patentes y tecnologías en vectores de riesgo. Dependencias de orígenes "prohibidos" pueden violar export controls o NIS2.</li>
-<li><strong>Cumplimiento Sectorial</strong>: ENS Alto exige protección de supply chain en infraestructuras críticas españolas; DORA obliga a testing de dependencias OSS en finanzas.</li>
-<li><strong>Accesibilidad y Ética</strong>: Entornos educativos y públicos obligados por LOMLOE y RD 1112/2018; privacidad en RGPD sin telemetría no consentida.</li>
-</ul>
+<p>El ecosistema Python depende en gran medida de paquetes open-source, pero la gestión de dependencias tradicionales (pip, Poetry) ignora riesgos críticos:
+- <strong>Vulnerabilidades</strong>: Ataques como Log4Shell o SolarWinds destacan la fragilidad de la cadena de suministro.
+- <strong>Licencias</strong>: Conflictos con GPL en entornos propietarios o requisitos de disclosure en UE.
+- <strong>Orígenes Geográficos</strong>: En 2025, tensiones geopolíticas (e.g., sanciones UE a RU/CN, controles US ITAR/EAR) convierten las patentes y tecnologías en vectores de riesgo. Dependencias de orígenes "prohibidos" pueden violar export controls o NIS2.
+- <strong>Cumplimiento Sectorial</strong>: ENS Alto exige protección de supply chain en infraestructuras críticas españolas; DORA obliga a testing de dependencias OSS en finanzas.
+- <strong>Accesibilidad y Ética</strong>: Entornos educativos y públicos obligados por LOMLOE y RD 1112/2018; privacidad en RGPD sin telemetría no consentida.</p>
 <p>MetsuDepManager resuelve esto con políticas preconfiguradas, SBOM enriquecidos y hooks no-intrusivos, manteniendo la simplicidad de Poetry mientras añade capas de resiliencia. Prioriza valores como la transparencia total, la auditoría automática, el principio de menor privilegio, la protección de la privacidad y –de forma explícita y no negociable– la accesibilidad universal.</p>
 <h2>Pilares Éticos y Técnicos No Negociables</h2>
 <table>
@@ -98,9 +97,9 @@
 <h2>Características Principales</h2>
 <h3>1. <strong>Wrapper Inteligente sobre Poetry</strong></h3>
 <ul>
-<li>Comandos proxy: <code class='language-html'>metsudep add &lt;pkg&gt;</code>, <code class='language-html'>metsudep install</code>, <code class='language-html'>metsudep lock</code> → Aplica políticas pre-instalación.</li>
-<li>Comandos clásicos adicionales: <code class='language-html'>init</code>, <code class='language-html'>remove</code>, <code class='language-html'>update</code>, <code class='language-html'>build</code>, <code class='language-html'>publish</code>.</li>
-<li>Comandos éticos propios: <code class='language-html'>audit</code>, <code class='language-html'>policy</code>, <code class='language-html'>sign-exception</code>, <code class='language-html'>verify-sbom</code>, <code class='language-html'>enforce</code>.</li>
+<li>Comandos proxy: <code>metsudep add &lt;pkg&gt;</code>, <code>metsudep install</code>, <code>metsudep lock</code> → Aplica políticas pre-instalación.</li>
+<li>Comandos clásicos adicionales: <code>init</code>, <code>remove</code>, <code>update</code>, <code>build</code>, <code>publish</code>.</li>
+<li>Comandos éticos propios: <code>audit</code>, <code>policy</code>, <code>sign-exception</code>, <code>verify-sbom</code>, <code>enforce</code>.</li>
 <li>Offline-first: Resolución y caché local; fallback online solo con consentimiento (no-telemetría).</li>
 <li>Extensibilidad: Plugins via entry-points para resolvers custom (e.g., mirrors EU).</li>
 <li>Soporte completo para entornos virtuales (venv, virtualenv, conda, pixi).</li>
@@ -109,24 +108,24 @@
 <h3>2. <strong>Motor de Políticas Multi-Capa</strong></h3>
 <ul>
 <li><strong>Vulnerabilidades</strong>: Integración con Safety DB y OSV; alertas reachability-based (solo deps explotables).</li>
-<li><strong>Licencias</strong>: Perfiles preestablecidos (<code class='language-html'>permissive</code>, <code class='language-html'>copyleft</code>, <code class='language-html'>eu-compliant</code>, <code class='language-html'>defense-restricted</code>).</li>
+<li><strong>Licencias</strong>: Perfiles preestablecidos (<code>permissive</code>, <code>copyleft</code>, <code>eu-compliant</code>, <code>defense-restricted</code>).</li>
 <li><strong>Orígenes Geográficos (Geo-Org)</strong>: Metadatos de país/región en SBOM; políticas para bloqueos/prioridades basadas en regulaciones.</li>
 <li><strong>Perfiles Integrados</strong>: Combinación de licencias + geo para zero-config en sectores específicos.</li>
-<li>Configuración en <code class='language-html'>metsudep.toml</code>: Políticas declarativas, excepciones firmadas.</li>
+<li>Configuración en <code>metsudep.toml</code>: Políticas declarativas, excepciones firmadas.</li>
 </ul>
 <h3>3. <strong>Generación y Verificación de SBOM</strong></h3>
 <ul>
-<li>Formatos: CycloneDX (con <code class='language-html'>geoOrigin</code> custom en "supplier") y SPDX 2.3.</li>
+<li>Formatos: CycloneDX (con <code>geoOrigin</code> custom en "supplier") y SPDX 2.3.</li>
 <li>Enriquecimiento: Inclusión de hashes, licencias resueltas y orígenes geográficos para compliance NIS2/ENS.</li>
-<li>Comando: <code class='language-html'>metsudep sbom generate --format=cyclonedx --include-geo</code>.</li>
+<li>Comando: <code>metsudep sbom generate --format=cyclonedx --include-geo</code>.</li>
 </ul>
 <h3>4. <strong>CLI Profesional y Accesible</strong></h3>
 <ul>
 <li>Basada en Typer + Rich: Tablas coloridas, progresión ARIA, internacionalización (es/ca/en).</li>
-<li>Paleta WCAG AA/AAA y segura para daltonismo; flags <code class='language-html'>--no-color</code>, <code class='language-html'>--color=auto/always/never</code>.</li>
+<li>Paleta WCAG AA/AAA y segura para daltonismo; flags <code>--no-color</code>, <code>--color=auto/always/never</code>.</li>
 <li>Salida estructurada 100% compatible con NVDA, VoiceOver y Orca; mensajes claros en español neutro.</li>
 <li>Autocompletado, barras de progreso, árboles de dependencias y tema oscuro/claro.</li>
-<li>Reportes: <code class='language-html'>metsudep audit --full</code> → Tabla unificada de riesgos (vuln/lic/geo).</li>
+<li>Reportes: <code>metsudep audit --full</code> → Tabla unificada de riesgos (vuln/lic/geo).</li>
 <li>Modo CI/CD: Enforcer que falla builds no-compliant.</li>
 </ul>
 <h3>5. <strong>Resiliencia Geopolítica</strong></h3>
@@ -146,49 +145,49 @@
 </thead>
 <tbody>
 <tr>
-<td><code class='language-html'>global-permissive</code></td>
+<td><code>global-permissive</code></td>
 <td>—</td>
 <td>—</td>
 <td>80% cualquier país</td>
 <td>Open-source general</td>
 </tr>
 <tr>
-<td><code class='language-html'>eu-sovereign</code></td>
+<td><code>eu-sovereign</code></td>
 <td>—</td>
 <td>["EU"]</td>
 <td>40% US, 20% CN</td>
 <td>Empresas UE estándar</td>
 </tr>
 <tr>
-<td><code class='language-html'>eu-sovereign-strict</code></td>
+<td><code>eu-sovereign-strict</code></td>
 <td>["CN","RU","IR","KP"]</td>
 <td>["EU","ES","DE","FR","NL"]</td>
 <td>25% US</td>
 <td>NIS2, ENS Alto, DORA</td>
 </tr>
 <tr>
-<td><code class='language-html'>defense-es</code></td>
+<td><code>defense-es</code></td>
 <td>["CN","RU","IR","KP","BY"]</td>
 <td>["ES","EU","US-ally"]</td>
 <td>10% fuera aliados</td>
 <td>Defensa española (CCN)</td>
 </tr>
 <tr>
-<td><code class='language-html'>us-itar-ear</code></td>
+<td><code>us-itar-ear</code></td>
 <td>["CN","RU","IR","KP","SY","VE"]</td>
 <td>["US","NATO","FiveEyes"]</td>
 <td>—</td>
 <td>Export controls US</td>
 </tr>
 <tr>
-<td><code class='language-html'>cn-independent</code></td>
+<td><code>cn-independent</code></td>
 <td>—</td>
 <td>["CN","HK","SG"]</td>
 <td>50% US</td>
 <td>Reducción riesgos CFIUS</td>
 </tr>
 <tr>
-<td><code class='language-html'>offline-airgap</code></td>
+<td><code>offline-airgap</code></td>
 <td>—</td>
 <td>—</td>
 <td>—</td>
@@ -197,7 +196,7 @@
 </tbody>
 </table>
 <ul>
-<li>Excepciones: <code class='language-html'>metsudep sign-geo-exception &lt;pkg&gt; --reason=&quot;Auditado&quot;</code>.</li>
+<li>Excepciones: <code>metsudep sign-geo-exception &lt;pkg&gt; --reason=&quot;Auditado&quot;</code>.</li>
 <li>Integración: Hooks pre-resolución priorizan mirrors por perfil.</li>
 </ul>
 <h3>6. <strong>Modo Sandbox y Entornos Aislados</strong></h3>
@@ -207,7 +206,7 @@
 </ul>
 <h3>7. <strong>Sistema de Plugins</strong></h3>
 <ul>
-<li>Entry-points para hooks como <code class='language-html'>pre_add</code>, <code class='language-html'>post_install</code>.</li>
+<li>Entry-points para hooks como <code>pre_add</code>, <code>post_install</code>.</li>
 <li>Ejemplos reales para resolvers custom.</li>
 </ul>
 <h3>8. <strong>Ética y Accesibilidad: No es un Extra, es el Fundamento</strong></h3>
@@ -270,10 +269,10 @@
 <li><strong>Core</strong>: Python 3.11+; dependencias mínimas (Poetry, Tomlkit, Rich, Safety, Typer).</li>
 <li><strong>Hooks</strong>: Pre/post en Poetry resolver (GeoResolver, LicenseChecker).</li>
 <li><strong>DB Local</strong>: SQLite para caché geo/lic/vuln; actualizaciones offline.</li>
-<li><strong>Plugins</strong>: <code class='language-html'>metsudep.vuln_checker</code>, <code class='language-html'>metsudep.geo_resolver</code>.</li>
+<li><strong>Plugins</strong>: <code>metsudep.vuln_checker</code>, <code>metsudep.geo_resolver</code>.</li>
 <li>Diagrama ASCII:</li>
 </ul>
-<pre><code class='language-html'>[User CLI] --&gt; [Policy Engine] --&gt; [Poetry Wrapper]
+<pre><code>[User CLI] --&gt; [Policy Engine] --&gt; [Poetry Wrapper]
                    |                 |
                    v                 v
              [SBOM Generator]   [Geo/Lic Resolver]
@@ -283,21 +282,21 @@
 <ul>
 <li>Testing: Pytest >95% cobertura con Hypothesis (property-based testing); mocks para geo escenarios y accesibilidad.</li>
 </ul>
-<h2>Configuración Ejemplo: <code class='language-html'>metsudep.toml</code></h2>
+<h2>Configuración Ejemplo: <code>metsudep.toml</code></h2>
 <pre><code class="language-toml">[tool.metsudep]
-geo_profile = "eu-sovereign-strict"  # NIS2/ENS compliance
-license_profile = "eu-compliant"
+geo_profile = &quot;eu-sovereign-strict&quot;  # NIS2/ENS compliance
+license_profile = &quot;eu-compliant&quot;
 
 [accessibility]
 disable-run = true  # Pausa para lectores de pantalla
 
 [policies.vuln]
-threshold_high = 0  # Bloquea CVSS >7
+threshold_high = 0  # Bloquea CVSS &gt;7
 
 [geoblock.exceptions]
-"numpy" = { country = "US", reason = "OSS auditado, licencia MIT" }
+&quot;numpy&quot; = { country = &quot;US&quot;, reason = &quot;OSS auditado, licencia MIT&quot; }
 </code></pre>
-<p>Uso: <code class='language-html'>metsudep add requests --geo-prefer=EU</code> → "Instalado (origen EU, compliant 100%)."</p>
+<p>Uso: <code>metsudep add requests --geo-prefer=EU</code> → "Instalado (origen EU, compliant 100%)."</p>
 <h2>Roadmap Completo del Curso (12 + 1 Módulos)</h2>
 <table>
 <thead>
@@ -405,14 +404,12 @@ threshold_high = 0  # Bloquea CVSS >7
 </table>
 <p>Riesgos: Falsos positivos geo → Mitigados con excepciones. Alineación: ENS Alto (supply chain), NIS2 (terceros).</p>
 <h2>Entregable Final</h2>
-<p>Un repositorio open-source 100% funcional que incluye:</p>
-<ul>
-<li>Código completo y comentado.</li>
-<li>Documentación accesible y multilingüe.</li>
-<li>Configuración de políticas por defecto (<code class='language-html'>metsudep.toml</code>).</li>
-<li>Checklist de producción (seguridad + accesibilidad + calidad).</li>
-<li>Guía de contribución ética y accesible.</li>
-</ul>
+<p>Un repositorio open-source 100% funcional que incluye:
+- Código completo y comentado.
+- Documentación accesible y multilingüe.
+- Configuración de políticas por defecto (<code>metsudep.toml</code>).
+- Checklist de producción (seguridad + accesibilidad + calidad).
+- Guía de contribución ética y accesible.</p>
 <h2>Fuentes Bibliográficas</h2>
 <h3>1. <strong>Regulaciones UE y Españolas</strong></h3>
 <ol>
@@ -451,99 +448,13 @@ threshold_high = 0  # Bloquea CVSS >7
 <li><a href="https://chriswarrick.com/blog/2023/01/15/how-to-improve-python-packaging/">Chris Warrick – How to Improve Python Packaging (2023): Crítica constructiva al exceso de herramientas y wrappers. Análisis que critica la proliferación de herramientas como Poetry por no adherirse completamente a estándares PEP, sugiriendo que wrappers éticos añaden complejidad innecesaria al ecosistema. 🟡③🌐</a> .- Constructive critique of excessive Python packaging tools and wrappers, analyzing the proliferation of tools like Poetry for not fully adhering to PEP standards (e.g., using custom metadata instead of PEP 621 and non-standard dependency markers), suggesting that such wrappers add unnecessary complexity to the ecosystem; proposes unifying tools under PyPA for a single comprehensive solution, emphasizing standards like PEP 517 and PEP 582 to simplify workflows and reduce fragmentation.</li>
 </ol>
 <p><strong>Conclusión</strong>: MetsuDepManager no pretende ser la herramienta que todo el mundo use a diario. Pretende ser la herramienta que <strong>sí o sí necesitas</strong> cuando ética, seguridad, cumplimiento normativo y accesibilidad universal no son negociables. Y el curso te lleva de la mano, paso a paso, para que seas capaz de crearla, entenderla y –si quieres– mejorarla o adaptarla a tu propia organización.</p>
-<h2>One More Thing</h2>
-<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
-<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
-<h2>Contenido registrado en Safe Creative</h2>
-<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
-<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
-</center>
-<h2>MetsuOS Needs You!</h2>
-<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
-<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
-<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
-<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
-<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
-<ul>
-<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
-<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
-<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
-<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
-<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
-<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
-</ul>
-<h3>Sobre la categorización de los tipos de conocimiento</h3>
-<ul>
-<li>Conocimiento Gnoseológico:  ⚫① 🔴② 🟡③ 🟢④</li>
-<li>Conocimiento Epistemológico:  🔵⑤</li>
-<li>Conocimiento Metsukeológico:  ⚪⑥</li>
-</ul>
-<p>La Metsukeología (de Metsuke vision global y logos conocimiento) es la ciencia que estudia el conocimiento como un conjunto potencial de conocimiento del que podemos obtener, procesar o percibir partes concretas dentro de un marco contextual específico, y cuyo contexto general real está muy por encima de lo que somos capaces, como especie, de percibir, procesar e integrar de forma completa (definición en progreso).</p>
-<p>La Metsucología (de Metsu aniquilación - en este contexto en forma de colapso - , logos conocimiento) es la ciencia que estudia como extraemos verdades percibidas - colapsadas - como conocimiento desde nuestra perspectiva real (tanto epistemológico como gnoseológico) al tomar una parte específica del conocimiento metsukeológico potencial enmarcado en un contexto concreto, obligando a colapsar el conocimiento potencial en conocimiento específico (definición en progreso).</p>
-<h3>Mas sobre el contexto</h3>
-<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
-<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
-<ul>
-<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
-<li>⚖️ - Analisis
-<ul>
-<li>⚖️📚 - Análisis Bibligráfico</li>
-<li>⚖️🔬 - Análisis Científico</li>
-<li>⚖️🏛️ - Análisis Estructural</li>
-<li>⚖️🧠 - Análisis Filosófico</li>
-</ul>
-</li>
-<li>📖 - Referencia
-<ul>
-<li>📖📚 - Referencia Bibliográfica / Libro</li>
-<li>📖🔬- Referencia Científica / Paper</li>
-<li>📖🏛️ - Referencia Estructural</li>
-<li>📖🧠 - Referencia Filosófica</li>
-</ul>
-</li>
-<li>🔍️- Paradigma</li>
-</ul>
-<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
-<ul>
-<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
-<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
-</ul>
-<p>También aplicaremos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
-<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
-<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
-<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
-<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
-<h2>Bibliografía de referencia</h2>
-<ul>
-<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🟡③-⚖️🔴②.html'>Elementos del conocimiento humano y científico  🟡③ ⚖️🔴②</a></li>
-<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
-</ul>
-<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Fri Dec 05 2025 02:06:56 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.5</li></ul><!--(iaStatus: 8
-iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
-iaStatus_Generado: I
-iaStatus_Supervisado: H
-iaStatus_Validado: '-'
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2025-12-02T19:08:48.633Z
-modified: 2025-12-05T01:06:56.507Z
-supervisado: ''
-ACCION: ''
-ver_major: 0
-ver_minor: 2
-ver_rev: 5
-nav_primary: []
-nav_secondary: []
-tags: []
-MOS_TopImg_Video: CursoMetsuDepManager_005.mp4
-)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoMetsuDepManager_005.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>!<a class='internal' href='../publicbrain/plantilla---1mt#one-more-thing.html'>Plantilla   1MT#One More Thing</a></p><ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2025-12-05 01:06:56.507000+00:00</li><li><b>Versión Documento: </b>0.2.5</li></ul><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoMetsuDepManager_005.mp4'></script>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,18 +40,18 @@
 
     <main>
 <h1>Carga y visualización de sprites en Pyxel 🔴②</h1>
-<p><a class='internal' href='./aprender-sobre-pyxel-⚫①.html'>Aprender sobre Pyxel  ⚫①</a></p>
+<p><a class='internal' href='../publicbrain/aprender-sobre-pyxel--⚫①.html'>Aprender sobre Pyxel  ⚫①</a></p>
 <p>En Pyxel, la carga y visualización de sprites es un aspecto fundamental para crear gráficos y animaciones en tus proyectos de pixel art. A continuación, te presentamos una guía detallada sobre cómo cargar y mostrar sprites en Pyxel.</p>
 <h2>1. Carga de Sprites</h2>
-<p>Pyxel permite cargar sprites desde archivos de imagen en formatos compatibles, como PNG o GIF. Puedes cargar sprites utilizando el método <code class='language-html'>load</code>:</p>
-<pre><code class="language-python">pyxel.image(0).load(0, 0, "assets/sprite.png")
+<p>Pyxel permite cargar sprites desde archivos de imagen en formatos compatibles, como PNG o GIF. Puedes cargar sprites utilizando el método <code>load</code>:</p>
+<pre><code class="language-python">pyxel.image(0).load(0, 0, &quot;assets/sprite.png&quot;)
 </code></pre>
-<p>En este ejemplo, el método <code class='language-html'>load</code> carga el sprite ubicado en el archivo "sprite.png" en la posición (0, 0) del banco de imágenes número 0.</p>
+<p>En este ejemplo, el método <code>load</code> carga el sprite ubicado en el archivo "sprite.png" en la posición (0, 0) del banco de imágenes número 0.</p>
 <h2>2. Visualización de Sprites</h2>
-<p>Una vez que hayas cargado el sprite, puedes mostrarlo en la pantalla utilizando el método <code class='language-html'>blt</code> (block transfer):</p>
+<p>Una vez que hayas cargado el sprite, puedes mostrarlo en la pantalla utilizando el método <code>blt</code> (block transfer):</p>
 <pre><code class="language-python">pyxel.blt(100, 100, 0, 0, 0, 16, 16)
 </code></pre>
-<p>En este ejemplo, <code class='language-html'>blt</code> muestra el sprite del banco de imágenes número 0 en la posición (100, 100) de la pantalla. Los parámetros <code class='language-html'>(0, 0)</code> indican la posición del sprite en el banco de imágenes, y <code class='language-html'>(16, 16)</code> especifican el ancho y alto del sprite en píxeles.</p>
+<p>En este ejemplo, <code>blt</code> muestra el sprite del banco de imágenes número 0 en la posición (100, 100) de la pantalla. Los parámetros <code>(0, 0)</code> indican la posición del sprite en el banco de imágenes, y <code>(16, 16)</code> especifican el ancho y alto del sprite en píxeles.</p>
 <h2>3. Animación de Sprites</h2>
 <p>Para crear animaciones con sprites, puedes cambiar dinámicamente la posición del sprite en el banco de imágenes en cada cuadro de la animación. Por ejemplo, puedes alternar entre diferentes cuadros de un sprite para simular un movimiento o una acción:</p>
 <pre><code class="language-python">frame = 0
@@ -63,7 +64,7 @@ def draw():
     pyxel.cls(0)  # Limpia la pantalla
     pyxel.blt(100, 100, 0, frame * 16, 0, 16, 16)  # Muestra el cuadro de animación actual
 </code></pre>
-<p>En este ejemplo, la variable <code class='language-html'>frame</code> se actualiza en cada cuadro del juego, y <code class='language-html'>blt</code> muestra el cuadro correspondiente del sprite en función del valor de <code class='language-html'>frame</code>.</p>
+<p>En este ejemplo, la variable <code>frame</code> se actualiza en cada cuadro del juego, y <code>blt</code> muestra el cuadro correspondiente del sprite en función del valor de <code>frame</code>.</p>
 <h2>Referencias bibliográficas</h2>
 <ul>
 <li><a href="https://pyxel.com/docs/">Pyxel Documentation</a></li>
@@ -73,87 +74,13 @@ def draw():
 <ul>
 <li><a href="https://www.python.org/">Alternativas a Pyxel</a></li>
 </ul>
-<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
-<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
-<ul>
-<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
-<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
-<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
-<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
-<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
-<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
-</ul>
-<h3>Sobre la categorización de los tipos de conocimiento</h3>
-<ul>
-<li>Conocimiento Gnoseológico:  ⚫① 🔴② 🟡③ 🟢④</li>
-<li>Conocimiento Epistemológico:  🔵⑤</li>
-<li>Conocimiento Metsukeológico:  ⚪⑥</li>
-</ul>
-<p>La Metsukeología (de Metsuke vision global y logos conocimiento) es la ciencia que estudia el conocimiento como un conjunto potencial de conocimiento del que podemos obtener, procesar o percibir partes concretas dentro de un marco contextual específico, y cuyo contexto general real está muy por encima de lo que somos capaces, como especie, de percibir, procesar e integrar de forma completa (definición en progreso).</p>
-<p>La Metsucología (de Metsu aniquilación - en este contexto en forma de colapso - , logos conocimiento) es la ciencia que estudia como extraemos verdades percibidas - colapsadas - como conocimiento desde nuestra perspectiva real (tanto epistemológico como gnoseológico) al tomar una parte específica del conocimiento metsukeológico potencial enmarcado en un contexto concreto, obligando a colapsar el conocimiento potencial en conocimiento específico (definición en progreso).</p>
-<h3>Mas sobre el contexto</h3>
-<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
-<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
-<ul>
-<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
-<li>⚖️ - Analisis
-<ul>
-<li>⚖️📚 - Análisis Bibligráfico</li>
-<li>⚖️🔬 - Análisis Científico</li>
-<li>⚖️🏛️ - Análisis Estructural</li>
-<li>⚖️🧠 - Análisis Filosófico</li>
-</ul>
-</li>
-<li>📖 - Referencia
-<ul>
-<li>📖📚 - Referencia Bibliográfica / Libro</li>
-<li>📖🔬- Referencia Científica / Paper</li>
-<li>📖🏛️ - Referencia Estructural</li>
-<li>📖🧠 - Referencia Filosófica</li>
-</ul>
-</li>
-<li>🔍️- Paradigma</li>
-</ul>
-<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
-<ul>
-<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
-<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
-</ul>
-<p>También aplicaremos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
-<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
-<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
-<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
-<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
-<h2>Bibliografía de referencia</h2>
-<ul>
-<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🟡③-⚖️🔴②.html'>Elementos del conocimiento humano y científico  🟡③ ⚖️🔴②</a></li>
-<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
-</ul>
-<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo, llama3-70b-8192). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Jun 10 2024 17:14:14 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Mon May 27 2024 15:38:11 GMT+0200 (hora de verano de Europa central)</li><li><b> Versión Documento: </b>0.4.7</li></ul><!--(iaStatus: 8
-iaStatus_Model: gpt-3.5-turbo, llama3-70b-8192
-iaStatus_Generado: I
-iaStatus_Supervisado: H
-iaStatus_Validado: '-'
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-04-08T04:13:21.621Z
-modified: 2024-06-10T15:14:14.021Z
-supervisado: 2024-05-27T13:38:11.387Z
-ACCION: null
-ver_major: 0
-ver_minor: 4
-ver_rev: 7
-nav_primary: null
-nav_secondary: null
-tags: null
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>!<a class='internal' href='../publicbrain/⚫🔴🟡🟢🔵⚪-🔴②#sobre-el-sistema-de-validez-de-un-contenido-en-metsuos.html'>⚫🔴🟡🟢🔵⚪ (🔴②)#Sobre el sistema de validez de un contenido en MetsuOS</a></p><ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo, llama3-70b-8192). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2024-06-10 15:14:14.021000+00:00</li><li><b>Versión Documento: </b>0.4.7</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

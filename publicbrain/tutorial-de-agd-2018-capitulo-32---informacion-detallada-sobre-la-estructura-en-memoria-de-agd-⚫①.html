@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,14 +40,14 @@
 
     <main>
 <h1>Tutorial de AGD 2018 Capítulo 32 - Información detallada sobre la estructura en memoria de AGD ⚫①</h1>
-<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_41c8adbac8af58f4201152fec1347ad1_MD5.jpg" alt="Información detallada sobre la estructura en memoria de AGD"></p>
+<p><img alt="Información detallada sobre la estructura en memoria de AGD"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_41c8adbac8af58f4201152fec1347ad1_MD5.jpg" /></p>
 <ul>
-<li><a class='internal' href='./tutorial-de-agd-2018-edition-⚫①.html'>Tutorial de AGD 2018 Edition ⚫①</a></li>
-<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-31---ejemplo-basico-jugando-con-tipos-y-animaciones-⚫①.html'><< Anterior</a> |  Siguiente >></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-edition-⚫①.html'>Tutorial de AGD 2018 Edition ⚫①</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-31---ejemplo-basico-jugando-con-tipos-y-animaciones-⚫①.html'><< Anterior</a> |  Siguiente >></li>
 </ul>
 <p>Gracias a <a href="https://www.youtube.com/c/thEpOpESergio">Sergio thEpOpE  🌐🟡③</a>, tenemos disponible un increible documento, que convierto a html a continuación, adicionalmente, puedes consultar este <a href="https://web.archive.org/web/20190326191446/https://www.funspot.it/agd-asm-calls">artículo que nos muestra como trabajar con ASM desde AGD</a>.</p>
 <h2>AGD Technical Info, by Sergio-thEpOpE</h2>
-<p><code class='language-html'>Creative Commons - CC by (Trascrito en 22 09 27)</code></p>
+<p><code>Creative Commons - CC by (Trascrito en 22 09 27)</code></p>
 <h3>Versión 4.7 y 4.8</h3>
 <ul>
 <li>7d05 b- Sistema de input (0 Keyboard,1 Kempston,2 Sinclair)</li>
@@ -94,9 +95,8 @@
 <li>7D2F b- S ;(en la versión 4.6 no existen las variables S y T, por lo que a partir de LINE están en el mismo orden, pero 2 bytes antes)</li>
 <li>7D30 b- T</li>
 </ul>
-<pre class='pre'>
-en la versión 4.6 no existen las variables S y T, por lo que a partir de LINE están en el mismo orden, pero 2 bytes antes
-</pre>
+<pre class='pre'>en la versión 4.6 no existen las variables S y T, por lo que a partir de LINE están en el mismo orden, pero 2 bytes antes</pre>
+
 <ul>
 <li>7D31 b- LINE</li>
 <li>7D32 b- COLUMN</li>
@@ -136,8 +136,8 @@ en la versión 4.6 no existen las variables S y T, por lo que a partir de LINE e
 </ul>
 <h3>ULA Palette: 64 bytes</h3>
 <ul>
-<li>v4.6 - $7fc0 b(64) -</li>
-<li>v4.7 y 4.8 - $7fdf b(64) -</li>
+<li>v4.6 - $7fc0 b(64) - </li>
+<li>v4.7 y 4.8 - $7fdf b(64) - </li>
 </ul>
 <h3>Jump Table:</h3>
 <p>La tabla de salto termina con 99</p>
@@ -148,20 +148,17 @@ en la versión 4.6 no existen las variables S y T, por lo que a partir de LINE e
 </ul>
 <h3>Mapa</h3>
 <ul>
-<li>v4.6
-<ul>
+<li>v4.6 <ul>
 <li>8fd8-903a: mapa</li>
 <li>903b b- Índice del mapa de inicio</li>
 </ul>
 </li>
-<li>v4.7
-<ul>
+<li>v4.7<ul>
 <li>8fec-904e : mapa</li>
 <li>904f b- Índice del mapa de inicio</li>
 </ul>
 </li>
-<li>v4.8
-<ul>
+<li>v4.8<ul>
 <li>8ff1-9053 : mapa</li>
 <li>9054 b- Índice del mapa de inicio</li>
 </ul>
@@ -176,21 +173,22 @@ en la versión 4.6 no existen las variables S y T, por lo que a partir de LINE e
 <p>84BB - Buffer de registros para AY</p>
 <p>Tiene hasta 3 sonidos en cada canal. Cuando uno se termina, lo pone a FF, y cuando ocurre así, llama a la función que pone el mezclador de ese canal a 0.</p>
 <p>Esto último hay que quitarlo para la musica ingame.</p>
+
 <p>v. 4.7: 8491 : Rutina que silencia todo, llama secuencialmente a los silenciadores de cada canal.</p>
 <pre><code class="language-asm">CALL $853C               ; 8491 Silencia el canal A, anularlo con un ret en la entrada. POKE $853c, 201
-CALL $8549               ; 8494 Silencia el canal B, ""
-CALL $8556               ; 8497 Silencia el canal C, ""
-CALL $8572               ; 849A <- carga valores del canal A, si está activo, si no silencia llamando a $853C
-CALL $84D2               ; 849D <- carga valores del canal B, si está activo si no silencia llamando a $8549
-CALL $84FD               ; 84A0 <- carga valores del canal C, si está activo si no silencia llamando a $8556
-LD HL, $84BB             ; 84A3 <- buffer de registros AY
+CALL $8549               ; 8494 Silencia el canal B, &quot;&quot;
+CALL $8556               ; 8497 Silencia el canal C, &quot;&quot;
+CALL $8572               ; 849A &lt;- carga valores del canal A, si está activo, si no silencia llamando a $853C
+CALL $84D2               ; 849D &lt;- carga valores del canal B, si está activo si no silencia llamando a $8549
+CALL $84FD               ; 84A0 &lt;- carga valores del canal C, si está activo si no silencia llamando a $8556
+LD HL, $84BB             ; 84A3 &lt;- buffer de registros AY
 LD DE, $0E00             ; 84A6
 LD C, $FD                ; 84A9
 L_84AB: LD B, $FF                ; 84AB
-OUT (C), E               ; 84AD <- selecciçon del registro
+OUT (C), E               ; 84AD &lt;- selecciçon del registro
 LD A, (HL)               ; 84AF
 LD B, $BF                ; 84B0
-OUT (C), A               ; 84B2 <- escritura del valor
+OUT (C), A               ; 84B2 &lt;- escritura del valor
 INC E                    ; 84B4
 INC HL                   ; 84B5
 DEC D                    ; 84B6
@@ -199,107 +197,21 @@ RET                      ; 84BA
 </code></pre>
 <h2>Referencias Bibliográficas</h2>
 <ul>
-<li>Documentación aportada por Sergio thEpOpE  🟡③.</li>
+<li>Documentación aportada por Sergio thEpOpE  🟡③.  </li>
 </ul>
 <h2>Y ahora que?</h2>
 <ul>
-<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-01---el-comienzo-⚫①.html'>Si no que se acabe esto, ve a la página 1</a></li>
-<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-32---informacion-detallada-sobre-la-estructura-en-memoria-de-agd-⚫①.html'>Si te da rabia que esto acabe, o, pasa a la página 32</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-01---el-comienzo-⚫①.html'>Si no que se acabe esto, ve a la página 1</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-32---informacion-detallada-sobre-la-estructura-en-memoria-de-agd-⚫①.html'>Si te da rabia que esto acabe, o, pasa a la página 32</a></li>
 <li>Si detectas algo nuevo, pasa rapidamente a la página 33</li>
 </ul>
-<h2>One More Thing</h2>
-<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
-<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
-<h2>Contenido registrado en Safe Creative</h2>
-<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
-<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
-</center>
-<h2>MetsuOS Needs You!</h2>
-<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
-<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
-<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
-<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
-<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
-<ul>
-<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
-<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
-<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
-<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
-<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
-<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
-</ul>
-<h3>Sobre la categorización de los tipos de conocimiento</h3>
-<ul>
-<li>Conocimiento Gnoseológico:  ⚫① 🔴② 🟡③ 🟢④</li>
-<li>Conocimiento Epistemológico:  🔵⑤</li>
-<li>Conocimiento Metsukeológico:  ⚪⑥</li>
-</ul>
-<p>La Metsukeología (de Metsuke vision global y logos conocimiento) es la ciencia que estudia el conocimiento como un conjunto potencial de conocimiento del que podemos obtener, procesar o percibir partes concretas dentro de un marco contextual específico, y cuyo contexto general real está muy por encima de lo que somos capaces, como especie, de percibir, procesar e integrar de forma completa (definición en progreso).</p>
-<p>La Metsucología (de Metsu aniquilación - en este contexto en forma de colapso - , logos conocimiento) es la ciencia que estudia como extraemos verdades percibidas - colapsadas - como conocimiento desde nuestra perspectiva real (tanto epistemológico como gnoseológico) al tomar una parte específica del conocimiento metsukeológico potencial enmarcado en un contexto concreto, obligando a colapsar el conocimiento potencial en conocimiento específico (definición en progreso).</p>
-<h3>Mas sobre el contexto</h3>
-<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
-<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
-<ul>
-<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
-<li>⚖️ - Analisis
-<ul>
-<li>⚖️📚 - Análisis Bibligráfico</li>
-<li>⚖️🔬 - Análisis Científico</li>
-<li>⚖️🏛️ - Análisis Estructural</li>
-<li>⚖️🧠 - Análisis Filosófico</li>
-</ul>
-</li>
-<li>📖 - Referencia
-<ul>
-<li>📖📚 - Referencia Bibliográfica / Libro</li>
-<li>📖🔬- Referencia Científica / Paper</li>
-<li>📖🏛️ - Referencia Estructural</li>
-<li>📖🧠 - Referencia Filosófica</li>
-</ul>
-</li>
-<li>🔍️- Paradigma</li>
-</ul>
-<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
-<ul>
-<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
-<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
-</ul>
-<p>También aplicaremos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
-<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
-<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
-<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
-<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
-<h2>Bibliografía de referencia</h2>
-<ul>
-<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🟡③-⚖️🔴②.html'>Elementos del conocimiento humano y científico  🟡③ ⚖️🔴②</a></li>
-<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
-</ul>
-<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Fri Aug 22 2025 17:56:52 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.3</li></ul><!--(iaStatus: 8
-iaStatus_Model: Raúl Carrillo Garrido aka metsuke
-iaStatus_Generado: H
-iaStatus_Supervisado: '-'
-iaStatus_Validado: '-'
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2025-08-20T15:38:17.242Z
-modified: 2025-08-22T15:56:52.879Z
-supervisado: ''
-ACCION: ''
-ver_major: 0
-ver_minor: 2
-ver_rev: 3
-nav_primary: []
-nav_secondary: []
-tags: []
-MOS_TopImg_Video: CursoAGD032.mp4
-)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoAGD032.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>!<a class='internal' href='../publicbrain/plantilla---1mt#one-more-thing.html'>Plantilla   1MT#One More Thing</a></p><ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Ultima Modificación: </b>2025-08-22 15:56:52.879000+00:00</li><li><b>Versión Documento: </b>0.2.3</li></ul><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoAGD032.mp4'></script>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

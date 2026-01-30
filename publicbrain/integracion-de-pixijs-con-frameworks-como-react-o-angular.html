@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,145 +40,119 @@
 
     <main>
 <h1>Integración de PixiJS con frameworks como React o Angular</h1>
-<p><a class='internal' href='./curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
+<p><a class='internal' href='../publicbrain/curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
 <p>Integrar PixiJS con frameworks como React o Angular es posible y puede brindarte una gran flexibilidad y potencia para crear aplicaciones web interactivas y juegos. Aquí te explico cómo puedes realizar la integración con cada uno de estos frameworks:</p>
 <h3>Integración con React:</h3>
 <ol>
+<li><strong>Instalación de PixiJS</strong>:</li>
 <li>
-<p><strong>Instalación de PixiJS</strong>:</p>
-<ul>
-<li>Comienza instalando PixiJS en tu proyecto de React utilizando npm o yarn:<pre><code class="language-bash">npm install pixi.js
-</code></pre>
-<pre><code class="language-bash">yarn add pixi.js
-</code></pre>
-</li>
-</ul>
+<p>Comienza instalando PixiJS en tu proyecto de React utilizando npm o yarn:
+     <code>bash
+     npm install pixi.js</code>
+     <code>bash
+     yarn add pixi.js</code></p>
 </li>
 <li>
 <p><strong>Creación de un componente PixiJS</strong>:</p>
-<ul>
-<li>Crea un componente de React para tu aplicación PixiJS. Puedes usar <code class='language-html'>PIXI.Application</code> para inicializar una aplicación PixiJS dentro de tu componente:<pre><code class="language-javascript">import React, { useRef, useEffect } from 'react';
-import * as PIXI from 'pixi.js';
-
-const PixiComponent = () => {
-  const pixiContainer = useRef(null);
-
-  useEffect(() => {
-    const app = new PIXI.Application({ width: 800, height: 600, backgroundColor: 0x1099bb });
-    pixiContainer.current.appendChild(app.view);
-
-    // Agrega aquí la lógica de tu aplicación PixiJS
-
-    return () => app.destroy();
-  }, []);
-
-  return <div ref={pixiContainer} />;
-};
-
-export default PixiComponent;
-</code></pre>
 </li>
-</ul>
+<li>
+<p>Crea un componente de React para tu aplicación PixiJS. Puedes usar <code>PIXI.Application</code> para inicializar una aplicación PixiJS dentro de tu componente:
+     ```javascript
+     import React, { useRef, useEffect } from 'react';
+     import * as PIXI from 'pixi.js';</p>
+<p>const PixiComponent = () => {
+   const pixiContainer = useRef(null);</p>
+<p>useEffect(() => {
+     const app = new PIXI.Application({ width: 800, height: 600, backgroundColor: 0x1099bb });
+     pixiContainer.current.appendChild(app.view);</p>
+<pre><code> // Agrega aquí la lógica de tu aplicación PixiJS
+
+ return () =&gt; app.destroy();
+</code></pre>
+<p>}, []);</p>
+<p>return <div ref={pixiContainer} />;
+ };</p>
+<p>export default PixiComponent;
+ ```</p>
 </li>
 <li>
 <p><strong>Agrega lógica de juego o aplicación</strong>:</p>
-<ul>
-<li>Dentro del efecto de useEffect, puedes agregar la lógica específica de tu juego o aplicación PixiJS, como la creación de sprites, animaciones, interacciones, etc.</li>
-</ul>
+</li>
+<li>
+<p>Dentro del efecto de useEffect, puedes agregar la lógica específica de tu juego o aplicación PixiJS, como la creación de sprites, animaciones, interacciones, etc.</p>
 </li>
 <li>
 <p><strong>Integración con el resto de la aplicación</strong>:</p>
-<ul>
-<li>Puedes usar el componente PixiJS dentro de tu aplicación React como cualquier otro componente de React:<pre><code class="language-javascript">import React from 'react';
-import PixiComponent from './PixiComponent';
-
-const App = () => {
-  return (
-    <div>
-      <h1>Mi Aplicación con PixiJS en React</h1>
-      <PixiComponent />
-    </div>
-  );
-};
-
-export default App;
-</code></pre>
 </li>
-</ul>
+<li>
+<p>Puedes usar el componente PixiJS dentro de tu aplicación React como cualquier otro componente de React:
+     ```javascript
+     import React from 'react';
+     import PixiComponent from './PixiComponent';</p>
+<p>const App = () => {
+   return (
+     <div>
+       <h1>Mi Aplicación con PixiJS en React</h1>
+       <PixiComponent />
+     </div>
+   );
+ };</p>
+<p>export default App;
+ ```</p>
 </li>
 </ol>
 <h3>Integración con Angular:</h3>
 <ol>
+<li><strong>Instalación de PixiJS</strong>:</li>
 <li>
-<p><strong>Instalación de PixiJS</strong>:</p>
-<ul>
-<li>Comienza instalando PixiJS en tu proyecto de Angular utilizando npm:<pre><code class="language-bash">npm install pixi.js
-</code></pre>
-</li>
-</ul>
+<p>Comienza instalando PixiJS en tu proyecto de Angular utilizando npm:
+     <code>bash
+     npm install pixi.js</code></p>
 </li>
 <li>
 <p><strong>Creación de un componente PixiJS</strong>:</p>
-<ul>
-<li>Crea un componente Angular para tu aplicación PixiJS. Puedes inicializar una aplicación PixiJS dentro del ciclo de vida <code class='language-html'>ngOnInit</code> del componente:<pre><code class="language-typescript">import { Component, ElementRef, OnInit } from '@angular/core';
-import * as PIXI from 'pixi.js';
-
-@Component({
-  selector: 'app-pixi',
-  template: '<div #pixiContainer></div>',
-})
-export class PixiComponent implements OnInit {
-  constructor(private elementRef: ElementRef) {}
-
-  ngOnInit() {
-    const app = new PIXI.Application({ width: 800, height: 600, backgroundColor: 0x1099bb });
-    this.elementRef.nativeElement.querySelector('#pixiContainer').appendChild(app.view);
-
-    // Agrega aquí la lógica de tu aplicación PixiJS
-  }
-}
-</code></pre>
 </li>
-</ul>
+<li>
+<p>Crea un componente Angular para tu aplicación PixiJS. Puedes inicializar una aplicación PixiJS dentro del ciclo de vida <code>ngOnInit</code> del componente:
+     ```typescript
+     import { Component, ElementRef, OnInit } from '@angular/core';
+     import * as PIXI from 'pixi.js';</p>
+<p>@Component({
+   selector: 'app-pixi',
+   template: '<div #pixiContainer></div>',
+ })
+ export class PixiComponent implements OnInit {
+   constructor(private elementRef: ElementRef) {}</p>
+<p>ngOnInit() {
+     const app = new PIXI.Application({ width: 800, height: 600, backgroundColor: 0x1099bb });
+     this.elementRef.nativeElement.querySelector('#pixiContainer').appendChild(app.view);</p>
+<pre><code> // Agrega aquí la lógica de tu aplicación PixiJS
+</code></pre>
+<p>}
+ }
+ ```</p>
 </li>
 <li>
 <p><strong>Agrega lógica de juego o aplicación</strong>:</p>
-<ul>
-<li>Dentro del método <code class='language-html'>ngOnInit</code>, puedes agregar la lógica específica de tu juego o aplicación PixiJS, como la creación de sprites, animaciones, interacciones, etc.</li>
-</ul>
+</li>
+<li>
+<p>Dentro del método <code>ngOnInit</code>, puedes agregar la lógica específica de tu juego o aplicación PixiJS, como la creación de sprites, animaciones, interacciones, etc.</p>
 </li>
 <li>
 <p><strong>Integración con el resto de la aplicación</strong>:</p>
-<ul>
-<li>Puedes usar el componente PixiJS dentro de tu aplicación Angular como cualquier otro componente Angular:<pre><code class='language-html'>&lt;h1&gt;Mi Aplicación con PixiJS en Angular&lt;/h1&gt;
-&lt;app-pixi&gt;&lt;/app-pixi&gt;
-</code></pre>
 </li>
-</ul>
-</li>
+<li>Puedes usar el componente PixiJS dentro de tu aplicación Angular como cualquier otro componente Angular:
+     <code>html
+     &lt;h1&gt;Mi Aplicación con PixiJS en Angular&lt;/h1&gt;
+     &lt;app-pixi&gt;&lt;/app-pixi&gt;</code></li>
 </ol>
-<p>Con estas pautas, puedes integrar fácilmente PixiJS en tus aplicaciones React o Angular y aprovechar toda la potencia de estos frameworks junto con la capacidad de renderización y animación de PixiJS.</p>
-<ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Jun 10 2025 23:14:05 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.3.4</li></ul><!--(iaStatus: 0
-iaStatus_Model: ''
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-04-15T05:42:01.597Z
-modified: 2025-06-10T21:14:05.206Z
-supervisado: ''
-ACCION: ''
-ver_major: 0
-ver_minor: 3
-ver_rev: 4
-nav_primary: []
-nav_secondary: []
-tags: []
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>Con estas pautas, puedes integrar fácilmente PixiJS en tus aplicaciones React o Angular y aprovechar toda la potencia de estos frameworks junto con la capacidad de renderización y animación de PixiJS.</p><ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Ultima Modificación: </b>2025-06-10 21:14:05.206000+00:00</li><li><b>Versión Documento: </b>0.3.4</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

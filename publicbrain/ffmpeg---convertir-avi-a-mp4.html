@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,26 +40,26 @@
 
     <main>
 <h1>FFMPEG - Convertir Avi a Mp4</h1>
-<p><a class='internal' href='../publicbrain/index.html'>PublicBrain/Index</a></p>
+<p><a class='internal' href='../publicbrain/publicbrainindex.html'>PublicBrain/Index</a></p>
 <p>Puedes utilizar la herramienta FFMPEG para convertir un archivo .avi a .mp4. FFMPEG es una potente utilidad de línea de comandos que permite manipular y convertir varios formatos de archivos multimedia. A continuación, te proporciono el comando que puedes utilizar:</p>
-<pre><code class="language-sh">ffmpeg -i 'archivo_entrada.avi' -c:v libx264 -c:a aac -strict experimental 'archivo_salida.mp4'
+<pre><code class="language-sh">ffmpeg -i &#x27;archivo_entrada.avi&#x27; -c:v libx264 -c:a aac -strict experimental &#x27;archivo_salida.mp4&#x27;
 </code></pre>
 <p>Aquí está una explicación de los parámetros utilizados:</p>
 <ul>
 <li>
-<p><code class='language-html'>-i archivo_entrada.avi</code>: Esto indica el nombre del archivo de entrada (archivo .avi que deseas convertir).</p>
+<p><code>-i archivo_entrada.avi</code>: Esto indica el nombre del archivo de entrada (archivo .avi que deseas convertir).</p>
 </li>
 <li>
-<p><code class='language-html'>-c:v libx264</code>: Esto especifica el códec de video que se utilizará para la compresión en el archivo de salida. En este caso, estamos usando el códec H.264 (libx264) para el video.</p>
+<p><code>-c:v libx264</code>: Esto especifica el códec de video que se utilizará para la compresión en el archivo de salida. En este caso, estamos usando el códec H.264 (libx264) para el video.</p>
 </li>
 <li>
-<p><code class='language-html'>-c:a aac</code>: Esto especifica el códec de audio que se utilizará para la compresión en el archivo de salida. En este caso, estamos usando el códec AAC para el audio.</p>
+<p><code>-c:a aac</code>: Esto especifica el códec de audio que se utilizará para la compresión en el archivo de salida. En este caso, estamos usando el códec AAC para el audio.</p>
 </li>
 <li>
-<p><code class='language-html'>-strict experimental</code>: Esto es necesario en algunos casos para habilitar códecs no estándar en FFMPEG.</p>
+<p><code>-strict experimental</code>: Esto es necesario en algunos casos para habilitar códecs no estándar en FFMPEG.</p>
 </li>
 <li>
-<p><code class='language-html'>archivo_salida.mp4</code>: Esto indica el nombre del archivo de salida (archivo .mp4 resultante de la conversión).</p>
+<p><code>archivo_salida.mp4</code>: Esto indica el nombre del archivo de salida (archivo .mp4 resultante de la conversión).</p>
 </li>
 </ul>
 <p>Simplemente reemplaza "archivo_entrada.avi" y "archivo_salida.mp4" con los nombres reales de tus archivos de entrada y salida, respectivamente. Ejecuta este comando en una terminal o ventana de línea de comandos en la carpeta donde se encuentren los archivos, y FFMPEG realizará la conversión de .avi a .mp4.</p>
@@ -76,11 +77,9 @@
 <ul>
 <li>Selecciona la carpeta en la que colocaste los archivos .avi en la lista de carpetas monitoreadas.</li>
 <li>Haz clic en el botón "+ Regla".</li>
-</ul>
-</li>
 <li>
 <p>A continuación, define la regla:</p>
-<ul>
+</li>
 <li>
 <p>En "Si todas las siguientes condiciones son verdaderas:", selecciona "Extensión" y luego "es" en el menú desplegable. Escribe "avi" en el campo de texto.</p>
 </li>
@@ -93,39 +92,21 @@
 </ul>
 </li>
 </ol>
-<pre><code class="language-sh">archivo_avi="$1" 
-archivo_mp4="${archivo_avi%.avi}.mp4" 
-ffmpeg -i "$archivo_avi" -c:v libx264 -c:a aac -strict experimental "$archivo_mp4"
+<pre><code class="language-sh">archivo_avi=&quot;$1&quot; 
+archivo_mp4=&quot;${archivo_avi%.avi}.mp4&quot; 
+ffmpeg -i &quot;$archivo_avi&quot; -c:v libx264 -c:a aac -strict experimental &quot;$archivo_mp4&quot;
 </code></pre>
-<ol start="5">
+<ol>
 <li>Haz clic en "Guardar" para guardar la regla.</li>
 </ol>
 <p>Con este enfoque, cada vez que coloques un archivo .avi en la carpeta monitoreada, Hazel pasará automáticamente el archivo .avi como un parámetro al script, y el script utilizará ese parámetro para generar el nombre del archivo .mp4 resultante. El archivo .avi original no se eliminará en este caso.</p>
-<p>Ten en cuenta que, aunque el script no tiene un bucle, Hazel ejecutará el script por separado para cada archivo .avi que coloques en la carpeta.</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Jun 10 2024 17:26:26 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.29</li></ul><!--(iaStatus: 8
-iaStatus_Model: ''
-iaStatus_Generado: I
-iaStatus_Supervisado: H
-iaStatus_Validado: '-'
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-04-06T23:48:59.338Z
-modified: 2024-06-10T15:26:26.922Z
-supervisado: ''
-ACCION: ''
-ver_major: 0
-ver_minor: 2
-ver_rev: 29
-nav_primary: null
-nav_secondary: null
-tags: null
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>Ten en cuenta que, aunque el script no tiene un bucle, Hazel ejecutará el script por separado para cada archivo .avi que coloques en la carpeta.</p><ul><li><b>Información IA: </b>Generado asistido por IA (). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2024-06-10 15:26:26.922000+00:00</li><li><b>Versión Documento: </b>0.2.29</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

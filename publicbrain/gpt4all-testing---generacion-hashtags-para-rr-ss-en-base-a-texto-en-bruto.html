@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,7 +40,7 @@
 
     <main>
 <h1>GPT4All Testing - Generacion hashtags para RR. SS. en base a texto en bruto</h1>
-<p><a class='internal' href='./gpt4all-testing.html'>GPT4All Testing</a></p>
+<p><a class='internal' href='../publicbrain/gpt4all-testing.html'>GPT4All Testing</a></p>
 <p>Tarea a probar, generar un conjunto base de candidatos a hashtags para RR. SS. desde un contenido en bruto.</p>
 <p>Iteración 001 - La primera prueba, sin especificar numero de items minimo, me respondio "marketing"  en OpenOrca, por lo que decidí afinar el prompt un poco, siendo que busco indicarle al modelo lo imprescindible únicamente, para favorecer creatividad (por pensamiento lateral) "controlada".</p>
 <p>Iteración 002 - Cuidado con la complejidad del lenguaje del prompt. Ante la petición "dame una lista de hashtags para redes sociales de no menos de 3 elementos (...)" que gpt-3.5-turbo procesa sin problemas, OpenOrca recalcula contexto y acaba explicandote los pasos para desarrollar una estrategia de marketig digital xD</p>
@@ -55,29 +56,29 @@
 <p>Iteraciones 0004-0010 .- Con OpenOrca tras varios intentos de todo tipo, no logro que me de directamente las palabras se dedica a reorganizar el contexto y empieza a soltar parrafadas. Por hoy basta, pero esencialmente descarto OpenOrca para esta tarea concreta.</p>
 <h2>Observaciones</h2>
 <ul>
-<li>Dadas las respuestas y los problemas para lograr que determinados modelos hagan caso a loq ue se le pide, optaría por <strong>Mistral Instruct</strong> como primera opcion y <strong>gpt-3.5-turbo</strong> si este no funciona.</li>
+<li>Dadas las respuestas y los problemas para lograr que determinados modelos hagan caso a loq ue se le pide, optaría por <strong>Mistral Instruct</strong> como primera opcion y <strong>gpt-3.5-turbo</strong> si este no funciona. </li>
 <li>Podria usarse con mejoras en el procesamiento Nous Hermes 2 Mistral DPO pero creo que por ahora seria mejor pagar por gptapi en este punto para no tener que usar este ultimo modelo para solucionar la cuestión.</li>
 </ul>
 <h2>Prompt</h2>
 <pre><code class="language-markdown">﻿﻿dame una lista de 3 o más hashtags (cada uno de maximo 2 palabras), para redes sociales  en base a este contenido # Departamento Marketing
 
-  
 
-<a class='internal' href='./estructurar-una-microagencia-de-marketing-digital.html'>Estructurar una Microagencia de Marketing Digital</a> | <a class='internal' href='./glosario-de-marketing-digital.html'>Glosario de Marketing Digital</a>
 
-  
+&lt;a class=&#x27;internal&#x27; href=&#x27;../publicbrain/estructurar-una-microagencia-de-marketing-digital.html&#x27;&gt;Estructurar una Microagencia de Marketing Digital&lt;/a&gt; | &lt;a class=&#x27;internal&#x27; href=&#x27;../publicbrain/glosario-de-marketing-digital.html&#x27;&gt;Glosario de Marketing Digital&lt;/a&gt;
+
+
 
 El departamento de marketing es una parte fundamental de cualquier organización, ya que se encarga de promover los productos o servicios de la empresa y de generar demanda entre los consumidores.
 
-  
+
 
 El departamento de marketing desempeña un papel clave en la promoción y el éxito de una empresa, ya que ayuda a generar demanda, construir relaciones con los clientes y mejorar la visibilidad y la reputación de la marca. Su trabajo es crucial para alcanzar los objetivos comerciales y mantener la competitividad en el mercado.
 
-  
+
 
 ## Perfiles
 
-  
+
 
 * Expertos en Embudos de ventas
 
@@ -87,23 +88,23 @@ El departamento de marketing desempeña un papel clave en la promoción y el éx
 
 * Expertos en SEO
 
-  
+
 
 ## Estructura
 
-  
 
-  
+
+
 
 |   |
 |---|
-|\|   \|<br>\|---\|<br>\|\\|   \\|<br>\\|---\\|<br>\\|mermaid<br><br>graph TD<br><br>ExpertoEmbudoVenta[Embudos Ventas]<br><br>ExpertoEmailMarketing[E-Mail Mktg]<br><br>ExpertoPPC[PPC]<br><br>ExpertoSEO[SEO]<br><br>PerfilesMktg[Marketing]<br><br>PerfilesMktg --> ExpertoEmbudoVenta<br><br>PerfilesMktg --> ExpertoEmailMarketing<br><br>PerfilesMktg --> ExpertoPPC<br><br>PerfilesMktg --> ExpertoSEO\\||
+|\|   \|&lt;br&gt;\|---\|&lt;br&gt;\|\\|   \\|&lt;br&gt;\\|---\\|&lt;br&gt;\\|mermaid&lt;br&gt;&lt;br&gt;graph TD&lt;br&gt;&lt;br&gt;ExpertoEmbudoVenta[Embudos Ventas]&lt;br&gt;&lt;br&gt;ExpertoEmailMarketing[E-Mail Mktg]&lt;br&gt;&lt;br&gt;ExpertoPPC[PPC]&lt;br&gt;&lt;br&gt;ExpertoSEO[SEO]&lt;br&gt;&lt;br&gt;PerfilesMktg[Marketing]&lt;br&gt;&lt;br&gt;PerfilesMktg --&gt; ExpertoEmbudoVenta&lt;br&gt;&lt;br&gt;PerfilesMktg --&gt; ExpertoEmailMarketing&lt;br&gt;&lt;br&gt;PerfilesMktg --&gt; ExpertoPPC&lt;br&gt;&lt;br&gt;PerfilesMktg --&gt; ExpertoSEO\\||
 
-  
+
 
 ## Funciones y Responsabilidades
 
-  
+
 
 ### 1. Investigación de Mercado
 
@@ -113,7 +114,7 @@ El departamento de marketing desempeña un papel clave en la promoción y el éx
 
 - Recolectar datos y realizar análisis para identificar oportunidades de mercado.
 
-  
+
 
 ### 2. Desarrollo de Estrategias
 
@@ -123,7 +124,7 @@ El departamento de marketing desempeña un papel clave en la promoción y el éx
 
 - Establecer los segmentos de mercado y definir los mercados objetivo.
 
-  
+
 
 ### 3. Planificación de Marketing
 
@@ -133,7 +134,7 @@ El departamento de marketing desempeña un papel clave en la promoción y el éx
 
 - Definir calendarios de lanzamiento de productos y campañas promocionales.
 
-  
+
 
 ### 4. Ejecución de Campañas
 
@@ -143,7 +144,7 @@ El departamento de marketing desempeña un papel clave en la promoción y el éx
 
 - Coordinar con otros departamentos para garantizar la coherencia y la integridad de la marca en todas las comunicaciones.
 
-  
+
 
 ### 5. Evaluación de Resultados
 
@@ -153,7 +154,7 @@ El departamento de marketing desempeña un papel clave en la promoción y el éx
 
 - Realizar ajustes en las estrategias y tácticas según sea necesario para mejorar los resultados.
 
-  
+
 
 ### 6. Gestión de Relaciones
 
@@ -163,21 +164,21 @@ El departamento de marketing desempeña un papel clave en la promoción y el éx
 
 - Colaborar con otros departamentos, como ventas, desarrollo de productos y atención al cliente, para garantizar la satisfacción del cliente y el éxito empresarial.
 
-  
+
 
 ## Cursos recomendados
 
-  
+
 
 * [Búsqueda en Platzi Departamento Marleting)](https://platzi.com/buscar/?search=Marketing)
 
 * [Generación de Ruta en Platzi para el Departamento Marleting](https://platzi.com/buscar/?search=dame%20una%20ruta%20para%20formarme%20en%20el%20marketing)
 
-  
+
 
 ### Escuelas Platzi Recomendadas
 
-  
+
 
 * [Escuela Marketing Digital](https://platzi.com/escuela/marketing/)
 
@@ -192,100 +193,98 @@ El departamento de marketing desempeña un papel clave en la promoción y el éx
 <h2>GPT 3.5 Turbo</h2>
 <p>Aquí tienes una lista de hashtags para redes sociales basada en el contenido proporcionado:</p>
 <ol>
-<li>#MarketingDigital</li>
-<li>#EstrategiasMarketing</li>
-<li>#PerfilesMarketing</li>
+<li>
+<h1>MarketingDigital</h1>
+</li>
+<li>
+<h1>EstrategiasMarketing</h1>
+</li>
+<li>
+<h1>PerfilesMarketing</h1>
+</li>
 </ol>
 <p>Estos hashtags son relevantes para el contenido sobre el departamento de marketing y pueden ayudar a ampliar su alcance en las redes sociales.</p>
 <h2>Mistral OpenOrca</h2>
 <p>No he logrado que nos de un resultado coherente, se vuelve loco y se empeña en resumir el texto con frases y parrafos enormes, así que este modelo queda descartado para esta tarea.</p>
 <h2>Nous Hermes 2 Mistral DPO</h2>
-<p>#Hashtags: #MarketingDigital, #PlanificacionDeMarketing, #RelacionesPublicas, #PublicidadEnLinea, #MediosSociales</p>
+<p>﻿﻿#Hashtags: #MarketingDigital, #PlanificacionDeMarketing, #RelacionesPublicas, #PublicidadEnLinea, #MediosSociales</p>
 <p>El departamento de marketing es una parte fundamental en cualquier organización ya que se encarga de promover los productos o servicios de la empresa y de generar demanda entre los consumidores. El departamento de marketing desempeña un papel clave en la promoción y el éxito de una empresa, ayudando a generar demanda, construir relaciones con los clientes y mejorar la visibilidad y reputación de la marca.</p>
 <p>El departamento de marketing se estructura mediante expertos especializados en diferentes áreas del marketing como el embudo de ventas, e-mail marketing, PPC (publicidad por clic) y SEO (optimización para motores de búsqueda). La planificación de marketing es crucial para alcanzar los objetivos comerciales y mantener la competitividad en el mercado.</p>
 <p>Las funciones y responsabilidades del departamento de marketing incluyen la investigación de mercado, desarrollo de estrategias, planificación de marketing, ejecución de campañas, evaluación de resultados y gestión de relaciones. Para formarse en el marketing se pueden seguir cursos recomendados como los de Platzi y asistir a escuelas especializadas en Marketing Digital, Inglés, Desarrollo Web, Programación y Software y Startups.</p>
 <p>Los hashtags más relevantes para este contenido son #MarketingDigital, #PlanificacionDeMarketing, #RelacionesPublicas, #PublicidadEnLinea y #MediosSociales.</p>
 <h2>Mistral Instruct</h2>
-<p>1. #MarketingDigital #SEO #PPC #EmailMarketing
+<p>﻿1. #MarketingDigital #SEO #PPC #EmailMarketing
 2. #MarketingStrategies #BrandPositioning #TargetAudience
 3. #MarketingPlan #IntegratedMarketing #ContentCreation #RelationshipManagement</p>
 <p>GPT4All Falcon</p>
-<p>1. Investigación de Mercado:</p>
+<p>﻿1. Investigación de Mercado:</p>
 <ul>
 <li>Realizar un estudio de mercado para comprender las necesidades y preferencias de los clientes en el segmento de mercados objetivo.</li>
 <li>Analizar tendencias del mercado, comportamiento del consumidor y actividades de la competencia.</li>
-<li>Recolectar datos y realizar análisis para identificar oportunidades de mercado.</li>
-</ul>
-<ol start="2">
-<li>Desarrollo de Estrategias:</li>
-</ol>
-<ul>
-<li>Realizar un estudio de mercado para comprender las necesidades y preferencias de los clientes en el segmento de mercados objetivo.</li>
+<li>
+<p>Recolectar datos y realizar análisis para identificar oportunidades de mercado.</p>
+</li>
+<li>
+<p>Desarrollo de Estrategias:</p>
+</li>
+<li>
+<p>Realizar un estudio de mercado para comprender las necesidades y preferencias de los clientes en el segmento de mercados objetivo.</p>
+</li>
 <li>Analizar tendencias del mercado, comportamiento del consumidor y actividades de la competencia.</li>
 <li>Definir el posicionamiento de la marca y la propuesta de valor.</li>
-<li>Establecer los segmentos de mercado y definir los mercados objetivo.</li>
-</ul>
-<ol start="3">
-<li>Planificación de Marketing:</li>
-</ol>
-<ul>
-<li>Realizar un estudio de mercado para comprender las necesidades y preferencias de los clientes en el segmento de mercados objetivo.</li>
+<li>
+<p>Establecer los segmentos de mercado y definir los mercados objetivo.</p>
+</li>
+<li>
+<p>Planificación de Marketing:</p>
+</li>
+<li>
+<p>Realizar un estudio de mercado para comprender las necesidades y preferencias de los clientes en el segmento de mercados objetivo.</p>
+</li>
 <li>Analizar tendencias del mercado, comportamiento del consumidor y actividades de la competencia.</li>
 <li>Establecer planes de marketing integrados que incluyan publicidad, promoción, relaciones públicas y actividades de ventas.</li>
-<li>Establecer presupuestos y asignar recursos para ejecutar las estrategias de marketing.</li>
-</ul>
-<ol start="4">
-<li>Ejecución de Campañas:</li>
-</ol>
-<ul>
-<li>Realizar un estudio de mercado para comprender las necesidades y preferencias de los clientes en el segmento de mercados objetivo.</li>
+<li>
+<p>Establecer presupuestos y asignar recursos para ejecutar las estrategias de marketing.</p>
+</li>
+<li>
+<p>Ejecución de Campañas:</p>
+</li>
+<li>
+<p>Realizar un estudio de mercado para comprender las necesidades y preferencias de los clientes en el segmento de mercados objetivo.</p>
+</li>
 <li>Analizar tendencias del mercado, comportamiento del consumidor y actividades de la competencia.</li>
 <li>Establecer planes de marketing integrados que incluyan publicidad, promoción, relaciones públicas y actividades de ventas.</li>
-<li>Supervisar la ejecución de campañas en diversos canales, como publicidad en línea, medios sociales, correo electrónico y eventos.</li>
-</ul>
-<ol start="5">
-<li>Evaluación de Resultados:</li>
-</ol>
-<ul>
-<li>Realizar un estudio de mercado para comprender las necesidades y preferencias de los clientes en el segmento de mercados objetivo.</li>
+<li>
+<p>Supervisar la ejecución de campañas en diversos canales, como publicidad en línea, medios sociales, correo electrónico y eventos.</p>
+</li>
+<li>
+<p>Evaluación de Resultados:</p>
+</li>
+<li>
+<p>Realizar un estudio de mercado para comprender las necesidades y preferencias de los clientes en el segmento de mercados objetivo.</p>
+</li>
 <li>Analizar tendencias del mercado, comportamiento del consumidor y actividades de la competencia.</li>
 <li>Establecer objetivos de rendimiento para cada estrategia de marketing.</li>
 <li>Utilizar métricas clave como el retorno de la inversión (ROI), la participación del mercado y las conversiones para evaluar la efectividad de las estrategias.</li>
-<li>Realizar ajustes en las estrategias y tácticas según sea necesario para mejorar los resultados.</li>
-</ul>
-<ol start="6">
-<li>Gestión de Relaciones:</li>
-</ol>
-<ul>
-<li>Realizar un estudio de mercado para comprender las necesidades y preferencias de los clientes en el segmento de mercados objetivo.</li>
+<li>
+<p>Realizar ajustes en las estrategias y tácticas según sea necesario para mejorar los resultados.</p>
+</li>
+<li>
+<p>Gestión de Relaciones:</p>
+</li>
+<li>
+<p>Realizar un estudio de mercado para comprender las necesidades y preferencias de los clientes en el segmento de mercados objetivo.</p>
+</li>
 <li>Analizar tendencias del mercado, comportamiento del consumidor y actividades de la competencia.</li>
 <li>Establecer planes de marketing integrados que incluyan publicidad, promoción, relaciones públicas y actividades de ventas.</li>
 <li>Colaborar con otros departamentos, como ventas, desarrollo de productos y atención al cliente, para garantizar la satisfacción del cliente y el éxito empresarial.</li>
-</ul>
-<ul><li><b>Información IA: </b>Generado asistido por IA (Nous Hermes 2 Mistral DRO,Mistral OpenOrca,Mistral Instruct,GPT4All Falcon). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Jun 10 2024 17:14:13 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Sat Apr 20 2024 15:48:13 GMT+0200 (hora de verano de Europa central)</li><li><b> Versión Documento: </b>0.4.10</li></ul><!--(iaStatus: 8
-iaStatus_Model: Nous Hermes 2 Mistral DRO,Mistral OpenOrca,Mistral Instruct,GPT4All Falcon
-iaStatus_Generado: I
-iaStatus_Supervisado: H
-iaStatus_Validado: '-'
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-04-11T07:54:38.355Z
-modified: 2024-06-10T15:14:13.927Z
-supervisado: 2024-04-20T13:48:13.836Z
-ACCION: null
-ver_major: 0
-ver_minor: 4
-ver_rev: 10
-nav_primary: null
-nav_secondary: null
-tags: null
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+</ul><ul><li><b>Información IA: </b>Generado asistido por IA (Nous Hermes 2 Mistral DRO,Mistral OpenOrca,Mistral Instruct,GPT4All Falcon). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2024-06-10 15:14:13.927000+00:00</li><li><b>Versión Documento: </b>0.4.10</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

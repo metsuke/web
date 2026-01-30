@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,7 +40,7 @@
 
     <main>
 <h1>Transiciones suaves entre escenas en PixiJS</h1>
-<p><a class='internal' href='./curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
+<p><a class='internal' href='../publicbrain/curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
 <p>¡Por supuesto! Las transiciones suaves entre escenas son una característica importante en el desarrollo de juegos y aplicaciones con PixiJS. Aquí te explico cómo puedes implementarlas:</p>
 <h3>Transiciones Suaves entre Escenas en PixiJS</h3>
 <h4>1. Preparación de las Escenas</h4>
@@ -54,7 +55,7 @@
 </ul>
 <h4>3. Implementación de la Lógica de Transición</h4>
 <ul>
-<li><strong>Animaciones</strong>: Utiliza la clase <code class='language-html'>PIXI.Ticker</code> para animar la transición. Puedes controlar la velocidad y la suavidad de la animación ajustando la cantidad de cuadros por segundo (FPS).</li>
+<li><strong>Animaciones</strong>: Utiliza la clase <code>PIXI.Ticker</code> para animar la transición. Puedes controlar la velocidad y la suavidad de la animación ajustando la cantidad de cuadros por segundo (FPS).</li>
 <li><strong>Interpolación</strong>: Usa funciones de interpolación (como lineal, cuadrática, cúbica, etc.) para suavizar la transición entre las escenas.</li>
 <li><strong>Actualización de Propiedades</strong>: Durante la transición, actualiza las propiedades de los elementos visuales (como la opacidad, la escala, la posición, etc.) para lograr el efecto deseado.</li>
 </ul>
@@ -78,12 +79,12 @@ function transicionDesvanecimiento(escenaActual, escenaSiguiente) {
     let alpha = 0;
 
     const ticker = new PIXI.Ticker();
-    ticker.add(() => {
+    ticker.add(() =&gt; {
         alpha += 1 / (duracion / (1000 / fps));
         escenaActual.alpha = 1 - alpha;
         escenaSiguiente.alpha = alpha;
 
-        if (alpha >= 1) {
+        if (alpha &gt;= 1) {
             ticker.stop();
             // Ocultar la escena anterior y mostrar la siguiente
             escenaActual.visible = false;
@@ -97,28 +98,13 @@ function transicionDesvanecimiento(escenaActual, escenaSiguiente) {
 // Llamar a la función de transición cuando sea necesario
 transicionDesvanecimiento(escena1, escena2);
 </code></pre>
-<p>Con esta implementación básica, puedes lograr transiciones suaves y atractivas entre escenas en tus juegos o aplicaciones desarrolladas con PixiJS. Experimenta con diferentes efectos y técnicas para crear transiciones únicas y emocionantes.</p>
-<ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Jun 10 2025 23:14:06 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.5</li></ul><!--(iaStatus: 0
-iaStatus_Model: ''
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-04-12T03:54:45.959Z
-modified: 2025-06-10T21:14:06.074Z
-supervisado: ''
-ACCION: ''
-ver_major: 0
-ver_minor: 2
-ver_rev: 5
-nav_primary: []
-nav_secondary: []
-tags: []
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>Con esta implementación básica, puedes lograr transiciones suaves y atractivas entre escenas en tus juegos o aplicaciones desarrolladas con PixiJS. Experimenta con diferentes efectos y técnicas para crear transiciones únicas y emocionantes.</p><ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Ultima Modificación: </b>2025-06-10 21:14:06.074000+00:00</li><li><b>Versión Documento: </b>0.2.5</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -51,160 +52,142 @@
 <p>Altorouter es una excelente opción para proyectos de tamaño pequeño a mediano que requieren un sistema de routing simple y eficiente. Es fácil de usar y no requiere de una curva de aprendizaje muy pronunciada. Además, es muy rápido y no depende de ninguna biblioteca externa, lo que lo hace ideal para aplicaciones que necesitan una alta velocidad de respuesta.</p>
 <h3>Ejemplo de Uso</h3>
 <p>Aquí te muestro un ejemplo básico de cómo usar Altorouter para definir rutas y asociarlas con controladores o acciones en tu aplicación PHP:</p>
-<pre><code class="language-php"><?php
+<pre><code class="language-php">&lt;?php
 
-require 'vendor/autoload.php';
+require &#x27;vendor/autoload.php&#x27;;
 
 $router = new AltoRouter();
 
 // Definir una ruta para la página principal
-$router->map('GET', '/', function() {
-    echo 'Bienvenido a mi sitio web!';
+$router-&gt;map(&#x27;GET&#x27;, &#x27;/&#x27;, function() {
+    echo &#x27;Bienvenido a mi sitio web!&#x27;;
 });
 
 // Definir una ruta para la página de contacto
-$router->map('GET', '/contacto', function() {
-    echo 'Ponte en contacto con nosotros en: info@mi-sitio-web.com';
+$router-&gt;map(&#x27;GET&#x27;, &#x27;/contacto&#x27;, function() {
+    echo &#x27;Ponte en contacto con nosotros en: info@mi-sitio-web.com&#x27;;
 });
 
 // Definir una ruta para la página de productos
-$router->map('GET', '/productos/[i:id]', function($id) {
-    echo 'Detalles del producto con ID: ' . $id;
+$router-&gt;map(&#x27;GET&#x27;, &#x27;/productos/[i:id]&#x27;, function($id) {
+    echo &#x27;Detalles del producto con ID: &#x27; . $id;
 });
 
 // Hacer coincidir la ruta con la solicitud actual
-$match = $router->match();
+$match = $router-&gt;match();
 
 // Ejecutar el controlador asociado a la ruta
-if ($match && is_callable($match['target'])) {
-    call_user_func_array($match['target'], $match['params']);
+if ($match &amp;&amp; is_callable($match[&#x27;target&#x27;])) {
+    call_user_func_array($match[&#x27;target&#x27;], $match[&#x27;params&#x27;]);
 } else {
     // Mostrar una página de error 404 si la ruta no se encuentra
-    header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
-    echo 'Error 404: Página no encontrada';
+    header($_SERVER[&quot;SERVER_PROTOCOL&quot;] . &quot; 404 Not Found&quot;);
+    echo &#x27;Error 404: Página no encontrada&#x27;;
 }
 </code></pre>
-<p>En este ejemplo, estamos creando un nuevo objeto de <code class='language-html'>AltoRouter</code> y definiendo tres rutas diferentes:</p>
+<p>En este ejemplo, estamos creando un nuevo objeto de <code>AltoRouter</code> y definiendo tres rutas diferentes:</p>
 <ul>
-<li>La ruta para la página principal del sitio (<code class='language-html'>/</code>), que simplemente muestra un mensaje de bienvenida.</li>
-<li>La ruta para la página de contacto (<code class='language-html'>/contacto</code>), que muestra información de contacto para el sitio web.</li>
-<li>La ruta para la página de detalles del producto (<code class='language-html'>/productos/[i:id]</code>), que utiliza una expresión regular para capturar el ID del producto en la URL.</li>
+<li>La ruta para la página principal del sitio (<code>/</code>), que simplemente muestra un mensaje de bienvenida.</li>
+<li>La ruta para la página de contacto (<code>/contacto</code>), que muestra información de contacto para el sitio web.</li>
+<li>La ruta para la página de detalles del producto (<code>/productos/[i:id]</code>), que utiliza una expresión regular para capturar el ID del producto en la URL.</li>
 </ul>
-<p>Luego, hacemos coincidir la ruta definida con la solicitud actual utilizando el método <code class='language-html'>match()</code> de Altorouter. Si la ruta coincide con la solicitud, ejecutamos el controlador asociado a la ruta y pasamos cualquier parámetro capturado a través de la URL.</p>
+<p>Luego, hacemos coincidir la ruta definida con la solicitud actual utilizando el método <code>match()</code> de Altorouter. Si la ruta coincide con la solicitud, ejecutamos el controlador asociado a la ruta y pasamos cualquier parámetro capturado a través de la URL.</p>
 <p>Si la ruta no se encuentra, mostramos una página de error 404 al usuario.</p>
 <p>Espero que este ejemplo te haya ayudado a comprender mejor cómo funciona Altorouter y cómo puedes usarlo en tus proyectos PHP.</p>
 <h3>Capturar Ruta para sistema de documentos</h3>
 <p>Para capturar una ruta a partir de la raíz del sitio y usarla como ruta de archivo, puedes usar la siguiente configuración en Altorouter:</p>
-<pre><code class="language-php"><?php
+<pre><code class="language-php">&lt;?php
 
-require 'vendor/autoload.php';
+require &#x27;vendor/autoload.php&#x27;;
 
 $router = new AltoRouter();
 
 // Definir una ruta para todas las solicitudes a partir de la raíz
-$router->map('GET', '/[*]', function($path) {
+$router-&gt;map(&#x27;GET&#x27;, &#x27;/[*]&#x27;, function($path) {
     $file = __DIR__ . $path;
     if (is_file($file)) {
         // Si el archivo existe, mostrarlo
         require $file;
     } else {
         // Si el archivo no existe, mostrar una página de error 404
-        header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
-        echo 'Error 404: Página no encontrada';
+        header($_SERVER[&quot;SERVER_PROTOCOL&quot;] . &quot; 404 Not Found&quot;);
+        echo &#x27;Error 404: Página no encontrada&#x27;;
     }
 });
 
 // Hacer coincidir la ruta con la solicitud actual
-$match = $router->match();
+$match = $router-&gt;match();
 
 // Ejecutar el controlador asociado a la ruta
-if ($match && is_callable($match['target'])) {
-    call_user_func_array($match['target'], $match['params']);
+if ($match &amp;&amp; is_callable($match[&#x27;target&#x27;])) {
+    call_user_func_array($match[&#x27;target&#x27;], $match[&#x27;params&#x27;]);
 } else {
     // Mostrar una página de error 404 si la ruta no se encuentra
-    header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
-    echo 'Error 404: Página no encontrada';
+    header($_SERVER[&quot;SERVER_PROTOCOL&quot;] . &quot; 404 Not Found&quot;);
+    echo &#x27;Error 404: Página no encontrada&#x27;;
 }
 
 </code></pre>
-<p>En este ejemplo, estamos definiendo una sola ruta para todas las solicitudes a partir de la raíz del sitio (<code class='language-html'>/[*]</code>). El asterisco <code class='language-html'>*</code> indica que cualquier cosa después de la raíz debe ser capturada y pasada como parámetro <code class='language-html'>$path</code> al controlador asociado con la ruta.</p>
+<p>En este ejemplo, estamos definiendo una sola ruta para todas las solicitudes a partir de la raíz del sitio (<code>/[*]</code>). El asterisco <code>*</code> indica que cualquier cosa después de la raíz debe ser capturada y pasada como parámetro <code>$path</code> al controlador asociado con la ruta.</p>
 <p>Dentro del controlador, estamos comprobando si el archivo correspondiente a la ruta existe en el servidor. Si el archivo existe, lo requerimos y lo mostramos al usuario. De lo contrario, mostramos una página de error 404.</p>
 <p>Es importante tener en cuenta que esta configuración puede presentar ciertos riesgos de seguridad si no se usa correctamente. Asegúrate de verificar siempre que la ruta solicitada es segura y no presenta posibles vulnerabilidades en tu aplicación.</p>
 <h3>Añadiendo seguridad al ejemplo anterior</h3>
 <p>Aquí te muestro un ejemplo de cómo añadir algunas medidas de seguridad adicionales para evitar posibles vulnerabilidades en la configuración de Altorouter que propuse anteriormente:</p>
-<pre><code class="language-php"><?php
+<pre><code class="language-php">&lt;?php
 
-require 'vendor/autoload.php';
+require &#x27;vendor/autoload.php&#x27;;
 
 $router = new AltoRouter();
 
 // Definir una ruta para todas las solicitudes a partir de la raíz
-$router->map('GET', '/[*]', function($path) {
+$router-&gt;map(&#x27;GET&#x27;, &#x27;/[*]&#x27;, function($path) {
     // Eliminar cualquier caracter peligroso en la ruta
-    $path = preg_replace('/[^a-zA-Z0-9\/\-\_\.]/', '', $path);
+    $path = preg_replace(&#x27;/[^a-zA-Z0-9\/\-\_\.]/&#x27;, &#x27;&#x27;, $path);
 
     $file = __DIR__ . $path;
 
     // Verificar que el archivo existe en la ruta esperada
-    if (is_file($file) && strpos(realpath($file), realpath(__DIR__)) === 0) {
+    if (is_file($file) &amp;&amp; strpos(realpath($file), realpath(__DIR__)) === 0) {
         // Si el archivo existe y está en el directorio permitido, mostrarlo
         require $file;
     } else {
         // Si el archivo no existe, mostrar una página de error 404
-        header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
-        echo 'Error 404: Página no encontrada';
+        header($_SERVER[&quot;SERVER_PROTOCOL&quot;] . &quot; 404 Not Found&quot;);
+        echo &#x27;Error 404: Página no encontrada&#x27;;
     }
 });
 
 // Hacer coincidir la ruta con la solicitud actual
-$match = $router->match();
+$match = $router-&gt;match();
 
 // Ejecutar el controlador asociado a la ruta
-if ($match && is_callable($match['target'])) {
-    // Verificar que la ruta no incluya '../' o '..\' para evitar saltos de directorio
-    if (strpos($match['params'][0], '../') === false && strpos($match['params'][0], '..\\') === false) {
-        call_user_func_array($match['target'], $match['params']);
+if ($match &amp;&amp; is_callable($match[&#x27;target&#x27;])) {
+    // Verificar que la ruta no incluya &#x27;../&#x27; o &#x27;..\&#x27; para evitar saltos de directorio
+    if (strpos($match[&#x27;params&#x27;][0], &#x27;../&#x27;) === false &amp;&amp; strpos($match[&#x27;params&#x27;][0], &#x27;..\\&#x27;) === false) {
+        call_user_func_array($match[&#x27;target&#x27;], $match[&#x27;params&#x27;]);
     } else {
         // Si se detecta un salto de directorio, mostrar una página de error 403
-        header($_SERVER["SERVER_PROTOCOL"] . " 403 Forbidden");
-        echo 'Error 403: Acceso no permitido';
+        header($_SERVER[&quot;SERVER_PROTOCOL&quot;] . &quot; 403 Forbidden&quot;);
+        echo &#x27;Error 403: Acceso no permitido&#x27;;
     }
 } else {
     // Mostrar una página de error 404 si la ruta no se encuentra
-    header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
-    echo 'Error 404: Página no encontrada';
+    header($_SERVER[&quot;SERVER_PROTOCOL&quot;] . &quot; 404 Not Found&quot;);
+    echo &#x27;Error 404: Página no encontrada&#x27;;
 }
 
 </code></pre>
 <p>En este ejemplo, hemos agregado algunas medidas de seguridad adicionales para proteger contra posibles vulnerabilidades.</p>
 <p>Primero, hemos utilizado una expresión regular para eliminar cualquier carácter peligroso en la ruta, como caracteres especiales o comandos de shell.</p>
 <p>Luego, hemos agregado una verificación adicional para asegurarnos de que el archivo solicitado realmente existe en la ruta esperada y no en un directorio externo.</p>
-<p>Finalmente, hemos agregado otra verificación para evitar saltos de directorio al verificar que la ruta no incluya <code class='language-html'>../</code> o <code class='language-html'>..\\</code>.</p>
-<p>Estas medidas adicionales ayudarán a prevenir posibles ataques de inyección de código malicioso o de intentos de acceder a archivos fuera del directorio permitido.</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sun Sep 29 2024 16:19:11 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.27</li></ul><!--(iaStatus: 8
-iaStatus_Model: gpt-3.5-turbo
-iaStatus_Generado: I
-iaStatus_Supervisado: H
-iaStatus_Validado: '-'
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-04-06T23:49:00.958Z
-modified: 2024-09-29T14:19:11.645Z
-supervisado: ''
-ACCION: ''
-ver_major: 0
-ver_minor: 2
-ver_rev: 27
-nav_primary: null
-nav_secondary: null
-tags: null
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>Finalmente, hemos agregado otra verificación para evitar saltos de directorio al verificar que la ruta no incluya <code>../</code> o <code>..\\</code>.</p>
+<p>Estas medidas adicionales ayudarán a prevenir posibles ataques de inyección de código malicioso o de intentos de acceder a archivos fuera del directorio permitido.</p><ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2024-09-29 14:19:11.645000+00:00</li><li><b>Versión Documento: </b>0.2.27</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

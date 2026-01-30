@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,68 +40,50 @@
 
     <main>
 <h1>Tu Primer Programa en C</h1>
-<p><a class='internal' href='./aprender-el-lenguaje-c-desde-cero-⚫①.html'>Aprender el Lenguaje C desde Cero ⚫①</a></p>
+<p><a class='internal' href='../publicbrain/aprender-el-lenguaje-c-desde-cero-⚫①.html'>Aprender el Lenguaje C desde Cero ⚫①</a></p>
 <p>Es emocionante comenzar a aprender un nuevo lenguaje de programación como C. Tu primer programa en C es una experiencia emocionante y fundamental. Aquí te guiaré a través de los pasos para crear tu primer programa en C, que generalmente es un programa "Hola Mundo".</p>
 <p>El programa "Hola Mundo" es un programa simple que imprime "Hola Mundo" en la pantalla. Aquí está el código en C:</p>
-<pre><code class="language-c">#include <stdio.h>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 
 int main() {
-    // Imprime "Hola Mundo" en la pantalla
-    printf("Hola Mundo\n");
+    // Imprime &quot;Hola Mundo&quot; en la pantalla
+    printf(&quot;Hola Mundo\n&quot;);
     return 0;
 }
 </code></pre>
 <p>Ahora, desglosemos este código:</p>
 <ol>
 <li>
-<p><code class='language-html'>#include &lt;stdio.h&gt;</code>: Esta línea le dice al compilador que incluya el archivo de encabezado <code class='language-html'>stdio.h</code>, que contiene la definición de la función <code class='language-html'>printf()</code>. La función <code class='language-html'>printf()</code> se utiliza para imprimir texto en la pantalla.</p>
+<p><code>#include &lt;stdio.h&gt;</code>: Esta línea le dice al compilador que incluya el archivo de encabezado <code>stdio.h</code>, que contiene la definición de la función <code>printf()</code>. La función <code>printf()</code> se utiliza para imprimir texto en la pantalla.</p>
 </li>
 <li>
-<p><code class='language-html'>int main() { ... }</code>: Aquí comienza la función principal del programa, <code class='language-html'>main()</code>. Todos los programas en C deben tener una función <code class='language-html'>main()</code>, ya que es el punto de entrada del programa. La función <code class='language-html'>main()</code> devuelve un entero (<code class='language-html'>int</code>), que generalmente se utiliza para indicar si el programa se ejecutó correctamente (0 indica éxito).</p>
+<p><code>int main() { ... }</code>: Aquí comienza la función principal del programa, <code>main()</code>. Todos los programas en C deben tener una función <code>main()</code>, ya que es el punto de entrada del programa. La función <code>main()</code> devuelve un entero (<code>int</code>), que generalmente se utiliza para indicar si el programa se ejecutó correctamente (0 indica éxito).</p>
 </li>
 <li>
-<p><code class='language-html'>{ ... }</code>: Las llaves <code class='language-html'>{}</code> delimitan el bloque de código que forma el cuerpo de la función <code class='language-html'>main()</code>. En este caso, el cuerpo de <code class='language-html'>main()</code> contiene una sola instrucción.</p>
+<p><code>{ ... }</code>: Las llaves <code>{}</code> delimitan el bloque de código que forma el cuerpo de la función <code>main()</code>. En este caso, el cuerpo de <code>main()</code> contiene una sola instrucción.</p>
 </li>
 <li>
-<p><code class='language-html'>printf(&quot;Hola Mundo\n&quot;);</code>: Esta es la instrucción que imprime "Hola Mundo" en la pantalla. La función <code class='language-html'>printf()</code> es una función de salida formateada que imprime texto en la pantalla. El <code class='language-html'>\n</code> al final indica un salto de línea, por lo que después de imprimir "Hola Mundo", el cursor se moverá a la siguiente línea.</p>
+<p><code>printf(&quot;Hola Mundo\n&quot;);</code>: Esta es la instrucción que imprime "Hola Mundo" en la pantalla. La función <code>printf()</code> es una función de salida formateada que imprime texto en la pantalla. El <code>\n</code> al final indica un salto de línea, por lo que después de imprimir "Hola Mundo", el cursor se moverá a la siguiente línea.</p>
 </li>
 <li>
-<p><code class='language-html'>return 0;</code>: Esta línea indica que la función <code class='language-html'>main()</code> ha terminado y devuelve 0, lo que generalmente significa que el programa se ejecutó correctamente.</p>
+<p><code>return 0;</code>: Esta línea indica que la función <code>main()</code> ha terminado y devuelve 0, lo que generalmente significa que el programa se ejecutó correctamente.</p>
 </li>
 </ol>
-<p>Una vez que hayas escrito este código, puedes guardarlo en un archivo con extensión <code class='language-html'>.c</code> (por ejemplo, <code class='language-html'>hola_mundo.c</code>). Luego, puedes compilarlo utilizando un compilador de C, como GCC en sistemas Unix/Linux o MinGW en Windows.</p>
+<p>Una vez que hayas escrito este código, puedes guardarlo en un archivo con extensión <code>.c</code> (por ejemplo, <code>hola_mundo.c</code>). Luego, puedes compilarlo utilizando un compilador de C, como GCC en sistemas Unix/Linux o MinGW en Windows.</p>
 <p>Por ejemplo, si estás en un sistema Unix/Linux, puedes compilarlo desde la línea de comandos escribiendo:</p>
-<pre><code class='language-html'>gcc hola_mundo.c -o hola_mundo
+<pre><code>gcc hola_mundo.c -o hola_mundo
 </code></pre>
-<p>Esto creará un archivo ejecutable llamado <code class='language-html'>hola_mundo</code>. Luego, puedes ejecutar el programa escribiendo:</p>
-<pre><code class='language-html'>./hola_mundo
+<p>Esto creará un archivo ejecutable llamado <code>hola_mundo</code>. Luego, puedes ejecutar el programa escribiendo:</p>
+<pre><code>./hola_mundo
 </code></pre>
 <p>Y deberías ver la salida "Hola Mundo" en la pantalla.</p>
-<p>¡Y eso es! Has escrito y ejecutado tu primer programa en C. A partir de aquí, puedes comenzar a explorar más sobre la sintaxis y las características del lenguaje C para construir programas más complejos y poderosos. ¡Buena suerte en tu viaje de aprendizaje de C!</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Wed Sep 18 2024 22:37:39 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.28</li></ul><!--(iaStatus: 8
-iaStatus_Model: gpt-3.5-turbo
-iaStatus_Generado: I
-iaStatus_Supervisado: H
-iaStatus_Validado: '-'
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-04-06T23:49:00.858Z
-modified: 2024-09-18T20:37:39.822Z
-supervisado: ''
-ACCION: ''
-ver_major: 0
-ver_minor: 2
-ver_rev: 28
-nav_primary: null
-nav_secondary: null
-tags: null
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>¡Y eso es! Has escrito y ejecutado tu primer programa en C. A partir de aquí, puedes comenzar a explorar más sobre la sintaxis y las características del lenguaje C para construir programas más complejos y poderosos. ¡Buena suerte en tu viaje de aprendizaje de C!</p><ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2024-09-18 20:37:39.822000+00:00</li><li><b>Versión Documento: </b>0.2.28</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

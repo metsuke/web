@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,7 +40,7 @@
 
     <main>
 <h1>FFMPEG - Convertir Blueray a Mp4</h1>
-<p><a class='internal' href='../publicbrain/index.html'>PublicBrain/Index</a></p>
+<p><a class='internal' href='../publicbrain/publicbrainindex.html'>PublicBrain/Index</a></p>
 <p>La conversión de un archivo de imagen de Blu-ray (archivo .iso) a un archivo MP4 utilizando FFmpeg puede ser un proceso más complejo que la conversión de un DVD, ya que los Blu-rays a menudo contienen contenido protegido por derechos de autor y su estructura es más compleja. Para realizar esta conversión, debes tener en cuenta los siguientes pasos generales:</p>
 <ol>
 <li>
@@ -53,14 +54,12 @@
 </li>
 <li>
 <p><strong>Convierte el contenido a MP4:</strong> Con el contenido del Blu-ray en una carpeta en tu disco duro, puedes usar FFmpeg para convertirlo a MP4. Debes navegar a la carpeta que contiene los archivos de video y utilizar un comando similar al siguiente:</p>
-<pre><code class="language-sh">ffmpeg -i video.m2ts -c:v libx264 -preset slow -crf 22 -c:a aac -strict experimental -b:a 192k -ac 2 salida.mp4
-</code></pre>
+<p><code>sh   
+ffmpeg -i video.m2ts -c:v libx264 -preset slow -crf 22 -c:a aac -strict experimental -b:a 192k -ac 2 salida.mp4</code></p>
 <ul>
-<li><code class='language-html'>video.m2ts</code> debe reemplazarse con el nombre del archivo de video principal del Blu-ray en la carpeta. Los Blu-rays contienen varios archivos de video en diferentes formatos, así que asegúrate de seleccionar el archivo de video correcto.</li>
+<li><code>video.m2ts</code> debe reemplazarse con el nombre del archivo de video principal del Blu-ray en la carpeta. Los Blu-rays contienen varios archivos de video en diferentes formatos, así que asegúrate de seleccionar el archivo de video correcto.</li>
+<li><strong>Personaliza la conversión:</strong> Puedes personalizar los parámetros de conversión según tus preferencias, como la calidad de video, la resolución, el códec de audio, etc.</li>
 </ul>
-</li>
-<li>
-<p><strong>Personaliza la conversión:</strong> Puedes personalizar los parámetros de conversión según tus preferencias, como la calidad de video, la resolución, el códec de audio, etc.</p>
 </li>
 <li>
 <p><strong>Inicia la conversión:</strong> Ejecuta el comando de conversión en la carpeta que contiene el archivo de video principal del Blu-ray.</p>
@@ -69,31 +68,13 @@
 <p><strong>Obtén el archivo MP4:</strong> Una vez que la conversión esté completa, tendrás un archivo MP4 en la carpeta especificada. Este archivo contendrá el contenido del Blu-ray convertido al formato MP4.</p>
 </li>
 </ol>
-<p>Es importante mencionar que la conversión de discos Blu-ray puede ser un proceso largo y que, en algunos casos, podrías necesitar software adicional para descifrar y extraer el contenido del Blu-ray. Además, ten en cuenta las leyes de derechos de autor y las restricciones regionales al realizar la conversión de discos Blu-ray, ya que puede haber limitaciones legales en algunos casos.</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (null). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Jun 10 2024 17:26:26 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.29</li></ul><!--(iaStatus: 8
-iaStatus_Model: null
-iaStatus_Generado: I
-iaStatus_Supervisado: H
-iaStatus_Validado: '-'
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-04-06T23:48:59.339Z
-modified: 2024-06-10T15:26:26.921Z
-supervisado: ''
-ACCION: ''
-ver_major: 0
-ver_minor: 2
-ver_rev: 29
-nav_primary: null
-nav_secondary: null
-tags: null
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>Es importante mencionar que la conversión de discos Blu-ray puede ser un proceso largo y que, en algunos casos, podrías necesitar software adicional para descifrar y extraer el contenido del Blu-ray. Además, ten en cuenta las leyes de derechos de autor y las restricciones regionales al realizar la conversión de discos Blu-ray, ya que puede haber limitaciones legales en algunos casos.</p><ul><li><b>Información IA: </b>Generado asistido por IA (None). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2024-06-10 15:26:26.921000+00:00</li><li><b>Versión Documento: </b>0.2.29</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

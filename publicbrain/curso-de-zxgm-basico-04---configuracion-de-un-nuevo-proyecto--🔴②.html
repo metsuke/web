@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../npl.html">NPL</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Curso de ZXGM Básico 04 - Configuración de un nuevo proyecto  🔴②</h1>
+<p><img alt="Y los muertos aqui lo pasamos muy bien entre flores de colores"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_d22667726699dac0f871e793462c3d38_MD5.jpg" /></p>
+<ul>
+<li><a class='internal' href='../publicbrain/curso-de-zx-game-maker-⚫①.html'>Curso de ZX Game Maker ⚫①</a></li>
+<li><a class='internal' href='../publicbrain/curso-de-zxgm-basico-03---explorando-la-estructura-general-del-motor-🟡③.html'><< Anterior</a> | <a class='internal' href='../publicbrain/curso-de-zxgm-basico-05---calibrando-funcionalidad-y-memoria-para-nuestro-juego-🔴②.html'>Siguiente >></a></li>
+</ul>
+<blockquote>
+<p>Nota importante, el proyecto se encuentra en una fase de transicion entre la anteriormente consoldidada y la que está a punto de salir, trataré de mantener esto ajustado, pero podria haber desajustes. Para detalles lo mas actualizados posibles, consulta la documentación oficial del proyecto.</p>
+</blockquote>
+<p>En este cuarto capítulo del curso básico de ZX Game Maker (ZXGM), aprenderás a configurar un nuevo proyecto desde "cero" (el motor está ideado para que partas de una plantilla mínima), siguiendo un enfoque estructurado y gradual, como un escultor tallando una obra a partir de una piedra en bruto. </p>
+<p>Usaremos como ejemplo el desarrollo de <a class='internal' href='../publicbrain/mos-games---cursed-zapatilla---la-excentrica-cruzada-de-sir-patillas-en-desarrollo-desde-2025---release-previsto-2026.html'>Cursed Zapatilla: La Excéntrica Cruzada de Sir Patillas</a>, un juego de plataformas inspirado en <em>Ghosts 'n Goblins</em>, <em>Ghouls 'n Ghosts</em> y <em>Cursed Castilla</em>. </p>
+<p>Este juego forma parte de un pack de juegos que usare para todos los cursos de Makers y creacion de juegos, de forma que - en la medida de lo posible - habra, al menos, tantas versiones del juego como motores y modos graficos soporten aquellos para los que hagamos cursos. Pretendo con ello fomentar la idea de explorar Y de la necesidad de aumentar el nivel de calidad de las producciones, una vez creada tu opera prima.</p>
+<p>Este capítulo se centra en crear la estructura inicial del proyecto y configurar parámetros básicos en Tiled, sin modificar aún los recursos gráficos, pantallas, sonidos o músicas. En cada capítulo posterior, iremos cincelando el proyecto hasta transformarlo en nuestro juego final.</p>
+<p>El proceso consiste en tomar una plantilla de ejemplo que viene por defecto en assets (o en su caso una de la carpeta examples), renombrar la carpeta de ZX Game Maker para reflejar nuestro juego (usando guiones en lugar de espacios para evitar problemas con los nombres) y ajustar parámetros específicos en Tiled para alinearlos con las necesidades de <em>Cursed Zapatilla</em>. </p>
+<p>Este tutorial está diseñado para principiantes, asumiendo que tienes el entorno configurado según <a class='internal' href='../publicbrain/curso-de-zxgm-basico-02---descarga-e-instalacion-del-software-🟡③.html'>el Capítulo Básico 02</a> y conoces <a class='internal' href='../publicbrain/curso-de-zxgm-basico-03---explorando-la-estructura-general-del-motor-🟡③.html'>la estructura del motor del Capítulo Básico 03</a>.</p>
+<p>Al final, tendrás un proyecto base listo para iterar en los siguientes capítulos.</p>
+<h2>Requisitos previos</h2>
+<p>Antes de comenzar, verifica lo siguiente (basado en el <em>Capítulo Básico 02</em>):</p>
+<ul>
+<li>ZXGM instalado con dependencias (Python, Tiled versión 1.11.2 o superior, ZX Paintbrush).</li>
+<li>Scripts de instalación ejecutados (install.windows.bat o install.sh).</li>
+<li>Carpeta principal de ZXGM organizada con subcarpetas assets, src y examples. </li>
+<li>Conocimiento de la estructura: assets para mapas y gráficos, src para dependencias como Boriel Basic y GuSprites (no modificar), examples para plantillas adicionales.</li>
+<li>Emulador de ZX Spectrum (como Zesarux o Fuse) de tu elección para pruebas.   </li>
+<li>Acceso a la documentación oficial de ZXGM cuyos enlaces puedes ver en las referencias bibliogrçaficas al final del capítulo.</li>
+</ul>
+<p>Si algo no está listo, revisa la sección de solución de problemas del <em>Capítulo Básico 02</em>.</p>
+<h2>Paso 1: Renombrar la carpeta de zxgm</h2>
+<p>Este paso, aunque no es obligatorio, es altamente recomendable, debemos tomar la carpeta donde hemos instalado el motor (habitualmente zx-game-maker) y renombrarla con el nombre de nuestro juego, en nuestro caso he usado "cursed-zapatilla-zxgm".</p>
+<blockquote>
+<p>Es una buena práctica no poner espacios en el nombre, para evitar problemas derivados de espacios dentro de las rutas, en su lugar recomiendo el uso de guiones.</p>
+</blockquote>
+<h2>Paso 2: Seleccionar la plantilla base o usar la de assets</h2>
+<p>Por defecto, el motor contiene un juego demo en assets (que es donde estarán los datos de nuestro juego), por defecto usaremos este.</p>
+<p>No obstante en examples hay mas plantillas que puedes usar cambiando los ficheros:</p>
+<ul>
+<li>arcade .- Ejemplo de juego en modo arcade (por pantallas a lo Snow Bros)</li>
+<li>overhead-view .- Ejemplo con vista cenital, al estilo Zelda</li>
+<li>platforms ,. Es el juego que por defecto viene en assets de estilo plataformas.</li>
+</ul>
+<p>Si quieres cambiar de plantilla, copia el contenido de la carpeta de la que quieras, y copialo dentro de assets, sobreescribiendo ficheros.</p>
+<p>Una vez elegida la plantilla, vamos a lanzar el GUI.</p>
+<h2>Paso 3: Lanzar ZX Game Maker</h2>
+<ol>
+<li>
+<p>Abre una terminal o línea de comandos y navega a la carpeta principal de ZXGM (e.g., cd /ruta/a/zx-game-maker).</p>
+</li>
+<li>
+<p>Ejecuta el launcher con:</p>
+</li>
+</ol>
+<pre><code class="language-bash">python zxsgm.py
+</code></pre>
+<pre><code>Esto abre la interfaz de ZXGM (pantalla oscura o clara, según configuración). Si aparece un error, verifica que Python esté en el PATH y usa python3 en Linux/macOS si es necesario.
+</code></pre>
+<ol>
+<li>Prueba a ejecutar Build / Game en el menú para asegurarte de que partimos de una plantilla funcional.</li>
+</ol>
+<h2>Paso 4: Configuración inicial en Tiled</h2>
+<p>En este capítulo, nos enfocamos en ajustar parámetros en Tiled (lugar donde se realizan casi todas las configuraciones de nuestro juego) para alinear el proyecto con <em>Cursed Zapatilla</em>. </p>
+<p>Usaremos el archivo maps.tiled-project de la plantilla copiada, sin modificar gráficos aún.</p>
+<ol>
+<li>
+<p>Abre el Mapa de la plantilla en el menu Map / Open Map</p>
+</li>
+<li>
+<p>En tiled, despliega "Maps" y haz doble click sobre el mapa para abrir el interfaz</p>
+</li>
+<li>
+<p>Te aparecerá algo similar a esto (calma, parece mucho, pero iremos paso a paso, capitulo a capitulo):</p>
+</li>
+</ol>
+<p><img alt="Tiled con el mapa de la plantilla cargado"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_c5741151ecbfb386b36b70c866f78322_MD5.jpeg" /></p>
+<h2>Paso 5: Configuración de los parámetros</h2>
+<p>Vamos a comenzar con la chicha, en este punto, vamos a confgigurar los parámetros que permiten generar una jugabilidad específica para nuestra obra. Aunque exploraremos todos los parámetros, centraremos el foco en crear nuestro juego plataformero, ya habrá tiempo, una vez completado el ciclo base, de crear monográficos para cada uno de los juegos que queremos crear.</p>
+<p>Organizaremos los parámetros de forma progresiva y por bloques de forma que el proceso de pensamiento creativo sea el que guie nuestros pasos en una dirección precisa. </p>
+<p>Los parmetros se pueden ver en Mapa > Propiedades Personalizadas o Map > Map Properties dependiendo del idioma actual en Tiled:</p>
+<blockquote>
+<p>WIP Organizando y definiendo estructura de los nuevos parámetros, así como su funcionamiento con base en la nueva información disponible en la documentación.</p>
+</blockquote>
+<h3>Parámetros Generales</h3>
+<p>Lo primero, logicamente, es identificar nuestro juego, y el target al que va dirigido!</p>
+<h4><strong>gameName</strong></h4>
+<p>Establece el nombre del juego</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>gameName</code> <code>&lt;nombre_del_juego&gt;</code></li>
+<li><strong>Notas:</strong> Aparecerá en el título loading cuando carga y el tap se generará con este nombre. 10 carácteres como máximo sin carácteres especiales (acentos, ñ…)</li>
+<li><strong>Para Cursed Zapatilla</strong>: Usaremos "CursedZapa" como identificador.</li>
+</ul>
+<h4><strong>128Kenabled</strong></h4>
+<p>Establece si el modo 128K está activo.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>128Kenabled</code> ( activado / desactivado )</li>
+<li><strong>Notas:</strong> En modo 128k, se permite acceso a bancos de memoria adicionales para características avanzadas y, por tanto, el juego no funcionará en 48K</li>
+<li><strong>Para Cursed Zapatilla</strong>: Marcaremos la opción para que genere el .tap para 128K, en 48K no funcionará.</li>
+</ul>
+<h3>Parámetros Estructurales</h3>
+<p>En este punto tomaremos decisiones en torno al mundo en el que nuestro personaje desarrollará su "vida":</p>
+<h4><strong>gameView</strong></h4>
+<p>Define el tipo de juego a desarrollar según la perspectiva.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>gameView</code> (side | overhead)</li>
+<li><strong>Notas:</strong> Establece la vista del juego: "side" para un juego de plataformas lateral (ideal para <em>Cursed Zapatilla</em>, inspirado en plataformas como <em>Ghosts 'n Goblins</em>), y "overhead" para un juego de vista cenital, como un laberinto o estrategia. La elección afecta el diseño del mapa en Tiled y la lógica de movimiento en ZXGM.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Usaremos gameView = side para un desplazamiento lateral en nuestro florido cementerio.</li>
+</ul>
+<h4><strong>arcadeMode</strong></h4>
+<p>Establece si el juego se comportará en modo arcade.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>arcadeMode</code> (activado | desactivado)</li>
+<li><strong>Notas:</strong> Si esta propiedad está activada, el juego adopta un estilo arcade clásico, en el que hay que pasarse cada pantalla y vamos avanzando por niveles (como en Snow Bross por ejemplo). Puedes <a href="https://gm.retrojuegos.org/mydoc_tiled_arcade_mode.html">ver este comportamiento arcade aquí 🌐🟡③</a>. </li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos arcadeMode = desactivado, ya que queremos un mapeado continuo, a falta de un sistema de fases multipantalla, tendremos uno con el mapa completo.</li>
+</ul>
+<h4><strong>password</strong></h4>
+<p>Establece un password que se pedirá al iniciar el juego.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>password &lt;contraseña_de_8_caracteres&gt;</code></li>
+<li><strong>Notas:</strong> Útil para juegos con múltiples cargas, en caso de configurarla se te pedirá la contraseña para poder jugar. La contraseña debe tener exactamente 8 caracteres alfanuméricos y no debe incluir caracteres no ingleses (e.g., ñ, acentos). </li>
+<li><strong>Para Cursed Zapatilla:</strong> Lo dejaremos vacio ya que no requerimos esta funcionalidad.</li>
+</ul>
+<h3>Parámetros de Juego</h3>
+<p>Centremos nuestra atencion ahora en algunos aspectos generales del juego:</p>
+<h4><strong>goalItems</strong></h4>
+<p>Número de items necesarios para finalizar el juego.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>goalItems &lt;número_de_items&gt;</code></li>
+<li><strong>Notas:</strong> Define la cantidad de objetos (e.g., flores brillantes o llaves) que el jugador debe recolectar para completar <em>Cursed Zapatilla</em>. Este valor influye en la lógica del juego y debe ser un número entero positivo. </li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos goalItems = 66 para un nivel inicial con cinco items en el cementerio, si mas adelante lo necesitaremos, ajustaremos este número.</li>
+</ul>
+<h4><strong>hiScore</strong></h4>
+<p>Habilita la puntuación in-game y el guardado de la misma para que aparezca en la pantalla de menú.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>hiScore</code> (activado | desactivado)</li>
+<li><strong>Notas:</strong> Activa un sistema de puntuación que se muestra durante el juego y se guarda para exhibirse en la pantalla de menú, emulando el estilo arcade de <em>Ghosts 'n Goblins</em>. Requiere espacio adicional en memoria (recomendado modo 128k para estabilidad). Si está desactivado, no se registrará la puntuación.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos hiScore = activado para incentivar la rejugabilidad asociada al reto extra.</li>
+</ul>
+<h4><strong>idleTime</strong></h4>
+<p>Setea el tiempo a esperar a que el personaje haga la animación idle. Si está a 0 no se activará.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>idleTime &lt;segundos&gt;</code></li>
+<li><strong>Notas:</strong> Establece el intervalo (en segundos) tras el cual Sir Patillas realiza una animación idle (e.g., ajustarse el casco) si no hay input. Un valor de 0 desactiva esta función para optimizar recursos en el ZX Spectrum. Valores típicos: 2-5 segundos.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos idleTime = 10 para una animación idle tras 10 segundos de inactividad.</li>
+</ul>
+<h4><strong>livesMode</strong></h4>
+<p>Habilitado tu personaje morirá cada vez que reciba daño perdiendo 1 vida y volviendo al punto donde entró de la pantalla actual. A su vez sólo ganará 1 vida con los items <strong>life</strong>.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>livesMode</code> (disabled | instant respawn | show graveyard)</li>
+<li><strong>Notas:</strong> Activa un sistema de vidas clásico donde Sir Patillas pierde una vida por daño y reaparece en el inicio de la pantalla, con ganancia limitada a 1 vida por item <strong>life</strong>. <a href="https://gm.retrojuegos.org/mydoc_tiled_lives_mode.html">Puedes ver este comportamiento del modo  vidas aquí 🌐🟡③</a>. </li>
+<li><strong>Para Cursed Zapatilla:</strong> Ideal para un estilo arcade en <em>Cursed Zapatilla</em>. Configuraremos <code>livesMode = show graveyard</code> para replicar la dificultad de <em>Ghosts 'n Goblins</em>, y mostrar la tumbita que no deja de tener su guasa en el contexto este juego.</li>
+</ul>
+<h4><strong>initialLife</strong></h4>
+<p>Cantidad de vida inicial del personaje.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>initialLife &lt;cantidad_de_vida&gt;</code></li>
+<li><strong>Notas:</strong> Define la vida inicial de Sir Patillas en <em>Cursed Zapatilla</em>, representada como un número entero (e.g., 3 vidas o 100 puntos de energía). </li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos initialLife = 5 para cinco vidas iniciales, al estilo de los clásicos arcade, adaptados a los nuevos tiempos.</li>
+</ul>
+<h4><strong>lifeAmount</strong></h4>
+<p>Cantidad de vida que incrementa al personaje los items <strong>life</strong>.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>lifeAmount</code> <code>&lt;cantidad_de_vida&gt;</code></li>
+<li><strong>Notas:</strong> Define la cantidad de vida que se suma a Sir Patillas al recoger items <strong>life</strong> en <em>Cursed Zapatilla</em>. Debe ser un número entero positivo. </li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos <code>lifeAmount = 1</code> para que cada item <strong>life</strong> restaure 1 vida.</li>
+</ul>
+<h4><strong>shooting</strong></h4>
+<p>Con esto habilitamos o deshabilitamos el disparo del personaje.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>shooting</code> (activado | desactivado)</li>
+<li><strong>Notas:</strong> Habilita o deshabilita la capacidad de Sir Patillas para disparar proyectiles (e.g., zapatillazos a distancia). Desactivado optimiza recursos en el ZX Spectrum; activado requiere configuración de <code>ammo</code> y <code>bulletDistance</code>.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos <code>shooting = activado</code> para añadir ataques a distancia.</li>
+</ul>
+<h4><strong>ammo</strong></h4>
+<p>Cantidad de munición con la que empezará el personaje principal. Si seteas -1 el personaje tendrá munición infinita.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>ammo</code> <code>&lt;cantidad_de_munición&gt;</code></li>
+<li><strong>Notas:</strong> Establece la munición inicial de Sir Patillas para ataques a distancia (e.g., zapatillazos proyectados). Un valor de -1 otorga munición infinita, útil para pruebas; valores positivos (e.g., 10-50) limitan los disparos en modo 48k.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos <code>ammo = -1</code> ya que uno de los atractivos de este estilo de juegos es moverse y disparar sin parar un instante.</li>
+</ul>
+<h4><strong>ammoIncrement</strong></h4>
+<p>Cantidad de munición que se recarga cada vez que el protagonista recoja un item de recarga de munición.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>ammoIncrement</code> <code>&lt;cantidad_de_munición&gt;</code></li>
+<li><strong>Notas:</strong> Define cuánta munición se añade al recoger un item de recarga en <em>Cursed Zapatilla</em>. Debe ser un número entero positivo.</li>
+<li><strong>Para Cursed Zapatilla:</strong> No configuraremos `ammoIncrement porque el estilo de juego pide dis... zapatillas infinitas.</li>
+</ul>
+<h4><strong>bulletDistance</strong></h4>
+<p>Distancia que queramos que recorra la bala. El valor 0 se traduce como distancia infinita, la bala no parará hasta que choque con algún obstáculo. Si seteamos una distancia corta como de 2, da el efecto de que el personaje ataca con el arma a corta distancia como una espada.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>bulletDistance</code> <code>&lt;distancia&gt;</code></li>
+<li><strong>Notas:</strong> Controla la distancia de los proyectiles disparados por Sir Patillas. Un valor de 0 permite trayectorias infinitas (hasta colisión); valores bajos (e.g., 2) simulan ataques cuerpo a cuerpo, como un zapatillazo de corto alcance en <em>Cursed Zapatilla</em>.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos <code>bulletDistance = 0</code> para un efecto de ataque Cocodrilo Dundee profesional con zapatillas voladoras.</li>
+</ul>
+<h3>Parámetros de Interacción</h3>
+<p>Una vez llegados a este punto, configuraresmos las interacciones con enemigos y otros elementos del escenario:</p>
+<h4><strong>enemiesRespawn</strong></h4>
+<p>Indica si los enemigos (no invencibles) reaparecen después de ser eliminados al volver a entrar en la habitación.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>enemiesRespawn &lt;verdadero/falso&gt;</code></li>
+<li><strong>Notas:</strong> Configura si los enemigos vuelven a generarse. <ul>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos enemiesRespawn a false para evitar repeticiones innecesarias y enfocarnos en un avance lineal.</li>
+</ul>
+</li>
+</ul>
+<h4><strong>damageAmount</strong></h4>
+<p>Cantidad de daño que los enemigos infligen al personaje.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>damageAmount &lt;cantidad_de_daño&gt;</code></li>
+<li><strong>Notas:</strong> Define la cantidad de daño que los enemigos causan al personaje al tocarlo. Debe ser un número entero positivo.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos damageAmount a 1 dado que activamos el modo de vidas.</li>
+</ul>
+<h4><strong>killJumpingOnTop</strong></h4>
+<p>Habilita la capacidad de matar enemigos saltando sobre ellos (solo en juegos de plataformas).</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>killJumpingOnTop &lt;verdadero/falso&gt;</code></li>
+<li><strong>Notas:</strong> Activa la mecánica de eliminar enemigos al saltar encima, típica de plataformas.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos killJumpingOnTop a true para añadir una mecánica divertida de zapatillazos desde arriba usando nuestras poderosas pantuflas  de combate.</li>
+</ul>
+<h4><strong>jetPackFuel</strong></h4>
+<p>Cantidad de combustible disponible para el jetPack; si es distinto de 0, el personaje usará el jetPack en lugar de saltar.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>jetPackFuel &lt;cantidad_de_combustible&gt;</code></li>
+<li><strong>Notas:</strong> Define la cantidad de combustible para el jetPack. Debe ser un número entero no negativo; 0 desactiva el jetPack.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos jetPackFuel a 0, ya que Sir Patillas dependerá de saltos tradicionales y zapatillescos.</li>
+</ul>
+<h4><strong>jumpType</strong></h4>
+<p>Tipo de salto del personaje, con opciones de movimiento constante o acelerado.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>jumpType &lt;constant/accelerated&gt;</code></li>
+<li><strong>Notas:</strong> constant usa una velocidad constante hacia arriba y abajo (estilo original del motor); accelerated aplica deceleración al subir y aceleración al bajar.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos jumpType a constant para mantener un control clásico al estilo <em>Ghosts 'n Goblins</em>.</li>
+</ul>
+<h4><strong>shouldKillEnemies</strong></h4>
+<p>Requiere eliminar a todos los enemigos en una habitación antes de poder salir de ella.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>shouldKillEnemies &lt;verdadero/falso&gt;</code></li>
+<li><strong>Notas:</strong> Si está activado, la salida queda bloqueada hasta que se eliminen todos los enemigos.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos shouldKillEnemies a true para añadir un desafío extra al estilo arcade, compensando las limitaciones de extensión del mapeado debido a las limitaciones de memoria en ZX Spectrum.</li>
+</ul>
+<h4><strong>keysEnabled</strong></h4>
+<p>Habilita o deshabilita el uso de llaves y puertas que requieren llaves.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>keysEnabled &lt;verdadero/falso&gt;</code></li>
+<li><strong>Notas:</strong> Si está deshabilitado, las llaves y puertas asociadas no funcionarán en el juego.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos keysEnabled a true, ya que aunque el juego prioriza acción directa, en este estilo de juego hay puertas en puntos estratégicos.</li>
+</ul>
+<h4><strong>laddersEnabled</strong></h4>
+<p>Habilita la funcionalidad de escaleras cuando se establece en true, permitiendo a los jugadores interactuar y subir por ellas.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>keysEnabled &lt;verdadero/falso&gt;</code></li>
+<li><strong>Notas:</strong> Si está deshabilitado, podremos dibujar escaleras, pero no funcionarán como tales</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos keysEnabled a true, ¡claro que queremos escaleras en este tipo de juegos!.</li>
+</ul>
+<h4><strong>messagesEnabled</strong></h4>
+<p>Activa la visualización de mensajes de ayuda al entrar en contacto con items, puertas u otros elementos.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>messagesEnabled &lt;verdadero/falso&gt;</code></li>
+<li><strong>Notas:</strong> Muestra instrucciones o pistas cuando el personaje interactúa con objetos específicos.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos messagesEnabled a true para guiar a los jugadores en su primera experiencia y, aprovechando la reciente posibilidad de editar y traducir textos, añadir algún que otro guiño.</li>
+</ul>
+<h4><strong>useBreakableTile</strong></h4>
+<p>Habilita la posibilidad de usar tiles rompibles, con opciones de comportamiento.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>useBreakableTile &lt;disabled/all/individual&gt;</code></li>
+<li><strong>Notas:</strong><ul>
+<li>disabled: No hay tiles rompibles.</li>
+<li>all: Todos los tiles rompibles de la habitación se destruyen al romper uno.</li>
+<li>individual: Cada tile se rompe de forma independiente.</li>
+<li>El tile rompible debe estar definido en la posición 63 del tileset.</li>
+</ul>
+</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos useBreakableTile a individual para permitir romper lápidas en el cementerio de forma estratégica.</li>
+</ul>
+<h3>Parámetros del HUD</h3>
+<p>Parámetros que afectan al HUD, la tipica zona de marcadores de que dispondremos en el juego.</p>
+<h4><strong>itemsEnabled</strong></h4>
+<p>Si no está habilitado no se mostrará el marcador de items.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>itemsEnabled</code> <code>&lt;verdadero/falso&gt;</code></li>
+<li><strong>Notas:</strong> Controla la visibilidad del marcador de items. Si está deshabilitado, no se mostrará en el juego.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos <code>itemsEnabled</code> a <code>verdadero</code> para mostrar el progreso del jugador en la recolección de items.</li>
+</ul>
+<h4><strong>itemsCountdown</strong></h4>
+<p>El marcador de items mostrará el número total de items que tiene que conseguir el jugador al principio del juego e irá descendiendo para que veas los items que te quedan por recoger.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>itemsCountdown &lt;verdadero/falso&gt;</code></li>
+<li><strong>Notas:</strong> Define la cantidad inicial de items que el jugador debe recoger, disminuyendo a medida que los recoge. Si está desactivado mostrara los items que llevamos recogidos hasta el momento.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos <code>itemsCountdown</code> como verdadero para fomentar la exploración si no encontramos alguno de los requeridos para completar el juego.</li>
+</ul>
+<h3>Parámetros Gráficos</h3>
+<p>Estos parámetros nos permiten establecer diferentes elementos que afectan directamente al aspecto visual de nuestro juego:</p>
+<h4><strong>backgroundAttribute</strong></h4>
+<p>Color de fondo del juego en decimal en forma de atributos de Spectrum (<code>128*FLASH + 64*BRIGHT + 8*PAPER + INK</code>). Si no se define este atributo se pintará fondo negro sprites blancos. Si no acabas de tener claro como se calcula, <a href="https://gm.retrojuegos.org/mydoc_tiled_general_configuration.html">puedes usar la calculadora siguiente 🌐🟡③</a></p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>backgroundAttribute</code> <code>&lt;valor_decimal&gt;</code></li>
+<li><strong>Notas:</strong> Establece el color de fondo y sprites usando atributos ZX Spectrum.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos <code>backgroundAttribute</code> a 71 (fondo negro, tinta blanca, brillo activado) para un fondo negro clásico con sprites blancos brillantes, acorde al estilo del juego.</li>
+</ul>
+<h4><strong>border</strong></h4>
+<p>Color del borde in game. Muy útil cuando se cambia el color de fondo del juego y del hud.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>border</code> <code>&lt;color&gt;</code></li>
+<li><strong>Notas:</strong> Debe ser un color valido 0..15</li>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos <code>border</code> a <code>black (0)</code> para dar continuidad a la pantalla.</li>
+</ul>
+<h4><strong>borderColorItem</strong></h4>
+<p>Color del borde in game en el efectp que se produce al recoger un objeto.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>border</code> <code>&lt;color&gt;</code></li>
+<li><strong>Notas:</strong> Debe ser un color valido 0..15</li>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos <code>border</code> a <code>morado (3)</code> para dar continuidad a la idea de recoger flores de colores pero en estre caso menos intenso para reforzar la idea de que estamos en un cementerio (ya hacen suficiente el resto de colores por la intensidad).</li>
+</ul>
+<h4><strong>borderColorKey</strong></h4>
+<p>Color del borde in game en el efectp que se produce al recoger una llave.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>border</code> <code>&lt;color&gt;</code></li>
+<li><strong>Notas:</strong> Debe ser un color valido 0..15</li>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos <code>border</code> a <code>amarillo intenso (14)</code> para dar continuidad a la idea las llaves doradas tipicas de este tipo de juegos.</li>
+</ul>
+<h4><strong>borderColorLife</strong></h4>
+<p>Color del borde in game en el efectp que se produce al recoger un objeto que permite recuiperar vida.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>border</code> <code>&lt;color&gt;</code></li>
+<li><strong>Notas:</strong> Debe ser un color valido 0..15</li>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos <code>border</code> a <code>rojo intenso (10)</code> para dar continuidad a la asociación vida=sangre</li>
+</ul>
+<h4><strong>paper</strong></h4>
+<p>Color del papel in game. Muy útil cuando se cambia el color de fondo del juego y del hud.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>paper</code> <code>&lt;color&gt;</code></li>
+<li><strong>Notas:</strong> Define el color de fondo del juego y HUD. Debe ser un valor de color válido.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos <code>paper</code> a <code>0</code> para un ambiente gótico nocturno, potenciando el contraste con las flores de colores.</li>
+</ul>
+<h4><strong>ink</strong></h4>
+<p>Color de la tinta in game. Muy útil cuando se cambia el color de fondo del juego y del hud.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>ink</code> <code>&lt;color&gt;</code></li>
+<li><strong>Notas:</strong> Establece el color de la tinta (texto o sprites) en el juego. Ideal para contraste; debe ser un valor de color válido.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos <code>ink</code> a <code>white</code> (7) para que los elementos sean visibles sobre fondos oscuros.</li>
+</ul>
+<h4><strong>mainCharacterExtraFrame</strong></h4>
+<p>Si está habilitado, la animación del personaje usará el frame extra (haciendo total de 3 en movimiento a derecha e izquierda)</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>mainCharacterExtraFrame</code> <code>&lt;verdadero/falso&gt;</code></li>
+<li><strong>Notas:</strong> Activa un frame adicional que debe configurarse en el tile XX del tileset.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos <code>mainCharacterExtraFrame</code> a <code>true</code> para enriquecer las animaciones.</li>
+</ul>
+<h3>Parámetros Sonoros</h3>
+<p>Los parametros relacionados con, sobre todo la música, tomemos algunas decisiones iniciales ya afinamos mas adelante:</p>
+<h4><strong>musicEnabled</strong></h4>
+<p>Para habilitar o deshabilitar la música AY. Si se habilita la música el juego resultante sólo funcionará en 128K, para hacer una versión 48K tendrás que desmarcar guardar y volver a compilar.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>musicEnabled</code> <code>&lt;verdadero/falso&gt;</code></li>
+<li><strong>Notas:</strong> Activa o desactiva la música AY.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos <code>musicEnabled</code> a <code>true</code> para una banda sonora rica, apuntando a la versión 128K. NdA: Tenia entendido que si pones musica AY y ejecutas en 48 el juego sigue funcionando pero sin musica, tengo que probar este particular.</li>
+</ul>
+<h4><strong>newBeeperPlayer</strong></h4>
+<p>Para utilizar en nuevo reproductor de beeper mejorado para que el juego se pare mucho menos mientras suena debes activar esta opción. IMPORTANTE: Si quieres aprovechar las bondades de este nuevo player debes hacer los sonidos como se indica en <a href="https://gm.retrojuegos.org/mydoc_sound_fx.html">la sección de FX del manual 🌐🟡③</a>.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>newBeeperPlayer</code> <code>&lt;verdadero/falso&gt;</code></li>
+<li><strong>Notas:</strong> Habilita o deshabilita un reproductor de beeper mejorado en nuestro juego para reducir interrupciones. Requiere seguir las guías de FX del manual para optimizar sonidos.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos <code>newBeeperPlayer</code> a <code>true</code> y ajustaremos los FX según el manual para un rendimiento óptimo.</li>
+</ul>
+<h3>Parámetros de Rendimiento</h3>
+<p>Algunos parametros que nos permiten configurar algunos parametros sobre elementos que permitirán graduar la velocidad de nuestro juego.</p>
+<h4><strong>animatePeriodEnemy</strong></h4>
+<p>Número más alto, animación de los enemigos más lenta.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>animatePeriodEnemy</code> <code>&lt;número_de_periodo&gt;</code></li>
+<li><strong>Notas:</strong> Define la velocidad de animación de los enemigos. Un valor más alto ralentiza la animación; debe ser un número entero positivo.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos <code>animatePeriodEnemy</code> a 5 para dar un movimiento más pausado a zombis y esqueletos, y afinaremos desde ahí.</li>
+</ul>
+<h4><strong>animatePeriodMain</strong></h4>
+<p>Número más alto, animación del personaje principal más lenta.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>animatePeriodMain</code> <code>&lt;número_de_periodo&gt;</code></li>
+<li><strong>Notas:</strong> Establece la velocidad de animación de Sir Patillas en <em>Cursed Zapatilla</em>. Un valor más alto reduce la velocidad; debe ser un número entero positivo.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos <code>animatePeriodMain</code> a 3 para un movimiento fluido pero controlado.</li>
+</ul>
+<h4><strong>animatePeriodTile</strong></h4>
+<p>Número más alto, animación de los tiles más lenta.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>animatePeriodTile</code> <code>&lt;número_de_periodo&gt;</code></li>
+<li><strong>Notas:</strong> Controla la velocidad de animación de los tiles animados. Un valor más alto la ralentiza; debe ser un número entero positivo.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos <code>animatePeriodTile</code> a 10 para un efecto sutil en el cementerio.</li>
+</ul>
+<h4><strong>maxAnimatedTilesPerScreen</strong></h4>
+<p>Máximo de tiles animados por pantalla (10 máximo). Si utilizas menos pon un valor más bajo para ahorrar espacio.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>maxAnimatedTilesPerScreen</code> <code>&lt;número_de_tiles&gt;</code></li>
+<li><strong>Notas:</strong> Define el número máximo de tiles animados. El valor máximo es 10.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos `maxAnimatedTilesPerScreen a 20. Aunque el maximo oficial sea 10, en un intento de añadir animacion a cambio de velocidad de animacion de personaje princial y enemigos. Ajustaremos si es neceario (Y si el motor no nos reconfigura el numero XD)</li>
+</ul>
+<h4><strong>maxEnemiesPerScreen</strong></h4>
+<p>Se puede configurar la cantidad de enemigos que aparecen en pantalla (hasta 5). Evitar poner más de los que se usan para optimizar espacio.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>maxEnemiesPerScreen</code> <code>&lt;número_de_enemigos&gt;</code></li>
+<li><strong>Notas:</strong> Establece el número máximo de enemigos (e.g., zombis, esqueletos) por pantalla en <em>Cursed Zapatilla</em>. El límite es 5; usar menos mejora la optimización.<ul>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos <code>maxEnemiesPerScreen</code> a 7 para un desafío Interesante diseñando el escenario para minimizar el impacto de las "hordas" de enemigos.</li>
+</ul>
+</li>
+</ul>
+<h3>Parámetros Extra</h3>
+<p>Esos pequeños detalles que están, son necesarios pero no encajan perfectamente en el resto de categorías.</p>
+<h4><strong>redefineKeysEnabled</strong></h4>
+<p>Habilita la opción de redefinir teclas.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>redefineKeysEnabled</code> <code>&lt;verdadero/falso&gt;</code></li>
+<li><strong>Notas:</strong> Activa la posibilidad de reasignar teclas en nuestro juego para personalizar los controles.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Configuraremos <code>redefineKeysEnabled</code> a <code>true</code> para ofrecer flexibilidad a los jugadores y sobre todo accesibilidad.</li>
+</ul>
+<h4><strong>waitPressKeyAfterLoad</strong></h4>
+<p>Si habilitas esta opción, tras la carga el juego esperará que pulses una tecla para mostrar el menú.</p>
+<ul>
+<li><strong>Sintaxis:</strong> <code>waitPressKeyAfterLoad</code> <code>&lt;verdadero/falso&gt;</code></li>
+<li><strong>Notas:</strong> Hace que nuestro juego espere una pulsación de tecla tras cargar para mostrar el menú, mejorando la experiencia inicial.</li>
+<li><strong>Para Cursed Zapatilla:</strong> Estableceremos <code>waitPressKeyAfterLoad</code> a <code>true</code> para un inicio controlado y dramático.</li>
+</ul>
+<h2>Paso 4: Verificación del proyecto</h2>
+<ol>
+<li>
+<p><strong>Prueba inicial en ZXGM</strong>:</p>
+<ul>
+<li>
+<p>Asegurate de guardar los cambios en Tiled, para que el compilador tenga oportunidad de tenerlos en cuenta.</p>
+</li>
+<li>
+<p>Ve a <em>Game/Build</em> en el GUI y ejecuta la compilación.</p>
+</li>
+<li>
+<p>Si no hay errores, se generará cursed-zapatilla.tap en cursed-zapatilla/dist.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Prueba en emulador</strong>:</p>
+<ul>
+<li>Abre el emulador de ZX Spectrum de tu elección.        </li>
+<li>Carga CursedZapa.tap.        </li>
+<li>Verifica que el juego carga (sin Sir Patillas ni enemigos personalizados aún).</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>En la nueva versión, en 128K no me ha dado problemas, si te los da a ti o en 48K te ocurre el proximo capítulo trata esta cuestión.</p>
+</blockquote>
+<p>Mi comprobación no ha ido todo lo bien que esperaba, toca mejorar:</p>
+<p><img alt="He llenado la memoria antes de crear el juego"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_5b08f11ca7151d51549de1f1261fc02a_MD5.jpeg" /></p>
+<p>Como en mi caso me he pasado de largo y he llenado la memoria antes de comenzar, <strong>en el próximo capítulo, averiguaremos que funciones son las que más memoria consumen y cuales menos de forma que podamos afinar la configuración</strong>.</p>
+<h2>Solución de problemas comunes</h2>
+<ul>
+<li><strong>Interfaz de ZXGM no carga</strong>: Verifica Python (python3 --version) y ejecuta el script de instalación nuevamente.    </li>
+<li><strong>Errores en Tiled</strong>: Asegúrate de usar versión 1.11.2+ y que maps.tiled-project sea compatible. Consulta la documentación de ZXGM. </li>
+<li><strong>Build falla</strong>: Revisa logs en la terminal o en output. Verifica que src no esté modificado y que Boriel Basic/GuSprites estén presentes.    </li>
+</ul>
+<p>Consulta el grupo de Telegram de ZXGM o la documentación en el repositorio para soporte adicional.</p>
+<h2>Conclusión</h2>
+<p>Has configurado la base de <em>Cursed Zapatilla: La Excéntrica Cruzada de Sir Patillas</em> con una estructura de proyecto y una plantilla inicial en Tiled.</p>
+<p>Como escultores, hemos dado el primer golpe al cincel, preparando la piedra para tallarla en capítulos futuros, donde añadiremos sprites personalizados (Sir Patillas, zombis), mecánicas de zapatillazos, y más. ¡Sigue adelante y comienza a dar forma a tu juego retro!</p>
+<p>No obstrante, hemos roto el martillo y el escoplo con la lista de la compra, así que nos toca iterar para mejorar el proceso, lo cual veremos en el próximo capítulo, aprovechando la oportunidad para aprender sobre las limitaciones del motor en tanto funcionalidad vs memoria.</p>
+<h2>Referencias Bibliográficas</h2>
+<ul>
+<li>Mis pruebas de campo ⚫①</li>
+<li><a href="https://gm.retrojuegos.org/index.html">Documentación oficial del proyecto 🌐🟡③</a></li>
+<li><a href="https://github.com/rtorralba/zx-game-maker">Repositorio de Github de ZX Game Maker 🌐🟡③</a> .</li>
+<li><a href="https://juntelart.itch.io/zx-game-maker">Página de Itch.io del proyecto 🌐🟡③</a></li>
+</ul>
+<p>!<a class='internal' href='../publicbrain/plantilla---1mt#one-more-thing.html'>Plantilla   1MT#One More Thing</a></p><ul><li><b>Información IA: </b>Generado asistido por IA (Grok-3, Raúl Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2025-12-25 20:46:35.951000+00:00</li><li><b>Versión Documento: </b>0.2.20</li></ul><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursedZapatilla_DanceSkeletons.mp4'></script>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>

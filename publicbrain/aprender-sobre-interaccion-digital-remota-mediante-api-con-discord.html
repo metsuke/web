@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,18 +40,13 @@
 
     <main>
 <h1>2024-03-31 - Primer Test con prompt en GPT4All</h1>
-<p><a class='internal' href='./gpt4all-testing.html'>GPT4All Testing</a>
+<p><a class='internal' href='../publicbrain/gpt4all-testing.html'>GPT4All Testing</a>
 Pruebas iniciales con el siguiente prompt, en mi Mac Intel la app nome permite usar la GPU así que la velocidad es limitada, pero suficiente para pruebas y uso asíncrono.
 'En el contexto de "Aprender sobre Interacción Digital Remota mediante API" necesito el indice tecnicamente exhaustivo y detallado para un curso sobre "Interacción Digital Remota mediante API con Discord". Dámelo en markdown para poder copiarlo.'
-<a class='internal' href='./interaccion-digital-remota-mediante-api-con-discord.html'>El resultado usando ChatGPT 3.5 Turbo que usé originalmente</a></p>
-<ul>
-<li>Parametros por defecto de la app, en algunos casos tuve que subir el max tokens de salida a 40960 para que no me cortara el contenido a mitad.
-<ul>
-<li>Nous Hermes</li>
-<li>Mistral Instruct</li>
-</ul>
-</li>
-</ul>
+<a class='internal' href='../publicbrain/interaccion-digital-remota-mediante-api-con-discord.html'>El resultado usando ChatGPT 3.5 Turbo que usé originalmente</a>
+- Parametros por defecto de la app, en algunos casos tuve que subir el max tokens de salida a 40960 para que no me cortara el contenido a mitad.
+    - Nous Hermes
+    - Mistral Instruct</p>
 <h2>Insights sobre las respuestas obtenidas.</h2>
 <h3>GPT 3.5 Turbo</h3>
 <ul>
@@ -67,7 +63,7 @@ Pruebas iniciales con el siguiente prompt, en mi Mac Intel la app nome permite u
 <h3>Mistral OpenOrca</h3>
 <ul>
 <li>Aplica lo indicado para Mistral PRO y ademas...</li>
-<li>La abstracción y el índice generado está menos elaborado que en caso de Mistral DRO.</li>
+<li>La abstracción y el índice generado está menos elaborado que en caso de Mistral DRO. </li>
 <li>No obstante la descripción del proceso paso a paso le da un enorme plus en trazabilidad del proceso.</li>
 <li>Esta explicación lo hace, en apariencia, el modelo ideal para integrar en un proceso más grande destinado a dividir una tarea compleja en subtareas automatizables de una forma comprensible y metódica, siempre con supervisión humana.</li>
 <li>Pequeño punto en contra, es que no trabaja directamente en español, sino que traduce el prompt a ingles y nos responde en este idioma, esto supone mayores requisitos de trabajo humano para aprovechar la inforamción que arroja con garantías.</li>
@@ -92,11 +88,12 @@ Pruebas iniciales con el siguiente prompt, en mi Mac Intel la app nome permite u
 <li>Esta posibilidad de trabajar varios modelos en paralelo, en local, con el único coste de los recuross consumidos, lo hacen un medio interesante para la incorporación de modelos propios para tareas específicas, así como para - con la configuración de privacidad controlada - la ejecución de modelos que trabajen con datos privados en entornos donde la privacidad es vital.</li>
 <li>Nótese que estas son conclusiones de la primera prueba, y que el trabajo futuro puede cambiar la perspectiva o afianzar las conclusiones. Aún con todo creo es un buen punto de partida.</li>
 </ul>
-<hr>
+<hr />
 <h2>Raw Data</h2>
 <h3>Nous Hermes 2 Mistral DRO</h3>
-<h2>'''markdown
-'''</h2>
+<p>'''markdown
+'''</p>
+<hr />
 <pre><code class="language-markdown"># Aprender sobre Interacción Digital Remota mediante API con Discord
 =========================================================================
 1. Introducción a las APIs de Discord
@@ -120,34 +117,34 @@ Pruebas iniciales con el siguiente prompt, en mi Mac Intel la app nome permite u
 10. Casos de éxito y aplicaciones prácticas del API de Discord
 </code></pre>
 <h3>Mistral OpenOrca</h3>
-<pre><code class="language-markdown">In the context of "Learning about Remote Interaction through APIs", I need a technically comprehensive and detailed index for a course on "Remote Interaction with APIs using Discord." Give it to me in Markdown so that I can copy it.
+<pre><code class="language-markdown">In the context of &quot;Learning about Remote Interaction through APIs&quot;, I need a technically comprehensive and detailed index for a course on &quot;Remote Interaction with APIs using Discord.&quot; Give it to me in Markdown so that I can copy it.
 Step 1: Researching the topic
 To create an exhaustive and detailed index, first research about Remote Interaction through APIs and specifically how this is done using Discord as a platform for interaction. This includes understanding the basics of API integration with Discord, its features, and potential use cases.
 Step 2: Organizing the content
 Organize the information gathered in Step 1 into relevant sections such as:
 - Introduction to Remote Interaction through APIs
-- Understanding Discord's API structure
+- Understanding Discord&#x27;s API structure
 - Setting up a development environment for working with Discord
-- Basic principles of using Discord's API
+- Basic principles of using Discord&#x27;s API
 - Working with various types of interactions (e.g., message creation, editing, and deletion)
 - Implementing authentication and authorization mechanisms
 - Handling events in the Discord bot
 - Integrating additional functionalities such as voice channels, file uploads, and emojis
-- Troubleshooting common issues while working with Discord's API
+- Troubleshooting common issues while working with Discord&#x27;s API
 - Best practices for developing a secure and efficient Discord bot using APIs
 Step 3: Writing the index in Markdown format
 Once all sections are organized, write out the index in Markdown format. This will allow easy copying of the content. Here is an example of how it might look like:
 # Remote Interaction through APIs with Discord
 ==============================================
 1. Introduction to Remote Interaction through APIs
-2. Understanding Discord's API structure
+2. Understanding Discord&#x27;s API structure
 3. Setting up a development environment for working with Discord
-4. Basic principles of using Discord's API
+4. Basic principles of using Discord&#x27;s API
 5. Working with various types of interactions (e.g., message creation, editing, and deletion)
 6. Implementing authentication and authorization mechanisms
 7. Handling events in the Discord bot
 8. Integrating additional functionalities such as voice channels, file uploads, and emojis
-9. Troubleshooting common issues while working with Discord's API
+9. Troubleshooting common issues while working with Discord&#x27;s API
 10. Best practices for developing a secure and efficient Discord bot using APIs
 </code></pre>
 <h3>Mistral Instruct</h3>
@@ -178,7 +175,7 @@ Sección 4: Creación de una API con Discord Bot
 - Creación de un nuevo API en el portal de Discord Developer Portal
 - Configuración del API para interactuar con el bot creado anteriormente
 - Funcionamiento del comando !api para mostrar los datos disponibles a través de la API
-Sección 5: "I"ntegración de API con Bot
+Sección 5: &quot;I&quot;ntegración de API con Bot
 - Definición de integración y su función en la interacción digital remota con Discord
 - Creación de una nueva integración entre el bot creado anteriormente y la API creada anteriormente
 - Configuración del comando !interact para interactuar con usuarios a través de la integración
@@ -276,30 +273,13 @@ Sección 7: Conclusiones
 45. Descripción detallada de los diferentes tipos de paginación que se pueden utilizar para trabajar con la API de Discord, incluyendo paginación por fecha, paginación por tipo de mensaje, etc.
 46. Explicación del uso de las funciones de búsqueda y filtro para encontrar mensajes específicos en una sala de chat.
 47. Descripción detallada de los diferentes tipos de paginación que se pueden utilizar para trabajar con la API de Discord, incluyendo paginación por fecha, paginación por tipo de mensaje, etc
-</code></pre>
-<ul><li><b>Información IA: </b>Generado asistido por IA (Nous Hermes 2 Mistral DRO,Mistral OpenOrca,Mistral Instruct,GPT4All Falcon). Supervisado por Humano. Validado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Jun 10 2024 17:26:27 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Invalid Date</li><li><b> Versión Documento: </b>0.2.53</li></ul><!--(iaStatus: 8
-iaStatus_Generado: I
-iaStatus_Supervisado: H
-iaStatus_Validado: H
-iaStatus_Model: Nous Hermes 2 Mistral DRO,Mistral OpenOrca,Mistral Instruct,GPT4All Falcon
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-03-31T01:28:50.884Z
-modified: 2024-06-10T15:26:27.139Z
-supervisado: null
-ver_major: 0
-ver_minor: 2
-ver_rev: 53
-nav_primary: null
-nav_secondary: null
-tags: null
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+</code></pre><ul><li><b>Información IA: </b>Generado asistido por IA (Nous Hermes 2 Mistral DRO,Mistral OpenOrca,Mistral Instruct,GPT4All Falcon). Supervisado por Humano. Validado por Humano. </li><li><b>Ultima Modificación: </b>2024-06-10 15:26:27.139000+00:00</li><li><b>Versión Documento: </b>0.2.53</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

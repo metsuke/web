@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,16 +40,15 @@
 
     <main>
 <h1>Tutorial de AGD 2018 Capitulo 10 - Referencia del Lenguaje ⚫①</h1>
-<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_e15232566f2e2de975ea0077d597209d_MD5.jpg" alt="Referencia del Lenguaje en AGD"></p>
+<p><img alt="Referencia del Lenguaje en AGD"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_e15232566f2e2de975ea0077d597209d_MD5.jpg" /></p>
 <ul>
-<li><a class='internal' href='./tutorial-de-agd-2018-edition-⚫①.html'>Tutorial de AGD 2018 Edition ⚫①</a></li>
-<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-09---movimiento-estilo-manic-miner-⚫①.html'><< Anterior</a> | <a class='internal' href='./tutorial-de-agd-2018-capitulo-11---tipos-de-tiles-⚫①.html'>Siguiente >></a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-edition-⚫①.html'>Tutorial de AGD 2018 Edition ⚫①</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-09---movimiento-estilo-manic-miner-⚫①.html'><< Anterior</a> | <a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-11---tipos-de-tiles-⚫①.html'>Siguiente >></a></li>
 </ul>
 <p>Como prometí, aquí va la traduccion de la referencia del lenguaje, necesaria para que podamos empezar a hacer cosillas con código.</p>
 <p>En el próximo capítulo continuaremos haciendo cositas con nuestro jueguecito, entre tanto... ¡Espero que esta traducción les resulte de utilidad!</p>
 <h2>Algunas Teclas del editor</h2>
-<pre class='pre'>
-* SYM-Y Cut line
+<pre class='pre'>* SYM-Y Cut line
 * SYM-U Paste line
 * SYM-Q Home
 * SYM-E End
@@ -56,11 +56,10 @@
 * CAPS-3 Delete forward
 * CAPS-4 Insert/overtype
 * SYM-CAPS Toggle extended mode
-* Nota: Las equivalencias de SYM y CAPS son distintas dependiendo de emulador y sistema operativo.
-</pre>
+* Nota: Las equivalencias de SYM y CAPS son distintas dependiendo de emulador y sistema operativo.</pre>
 <h2>Referencia del lenguaje</h2>
 <p>Respeto el orden del manual oficial - aunque no me gusta nada como está organizado - para simplificar la búsqueda cruzada y actualización posterior entre ambos documentos.</p>
-<p>La base de la traducción es la versión para AGD 4.6, que es la utilizada en este curso (esto es así porque es la versión utilizada en <a class='internal' href='./zx-spectrum---the-big-javis-adventure---2017.html'>The Big Javi's Adventure</a>, que sirve como ejemplo vivo y referencia).</p>
+<p>La base de la traducción es la versión para AGD 4.6, que es la utilizada en este curso (esto es así porque es la versión utilizada en <a class='internal' href='../publicbrain/zx-spectrum---the-big-javis-adventure---2017.html'>The Big Javi's Adventure</a>, que sirve como ejemplo vivo y referencia).</p>
 <blockquote>
 <p><em>¡Cuidado!</em> Es importante destacar que las funciones solo pueden ser usadas tras un IF.</p>
 </blockquote>
@@ -85,14 +84,14 @@
 <h3>SCREEN, LIVES</h3>
 <p>Variables Globales. Contienen el número de pantalla actual y el número de vidas restantes respectivamente.</p>
 <h3>TYPE</h3>
-<p>Parametro de Sprite. Este valor representa de que tipo es el sprite que está siendo manejado por el código. Se suele usar en conjunción con el parámetro IMAGE.</p>
+<p>Parametro de Sprite. Este valor representa de que tipo es el sprite que está siendo manejado por el código. Se suele usar en conjunción con el parámetro IMAGE. </p>
 <p>Cambiar este parámetro cambiará completamente el comportamiento del sprite, lo cual es util para, por ejemplo, que un enemigo se convierta en un bonus, o bien se detenga y explote para finalmente desaparecer, al recibir un disparo.</p>
 <p>No hay razón alguna por la que no se pueda cambiar un sprite a tipo 0 (cero) y ponerlo así bajo el control de jugador, o cambiar el tipo del sprite del jugador por otro que actúe o tenga controles diferentes, la imaginación es tu límite.</p>
 <p>Por otro lado, el comportamiento de cada tipo (código de tipo) de sprite, debe ser programado en su evento correspondiente, de lo contrario el sprite se limitará a quedarse ahí quieto, lo cual no está mal si es como quieres que se comporte.</p>
 <h3>IMAGE, FRAME</h3>
-<p>Parámetros de Sprite.</p>
+<p>Parámetros de Sprite. </p>
 <p>IMAGE almacena el número de la secuencia de frames (según la numeración del editor de sprites) que representará el sprite en pantalla, y FRAME el fotograma dentro de la secuencia indicada que se muestra actualmente en pantalla.</p>
-<p>Con esto puedes cambiar la imagen del sprite en función de la dirección a la que mira, o incluso hacer que "manejen" vehículos (en combinación con TYPE) de nuevo sólo estás limitado por tu imaginación.</p>
+<p>Con esto puedes cambiar la imagen del sprite en función de la dirección a la que mira, o incluso hacer que \"manejen\" vehículos (en combinación con TYPE) de nuevo sólo estás limitado por tu imaginación.</p>
 <blockquote>
 <p><em>¡CUIDADO!</em> Establecer FRAME por encima de los existentes para la secuencia actual puede resultar en un sprite dibujado incorrectamente, así que cuidado al manipular manualmente estas variables. Una buena práctica suele ser establecer FRAME a 0 en el mismo momento que cambiamos IMAGE, salvo que exista una razón poderosa para no hacerlo.<br></p>
 </blockquote>
@@ -110,14 +109,14 @@
 <h3>SPAWN</h3>
 <p>Comando. Espera 2 parámetros: TYPE e IMAGE. Esto hace aparecer un nuevo sprite con el tipo e imagen especificadas en la posición del sprite actual. El nuevo sprite es creado con FRAME, DIRECTION, PARAMA y PARAMB con valor cero. El Sprite actual no se ve afectado en modo alguno.</p>
 <h3>SPAWNED</h3>
-<p>Comando. Solo debería ser usado tras una instrucción SPAWN. Este comando selecciona el nuevo sprite recién creado. Cualquier código escrito tras este comando se referirá al nuevo sprite.</p>
-<p>Para volver a seleccionar el sprite primario usa la instrucción ORIGINAL. También puedes escribir el código para ese sprite en el evento "Sprite Initialization", queda a tu criterio como y donde realizar esta acción.</p>
+<p>Comando. Solo debería ser usado tras una instrucción SPAWN. Este comando selecciona el nuevo sprite recién creado. Cualquier código escrito tras este comando se referirá al nuevo sprite. </p>
+<p>Para volver a seleccionar el sprite primario usa la instrucción ORIGINAL. También puedes escribir el código para ese sprite en el evento \"Sprite Initialization\", queda a tu criterio como y donde realizar esta acción.</p>
 <h3>REMOVE</h3>
 <p>Comando. Elimina el sprite actual de la tabla de sprites (la lista de sprites que tiene en cuenta el juego). Útil para destruir enemigos o para la implementación de la recogida de objetos.</p>
 <h3>PUTBLOCK</h3>
-<p>Comando. Requiere como parámetro el número del bloque a dibujar. Este comando dibuja el bloque especificado en la posición LINE y COLUMNS actuales. Puee ser usado para todo tipo de efectos, incluyendo "abrir" y "cerrar" puertas.</p>
+<p>Comando. Requiere como parámetro el número del bloque a dibujar. Este comando dibuja el bloque especificado en la posición LINE y COLUMNS actuales. Puee ser usado para todo tipo de efectos, incluyendo \"abrir\" y \"cerrar\" puertas.</p>
 <blockquote>
-<p><em>¡CUIDADO!</em> los cambios realizados en la pantalla se perderán si salimos de la pantalla , o tras una instrucción MENU o INV, a no ser que hayas seleccionado la especialización "Puzzle" en la configuración del juego.<br></p>
+<p><em>¡CUIDADO!</em> los cambios realizados en la pantalla se perderán si salimos de la pantalla , o tras una instrucción MENU o INV, a no ser que hayas seleccionado la especialización \"Puzzle\" en la configuración del juego.<br></p>
 </blockquote>
 <h3>COLLISION</h3>
 <p>Función. Requiere un argumento TYPE. Devuelve true si el sprite actual está en contacto con otro sprite del tipo especificado.</p>
@@ -126,8 +125,8 @@
 <h3>ORIGINAL</h3>
 <p>Comando. Se usa tras un comando OTHER o SPAWNED para seleccionar nuevamente el sprite primario.</p>
 <h3>ENDGAME</h3>
-<p>Comando. Finaliza el juego cuando el jugador consigue su objetivo. Esta rutina ejecuta el evento "Completed Game". Se ejecutará por ejemplo cuando el jugador consigue pasarse la última pantalla del juego.</p>
-<p>El juego solo puede terminar de este modo o cuando el jugador pierde todas las vidas, pero este último caso no ejecuta el evento "Completed Game".</p>
+<p>Comando. Finaliza el juego cuando el jugador consigue su objetivo. Esta rutina ejecuta el evento \"Completed Game\". Se ejecutará por ejemplo cuando el jugador consigue pasarse la última pantalla del juego.</p>
+<p>El juego solo puede terminar de este modo o cuando el jugador pierde todas las vidas, pero este último caso no ejecuta el evento \"Completed Game\".</p>
 <h3>SHOWSCORE</h3>
 <p>Comando. Muestra la puntuación actual del jugador en la posición actual del cursor. Debe ser precedido por instrucciones para situar LINE y COLUMN en el lugar correcto de la pantalla.</p>
 <h3>SCORE</h3>
@@ -150,7 +149,7 @@
 <h3>MESSAGE</h3>
 <p>Comando. Espera un parámetro que indica el número de mensaje que mostrará a partir de la posición actual del cursor.</p>
 <h3>KILL</h3>
-<p>Comando. Inicia la ejecución del evento "Kill Player" y resta una vida del contador. Debes inicializar el contador de vidas en el evento "initialisation" usando algo del tipo LET LIVES = 3.</p>
+<p>Comando. Inicia la ejecución del evento \"Kill Player\" y resta una vida del contador. Debes inicializar el contador de vidas en el evento \"initialisation\" usando algo del tipo LET LIVES = 3.</p>
 <h3>LINE, COLUMN</h3>
 <p>Variables. Contienen la posición del cursor, a partir del cual se dibujará un texto, o puntuación. Son temporales y cambian cada vez que un sprite es dibujado, así que asegúrate de asignarlos inmediatamente antes de ejecutar un comando MESSAGE o SHOWSCORE.</p>
 <h3>GETRANDOM</h3>
@@ -186,10 +185,10 @@
 <h3>CLOCK</h3>
 <p>Variable de solo lectura. El contador de frames actuales, en cincuentavos de segundo. Útil para ajustar la ejecución de tareas en múltiples frames.</p>
 <h3>MENU</h3>
-<p>Comando. Requiere un argumento especificando el número de mensaje. Crea un menu pop-up en el centro de la zona de juego, donde las opciones son tomadas a partir de ese mensaje, cada uno en su propia línea. El jugador podrá entonces seleccionar una opción usando arriba abajo y disparo.</p>
+<p>Comando. Requiere un argumento especificando el número de mensaje. Crea un menu pop-up en el centro de la zona de juego, donde las opciones son tomadas a partir de ese mensaje, cada uno en su propia línea. El jugador podrá entonces seleccionar una opción usando arriba abajo y disparo. </p>
 <p>Habitualmente esto puede ocurrir cuando el usuario pulsa cierta tecla. Sin embargo, puede ocurrir en cualquier otro evento de sprite, por ejemplo, cuando un sprite colisiona con el jugador. Podrías mostrar un mensaje - la conversación del sprite con el jugador - y luego usar MENU para pedir una respuesta. La pantalla se redibuja tras la selección de la opción por parte del jugador.</p>
 <h3>INV</h3>
-<p>Comando. Requiere un argumento especificando un número de mensaje, que es el que contiene los nombres de los objetos. Similar a MENU pero genera un menú basado en los objetos que el jugador posee, mostrando una lista vertical con sus nombres. Útil para seleccionar un objeto para procesar o dejar. INV solo funciona con la especialización "Adventure".</p>
+<p>Comando. Requiere un argumento especificando un número de mensaje, que es el que contiene los nombres de los objetos. Similar a MENU pero genera un menú basado en los objetos que el jugador posee, mostrando una lista vertical con sus nombres. Útil para seleccionar un objeto para procesar o dejar. INV solo funciona con la especialización \"Adventure\".</p>
 <h3>EXIT</h3>
 <p>Comando. Sale inmediatamente del evento actual interrumpiendo cualquier procesamiento que se esté llevando a cabo en el.</p>
 <h3>REPEAT</h3>
@@ -197,7 +196,7 @@
 <p>El código dentro de un bloque REPEAT es indentado automáticamente para mejorar la legibilidad.</p>
 <p><em>¡Cuidado!</em> REPEAT no puede ser anidado.</p>
 <h3>ENDREPEAT</h3>
-<p>Comando. Establece el final de un bloque de código REPEAT.</p>
+<p>Comando. Establece el final de un bloque de código REPEAT. </p>
 <h3>MULTIPLY BY</h3>
 <p>Comando. Multiplica un parámetro de sprite o variable. Por ejemplo MULTIPLY C BY 7.</p>
 <h3>DIVIDE BY</h3>
@@ -207,21 +206,21 @@
 <p>Para evitar dejar un rastro de tinta de colores, debes resetea el SPRITEINK al comienzo de cada evento de sprite. Si tu tinta para sprites habitual es 7 (blanco), te puede interesar usar SPRITEINK 7 al comienzo del evento de sprite, mover el sprite y luego establecer el color con que quieres que se dibuje.</p>
 <p>En el caso de objetos estáticos recolectables, solo debes resetear el SPRITEINK al color por defecto cuando son recogidos. (<a href="https://stardot.org.uk/forums/viewtopic.php?t=16535)">Revisa como está programado en el juego Diamond Geezer para ver un ejemplo</a>. <em>NdT: Creo que el juego del enlace pero no estoy seguro.</em></p>
 <h3>LASER</h3>
-<p>Comando. Espera un argumento numérico. Dispara un láser a izquierda o derecha desde la posición actual del sprite, dependiendo del parámetro. Parámetros pares hacen que dispare hacia a izquierda, los impares a la derecha.</p>
+<p>Comando. Espera un argumento numérico. Dispara un láser a izquierda o derecha desde la posición actual del sprite, dependiendo del parámetro. Parámetros pares hacen que dispare hacia a izquierda, los impares a la derecha. </p>
 <p>La colisión de un sprite con un láser puede ser detectada desde el evento del sprite usando IF COLLISION 10. LASER solo funciona si la especialización de partículas es seleccionada en el menú miscelánea.</p>
 <h3>TRAIL</h3>
-<p>Comando. Útil para general "polvo de hada" o "rastros de vapor". TRAIL crea un rastro vaporoso a base de partículas en el centro de la posición del sprite actual.</p>
-<p>Usando ADD 8 TO Y o SUBTRACT 8 FROM Y antes de ejecutar TRAIL, puedes generar un rastro a izquierda o derecha del sprite. Recuerda volver a dejar Y como estaba tras ejecutarlo para evitar efectos extraños en la posición del sprite. Solo funciona con la especialización "Particle".</p>
+<p>Comando. Útil para general \"polvo de hada\" o \"rastros de vapor\". TRAIL crea un rastro vaporoso a base de partículas en el centro de la posición del sprite actual. </p>
+<p>Usando ADD 8 TO Y o SUBTRACT 8 FROM Y antes de ejecutar TRAIL, puedes generar un rastro a izquierda o derecha del sprite. Recuerda volver a dejar Y como estaba tras ejecutarlo para evitar efectos extraños en la posición del sprite. Solo funciona con la especialización \"Particle\".</p>
 <h3>EXPLODE</h3>
-<p>Comando. Requiere un argumento numérico que especifica el número de partículas. Crea una explosión en la posición del sprite actual. Usado junto a REMOVE, EXPLODE elimina la necesidad de dibujar una animación para la explosión de tus sprites.</p>
-<p>Si olvidas indicar el parámetro numérico, la siguiente instrucción fallará al compilar. Si olvidas REMOVE, tu sprite no desaparecerá y te quedaras pensando en porqué el sprite ha explotado y sigue en la pantalla. Solo funciona en la especialización "Particle".</p>
+<p>Comando. Requiere un argumento numérico que especifica el número de partículas. Crea una explosión en la posición del sprite actual. Usado junto a REMOVE, EXPLODE elimina la necesidad de dibujar una animación para la explosión de tus sprites. </p>
+<p>Si olvidas indicar el parámetro numérico, la siguiente instrucción fallará al compilar. Si olvidas REMOVE, tu sprite no desaparecerá y te quedaras pensando en porqué el sprite ha explotado y sigue en la pantalla. Solo funciona en la especialización \"Particle\".</p>
 <h3>FADE</h3>
-<p>Comando. Oscurece progresivamente la ventana hasta que queda totalmente negra. FADE solo funciona con la especialización "Effects" activada.</p>
+<p>Comando. Oscurece progresivamente la ventana hasta que queda totalmente negra. FADE solo funciona con la especialización \"Effects\" activada.</p>
 <h3>TICKER</h3>
 <p>Comando. Muestra un mensaje en LINE y COLUMN actual, y hace scroll con él al pixel.Espera dos parámetros, el primero es el número de mensaje y el segundo es el ancho del área visible del mensaje en caracteres.</p>
-<p>TICKER continua y repite el mensaje cuando llega al final. TICKER 1 16 mostrará el mensaje 1 en un area de la mitad del ancho de la pantalla. Para detener TICKER especifica un número de mensaje que no exista, por ejemplo TICKER 99 1. Solo funciona con la especialización "Effects" activa.</p>
+<p>TICKER continua y repite el mensaje cuando llega al final. TICKER 1 16 mostrará el mensaje 1 en un area de la mitad del ancho de la pantalla. Para detener TICKER especifica un número de mensaje que no exista, por ejemplo TICKER 99 1. Solo funciona con la especialización \"Effects\" activa.</p>
 <h3>BIGMESSAGE</h3>
-<p>Comando. Requiere un parámetro especificando un mensaje. Muestra ese mensaje en la pantalla con una fuente de doble altura. Solo funciona con la especialización "Effects" activa.</p>
+<p>Comando. Requiere un parámetro especificando un mensaje. Muestra ese mensaje en la pantalla con una fuente de doble altura. Solo funciona con la especialización \"Effects\" activa.</p>
 <h3>REDRAW</h3>
 <p>Commando. Redibuja a pantalla, los sprites, los objetos y las partículas. Si estás creando una aventura arcade, puede interesarte mostrar un mensaje en el area de juego, esperar una tecla con WAITKEY y luego hacer REDRAW antes de retomar la acción.</p>
 <h3>SILENCE</h3>
@@ -229,113 +228,28 @@
 <h3>CONTROLMENU</h3>
 <p>Comando. Util para el evento de menú/intro. CONTROLMENU espera que el usuario elija una opción para seleccionar el tipo de control. Las opciones son 1 para teclado, 2 para joystick Kempston y 3 para joystick Sinclair (tecla 67890).</p>
 <h3>DIG</h3>
-<p>Comando. Espera un parámetro del rango 0..3 especificando la dirección arriba, abajo izquierda o derecha respectivamente. Elimina los bloques FODDER inmediatamente adyacentes al sprite del jugador (en la dirección indicada). Solo disponible con la especialización "Adventure" activa.</p>
+<p>Comando. Espera un parámetro del rango 0..3 especificando la dirección arriba, abajo izquierda o derecha respectivamente. Elimina los bloques FODDER inmediatamente adyacentes al sprite del jugador (en la dirección indicada). Solo disponible con la especialización \"Adventure\" activa.</p>
 <h3>STAR</h3>
-<p>Comando. Parte del engine de partícuas. STAR crea un campo de estrellas vertical u horizontal cuando es llamado repetidamente. Espera un parámetro que indica la dirección, 0 para vertical o 1 para horizontal. Solo funciona con la especialización "Particles" activa.</p>
+<p>Comando. Parte del engine de partícuas. STAR crea un campo de estrellas vertical u horizontal cuando es llamado repetidamente. Espera un parámetro que indica la dirección, 0 para vertical o 1 para horizontal. Solo funciona con la especialización \"Particles\" activa.</p>
 <h3>BIGSCORE</h3>
-<p>Comando. Funciona igual que SHOWSCORE, pero muestra el mensaje en pantalla con texto el doble de alto. Solo funciona con la especialización "Effects" activa.</p>
+<p>Comando. Funciona igual que SHOWSCORE, pero muestra el mensaje en pantalla con texto el doble de alto. Solo funciona con la especialización \"Effects\" activa.</p>
 <h2>Referencias Bibliográficas</h2>
 <ul>
-<li><strong>Ninguna fuente verificable disponible</strong>.</li>
+<li><strong>Ninguna fuente verificable disponible</strong>.  </li>
 </ul>
 <h2>Y ahora que?</h2>
 <ul>
-<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-01---el-comienzo-⚫①.html'>Si te acaba de caer el libro en la cabeza, y estás en estado de shock, pasa a la página 1</a></li>
-<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-10---referencia-del-lenguaje-⚫①.html'>Si aun buscas referencias en el lenguaje, continua estudiando, con buena músuca, en la página 10</a></li>
-<li><a class='internal' href='./tutorial-de-agd-2018-capitulo-11---tipos-de-tiles-⚫①.html'>Si ya has "Terminao To", busca a Sarah Connor para que te entrene para sobrevivir a la rebelión de Vegatrón en la página 11</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-01---el-comienzo-⚫①.html'>Si te acaba de caer el libro en la cabeza, y estás en estado de shock, pasa a la página 1</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-10---referencia-del-lenguaje-⚫①.html'>Si aun buscas referencias en el lenguaje, continua estudiando, con buena músuca, en la página 10</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-11---tipos-de-tiles-⚫①.html'>Si ya has "Terminao To", busca a Sarah Connor para que te entrene para sobrevivir a la rebelión de Vegatrón en la página 11</a></li>
 </ul>
-<h2>One More Thing</h2>
-<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
-<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
-<h2>Contenido registrado en Safe Creative</h2>
-<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
-<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
-</center>
-<h2>MetsuOS Needs You!</h2>
-<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
-<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
-<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
-<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
-<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
-<ul>
-<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
-<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
-<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
-<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
-<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
-<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
-</ul>
-<h3>Sobre la categorización de los tipos de conocimiento</h3>
-<ul>
-<li>Conocimiento Gnoseológico:  ⚫① 🔴② 🟡③ 🟢④</li>
-<li>Conocimiento Epistemológico:  🔵⑤</li>
-<li>Conocimiento Metsukeológico:  ⚪⑥</li>
-</ul>
-<p>La Metsukeología (de Metsuke vision global y logos conocimiento) es la ciencia que estudia el conocimiento como un conjunto potencial de conocimiento del que podemos obtener, procesar o percibir partes concretas dentro de un marco contextual específico, y cuyo contexto general real está muy por encima de lo que somos capaces, como especie, de percibir, procesar e integrar de forma completa (definición en progreso).</p>
-<p>La Metsucología (de Metsu aniquilación - en este contexto en forma de colapso - , logos conocimiento) es la ciencia que estudia como extraemos verdades percibidas - colapsadas - como conocimiento desde nuestra perspectiva real (tanto epistemológico como gnoseológico) al tomar una parte específica del conocimiento metsukeológico potencial enmarcado en un contexto concreto, obligando a colapsar el conocimiento potencial en conocimiento específico (definición en progreso).</p>
-<h3>Mas sobre el contexto</h3>
-<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
-<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
-<ul>
-<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
-<li>⚖️ - Analisis
-<ul>
-<li>⚖️📚 - Análisis Bibligráfico</li>
-<li>⚖️🔬 - Análisis Científico</li>
-<li>⚖️🏛️ - Análisis Estructural</li>
-<li>⚖️🧠 - Análisis Filosófico</li>
-</ul>
-</li>
-<li>📖 - Referencia
-<ul>
-<li>📖📚 - Referencia Bibliográfica / Libro</li>
-<li>📖🔬- Referencia Científica / Paper</li>
-<li>📖🏛️ - Referencia Estructural</li>
-<li>📖🧠 - Referencia Filosófica</li>
-</ul>
-</li>
-<li>🔍️- Paradigma</li>
-</ul>
-<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
-<ul>
-<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
-<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
-</ul>
-<p>También aplicaremos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
-<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
-<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
-<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
-<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
-<h2>Bibliografía de referencia</h2>
-<ul>
-<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🟡③-⚖️🔴②.html'>Elementos del conocimiento humano y científico  🟡③ ⚖️🔴②</a></li>
-<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
-</ul>
-<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Fri Jul 18 2025 22:07:57 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.5</li></ul><!--(iaStatus: 8
-iaStatus_Model: Raúl Carrillo Garrido aka metsuke
-iaStatus_Generado: H
-iaStatus_Supervisado: '-'
-iaStatus_Validado: '-'
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2025-06-28T20:48:36.132Z
-modified: 2025-07-18T20:07:57.435Z
-supervisado: ''
-ACCION: ''
-ver_major: 0
-ver_minor: 2
-ver_rev: 5
-nav_primary: null
-nav_secondary: null
-tags: null
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>!<a class='internal' href='../publicbrain/plantilla---1mt#one-more-thing.html'>Plantilla   1MT#One More Thing</a></p><ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Ultima Modificación: </b>2025-07-18 20:07:57.435000+00:00</li><li><b>Versión Documento: </b>0.2.5</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

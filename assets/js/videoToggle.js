@@ -1,11 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Obtener el nombre del archivo de video del atributo data-video del script
   const scriptTag = document.getElementById('toggleVideo');
-  const videoFile = scriptTag.getAttribute('data-video');
+  var videoFile = scriptTag.getAttribute('data-video');
   if (!videoFile) {
     console.error('No se proporcionó un nombre de archivo de video en el atributo data-video');
     return;
   }
+
+    // LÓGICA ALEATORIA [A-Z]
+    const match = videoFile.match(/\[([A-Z])\]/);
+    if (match) {
+      const letraFinal = match[1];
+      const codigoInicio = 'A'.charCodeAt(0);
+      const codigoFin = letraFinal.charCodeAt(0);
+      const letraElegida = String.fromCharCode(Math.floor(Math.random() * (codigoFin - codigoInicio + 1)) + codigoInicio);
+      videoFile = videoFile.replace(`[${letraFinal}]`, letraElegida);
+    }
 
   // Encontrar la primera imagen dentro de un <p> inmediatamente después de un <h1>
   const firstImg = document.querySelector('h1 + p img');

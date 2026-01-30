@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,10 +40,10 @@
 
     <main>
 <h1>Carga y gestión de imágenes y texturas (PixiJS) 🔴②</h1>
-<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_fb89498a19570fba6d7a5e8de0260eaa_MD5.jpg" alt="Imagenes y Texturas en PixiJS"></p>
+<p><img alt="Imagenes y Texturas en PixiJS"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_fb89498a19570fba6d7a5e8de0260eaa_MD5.jpg" /></p>
 <ul>
-<li><a class='internal' href='./curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></li>
-<li><a class='internal' href='./dibujando-formas-basicas-y-graficos-pixijs-🟡③.html'><< Anterior</a> |  <a class='internal' href='./creacion-y-manipulacion-de-sprites-en-pixijs-🔴②.html'>Siguiente >></a></li>
+<li><a class='internal' href='../publicbrain/curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></li>
+<li><a class='internal' href='../publicbrain/dibujando-formas-basicas-y-graficos-pixijs-🟡③.html'><< Anterior</a> |  <a class='internal' href='../publicbrain/creacion-y-manipulacion-de-sprites-en-pixijs-🔴②.html'>Siguiente >></a></li>
 </ul>
 <blockquote>
 <p>WIP: Revisando Fuentes</p>
@@ -55,7 +56,7 @@
 <li><strong>TextureSource</strong>: Representa la fuente subyacente de píxeles, como una imagen, un lienzo o un vídeo. Es el "origen" puro de los datos visuales.</li>
 <li><strong>Texture</strong>: Ofrece una "vista" sobre un TextureSource, permitiendo subregiones (como en un sprite sheet), recortes (trims) y transformaciones. Varias Textures pueden compartir el mismo TextureSource para ahorrar memoria de forma eficiente.</li>
 </ul>
-<p>El flujo habitual en su ciclo de vida es el siguiente:</p>
+<p>El flujo habitual en su ciclo de vida es el siguiente:  </p>
 <p>Archivo de origen (imagen o vídeo) → TextureSource → Texture → Objeto visual (por ejemplo, un Sprite).</p>
 <p>Estas texturas aprovechan WebGL para un renderizado rápido y fluido, con un respaldo a Canvas en caso de que WebGL no esté disponible. En el contexto de MetsuOS, esto resulta perfecto para entornos compatibles con tecnología retro, ya que no exige dependencias extra en producción.</p>
 <h3>Propiedades Comunes de Texture</h3>
@@ -63,7 +64,7 @@
 <li><strong>frame</strong>: Rectángulo que delimita la porción visible dentro de la fuente.</li>
 <li><strong>orig</strong>: Dimensiones originales sin aplicar recortes.</li>
 <li><strong>trim</strong>: Define áreas a recortar para eliminar espacios transparentes (ideal para atlas de sprites).</li>
-<li><strong>uvs</strong>: Coordenadas UV generadas a partir de <code class='language-html'>frame</code> y <code class='language-html'>rotate</code>.</li>
+<li><strong>uvs</strong>: Coordenadas UV generadas a partir de <code>frame</code> y <code>rotate</code>.</li>
 <li><strong>rotate</strong>: Valor de rotación (GroupD8) para compatibilidad con atlas.</li>
 <li><strong>defaultAnchor</strong>: Punto de anclaje predeterminado para Sprites.</li>
 <li><strong>defaultBorders</strong>: Usado en escalados de tipo 9-slice.</li>
@@ -72,61 +73,61 @@
 <h3>Propiedades Comunes de TextureSource</h3>
 <ul>
 <li><strong>resolution</strong>: Influye en el tamaño de renderizado relativo a los píxeles reales (útil para escalados en pantallas retina).</li>
-<li><strong>format</strong>: Formato de la textura (por ejemplo, <code class='language-html'>rgba8unorm</code> o <code class='language-html'>bgra8unorm</code>).</li>
-<li><strong>alphaMode</strong>: Controla la interpretación del canal alfa al subir a la GPU (por ejemplo, <code class='language-html'>premultiply-alpha</code>).</li>
-<li><strong>wrapMode / scaleMode</strong>: Modos de envoltura (wrap) y escalado (por ejemplo, <code class='language-html'>repeat</code> o <code class='language-html'>linear</code> para un filtrado suave).</li>
+<li><strong>format</strong>: Formato de la textura (por ejemplo, <code>rgba8unorm</code> o <code>bgra8unorm</code>).</li>
+<li><strong>alphaMode</strong>: Controla la interpretación del canal alfa al subir a la GPU (por ejemplo, <code>premultiply-alpha</code>).</li>
+<li><strong>wrapMode / scaleMode</strong>: Modos de envoltura (wrap) y escalado (por ejemplo, <code>repeat</code> o <code>linear</code> para un filtrado suave).</li>
 <li><strong>autoGenerateMipmaps</strong>: Genera mipmaps de forma automática para optimizar el rendimiento en escalados.</li>
 </ul>
 <p>Puedes configurar estas propiedades al crear la textura o modificarlas dinámicamente según necesites.</p>
 <h2>Carga de Imágenes y Texturas</h2>
-<p>PixiJS emplea el singleton <code class='language-html'>Assets</code> para cargar recursos de manera asíncrona, basado en Promises, con soporte integrado para caché y parsers automáticos. Es una opción más moderna y eficiente que los loaders antiguos. <code class='language-html'>Assets</code> detecta automáticamente el tipo de archivo por su extensión y gestiona imágenes, vídeos, JSON para sprite sheets y texturas comprimidas.</p>
+<p>PixiJS emplea el singleton <code>Assets</code> para cargar recursos de manera asíncrona, basado en Promises, con soporte integrado para caché y parsers automáticos. Es una opción más moderna y eficiente que los loaders antiguos. <code>Assets</code> detecta automáticamente el tipo de archivo por su extensión y gestiona imágenes, vídeos, JSON para sprite sheets y texturas comprimidas.</p>
 <h3>Inicialización de Assets</h3>
-<p>Antes de empezar a cargar, es recomendable inicializar <code class='language-html'>Assets</code> con opciones globales, especialmente en MetsuOS para definir rutas base sin recurrir a Node.js:</p>
-<pre><code class="language-javascript">import { Assets } from 'pixi.js';
+<p>Antes de empezar a cargar, es recomendable inicializar <code>Assets</code> con opciones globales, especialmente en MetsuOS para definir rutas base sin recurrir a Node.js:</p>
+<pre><code class="language-javascript">import { Assets } from &#x27;pixi.js&#x27;;
 await Assets.init({
-  basePath: './assets/',  // Ruta base para recursos relativos
-  defaultSearchParams: 'v=1.0',  // Parámetros URL por defecto (ej. para cache-busting)
-  texturePreference: { resolution: 2, format: 'png' }  // Preferencias para texturas (ej. alta resolución)
+  basePath: &#x27;./assets/&#x27;,  // Ruta base para recursos relativos
+  defaultSearchParams: &#x27;v=1.0&#x27;,  // Parámetros URL por defecto (ej. para cache-busting)
+  texturePreference: { resolution: 2, format: &#x27;png&#x27; }  // Preferencias para texturas (ej. alta resolución)
 });
 </code></pre>
 <h3>Carga de una Sola Textura</h3>
-<p>La carga es sencilla: llama a <code class='language-html'>Assets.load()</code> con la URL. Devuelve una Promise que se resuelve con la textura cargada.</p>
-<pre><code class="language-javascript">import { Assets, Sprite, Texture } from 'pixi.js';
+<p>La carga es sencilla: llama a <code>Assets.load()</code> con la URL. Devuelve una Promise que se resuelve con la textura cargada.</p>
+<pre><code class="language-javascript">import { Assets, Sprite, Texture } from &#x27;pixi.js&#x27;;
 
 // Carga asíncrona
-const texture = await Assets.load<Texture>('assets/bunny.png');  // URL absoluta o relativa
+const texture = await Assets.load&lt;Texture&gt;(&#x27;assets/bunny.png&#x27;);  // URL absoluta o relativa
 
 // Crea un Sprite con la textura
 const sprite = new Sprite(texture); app.stage.addChild(sprite);
 </code></pre>
 <p>Para usar alias (nombres cortos en vez de URLs largas):</p>
-<pre><code class="language-javascript">await Assets.load<Texture>({ alias: 'bunny', src: 'assets/bunny.png' });
-const bunnyTexture = Assets.get('bunny');  // Recupera por alias
+<pre><code class="language-javascript">await Assets.load&lt;Texture&gt;({ alias: &#x27;bunny&#x27;, src: &#x27;assets/bunny.png&#x27; });
+const bunnyTexture = Assets.get(&#x27;bunny&#x27;);  // Recupera por alias
 </code></pre>
 <h3>Carga de Múltiples Texturas</h3>
 <p>Puedes cargar un array de URLs o un objeto con alias. Devuelve un objeto con las texturas indexadas por URL o alias.</p>
-<pre><code class="language-javascript">const textures = await Assets.load<Texture>([
-  'assets/bunny.png',
-  'assets/cat.png'
+<pre><code class="language-javascript">const textures = await Assets.load&lt;Texture&gt;([
+  &#x27;assets/bunny.png&#x27;,
+  &#x27;assets/cat.png&#x27;
 ]);
 
-const bunnySprite = new Sprite(textures['assets/bunny.png']);
-const catSprite = new Sprite(textures['assets/cat.png']);
+const bunnySprite = new Sprite(textures[&#x27;assets/bunny.png&#x27;]);
+const catSprite = new Sprite(textures[&#x27;assets/cat.png&#x27;]);
 app.stage.addChild(bunnySprite, catSprite);
 </code></pre>
 <p>O con alias para varios:</p>
 <pre><code class="language-javascript">const assetsToLoad = [
-  { alias: 'bunny', src: 'assets/bunny.png' },
-  { alias: 'cat', src: 'assets/cat.png' }
+  { alias: &#x27;bunny&#x27;, src: &#x27;assets/bunny.png&#x27; },
+  { alias: &#x27;cat&#x27;, src: &#x27;assets/cat.png&#x27; }
 ];
 await Assets.load(assetsToLoad);
-const bunny = Assets.get('bunny');
+const bunny = Assets.get(&#x27;bunny&#x27;);
 </code></pre>
 <h3>Carga en Segundo Plano (Background Loading)</h3>
-<p>Para evitar bloquear la interfaz durante cargas pesadas, usa <code class='language-html'>Assets.backgroundLoad()</code>. No espera a que termine, pero puedes verificar el progreso.</p>
-<pre><code class="language-javascript">Assets.backgroundLoad(['assets/large-image.png', 'assets/another.png']);
+<p>Para evitar bloquear la interfaz durante cargas pesadas, usa <code>Assets.backgroundLoad()</code>. No espera a que termine, pero puedes verificar el progreso.</p>
+<pre><code class="language-javascript">Assets.backgroundLoad([&#x27;assets/large-image.png&#x27;, &#x27;assets/another.png&#x27;]);
 // Más tarde, accede cuando esté listo
-const texture = await Assets.load('assets/large-image.png');  // Espera si no ha terminado
+const texture = await Assets.load(&#x27;assets/large-image.png&#x27;);  // Espera si no ha terminado
 </code></pre>
 <h3>Tipos de Fuentes de Datos Soportadas</h3>
 <p>PixiJS soporta una variedad de fuentes para TextureSource, adaptadas a distintos escenarios:</p>
@@ -142,7 +143,7 @@ const texture = await Assets.load('assets/large-image.png');  // Espera si no ha
 <tr>
 <td><strong>ImageSource</strong></td>
 <td>HTMLImageElement, ImageBitmap, SVG, VideoFrame, etc.</td>
-<td>Imágenes estáticas: <code class='language-html'>new ImageSource({ resource: myImageElement })</code></td>
+<td>Imágenes estáticas: <code>new ImageSource({ resource: myImageElement })</code></td>
 </tr>
 <tr>
 <td><strong>CanvasSource</strong></td>
@@ -152,7 +153,7 @@ const texture = await Assets.load('assets/large-image.png');  // Espera si no ha
 <tr>
 <td><strong>VideoSource</strong></td>
 <td>HTMLVideoElement</td>
-<td>Texturas de vídeo: <code class='language-html'>new VideoSource({ resource: myVideo, autoPlay: true, updateFPS: 30 })</code></td>
+<td>Texturas de vídeo: <code>new VideoSource({ resource: myVideo, autoPlay: true, updateFPS: 30 })</code></td>
 </tr>
 <tr>
 <td><strong>BufferImageSource</strong></td>
@@ -167,41 +168,41 @@ const texture = await Assets.load('assets/large-image.png');  // Espera si no ha
 </tbody>
 </table>
 <p>Para texturas comprimidas (mejor rendimiento en móviles):</p>
-<pre><code class="language-javascript">const compressedTexture = await Assets.load('assets/texture.ktx2');
+<pre><code class="language-javascript">const compressedTexture = await Assets.load(&#x27;assets/texture.ktx2&#x27;);
 </code></pre>
 <h2>Gestión y Optimización de Texturas</h2>
 <h3>Caché y Reutilización</h3>
-<p><code class='language-html'>Assets</code> cachea automáticamente por URL o alias. Las cargas repetidas devuelven la misma instancia, lo que ahorra ancho de banda y memoria.</p>
-<pre><code class="language-javascript">const tex1 = await Assets.load('bunny.png');
-const tex2 = await Assets.load('bunny.png');
+<p><code>Assets</code> cachea automáticamente por URL o alias. Las cargas repetidas devuelven la misma instancia, lo que ahorra ancho de banda y memoria.</p>
+<pre><code class="language-javascript">const tex1 = await Assets.load(&#x27;bunny.png&#x27;);
+const tex2 = await Assets.load(&#x27;bunny.png&#x27;);
 console.log(tex1 === tex2);  // true
 </code></pre>
 <h3>Descarga y Destrucción</h3>
 <p>Para liberar memoria (esencial en MetsuOS para entornos con recursos limitados):</p>
 <ul>
-<li><code class='language-html'>Assets.unload(&#39;bunny.png&#39;)</code>: Descarga y elimina del caché.</li>
-<li><code class='language-html'>texture.destroy()</code>: Destruye manualmente (para texturas no cargadas por Assets).</li>
-<li><code class='language-html'>texture.source.unload()</code>: Descarga de la GPU pero mantiene en memoria (útil para reutilizar después).</li>
+<li><code>Assets.unload(&#x27;bunny.png&#x27;)</code>: Descarga y elimina del caché.</li>
+<li><code>texture.destroy()</code>: Destruye manualmente (para texturas no cargadas por Assets).</li>
+<li><code>texture.source.unload()</code>: Descarga de la GPU pero mantiene en memoria (útil para reutilizar después).</li>
 </ul>
 <p>Ejemplo:</p>
-<pre><code class="language-javascript">await Assets.load('temp.png');
-const tempTexture = Assets.get('temp.png');
+<pre><code class="language-javascript">await Assets.load(&#x27;temp.png&#x27;);
+const tempTexture = Assets.get(&#x27;temp.png&#x27;);
 // Usar...
-await Assets.unload('temp.png');  // Libera completamente
+await Assets.unload(&#x27;temp.png&#x27;);  // Libera completamente
 </code></pre>
 <h3>Preparación de Texturas (Plugin Prepare)</h3>
 <p>Para evitar picos de lag al subir muchas texturas a la GPU, usa el plugin Prepare para precargar.</p>
-<pre><code class="language-javascript">import { PrepareSystem } from 'pixi.js';  // Asegúrate de importar si es necesario
-app.renderer.addSystem(PrepareSystem, 'prepare');  // Agrega al renderer
+<pre><code class="language-javascript">import { PrepareSystem } from &#x27;pixi.js&#x27;;  // Asegúrate de importar si es necesario
+app.renderer.addSystem(PrepareSystem, &#x27;prepare&#x27;);  // Agrega al renderer
 
 // Prepara texturas antes de mostrar
 await app.renderer.prepare.upload([texture1, texture2]);
 </code></pre>
 <h3>Creación Manual de Texturas</h3>
-<p>Si prefieres no usar <code class='language-html'>Assets</code> (por ejemplo, para generación dinámica en MetsuOS vanilla):</p>
+<p>Si prefieres no usar <code>Assets</code> (por ejemplo, para generación dinámica en MetsuOS vanilla):</p>
 <pre><code class="language-javascript">const myImage = new Image();
-myImage.src = 'assets/bunny.png';
-myImage.onload = () => {
+myImage.src = &#x27;assets/bunny.png&#x27;;
+myImage.onload = () =&gt; {
   const source = new TextureSource({ resource: myImage });
   const texture = new Texture({ source, frame: new Rectangle(0, 0, 100, 100) });  // Sub-región opcional
   const sprite = new Sprite(texture);
@@ -212,16 +213,16 @@ myImage.onload = () => {
 texture.frame = new Rectangle(10, 10, 50, 50);  // Modifica dinámicamente
 </code></pre>
 <h3>Manejo de Errores</h3>
-<p><code class='language-html'>Assets</code> gestiona errores mediante Promises. Usa <code class='language-html'>try-catch</code> o <code class='language-html'>.catch()</code>:</p>
+<p><code>Assets</code> gestiona errores mediante Promises. Usa <code>try-catch</code> o <code>.catch()</code>:</p>
 <pre><code class="language-javascript">try {
-  const texture = await Assets.load('invalid.png');
+  const texture = await Assets.load(&#x27;invalid.png&#x27;);
 } catch (error) {
-  console.error('Error cargando textura:', error);
+  console.error(&#x27;Error cargando textura:&#x27;, error);
   // Fallback: usa una textura placeholder
   const fallback = Texture.EMPTY;  // Textura vacía predeterminada de PixiJS
 }
 </code></pre>
-<p>Si una carga falla, <code class='language-html'>Texture.from()</code> crea una textura válida de 1x1 píxel por defecto.</p>
+<p>Si una carga falla, <code>Texture.from()</code> crea una textura válida de 1x1 píxel por defecto.</p>
 <h2>La app de prueba</h2>
 <p>Un ejemplo cargando texturas de MetsuOS
 **<div class='pixi-app' id='mos-integration'><div class='pixi-container'  id='pixi-container'></div></div><script type='text/javascript' id='PixiText' async src='https://metsuke.com/assets/apps/PixiJS/004-Texturas/app-texturas.iife.js'></script></p>
@@ -234,9 +235,9 @@ texture.frame = new Rectangle(10, 10, 50, 50);  // Modifica dinámicamente
 <li><a href="https://pixijs.com/8.x/guides/components/assets">Documentación oficial de PixiJS sobre Assets (v8.x) 🌐🟡③</a> .- Explica el sistema de carga asíncrona y caché, respaldando los ejemplos de código proporcionados.</li>
 <li>[Tutorial en YouTube: "Pixi.js Tutorial for Absolute Beginners - Assets" por Wael Yasmina (2024) 🌐🟡③](https://www.youtube.com/watch?v=JRYU6-CgHU4](https://www.youtube.com/watch?v=JRYU6-CgHU4) .– Demuestra la carga de assets de forma práctica, coincidiendo con los métodos descritos.</li>
 <li>[Tutorial en YouTube: "PixiJS Part 4: Texture Loading" (2019) 🌐🟡③](https://www.youtube.com/watch?v=EDEUsXqPTI0](https://www.youtube.com/watch?v=EDEUsXqPTI0) .– Cubre la carga de texturas en versiones anteriores, pero compatible con v8.x en principios básicos.</li>
-<li>Tutorial de PixiJS para principiantes por Wael Yasmina (2024):</li>
+<li>Tutorial de PixiJS para principiantes por Wael Yasmina (2024): </li>
 </ul>
-<hr>
+<hr />
 <ul>
 <li><a href="https://waelyasmina.net/articles/pixi-js-tutorial-for-complete-beginners/">https://waelyasmina.net/articles/pixi-js-tutorial-for-complete-beginners/</a> – Refuerza conceptos de carga y gestión con ejemplos accesibles.</li>
 <li>Tutoriales para PixiJS y TexturePacker por CodeAndWeb: <a href="https://www.codeandweb.com/texturepacker/tutorials/pixijs">https://www.codeandweb.com/texturepacker/tutorials/pixijs</a> – Enfocado en optimización de texturas y sprite sheets, apoyando las prácticas de rendimiento.</li>
@@ -252,99 +253,13 @@ texture.frame = new Rectangle(10, 10, 50, 50);  // Modifica dinámicamente
 <li>Pregunta en Stack Overflow: "Decide Pixi.js or Phaser" (2016): <a href="https://stackoverflow.com/questions/38509629/decide-pixi-js-or-phaser">https://stackoverflow.com/questions/38509629/decide-pixi-js-or-phaser</a> – Menciona que Phaser usa una versión modificada y más antigua de Pixi para renderizado, lo que podría implicar que las optimizaciones de texturas en Pixi v8 no siempre superan a frameworks más completos en rendimiento real.</li>
 <li>Comparación PixiJS vs Phaser: The Gold Standard por Aircada (2023): <a href="https://aircada.com/blog/pixijs-vs-phaser">https://aircada.com/blog/pixijs-vs-phaser</a> – Enfatiza que Phaser despliega Canvas y WebGL de manera más holística para juegos, cuestionando la superioridad de PixiJS en gestión de texturas para aplicaciones no puramente renderizadas.</li>
 </ul>
-<h2>One More Thing</h2>
-<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
-<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
-<h2>Contenido registrado en Safe Creative</h2>
-<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
-<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
-</center>
-<h2>MetsuOS Needs You!</h2>
-<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
-<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
-<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
-<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
-<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
-<ul>
-<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
-<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
-<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
-<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
-<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
-<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
-</ul>
-<h3>Sobre la categorización de los tipos de conocimiento</h3>
-<ul>
-<li>Conocimiento Gnoseológico:  ⚫① 🔴② 🟡③ 🟢④</li>
-<li>Conocimiento Epistemológico:  🔵⑤</li>
-<li>Conocimiento Metsukeológico:  ⚪⑥</li>
-</ul>
-<p>La Metsukeología (de Metsuke vision global y logos conocimiento) es la ciencia que estudia el conocimiento como un conjunto potencial de conocimiento del que podemos obtener, procesar o percibir partes concretas dentro de un marco contextual específico, y cuyo contexto general real está muy por encima de lo que somos capaces, como especie, de percibir, procesar e integrar de forma completa (definición en progreso).</p>
-<p>La Metsucología (de Metsu aniquilación - en este contexto en forma de colapso - , logos conocimiento) es la ciencia que estudia como extraemos verdades percibidas - colapsadas - como conocimiento desde nuestra perspectiva real (tanto epistemológico como gnoseológico) al tomar una parte específica del conocimiento metsukeológico potencial enmarcado en un contexto concreto, obligando a colapsar el conocimiento potencial en conocimiento específico (definición en progreso).</p>
-<h3>Mas sobre el contexto</h3>
-<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
-<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
-<ul>
-<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
-<li>⚖️ - Analisis
-<ul>
-<li>⚖️📚 - Análisis Bibligráfico</li>
-<li>⚖️🔬 - Análisis Científico</li>
-<li>⚖️🏛️ - Análisis Estructural</li>
-<li>⚖️🧠 - Análisis Filosófico</li>
-</ul>
-</li>
-<li>📖 - Referencia
-<ul>
-<li>📖📚 - Referencia Bibliográfica / Libro</li>
-<li>📖🔬- Referencia Científica / Paper</li>
-<li>📖🏛️ - Referencia Estructural</li>
-<li>📖🧠 - Referencia Filosófica</li>
-</ul>
-</li>
-<li>🔍️- Paradigma</li>
-</ul>
-<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
-<ul>
-<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
-<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
-</ul>
-<p>También aplicaremos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
-<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
-<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
-<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
-<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
-<h2>Bibliografía de referencia</h2>
-<ul>
-<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🟡③-⚖️🔴②.html'>Elementos del conocimiento humano y científico  🟡③ ⚖️🔴②</a></li>
-<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
-</ul>
-<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo, llama3-70b-8192, grpk-4, Raúl Carrillo aka metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Sun Oct 19 2025 08:13:42 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Mon May 27 2024 15:38:00 GMT+0200 (hora de verano de Europa central)</li><li><b> Versión Documento: </b>0.4.17</li></ul><!--(iaStatus: 8
-iaStatus_Model: gpt-3.5-turbo, llama3-70b-8192, grpk-4, Raúl Carrillo aka metsuke
-iaStatus_Generado: I
-iaStatus_Supervisado: H
-iaStatus_Validado: '-'
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-04-07T07:43:18.747Z
-modified: 2025-10-19T06:13:42.863Z
-supervisado: 2024-05-27T13:38:00.569Z
-ACCION: null
-ver_major: 0
-ver_minor: 4
-ver_rev: 17
-nav_primary: null
-nav_secondary: null
-tags: null
-MOS_TopImg_Video: CursoPixiJS_ImagenesTexturas.mp4
-)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoPixiJS_ImagenesTexturas.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>!<a class='internal' href='../publicbrain/plantilla---1mt#one-more-thing.html'>Plantilla   1MT#One More Thing</a></p><ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo, llama3-70b-8192, grpk-4, Raúl Carrillo aka metsuke). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2025-10-19 06:13:42.863000+00:00</li><li><b>Versión Documento: </b>0.4.17</li></ul><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoPixiJS_ImagenesTexturas.mp4'></script>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,7 +40,7 @@
 
     <main>
 <h1>Carga de audio y video en PixiJS</h1>
-<p><a class='internal' href='./curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
+<p><a class='internal' href='../publicbrain/curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
 <p>¡Claro! En PixiJS, la carga de archivos de audio y video es fundamental para crear experiencias multimedia completas. Aquí te muestro cómo puedes cargar y utilizar archivos de audio y video en PixiJS:</p>
 <p><strong>Carga de archivos de audio:</strong></p>
 <ol>
@@ -47,32 +48,32 @@
 <p><strong>Importa PixiJS</strong>: Asegúrate de incluir PixiJS en tu proyecto. Puedes hacerlo utilizando un enlace CDN o instalándolo a través de npm si estás utilizando un entorno de desarrollo basado en Node.js.</p>
 </li>
 <li>
-<p><strong>Carga de archivos de audio</strong>: PixiJS proporciona la clase <code class='language-html'>PIXI.Loader</code> para cargar recursos, incluidos archivos de audio. Puedes usar el método <code class='language-html'>add</code> para agregar archivos de audio a la cola de carga y luego llamar al método <code class='language-html'>load</code> para comenzar la carga.</p>
+<p><strong>Carga de archivos de audio</strong>: PixiJS proporciona la clase <code>PIXI.Loader</code> para cargar recursos, incluidos archivos de audio. Puedes usar el método <code>add</code> para agregar archivos de audio a la cola de carga y luego llamar al método <code>load</code> para comenzar la carga.</p>
 </li>
 </ol>
 <pre><code class="language-javascript">const loader = PIXI.Loader.shared;
-loader.add('nombre-audio', 'ruta/al/archivo.mp3').load((loader, resources) => {
+loader.add(&#x27;nombre-audio&#x27;, &#x27;ruta/al/archivo.mp3&#x27;).load((loader, resources) =&gt; {
     // El audio se ha cargado correctamente
-    const audio = resources['nombre-audio'].sound;
-    // Ahora puedes usar 'audio' para reproducir el sonido
+    const audio = resources[&#x27;nombre-audio&#x27;].sound;
+    // Ahora puedes usar &#x27;audio&#x27; para reproducir el sonido
 });
 </code></pre>
-<ol start="3">
+<ol>
 <li><strong>Reproducción de audio</strong>: Una vez que el audio se haya cargado correctamente, puedes reproducirlo utilizando la API de audio de JavaScript estándar.</li>
 </ol>
 <pre><code class="language-javascript">audio.play();
 </code></pre>
 <p><strong>Carga de archivos de video:</strong></p>
 <ol>
-<li><strong>Carga de archivos de video</strong>: PixiJS no tiene soporte nativo para la reproducción de video, pero puedes usar la etiqueta <code class='language-html'>&lt;video&gt;</code> de HTML para cargar y reproducir videos. Puedes crear un elemento <code class='language-html'>&lt;video&gt;</code> en tu HTML y luego manipularlo con JavaScript.</li>
+<li><strong>Carga de archivos de video</strong>: PixiJS no tiene soporte nativo para la reproducción de video, pero puedes usar la etiqueta <code>&lt;video&gt;</code> de HTML para cargar y reproducir videos. Puedes crear un elemento <code>&lt;video&gt;</code> en tu HTML y luego manipularlo con JavaScript.</li>
 </ol>
-<pre><code class='language-html'>&lt;video id=&quot;video&quot; src=&quot;ruta/al/video.mp4&quot; controls&gt;&lt;/video&gt;
+<pre><code class="language-html">&lt;video id=&quot;video&quot; src=&quot;ruta/al/video.mp4&quot; controls&gt;&lt;/video&gt;
 </code></pre>
-<ol start="2">
+<ol>
 <li><strong>Manipulación de video con PixiJS</strong>: Aunque PixiJS no tiene soporte nativo para la reproducción de video, puedes superponer elementos de video en tu lienzo de PixiJS y controlar su posición y escala como lo harías con cualquier otro objeto visual.</li>
 </ol>
 <pre><code class="language-javascript">// Obtener el elemento de video
-const videoElement = document.getElementById('video');
+const videoElement = document.getElementById(&#x27;video&#x27;);
 // Crear una textura de video
 const texture = PIXI.Texture.from(videoElement);
 // Crear un sprite para el video
@@ -80,34 +81,19 @@ const videoSprite = new PIXI.Sprite(texture);
 // Añadir el sprite al escenario
 app.stage.addChild(videoSprite);
 </code></pre>
-<ol start="3">
+<ol>
 <li><strong>Control de video</strong>: Puedes controlar la reproducción y otros aspectos del video utilizando la API de video de HTML5 estándar en combinación con eventos y métodos de JavaScript.</li>
 </ol>
 <pre><code class="language-javascript">// Reproducir el video
 videoElement.play();
 </code></pre>
-<p>Con estas técnicas, puedes cargar y utilizar archivos de audio y video en tus proyectos de PixiJS para crear experiencias multimedia envolventes y dinámicas.</p>
-<ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Jun 10 2025 23:14:03 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.5</li></ul><!--(iaStatus: 0
-iaStatus_Model: ''
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-04-14T00:22:40.088Z
-modified: 2025-06-10T21:14:03.171Z
-supervisado: ''
-ACCION: ''
-ver_major: 0
-ver_minor: 2
-ver_rev: 5
-nav_primary: []
-nav_secondary: []
-tags: []
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>Con estas técnicas, puedes cargar y utilizar archivos de audio y video en tus proyectos de PixiJS para crear experiencias multimedia envolventes y dinámicas.</p><ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Ultima Modificación: </b>2025-06-10 21:14:03.171000+00:00</li><li><b>Versión Documento: </b>0.2.5</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

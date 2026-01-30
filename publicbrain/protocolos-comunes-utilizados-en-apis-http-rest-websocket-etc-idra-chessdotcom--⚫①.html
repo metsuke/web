@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../npl.html">NPL</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Protocolos comunes utilizados en APIs (HTTP, REST, WebSocket, etc.) (IDRA-ChessDotCom)  ⚫①</h1>
+<p><a class='internal' href='../publicbrain/interaccion-digital-remota-mediante-api-con-chessdotcom.html'>Interacción Digital Remota mediante API con ChessDotCom</a></p>
+<p>Algunos de los protocolos comunes utilizados en APIs incluyen:</p>
+<ol>
+<li>
+<p>HTTP (Hypertext Transfer Protocol): Es el protocolo de comunicación principal utilizado en la World Wide Web. Es un protocolo de solicitud-respuesta en el que un cliente realiza una solicitud a un servidor y el servidor responde con los datos solicitados. HTTP es ampliamente utilizado en API RESTful.</p>
+</li>
+<li>
+<p>REST (Representational State Transfer): Es un estilo arquitectónico para diseñar redes de comunicación distribuidas. Una API RESTful utiliza los métodos estándar de HTTP (GET, POST, PUT, DELETE, etc.) para realizar operaciones CRUD (crear, leer, actualizar, borrar) en recursos.</p>
+</li>
+<li>
+<p>WebSocket: Es un protocolo de comunicación bidireccional full-duplex sobre un solo socket TCP. Permite una comunicación en tiempo real entre el cliente y el servidor, lo que lo hace ideal para aplicaciones que requieren actualizaciones instantáneas, como juegos en línea o aplicaciones de chat.</p>
+</li>
+<li>
+<p>GraphQL: Es un lenguaje de consulta y una alternativa a las API RESTful. Permite a los clientes solicitar solo la información que necesitan, lo que puede reducir la cantidad de datos transmitidos y mejorar el rendimiento de la aplicación.</p>
+</li>
+</ol>
+<p>Estos son solo algunos de los protocolos comunes utilizados en APIs. La elección del protocolo adecuado dependerá de las necesidades y requisitos específicos de la aplicación que estés desarrollando.</p>
+<p>!<a class='internal' href='../publicbrain/⚫🔴🟡🟢🔵⚪-🔴②#sobre-el-sistema-de-validez-de-un-contenido-en-metsuos.html'>⚫🔴🟡🟢🔵⚪ (🔴②)#Sobre el sistema de validez de un contenido en MetsuOS</a></p><ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Ultima Modificación: </b>2024-06-19 06:17:46.158000+00:00</li><li><b>Versión Documento: </b>0.3.1</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>

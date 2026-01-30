@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../npl.html">NPL</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Tutorial de AGD 2018 Capitulo 03 - Nuestra primera pantalla  ⚫①</h1>
+<p><img alt="Mockup de una pantalla de JBA en Amstrad CPC"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_c6240a25f107f33d58a76ce0ca300d86_MD5.jpg" /></p>
+<ul>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-edition-⚫①.html'>Tutorial de AGD 2018 Edition ⚫①</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-02---que-son-los-tiles-⚫①.html'><< Anterior</a>  | <a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-04---los-sprites-aka-creando-el-muñequito-y-los-bichos-⚫①.html'>Siguiente >></a></li>
+</ul>
+<p>Continuamos con el tutorial de AGD en español, en esta ocasión crearemos nuestra primera pantalla, y os propondré el ejercicio artístico que les prometí en <a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-02---que-son-los-tiles-⚫①.html'>el capítulo anterior</a>.</p>
+<p>Antes de nada, en este punto dejo definitivamente de "traducir" segmentos del curso original.</p>
+<p>El primer capítulo es prácticamente la traducción, en el segundo he sacado absolutamente los pies del tiesto.</p>
+<p>Creo que, si bien seguiré los pasos en el orden que se planteó, lo explicaré a mi modo, creo que quedará más natural.</p>
+<p>Dicho lo cual, continuamos con el índice de contenidos que planteamos en el capítulo II, en esta ocasión:</p>
+<ul>
+<li>Creación de muros</li>
+<li>Cómo crear plataformas</li>
+<li>Generación de nuestra primera pantalla</li>
+</ul>
+<h2>El "Paciente" (la pantalla de AGD)</h2>
+<p><img alt="Pantalla de la cueva de Javi's Big Adventure"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_0deb0b7ab3e2c4c0f4e5a28e861e92d9_MD5.jpeg" /></p>
+<p>En la anterior entrega, estuvimos creando los tiles necesarios para dibujar la pantalla que aparece sobre estas líneas, en esta ocasión, lo haremos de verdad.</p>
+<p>Vamos a familiarizarnos con el editor de pantallas, y de este modo estar en disposición de dar rienda suelta a nuestra vena artística.</p>
+<p>Dejaré para próximos capítulos la parte de muros y plataformas.</p>
+<h2>El editor de Pantallas</h2>
+<p><img alt="El Editor de pantallas de AGD"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_93d89a3d45bc00c2f68cf4cb0f6db69e_MD5.jpg" /></p>
+<p>Desde el menú principal de AGD, pulsamos la letra C, lo que nos llevará al editor de pantallas.</p>
+<p>Globalmente funciona de una forma similar al editor de bloques, pero con un objetivo distinto. Podemos movernos entre pantallas, crearlas, editarlas, borrarlas y - usando los tiles - darles el aspecto que queramos.</p>
+<p>En esencia, esta pantalla funciona como un lienzo en el que iremos "estampando" los diferentes tiles hasta formar la imagen deseada, así de sencillo. He aquí las teclas que necesitarás:</p>
+<pre class='pre'>TECLAS
+=============================================
+- FLECHAS = Mover el cursor de dibujo
+- SPACE = "Estampa" el bloque actual en la posición del cursor
+- F = Activa/Desactiva el modo de dibujado rápido.
+- 1 = Mover a la izquierda por los bloques
+- 2 = Mover a la derecha por los bloques
+- N = Siguiente Pantalla
+- P = Pantalla Anterior
+- M = Copiar pantalla actual al portapapeles
+- K = Pegar pantalla desde el portapapeles
+- X = Crea una nueva pantalla
+- D = Borra la pantalla actual
+- ENTER = Volver al menú principal.</pre>
+<h3>¿Cómo usamos el editor de pantallas?</h3>
+<p>En realidad, el flujo de trabajo es sencillo, en primer lugar, tenemos que ir a la pantalla que queremos editar, si no es la que aparece al entrar, o crear una si es lo que precisamos.</p>
+<p>Una vez estemos donde queremos pintar, debemos usar 1 y 2 para seleccionar el tile que queremos dibujar, una vez hecho usaremos las flechas de cursor para movernos y SPACE para dibujar el tile en la posición del cursor.</p>
+<p>Hay algunos aspectos a tener en cuenta:</p>
+<ul>
+<li>El tile número 0 es nuestro "fondo" y por defecto aparece llenando toda la pantalla. Si te ha ocurrido que tu pantalla apareció llena de "suelos", ya sabes que debes dejar el tile 0 "vacío". En mi caso usé un cuadro totalmente negro como tile 0 ya que preferí dejar el fondo de un color y evitar así el color clash en la medida de lo posible.</li>
+<li>No existe una tecla para "borrar", para realizar esta acción selecciona el tile 0 y dibújalo sobre las posiciones que quieras borrar.</li>
+</ul>
+<h4>F: Modo de dibujado rápido de pantallas</h4>
+<p>Si has seguido la máxima de <a href="https://www.youtube.com/watch?v=smwXc3vShZw&list=PLmxqg54iaXrijQi4-J9IkAWDEguKRX9Dh">practicar, practicar, practicar 🌐🟡③</a>, te habrás dado cuenta rápidamente de que crear todo un suelo, o rellenar un área concreta de la pantalla con tiles idénticos es harto tedioso. Para simplificar esta tarea existe la tecla de dibujado rápido, (F), que activa este modo.</p>
+<p>Al activar el dibujado rápido, no tendremos que pulsar SPACE para dibujar un tile sino que el tile seleccionado se estampará automáticamente en la posición de cursor al movernos. ¡Pruébalo!</p>
+<p>Para desactivarlo, pulsaremos de nuevo la tecla F.</p>
+<h2>¡Ahora a crear!</h2>
+<p>Una vez te hayas familiarizado con el interfaz del editor de pantallas, te propongo los tres ejercicios siguientes:</p>
+<ol>
+<li>Recrea en tu AGD la pantalla que estamos usando como ejemplo de la cueva, con los tiles que tú mismo has creado en el capítulo anterior.</li>
+<li>Crea copias de los tiles que has usado, cámbialos a tu gusto (manteniendo los originales), duplica la pantalla que creaste y modifica la copia para que se dibuje usando tus tiles, no los de "<a class='internal' href='../publicbrain/mos-games---the-big-javis-adventure---zx-spectrum---2017.html'>The Big Javis Adventure</a>".</li>
+<li>Como BONUS, duplica la pantalla que acabas de crear a tu gusto, y conviértela en una aún mejor obra de arte, añadiendo tiles nuevos para que el aspecto sea del todo espectacular.</li>
+</ol>
+<p>Una vez terminadas, deberías tener 3 pantallas distintas:</p>
+<ul>
+<li>Tu copia de la de JBA,</li>
+<li>una versión básica.</li>
+<li>la versión avanzada de la segunda.</li>
+</ul>
+<h3>¡Envía tus creaciones!</h3>
+<p>Si te apetece, puedes enviarme vía mail a metsuke(at)gmail(Dot)com</p>
+<p>Adjúntame tus obras, una breve reseña de qué has dibujado y tu nombre.</p>
+<p>Si quieres, puedo publicarlas como ejemplo en este mismo capítulo (si así lo deseas).</p>
+<h2>¡Avanzamos!</h2>
+<p>En el próximo capítulo crearemos nuestro primer Sprite, orientando nuestro avance hacia el punto de poner un muñeco en pantalla y moverlo, pero por ahora ¡a crear pantallas!</p>
+<h2>¿Y ahora que?</h2>
+<ul>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-01---el-comienzo-⚫①.html'>Si llegaste aqui producto de una abducción extraterrestre y no tienes claro de que va todo esto, acude al departamento de orientación estudiantil situado en el hall del teatro, y ahi pregunta por la página 1</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-02---que-son-los-tiles-⚫①.html'>Si has dado de comer al mogwai después de las 12, ¡aprende a prestar atención y vuelve echando leches a la página 2!</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-03---nuestra-primera-pantalla--⚫①.html'>Si necesitas llamar a casa, ve a la cabina de la página 3</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-04---los-sprites-aka-creando-el-muñequito-y-los-bichos-⚫①.html'>Si crees que ya es momento de animarse, lanzate a la página 4</a></li>
+</ul>
+<h2>Referencias Bibliográficas</h2>
+<p>No se requiere ninguna</p>
+<p>!<a class='internal' href='../publicbrain/plantilla---1mt#one-more-thing.html'>Plantilla   1MT#One More Thing</a></p><ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Ultima Modificación: </b>2025-08-24 10:48:34.070000+00:00</li><li><b>Versión Documento: </b>0.2.7</li></ul><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoAGD003.mp4'></script>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>

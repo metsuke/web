@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,10 +40,10 @@
 
     <main>
 <h1>Uso de capas y ordenamiento de elementos visuales en PixiJS</h1>
-<p><a class='internal' href='./curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
+<p><a class='internal' href='../publicbrain/curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
 <p>En PixiJS, el uso de capas y el ordenamiento de elementos visuales son técnicas importantes para controlar cómo se dibujan y superponen los elementos gráficos en la pantalla. Esto es útil para crear efectos de profundidad, como elementos que aparecen detrás o delante de otros, o para organizar la interfaz de usuario de tu aplicación o juego. Aquí te explico cómo puedes usar capas y ordenamiento de elementos visuales en PixiJS:</p>
 <h3>1. Uso de capas:</h3>
-<p>Las capas son contenedores separados que contienen elementos visuales y que se pueden renderizar independientemente unas de otras. Puedes utilizar capas para organizar y controlar grupos específicos de elementos visuales. Para crear una capa en PixiJS, simplemente creas una instancia de <code class='language-html'>PIXI.Container</code>. Aquí tienes un ejemplo:</p>
+<p>Las capas son contenedores separados que contienen elementos visuales y que se pueden renderizar independientemente unas de otras. Puedes utilizar capas para organizar y controlar grupos específicos de elementos visuales. Para crear una capa en PixiJS, simplemente creas una instancia de <code>PIXI.Container</code>. Aquí tienes un ejemplo:</p>
 <pre><code class="language-javascript">// Crear capa de fondo
 let capaFondo = new PIXI.Container();
 
@@ -53,7 +54,7 @@ let capaPersonajes = new PIXI.Container();
 let capaUI = new PIXI.Container();
 </code></pre>
 <h3>2. Ordenamiento de elementos visuales:</h3>
-<p>Una vez que tienes tus elementos visuales organizados en capas, puedes controlar el orden en que se dibujan en la pantalla mediante el uso de los métodos <code class='language-html'>addChild()</code> y <code class='language-html'>removeChild()</code> para agregar y quitar elementos de las capas. Los elementos se dibujan en el orden en que se agregan a sus respectivas capas, por lo que puedes controlar el ordenamiento cambiando el orden de agregado. Aquí tienes un ejemplo:</p>
+<p>Una vez que tienes tus elementos visuales organizados en capas, puedes controlar el orden en que se dibujan en la pantalla mediante el uso de los métodos <code>addChild()</code> y <code>removeChild()</code> para agregar y quitar elementos de las capas. Los elementos se dibujan en el orden en que se agregan a sus respectivas capas, por lo que puedes controlar el ordenamiento cambiando el orden de agregado. Aquí tienes un ejemplo:</p>
 <pre><code class="language-javascript">// Agregar elementos a la capa de fondo
 capaFondo.addChild(elemento1);
 capaFondo.addChild(elemento2);
@@ -67,7 +68,7 @@ capaUI.addChild(boton1);
 capaUI.addChild(boton2);
 </code></pre>
 <h3>3. Ordenamiento manual:</h3>
-<p>En algunos casos, es posible que necesites controlar el ordenamiento de los elementos visuales dentro de una capa específica. Para hacerlo, puedes utilizar los métodos <code class='language-html'>getChildIndex()</code> y <code class='language-html'>setChildIndex()</code> de la clase <code class='language-html'>PIXI.Container</code>. Por ejemplo:</p>
+<p>En algunos casos, es posible que necesites controlar el ordenamiento de los elementos visuales dentro de una capa específica. Para hacerlo, puedes utilizar los métodos <code>getChildIndex()</code> y <code>setChildIndex()</code> de la clase <code>PIXI.Container</code>. Por ejemplo:</p>
 <pre><code class="language-javascript">// Obtener el índice de un elemento dentro de una capa
 let indice = capaPersonajes.getChildIndex(personaje1);
 
@@ -81,28 +82,13 @@ renderizador.render(capaFondo);
 renderizador.render(capaPersonajes);
 renderizador.render(capaUI);
 </code></pre>
-<p>Con estas técnicas, puedes usar capas y ordenamiento de elementos visuales en PixiJS para crear efectos visuales interesantes y organizar la interfaz de usuario de tu aplicación o juego de manera efectiva.</p>
-<ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Jun 10 2025 23:14:06 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.5</li></ul><!--(iaStatus: 0
-iaStatus_Model: ''
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-04-11T11:31:47.564Z
-modified: 2025-06-10T21:14:06.362Z
-supervisado: ''
-ACCION: ''
-ver_major: 0
-ver_minor: 2
-ver_rev: 5
-nav_primary: []
-nav_secondary: []
-tags: []
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>Con estas técnicas, puedes usar capas y ordenamiento de elementos visuales en PixiJS para crear efectos visuales interesantes y organizar la interfaz de usuario de tu aplicación o juego de manera efectiva.</p><ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Ultima Modificación: </b>2025-06-10 21:14:06.362000+00:00</li><li><b>Versión Documento: </b>0.2.5</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

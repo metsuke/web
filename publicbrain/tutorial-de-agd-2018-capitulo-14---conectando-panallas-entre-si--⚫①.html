@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../npl.html">NPL</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Tutorial de AGD 2018 Capítulo 14 - Conectando panallas entre si  ⚫①</h1>
+<p><img alt="Varias pantallas de JBA interconectadas"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_92ffd47eca16e3291db020d84b79f549_MD5.jpg" /></p>
+<ul>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-edition-⚫①.html'>Tutorial de AGD 2018 Edition ⚫①</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-13---manual-de-uso-del-editor-de-codigo-⚫①.html'><< Anterior</a> | <a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-15---el-salto-y-sus-posibilidades-narrativas--⚫①.html'>Siguiente >></a></li>
+</ul>
+<p>En un capítulo anterior, <a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-11---tipos-de-tiles-⚫①.html'>estuvimos viendo como indicar a AGD el rol de cada tile , creando suelos, plataformas y zonas mortales</a>. En esta ocasión vamos a interconectar pantallas en las cuatro direcciones.</p>
+<p>AGD admite hacer un juego en el que "pases pantallas" a lo Bubble Booble o Snow Bros, y eso lo comentaremos cuando empecemos a hacer juegos de otros tipos, de hecho cuando termine publique y posteriormente os comente como está hecho C5 Juanje's Revenge mi siguiente juego y que va con un retraso monumental, pero que quizá continuaré como parte del Tutorial en el futuro.</p>
+<p><strong><iframe width="100%" height="480" src="https://www.youtube.com/embed/2o8mpCoPGxY?si=lHY7T7j4b3ulFp-k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<pre class='pre'>Si, ya sé, ya sé, iba a salir en 2018 xD, no voy a entrar a explicar la dificultad creciente de nuestras vidas según envejecemos, tenemos que cuidar hijos, sobrinos y padres, y todo lo que supone la vida adulta. 
+
+Solo diré que tengo previsto retomarlo, a pesar de que en su dia perdí la versión de desarrollo que estaba como al 80% de completarse y respiraré hondo para rehacerlo.</pre>
+<h2>Soy el mapa, el mapa, el mapa</h2>
+<p>Lo primero, antes de hacer que nuestro protagonista recorra las pantallas, es configurar el mapa, ya sabéis como funciona, lo que no sé si os comenté en su momento es que podéis indicar en qué pantalla debe comenzar el protagonista seleccionando una de las pantallas del mapa y pulsando X.</p>
+<p><img alt="Editor de Mapas con la pantalla de la cascada seleccionada"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_bfd08c33b5100c26550f8f6c0a3ffbd4_MD5.jpeg" /></p>
+<p>En la imagen anterior podéis apreciar el bloque de pantallas 00 - 01 en la fila superior y 07-02 en la inferior, que corresponden con las pantallas que se ven en la imagen que encabeza este capítulo.</p>
+<p>Un detalle obvio, además de crear e insertar las pantallas en el mapa, las aberturas y paredes entre ellas deben ser coherentes. Por cierto, <a href="https://maps.speccy.cz/map.php?id=BigJavisAdventure&sort=4&part=2&ath=">aquí podeis consultar el mapa al completo  🌐🟡③</a>.</p>
+<h2>Engarzando pantallas</h2>
+<p>Como decía , las aberturas deben ser coherentes si hay hueco para pasar hacia la derecha de la pantalla 1 a la 2 a determinada altura, debe existir el hueco equivalente en la parte izquierda de la 2 para poder regresar, a no ser que exista algún motivo en la mecánica o el argumento por el que no deba ser de este modo.</p>
+<p>Lo mismo sucede con las partes superior e inferior de las pantallas que se comuniquen a través del "suelo" y "techo", el hueco debe ser coherente, y estar indicado, salvo en los casos en que - como sucede por ejemplo con el acceso a las pantallas de las nubes - se quiera "mantener en secreto" para darle algo de emoción al asunto en determinadas zonas del mapeado. Cuestión de imaginación.</p>
+<p>Recordemos que si el personaje supera el margen izquierdo aparecerá en el derecho y lo mismo sucede con arriba y abajo, para dotar de coherencia al mapa, es necesario limitar con paredes, suelos o techos el avance del personaje para que no cambiemos de pantalla donde no se debe. </p>
+<p>En las pantallas en que "el cielo es el límite", hay por ejemplo bloques de tipo pared con aspecto de cielo, para evitar este problema en aquellos lugares donde el salto máximo supera el margen de la pantalla.</p>
+<h2>El mecanismo del cambio de pantalla</h2>
+<p>Antes de discutir el código en sí, me gustaría explicar como logramos el efecto de "cambiar de pantalla" de modo que el jugador perciba continuidad.</p>
+<p>En esencia, cuando cambiamos de pantalla con SCREENLEFT o SCREENRIGHT por ejemplo, lo único ue sucede es que desaparecen los sprites de la pantalla actual, se cambia el escenario al correspondiente según el mapa y se ponen en pantalla los sprites de la nueva.</p>
+<p>Quizá sea algo decepcionante, pero lo único que sucede es que "cambiamos el escenario", cuan titiriteros que cambian el fondo para mostrar que caperucita está en el bosque.</p>
+<p>Pero claro está queda nuestro protagonista, si sólo cambiamos el fondo, resultará que el personaje quedará situado en una posición incorrecta, es por ello que cuando vamos a la pantalla de la derecha, además de cambiar el fondo, movemos el personaje al lado que le corresponde en la pantalla destino. Todo sucede tan deprisa que para el jugador el muñequito ha ido andando a otra pantalla, pero, en realidad, es como un escenario teatral. X metros cuadrados y ya xD.</p>
+<p>Antes de ver código, arranquen el juego y cambien de pantalla ahora que saben lo que ocurre realmente y fijense en lo que sucede realmente.</p>
+<h2>El Código "Mágico"</h2>
+<p>Entre los tipos de tiles y esto, estoy destrozando vuestro recuerdo de la infancia, resulta que todo es una obra de teatro bien sincronizada. No hay motivo para entristecerse, ahora que empezáis a vislumbrar como funciona, podreis apreciar aún más el trabajazo de los desarrolladores de la época, <a class='internal' href='../publicbrain/noticias---cinco-duros-anuncia-la-primera-serie-documental-sobre-la-industria-del-videojuego-español---2025-05-30-🟡③.html'>y ellos no tenían ni internet, ni AGD</a></p>
+<p>Vamos al lío, lo primero, tengamos en cuenta que los pixeles en AGD se cuentan con un sistema de coordenadas cartesianas cuyo punto de origen es el pixel superior izquierdo de la pantalla.</p>
+<p>Aquí va el código, no está todo el del evento de movimiento del jugador, sólo las partes relevantes.</p>
+<pre><code class="language-BASIC">...
+        IF Y &gt; 167
+          SCREENRIGHT
+          LET Y = 6
+          EXIT
+        ELSE
+        ...
+        IF Y &lt; 8
+          SCREENLEFT
+          LET Y = 168
+          EXIT
+        ELSE
+        ...
+</code></pre>
+<p>Es <a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-08---mover-a-nuestro-protagonista-por-la-pantalla-⚫①.html'>el mísmo código que vimos cuando movíamos al protagonista de nuestro juego por primera vez</a>, solo que ahora somos más conscientes de lo que sucede en realidad.</p>
+<p>En esencia cuando movemos a la derecha, y se supera el pixel 168 pasamos a la pantalla de la derecha (el proceso del fondo y los sprites lo realiza AGD, sólo hemos de decirle <a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-07---editor-del-mapa-⚫①.html'>que pantallas hay y como están situadas, en el Mapa</a> y ajustamos la posición del protagonista.</p>
+<h2>Todo lo que sube baja, y viceversa</h2>
+<p>¿Que pasa con arriba y abajo?, aunque el código de tipo Manic Miner no lo contempla, veamos como gestionar esto:</p>
+<pre><code class="language-BASIC">...
+        IF KEY 3
+          JUMP
+        ENDIF
+        ...
+        IF X &lt;= 16
+          SCREENUP
+          LET X = 128
+        ENDIF
+        ...
+        FALL
+        IF X &gt; 128
+          SCREENDOWN
+          LET X = 17
+        ENDIF
+        ...
+</code></pre>
+<p>Básicamente integramos las comprobaciones para el cambio arriba y abajo en el flujo que controla el salto y la caida, de este modo si "nos dejamos caer" bajaremos a la pantalla inferior y si saltamos por encima del límite de la pantalla, cambiaremos a la superior.</p>
+<blockquote>
+<p><em>¡Cuidado!</em> cuando diseñemos el mapa tengamos en cuenta que para subir hemos de poder saltar y caer en un área sólida por encima del límite inferior de la pantalla a la que accedemos mediante el salto.</p>
+</blockquote>
+<p>Antes de programarlo en sus proyectos, prueben a cambiar de pantalla arriba y abajo en JBA para observar el funcionamiento del proceso.</p>
+<p>En el próximo capítulo trataremos la configuración del salto y las diferentes posibilidades narrativas que este nos ofrece, hasta entonces ¡no olvidéis practicar, practicar y practicar!.</p>
+<h2>Y ahora que?</h2>
+<ul>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-01---el-comienzo-⚫①.html'>Si no logras conectar, busca cobertura y pasa a la página 1</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-13---manual-de-uso-del-editor-de-codigo-⚫①.html'>Si aún crees en el poder del acero, ve a la página 13</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-14---conectando-panallas-entre-si--⚫①.html'>Si estás atrapado por el poder de la carne, pasa a la página 14</a></li>
+<li><a class='internal' href='../publicbrain/tutorial-de-agd-2018-capitulo-15---el-salto-y-sus-posibilidades-narrativas--⚫①.html'>Si tienes claro que el poder del contexto es primordial, ve saltando hasta la página 15</a></li>
+</ul>
+<h2>Referencias Bibliográficas</h2>
+<ul>
+<li><strong>Ninguna fuente verificable disponible</strong>.  </li>
+</ul>
+<p>!<a class='internal' href='../publicbrain/plantilla---1mt#one-more-thing.html'>Plantilla   1MT#One More Thing</a></p><ul><li><b>Información IA: </b>Generado por Humano. </li><li><b>Ultima Modificación: </b>2025-07-17 07:08:52.319000+00:00</li><li><b>Versión Documento: </b>0.2.4</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>

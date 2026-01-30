@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../npl.html">NPL</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>MiniQuest - Modo Radastan en ZX-Uno y ZX Spectrum Next: Comparación Técnica y Desarrollo de Juegos  ⚫①</h1>
+<p><a class='internal' href='../publicbrain/publicbrainindex.html'>Index</a></p>
+<p>El <strong>Modo Radastan</strong> es un modo gráfico no estándar del ZX Spectrum, que ofrece una resolución de <strong>128x96 píxeles</strong> con <strong>16 colores por píxel</strong> (sin <em>attribute clash</em>), diseñado originalmente para el <strong>ZX-Uno</strong> y con soporte parcial o adaptado en el <strong>ZX Spectrum Next</strong>. A continuación, se detalla qué máquinas soportan este modo, una comparación técnica entre el ZX-Uno y el Next, y estrategias prácticas para desarrollar juegos compatibles en ambas plataformas.</p>
+<hr />
+<h2>Máquinas que soportan el Modo Radastan</h2>
+<h3>Soportadas directamente</h3>
+<ul>
+<li><strong>ZX-Uno</strong>: </li>
+<li>Clon del ZX Spectrum basado en FPGA.</li>
+<li>Soporta nativamente el Modo Radastan (128x96 píxeles, 16 colores, 6 KB de memoria).</li>
+<li>Activación mediante registros específicos (<code>port_out(0xBF3B, 64)</code> para ULAplus y <code>port_out(0xFF3B, 3)</code> para el modo).</li>
+<li><strong>ZX Evolution</strong>:</li>
+<li>Clon ruso basado en FPGA.</li>
+<li>Ofrece un modo gráfico similar (hasta 512x512 píxeles con viewport de 320x200), compatible con contenido adaptado al Modo Radastan.</li>
+<li>No es idéntico, pero puede ejecutar programas similares.</li>
+</ul>
+<h3>Soportadas parcialmente</h3>
+<ul>
+<li><strong>ZX Spectrum Next</strong>:</li>
+<li>No soporta el Modo Radastan de forma nativa, pero puede emularlo mediante el modo <strong>Layer 2</strong> (256x192 píxeles, 256 colores) limitando la resolución y paleta.</li>
+<li>Compatible con programas diseñados para Modo Radastan, con ajustes en la configuración del hardware FPGA.</li>
+</ul>
+<h3>No soportadas</h3>
+<ul>
+<li><strong>Sinclair Vega</strong>: No permite cambios dinámicos en la paleta, incompatible con Modo Radastan.</li>
+<li><strong>ZX Spectrum SE / Chloe 280SE</strong>: Pueden soportar modos avanzados, pero no hay evidencia de soporte específico para Modo Radastan.</li>
+</ul>
+<hr />
+<h2>Comparación técnica: ZX-Uno vs. ZX Spectrum Next</h2>
+<h3>ZX-Uno</h3>
+<ul>
+<li><strong>Definición del Modo Radastan</strong>:</li>
+<li><strong>Resolución</strong>: 128x96 píxeles.</li>
+<li><strong>Colores</strong>: 16 colores por píxel (paleta de 256 colores, formato RGB 3:3:2).</li>
+<li><strong>Memoria</strong>: 6 KB de VRAM (dirección base 0x4000).</li>
+<li><strong>Sin <em>attribute clash</em></strong>: Cada píxel tiene color independiente.</li>
+<li><strong>Implementación</strong>:</li>
+<li>Activación:
+    <code>z80
+    ld bc, 0xBF3B
+    ld a, 64
+    out (c), a    ; Activar ULAplus
+    ld bc, 0xFF3B
+    ld a, 3
+    out (c), a    ; Activar Modo Radastan</code></li>
+<li>Escritura directa en VRAM para dibujar píxeles.</li>
+<li><strong>Limitaciones</strong>:</li>
+<li>Resolución baja y 6 KB de memoria limitan el detalle gráfico.</li>
+<li>Sin sprites por hardware; requiere implementación por software.</li>
+<li>Comunidad más pequeña, menos recursos disponibles.</li>
+<li><strong>Ventajas</strong>:</li>
+<li>Soporte nativo, configuración simple.</li>
+<li>Ideal para juegos retro con gráficos pixelados.</li>
+</ul>
+<h3>ZX Spectrum Next</h3>
+<ul>
+<li><strong>Definición del Modo Radastan (emulado)</strong>:</li>
+<li><strong>Resolución</strong>: 128x96 píxeles (emulada en Layer 2, nativo 256x192).</li>
+<li><strong>Colores</strong>: 16 colores (emulados, paleta ULAplus) o 256 colores (Layer 2, RGB 3:3:3).</li>
+<li><strong>Memoria</strong>: 48 KB (Layer 2 completo) o 6 KB (emulando Radastan).</li>
+<li><strong>Implementación</strong>:</li>
+<li>Configuración de Layer 2 para emular Radastan:
+    <code>z80
+    ld bc, 0x123B
+    ld a, 0x02
+    out (c), a    ; Activar Layer 2
+    ld bc, 0x243B
+    ld a, 0x40
+    out (c), a    ; Seleccionar paleta
+    ld bc, 0x253B
+    ld a, 0x00
+    out (c), a    ; Configurar colores</code></li>
+<li>Limitar el área de dibujo a 128x96 píxeles manualmente.</li>
+<li><strong>Limitaciones</strong>:</li>
+<li>Emulación no nativa, requiere ajustes para replicar el Modo Radastan.</li>
+<li>Configuración de Layer 2 más compleja que en ZX-Uno.</li>
+<li>Menos soporte comunitario para Modo Radastan frente a modos nativos del Next.</li>
+<li><strong>Ventajas</strong>:</li>
+<li>Hardware más avanzado: sprites, scrolling y procesador Copper.</li>
+<li>Mayor resolución y paleta en Layer 2 para versiones mejoradas.</li>
+<li>Comunidad activa con herramientas como <strong>CSpect</strong> y <strong>Z88DK</strong>.</li>
+</ul>
+<h3>Resumen técnico</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Aspecto</strong></th>
+<th><strong>ZX-Uno</strong></th>
+<th><strong>ZX Spectrum Next</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Soporte nativo</strong></td>
+<td>Sí (Modo Radastan).</td>
+<td>No, emulado vía Layer 2.</td>
+</tr>
+<tr>
+<td><strong>Resolución</strong></td>
+<td>128x96 píxeles.</td>
+<td>128x96 (emulado) o 256x192 (Layer 2).</td>
+</tr>
+<tr>
+<td><strong>Colores</strong></td>
+<td>16 colores (RGB 3:3:2).</td>
+<td>16 colores (emulado) o 256 (Layer 2).</td>
+</tr>
+<tr>
+<td><strong>Memoria gráfica</strong></td>
+<td>6 KB.</td>
+<td>48 KB (Layer 2) o 6 KB (emulado).</td>
+</tr>
+<tr>
+<td><strong>Sprites</strong></td>
+<td>Por software.</td>
+<td>Por hardware (hasta 128 sprites).</td>
+</tr>
+<tr>
+<td><strong>Configuración</strong></td>
+<td>Simple (puertos 0xBF3B, 0xFF3B).</td>
+<td>Compleja (puertos TBBlue).</td>
+</tr>
+<tr>
+<td><strong>Comunidad</strong></td>
+<td>Menor, centrada en ZX-Uno.</td>
+<td>Mayor, enfocada en modos nativos.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Desarrollo práctico de juegos para ambos sistemas</h2>
+<h3>Estrategias para compatibilidad</h3>
+<ol>
+<li><strong>Diseño gráfico optimizado</strong>:</li>
+<li><strong>Resolución común</strong>: Diseña gráficos en 128x96 píxeles para compatibilidad con ZX-Uno. En el Next, usa un subconjunto de Layer 2 para emular esta resolución.</li>
+<li><strong>Paleta compartida</strong>: Usa 16 colores compatibles con ULAplus (RGB 3:3:2). Asegúrate de que los colores sean válidos en la paleta de 9 bits del Next.</li>
+<li>
+<p><strong>Herramientas gráficas</strong>: Usa <strong>Retro Pixel</strong> o <strong>Multipaint</strong> para crear gráficos exportables a ambos sistemas.</p>
+</li>
+<li>
+<p><strong>Programación portable</strong>:</p>
+</li>
+<li><strong>Ensamblador Z80</strong>: Escribe el núcleo del juego en ensamblador para un control preciso. Usa rutinas separadas para cada plataforma:
+     <code>z80
+     ld a, (machine_type)  ; 1 = ZX-Uno, 2 = Next
+     cp 1
+     jr z, setup_uno
+     ; Configuración para Next (Layer 2)
+     ld bc, 0x123B
+     ld a, 0x02
+     out (c), a
+     jr continue
+     setup_uno:
+     ; Configuración para ZX-Uno (Radastan)
+     ld bc, 0xBF3B
+     ld a, 64
+     out (c), a
+     ld bc, 0xFF3B
+     ld a, 3
+     out (c), a
+     continue:
+     ; Código común para dibujar</code></li>
+<li><strong>Bibliotecas</strong>: Usa <strong>Z88DK</strong> con la biblioteca <code>sp1</code> para manejar gráficos en ambos sistemas.</li>
+<li>
+<p><strong>Detección de hardware</strong>: "I"mplementa una rutina para detectar la máquina (por ejemplo, comprobando puertos o memoria).</p>
+</li>
+<li>
+<p><strong>Gestión de memoria</strong>:</p>
+</li>
+<li><strong>ZX-Uno</strong>: Limita los gráficos a 6 KB, optimizando con técnicas como RLE o tiles.</li>
+<li>
+<p><strong>Next</strong>: Usa bancos de memoria adicionales para gráficos complejos, pero incluye una versión simplificada para ZX-Uno.</p>
+</li>
+<li>
+<p><strong>Sprites y animaciones</strong>:</p>
+</li>
+<li><strong>ZX-Uno</strong>: Implementa sprites por software, usando máscaras para evitar sobrescrituras.</li>
+<li><strong>Next</strong>: Aprovecha sprites por hardware, pero incluye una versión por software para compatibilidad.</li>
+<li>
+<p>Diseña sprites en 16x16 o 8x8 píxeles para simplicidad.</p>
+</li>
+<li>
+<p><strong>Pruebas y depuración</strong>:</p>
+</li>
+<li>Usa <strong>ZEsarUX</strong> para ZX-Uno y <strong>CSpect</strong> para Next.</li>
+<li>Verifica paleta y resolución en ambos sistemas.</li>
+<li>Participa en foros como <strong>zxuno.com</strong> y <strong>specnext.com</strong> para retroalimentación.</li>
+</ol>
+<h3>Ventajas y desafíos por plataforma</h3>
+<ul>
+<li><strong>ZX-Uno</strong>:</li>
+<li><strong>Ventajas</strong>: Soporte nativo, configuración simple, ideal para juegos retro.</li>
+<li><strong>Desafíos</strong>: Resolución limitada, sin sprites por hardware, comunidad pequeña.</li>
+<li><strong>ZX Spectrum Next</strong>:</li>
+<li><strong>Ventajas</strong>: "H"ardware avanzado (sprites, scrolling, Copper), comunidad activa.</li>
+<li><strong>Desafíos</strong>: Emulación no nativa, configuración compleja, ajustes para compatibilidad.</li>
+</ul>
+<hr />
+<h2>Recomendaciones finales</h2>
+<ul>
+<li><strong>Desarrolla primero para ZX-Uno</strong>: Diseña el juego con las restricciones del Modo Radastan (128x96, 16 colores, 6 KB) para garantizar compatibilidad base.</li>
+<li><strong>Adapta para Next</strong>: Porta el juego a Layer 2, limitando resolución y paleta. Opcionalmente, crea una versión mejorada con 256x192 y sprites por hardware.</li>
+<li><strong>Optimiza assets</strong>: Usa gráficos simples (tiles, sprites pequeños) para minimizar carga en ZX-Uno y facilitar portabilidad.</li>
+<li><strong>Prueba en ambos sistemas</strong>: Usa emuladores (<strong>ZEsarUX</strong>, <strong>CSpect</strong>) y hardware real para verificar compatibilidad.</li>
+<li><strong>Recursos</strong>:</li>
+<li><strong>ZX-Uno</strong>: <em>ZX-Uno Technical Reference</em>, foro <strong>zxuno.com</strong>.</li>
+<li><strong>Next</strong>: <em>ZX Spectrum Next Reference Manual</em>, foro <strong>specnext.com</strong>.</li>
+</ul>
+<p>Con este enfoque, puedes crear juegos que funcionen en el Modo Radastan del ZX-Uno y se adapten al ZX Spectrum Next, manteniendo consistencia visual y funcionalidad en ambas plataformas.</p>
+<p>!<a class='internal' href='../publicbrain/plantilla---1mt#one-more-thing.html'>Plantilla   1MT#One More Thing</a></p><ul><li><b>Información IA: </b>Generado asistido por IA (). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2025-09-02 12:26:27.733000+00:00</li><li><b>Versión Documento: </b>0.2.1</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,48 +40,30 @@
 
     <main>
 <h1>FFMPEG - Convertir Mp4 a Mp3 (Extraer audio)</h1>
-<p><a class='internal' href='../publicbrain/index.html'>PublicBrain/Index</a></p>
+<p><a class='internal' href='../publicbrain/publicbrainindex.html'>PublicBrain/Index</a></p>
 <p>Para convertir un archivo MP4 a un archivo MP3 e incrustar la imagen del MP4 como carátula en el archivo MP3 resultante. Aquí tienes el comando que puedes utilizar:</p>
-<pre><code class="language-sh">ffmpeg -i input.mp4 -i input.mp4 -map 0:a -map 1:v -c:a libmp3lame -b:a 192k -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (Front)" output.mp3
+<pre><code class="language-sh">ffmpeg -i input.mp4 -i input.mp4 -map 0:a -map 1:v -c:a libmp3lame -b:a 192k -id3v2_version 3 -metadata:s:v title=&quot;Album cover&quot; -metadata:s:v comment=&quot;Cover (Front)&quot; output.mp3
 </code></pre>
 <p>Explicación de los parámetros:</p>
 <ul>
-<li><code class='language-html'>-i input.mp4</code>: Especifica el archivo de entrada MP4.</li>
-<li><code class='language-html'>-i input.mp4</code>: Especifica nuevamente el archivo de entrada MP4. Esto asegurará que la imagen se tome de este archivo.</li>
-<li><code class='language-html'>-map 0:a</code>: Mapea la pista de audio del primer archivo de entrada.</li>
-<li><code class='language-html'>-map 1:v</code>: Mapea el flujo de video del segundo archivo de entrada (la imagen).</li>
-<li><code class='language-html'>-c:a libmp3lame</code>: Codifica el audio en formato MP3 usando el codificador libmp3lame.</li>
-<li><code class='language-html'>-b:a 192k</code>: Establece la tasa de bits de audio en 192 kbps. Puedes ajustar esto según tus preferencias.</li>
-<li><code class='language-html'>-id3v2_version 3</code>: Especifica la versión 3 de ID3 tags para la información del archivo MP3.</li>
-<li><code class='language-html'>-metadata:s:v title=&quot;Album cover&quot;</code>: Agrega el título de la carátula al archivo MP3.</li>
-<li><code class='language-html'>-metadata:s:v comment=&quot;Cover (Front)&quot;</code>: Agrega un comentario que indica que es la carátula frontal.</li>
-<li><code class='language-html'>output.mp3</code>: Especifica el nombre del archivo de salida MP3.</li>
+<li><code>-i input.mp4</code>: Especifica el archivo de entrada MP4.</li>
+<li><code>-i input.mp4</code>: Especifica nuevamente el archivo de entrada MP4. Esto asegurará que la imagen se tome de este archivo.</li>
+<li><code>-map 0:a</code>: Mapea la pista de audio del primer archivo de entrada.</li>
+<li><code>-map 1:v</code>: Mapea el flujo de video del segundo archivo de entrada (la imagen).</li>
+<li><code>-c:a libmp3lame</code>: Codifica el audio en formato MP3 usando el codificador libmp3lame.</li>
+<li><code>-b:a 192k</code>: Establece la tasa de bits de audio en 192 kbps. Puedes ajustar esto según tus preferencias.</li>
+<li><code>-id3v2_version 3</code>: Especifica la versión 3 de ID3 tags para la información del archivo MP3.</li>
+<li><code>-metadata:s:v title=&quot;Album cover&quot;</code>: Agrega el título de la carátula al archivo MP3.</li>
+<li><code>-metadata:s:v comment=&quot;Cover (Front)&quot;</code>: Agrega un comentario que indica que es la carátula frontal.</li>
+<li><code>output.mp3</code>: Especifica el nombre del archivo de salida MP3.</li>
 </ul>
-<p>Asegúrate de reemplazar <code class='language-html'>input.mp4</code> con el nombre de tu archivo MP4 de entrada y <code class='language-html'>output.mp3</code> con el nombre deseado para el archivo MP3 de salida. Este comando tomará el flujo de audio del archivo MP4 y lo convertirá a MP3, al mismo tiempo que incrustará la imagen del MP4 como carátula en el archivo MP3 resultante.</p>
-<ul><li><b>Información IA: </b>Generado asistido por IA (gpt-3.5-turbo). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Jun 10 2024 17:26:26 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.29</li></ul><!--(iaStatus: 8
-iaStatus_Model: ''
-iaStatus_Generado: I
-iaStatus_Supervisado: H
-iaStatus_Validado: '-'
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-04-06T23:48:59.357Z
-modified: 2024-06-10T15:26:26.919Z
-supervisado: ''
-ACCION: ''
-ver_major: 0
-ver_minor: 2
-ver_rev: 29
-nav_primary: null
-nav_secondary: null
-tags: null
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>Asegúrate de reemplazar <code>input.mp4</code> con el nombre de tu archivo MP4 de entrada y <code>output.mp3</code> con el nombre deseado para el archivo MP3 de salida. Este comando tomará el flujo de audio del archivo MP4 y lo convertirá a MP3, al mismo tiempo que incrustará la imagen del MP4 como carátula en el archivo MP3 resultante.</p><ul><li><b>Información IA: </b>Generado asistido por IA (). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2024-06-10 15:26:26.919000+00:00</li><li><b>Versión Documento: </b>0.2.29</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->

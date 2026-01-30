@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../npl.html">NPL</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Curso de Tiled Capítulo 02 - Instalación y Configuracion  🔴②</h1>
+<p><img alt="Instalacion de Tiled"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_fad16bb05874da0f4dbdd97bf07cd434_MD5.jpg" /></p>
+<ul>
+<li><a class='internal' href='../publicbrain/curso-de-tiled-map-editor---creacion-de-mapas-para-videojuegos-2d-🟡③.html'>Curso de Tiled Map Editor   Creación de Mapas para Videojuegos 2D 🟡③</a></li>
+<li><a class='internal' href='../publicbrain/curso-de-tiled-capitulo-01---que-es-tiled-map-editor-🟡③.html'><< Anterior</a> | Siguiente >></li>
+</ul>
+<p>Vamos a sumergirnos de lleno en la instalación y puesta en marcha de Tiled, ese editor de mapas 2D de código abierto que se ha convertido en un aliado indispensable para tantos desarrolladores independientes. Imagina poder diseñar mundos enteros para tus juegos de rol, plataformas o puzles con una herramienta tan versátil y accesible. </p>
+<p>Tiled te permite crear mapas basados en teselas de forma intuitiva, y aquí te guiaré paso a paso, desde la descarga hasta los trucos iniciales para que tu flujo de trabajo sea lo más fluido posible. Todo lo que verás se basa en la versión más actualizada disponible en este momento (Tiled 1.11.2, lanzada el 28 de enero de 2025), pero recuerda verificar el sitio oficial por si hay novedades.</p>
+<h2>Descarga: Cómo obtener Tiled desde mapeditor.org</h2>
+<p>Descargar Tiled es pan comido, y lo mejor es hacerlo directamente desde la web oficial del proyecto, <a href="https://www.mapeditor.org/">mapeditor.org 🟡③ 🌐</a>, para evitar cualquier sorpresa con versiones pirata o alteradas. Ahí encontrarás paquetes listos para usar en las plataformas más comunes, además del código fuente si te animas a personalizarlo. Dirígete a la página de descargas en <a href="https://www.mapeditor.org/download.html">https://www.mapeditor.org/download.html 🟡③ 🌐</a>, y elige la versión estable más fresca.</p>
+<p><strong>Opciones de descarga a tener en cuenta:</strong></p>
+<ul>
+<li><strong>Versiones estables</strong>: Apunta siempre a la última estable (como la 1.11.2 de ahora). Las builds nocturnas son tentadoras para probar novedades, pero olvídate si buscas estabilidad.</li>
+<li><strong>Binarios precompilados</strong>: Vienen con todo lo necesario, como Qt, así que no tendrás que instalar extras en la mayoría de casos.</li>
+<li><strong>Código fuente</strong>: Si quieres compilar a medida, baja el <code>.tar.gz</code> o clona el repo de GitHub con <code>git clone https://github.com/mapeditor/tiled</code>.</li>
+</ul>
+<p>Aquí va una tabla práctica con las descargas clave para la 1.11.2 (ojo, comprueba el sitio porque los enlaces directos pueden variar con actualizaciones):</p>
+<table>
+<thead>
+<tr>
+<th>Plataforma</th>
+<th>Formato</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Windows</strong></td>
+<td>Instalador (.exe, 64-bit)</td>
+<td>Para Windows 10 o superior; instalador con interfaz gráfica amigable.</td>
+</tr>
+<tr>
+<td><strong>Windows</strong></td>
+<td>Portátil (.zip, 32/64-bit)</td>
+<td>Descomprime y lanza <code>tiled.exe</code>; perfecto para pendrives o sin permisos de admin.</td>
+</tr>
+<tr>
+<td><strong>macOS</strong></td>
+<td>Disco de imagen (.dmg, 64-bit)</td>
+<td>Desde macOS 11 (Big Sur) en adelante; incluye firma para saltarte las alertas de seguridad.</td>
+</tr>
+<tr>
+<td><strong>Linux (AppImage, universal)</strong></td>
+<td>AppImage (.AppImage, 64-bit)</td>
+<td>Súper portátil, sin instalación; va bien en Ubuntu 22.04 o similares.</td>
+</tr>
+<tr>
+<td><strong>Linux (Debian/Ubuntu)</strong></td>
+<td>Paquete (.deb, 64-bit)</td>
+<td>Se integra con APT para una gestión fácil.</td>
+</tr>
+<tr>
+<td><strong>Linux (Fedora/RPM)</strong></td>
+<td>Paquete (.rpm, 64-bit)</td>
+<td>Ideal para distros como Fedora basadas en RPM.</td>
+</tr>
+<tr>
+<td><strong>Linux (Flatpak)</strong></td>
+<td>Flatpak (universal)</td>
+<td>Necesitas Flatpak; es seguro por su sandbox.</td>
+</tr>
+<tr>
+<td><strong>Linux (Snap)</strong></td>
+<td>Snap (universal)</td>
+<td>Actualizaciones automáticas, pero prepárate para un arranque algo más lento.</td>
+</tr>
+<tr>
+<td><strong>Código Fuente</strong></td>
+<td>Tarball (.tar.gz)</td>
+<td>Para builds personalizados; mira la sección de requisitos.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Consejos prácticos para la descarga:</strong>
+- Automatízalo con herramientas como wget o curl: por ejemplo, <code>wget https://github.com/mapeditor/tiled/releases/download/v1.11.2/Tiled-1.11.2-x86_64.AppImage</code>.
+- Siempre verifica los checksums SHA256 que aparecen en las releases de GitHub para asegurarte de que todo está intacto.
+- En entornos limitados, como un Chromebook, Flatpak o Snap son tus mejores amigos: instalación sin root y sin complicaciones.</p>
+<h2>Instalación: Guía para Windows, macOS y distribuciones Linux</h2>
+<p>Instalar Tiled es de lo más directo, gracias a que los binarios ya traen Qt empaquetado (esa librería que hace que todo luzca bonito). Te detallo los pasos para cada sistema, asumiendo que ya has bajado el archivo adecuado. ¡Vamos al grano!</p>
+<p><strong>En Windows:</strong>
+1. Coge el instalador <code>.exe</code> (el más recomendado para el día a día).
+2. Lánzalo con privilegios de admin (clic derecho > "Ejecutar como administrador").
+3. Sigue el asistente: acepta los términos, elige dónde ponerlo (por defecto, <code>C:\Program Files\Tiled</code>), y deja los componentes tal cual.
+4. Marca las casillas para crear un atajo en el escritorio y añadirlo al PATH, así lo llamas desde la consola sin dramas.
+5. Termina y ábrelo desde el menú Inicio o el escritorio.
+- <strong>Versión portátil</strong>: Descomprime el <code>.zip</code> en una carpeta (como <code>C:\Tiled</code>) y ejecuta <code>tiled.exe</code>. Para desinstalar, solo borra la carpeta.
+- <strong>Desinstalación formal</strong>: Ve a Configuración > Aplicaciones > "Agregar o quitar programas".
+- <strong>Si algo sale mal</strong>: Revisa si Windows Defender lo bloquea (añade una excepción). Para sistemas de 32 bits antiguos, busca versiones legacy en GitHub.</p>
+<p><strong>En macOS:</strong>
+1. Baja el <code>.dmg</code>.
+2. Ábrelo con doble clic; verás el icono de Tiled junto a la carpeta de Aplicaciones.
+3. Arrástralo a Aplicaciones.
+4. Si te sale el aviso de "desarrollador no identificado", ve a Sistema > Privacidad y Seguridad > "Abrir de todos modos".
+5. Lanza desde Launchpad o Spotlight (Cmd + Espacio y escribe "Tiled").
+- <strong>Actualizaciones</strong>: Las nuevas versiones sobrescriben la anterior; para quitar, arrastra a la papelera <code>/Aplicaciones/Tiled.app</code>.
+- <strong>Trucos para Apple Silicon (M1+)</strong>: Es universal (x86_64/arm64). Si usas Rosetta, prueba en Terminal: <code>arch -x86_64 /Aplicaciones/Tiled.app/Contents/MacOS/Tiled</code>.</p>
+<p><strong>En distribuciones Linux (AppImage, Flatpak, Snap):</strong>
+Linux es un paraíso de opciones; yo apuesto por AppImage si quieres algo ligero y portátil.</p>
+<ul>
+<li><strong>AppImage (universal y sin instalación):</strong></li>
+<li>Descarga el <code>.AppImage</code>.</li>
+<li>Dale permisos: <code>chmod +x Tiled-1.11.2-x86_64.AppImage</code>.</li>
+<li>Ejecuta: <code>./Tiled-1.11.2-x86_64.AppImage</code> o desde el gestor de archivos.</li>
+<li>Para integrarlo al menú: <code>chmod a+x Tiled-*.AppImage &amp;&amp; ./Tiled-*.AppImage --appimage-extract &amp;&amp; sudo mv squashfs-root/* /usr/local/bin/</code>.</li>
+<li><strong>Flatpak (seguro con sandbox):</strong></li>
+<li>Instala Flatpak si no lo tienes: <code>sudo apt install flatpak</code> (en Debian/Ubuntu) o el equivalente en tu distro.</li>
+<li>Añade Flathub: <code>flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo</code>.</li>
+<li>Instala: <code>flatpak install flathub org.mapeditor.Tiled</code>.</li>
+<li>Lanza: <code>flatpak run org.mapeditor.Tiled</code>.</li>
+<li>Actualiza con: <code>flatpak update org.mapeditor.Tiled</code>.</li>
+<li><strong>Snap (con updates automáticos):</strong></li>
+<li>Instala snapd si hace falta: <code>sudo apt install snapd</code>.</li>
+<li>Instala: <code>sudo snap install tiled</code>.</li>
+<li>Ejecuta: <code>tiled</code>.</li>
+<li>Nota: El sandbox puede hacer que arranque un pelín más lento.</li>
+<li><strong>Paquetes nativos (deb/rpm):</strong></li>
+<li>Debian/Ubuntu: <code>sudo dpkg -i tiled_*.deb</code> y resuelve dependencias con <code>sudo apt install -f</code>.</li>
+<li>Fedora: <code>sudo rpm -i tiled-*.rpm</code>.</li>
+<li><strong>Problemas típicos</strong>: En Wayland, activa OpenGL en las preferencias si ves glitches. Para distros viejas (como Ubuntu 18.04), tira de releases legacy en GitHub.</li>
+</ul>
+<p>En cualquier plataforma, comprueba que funciona abriendo Tiled: deberías ver la ventana principal con Archivo > Nuevo > Nuevo Mapa listo para acción.</p>
+<h2>Requisitos: Dependencias del Sistema, Incluyendo Qt para Compilaciones Personalizadas</h2>
+<p><strong>Requisitos básicos para los binarios precompilados:</strong>
+- <strong>Windows</strong>: Windows 10 (64-bit) o más nuevo; 4 GB de RAM; unos 200 MB en disco.
+- <strong>macOS</strong>: macOS 11 o superior; 4 GB de RAM; ~200 MB.
+- <strong>Linux</strong>: GLIBC 2.31+ (como en Ubuntu 20.04); OpenGL 3.3; 4 GB de RAM; ~150 MB.
+No hace falta instalar nada extra, porque Qt y otras libs como zlib, libpng o libjpeg vienen dentro.</p>
+<p><strong>Si vas a compilar desde fuente (para experimentos o plugins):</strong>
+Esto es para los valientes que quieren lo último o personalizaciones. Necesitas herramientas de desarrollo.</p>
+<ul>
+<li><strong>Dependencias clave:</strong></li>
+<li><strong>Qt</strong>: 6.5 o superior (para desarrollo y runtime). Bájalo de <a href="https://www.qt.io/download-open-source">qt.io 🟡③ 🌐</a>. Incluye QtCore, QtGui, QtWidgets, QtNetwork y QtXml (para exportar TMX).</li>
+<li><strong>CMake</strong>: 3.21 o más, para generar los archivos de build.</li>
+<li><strong>Compilador</strong>: GCC/Clang 11+ (Linux/macOS) o MSVC 2019+ (Windows).</li>
+<li>
+<p><strong>Otras libs</strong>: zlib, libpng, libjpeg-turbo (en Ubuntu: <code>sudo apt install libzlib-dev libpng-dev libjpeg-dev</code>).</p>
+</li>
+<li>
+<p><strong>Pasos generales para compilar:</strong></p>
+</li>
+<li>Instala dependencias (ejemplo en Ubuntu: <code>sudo apt install build-essential cmake qt6-base-dev libzlib-dev libpng-dev libjpeg-dev</code>).</li>
+<li>Baja o clona: <code>git clone https://github.com/mapeditor/tiled.git &amp;&amp; cd tiled</code>.</li>
+<li>Crea directorio de build: <code>mkdir build &amp;&amp; cd build</code>.</li>
+<li>Configura: <code>cmake .. -DCMAKE_PREFIX_PATH=/path/to/qt6</code> (ajusta la ruta de Qt).</li>
+<li>Compila: <code>make -j$(nproc)</code> (Linux/macOS) o <code>cmake --build . --config Release</code> (Windows con MSVC).</li>
+<li>Instala si quieres: <code>sudo make install</code>.</li>
+<li><strong>Específicos por plataforma:</strong></li>
+<li><strong>Windows</strong>: Usa Qt Creator o Visual Studio; añade <code>-DFEATURE_RELEASE=ON</code> para optimizar.</li>
+<li><strong>macOS</strong>: Con Homebrew: <code>brew install qt@6 cmake</code>. Firma el binario: <code>codesign --force --sign - Tiled.app</code>.</li>
+<li><strong>Linux</strong>: En Fedora: <code>sudo dnf install qt6-qtbase-devel cmake zlib-devel libpng-devel</code>. Para AppImage: <code>linuxdeployqt</code>.</li>
+<li><strong>Si algo falla</strong>: Comprueba Qt con <code>qmake --version</code>. Para enlaces rotos, instala <code>libgl1-mesa-dev</code>. La compilación suele tardar 5-10 minutos en un equipo decente.</li>
+</ul>
+<h2>Primeros Pasos: Configuración Inicial para un Entorno de Trabajo Eficiente</h2>
+<p>Con Tiled instalado, es hora de tunearlo para que se adapte a ti como un guante. Al abrirlo por primera vez, te recibirán paneles limpios para capas, tilesets y propiedades. Mi consejo: crea un proyecto ya mismo para mantener todo organizado.</p>
+<p><strong>Paso 1: Crea un proyecto (¡imprescindible!):</strong>
+- Ve a <strong>Archivo > Nuevo > Nuevo Proyecto...</strong> (o Ctrl+N).
+- Guárdalo como <code>.tiled-project</code> en la raíz de tu carpeta de trabajo (por ejemplo, <code>MiJuego.tiled-project</code>).
+- Añade carpetas: clic derecho en el panel "Proyecto" > <strong>Agregar Carpeta al Proyecto...</strong> (como "tilesets", "maps" o "templates").
+- Ventajas: Acceso exprés con <strong>Archivo > Abrir Archivo en Proyecto</strong> (Ctrl+P); guarda sesiones automáticas de lo que tenías abierto.
+- Personaliza: <strong>Proyecto > Propiedades del Proyecto...</strong> – elige versión de compatibilidad (como 1.10 para exports retro), directorio de extensiones o reglas de automapeo.</p>
+<p><strong>Paso 2: Tu primer mapa en acción:</strong>
+- <strong>Archivo > Nuevo > Nuevo Mapa...</strong> (Ctrl+N otra vez).
+- Ajusta: Tamaño (prueba 20x15 teselas), tile de 32x32 px, orientación ortogonal (para novatos), capa de tiles y renderizado derecha-abajo.
+- Activa "Mapa infinito" si sueñas con mundos vastos.
+- Guárdalo en el proyecto como <code>.tmx</code>.
+- Añade tileset: <strong>Archivo > Nuevo > Nuevo Tileset...</strong>, carga una imagen (usa ejemplos de Tiled), desmarca "Incorporar en mapa" para reutilizarlo. Guárdalo en <code>.tsx</code>.</p>
+<p><strong>Paso 3: Ajusta preferencias (Editar > Preferencias):</strong>
+Hazlo tuyo para ganar tiempo. Se guardan en ficheros del sistema (como <code>~/.config/mapeditor.org/tiled.conf</code> en Linux).</p>
+<table>
+<thead>
+<tr>
+<th>Categoría</th>
+<th>Opciones Recomendadas</th>
+<th>Razón</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>General</strong></td>
+<td>Activa "Recargar imágenes de tileset al cambiar", "Usar escritura segura de archivos" y "Repetir última exportación al guardar". Desactiva "Restaurar sesión anterior" si saltas entre proyectos.</td>
+<td>Evita pérdidas y acelera con assets que cambian fuera.</td>
+</tr>
+<tr>
+<td><strong>Interfaz</strong></td>
+<td>Idioma: Español (si lo pillas); cuadrícula gris claro; divisiones finas a 4; líneas de objetos 1-2 px; activa "Dibujo acelerado por hardware (OpenGL)"; zoom con rueda; desplazamiento suave.</td>
+<td>Visibilidad top y fluidez; OpenGL vuela en GPUs nuevas (desactívalo si petardea).</td>
+</tr>
+<tr>
+<td><strong>Tema</strong></td>
+<td>"Tiled Fusion" (Windows/Linux); base oscura para fondos claros; fuente monospace 10pt.</td>
+<td>Menos cansancio ocular; ideal para modo oscuro.</td>
+</tr>
+<tr>
+<td><strong>Teclado</strong></td>
+<td>Exporta atajos por defecto; cambia zoom a Ctrl+rueda si usas touchpad. Arregla conflictos (salen en rojo).</td>
+<td>Atajos cómodos: Ctrl+Z para deshacer, Ctrl+S para guardar.</td>
+</tr>
+<tr>
+<td><strong>Plugins</strong></td>
+<td>Activa los genéricos (CSV, DXF); desactiva los que fallen (pasa el ratón para ver por qué).</td>
+<td>Más formatos de export sin reinicios.</td>
+</tr>
+<tr>
+<td><strong>Exportación</strong></td>
+<td>"Incorporar tilesets"; minimizar salida; resolver tipos de objetos.</td>
+<td>Fácil integración con Godot o Unity; archivos más livianos.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Paso 4: Trucos extra para volar:</strong>
+- <strong>Sesiones</strong>: Guarda por proyecto en <code>.tiled-session</code>; cambia de proyecto para switchar entornos.
+- <strong>Búsqueda rápida</strong>: Ctrl+Shift+P para comandos (como "nuevo mapa").
+- <strong>Paneles</strong>: Arrástralos a tu gusto (tilesets a la derecha, por ejemplo); ocúltalos en Ver > Paneles.
+- <strong>Ejemplos</strong>: Abre la carpeta de samples de la instalación: <strong>Archivo > Abrir Archivo...</strong> > <code>examples/maps/orthogonal.dgml</code>.
+- <strong>Updates</strong>: En <strong>Ayuda > Buscar Actualizaciones</strong>, activa los chequeos automáticos.
+- <strong>Tip pro</strong>: Conecta con Git para control de versiones; mete extensiones (como para export a Godot) en el directorio correspondiente.</p>
+<p>¡Y voilà, ya tienes Tiled a punto! En la próxima sección, desgranaremos la interfaz. Prueba a armar un mapita básico con tiles de muestra para cogerle el tranquillo. Si te atascas, la doc oficial en <a href="https://doc.mapeditor.org/">doc.mapeditor.org 🟡③ 🌐</a> es oro puro.</p>
+<h2>Referencias Bibliográficas de Apoyo</h2>
+<blockquote>
+<p>WIP Revisando fuentes</p>
+</blockquote>
+<p>Estas fuentes respaldan la información proporcionada, ofreciendo guías oficiales y tutoriales prácticos para la instalación y configuración de Tiled. He verificado su existencia y vigencia al 22 de septiembre de 2025; todas son accesibles y relevantes.</p>
+<ul>
+<li>Documentación oficial de Tiled (versión 1.11.0, actualizada en 2025): Guía completa de instalación y primeros pasos. Disponible en: <a href="https://doc.mapeditor.org/manual/introduction/">https://doc.mapeditor.org/manual/introduction/</a>.</li>
+<li>Repositorio oficial en GitHub de Tiled: "I"ncluye releases, checksums y guías de compilación. Última release verificada: v1.11.2 (28 enero 2025). Disponible en: <a href="https://github.com/mapeditor/tiled">https://github.com/mapeditor/tiled</a>.</li>
+<li>Tutorial en YouTube: "Aprendiendo a descargar, instalar y usar Tiled para crear mapas" (publicado el 11 de noviembre de 2020, vigente y aplicable). Canal: Recursos para desarrolladores indie. Disponible en: <a href="https://www.youtube.com/watch?v=OhVluiERaFk">https://www.youtube.com/watch?v=OhVluiERaFk</a>.</li>
+<li>Tutorial en YouTube: "How to Install Tiled" (publicado el 6 de septiembre de 2019, pasos universales y actualizados). Canal: GameDev tutorials. Disponible en: <a href="https://www.youtube.com/watch?v=SvXkM7QLyCc">https://www.youtube.com/watch?v=SvXkM7QLyCc</a>.</li>
+<li>Página oficial de descargas de Tiled: Detalles de binarios y requisitos. Actualizada en enero 2025. Disponible en: <a href="https://www.mapeditor.org/download.html">https://www.mapeditor.org/download.html</a>.</li>
+</ul>
+<h2>Referencias Bibliográficas que Refutan o Critican</h2>
+<blockquote>
+<p>WIP Revisando fuentes</p>
+</blockquote>
+<p>Estas referencias destacan limitaciones, problemas comunes en la instalación y críticas constructivas a Tiled, basadas en foros y discusiones reales. He contrastado su validez y vigencia al 22 de septiembre de 2025; se centran en aspectos como glitches, restricciones y alternativas implícitas, sin invalidar el uso general pero señalando áreas de mejora.</p>
+<ul>
+<li>Foro oficial de Tiled: "Trouble With Setting Up Maps" (18 de enero de 2021, vigente; discute problemas con escalas de píxeles y tiles pequeños). Disponible en: <a href="https://discourse.mapeditor.org/t/trouble-with-setting-up-maps/4925">https://discourse.mapeditor.org/t/trouble-with-setting-up-maps/4925</a>.</li>
+<li>Foro oficial de Tiled: "Cant place tiles" (30 de marzo de 2024, reciente; critica fallos al colocar tiles en capas nuevas). Disponible en: <a href="https://discourse.mapeditor.org/t/cant-place-tiles/6668">https://discourse.mapeditor.org/t/cant-place-tiles/6668</a>.</li>
+<li>Foro oficial de Tiled: "Some problem with Tiled" (9 de abril de 2015, pero problemas recurrentes; menciona crashes al abrir mapas). Disponible en: <a href="https://discourse.mapeditor.org/t/some-problem-with-tiled/456">https://discourse.mapeditor.org/t/some-problem-with-tiled/456</a>.</li>
+<li>Reddit (r/gamedev): "How to work around Tiled Map Editor Color Restrictions?" (7 de agosto de 2024, actual; critica alteraciones de color al importar tilesets de Piskel). Disponible en: <a href="https://www.reddit.com/r/gamedev/comments/1em4x8u/how_to_work_around_tiled_map_editor_color/">https://www.reddit.com/r/gamedev/comments/1em4x8u/how_to_work_around_tiled_map_editor_color/</a>.</li>
+<li>Reddit (r/gamedev): "Usando Tiled como único editor de niveles" (21 de abril de 2014, traducido y vigente; destaca limitaciones en control de tilesets durante desarrollo iterativo). Disponible en: <a href="https://www.reddit.com/r/gamedev/comments/23lcqh/using_tiled_as_the_sole_level_editor/">https://www.reddit.com/r/gamedev/comments/23lcqh/using_tiled_as_the_sole_level_editor/</a>.</li>
+</ul>
+<p>!<a class='internal' href='../publicbrain/plantilla---1mt#one-more-thing.html'>Plantilla   1MT#One More Thing</a></p><ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2025-11-05 07:20:59.954000+00:00</li><li><b>Versión Documento: </b>0.2.5</li></ul><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoTiled002.mp4'></script>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>

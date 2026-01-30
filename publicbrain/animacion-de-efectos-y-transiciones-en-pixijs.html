@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,22 +40,22 @@
 
     <main>
 <h1>Animación de efectos y transiciones en PixiJS</h1>
-<p><a class='internal' href='./curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
+<p><a class='internal' href='../publicbrain/curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
 <p>¡Por supuesto! Animar efectos y transiciones es una parte emocionante del desarrollo con PixiJS, ya que te permite agregar movimiento y dinamismo a tus aplicaciones y juegos. Aquí tienes algunos pasos y conceptos clave para animar efectos y transiciones en PixiJS:</p>
 <ol>
 <li><strong>Usar Tweening</strong>: Tweening es una técnica común para crear animaciones suaves entre dos estados de un objeto. PixiJS no incluye una biblioteca de tweening integrada, pero puedes usar bibliotecas populares como GSAP (GreenSock Animation Platform) o TweenJS para gestionar tus animaciones. Por ejemplo, puedes animar la posición de un sprite de la siguiente manera usando GSAP:</li>
 </ol>
 <pre><code class="language-javascript">// Importa GSAP
-import gsap from 'gsap';
+import gsap from &#x27;gsap&#x27;;
 
 // Crea un sprite
-const sprite = PIXI.Sprite.from('imagen.png');
+const sprite = PIXI.Sprite.from(&#x27;imagen.png&#x27;);
 app.stage.addChild(sprite);
 
 // Anima la posición del sprite
-gsap.to(sprite.position, { x: 100, y: 200, duration: 1, ease: 'power2.out' });
+gsap.to(sprite.position, { x: 100, y: 200, duration: 1, ease: &#x27;power2.out&#x27; });
 </code></pre>
-<ol start="2">
+<ol>
 <li><strong>Utilizar filtros animados</strong>: Puedes animar los parámetros de los filtros aplicados a sprites para crear efectos visuales dinámicos. Por ejemplo, puedes cambiar gradualmente el radio de desenfoque de un filtro de desenfoque para crear una transición de enfoque a desenfoque.</li>
 </ol>
 <pre><code class="language-javascript">// Crea un filtro de desenfoque
@@ -62,10 +63,10 @@ const blurFilter = new PIXI.filters.BlurFilter();
 sprite.filters = [blurFilter];
 
 // Anima el radio de desenfoque del filtro
-gsap.to(blurFilter, { blur: 10, duration: 1, ease: 'power2.out' });
+gsap.to(blurFilter, { blur: 10, duration: 1, ease: &#x27;power2.out&#x27; });
 </code></pre>
-<ol start="3">
-<li><strong>Manejar animaciones frame-by-frame</strong>: Para animaciones más complejas o específicas, puedes controlar manualmente los cambios de los frames de tus sprites utilizando la función <code class='language-html'>requestAnimationFrame</code> de JavaScript. Por ejemplo, puedes crear una secuencia de frames para una animación de un personaje y cambiar el frame que se muestra a medida que avanza la animación.</li>
+<ol>
+<li><strong>Manejar animaciones frame-by-frame</strong>: Para animaciones más complejas o específicas, puedes controlar manualmente los cambios de los frames de tus sprites utilizando la función <code>requestAnimationFrame</code> de JavaScript. Por ejemplo, puedes crear una secuencia de frames para una animación de un personaje y cambiar el frame que se muestra a medida que avanza la animación.</li>
 </ol>
 <pre><code class="language-javascript">// Definir una función para actualizar la animación en cada frame
 function animate() {
@@ -79,28 +80,13 @@ function animate() {
 // Llama a la función animate para comenzar la animación
 animate();
 </code></pre>
-<p>Estos son solo algunos ejemplos de cómo puedes animar efectos y transiciones en PixiJS. Con la combinación adecuada de técnicas de animación y creatividad, puedes crear experiencias visuales impresionantes y fluidas en tus proyectos. Experimenta con diferentes enfoques y encuentra el que mejor se adapte a tus necesidades y estilo de desarrollo.</p>
-<ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Tue Jun 10 2025 23:14:02 GMT+0200 (hora de verano de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.5</li></ul><!--(iaStatus: 0
-iaStatus_Model: ''
-a11y: 0
-checked: 0
-lang: ES
-translations: null
-created: 2024-04-13T12:57:16.175Z
-modified: 2025-06-10T21:14:02.452Z
-supervisado: ''
-ACCION: ''
-ver_major: 0
-ver_minor: 2
-ver_rev: 5
-nav_primary: []
-nav_secondary: []
-tags: []
-)-->        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+<p>Estos son solo algunos ejemplos de cómo puedes animar efectos y transiciones en PixiJS. Con la combinación adecuada de técnicas de animación y creatividad, puedes crear experiencias visuales impresionantes y fluidas en tus proyectos. Experimenta con diferentes enfoques y encuentra el que mejor se adapte a tus necesidades y estilo de desarrollo.</p><ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Ultima Modificación: </b>2025-06-10 21:14:02.452000+00:00</li><li><b>Versión Documento: </b>0.2.5</li></ul>
+
+        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>
     
     <footer>
-        <p>© 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Lang Script -->
