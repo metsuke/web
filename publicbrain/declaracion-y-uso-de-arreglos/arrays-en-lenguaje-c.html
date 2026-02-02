@@ -45,11 +45,11 @@
 <ol>
 <li><strong>Declaración de arreglos</strong>:</li>
 <li>Para declarar un arreglo en C, necesitas especificar el tipo de datos de los elementos del arreglo y el número de elementos que contendrá el arreglo.</li>
-<li>La sintaxis básica para declarar un arreglo es la siguiente:
-     <code>c
+<li>La sintaxis básica para declarar un arreglo es la siguiente:<br />
+<code>c
      tipo nombre_arreglo[tamaño];</code></li>
-<li>Por ejemplo, para declarar un arreglo de enteros con 5 elementos:
-     <code>c
+<li>Por ejemplo, para declarar un arreglo de enteros con 5 elementos:<br />
+<code>c
      int numeros[5];</code></li>
 <li>
 <p>Esto declara un arreglo llamado <code>numeros</code> que puede almacenar 5 enteros.</p>
@@ -58,12 +58,12 @@
 <p><strong>Inicialización de arreglos</strong>:</p>
 </li>
 <li>Puedes inicializar los elementos de un arreglo al momento de la declaración utilizando una lista de valores entre llaves <code>{}</code>.</li>
-<li>Por ejemplo, para inicializar un arreglo de enteros con algunos valores:
-     <code>c
+<li>Por ejemplo, para inicializar un arreglo de enteros con algunos valores:<br />
+<code>c
      int numeros[5] = {1, 2, 3, 4, 5};</code></li>
 <li>
-<p>También puedes omitir el tamaño del arreglo y dejar que el compilador infiera el tamaño automáticamente a partir del número de elementos en la lista de inicialización:
-     <code>c
+<p>También puedes omitir el tamaño del arreglo y dejar que el compilador infiera el tamaño automáticamente a partir del número de elementos en la lista de inicialización:<br />
+<code>c
      int numeros[] = {1, 2, 3, 4, 5}; // El tamaño del arreglo será 5</code></p>
 </li>
 <li>
@@ -72,8 +72,8 @@
 <li>Puedes acceder a los elementos individuales de un arreglo utilizando corchetes <code>[]</code> y el índice del elemento.</li>
 <li>Los índices de los elementos de un arreglo comienzan desde 0 y van hasta el tamaño del arreglo menos 1.</li>
 <li>
-<p>Por ejemplo, para acceder al tercer elemento de un arreglo:
-     <code>c
+<p>Por ejemplo, para acceder al tercer elemento de un arreglo:<br />
+<code>c
      int valor = numeros[2]; // Accede al tercer elemento (índice 2) del arreglo &#x27;numeros&#x27;</code></p>
 </li>
 <li>
@@ -81,16 +81,16 @@
 </li>
 <li>Puedes modificar los elementos de un arreglo asignando un nuevo valor al elemento correspondiente.</li>
 <li>
-<p>Por ejemplo, para cambiar el valor del segundo elemento de un arreglo:
-     <code>c
+<p>Por ejemplo, para cambiar el valor del segundo elemento de un arreglo:<br />
+<code>c
      numeros[1] = 10; // Cambia el valor del segundo elemento (índice 1) del arreglo &#x27;numeros&#x27; a 10</code></p>
 </li>
 <li>
 <p><strong>Recorrido de arreglos</strong>:</p>
 </li>
 <li>Puedes recorrer los elementos de un arreglo utilizando bucles como <code>for</code> o <code>while</code>.</li>
-<li>Por ejemplo, para imprimir todos los elementos de un arreglo:
-     <code>c
+<li>Por ejemplo, para imprimir todos los elementos de un arreglo:<br />
+<code>c
      for (int i = 0; i &lt; 5; i++) {
          printf(&quot;%d &quot;, numeros[i]); // Imprime cada elemento del arreglo &#x27;numeros&#x27;
      }

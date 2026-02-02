@@ -46,8 +46,8 @@
 <li><strong>Relación entre arreglos y punteros</strong>:</li>
 <li>En C, los arreglos y los punteros están muy interrelacionados. De hecho, en muchos casos, un arreglo se comporta como un puntero constante a la dirección de memoria del primer elemento del arreglo.</li>
 <li>Cuando declaras un arreglo en C, el nombre del arreglo actúa como un puntero al primer elemento del arreglo.</li>
-<li>Por ejemplo:
-     <code>c
+<li>Por ejemplo:<br />
+<code>c
      int numeros[5] = {1, 2, 3, 4, 5};
      int *ptr = numeros; // &#x27;ptr&#x27; apunta al primer elemento del arreglo &#x27;numeros&#x27;</code></li>
 <li>
@@ -57,8 +57,8 @@
 <p><strong>Acceso a elementos de arreglos mediante punteros</strong>:</p>
 </li>
 <li>Puedes acceder a los elementos de un arreglo utilizando aritmética de punteros.</li>
-<li>Por ejemplo:
-     <code>c
+<li>Por ejemplo:<br />
+<code>c
      printf(&quot;El primer elemento es: %d\n&quot;, *ptr); // Imprime el primer elemento del arreglo &#x27;numeros&#x27;
      printf(&quot;El segundo elemento es: %d\n&quot;, *(ptr + 1)); // Imprime el segundo elemento del arreglo &#x27;numeros&#x27;</code></li>
 <li>
@@ -69,8 +69,8 @@
 </li>
 <li>Puedes usar punteros para iterar a través de los elementos de un arreglo.</li>
 <li>
-<p>Por ejemplo:
-     <code>c
+<p>Por ejemplo:<br />
+<code>c
      for (int i = 0; i &lt; 5; i++) {
          printf(&quot;%d &quot;, *(ptr + i)); // Imprime cada elemento del arreglo &#x27;numeros&#x27; usando punteros
      }
@@ -82,19 +82,19 @@
 <li>Cuando pasas un arreglo a una función, en realidad pasas un puntero al primer elemento del arreglo.</li>
 <li>Por lo tanto, cualquier modificación que hagas en el arreglo dentro de la función afectará al arreglo original.</li>
 <li>
-<p>Por ejemplo:
-     ```c
-     void modificarArreglo(int <em>arr, int tam) {
-         for (int i = 0; i < tam; i++) {
-             arr[i] </em>= 2; // Multiplica cada elemento del arreglo por 2
-         }
+<p>Por ejemplo:<br />
+     ```c<br />
+     void modificarArreglo(int <em>arr, int tam) {<br />
+         for (int i = 0; i < tam; i++) {<br />
+             arr[i] </em>= 2; // Multiplica cada elemento del arreglo por 2<br />
+         }<br />
      }</p>
-<p>int main() {
-     int numeros[5] = {1, 2, 3, 4, 5};
-     modificarArreglo(numeros, 5);
-     // 'numeros' ahora contendrá {2, 4, 6, 8, 10}
-     return 0;
- }
+<p>int main() {<br />
+     int numeros[5] = {1, 2, 3, 4, 5};<br />
+     modificarArreglo(numeros, 5);<br />
+     // 'numeros' ahora contendrá {2, 4, 6, 8, 10}<br />
+     return 0;<br />
+ }<br />
  ```</p>
 </li>
 </ol>

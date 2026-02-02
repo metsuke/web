@@ -49,43 +49,43 @@
 <p>Los casos que veremos a continuación no son hipotéticos: son escenarios que ya se dan hoy en bancos del IBEX 35, centrales nucleares, ministerios de defensa y grandes consultoras durante sus</p>
 <h2>1. Empresas con políticas de gobernanza estrictas (banca, defensa, farmacéuticas, seguros)</h2>
 <p>Muchas organizaciones grandes prohíben o restringen severamente el uso de paquetes de PyPI público sin revisión previa.</p>
-<p>Ejemplos reales documentados:
-- Banco Santander y BBVA (España) mantienen repositorios internos mirror/artifactory con listas blancas de paquetes aprobados por su área de riesgos tecnológicos.
+<p>Ejemplos reales documentados:<br />
+- Banco Santander y BBVA (España) mantienen repositorios internos mirror/artifactory con listas blancas de paquetes aprobados por su área de riesgos tecnológicos.<br />
 - GSK y Pfizer obligan a pasar todas las dependencias por revisiones de licencias y vulnerabilidades antes de permitir su uso en entornos de producción o de validación regulatoria (FDA 21 CFR Part 11).</p>
-<p>En estos casos, un wrapper como el que se construye en el curso permite:
-- bloquear automáticamente paquetes no aprobados,
-- forzar el uso exclusivo del mirror interno,
+<p>En estos casos, un wrapper como el que se construye en el curso permite:<br />
+- bloquear automáticamente paquetes no aprobados,<br />
+- forzar el uso exclusivo del mirror interno,<br />
 - registrar quién instaló qué y por qué (auditoría completa).</p>
 <h2>2. Entornos educativos y bootcamps con cientos/miles de alumnos</h2>
-<p>Universidades y academias como:
-- 42 Madrid, 42 Málaga, Ironhack, ISDI Coders, KeepCoding
-tienen problemas recurrentes cuando todos los alumnos ejecutan <code>pip install</code> o <code>poetry add</code> contra PyPI público al mismo tiempo:
-- saturación de red,
-- instalaciones de versiones rotas o maliciosas (typosquatting),
+<p>Universidades y academias como:<br />
+- 42 Madrid, 42 Málaga, Ironhack, ISDI Coders, KeepCoding<br />
+tienen problemas recurrentes cuando todos los alumnos ejecutan <code>pip install</code> o <code>poetry add</code> contra PyPI público al mismo tiempo:<br />
+- saturación de red,<br />
+- instalaciones de versiones rotas o maliciosas (typosquatting),<br />
 - imposibilidad de reproducir el entorno del profesor dos meses después.</p>
 <p>Un gestor propio permite crear un mirror local cachéd, forzar versiones exactas y generar SBOM automáticos para trabajos finales.</p>
 <h2>3. Auditorías de seguridad y certificaciones (ISO 27001, ENS alto, SOC 2, DORA)</h2>
 <p>Las auditorías externas cada vez piden más evidencia de control de la cadena de suministro de software.<br />
-Empresas como Everis, Deloitte o PwC, al auditar clientes, exigen poder demostrar que:
-- todas las dependencias tienen licencia aprobada,
-- no hay CVEs de severidad alta sin mitigar,
+Empresas como Everis, Deloitte o PwC, al auditar clientes, exigen poder demostrar que:<br />
+- todas las dependencias tienen licencia aprobada,<br />
+- no hay CVEs de severidad alta sin mitigar,<br />
 - existe trazabilidad completa (quién, cuándo, desde dónde).</p>
 <p>Un gestor propio genera automáticamente reportes CycloneDX/SPDX y logs inalterables, lo que ahorra semanas de trabajo manual cada año.</p>
 <h2>4. Cumplimiento normativo europeo (RGPD, NIS2, DORA, futuro Cyber Resilience Act)</h2>
-<p>Desde 2024–2025, las empresas bajo NIS2 y DORA deben:
-- identificar y documentar riesgos en componentes de terceros,
+<p>Desde 2024–2025, las empresas bajo NIS2 y DORA deben:<br />
+- identificar y documentar riesgos en componentes de terceros,<br />
 - notificar vulnerabilidades críticas en menos de 24 h en algunos casos.</p>
 <p>Un ejemplo real: una eléctrica española del IBEX 35 fue sancionada en 2023 porque usaba una librería con telemetría que enviaba datos a EE. UU. sin base legal. Un wrapper que bloquee toda salida de red no autorizada y fuerce hash-pinning habría evitado la sanción.</p>
 <h2>5. Entornos air-gapped o con conectividad restringida (defensa, OT, SCADA, nuclear)</h2>
-<p>En instalaciones como:
-- bases militares españolas,
-- centrales nucleares (CNAT),
-- plantas de gas de Repsol o Enagás,
+<p>En instalaciones como:<br />
+- bases militares españolas,<br />
+- centrales nucleares (CNAT),<br />
+- plantas de gas de Repsol o Enagás,<br />
 está prohibido cualquier acceso directo a Internet desde las máquinas de producción.  </p>
-<p>El flujo habitual es:
-1. descargar paquetes verificados en un bastion host,
-2. firmarlos digitalmente,
-3. transportarlos vía USB firmado,
+<p>El flujo habitual es:<br />
+1. descargar paquetes verificados en un bastion host,<br />
+2. firmarlos digitalmente,<br />
+3. transportarlos vía USB firmado,<br />
 4. instalar offline.</p>
 <p>Poetry puro no funciona bien offline sin configuración avanzada; un gestor propio simplifica enormemente este flujo y evita errores humanos.</p>
 <h2>Referencias bibliográficas que apoyan la necesidad de gestores propios o wrappers de control</h2>
@@ -106,7 +106,67 @@ está prohibido cualquier acceso directo a Internet desde las máquinas de produ
 <p>Sí tiene sentido crear un gestor propio en entornos altamente regulados, air-gapped o con políticas muy estrictas (aprox. 5-10 % de las organizaciones grandes).  </p>
 <p>Para el 90 % restante, usar mirrors privados (Artifactory, Nexus, ProGet) + Poetry/Pipenv + Dependabot + trivy/syft/grype es más rápido, más mantenible y suficientemente seguro.</p>
 <p>Si estás en uno de los casos del primer grupo, el curso de Metsuke sigue siendo una de las mejores formas prácticas de aprender a construirlo con buenas prácticas desde cero.</p>
-<p>!<a class='internal' href='../publicbrain/plantilla---1mt#one-more-thing.html'>Plantilla   1MT#One More Thing</a></p><ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2025-12-01 07:26:45.997000+00:00</li><li><b>Versión Documento: </b>0.2.2</li></ul><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoMetsuDepManager_002.mp4'></script>
+<h2>One More Thing</h2>
+<p><img alt="Un escenario de retrocomputación del siglo 24"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" /></p>
+<p>¡Desbloquea el poder de <a class='internal' href='../publicbrain/creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són? </p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto. </li>
+</ul>
+<h3>Sobre la categorización de los tipos de conocimiento</h3>
+<ul>
+<li>Conocimiento Gnoseológico:  ⚫① 🔴② 🟡③ 🟢④</li>
+<li>Conocimiento Epistemológico:  🔵⑤</li>
+<li>Conocimiento Metsukeológico:  ⚪⑥</li>
+</ul>
+<p>La Metsukeología (de Metsuke vision global y logos conocimiento) es la ciencia que estudia el conocimiento como un conjunto potencial de conocimiento del que podemos obtener, procesar o percibir partes concretas dentro de un marco contextual específico, y cuyo contexto general real está muy por encima de lo que somos capaces, como especie, de percibir, procesar e integrar de forma completa (definición en progreso).</p>
+<p>La Metsucología (de Metsu aniquilación - en este contexto en forma de colapso - , logos conocimiento) es la ciencia que estudia como extraemos verdades percibidas - colapsadas - como conocimiento desde nuestra perspectiva real (tanto epistemológico como gnoseológico) al tomar una parte específica del conocimiento metsukeológico potencial enmarcado en un contexto concreto, obligando a colapsar el conocimiento potencial en conocimiento específico (definición en progreso).</p>
+<h3>Mas sobre el contexto</h3>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicaremos el <a class='internal' href='../publicbrain/sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad). </p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='../publicbrain/⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p><ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Ultima Modificación: </b>2025-12-01 07:26:45.997000+00:00</li><li><b>Versión Documento: </b>0.2.2</li></ul><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoMetsuDepManager_002.mp4'></script>
 
         <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
     </main>

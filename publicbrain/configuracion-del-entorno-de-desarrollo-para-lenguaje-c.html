@@ -46,8 +46,8 @@
 <ul>
 <li>Uno de los compiladores C más comunes y ampliamente utilizados es GCC (GNU Compiler Collection). Puedes instalar GCC en sistemas basados en Unix/Linux mediante el gestor de paquetes de tu sistema operativo. En sistemas Windows, puedes usar MinGW (Minimalist GNU for Windows) que proporciona una versión de GCC para entornos Windows.</li>
 </ul>
-<p><strong>Ejemplo de instalación en sistemas basados en Debian/Ubuntu:</strong>
-   <code>bash
+<p><strong>Ejemplo de instalación en sistemas basados en Debian/Ubuntu:</strong><br />
+<code>bash
    sudo apt-get update
    sudo apt-get install build-essential</code></p>
 <h3>2. <strong>Configurar un Editor de Código:</strong></h3>
@@ -58,27 +58,27 @@
 <ul>
 <li>Crea un archivo con extensión <code>.c</code> que contenga un programa C de prueba. Puedes utilizar cualquier editor de texto para esto. Abre una terminal y navega al directorio donde guardaste el archivo. Compila el programa usando el compilador que instalaste.</li>
 </ul>
-<p><strong>Ejemplo:</strong>
-   ```c
-   // programa.c
+<p><strong>Ejemplo:</strong><br />
+   ```c<br />
+   // programa.c<br />
    #include <stdio.h></p>
-<p>int main() {
-       printf("Hola, mundo!\n");
-       return 0;
-   }
+<p>int main() {<br />
+       printf("Hola, mundo!\n");<br />
+       return 0;<br />
+   }<br />
    ```</p>
-<p>Para compilar en sistemas Unix/Linux:
-   <code>bash
+<p>Para compilar en sistemas Unix/Linux:<br />
+<code>bash
    gcc programa.c -o programa</code></p>
-<p>Para compilar en sistemas Windows con MinGW:
-   <code>bash
+<p>Para compilar en sistemas Windows con MinGW:<br />
+<code>bash
    gcc programa.c -o programa.exe</code></p>
 <h3>4. <strong>Ejecutar el Programa Compilado:</strong></h3>
 <ul>
 <li>Después de compilar, ejecuta el programa compilado desde la línea de comandos.</li>
 </ul>
-<p><strong>Ejemplo:</strong>
-   <code>bash
+<p><strong>Ejemplo:</strong><br />
+<code>bash
    ./programa    # En sistemas Unix/Linux
    programa.exe  # En sistemas Windows con MinGW</code></p>
 <h3>5. <strong>Configurar un Entorno de Desarrollo Integrado (IDE) (Opcional):</strong></h3>

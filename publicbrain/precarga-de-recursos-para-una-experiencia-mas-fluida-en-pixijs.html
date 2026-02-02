@@ -51,12 +51,12 @@
 <p><strong>Usar el cargador de PixiJS</strong>:</p>
 </li>
 <li>PixiJS proporciona una clase llamada <code>Loader</code> que te permite cargar recursos de manera asíncrona antes de que comience la renderización de la escena.</li>
-<li>Para usar el cargador, primero crea una instancia de la clase <code>Loader</code>:
-     <code>javascript
+<li>Para usar el cargador, primero crea una instancia de la clase <code>Loader</code>:<br />
+<code>javascript
      const loader = PIXI.Loader.shared;</code></li>
 <li>
-<p>Luego, puedes agregar recursos a cargar utilizando el método <code>add()</code>:
-     <code>javascript
+<p>Luego, puedes agregar recursos a cargar utilizando el método <code>add()</code>:<br />
+<code>javascript
      loader.add(&quot;imagen1&quot;, &quot;ruta/a/imagen1.png&quot;);
      loader.add(&quot;imagen2&quot;, &quot;ruta/a/imagen2.png&quot;);
      // Agrega más recursos según sea necesario</code></p>
@@ -65,14 +65,14 @@
 <p><strong>Escuchar eventos de progreso y completado</strong>:</p>
 </li>
 <li>El cargador de PixiJS emite eventos que te permiten monitorear el progreso de carga y saber cuándo se han cargado todos los recursos.</li>
-<li>Puedes escuchar el evento <code>&#x27;progress&#x27;</code> para actualizar una barra de progreso, por ejemplo:
-     <code>javascript
+<li>Puedes escuchar el evento <code>&#x27;progress&#x27;</code> para actualizar una barra de progreso, por ejemplo:<br />
+<code>javascript
      loader.onProgress.add((loader, recurso) =&gt; {
          console.log(`Progreso: ${loader.progress}%`);
      });</code></li>
 <li>
-<p>También puedes escuchar el evento <code>&#x27;complete&#x27;</code> para realizar acciones una vez que todos los recursos se hayan cargado:
-     <code>javascript
+<p>También puedes escuchar el evento <code>&#x27;complete&#x27;</code> para realizar acciones una vez que todos los recursos se hayan cargado:<br />
+<code>javascript
      loader.onComplete.add(() =&gt; {
          console.log(&quot;¡Todos los recursos se han cargado!&quot;);
          // Aquí puedes inicializar tu juego o aplicación
@@ -82,15 +82,15 @@
 <p><strong>Iniciar la carga de recursos</strong>:</p>
 </li>
 <li>
-<p>Una vez que hayas agregado todos los recursos y configurado los manejadores de eventos, puedes iniciar la carga utilizando el método <code>load()</code> del cargador:
-     <code>javascript
+<p>Una vez que hayas agregado todos los recursos y configurado los manejadores de eventos, puedes iniciar la carga utilizando el método <code>load()</code> del cargador:<br />
+<code>javascript
      loader.load();</code></p>
 </li>
 <li>
 <p><strong>Acceder a los recursos cargados</strong>:</p>
 </li>
-<li>Después de que todos los recursos se hayan cargado con éxito, puedes acceder a ellos a través del objeto <code>resources</code> del cargador:
-     <code>javascript
+<li>Después de que todos los recursos se hayan cargado con éxito, puedes acceder a ellos a través del objeto <code>resources</code> del cargador:<br />
+<code>javascript
      const imagen1 = loader.resources[&quot;imagen1&quot;].texture;
      const imagen2 = loader.resources[&quot;imagen2&quot;].texture;
      // Usa las texturas en tu juego o aplicación</code></li>
