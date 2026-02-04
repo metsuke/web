@@ -45,7 +45,10 @@
 <li><a class='internal' href='../publicbrain/metsudepmanager--gestor-de-dependencias-etico-para-metsuos-🟡③.html'>MetsuDepManager – Gestor de Dependencias Ético para MetsuOS 🟡③</a></li>
 </ul>
 <h2>Módulo 0 – Introducción y motivación</h2>
-<p><div class="columns"><div class="column">
+<p>--- start-multi-column: BloqueMicrohobbit01\</p>
+<pre><code class="language-column-settings">Number of Columns: 2
+Border: off
+</code></pre>
 <p><img alt="¿De verdad hace falta otro gestor de paquetes cuando ya existe Poetry? "  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_24d5403e0e4b3f75f98f4d8d933844ac_MD5.jpg" /></p>
 <h3>0.1 ¿Realmente es necesario?</h3>
 <p>En el mundo del desarrollo con Python, donde herramientas como <em>pip</em>, <em>Poetry</em> o <em>Conda</em> han evolucionado hasta convertirse en aliados imprescindibles, es normal que surja esta duda: ¿por qué demonios íbamos a crear un nuevo gestor de dependencias si ya tenemos Poetry, que parece resolverlo todo con elegancia? Poetry, que vio la luz en 2018 y sigue puliéndose en 2025, es una joya: resuelve conflictos de dependencias con astucia, genera entornos reproducibles y se alinea con los estándares modernos como PEP 517 y 518. </p>
@@ -75,9 +78,12 @@
 <p>Como wrapper ligero sobre Poetry, que actúa como su motor principal, integra un motor de políticas avanzado que asegura cumplimiento normativo (vulnerabilidades, licencias, orígenes geográficos) sin comprometer la velocidad ni la usabilidad. Su enfoque offline-first y su soporte para SBOM (Software Bill of Materials) lo convierten en una herramienta indispensable para mitigar riesgos en la cadena de suministro de software, alineándose con regulaciones como NIS2, ENS Alto, DORA e ITAR/EAR.</p>
 <p>Continuar leyendo en ... <a class='internal' href='../publicbrain/metsudepmanager---vision-general-del-proyecto-🟡③.html'>MetsuDepManager   Visión general del proyecto 🟡③</a></p>
 <p></div><div class="column"><br />
-</div><</p>
+--- multi-column-end<</p>
 <h2>Módulo 1 – Entendiendo cómo funciona Poetry por dentro</h2>
-<p><div class="columns"><div class="column">
+<p>--- start-multi-column: BloqueMicrohobbit01\</p>
+<pre><code class="language-column-settings">Number of Columns: 2
+Border: off
+</code></pre>
 <p><img alt="Arquitectura Interna de un Gestor de Paquetes Python que Usa Poetry como Backend"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_eed51a6d500a6542fd7fd31b326d7a8d_MD5.jpg" /></p>
 <h3>1.1. Arquitectura interna: Core, Solver, Locker, Installer y Builder</h3>
 <p>Crear un gestor de paquetes Python desde cero que delegue la mayor parte del trabajo pesado a <strong>Poetry</strong> (específicamente a <code>poetry-core</code>) es una estrategia muy potente para aprender cómo funcionan internamente herramientas modernas como Poetry, uv, pipenv o pdm.  </p>
@@ -111,7 +117,7 @@
 </div><div class="column"><br />
 1.7. Limitaciones actuales de la API pública (estado en 2025) y soluciones prácticas <br />
 </div><div class="column"><br />
-</div></p>
+--- multi-column-end</p>
 <h3>Módulo 2 – Diseño de MetsuDepManager</h3>
 <p>2.1. Principios básicos: transparencia, ética, auditoría y mínimo privilegio<br />
 2.2. Arquitectura modular: core, CLI, motor de políticas, plugins y UI opcional<br />
