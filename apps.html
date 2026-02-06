@@ -95,16 +95,12 @@
     class B,F,G propio
     class I final</pre>
 
-<p>--- start-multi-column: BloqueMicrohobbit01\</p>
-<pre><code class="language-column-settings">Number of Columns: 2
-Border: off
-</code></pre>
+<div class="columns"><div class="column">
 <p><img alt="MetsuDepManager"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_570f078529742a81c508c3b36eac5d26_MD5.jpg" /></p>
 <h2>MetsuDepManager – Gestor de Dependencias Ético para MetsuOS 🟡③</h2>
 <p>MetsuDepManager es un gestor de dependencias ético, seguro, accesible y listo para producción para Python, diseñado específicamente para entornos regulados como empresas con políticas de seguridad estrictas (banca, defensa, sanidad, administraciones públicas), entornos educativos obligados por normativas como la LOMLOE y el Real Decreto 1112/2018 de accesibilidad, sistemas air-gapped o con conexión restringida (industria, investigación clasificada), y proyectos sujetos a regulaciones como RGPD, NIS2, ENS Alto o Ciberseguridad Nacional. Como wrapper ligero sobre Poetry, que actúa como su motor principal, integra un motor de políticas avanzado que asegura cumplimiento normativo (vulnerabilidades, licencias, orígenes geográficos) sin comprometer la velocidad ni la usabilidad. Su enfoque offline-first y su soporte para SBOM (Software Bill of Materials) lo convierten en una herramienta indispensable para mitigar riesgos en la cadena de suministro de software, alineándose con regulaciones como NIS2, ENS Alto, DORA e ITAR/EAR.</p>
 <p>Continuyar leyendo en ... <a class='internal' href='publicbrain/metsudepmanager---vision-general-del-proyecto-🟡③.html'>MetsuDepManager   Visión general del proyecto 🟡③</a> y <a class='internal' href='publicbrain/curso-sobre-desarrollo-de-un-gestor-de-paquetes-python-que-use-poetry-como-backend-🟡③.html'>Curso sobre desarrollo de un gestor de paquetes python que use poetry como backend 🟡③</a></p>
-<p></div><div class="column"><br />
---- multi-column-end</p>
+</div></div>
 <h2>MetsuOS System Core</h2>
 <p>Este es el núcleo del sistema operativo, incluye el sistema operativo como tal sobre el que trabaja una libreria sobre la que se asientan el resto de elementos.  Esto permite que MetsuOS, a futuro, pueda correr tanto como sistema operativo nativo o como algo asentado sobre la versione de la mosLib correspondiente a nuestro sistema.</p>
 <pre class='mermaid'>graph LR
@@ -112,16 +108,13 @@ Border: off
     B --> C[mosSystemCore]
     C --> D[mosSystemUI]</pre>
 
-<p>--- start-multi-column: BloqueMicrohobbit01\</p>
-<pre><code class="language-column-settings">Number of Columns: 2
-Border: off
-</code></pre>
+<div class="columns"><div class="column">
 <p><img alt="MetsuOS Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_44c1f46d745c51f385f88f004bec044a_MD5.jpg" /></p>
 <h3>MetsuOS: El Sistema Operativo que Libera tu Potencial</h3>
 <p><strong>MetsuOS</strong> es más que un sistema operativo: es una plataforma innovadora basada en GNU/Linux, diseñada para integrarse perfectamente en cualquier entorno. Flexible, potente y adaptable, MetsuOS es la base ideal para ejecutar aplicaciones en diversos sistemas, desde Windows y macOS hasta otras distribuciones Linux.</p>
 <p>En el corazón de MetsuOS está <strong>mosLib</strong>, una biblioteca robusta que asegura una experiencia fluida y eficiente, sin importar el sistema operativo subyacente. Con MetsuOS, automatizamos los procesos repetitivos, liberándote para que puedas enfocarte en lo que realmente importa: ser humano, crear y alcanzar tus metas.</p>
 <p><strong>MetsuOS</strong>: Automatización inteligente. Libertad para innovar.</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <p><img alt="mosLib Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_4b08d9c1c1d378d5df3ac0dd6de347a0_MD5.jpg" /></p>
 <h3>mosLib: El Corazón de MetsuOS</h3>
 <p><strong>mosLib</strong> es la biblioteca fundamental que impulsa <strong>MetsuOS</strong>, diseñada para ofrecer una ejecución fluida y versátil, ya sea de forma nativa o en cualquier sistema operativo o entorno, como Windows, macOS o distribuciones Linux.</p>
@@ -129,21 +122,20 @@ Border: off
 <p>mosLib (y - a priori - todos los modulos y aplicaciones que funcionan por encima de este), serán - en primera instancia, desarrollados en Python. Es una decisión argumentada (<a class='internal' href='publicbrain/por-que-python-es-la-eleccion-ideal-para-desarrollar-en-el-ecosistema-completo-de-metsuos-🟡③.html'>¿Por qué Python es la elección ideal para desarrollar en el ecosistema completo de MetsuOS? 🟡③</a>), aunque lejos del sistema absoluitamente dinamico y basado en <a class='internal' href='publicbrain/blog---parece-extremadamente-probable-que-la-verdad-absoluta-no-exista---2025-05-23-🔴②.html'>decisiones probabilisticas deppendientes de contexto</a> que persigo, sin embargo, es necesario empezar el sistema por algun lado y esta, me parece la mejor decisión en este momento ( 🔴②)</p>
 <p><strong>mosLib</strong>: La base sólida para un sistema sin límites.</p>
 <p>Continuar leyendo en ... <a class='internal' href='publicbrain/moslib---el-corazon-de-metsuos--⚫①.html'>mosLib   El Corazón de MetsuOS  ⚫①</a></p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <p><img alt="mosSystemCore Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_a5420290de63dc025383f319be29ee2d_MD5.jpg" /></p>
 <h3>mosSystemCore: El Puente Unificador de MetsuOS</h3>
 <p>mosSystemCore es el bloque fundamental de código que actúa como adaptador inteligente entre mosLib y las particularidades de cada sistema operativo host. Toma las funciones universales de mosLib —diseñadas para una ejecución fluida y versátil— y las transforma, integrando las especificidades nativas de entornos como GNU/Linux, Windows, macOS u otras distribuciones, para generar un corpus único de funcionalidades unificadas. De esta manera, mosSystemCore asegura que el ecosistema de MetsuOS opere de forma homogénea y eficiente, independientemente del sustrato subyacente, eliminando fricciones y maximizando la compatibilidad.</p>
 <p>Este núcleo no solo traduce y optimiza llamadas a APIs, manejo de recursos y dependencias del host, sino que también incorpora capas de abstracción para accesibilidad, automatización y seguridad, permitiendo que el resto de módulos —como mosSystemUI o mosAppManager— funcionen sin interrupciones. </p>
 <p><em>mosSystemCore : Unificación sin fronteras. Eficiencia en cualquier entorno.</em></p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <p><img alt="mosSystemUI"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_ff83acc613b0ecaf57d45bf283768012_MD5.jpg" /></p>
 <h3>mosSystemUI: La Interfaz que Conecta tu Visión con la Realidad</h3>
 <p>**(codename: PyTuxUI) **</p>
 <p>mosSystemUI es el lienzo vivo de MetsuOS, una interfaz de usuario intuitiva y adaptable que transforma la complejidad subyacente del sistema en una experiencia visual y táctil accesible para todos. Construida sobre las bases sólidas de mosSystemCore, esta capa proporciona elementos de UI unificados —como paneles dinámicos, menús contextuales y dashboards personalizables— que se renderizan de manera consistente en cualquier entorno host, desde entornos nativos GNU/Linux hasta aplicaciones en Windows o macOS.</p>
 <p>Con mosSystemUI, la accesibilidad no es un añadido, sino el núcleo: integra herramientas como lectores de pantalla integrados, navegación por gestos y modos de alto contraste que se adaptan automáticamente al usuario, garantizando que creadores de videojuegos y jugadores por igual puedan interactuar sin barreras. Desde la gestión de tareas hasta la supervisión de automatizaciones, mosSystemUI orquesta la armonía entre el usuario y el sistema, haciendo que lo abstracto sea tangible y lo técnico, humano.</p>
 <p>mosSystemUI: Interfaz sin límites. Donde la accesibilidad encuentra la innovación.</p>
-<p></div><div class="column"><br />
---- multi-column-end</p>
+</div></div>
 <h2>MetsuOS Base System: El Pilar Accesible de la Interfaz Unificada</h2>
 <p>MetsuOS Base System es la base estructural y accesible que se edifica directamente sobre mosSystemUI, integrando una capa intermedia de módulos clave como mosA11YManager, mosAutomationManager, mosBrainManager, mosIAManager, mosLegalManager, mosNetManager, mosRTManager, mosSecurityManager, y mosTaskManager en un núcleo cohesivo y dinámico. </p>
 <p>Este sistema fundamental transforma la interfaz intuitiva de mosSystemUI en un puente hacia la inclusión, asegurando una verificación constante de accesibilidad a través de herramientas como mosA11YTool, automatizando procesos repetitivos con mosAutomationManager, reforzando la seguridad con mosSecurityManager, gestionando tareas con precisión mediante mosTaskManager, y facilitando un ecosistema de aplicaciones coordinado por mosAppEcosystem, que integra herramientas como mosGameTool para mosGameMaker y mosRetroLauncher en cualquier entorno. </p>
@@ -162,74 +154,70 @@ Border: off
     D --> L[mosSecurityManager]
     D --> M[mosTaskManager]</pre>
 
-<p>--- start-multi-column: BloqueMicrohobbit01\</p>
-<pre><code class="language-column-settings">Number of Columns: 2
-Border: off
-</code></pre>
+<div class="columns"><div class="column">
 <h3>mosA11YManager</h3>
 <p><img alt="mosA11YManager Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_bda47e38a2ead5db4a84c7244f2daa19_MD5.jpg" /></p>
 <p><strong>mosA11YManager: El Guardián de la Accesibilidad Universal en MetsuOS</strong></p>
 <p>mosA11YManager es el módulo central que orquesta la accesibilidad en todo el ecosistema MetsuOS, integrándose directamente con mosSystemUI y herramientas como mosA11YTool para garantizar que cada interacción sea inclusiva por diseño. Este gestor verifica en tiempo real el cumplimiento de estándares como WCAG, implementa lectores de pantalla avanzados, navegación por voz y gestos, y adapta dinámicamente la interfaz a necesidades individuales —desde modos de alto contraste hasta soporte para discapacidades motoras o cognitivas—.</p>
 <p>Más allá de la corrección, mosA11YManager impulsa la creación de videojuegos accesibles mediante mosGameMaker, auditando assets en mosImageConverter y entornos en mosRetroLauncher. Con mosBrainManager, evalúa la usabilidad con rigor probabilístico, neutralizando barreras y fomentando la innovación inclusiva.</p>
 <p>mosA11YManager: Accesibilidad como superpoder. Inclusión sin excepciones.</p>
-<p></div><div class="column"> </p>
+<p>--- column-end --- </p>
 <h3>mosAutomationManager</h3>
 <p><img alt="mosAutomationManager Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_83fd343711cede49e619f2d0f2e51bb1_MD5.jpg" /></p>
 <p><strong>mosAutomationManager: La Orquestadora de Procesos Inteligentes en MetsuOS</strong></p>
 <p>mosAutomationManager es el motor de automatización que libera al usuario de tareas repetitivas, construyendo flujos inteligentes sobre mosSystemUI para optimizar el desarrollo y mantenimiento de videojuegos accesibles. Integra scripts personalizables, macros contextuales y workflows que se activan por eventos —desde compilación automática en mosGameMaker hasta sincronización en mosGitSync—.</p>
 <p>Apoyado en mosTaskManager para priorización y mosSecurityManager para ejecución segura, este módulo transforma rutinas en eficiencia, permitiendo enfocarte en la creatividad. En versiones Pro y Enterprise, añade IA predictiva para anticipar necesidades y escalar operaciones en equipos.</p>
 <p>mosAutomationManager: Automatiza lo mundano. Libera lo extraordinario.</p>
-<p></div><div class="column"> </p>
+<p>--- column-end --- </p>
 <h3>mosBrainManager</h3>
 <p><img alt="mosBrainManager Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_39b789fabb79e6f970ad5e0bb5621d16_MD5.jpg" /></p>
 <p><strong>mosBrainManager: El Validador de Sabiduría Contextual en MetsuOS</strong></p>
 <p>mosBrainManager es el núcleo cognitivo que aplica el sistema de niveles de validación ⚫🔴🟡🟢🔵⚪ en todos los contenidos y procesos de MetsuOS, asegurando información neutral, rigurosa y libre de dogmas. Integrado con mosSystemUI, evalúa credibilidad probabilística —combinando análisis científico, filosófico y empático— para etiquetar datos en herramientas como mosBrainTool o mosIAPromtManager.</p>
 <p>Neutraliza sesgos ideológicos o "opiniones expertas" anticientíficas, incorporando el estándar OTAN de fiabilidad (A-F / 1-6) y referencias cruzadas. En el ecosistema de apps, guía la creación de juegos con conocimiento consolidado, promoviendo decisiones informadas y éticas.</p>
 <p>mosBrainManager: Sabiduría probabilística. Conocimiento sin cadenas.</p>
-<p></div><div class="column"> </p>
+<p>--- column-end --- </p>
 <h3>mosIAManager</h3>
 <p><img alt="mosIAManager Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_bba8e48326660cc4ba09df8bbbbfe8b7_MD5.jpg" /><br />
 <strong>mosIAManager: El Orquestador de Ejecución IA en MetsuOS</strong></p>
 <p>mosIAManager es el gestor central de ejecución de inteligencia artificial que coordina, optimiza y supervisa todos los procesos IA dentro del ecosistema MetsuOS, asentado sobre mosSystemUI. Controla la carga, priorización y escalado de modelos —desde inferencia local hasta integración con servicios externos— en herramientas como mosIAPromtManager, mosBrainTool o mosGameMaker para generación accesible de assets, diálogos o mecánicas.</p>
 <p>Integra con mosTaskManager para colas inteligentes, mosSecurityManager para ejecución en sandbox y mosBrainManager para validación probabilística de salidas IA. En versiones Pro y Enterprise, habilita pipelines personalizados, fine-tuning seguro y despliegue multi-GPU/TPU, manteniendo la soberanía del usuario sobre datos y modelos.</p>
 <p>mosIAManager: Ejecución IA sin límites. Inteligencia al servicio de la creación.</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <h3>mosLegalManager</h3>
 <p><img alt="mosLegalManager Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_ad04c83625a745165fa86b6485f0ac52_MD5.jpg" /></p>
 <p><strong>mosLegalManager: El Escudo de Cumplimiento Normativo en MetsuOS</strong></p>
 <p>mosLegalManager es el módulo que asegura el cumplimiento legal y ético en todo el sistema, verificando licencias, derechos de autor y regulaciones —como GDPR o accesibilidad— sobre mosSystemUI. Integra con mosAppEcosystem para auditar assets, contratos o distribuciones.</p>
 <p>Apoyado en mosBrainManager para análisis probabilístico de riesgos legales, genera reportes automáticos y alertas. En versiones Enterprise, gestiona licencias comerciales y auditorías para PYMEs, manteniendo el equilibrio entre software libre (Community) y privado.</p>
 <p>mosLegalManager: Legalidad proactiva. Innovación con integridad.</p>
-<p></div><div class="column"> </p>
+<p>--- column-end --- </p>
 <h3>mosNetManager</h3>
 <p><img alt="mosNetManager Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_461fe69c35a8db236a5087f5a5ec08ba_MD5.jpg" /></p>
 <p><strong>mosNetManager: El Conector Universal de Redes en MetsuOS</strong></p>
 <p>mosNetManager es el gestor de conectividad que unifica redes locales, cloud y P2P en MetsuOS, asegurando comunicación fluida y segura sobre mosSystemUI. Maneja protocolos adaptativos —WebRTC, VPN integradas y offline-first— para sincronización en mosGitSync, multiplayer en mosGameMaker o actualizaciones en mosAppEcosystem.</p>
 <p>Con mosSecurityManager, encripta tráfico y optimiza latencia; mosRTManager añade soporte en tiempo real. En Pro/Enterprise, escala a redes empresariales con balanceo de carga y monitoreo predictivo.</p>
 <p>mosNetManager: Conexión sin fronteras. Red inteligente y resiliente.</p>
-<p></div><div class="column"> </p>
+<p>--- column-end --- </p>
 <h3>mosRTManager</h3>
 <p><img alt="mosRTManager Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_227f705ab4fa3bd9101042c13a656890_MD5.jpg" /></p>
 <p><strong>mosRTManager: El Maestro del Tiempo Real en MetsuOS</strong></p>
 <p>mosRTManager es el módulo especializado en operaciones en tiempo real, optimizando latencia y sincronización en entornos dinámicos sobre mosSystemUI. Impulsa multiplayer accesible en mosGameMaker, emulación fluida en mosRetroLauncher y flujos colaborativos en mosDevTool.</p>
 <p>Integra con mosNetManager para redes RT y mosTaskManager para priorización crítica. En versiones avanzadas, incorpora predicción IA para jitter y escalabilidad en juegos o automatizaciones.</p>
 <p>mosRTManager: Tiempo real impecable. Experiencias instantáneas y accesibles.</p>
-<p></div><div class="column"> </p>
+<p>--- column-end --- </p>
 <h3>mosSecurityManager</h3>
 <p><img alt="mosSecurityManager Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_00ae6fe49628ac32a524e4e941410c7e_MD5.jpg" /></p>
 <p><strong>mosSecurityManager: La Fortaleza Inquebrantable de MetsuOS</strong></p>
 <p>mosSecurityManager es el guardián integral de seguridad que protege datos, procesos y usuarios en todo MetsuOS, sobre mosSystemUI. Implementa encriptación end-to-end, detección de amenazas IA y auditorías continuas, integrándose con mosIAManager para accesos y mosAutomationManager para ejecuciones seguras.</p>
 <p>Bloquea vulnerabilidades en apps como mosImageConverter o mosGameMaker, con sandboxing y actualizaciones zero-trust. En Enterprise, añade compliance avanzado y respuesta a incidentes.</p>
 <p>mosSecurityManager: Seguridad como prioridad. Privacidad que empodera.</p>
-<p></div><div class="column"> </p>
+<p>--- column-end --- </p>
 <h3>mosTaskManager</h3>
 <p><img alt="mosTaskManager Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_0ce869892f82d04117656da7b8657ddb_MD5.jpg" /></p>
 <p><strong>mosTaskManager: El Director de Orquesta de Tareas en MetsuOS</strong></p>
 <p>mosTaskManager es el gestor de tareas que prioriza, agenda y ejecuta procesos con eficiencia inteligente sobre mosSystemUI. Integra colas dinámicas, dependencias y notificaciones para workflows en mosAutomationManager, builds en mosGameMaker o sincronizaciones en mosGitSync.</p>
 <p>Con mosBrainManager, asigna prioridades probabilísticas; mosRTManager maneja tareas críticas. En Pro/Enterprise, soporta equipos con dashboards colaborativos y métricas predictivas.</p>
 <p>mosTaskManager: Tareas bajo control. Productividad sin esfuerzo.</p>
-<p></div><div class="column"><br />
---- multi-column-end</p>
+</div></div>
 <h2>MetsuOS in a Nutshell</h2>
 <h3>Capas de Infraestructura</h3>
 <pre class='mermaid'>graph LR
@@ -301,56 +289,52 @@ Border: off
 <p><img alt="mosDesignTools"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_d119fecc45653ba69bdf21768d76b737_MD5.jpg" />  </p>
 <p><strong>Central hub for managing all ecosystem applications.</strong>  </p>
 <p>mosAppEcosystem es el núcleo inteligente de MetsuOS: detecta, registra y orquesta automáticamente todos los bloques de herramientas, gestiona sus dependencias, estados y actualizaciones, y los expone de forma unificada y accesible desde mosSystemUI. Actúa como punto único de entrada para lanzar cualquier herramienta en contexto y garantiza que todas respeten las políticas globales de accesibilidad, neutralidad y seguridad.</p>
-<p>--- start-multi-column: BloqueMicrohobbit01\</p>
-<pre><code class="language-column-settings">Number of Columns: 2
-Border: off
-</code></pre>
+<div class="columns"><div class="column">
 <h3>mosAutomationTools</h3>
 <p><img alt="MetsuOS Base Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_153129cb093b963dcb3c314f5f80c977_MD5.jpg" />  </p>
 <p>Herramientas para crear, ejecutar y gestionar flujos de trabajo automatizados, pipelines de construcción y pruebas repetibles dentro del ecosistema MetsuOS.  </p>
 <p>Continuar leyendo en mosAutomationTools.md</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <h3>mosA11YTools</h3>
 <p><img alt="MetsuOS Base Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_153129cb093b963dcb3c314f5f80c977_MD5.jpg" />  </p>
 <p>Conjunto completo de utilidades y validadores que aseguran la accesibilidad universal en cada proyecto y herramienta del sistema.  </p>
 <p>Continuar leyendo en mosA11YTools.md</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <h3>mosBrainTools</h3>
 <p><img alt="MetsuOS Base Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_153129cb093b963dcb3c314f5f80c977_MD5.jpg" />  </p>
 <p>Suite dedicada a la validación cognitiva, detección de sesgos y garantía de neutralidad en contenidos generados o importados.  </p>
 <p>Continuar leyendo en mosBrainTools.md</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <h3>mosDesignTools</h3>
 <p><img alt="mosDesignTools"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_d119fecc45653ba69bdf21768d76b737_MD5.jpg" /></p>
 <p>Herramientas de diseño y edición visual accesibles, optimizadas para la creación de assets inclusivos y compatibles con el ecosistema.  </p>
 <p>Continuar leyendo en mosDesignTools.md</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <h3>mosDevTools</h3>
 <p><img alt="MetsuOS Base Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_153129cb093b963dcb3c314f5f80c977_MD5.jpg" />  </p>
 <p>Entorno extendido de desarrollo con generadores de diagramas, sincronización distribuida y utilidades para programadores dentro de MetsuOS.  </p>
 <p>Continuar leyendo en mosDevTools.md</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <h3>mosGameTools</h3>
 <p><img alt="MetsuOS Base Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_153129cb093b963dcb3c314f5f80c977_MD5.jpg" />  </p>
 <p>Bloque especializado en la creación, prueba y publicación de videojuegos inclusivos y de código abierto.  </p>
 <p>Continuar leyendo en mosGameTools.md</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <h3>mosIATools</h3>
 <p><img alt="MetsuOS Base Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_153129cb093b963dcb3c314f5f80c977_MD5.jpg" />  </p>
 <p>Capa de inteligencia artificial ética, local-first y completamente integrada con el resto del ecosistema MetsuOS.  </p>
 <p>Continuar leyendo en mosIATools.md</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <h3>mosLegalTools</h3>
 <p><img alt="MetsuOS Base Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_153129cb093b963dcb3c314f5f80c977_MD5.jpg" />  </p>
 <p>Utilidades para auditoría de cumplimiento legal, gestión de licencias y generación de documentación normativa.</p>
 <p>Continuar leyendo en mosLegalTools.md</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <h3>mosSecurityTools</h3>
 <p><img alt="MetsuOS Base Icon"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_153129cb093b963dcb3c314f5f80c977_MD5.jpg" />  </p>
 <p>Escudo de privacidad y seguridad que protege datos, verifica permisos y garantiza la integridad en todo el sistema.</p>
 <p>Continuar leyendo en mosSecurityTools.md</p>
-<p></div><div class="column"><br />
---- multi-column-end</p>
+</div></div>
 <h2>One More Thing</h2>
 <p><img alt="Un escenario de retrocomputación del siglo 24"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" /></p>
 <p>¡Desbloquea el poder de <a class='internal' href='publicbrain/creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>

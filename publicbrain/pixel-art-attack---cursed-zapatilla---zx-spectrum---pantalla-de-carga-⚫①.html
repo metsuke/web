@@ -48,86 +48,70 @@
 <p>Iniciamos con esta pantalla que nos introduce en el juego durante la carga desde cinta o disco.</p>
 <h2>Iteración 000 : El intento de conversión con ZX-PaintBrush</h2>
 <p>En esta ocasión tomamos la imagen original y buscamos convertirla a src de tamaño y colores correctos a fin de comenzar con una base sólida. Funcionó, aunque el resultado era pobre.</p>
-<p>--- start-multi-column: BloqueMicrohobbit01\</p>
-<pre><code class="language-column-settings">Number of Columns: 2
-Border: off
-</code></pre>
+<div class="columns"><div class="column">
 <p><img alt="Caratula de Cursed Zapatillas"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_33d90a6b2fb87f43d9c3829c4f53814e_MD5.jpg" /></p>
 <h3>Punto de partida</h3>
 <p>La imagen de partida, generada por Grok</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <p><img alt="Loading Screen Cursed Zapatilla 0001"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_f5ae0ef26feaa587831f514988771420_MD5.jpeg" /></p>
 <h3>Resultado de la iteración</h3>
 <p>Este fué el resultado de ese intento, bien, pero muy discreto.</p>
-<p></div><div class="column"><br />
---- multi-column-end</p>
+</div></div>
 <h2>Iteración 001 : Una base mucho mejor convirtiendo con Retro-X Painter.</h2>
 <p>Gracias a <a href="https://x.com/crigonza">NoEntiendo (@crigonza en twitter/x) 🌐</a>  tuve conocimiento de esta herramienta que podeis usar desde <a href="https://github.com/metsuke/mos-retrotools-launcher">MetsuOS RetroTools Launcher 🌐</a> (de hecho, la imagen del botón de Retro-X es la que me pasó a mi para mostrarme el resultado, con tramado), y que hace unas conversiones muchisimo mejores, y a varios sistemas y configuraciones aademas.</p>
-<p>--- start-multi-column: BloqueMicrohobbit01\</p>
-<pre><code class="language-column-settings">Number of Columns: 2
-Border: off
-</code></pre>
+<div class="columns"><div class="column">
 <p><img alt="Caratula de Cursed Zapatillas"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_33d90a6b2fb87f43d9c3829c4f53814e_MD5.jpg" /></p>
 <h3>Punto de partida</h3>
 <p>Nuevamente, la imagen de partida, generada por Grok, descartando el resultado del intento anterior.</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <p><img alt="El punto de partida en resolucion y colores reales de la pantalla de carga"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_b85ed565d16525f912d382f516a9bf47_MD5.jpeg" /></p>
 <h3>Resultado de la iteración</h3>
 <p>Este fué el resultado de ese intento, una base mucho mas rico y contundente. </p>
 <p>Elegí colores planos porque los tramados quiero formen partre del acabado final, no del punto de inicio, además de que los tramados que introducia la aplicación, si bien técnicamente correctos, me parecían estéticamente pesados y excesivos. </p>
 <p>Ergo control manual en ese punto.</p>
-<p></div><div class="column"></p>
-<p></div><div class="column"><br />
---- multi-column-end</p>
+</div><div class="column">
+</div></div>
 <h2>Iteración 002 : Automatizando la conversion con MetsuOS Game Maker Tools</h2>
 <p>No me he quedado muy satisfecho con la necesidad de usar herramientas de terceros que no necesariamente son de codigo abierto ni multiplataforma, así que, dentro del marco de <a href="https://github.com/metsuke/mos-game-maker">MetsuOS Game Maker 🌐</a> he decidido invertir tiempo en crear una pequeña herramienta python que, de forma automatica pero controlada por nosotros como comunidad, nos permita llegar al punto de partida de la edición artística manual.</p>
 <p>Ya que me pongo empleare tiempo en mejorar el proceso para las versiones Pro y Enterprise, pero para la Community, minimo quiero poder pasar de la imagen original en png a tamaño original, hasta la scr de 256x192 en un solo comando.</p>
 <p>De momento este es el resultado, bastante cercano al anterior, pero con una herramienta bajo nuestro control</p>
-<p>--- start-multi-column: BloqueMicrohobbit01\</p>
-<pre><code class="language-column-settings">Number of Columns: 2
-Border: off
-</code></pre>
+<div class="columns"><div class="column">
 <p><img alt="Caratula de Cursed Zapatillas"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_33d90a6b2fb87f43d9c3829c4f53814e_MD5.jpg" /></p>
 <h3>Punto de partida</h3>
 <p>Nuevamente, la imagen de partida, generada por Grok, descartando el resultado del intento anterior.</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <p><img alt="El punto al que he llegado con MetsuOS Game Maker Tools"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_f1139e8c8ab76b7f55c6cc2f25dd559e_MD5.jpeg" /></p>
 <h3>Resultado de la iteración</h3>
 <p>Un punto muy cercano al anterior, personalmente pienso que mejor, pues he logrado respetar las calaveras mucho mejor, pero que trataré de mejorar antes de publicar el script</p>
-<p></div><div class="column"><br />
---- multi-column-end</p>
+</div></div>
 <h2>Iteración 003 : Evaluando el camino para continuar mejorando el conversor de imagenes a ZX Spectrum</h2>
 <p>Todo este tiempo he estado haciendo algunas pruebas, la conversion 1-1 parece excelente, sin embargo, al reducir el numero de pixels, la cuestión se complica, siempre tengo la opcion de hacerlo a mano, pero por ahora sigamos explorando la metodología, ya que pretendo convertir todo tipo de elementos y a una escala que dificilmente es soportable mediante colaboraciones de pago, mucho menos abusando de la confianza de nadie.</p>
 <p>Como vemos, he aplicado diferentes tipos de tramado, y algunos recortes básicos, los resultados actuales son los siguientes...</p>
-<p>--- start-multi-column: BloqueMicrohobbit01\</p>
-<pre><code class="language-column-settings">Number of Columns: 2
-Border: off
-</code></pre>
+<div class="columns"><div class="column">
 <p><img alt="Caratula de Cursed Zapatillas"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_33d90a6b2fb87f43d9c3829c4f53814e_MD5.jpg" /></p>
 <h3>Punto de partida</h3>
 <p>Nuevamente, la imagen de partida, generada por Grok, descartando el resultado del intento anterior.</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <p><img alt="Conversion 1:1 de la imagen origen"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_f0679c5d61a4dde79174bc8fcb57d218_MD5.jpg" /></p>
 <h2>State of the art en conversión 1:1</h2>
 <p>El resultado me parece mas que satisfactorio, aun tengo que trabajar el control del dither y el suavizado de bordes (me inspiraré en lo que se hace en 3D probablemente) pero por ahora es un resultado que me encanta.</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <p><img alt="NoDitherVersion"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_6259107da7626ad85cd9a6626a855798_MD5.jpg" /></p>
 <h2>Reduccion 256x192 Sin Dither</h2>
 <p>Bien pero parece mas un mapa de atributos que una imagen nitida.</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <p><img alt="Soft Dither Version"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_49b00172a858aae17f95f5a0ce8ccaeb_MD5.jpg" /></p>
 <h2>Reduccion 256x192 con Dither "Soft"</h2>
 <p>Mejora sustancial pero aun carece de la definicion que me gustaria., y que he visto en imagenes convertidas a mano.</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <p><img alt="Medium Dither Version"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_644676818135af544cb4f5ac1ad1f72e_MD5.jpg" /></p>
 <h2>Reduccion 256x192 con Dither "Medium"</h2>
 <p>La resolucion no da de si para tanto detalle y el dither no ayuda</p>
-<p></div><div class="column"></p>
+</div><div class="column">
 <p><img alt="Hard Dither Version"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_d352930b7db563e9824b12ffa73e9b22_MD5.jpg" /></p>
 <h2>Reduccion 256x192 con Dither "Hard"</h2>
 <p>Por favor que alguien llame al antenista que arregle la trasmision xD</p>
-<p></div><div class="column"><br />
---- multi-column-end</p>
+</div></div>
 <h3>Resultado de la iteración</h3>
 <p>Esta claro que debo trabajar en dos asppectos, el primero en torno a la versión 1:1 el control del dither y el suavizado de bordes, por otro, una estrategia (probablemente a base de cropping en este primer intento) para quedarme con la parte relevante de la imagen y que la reducción sea mas adecuada a la resolucion objetivo y cuanto puede mostrar. ¡Seguiremos informando!</p>
 <h2>One More Thing</h2>
