@@ -74,7 +74,7 @@
 <p>MetsuDepManager es un gestor de dependencias ético, seguro, accesible y listo para producción para Python, diseñado específicamente para entornos regulados como empresas con políticas de seguridad estrictas (banca, defensa, sanidad, administraciones públicas), entornos educativos obligados por normativas como la LOMLOE y el Real Decreto 1112/2018 de accesibilidad, sistemas air-gapped o con conexión restringida (industria, investigación clasificada), y proyectos sujetos a regulaciones como RGPD, NIS2, ENS Alto o Ciberseguridad Nacional. </p>
 <p>Como wrapper ligero sobre Poetry, que actúa como su motor principal, integra un motor de políticas avanzado que asegura cumplimiento normativo (vulnerabilidades, licencias, orígenes geográficos) sin comprometer la velocidad ni la usabilidad. Su enfoque offline-first y su soporte para SBOM (Software Bill of Materials) lo convierten en una herramienta indispensable para mitigar riesgos en la cadena de suministro de software, alineándose con regulaciones como NIS2, ENS Alto, DORA e ITAR/EAR.</p>
 <p>Continuar leyendo en ... <a class='internal' href='../publicbrain/metsudepmanager---vision-general-del-proyecto-🟡③.html'>MetsuDepManager   Visión general del proyecto 🟡③</a></p>
-<p>--- column-end ---<br />
+</div><div class="column">
 --- multi-column-end<</p>
 <h2>Módulo 1 – Entendiendo cómo funciona Poetry por dentro</h2>
 <div class="columns"><div class="column">
@@ -104,7 +104,7 @@
 <p>Si estás empezando un proyecto en Python y quieres usar Poetry como gestor de dependencias, no hace falta complicarse con comandos manuales uno a uno. En su lugar, he preparado un script sencillo en Python, llamado <code>inicializar.py</code>, que automatiza todo el proceso. </p>
 <p>Este script parte de un entorno Python 3.11 o superior con <code>pip</code> instalado (que viene de serie con Python). Primero, comprueba si Poetry está disponible; si no, lo instala automáticamente mediante <code>pip</code>. Luego, crea el proyecto en el directorio actual con <code>poetry new .</code>, genera la estructura básica y un fichero <code>pyproject.toml</code> preconfigurado. Por último, instala las dependencias iniciales y verifica que todo esté en orden.</p>
 <p>Continuar leyendo en ... <a class='internal' href='../publicbrain/el-pyprojecttoml---todos-los-campos-incluso-los-menos-conocidos-🟡③.html'>El pyproject.toml   todos los campos (incluso los menos conocidos) 🟡③</a></p>
-<p>--- column-end ---<br />
+</div><div class="column">
 1.5. El <code>poetry.lock</code>: estructura TOML y cómo lo genera el solver<br />
 --- column-end ---<br />
 1.6. Llamar a Poetry desde código: subprocess vs API pública<br />
