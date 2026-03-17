@@ -408,6 +408,7 @@
       transform-style: preserve-3d; 
       filter: drop-shadow(0.5vw 1.2vw 1.4vw rgba(0,0,0,0.85)); 
       overflow: hidden; 
+      z-index:100;
     }
 
     .magazine:hover { 
@@ -431,30 +432,49 @@
     .mag-2  { top: 8%;  left: 28%; transform: rotate(-4deg) rotateX(13deg) rotateY(4deg); }
     .mag-3  { top: 8%;  left: 42%; transform: rotate(3deg) rotateX(11deg) rotateY(-3deg); }
     .mag-4  { top: 8%;  left: 56%; transform: rotate(-2deg) rotateX(14deg) rotateY(5deg); }
-    .mag-5  { top: 24%; left: 10%; transform: rotate(8deg) rotateX(18deg) rotateY(-6deg); }
-    .mag-6  { top: 24%; left: 54%; transform: rotate(-6deg) rotateX(19deg) rotateY(-6deg); }
-    .mag-7  { top: 44%; left: 10%; transform: rotate(7deg) rotateX(24deg) rotateY(-5deg); }
-    .mag-8  { top: 44%; left: 53%; transform: rotate(-5deg) rotateX(25deg) rotateY(-5deg); }
-    .mag-9  { top: 62%; left: 10%; transform: rotate(0deg) rotateX(0deg) rotateY(0deg); }
-    .mag-10 { top: 62%; left: 24%; transform: rotate(-4deg) rotateX(0deg) rotateY(1deg); }
-    .mag-11 { top: 62%; left: 40%; transform: rotate(0deg) rotateX(0deg) rotateY(0deg); }
-    .mag-12 { top: 62%; left: 56%; transform: rotate(-5deg) rotateX(29deg) rotateY(4deg); }
-    .mag-13 { top: 8%;  left: 70%; transform: rotate(-2deg) rotateX(14deg) rotateY(8deg); }
-    .mag-14 { top: 16%; left: 70%; transform: rotate(4deg) rotateX(20deg) rotateY(-8deg); }
-    .mag-15 { top: 24%; left: 70%; transform: rotate(-5deg) rotateX(25deg) rotateY(6deg); }
-    .mag-16 { top: 32%; left: 70%; transform: rotate(3deg) rotateX(28deg) rotateY(-5deg); }
-    .mag-17 { top: 39%;  left: 70%; transform: rotate(2deg) rotateX(16deg) rotateY(7deg); }
-    .mag-18 { top: 47%; left: 70%; transform: rotate(-6deg) rotateX(21deg) rotateY(-7deg); }
-    .mag-19 { top: 55%; left: 70%; transform: rotate(5deg) rotateX(26deg) rotateY(4deg); }
-    .mag-20 { top: 63%; left: 70%; transform: rotate(-4deg) rotateX(29deg) rotateY(-6deg); }
-    .mag-21 { top: 8%; left: 83%; transform: rotate(-3deg) rotateX(29deg) rotateY(-6deg); }
-    .mag-22 { top: 16%;  left: 84%; transform: rotate(-1deg) rotateX(14deg) rotateY(8deg); }
-    .mag-23 { top: 24%; left: 84%; transform: rotate(2deg) rotateX(20deg) rotateY(-8deg); }
-    .mag-24 { top: 32%; left: 84%; transform: rotate(-7deg) rotateX(25deg) rotateY(6deg); }
-    .mag-25 { top: 39%; left: 84%; transform: rotate(4deg) rotateX(28deg) rotateY(-5deg); }
-    .mag-26 { top: 48%;  left: 84%; transform: rotate(3deg) rotateX(16deg) rotateY(7deg); }
-    .mag-27 { top: 54%; left: 84%; transform: rotate(-4deg) rotateX(21deg) rotateY(-7deg); }
-    .mag-28 { top: 62%; left: 84%; transform: rotate(3deg) rotateX(26deg) rotateY(4deg); }
+    .mag-5  { top: 20%; left: 10%; transform: rotate(8deg) rotateX(18deg) rotateY(-6deg); }
+    .mag-6  { top: 20%; left: 54%; transform: rotate(-6deg) rotateX(19deg) rotateY(-6deg); }
+    .mag-7  { top: 32%; left: 10%; transform: rotate(7deg) rotateX(24deg) rotateY(-5deg); }
+    .mag-8  { top: 32%; left: 53%; transform: rotate(-5deg) rotateX(25deg) rotateY(-5deg); }
+    .mag-9  { top: 40%; left: 10%; transform: rotate(8deg) rotateX(18deg) rotateY(-6deg); }
+    .mag-10  { top: 40%; left: 54%; transform: rotate(-6deg) rotateX(19deg) rotateY(-6deg); }
+    .mag-11  { top: 48%; left: 10%; transform: rotate(7deg) rotateX(24deg) rotateY(-5deg); }
+    .mag-12  { top: 48%; left: 53%; transform: rotate(-5deg) rotateX(25deg) rotateY(-5deg); }
+    
+    .mag-13  { top: 64%; left: 10%; transform: rotate(0deg) rotateX(0deg) rotateY(0deg); z-index:120; }
+    .mag-14 { top: 64%; left: 24%; transform: rotate(-4deg) rotateX(0deg) rotateY(1deg);z-index:120; }
+    .mag-15 { top: 64%; left: 40%; transform: rotate(0deg) rotateX(0deg) rotateY(0deg);z-index:120; }
+    .mag-16 { top: 64%; left: 56%; transform: rotate(-5deg) rotateX(29deg) rotateY(4deg); z-index:120;}
+    .mag-17  { top: 56%; left: 10%; transform: rotate(0deg) rotateX(0deg) rotateY(0deg); z-index:110;}
+    .mag-18 { top: 56%; left: 24%; transform: rotate(-4deg) rotateX(0deg) rotateY(1deg); z-index:110;}
+    .mag-19 { top: 56%; left: 40%; transform: rotate(0deg) rotateX(0deg) rotateY(0deg); z-index:110;}
+    .mag-20 { top: 56%; left: 56%; transform: rotate(-5deg) rotateX(29deg) rotateY(4deg); z-index:110;}
+
+    .mag-21 { top: 8%;  left: 70%; transform: rotate(-2deg) rotateX(14deg) rotateY(8deg); }
+    .mag-22 { top: 16%; left: 70%; transform: rotate(4deg) rotateX(20deg) rotateY(-8deg); }
+    .mag-23 { top: 24%; left: 70%; transform: rotate(-5deg) rotateX(25deg) rotateY(6deg); }
+    .mag-24 { top: 32%; left: 70%; transform: rotate(3deg) rotateX(28deg) rotateY(-5deg); }
+    .mag-25 { top: 39%;  left: 70%; transform: rotate(2deg) rotateX(16deg) rotateY(7deg); }
+    .mag-26 { top: 47%; left: 70%; transform: rotate(-6deg) rotateX(21deg) rotateY(-7deg); }
+    .mag-27 { top: 55%; left: 70%; transform: rotate(5deg) rotateX(26deg) rotateY(4deg); }
+    .mag-28 { top: 63%; left: 70%; transform: rotate(-4deg) rotateX(29deg) rotateY(-6deg); }
+    .mag-29 { top: 8%; left: 83%; transform: rotate(-3deg) rotateX(29deg) rotateY(-6deg); }
+    .mag-30 { top: 16%;  left: 84%; transform: rotate(-1deg) rotateX(14deg) rotateY(8deg); }
+    .mag-31 { top: 24%; left: 84%; transform: rotate(2deg) rotateX(20deg) rotateY(-8deg); }
+    .mag-32 { top: 32%; left: 84%; transform: rotate(-7deg) rotateX(25deg) rotateY(6deg); }
+    .mag-33 { top: 39%; left: 84%; transform: rotate(4deg) rotateX(28deg) rotateY(-5deg); }
+    .mag-34 { top: 48%;  left: 84%; transform: rotate(3deg) rotateX(16deg) rotateY(7deg); }
+    .mag-35 { top: 54%; left: 84%; transform: rotate(-4deg) rotateX(21deg) rotateY(-7deg); }
+    .mag-36 { top: 62%; left: 84%; transform: rotate(3deg) rotateX(26deg) rotateY(4deg); }
+
+    .mag-37 { top: 8%;  left: -2%; transform: rotate(-2deg) rotateX(14deg) rotateY(8deg); z-index:90;}
+    .mag-38 { top: 16%; left: -2%; transform: rotate(3deg) rotateX(28deg) rotateY(-5deg); z-index:90;}
+    .mag-39 { top: 24%; left: -2%; transform: rotate(2deg) rotateX(16deg) rotateY(7deg); z-index:90;}
+    .mag-40 { top: 32%; left: -2%; transform: rotate(-4deg) rotateX(29deg) rotateY(-6deg); z-index:90;}
+    .mag-41 { top: 39%; left: -2%; transform: rotate(-3deg) rotateX(29deg) rotateY(-6deg); z-index:90;}
+    .mag-42 { top: 48%; left: -2%; transform: rotate(-7deg) rotateX(25deg) rotateY(6deg); z-index:90;}
+    .mag-43 { top: 54%; left: -2%; transform: rotate(4deg) rotateX(28deg) rotateY(-5deg); z-index:90;}
+    .mag-44 { top: 62%; left: -2%; transform: rotate(3deg) rotateX(26deg) rotateY(4deg); z-index:90;}
 
     .footer {
       margin-top: 4vh;
@@ -491,6 +511,7 @@
       padding: 0 2vw;
     }
 
+
     .awning::after {
       content: '';
       position: absolute;
@@ -503,6 +524,7 @@
       opacity: 0.6;
     }
 
+
     .awning-side {
       font-family: 'Impact', 'Arial Black', 'Arial Narrow', 'Helvetica Condensed Bold', 'Helvetica', sans-serif;
       font-size: clamp(0.6rem, 2vw, 1rem);
@@ -510,6 +532,13 @@
       text-shadow: 1px 1px 2px rgba(148, 0, 0, 0.9);
       white-space: nowrap;
       text-transform: uppercase;
+      text-decoration: none; /* Elimina el subrayado */
+      cursor: pointer; /* Fuerza el icono de la mano */
+    }
+
+    /* Asegura que el enlace mantenga el estilo al ser visitado */
+    .awning-side:visited {
+      color: #fff;
     }
 
     .awning-side-left {
@@ -561,34 +590,50 @@
         margin:1rem;
       }
 
-      .mag-1  { top: 8%;  left: 8%;}
-      .mag-2  { top: 8%;  left: 28%;}
-      .mag-3  { top: 8%;  left: 48%;}
-      .mag-4  { top: 8%;  left: 68%;}
-      .mag-5  { top: 21%; left: 8%;}
-      .mag-6  { top: 21%; left: 28%;}
-      .mag-7  { top: 21%; left: 48%;}
-      .mag-8  { top: 21%; left: 68%;}
-      .mag-9  { top: 34%; left: 8%;}
-      .mag-10 { top: 34%; left: 28%;}
-      .mag-11 { top: 34%; left: 48%;}
-      .mag-12 { top: 34%; left: 68%;}
-      .mag-13 { top: 47%;  left: 8%;}
-      .mag-14 { top: 47%; left: 28%;}
-      .mag-15 { top: 47%; left: 48%;}
-      .mag-16 { top: 47%; left: 68%;}
-      .mag-17 { top: 60%;  left: 8%;}
-      .mag-18 { top: 60%; left: 28%;}
-      .mag-19 { top: 60%; left: 48%;}
-      .mag-20 { top: 60%; left: 69%;}
-      .mag-21 { top: 73%; left: 8%;}
-      .mag-22 { top: 73%;  left: 28%;}
-      .mag-23 { top: 73%; left: 48%;}
-      .mag-24 { top: 73%; left: 70%;}
-      .mag-25 { top: 86%; left: 8%;}
-      .mag-26 { top: 86%;  left: 28%;}
-      .mag-27 { top: 86%; left: 48%;}
-      .mag-28 { top: 86%; left: 68%;}
+      .mag-1  { top: 8%;  left: 8%;z-index:110;}
+      .mag-2  { top: 8%;  left: 28%;z-index:110;}
+      .mag-3  { top: 8%;  left: 48%;z-index:110;}
+      .mag-4  { top: 8%;  left: 67%;z-index:110;}
+      .mag-5  { top: 16%; left: 8%;z-index:120;}
+      .mag-6  { top: 16%; left: 28%;z-index:120;}
+      .mag-7  { top: 16%; left: 48%;z-index:120;}
+      .mag-8  { top: 16%; left: 68%;z-index:120;}
+      .mag-9  { top: 24%; left: 8%;z-index:130;}
+      .mag-10 { top: 24%; left: 28%;z-index:130;}
+      .mag-11 { top: 24%; left: 48%;z-index:130;}
+      .mag-12 { top: 24%; left: 68%;z-index:130;}
+      .mag-13 { top: 32%;  left: 8%;z-index:140;}
+      .mag-14 { top: 32%; left: 28%;z-index:140;}
+      .mag-15 { top: 32%; left: 48%;z-index:140;}
+      .mag-16 { top: 32%; left: 68%;z-index:140;}
+      .mag-17 { top: 40%;  left: 8%;z-index:150;}
+      .mag-18 { top: 40%; left: 28%;z-index:150;}
+      .mag-19 { top: 40%; left: 48%;z-index:150;}
+      .mag-20 { top: 40%; left: 69%;z-index:150;}
+      .mag-21 { top: 48%; left: 8%;z-index:160;}
+      .mag-22 { top: 48%;  left: 28%;z-index:160;}
+      .mag-23 { top: 48%; left: 48%;z-index:160;}
+      .mag-24 { top: 48%; left: 70%;z-index:160;}
+      .mag-25 { top: 56%; left: 8%;z-index:170;}
+      .mag-26 { top: 56%;  left: 28%;z-index:170;}
+      .mag-27 { top: 56%; left: 48%;z-index:170;}
+      .mag-28 { top: 56%; left: 68%;z-index:170;}
+      .mag-29 { top: 64%; left: 8%;z-index:180;}
+      .mag-30 { top: 64%;  left: 28%;z-index:180;}
+      .mag-31 { top: 64%; left: 48%;z-index:180;}
+      .mag-32 { top: 64%; left: 68%;z-index:180;}
+      .mag-33 { top: 72%; left: 8%;z-index:182;}
+      .mag-34 { top: 72%;  left: 28%;z-index:182;}
+      .mag-35 { top: 72%; left: 48%;z-index:182;}
+      .mag-36 { top: 72%; left: 68%;z-index:182;}
+      .mag-37 { top: 80%; left: 8%;z-index:184;}
+      .mag-38 { top: 80%;  left: 28%;z-index:184;}
+      .mag-39 { top: 80%; left: 48%;z-index:184;}
+      .mag-40 { top: 80%; left: 68%;z-index:184;}
+      .mag-41 { top: 88%; left: 8%;z-index:186;}
+      .mag-42 { top: 88%;  left: 28%;z-index:186;}
+      .mag-43 { top: 88%; left: 48%;z-index:186;}
+      .mag-44 { top: 88%; left: 68%;z-index:186;}
     }
   </style>
   <!-- Contador de visitas -->
@@ -611,9 +656,9 @@
       <div class="roof"></div>
 
       <div class="awning">
-        <span class="awning-side awning-side-left">metsuke.com</span>
+        <a href="https://metsuke.com" class="awning-side awning-side-left">metsuke.com</a>
         <span class="awning-text">PRENSA</span>
-        <span class="awning-side awning-side-right">metsuke.com</span>
+        <a href="https://metsuke.com" class="awning-side awning-side-right">metsuke.com</a>
       </div>
 
       <div class="front-glass"></div>
@@ -650,6 +695,31 @@
       (function() {
           const revistas = [
               {
+                  "url": "https://x.com/Recuenco/status/2032696505807609924",
+                  "img": "TurraNews003.jpg",
+                  "alt": "Turra News Número 3 Marzo 2026"
+              },
+              {
+                  "url": "https://www.henneomagazines.com/products/retro-gamer-n%C2%BA-55",
+                  "img": "RetroGamerES_055.webp",
+                  "alt": "RetroGamer España num 55"
+              },
+              {
+                "url": "https://tienda.hechoconpixels.com/producto/micromania-suscripcion/",
+                "img": "Portada-MM-1-Cuarta-epoca.jpg",
+                "alt": "MicroManía Cuarta Época número 1"
+              },
+              {
+                  "url": "https://x.com/loadingrevista?s=20",
+                  "img": "Loading014.jpeg",
+                  "alt": "Loading Numero 14"
+              },
+              {
+                  "url": "https://distritoentebras.wordpress.com/revista-p3/",
+                  "img": "P3_000.jpg",
+                  "alt": "P3"
+              },
+              {
                   "url": "https://tienda.hechoconpixels.com/producto/revista-pixels-suscripcion/",
                   "img": "MagPixels13.jpg",
                   "alt": "Pixels nº 13"
@@ -660,24 +730,9 @@
                   "alt": "Microhobby nº 224"
               },
               {
-                  "url": "https://x.com/Recuenco/status/2027648364364312699?s=20",
-                  "img": "TurraNews.jpg",
-                  "alt": "Turra News"
-              },
-              {
-                  "url": "https://tienda.hechoconpixels.com/producto/micromania-suscripcion/",
-                  "img": "Portada-MM-1-Cuarta-epoca.jpg",
-                  "alt": "MicroManía Cuarta Época número 1"
-              },
-              {
                   "url": "https://caad.club/tienda/revistas-2/caad-70/",
                   "img": "CAAD-70-portada.webp",
                   "alt": "CAAD 70"
-              },
-              {
-                  "url": "https://www.henneomagazines.com/products/retro-gamer-n%C2%BA-54",
-                  "img": "RetroGamerES.webp",
-                  "alt": "RetroGamer España num 54"
               },
               {
                   "url": "https://x.com/mojon_twins/status/1981378168943460661?s=20",
@@ -685,9 +740,19 @@
                   "alt": "Revista Monomanía"
               },
               {
-                  "url": "https://www.metsuke.com/publicbrain/curso-de-zx-game-maker-⚫①.html",
-                  "img": "https://metsuke.com/assets/img/content-publicbrain/MOS_b2b95efee69c57efd8fef186e909d6e2_MD5.jpg",
-                  "alt": "Curso ZX Game Maker"
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews003.jpg",
+                  "alt": "Placeholder"
+              },
+              {
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews001.jpg",
+                  "alt": "Placeholder"
+              },
+              {
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews002.jpg",
+                  "alt": "Placeholder"
               },
               {
                   "url": "https://www.amazon.es/dp/B0GNZ9HSJ8",
@@ -708,6 +773,26 @@
                   "url": "https://www.amazon.es/Lo-Incre%C3%ADble-vendedor-transform%C3%B3-inform%C3%A1tica-ebook/dp/B0F2L182WH/ref=sr_1_5?dib=eyJ2IjoiMSJ9.Vx4h6OsIF7bf-6Ky_ymzUVuQqBl0dol79xvnKkX8Hlf6grGEEuTvtB_iKBj0tIiwkK6GTsFJmf8T2wTN9Zb-S1bU0l7nuNuBqaspGFkfiK4ARhChDsnRW2Ydgwlgl4yQthXYgWGHKk_2WhcEChYjwiigl9qykcJKfL1lYIlHS3EpdjGSrDMcU0aKqATKYplMLaPFvs0t5RffFBws3-cq1Z9G770oNn_XKEJZga77ykk.IdD_xXWDicKFa2PotVq8LmrxxGxi0WmQ2DBd3Qp5n38&dib_tag=se&qid=1771536396&refinements=p_27%3AJesus+Martinez+Del+Vas&s=books&sr=1-5",
                   "img": "LoIncreibleJMV.jpg",
                   "alt": "Lo Increíble: El vendedor de libros puerta a puerta que transformó con Amstrad la informática en España"
+              },
+              {
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews004.jpg",
+                  "alt": "Placeholder"
+              },
+              {
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews001.jpg",
+                  "alt": "Placeholder"
+              },
+              {
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews005.jpg",
+                  "alt": "Placeholder"
+              },
+              {
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews006.jpg",
+                  "alt": "Placeholder"
               },
               {
                   "url": "https://www.metsuke.com/publicbrain/conceptos-basicos-sobre-ciencia-y-su-evolucion-historica-%F0%9F%9F%A1%E2%91%A2.html",
@@ -758,6 +843,46 @@
                   "url": "https://www.pouet.net/prod.php?which=83118",
                   "img": "PinballDreamsMag.jpg",
                   "alt": "Pinball Dreams CPC - Amstrad CPC - Batman Group - 2016"
+              },
+              {
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews007.jpg",
+                  "alt": "Placeholder"
+              },
+              {
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews008.jpg",
+                  "alt": "Placeholder"
+              },
+              {
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews009.jpg",
+                  "alt": "Placeholder"
+              },
+              {
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews010.jpg",
+                  "alt": "Placeholder"
+              },
+              {
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews011.jpg",
+                  "alt": "Placeholder"
+              },
+              {
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews002.jpg",
+                  "alt": "Placeholder"
+              },
+              {
+                  "url": "https://metsuke.com/publicbrain/curso-publicacion-de-contenido-editorial-como-aventura-de-texto-%F0%9F%9F%A1%E2%91%A2.html",
+                  "img": "ContenidoEditorialComoAventuraTexto_000.jpg",
+                  "alt": "Publicación Editorial"
+              },
+              {
+                  "url": "https://metsuke.com/index.html",
+                  "img": "DummyNews001.jpg",
+                  "alt": "Placeholder"
               },
               {
                   "url": "https://www.metsuke.com/publicbrain/curso-de-ayfxedit-🔴②.html",
