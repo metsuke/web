@@ -1,150 +1,91 @@
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <meta name="googlebot" content="noindex, nofollow">
-    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construyendo la plena inclusión a través del videojuego</title>
-    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
-    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
-    
-    <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
-    <!-- Efenerudes -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
-</head>
-
-<body>
-
-    <header>
-        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
-        <h1>MetsuOS</h1>
-        <h2>Construyendo la plena inclusión a través del videojuego</h2>
-    </header>
-    <?php //include 'blacklist_blocker.php';?>
-    <nav>
-        <a href="../index.html">Inicio</a>
-        <a href="../apps.html">Apps</a>
-        <a href="../blog.html">Blog</a>
-        <a href="../juegos.html">Juegos</a>
-        <a href="../kb.html">KB</a>
-        <a href="../publicbrain/curso-e-introduccion-tecnica-sobre--mcl-metsuos-context-language-%F0%9F%9F%A1%E2%91%A2.html">MCL</a>
-        <a href="../noticias.html">Noticias</a>
-        <a href="../novedades.html">Nuevo</a>
-        <a href="../npl.html">NPL</a>
-        <a href="../el-proyecto.html">MOS</a>
-        <a href="../publicbrain/index.html">PB</a>
-        <a href="https://metsuke.com/quiosco/">Quiosco</a>
-        <a href="../noticias.html">Reportajes</a>
-    </nav>
-
-    <main>
-<h1>CSS con Efemérides Lección 2 - Auditoría técnica de Metsuke.com - Análisis crítico del sistema actual (JS + CSS Overwrite) 🟡③</h1>
-<p><img alt="CSS Efemerides Lección 2 Auditoría técnica de Metsuke.com: Análisis crítico del sistema actual (JS + CSS Overwrite)"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_b5a595e79fa9eaca0a0b33f9d35adcf9_MD5.jpg" /></p>
-<p><a class='internal' href='../publicbrain/curso-estructura-de-css-dinamico-con-efemerides-🟡③.html'>Curso Estructura de CSS Dinámico con Efemérides 🟡③</a></p>
-<h2>Introducción</h2>
-<p>En esta lección vamos a sumergirnos en una auditoría técnica detallada del sistema que se usa actualmente en Metsuke.com, basado en JavaScript (JS) para la lógica y sobrescrituras de CSS para los estilos. El foco está en evaluar sus puntos fuertes y débiles, especialmente en cómo maneja los cambios visuales temporales, como efemérides (fechas especiales como aniversarios, eventos históricos o celebraciones estacionales).</p>
-<p>Esta auditoría actúa como un diagnóstico inicial para el curso. Identificaremos problemas en el manejo de estilos dinámicos, el rendimiento, la escalabilidad, la facilidad de mantenimiento y la compatibilidad con actualizaciones frecuentes. Al final, sugeriremos mejoras que nos guiarán en las próximas lecciones, como el uso de preprocesadores como Sass/SCSS, metodologías como ITCSS o BEM, y herramientas de automatización.</p>
-<p>Para ponernos en contexto, Metsuke.com es un sitio web dedicado a promover la inclusión plena a través de los videojuegos, con énfasis en accesibilidad, usabilidad y narrativas visuales. El sistema actual permite que el sitio cambie su apariencia según efemérides, modificando colores, tipografías, imágenes o disposiciones sin alterar la estructura básica. Sin embargo, esto se logra con JS para la detección temporal y sobrescrituras de CSS para aplicar los estilos.</p>
-<p><strong>Nota sobre el método:</strong> Esta auditoría se basa en un análisis conceptual y práctico de sistemas similares (ya que el acceso al código fuente real de Metsuke.com es limitado en este entorno educativo). Usaremos ejemplos genéricos pero ilustrativos. En un caso real, recomendaría herramientas como las DevTools de Chrome, Lighthouse o WebPageTest para mediciones precisas.</p>
-<h2>Descripción de la Arquitectura Actual</h2>
-<h3>Componente JavaScript (JS)</h3>
-<p>El corazón dinámico del sistema es JavaScript, que gestiona las efemérides. JS se ocupa de:<br />
-- <strong>Detección de efemérides:</strong> Usa una estructura JSON cargada manualmente dentro del propio fichero JS.<br />
-- <strong>Lógica condicional:</strong> Según la fecha, selecciona un "tema" (por ejemplo, "Lanzamiento Microhobby" o "Lanzamiento Sega Saturn") y aplica los cambios. El proceso agrega una css de apoyo que modifica la hoja principal para que adopte el estilo deseado.<br />
-- <strong>Integración con el DOM:</strong> JS se encarga de cambiar la imagen de cabecera y el claim principal por el correspondiente al evento, calculando el tiempo transcurrido en años.</p>
-<p>Aquí el código JS actual:</p>
-<pre><code class="language-javascript">const efemerides = {
-    &#x27;05-11&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1995, desc: &#x27;Dia Lanzamiento Sega Saturn en Norteamérica&#x27; },
-    &#x27;05-12&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1995, desc: &#x27;Semana lanzamiento Sega Saturn en Norteamérica&#x27; },
-    &#x27;05-13&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1995, desc: &#x27;Semana lanzamiento Sega Saturn en Norteamérica&#x27; },
-    &#x27;05-14&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1995, desc: &#x27;Semana lanzamiento Sega Saturn en Norteamérica&#x27; },
-    &#x27;05-15&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1995, desc: &#x27;Semana lanzamiento Sega Saturn en Norteamérica&#x27; },
-    &#x27;05-16&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1995, desc: &#x27;Semana lanzamiento Sega Saturn en Norteamérica&#x27; },
-    &#x27;05-17&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1995, desc: &#x27;Semana lanzamiento Sega Saturn en Norteamérica&#x27; },
-    &#x27;07-02&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1994, desc: &#x27;Dia Lanzamiento Shinning Force II en España y Europa&#x27; },
-    &#x27;07-03&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Shinning Force II en España y Europa&#x27; },
-    &#x27;07-04&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Shinning Force II en España y Europa&#x27; },
-    &#x27;07-05&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Shinning Force II en España y Europa&#x27; },
-    &#x27;07-06&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Shinning Force II en España y Europa&#x27; },
-    &#x27;07-07&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Shinning Force II en España y Europa&#x27; },
-    &#x27;07-08&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1995, desc: &#x27;Dia Lanzamiento Sega Saturn en España y Europa&#x27; },
-    &#x27;07-09&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1995, desc: &#x27;Semana Lanzamiento Sega Saturn en España y Europa&#x27; },
-    &#x27;07-10&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1995, desc: &#x27;Semana Lanzamiento Sega Saturn en España y Europa&#x27; },
-    &#x27;07-11&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1995, desc: &#x27;Semana Lanzamiento Sega Saturn en España y Europa&#x27; },
-    &#x27;07-12&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1995, desc: &#x27;Semana Lanzamiento Sega Saturn en España y Europa&#x27; },
-    &#x27;07-13&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1995, desc: &#x27;Semana Lanzamiento Sega Saturn en España y Europa&#x27; },
-    &#x27;07-14&#x27;: { system: &#x27;Lanzamiento MH218&#x27;, year: 2025, desc: &#x27;Dia Lanzamiento Microhobby 218&#x27; },
-    &#x27;07-15&#x27;: { system: &#x27;Lanzamiento MH218&#x27;, year: 2025, desc: &#x27;Semana Lanzamiento Microhobby 218&#x27; },
-    &#x27;07-16&#x27;: { system: &#x27;Lanzamiento MH218&#x27;, year: 2025, desc: &#x27;Semana Lanzamiento Microhobby 218&#x27; },
-    &#x27;07-17&#x27;: { system: &#x27;Lanzamiento MH218&#x27;, year: 2025, desc: &#x27;Semana Lanzamiento Microhobby 218&#x27; },
-    &#x27;07-18&#x27;: { system: &#x27;Lanzamiento MH218&#x27;, year: 2025, desc: &#x27;Semana Lanzamiento Microhobby 218&#x27; },
-    &#x27;07-19&#x27;: { system: &#x27;Lanzamiento MH218&#x27;, year: 2025, desc: &#x27;Semana Lanzamiento Microhobby 218&#x27; },
-    &#x27;07-20&#x27;: { system: &#x27;Lanzamiento MH218&#x27;, year: 2025, desc: &#x27;Semana Lanzamiento Microhobby 218&#x27; },
-    &#x27;08-29&#x27;: { system: &#x27;Dia Mundial Videojuego&#x27;, year: 2008, desc: &#x27;Dia Mundial del Videojuego&#x27;, ref: &#x27;https://efemeridesvideojuegos.com/efemerides-videojuegos-21-de-julio/&#x27; },
-    &#x27;10-01&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1993, desc: &#x27;Dia Lanzamiento Shinning Force II en Japón&#x27; },
-    &#x27;10-02&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1993, desc: &#x27;Semana Lanzamiento Shinning Force II en Japón&#x27; },
-    &#x27;10-03&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1993, desc: &#x27;Semana Lanzamiento Shinning Force II en Japón&#x27; },
-    &#x27;10-04&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1993, desc: &#x27;Semana Lanzamiento Shinning Force II en Japón&#x27; },
-    &#x27;10-05&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1993, desc: &#x27;Semana Lanzamiento Shinning Force II en Japón&#x27; },
-    &#x27;10-06&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1993, desc: &#x27;Semana Lanzamiento Shinning Force II en Japón&#x27; },
-    &#x27;10-07&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1993, desc: &#x27;Semana Lanzamiento Shinning Force II en Japón&#x27; },
-    &#x27;10-19&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1994, desc: &#x27;Dia Lanzamiento Shinning Force II en Norteamérica&#x27; },
-    &#x27;10-20&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Shinning Force II en Norteamérica&#x27; },
-    &#x27;10-21&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Shinning Force II en Norteamérica&#x27; },
-    &#x27;10-22&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Shinning Force II en Norteamérica&#x27; },
-    &#x27;10-23&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Shinning Force II en Norteamérica&#x27; },
-    &#x27;10-24&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Shinning Force II en Norteamérica&#x27; },
-    &#x27;10-25&#x27;: { system: &#x27;Lanzamiento Shinning Force 2&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Shinning Force II en Norteamérica&#x27; },
-    &#x27;11-04&#x27;: { system: &#x27;Lanzamiento Pixels&#x27;, year: 2024, desc: &#x27;Dia Lanzamiento Revista Pixels&#x27; },
-    &#x27;11-05&#x27;: { system: &#x27;Lanzamiento MH218&#x27;, year: 1984, desc: &#x27;Dia Lanzamiento Revista Microhobby&#x27; },
-    &#x27;11-06&#x27;: { system: &#x27;Lanzamiento Pixels&#x27;, year: 2024, desc: &#x27;Semana Lanzamiento Revista Pixels&#x27; },
-    &#x27;11-07&#x27;: { system: &#x27;Lanzamiento MH218&#x27;, year: 1984, desc: &#x27;Semana Lanzamiento Revista Microhobby&#x27; },
-    &#x27;11-08&#x27;: { system: &#x27;Lanzamiento Pixels&#x27;, year: 2024, desc: &#x27;Semana Lanzamiento Revista Pixels&#x27; },
-    &#x27;11-09&#x27;: { system: &#x27;Lanzamiento MH218&#x27;, year: 1984, desc: &#x27;Semana Lanzamiento Revista Microhobby&#x27; },
-    &#x27;11-10&#x27;: { system: &#x27;Lanzamiento Pixels&#x27;, year: 2024, desc: &#x27;Semana Lanzamiento Revista Pixels&#x27; },
-    &#x27;11-11&#x27;: { system: &#x27;Lanzamiento MH218&#x27;, year: 1984, desc: &#x27;Semana Lanzamiento Revista Microhobby&#x27; },
-    &#x27;11-22&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1994, desc: &#x27;Dia Lanzamiento Sega Saturn en Japón&#x27; },
-    &#x27;11-23&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Sega Saturn en Japón&#x27; },
-    &#x27;11-24&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Sega Saturn en Japón&#x27; },
-    &#x27;11-25&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Sega Saturn en Japón&#x27; },
-    &#x27;11-26&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Sega Saturn en Japón&#x27; },
-    &#x27;11-27&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Sega Saturn en Japón&#x27; },
-    &#x27;11-28&#x27;: { system: &#x27;Lanzamiento Sega Saturn&#x27;, year: 1994, desc: &#x27;Semana Lanzamiento Sega Saturn en Japón&#x27; },
+<!doctype html><html lang=es><meta charset=utf-8><meta content="noindex, nofollow" name=googlebot><meta a ciencia, comunicación, content"construyendo de felicidad, inclusión la name=description plena productividad través videojuegos." y><meta content="width=device-width,initial-scale=1.0" name=viewport><title>Construyendo la plena inclusión a través del videojuego</title><link href=../assets/css/transitions.css id=transition-stylesheet rel=stylesheet><link href=../assets/css/style.css id=main-stylesheet rel=stylesheet><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><script src=https://metsuke.com/assets/js/efemerides.js></script><body><header><img alt="Logo Metsuke" class=logo src=../assets/img/logo/MetsukeLogo.png><h1>MetsuOS</h1><h2>Construyendo la plena inclusión a través del videojuego</h2></header><?php //include 'blacklist_blocker.php';?><nav><a href=../index.html>Inicio</a><a href=../apps.html>Apps</a><a href=https://metsuke.com/publicbrain/la-biblioteca-del-archivero-del-retro-%F0%9F%9F%A1%E2%91%A2.html>Biblioteca</a><a href=../blog.html>Blog</a><a href=../juegos.html>Juegos</a><a href=../kb.html>KB</a><a href=../publicbrain/curso-e-introduccion-tecnica-sobre--mcl-metsuos-context-language-%F0%9F%9F%A1%E2%91%A2.html>MCL</a><a href=../noticias.html>Noticias</a><a href=../novedades.html>Novedades</a><a href=../npl.html>NPL</a><a href=../el-proyecto.html>MetsuOS</a><a href=../publicbrain/index.html>PublicBrain</a><a href=https://metsuke.com/quiosco/>Quiosco</a><a href=../reportajes.html>Reportajes</a></nav><main><h1>CSS con Efemérides Lección 2 - Auditoría técnica de Metsuke.com - Análisis crítico del sistema actual (JS + CSS Overwrite) 🟡③</h1><p><img alt="CSS Efemerides Lección 2 Auditoría técnica de Metsuke.com: Análisis crítico del sistema actual (JS + CSS Overwrite)" mos=mos src=https://metsuke.com/assets/img/content-publicbrain/MOS_b5a595e79fa9eaca0a0b33f9d35adcf9_MD5.jpg style=view-transition-name:image-hero><p><a class=internal href=../publicbrain/curso-estructura-de-css-dinamico-con-efemerides-🟡③.html>Curso Estructura de CSS Dinámico con Efemérides 🟡③</a><h2>Introducción</h2><p>En esta lección vamos a sumergirnos en una auditoría técnica detallada del sistema que se usa actualmente en Metsuke.com, basado en JavaScript (JS) para la lógica y sobrescrituras de CSS para los estilos. El foco está en evaluar sus puntos fuertes y débiles, especialmente en cómo maneja los cambios visuales temporales, como efemérides (fechas especiales como aniversarios, eventos históricos o celebraciones estacionales).<p>Esta auditoría actúa como un diagnóstico inicial para el curso. Identificaremos problemas en el manejo de estilos dinámicos, el rendimiento, la escalabilidad, la facilidad de mantenimiento y la compatibilidad con actualizaciones frecuentes. Al final, sugeriremos mejoras que nos guiarán en las próximas lecciones, como el uso de preprocesadores como Sass/SCSS, metodologías como ITCSS o BEM, y herramientas de automatización.<p>Para ponernos en contexto, Metsuke.com es un sitio web dedicado a promover la inclusión plena a través de los videojuegos, con énfasis en accesibilidad, usabilidad y narrativas visuales. El sistema actual permite que el sitio cambie su apariencia según efemérides, modificando colores, tipografías, imágenes o disposiciones sin alterar la estructura básica. Sin embargo, esto se logra con JS para la detección temporal y sobrescrituras de CSS para aplicar los estilos.<p><strong>Nota sobre el método:</strong> Esta auditoría se basa en un análisis conceptual y práctico de sistemas similares (ya que el acceso al código fuente real de Metsuke.com es limitado en este entorno educativo). Usaremos ejemplos genéricos pero ilustrativos. En un caso real, recomendaría herramientas como las DevTools de Chrome, Lighthouse o WebPageTest para mediciones precisas.<h2>Descripción de la Arquitectura Actual</h2><h3>Componente JavaScript (JS)</h3><p>El corazón dinámico del sistema es JavaScript, que gestiona las efemérides. JS se ocupa de:<br> - <strong>Detección de efemérides:</strong> Usa una estructura JSON cargada manualmente dentro del propio fichero JS.<br> - <strong>Lógica condicional:</strong> Según la fecha, selecciona un "tema" (por ejemplo, "Lanzamiento Microhobby" o "Lanzamiento Sega Saturn") y aplica los cambios. El proceso agrega una css de apoyo que modifica la hoja principal para que adopte el estilo deseado.<br> - <strong>Integración con el DOM:</strong> JS se encarga de cambiar la imagen de cabecera y el claim principal por el correspondiente al evento, calculando el tiempo transcurrido en años.<p>Aquí el código JS actual:<pre><code class=language-javascript>const efemerides = {
+    '05-11': { system: 'Lanzamiento Sega Saturn', year: 1995, desc: 'Dia Lanzamiento Sega Saturn en Norteamérica' },
+    '05-12': { system: 'Lanzamiento Sega Saturn', year: 1995, desc: 'Semana lanzamiento Sega Saturn en Norteamérica' },
+    '05-13': { system: 'Lanzamiento Sega Saturn', year: 1995, desc: 'Semana lanzamiento Sega Saturn en Norteamérica' },
+    '05-14': { system: 'Lanzamiento Sega Saturn', year: 1995, desc: 'Semana lanzamiento Sega Saturn en Norteamérica' },
+    '05-15': { system: 'Lanzamiento Sega Saturn', year: 1995, desc: 'Semana lanzamiento Sega Saturn en Norteamérica' },
+    '05-16': { system: 'Lanzamiento Sega Saturn', year: 1995, desc: 'Semana lanzamiento Sega Saturn en Norteamérica' },
+    '05-17': { system: 'Lanzamiento Sega Saturn', year: 1995, desc: 'Semana lanzamiento Sega Saturn en Norteamérica' },
+    '07-02': { system: 'Lanzamiento Shinning Force 2', year: 1994, desc: 'Dia Lanzamiento Shinning Force II en España y Europa' },
+    '07-03': { system: 'Lanzamiento Shinning Force 2', year: 1994, desc: 'Semana Lanzamiento Shinning Force II en España y Europa' },
+    '07-04': { system: 'Lanzamiento Shinning Force 2', year: 1994, desc: 'Semana Lanzamiento Shinning Force II en España y Europa' },
+    '07-05': { system: 'Lanzamiento Shinning Force 2', year: 1994, desc: 'Semana Lanzamiento Shinning Force II en España y Europa' },
+    '07-06': { system: 'Lanzamiento Shinning Force 2', year: 1994, desc: 'Semana Lanzamiento Shinning Force II en España y Europa' },
+    '07-07': { system: 'Lanzamiento Shinning Force 2', year: 1994, desc: 'Semana Lanzamiento Shinning Force II en España y Europa' },
+    '07-08': { system: 'Lanzamiento Sega Saturn', year: 1995, desc: 'Dia Lanzamiento Sega Saturn en España y Europa' },
+    '07-09': { system: 'Lanzamiento Sega Saturn', year: 1995, desc: 'Semana Lanzamiento Sega Saturn en España y Europa' },
+    '07-10': { system: 'Lanzamiento Sega Saturn', year: 1995, desc: 'Semana Lanzamiento Sega Saturn en España y Europa' },
+    '07-11': { system: 'Lanzamiento Sega Saturn', year: 1995, desc: 'Semana Lanzamiento Sega Saturn en España y Europa' },
+    '07-12': { system: 'Lanzamiento Sega Saturn', year: 1995, desc: 'Semana Lanzamiento Sega Saturn en España y Europa' },
+    '07-13': { system: 'Lanzamiento Sega Saturn', year: 1995, desc: 'Semana Lanzamiento Sega Saturn en España y Europa' },
+    '07-14': { system: 'Lanzamiento MH218', year: 2025, desc: 'Dia Lanzamiento Microhobby 218' },
+    '07-15': { system: 'Lanzamiento MH218', year: 2025, desc: 'Semana Lanzamiento Microhobby 218' },
+    '07-16': { system: 'Lanzamiento MH218', year: 2025, desc: 'Semana Lanzamiento Microhobby 218' },
+    '07-17': { system: 'Lanzamiento MH218', year: 2025, desc: 'Semana Lanzamiento Microhobby 218' },
+    '07-18': { system: 'Lanzamiento MH218', year: 2025, desc: 'Semana Lanzamiento Microhobby 218' },
+    '07-19': { system: 'Lanzamiento MH218', year: 2025, desc: 'Semana Lanzamiento Microhobby 218' },
+    '07-20': { system: 'Lanzamiento MH218', year: 2025, desc: 'Semana Lanzamiento Microhobby 218' },
+    '08-29': { system: 'Dia Mundial Videojuego', year: 2008, desc: 'Dia Mundial del Videojuego', ref: 'https://efemeridesvideojuegos.com/efemerides-videojuegos-21-de-julio/' },
+    '10-01': { system: 'Lanzamiento Shinning Force 2', year: 1993, desc: 'Dia Lanzamiento Shinning Force II en Japón' },
+    '10-02': { system: 'Lanzamiento Shinning Force 2', year: 1993, desc: 'Semana Lanzamiento Shinning Force II en Japón' },
+    '10-03': { system: 'Lanzamiento Shinning Force 2', year: 1993, desc: 'Semana Lanzamiento Shinning Force II en Japón' },
+    '10-04': { system: 'Lanzamiento Shinning Force 2', year: 1993, desc: 'Semana Lanzamiento Shinning Force II en Japón' },
+    '10-05': { system: 'Lanzamiento Shinning Force 2', year: 1993, desc: 'Semana Lanzamiento Shinning Force II en Japón' },
+    '10-06': { system: 'Lanzamiento Shinning Force 2', year: 1993, desc: 'Semana Lanzamiento Shinning Force II en Japón' },
+    '10-07': { system: 'Lanzamiento Shinning Force 2', year: 1993, desc: 'Semana Lanzamiento Shinning Force II en Japón' },
+    '10-19': { system: 'Lanzamiento Shinning Force 2', year: 1994, desc: 'Dia Lanzamiento Shinning Force II en Norteamérica' },
+    '10-20': { system: 'Lanzamiento Shinning Force 2', year: 1994, desc: 'Semana Lanzamiento Shinning Force II en Norteamérica' },
+    '10-21': { system: 'Lanzamiento Shinning Force 2', year: 1994, desc: 'Semana Lanzamiento Shinning Force II en Norteamérica' },
+    '10-22': { system: 'Lanzamiento Shinning Force 2', year: 1994, desc: 'Semana Lanzamiento Shinning Force II en Norteamérica' },
+    '10-23': { system: 'Lanzamiento Shinning Force 2', year: 1994, desc: 'Semana Lanzamiento Shinning Force II en Norteamérica' },
+    '10-24': { system: 'Lanzamiento Shinning Force 2', year: 1994, desc: 'Semana Lanzamiento Shinning Force II en Norteamérica' },
+    '10-25': { system: 'Lanzamiento Shinning Force 2', year: 1994, desc: 'Semana Lanzamiento Shinning Force II en Norteamérica' },
+    '11-04': { system: 'Lanzamiento Pixels', year: 2024, desc: 'Dia Lanzamiento Revista Pixels' },
+    '11-05': { system: 'Lanzamiento MH218', year: 1984, desc: 'Dia Lanzamiento Revista Microhobby' },
+    '11-06': { system: 'Lanzamiento Pixels', year: 2024, desc: 'Semana Lanzamiento Revista Pixels' },
+    '11-07': { system: 'Lanzamiento MH218', year: 1984, desc: 'Semana Lanzamiento Revista Microhobby' },
+    '11-08': { system: 'Lanzamiento Pixels', year: 2024, desc: 'Semana Lanzamiento Revista Pixels' },
+    '11-09': { system: 'Lanzamiento MH218', year: 1984, desc: 'Semana Lanzamiento Revista Microhobby' },
+    '11-10': { system: 'Lanzamiento Pixels', year: 2024, desc: 'Semana Lanzamiento Revista Pixels' },
+    '11-11': { system: 'Lanzamiento MH218', year: 1984, desc: 'Semana Lanzamiento Revista Microhobby' },
+    '11-22': { system: 'Lanzamiento Sega Saturn', year: 1994, desc: 'Dia Lanzamiento Sega Saturn en Japón' },
+    '11-23': { system: 'Lanzamiento Sega Saturn', year: 1994, desc: 'Semana Lanzamiento Sega Saturn en Japón' },
+    '11-24': { system: 'Lanzamiento Sega Saturn', year: 1994, desc: 'Semana Lanzamiento Sega Saturn en Japón' },
+    '11-25': { system: 'Lanzamiento Sega Saturn', year: 1994, desc: 'Semana Lanzamiento Sega Saturn en Japón' },
+    '11-26': { system: 'Lanzamiento Sega Saturn', year: 1994, desc: 'Semana Lanzamiento Sega Saturn en Japón' },
+    '11-27': { system: 'Lanzamiento Sega Saturn', year: 1994, desc: 'Semana Lanzamiento Sega Saturn en Japón' },
+    '11-28': { system: 'Lanzamiento Sega Saturn', year: 1994, desc: 'Semana Lanzamiento Sega Saturn en Japón' },
 };
 
-let eventData = &quot;Construyendo la plena inclusión a través del videojuego&quot;;
+let eventData = "Construyendo la plena inclusión a través del videojuego";
 
 function getEfemeridesCSS() {
     const urlParams = new URLSearchParams(window.location.search);
-    const testDate = urlParams.get(&#x27;test_date&#x27;);
+    const testDate = urlParams.get('test_date');
     const currentDate = testDate ? new Date(testDate) : new Date();
 
-    const month = (currentDate.getMonth() + 1).toString().padStart(2, &#x27;0&#x27;);
-    const day = currentDate.getDate().toString().padStart(2, &#x27;0&#x27;);
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = currentDate.getDate().toString().padStart(2, '0');
     const monthDay = `${month}-${day}`;
 
-    let cssFile = &#x27;default.css&#x27;;
+    let cssFile = 'default.css';
 
     if (efemerides[monthDay]) {
         const system = efemerides[monthDay].system;
-        cssFile = system.toLowerCase().replace(/[^a-z0-9-]/g, &#x27;_&#x27;) + &#x27;.css&#x27;;
+        cssFile = system.toLowerCase().replace(/[^a-z0-9-]/g, '_') + '.css';
 
         const currentYear = new Date().getFullYear();
         const yearsDifference = currentYear - efemerides[monthDay].year;
 
         switch (yearsDifference) {
             case 0:
-                eventData = &quot;¡Está pasando AHORA!: &quot; + efemerides[monthDay].desc;
+                eventData = "¡Está pasando AHORA!: " + efemerides[monthDay].desc;
                 break;
             case 1:
-                eventData = &quot;¡Primer Aniversario!: &quot; + efemerides[monthDay].desc;
+                eventData = "¡Primer Aniversario!: " + efemerides[monthDay].desc;
                 break;
             default:
-                eventData = &quot;¡&quot; + yearsDifference + &quot; Aniversario!: &quot; + efemerides[monthDay].desc;
+                eventData = "¡" + yearsDifference + " Aniversario!: " + efemerides[monthDay].desc;
                 break;
         }
     }
@@ -154,27 +95,19 @@ function getEfemeridesCSS() {
 
 function applyEfemeridesCSS() {
     const cssFile = getEfemeridesCSS();
-    const linkElement = document.createElement(&#x27;link&#x27;);
-    linkElement.rel = &#x27;stylesheet&#x27;;
+    const linkElement = document.createElement('link');
+    linkElement.rel = 'stylesheet';
     linkElement.href = `https://metsuke.com/assets/css/z_ef_${cssFile}`;
     document.head.appendChild(linkElement);
 
-    if (eventData !== &quot;&quot;) {
-        const h2Element = document.querySelector(&#x27;header h2&#x27;);
+    if (eventData !== "") {
+        const h2Element = document.querySelector('header h2');
         h2Element.textContent = eventData;
     }
 }
 
-document.addEventListener(&#x27;DOMContentLoaded&#x27;, applyEfemeridesCSS);
-</code></pre>
-<h3>Componente CSS Sobrescritura</h3>
-<p>El CSS se basa en sobrescrituras, donde se definen reglas base en la hoja principal y luego se modifican con selectores más específicos basados en las caracteristicas del evento. Incluye:<br />
-- <strong>Hojas base:</strong> Un CSS principal (como <code>styles.css</code>) que establece la "identidad fija" (colores neutros, diseños responsivos).<br />
-- <strong>Sobrescrituras temáticas:</strong> Reglas como <code>.tema-navidad { background: red !important; }</code> o selectores para elementos concretos.<br />
-- <strong>Uso de !important:</strong> Común para forzar cambios, lo que revela un manejo no óptimo de la cascada CSS.<br />
-- <strong>Carga dinámica de CSS:</strong> JS carga la hoja adicional (insertar <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/temas/pepepotamo.css&quot;&gt;</code>).</p>
-<p>Ejemplo de CSS:</p>
-<pre><code class="language-css">/* Base */
+document.addEventListener('DOMContentLoaded', applyEfemeridesCSS);
+</code></pre><h3>Componente CSS Sobrescritura</h3><p>El CSS se basa en sobrescrituras, donde se definen reglas base en la hoja principal y luego se modifican con selectores más específicos basados en las caracteristicas del evento. Incluye:<br> - <strong>Hojas base:</strong> Un CSS principal (como <code>styles.css</code>) que establece la "identidad fija" (colores neutros, diseños responsivos).<br> - <strong>Sobrescrituras temáticas:</strong> Reglas como <code>.tema-navidad { background: red !important; }</code> o selectores para elementos concretos.<br> - <strong>Uso de !important:</strong> Común para forzar cambios, lo que revela un manejo no óptimo de la cascada CSS.<br> - <strong>Carga dinámica de CSS:</strong> JS carga la hoja adicional (insertar <code>&lt;link rel="stylesheet" href="/temas/pepepotamo.css"></code>).<p>Ejemplo de CSS:<pre><code class=language-css>/* Base */
 body {
   background-color: white;
   color: black;
@@ -187,240 +120,14 @@ body {
 }
 
 header {
-  background-image: url(&#x27;/images/snow.jpg&#x27;);
+  background-image: url('/images/snow.jpg');
 }
-</code></pre>
-<p>Esta arquitectura es sencilla y rápida de implementar, pero, como veremos, tiene varias limitaciones.</p>
-<h2>Análisis Crítico: Fortalezas</h2>
-<p>Antes de centrarnos en los problemas, reconozcamos lo bueno del sistema actual:</p>
-<ol>
-<li><strong>Simplicidad para prototipos:</strong> JS + sobrescrituras CSS permiten cambios rápidos sin herramientas complejas. Perfecto para sitios pequeños como Metsuke.com en sus inicios.</li>
-<li><strong>Compatibilidad amplia:</strong> Funciona en la mayoría de navegadores modernos sin dependencias extras (salvo librerías de fechas).</li>
-<li><strong>Flexibilidad inmediata:</strong> JS reacciona en tiempo real a cambios de fecha (como a medianoche), actualizando el DOM sin recargar la página.</li>
-<li><strong>Integración básica con accesibilidad:</strong> Si se gestionan bien las clases, se mantienen atributos ARIA y el foco, aunque no es algo automático.</li>
-</ol>
-<h2>Análisis Crítico: Limitaciones e Ineficiencias</h2>
-<p>Ahora, desgranemos los problemas, organizados por categorías.</p>
-<h3>1. Rendimiento</h3>
-<ul>
-<li><strong>Carga inicial y FOUC:</strong> JS se ejecuta tras cargar el DOM, lo que puede causar destellos si el CSS base no cubre todo. En Metsuke.com, con efemérides frecuentes, esto afecta a usuarios con conexiones lentas.</li>
-<li><strong>Sobrecarga de JS:</strong> La lógica temporal consume recursos del cliente (CPU y memoria), sobre todo con polling o listeners. Un array con 365 efemérides crece y ralentiza el procesamiento.</li>
-<li><strong>Carga de recursos:</strong> La carga dinámica aumentan peticiones HTTP, impactando métricas como TTFB o LCP (Core Web Vitals). Por ejemplo, cada tema con un fondo nuevo satura la caché.</li>
-<li><strong>Medición hipotética:</strong> En un sitio similar, Lighthouse podría dar una puntuación baja en rendimiento (menos de 70/100) por JS/CSS que bloquean el renderizado.</li>
-</ul>
-<h3>2. Escalabilidad</h3>
-<ul>
-<li><strong>Mantenibilidad del código:</strong> Con más efemérides, el CSS se convierte en un lío de sobrescrituras. Añadir un tema nuevo implica editar varios archivos, con riesgo de conflictos si no se diseña correctamente la css.</li>
-<li><strong>Limitado a temas fijos:</strong> Difícil de escalar a efemérides personalizadas o algorítmicas (como basadas en APIs externas). JS no maneja herencia temática fácilmente.</li>
-<li><strong>Crecimiento del sitio:</strong> Metsuke.com podría expandirse con más páginas o interactivos. Sobrescrituras globales afectan todo, sin modularidad (temas por sección).</li>
-<li><strong>Problemas con SSR/SEO:</strong> En frameworks como React o Next.js, JS del cliente no renderiza temas en el servidor, afectando a rastreadores y accesibilidad inicial. <ul>
-<li>SIN EMBARGO esto es una característica de diseño ya que la web TIENE QUE SER puro HTML, JS y CSS, el resto de preprocesado se realiza ANTES de subir al servidor, mediante los algoritmos de automatización de MetsuOS</li>
-</ul>
-</li>
-</ul>
-<h3>3. Mantenibilidad y Colaboración</h3>
-<ul>
-<li><strong>Dependencia de JS para estilos:</strong> Viola la separación de responsabilidades. Los estilos deberían ser declarativos en CSS, no imperativos en JS.</li>
-<li><strong>Exceso de !important:</strong> Rompe la cascada natural de CSS, complicando el depurado (¿por qué no cambia este elemento?).</li>
-<li><strong>Falta de abstracción:</strong> Sin variables (propiedades personalizadas) o preprocesadores, se repiten colores y tipografías, dificultando cambios globales.</li>
-<li><strong>Versionado:</strong> En equipos, los merges de JS/CSS generan conflictos frecuentes.</li>
-</ul>
-<h3>4. Compatibilidad con Cambios Temáticos Frecuentes</h3>
-<ul>
-<li><strong>Tematización efímera:</strong> Efemérides diarias requieren sobrescrituras diarias, insostenible. Un cambio en "Día de la Mujer" podría alterar accidentalmente estilos de accesibilidad (como contraste).</li>
-<li><strong>Accesibilidad dinámica:</strong> Las sobrescrituras pueden violar WCAG (ratios de contraste inferiores a 4.5:1 en temas oscuros). JS no valida automáticamente.</li>
-<li><strong>Responsividad:</strong> Los temas podrían romper diseños móviles si no consideran media queries.</li>
-<li><strong>Problemas cross-browser:</strong> Estilos inline de JS no siempre se aplican consistentemente (aunque IE es obsoleto en 2026).</li>
-</ul>
-<h3>5. Seguridad y Robustez</h3>
-<ul>
-<li><strong>Vulnerabilidades en JS:</strong> Riesgo de inyecciones si efemérides vienen de fuentes externas (XSS).<ul>
-<li>De ahi que las efemérides vengan ya implementadas en el propio JS, con un preprocesado previo de MetsuOS</li>
-</ul>
-</li>
-<li><strong>Fallbacks:</strong> Sin degradación elegante, si JS falla, el sitio queda en tema base, incoherente.<ul>
-<li>Al contrario, solo debe cambiar si todo va bien. De inconsistente NADA.</li>
-</ul>
-</li>
-<li><strong>Pruebas:</strong> Difícil automatizar tests para todos los temas y efemérides.</li>
-</ul>
-<h2>Puntos de Mejora Propuestos</h2>
-<p>De esta auditoría surge la necesidad de una arquitectura más sólida:<br />
-1. <strong>Migrar a preprocesadores como Sass:</strong> Para modularidad, variables y mixins, reduciendo sobrescrituras.<br />
-    1. OK - Totalmente de acuerdo.<br />
-2. <strong>Adoptar metodologías como ITCSS o BEM:</strong> Para organizar la cascada y evitar conflictos.<br />
-3. <strong>Usar propiedades personalizadas (CSS Variables):</strong> Para inyecciones dinámicas sin tanto JS.<br />
-4. <strong>Automatización:</strong> Crear un generador de CSS desde JSON de efemérides (ver Módulo 7).<br />
-5. <strong>Mejoras en accesibilidad:</strong> Integrar validaciones automáticas (como axe-core en JS).<br />
-6. <strong>Optimización:</strong> Implementar Critical CSS, lazy loading y service workers para temas.<br />
-7. <strong>Monitoreo:</strong> Usar herramientas como Sentry o New Relic para errores en producción.</p>
-<h2>Conclusión</h2>
-<p>Esta auditoría muestra que, aunque el sistema JS + sobrescrituras CSS de Metsuke.com funciona para un sitio modesto, sus limitaciones en rendimiento, escalabilidad y mantenimiento lo hacen poco adecuado para una tematización efímera avanzada en 2026. Hemos identificado ineficiencias clave que afectan la usabilidad y accesibilidad, preparando el terreno para mejoras en el curso. En la próxima lección, exploraremos la "Estructura Inmune" para resolver estos retos.</p>
-<h2>Referencias que Apoyan el Contenido</h2>
-<ol>
-<li><a href="https://openwebinars.net/blog/que-es-sass-ventajas-desventajas-y-ejemplos-de-desarrollo/">OpenWebinars. (2019). Qué es Sass: ventajas, desventajas y ejemplos de desarrollo 🟡③🌐</a> .- Artículo que explora las características de Sass, sus beneficios en la mantenibilidad del código y ejemplos prácticos de implementación.</li>
-<li><a href="https://dev.to/ignacio_cuadra/itcss-arquitectura-css-3p4b">DEV Community. (2023). ITCSS - Arquitectura CSS 🟡③🌐</a> .- Guía sobre la arquitectura Inverted Triangle CSS (ITCSS), detallando su jerarquía para gestionar la especificidad y escalabilidad.</li>
-<li><a href="https://www.arsys.es/blog/bem-guia-completa-para-css-modular-con-ejemplos">Arsys. (2024). BEM: guía completa para CSS modular con ejemplos 🟡③🌐</a> .- Manual detallado sobre la metodología Block Element Modifier para la creación de componentes CSS independientes y reutilizables.</li>
-<li><a href="https://www.smashingmagazine.com/2010/11/the-important-css-declaration-how-and-when-to-use-it/">Smashing Magazine. (2024). !important CSS Declarations: How and When to Use Them 🟡③🌐</a> .- Reflexión crítica sobre el uso de la declaración !important, sus implicaciones en la cascada y las mejores prácticas para evitarla.</li>
-<li><a href="https://developer.mozilla.org/es/docs/Learn_web_development/Extensions/Performance">MDN Web Docs. (2025). Rendimiento web 🟡③🌐</a> .- Documentación oficial que aborda estrategias de optimización para reducir tiempos de carga y mejorar la interactividad en aplicaciones web.</li>
-<li><a href="https://www.youtube.com/playlist?list=PLJpymL0goBgFAUYDei7CoJCiHjcmgioUt">YouTube. (2022). Curso de SASS CSS: TUTORIAL en ESPAÑOL 2022 Aprende SASS 🟡③🌐</a> .- Lista de reproducción con formación práctica sobre el preprocesador Sass, cubriendo desde conceptos básicos hasta funciones avanzadas.</li>
-</ol>
-<h2>Referencias que Refutan el Contenido</h2>
-<ol>
-<li><a href="https://www.innovaspain.com/10-ventajas-emplear-javascript/">InnovaSpain. (2024). <em>Conoce las 10 ventajas de emplear JavaScript</em> 🟡③🌐</a> .- Artículo que analiza los beneficios clave de JavaScript, como su versatilidad, escalabilidad y la capacidad de crear interfaces dinámicas y flexibles en el desarrollo web.</li>
-<li><a href="https://www.integrasistemas.es/blog/general/uso-de-important-en-css/">Integra Sistemas. (s.f.). <em>Uso de !important en CSS</em> 🟡③🌐</a> .- Explicación técnica sobre la declaración !important en CSS, detallando su función para forzar la prioridad de una regla sobre la cascada natural de estilos.</li>
-<li><a href="https://www.engineyard.com/blog/inline-styles-yes-or-no/">EngineYard. (s.f.). <em>Inline Styles: Yes or No?</em> 🟡③🌐</a> .- Análisis sobre el uso de estilos en línea en el desarrollo moderno de componentes, evaluando sus ventajas en especificidad y las razones por las que algunos desarrolladores los prefieren.</li>
-<li><a href="https://aws.amazon.com/es/what-is/javascript/">AWS. (s.f.). <em>¿Qué es JavaScript?</em> 🟡③🌐</a> .- Guía fundamental de Amazon Web Services que define JavaScript, explicando su funcionamiento tanto en el lado del cliente como en el servidor y su importancia en la web interactiva.</li>
-<li><a href="https://www.youtube.com/watch?v=WGZ26ktyG6o">YouTube. (2008). <em>Fix your Flash of Unstyled Content FOUC</em> 🟡③🌐</a> .- Video tutorial que presenta soluciones prácticas para evitar el Flash of Unstyled Content (FOUC), mejorando la percepción de carga y la experiencia de usuario.</li>
-</ol>
-<h2>One More Thing</h2>
-<p><img alt="Un escenario de retrocomputación del siglo 24"  mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" /></p>
-<p>¡Desbloquea el poder de <a class='internal' href='../publicbrain/creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
-<h2>Contenido registrado en Safe Creative</h2>
-<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
-<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
-</center>
-
-<h2>MetsuOS Needs You!</h2>
-<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
-<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
-<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
-<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
-<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són? </p>
-<ul>
-<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
-<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
-<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
-<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
-<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
-<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto. </li>
-</ul>
-<h3>Sobre la categorización de los tipos de conocimiento</h3>
-<ul>
-<li>Conocimiento Gnoseológico:  ⚫① 🔴② 🟡③ 🟢④</li>
-<li>Conocimiento Epistemológico:  🔵⑤</li>
-<li>Conocimiento Metsukeológico:  ⚪⑥</li>
-</ul>
-<p>La Metsukeología (de Metsuke vision global y logos conocimiento) es la ciencia que estudia el conocimiento como un conjunto potencial de conocimiento del que podemos obtener, procesar o percibir partes concretas dentro de un marco contextual específico, y cuyo contexto general real está muy por encima de lo que somos capaces, como especie, de percibir, procesar e integrar de forma completa (definición en progreso).</p>
-<p>La Metsucología (de Metsu aniquilación - en este contexto en forma de colapso - , logos conocimiento) es la ciencia que estudia como extraemos verdades percibidas - colapsadas - como conocimiento desde nuestra perspectiva real (tanto epistemológico como gnoseológico) al tomar una parte específica del conocimiento metsukeológico potencial enmarcado en un contexto concreto, obligando a colapsar el conocimiento potencial en conocimiento específico (definición en progreso).</p>
-<h3>Mas sobre el contexto</h3>
-<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
-<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
-<ul>
-<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
-<li>⚖️ - Analisis<ul>
-<li>⚖️📚 - Análisis Bibligráfico</li>
-<li>⚖️🔬 - Análisis Científico</li>
-<li>⚖️🏛️ - Análisis Estructural</li>
-<li>⚖️🧠 - Análisis Filosófico</li>
-</ul>
-</li>
-<li>📖 - Referencia<ul>
-<li>📖📚 - Referencia Bibliográfica / Libro</li>
-<li>📖🔬- Referencia Científica / Paper</li>
-<li>📖🏛️ - Referencia Estructural</li>
-<li>📖🧠 - Referencia Filosófica</li>
-</ul>
-</li>
-<li>🔍️- Paradigma</li>
-</ul>
-<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
-<ul>
-<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
-<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
-</ul>
-<p>También aplicaremos el <a class='internal' href='../publicbrain/sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad). </p>
-<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
-<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
-<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
-<p>Consulta la versión completa de la descripcion en <a class='internal' href='../publicbrain/⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p><ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Ultima Modificación: </b>2026-02-09 01:21:12.423000+00:00</li><li><b>Versión Documento: </b>0.1.4</li></ul><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoCSSEfemerides_002.mp4'></script>
-
-        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
-    </main>
-    
-    <footer>
-        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- Lang Script -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
-    <script>
-        window.onload = function() {
-            getLanguagePreferences();
-        };
-    </script>
-
-    <!-- Contador de visitas (no visible en RT en la web) -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
-
-
-    <!-- mermaid -->
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
-        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
-        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
-            ,themeVariables: { 
-                primaryColor: '#000000'
-                ,primaryTextColor: '#ffffff'
-            }
-        });
-        function optimizeMermaidSVG() {
-            return
-            const mermaids = document.querySelectorAll('.mermaid');
-            
-            mermaids.forEach(container => {
-                const svg = container.querySelector('svg');
-                if (!svg) return;
-                
-                // Obtener el bounding box real del contenido
-                const bbox = svg.getBBox();
-                const padding = 20; // Padding adicional en píxeles
-                
-                // Calcular dimensiones reales
-                const width = Math.max(bbox.width + padding * 2, 100);
-                const height = Math.max(bbox.height + padding * 2, 50);
-                
-                // Establecer viewBox preciso
-                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-                
-                // Ajustar atributos de tamaño
-                svg.setAttribute('width', width);
-                svg.setAttribute('height', height);
-                
-                // Remover atributos problemáticos
-                svg.removeAttribute('style');
-                svg.style.height = 'auto';
-                svg.style.width = 'auto';
-                svg.style.maxWidth = '100%';
-                
-                // Ajustar contenedor
-                container.style.height = 'auto';
-                container.style.width = 'auto';
-                container.style.maxWidth = '100%';
-                
-                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
-            });
-            }
-
-            // Ejecutar después del renderizado
-            mermaid.initialize({
-            startOnLoad: true,
-            // Configuración que reduce padding interno
-            flowchart: {
-                diagramPadding: 8,
-                useMaxWidth: true
-            }
-            });
-
-            // Hook post-renderizado
-            const originalParse = mermaid.parse;
-            mermaid.parse = function() {
-            return originalParse.apply(this, arguments).then(() => {
-                //setTimeout(optimizeMermaidSVG, 50);
-            });
-            };
-    </script>
-
-</body>
-
-</html>
+</code></pre><p>Esta arquitectura es sencilla y rápida de implementar, pero, como veremos, tiene varias limitaciones.<h2>Análisis Crítico: Fortalezas</h2><p>Antes de centrarnos en los problemas, reconozcamos lo bueno del sistema actual:<ol><li><strong>Simplicidad para prototipos:</strong> JS + sobrescrituras CSS permiten cambios rápidos sin herramientas complejas. Perfecto para sitios pequeños como Metsuke.com en sus inicios.<li><strong>Compatibilidad amplia:</strong> Funciona en la mayoría de navegadores modernos sin dependencias extras (salvo librerías de fechas).<li><strong>Flexibilidad inmediata:</strong> JS reacciona en tiempo real a cambios de fecha (como a medianoche), actualizando el DOM sin recargar la página.<li><strong>Integración básica con accesibilidad:</strong> Si se gestionan bien las clases, se mantienen atributos ARIA y el foco, aunque no es algo automático.</ol><h2>Análisis Crítico: Limitaciones e Ineficiencias</h2><p>Ahora, desgranemos los problemas, organizados por categorías.<h3>1. Rendimiento</h3><ul><li><strong>Carga inicial y FOUC:</strong> JS se ejecuta tras cargar el DOM, lo que puede causar destellos si el CSS base no cubre todo. En Metsuke.com, con efemérides frecuentes, esto afecta a usuarios con conexiones lentas.<li><strong>Sobrecarga de JS:</strong> La lógica temporal consume recursos del cliente (CPU y memoria), sobre todo con polling o listeners. Un array con 365 efemérides crece y ralentiza el procesamiento.<li><strong>Carga de recursos:</strong> La carga dinámica aumentan peticiones HTTP, impactando métricas como TTFB o LCP (Core Web Vitals). Por ejemplo, cada tema con un fondo nuevo satura la caché.<li><strong>Medición hipotética:</strong> En un sitio similar, Lighthouse podría dar una puntuación baja en rendimiento (menos de 70/100) por JS/CSS que bloquean el renderizado.</ul><h3>2. Escalabilidad</h3><ul><li><strong>Mantenibilidad del código:</strong> Con más efemérides, el CSS se convierte en un lío de sobrescrituras. Añadir un tema nuevo implica editar varios archivos, con riesgo de conflictos si no se diseña correctamente la css.<li><strong>Limitado a temas fijos:</strong> Difícil de escalar a efemérides personalizadas o algorítmicas (como basadas en APIs externas). JS no maneja herencia temática fácilmente.<li><strong>Crecimiento del sitio:</strong> Metsuke.com podría expandirse con más páginas o interactivos. Sobrescrituras globales afectan todo, sin modularidad (temas por sección).<li><strong>Problemas con SSR/SEO:</strong> En frameworks como React o Next.js, JS del cliente no renderiza temas en el servidor, afectando a rastreadores y accesibilidad inicial. <ul><li>SIN EMBARGO esto es una característica de diseño ya que la web TIENE QUE SER puro HTML, JS y CSS, el resto de preprocesado se realiza ANTES de subir al servidor, mediante los algoritmos de automatización de MetsuOS</ul></ul><h3>3. Mantenibilidad y Colaboración</h3><ul><li><strong>Dependencia de JS para estilos:</strong> Viola la separación de responsabilidades. Los estilos deberían ser declarativos en CSS, no imperativos en JS.<li><strong>Exceso de !important:</strong> Rompe la cascada natural de CSS, complicando el depurado (¿por qué no cambia este elemento?).<li><strong>Falta de abstracción:</strong> Sin variables (propiedades personalizadas) o preprocesadores, se repiten colores y tipografías, dificultando cambios globales.<li><strong>Versionado:</strong> En equipos, los merges de JS/CSS generan conflictos frecuentes.</ul><h3>4. Compatibilidad con Cambios Temáticos Frecuentes</h3><ul><li><strong>Tematización efímera:</strong> Efemérides diarias requieren sobrescrituras diarias, insostenible. Un cambio en "Día de la Mujer" podría alterar accidentalmente estilos de accesibilidad (como contraste).<li><strong>Accesibilidad dinámica:</strong> Las sobrescrituras pueden violar WCAG (ratios de contraste inferiores a 4.5:1 en temas oscuros). JS no valida automáticamente.<li><strong>Responsividad:</strong> Los temas podrían romper diseños móviles si no consideran media queries.<li><strong>Problemas cross-browser:</strong> Estilos inline de JS no siempre se aplican consistentemente (aunque IE es obsoleto en 2026).</ul><h3>5. Seguridad y Robustez</h3><ul><li><strong>Vulnerabilidades en JS:</strong> Riesgo de inyecciones si efemérides vienen de fuentes externas (XSS).<ul><li>De ahi que las efemérides vengan ya implementadas en el propio JS, con un preprocesado previo de MetsuOS</ul><li><strong>Fallbacks:</strong> Sin degradación elegante, si JS falla, el sitio queda en tema base, incoherente.<ul><li>Al contrario, solo debe cambiar si todo va bien. De inconsistente NADA.</ul><li><strong>Pruebas:</strong> Difícil automatizar tests para todos los temas y efemérides.</ul><h2>Puntos de Mejora Propuestos</h2><p>De esta auditoría surge la necesidad de una arquitectura más sólida:<br> 1. <strong>Migrar a preprocesadores como Sass:</strong> Para modularidad, variables y mixins, reduciendo sobrescrituras.<br> 1. OK - Totalmente de acuerdo.<br> 2. <strong>Adoptar metodologías como ITCSS o BEM:</strong> Para organizar la cascada y evitar conflictos.<br> 3. <strong>Usar propiedades personalizadas (CSS Variables):</strong> Para inyecciones dinámicas sin tanto JS.<br> 4. <strong>Automatización:</strong> Crear un generador de CSS desde JSON de efemérides (ver Módulo 7).<br> 5. <strong>Mejoras en accesibilidad:</strong> Integrar validaciones automáticas (como axe-core en JS).<br> 6. <strong>Optimización:</strong> Implementar Critical CSS, lazy loading y service workers para temas.<br> 7. <strong>Monitoreo:</strong> Usar herramientas como Sentry o New Relic para errores en producción.<h2>Conclusión</h2><p>Esta auditoría muestra que, aunque el sistema JS + sobrescrituras CSS de Metsuke.com funciona para un sitio modesto, sus limitaciones en rendimiento, escalabilidad y mantenimiento lo hacen poco adecuado para una tematización efímera avanzada en 2026. Hemos identificado ineficiencias clave que afectan la usabilidad y accesibilidad, preparando el terreno para mejoras en el curso. En la próxima lección, exploraremos la "Estructura Inmune" para resolver estos retos.<h2>Referencias que Apoyan el Contenido</h2><ol><li><a href=https://openwebinars.net/blog/que-es-sass-ventajas-desventajas-y-ejemplos-de-desarrollo/>OpenWebinars. (2019). Qué es Sass: ventajas, desventajas y ejemplos de desarrollo 🟡③🌐</a> .- Artículo que explora las características de Sass, sus beneficios en la mantenibilidad del código y ejemplos prácticos de implementación.<li><a href=https://dev.to/ignacio_cuadra/itcss-arquitectura-css-3p4b>DEV Community. (2023). ITCSS - Arquitectura CSS 🟡③🌐</a> .- Guía sobre la arquitectura Inverted Triangle CSS (ITCSS), detallando su jerarquía para gestionar la especificidad y escalabilidad.<li><a href=https://www.arsys.es/blog/bem-guia-completa-para-css-modular-con-ejemplos>Arsys. (2024). BEM: guía completa para CSS modular con ejemplos 🟡③🌐</a> .- Manual detallado sobre la metodología Block Element Modifier para la creación de componentes CSS independientes y reutilizables.<li><a href=https://www.smashingmagazine.com/2010/11/the-important-css-declaration-how-and-when-to-use-it/>Smashing Magazine. (2024). !important CSS Declarations: How and When to Use Them 🟡③🌐</a> .- Reflexión crítica sobre el uso de la declaración !important, sus implicaciones en la cascada y las mejores prácticas para evitarla.<li><a href=https://developer.mozilla.org/es/docs/Learn_web_development/Extensions/Performance>MDN Web Docs. (2025). Rendimiento web 🟡③🌐</a> .- Documentación oficial que aborda estrategias de optimización para reducir tiempos de carga y mejorar la interactividad en aplicaciones web.<li><a href="https://www.youtube.com/playlist?list=PLJpymL0goBgFAUYDei7CoJCiHjcmgioUt">YouTube. (2022). Curso de SASS CSS: TUTORIAL en ESPAÑOL 2022 Aprende SASS 🟡③🌐</a> .- Lista de reproducción con formación práctica sobre el preprocesador Sass, cubriendo desde conceptos básicos hasta funciones avanzadas.</ol><h2>Referencias que Refutan el Contenido</h2><ol><li><a href=https://www.innovaspain.com/10-ventajas-emplear-javascript/>InnovaSpain. (2024). <em>Conoce las 10 ventajas de emplear JavaScript</em> 🟡③🌐</a> .- Artículo que analiza los beneficios clave de JavaScript, como su versatilidad, escalabilidad y la capacidad de crear interfaces dinámicas y flexibles en el desarrollo web.<li><a href=https://www.integrasistemas.es/blog/general/uso-de-important-en-css/>Integra Sistemas. (s.f.). <em>Uso de !important en CSS</em> 🟡③🌐</a> .- Explicación técnica sobre la declaración !important en CSS, detallando su función para forzar la prioridad de una regla sobre la cascada natural de estilos.<li><a href=https://www.engineyard.com/blog/inline-styles-yes-or-no/>EngineYard. (s.f.). <em>Inline Styles: Yes or No?</em> 🟡③🌐</a> .- Análisis sobre el uso de estilos en línea en el desarrollo moderno de componentes, evaluando sus ventajas en especificidad y las razones por las que algunos desarrolladores los prefieren.<li><a href=https://aws.amazon.com/es/what-is/javascript/>AWS. (s.f.). <em>¿Qué es JavaScript?</em> 🟡③🌐</a> .- Guía fundamental de Amazon Web Services que define JavaScript, explicando su funcionamiento tanto en el lado del cliente como en el servidor y su importancia en la web interactiva.<li><a href="https://www.youtube.com/watch?v=WGZ26ktyG6o">YouTube. (2008). <em>Fix your Flash of Unstyled Content FOUC</em> 🟡③🌐</a> .- Video tutorial que presenta soluciones prácticas para evitar el Flash of Unstyled Content (FOUC), mejorando la percepción de carga y la experiencia de usuario.</ol><h2>One More Thing</h2><p><img alt="Un escenario de retrocomputación del siglo 24" mos=mos src=https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg style=view-transition-name:image-hero><p>¡Desbloquea el poder de <a class=internal href=../publicbrain/creando-metsuos-⚫①.html>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!<h2>Contenido registrado en Safe Creative</h2><center><a href=https://www.safecreative.org/user/0801120040408><img alt="Logo Safe Creative" style="border:2px solid red" title="Safe Creative #0801120040408" src=https://resources.safecreative.org/user/0801120040408/label/standard-male-150></a><br> <a href=https://www.safecreative.org/?ref5mjalg>¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a> </center><h2>MetsuOS Needs You!</h2><p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.<p><strong><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" allowfullscreen frameborder=0 height=640 referrerpolicy=strict-origin-when-cross-origin width=100%></iframe></strong><h2>Sobre el sistema de validez de un contenido en MetsuOS</h2><p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?<ul><li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</ul><h3>Sobre la categorización de los tipos de conocimiento</h3><ul><li>Conocimiento Gnoseológico: ⚫① 🔴② 🟡③ 🟢④<li>Conocimiento Epistemológico: 🔵⑤<li>Conocimiento Metsukeológico: ⚪⑥</ul><p>La Metsukeología (de Metsuke vision global y logos conocimiento) es la ciencia que estudia el conocimiento como un conjunto potencial de conocimiento del que podemos obtener, procesar o percibir partes concretas dentro de un marco contextual específico, y cuyo contexto general real está muy por encima de lo que somos capaces, como especie, de percibir, procesar e integrar de forma completa (definición en progreso).<p>La Metsucología (de Metsu aniquilación - en este contexto en forma de colapso - , logos conocimiento) es la ciencia que estudia como extraemos verdades percibidas - colapsadas - como conocimiento desde nuestra perspectiva real (tanto epistemológico como gnoseológico) al tomar una parte específica del conocimiento metsukeológico potencial enmarcado en un contexto concreto, obligando a colapsar el conocimiento potencial en conocimiento específico (definición en progreso).<h3>Mas sobre el contexto</h3><p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:<ul><li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)<li>⚖️ - Analisis<ul><li>⚖️📚 - Análisis Bibligráfico<li>⚖️🔬 - Análisis Científico<li>⚖️🏛️ - Análisis Estructural<li>⚖️🧠 - Análisis Filosófico</ul><li>📖 - Referencia<ul><li>📖📚 - Referencia Bibliográfica / Libro<li>📖🔬- Referencia Científica / Paper<li>📖🏛️ - Referencia Estructural<li>📖🧠 - Referencia Filosófica</ul><li>🔍️- Paradigma</ul><p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.<ul><li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</ul><p>También aplicaremos el <a class=internal href=../publicbrain/sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo: ⚫①-D4 o 🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href=https://twitter.com/metsuke>contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a><p>Consulta la versión completa de la descripcion en <a class=internal href=../publicbrain/⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a><ul><li><b>Información IA: </b>Pendiente de Definición<li><b>Ultima Modificación: </b>2026-02-09 01:21:12.423000+00:00<li><b>Versión Documento: </b>0.1.4</ul><script data-video=https://metsuke.com/assets/videos/toggle/CursoCSSEfemerides_002.mp4 id=toggleVideo src=https://metsuke.com/assets/js/videoToggle.js></script></main><footer><p>© 2018-2026 <a href=https://www.linkedin.com/in/raulcarrillo/>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</footer><script src=https://metsuke.com/assets/js/lang.js></script><script>window.onload=function(){getLanguagePreferences()};</script><script src=https://metsuke.com/assets/js/counter.js></script><script type=module>import mermaid from"https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs";
+//import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+mermaid.initialize({useMaxWidth:!0,startOnLoad:!0,theme:`base`,themeVariables:{primaryColor:`#000000`,primaryTextColor:`#ffffff`}});function optimizeMermaidSVG(){}
+// Ejecutar después del renderizado
+mermaid.initialize({startOnLoad:!0,flowchart:{diagramPadding:8,useMaxWidth:!0}});
+// Hook post-renderizado
+const originalParse=mermaid.parse;mermaid.parse=function(){return originalParse.apply(this,arguments).then(()=>{
+//setTimeout(optimizeMermaidSVG, 50);
+})};</script>

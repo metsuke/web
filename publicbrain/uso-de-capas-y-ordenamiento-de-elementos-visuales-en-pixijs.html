@@ -1,53 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <meta name="googlebot" content="noindex, nofollow">
-    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construyendo la plena inclusión a través del videojuego</title>
-    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
-    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
-    
-    <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
-    <!-- Efenerudes -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
-</head>
-
-<body>
-
-    <header>
-        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
-        <h1>MetsuOS</h1>
-        <h2>Construyendo la plena inclusión a través del videojuego</h2>
-    </header>
-    <?php //include 'blacklist_blocker.php';?>
-    <nav>
-        <a href="../index.html">Inicio</a>
-        <a href="../apps.html">Apps</a>
-        <a href="../blog.html">Blog</a>
-        <a href="../juegos.html">Juegos</a>
-        <a href="../kb.html">KB</a>
-        <a href="../publicbrain/curso-e-introduccion-tecnica-sobre--mcl-metsuos-context-language-%F0%9F%9F%A1%E2%91%A2.html">MCL</a>
-        <a href="../noticias.html">Noticias</a>
-        <a href="../novedades.html">Nuevo</a>
-        <a href="../npl.html">NPL</a>
-        <a href="../el-proyecto.html">MOS</a>
-        <a href="../publicbrain/index.html">PB</a>
-        <a href="https://metsuke.com/quiosco/">Quiosco</a>
-        <a href="../noticias.html">Reportajes</a>
-    </nav>
-
-    <main>
-<h1>Uso de capas y ordenamiento de elementos visuales en PixiJS</h1>
-<p><a class='internal' href='../publicbrain/curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
-<p>En PixiJS, el uso de capas y el ordenamiento de elementos visuales son técnicas importantes para controlar cómo se dibujan y superponen los elementos gráficos en la pantalla. Esto es útil para crear efectos de profundidad, como elementos que aparecen detrás o delante de otros, o para organizar la interfaz de usuario de tu aplicación o juego. Aquí te explico cómo puedes usar capas y ordenamiento de elementos visuales en PixiJS:</p>
-<h3>1. Uso de capas:</h3>
-<p>Las capas son contenedores separados que contienen elementos visuales y que se pueden renderizar independientemente unas de otras. Puedes utilizar capas para organizar y controlar grupos específicos de elementos visuales. Para crear una capa en PixiJS, simplemente creas una instancia de <code>PIXI.Container</code>. Aquí tienes un ejemplo:</p>
-<pre><code class="language-javascript">// Crear capa de fondo
+<!doctype html><html lang=es><meta charset=utf-8><meta content="noindex, nofollow" name=googlebot><meta a ciencia, comunicación, content"construyendo de felicidad, inclusión la name=description plena productividad través videojuegos." y><meta content="width=device-width,initial-scale=1.0" name=viewport><title>Construyendo la plena inclusión a través del videojuego</title><link href=../assets/css/transitions.css id=transition-stylesheet rel=stylesheet><link href=../assets/css/style.css id=main-stylesheet rel=stylesheet><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><script src=https://metsuke.com/assets/js/efemerides.js></script><body><header><img alt="Logo Metsuke" class=logo src=../assets/img/logo/MetsukeLogo.png><h1>MetsuOS</h1><h2>Construyendo la plena inclusión a través del videojuego</h2></header><?php //include 'blacklist_blocker.php';?><nav><a href=../index.html>Inicio</a><a href=../apps.html>Apps</a><a href=https://metsuke.com/publicbrain/la-biblioteca-del-archivero-del-retro-%F0%9F%9F%A1%E2%91%A2.html>Biblioteca</a><a href=../blog.html>Blog</a><a href=../juegos.html>Juegos</a><a href=../kb.html>KB</a><a href=../publicbrain/curso-e-introduccion-tecnica-sobre--mcl-metsuos-context-language-%F0%9F%9F%A1%E2%91%A2.html>MCL</a><a href=../noticias.html>Noticias</a><a href=../novedades.html>Novedades</a><a href=../npl.html>NPL</a><a href=../el-proyecto.html>MetsuOS</a><a href=../publicbrain/index.html>PublicBrain</a><a href=https://metsuke.com/quiosco/>Quiosco</a><a href=../reportajes.html>Reportajes</a></nav><main><h1>Uso de capas y ordenamiento de elementos visuales en PixiJS</h1><p><a class=internal href=../publicbrain/curso-de-pixijs-⚫①.html>Curso de PixiJS ⚫①</a><p>En PixiJS, el uso de capas y el ordenamiento de elementos visuales son técnicas importantes para controlar cómo se dibujan y superponen los elementos gráficos en la pantalla. Esto es útil para crear efectos de profundidad, como elementos que aparecen detrás o delante de otros, o para organizar la interfaz de usuario de tu aplicación o juego. Aquí te explico cómo puedes usar capas y ordenamiento de elementos visuales en PixiJS:<h3>1. Uso de capas:</h3><p>Las capas son contenedores separados que contienen elementos visuales y que se pueden renderizar independientemente unas de otras. Puedes utilizar capas para organizar y controlar grupos específicos de elementos visuales. Para crear una capa en PixiJS, simplemente creas una instancia de <code>PIXI.Container</code>. Aquí tienes un ejemplo:<pre><code class=language-javascript>// Crear capa de fondo
 let capaFondo = new PIXI.Container();
 
 // Crear capa de personajes
@@ -55,10 +6,7 @@ let capaPersonajes = new PIXI.Container();
 
 // Crear capa de interfaz de usuario
 let capaUI = new PIXI.Container();
-</code></pre>
-<h3>2. Ordenamiento de elementos visuales:</h3>
-<p>Una vez que tienes tus elementos visuales organizados en capas, puedes controlar el orden en que se dibujan en la pantalla mediante el uso de los métodos <code>addChild()</code> y <code>removeChild()</code> para agregar y quitar elementos de las capas. Los elementos se dibujan en el orden en que se agregan a sus respectivas capas, por lo que puedes controlar el ordenamiento cambiando el orden de agregado. Aquí tienes un ejemplo:</p>
-<pre><code class="language-javascript">// Agregar elementos a la capa de fondo
+</code></pre><h3>2. Ordenamiento de elementos visuales:</h3><p>Una vez que tienes tus elementos visuales organizados en capas, puedes controlar el orden en que se dibujan en la pantalla mediante el uso de los métodos <code>addChild()</code> y <code>removeChild()</code> para agregar y quitar elementos de las capas. Los elementos se dibujan en el orden en que se agregan a sus respectivas capas, por lo que puedes controlar el ordenamiento cambiando el orden de agregado. Aquí tienes un ejemplo:<pre><code class=language-javascript>// Agregar elementos a la capa de fondo
 capaFondo.addChild(elemento1);
 capaFondo.addChild(elemento2);
 
@@ -69,110 +17,21 @@ capaPersonajes.addChild(personaje2);
 // Agregar elementos a la capa de interfaz de usuario
 capaUI.addChild(boton1);
 capaUI.addChild(boton2);
-</code></pre>
-<h3>3. Ordenamiento manual:</h3>
-<p>En algunos casos, es posible que necesites controlar el ordenamiento de los elementos visuales dentro de una capa específica. Para hacerlo, puedes utilizar los métodos <code>getChildIndex()</code> y <code>setChildIndex()</code> de la clase <code>PIXI.Container</code>. Por ejemplo:</p>
-<pre><code class="language-javascript">// Obtener el índice de un elemento dentro de una capa
+</code></pre><h3>3. Ordenamiento manual:</h3><p>En algunos casos, es posible que necesites controlar el ordenamiento de los elementos visuales dentro de una capa específica. Para hacerlo, puedes utilizar los métodos <code>getChildIndex()</code> y <code>setChildIndex()</code> de la clase <code>PIXI.Container</code>. Por ejemplo:<pre><code class=language-javascript>// Obtener el índice de un elemento dentro de una capa
 let indice = capaPersonajes.getChildIndex(personaje1);
 
 // Establecer el orden de dibujo de un elemento dentro de una capa
 capaPersonajes.setChildIndex(personaje1, 0); // Mover al frente
-</code></pre>
-<h3>4. Renderizado de capas:</h3>
-<p>Finalmente, para renderizar las capas en el orden correcto, simplemente renderiza cada capa individualmente en tu bucle de animación o juego. Asegúrate de renderizar las capas en el orden en que quieres que aparezcan en la pantalla.</p>
-<pre><code class="language-javascript">// Renderizar capas en orden
+</code></pre><h3>4. Renderizado de capas:</h3><p>Finalmente, para renderizar las capas en el orden correcto, simplemente renderiza cada capa individualmente en tu bucle de animación o juego. Asegúrate de renderizar las capas en el orden en que quieres que aparezcan en la pantalla.<pre><code class=language-javascript>// Renderizar capas en orden
 renderizador.render(capaFondo);
 renderizador.render(capaPersonajes);
 renderizador.render(capaUI);
-</code></pre>
-<p>Con estas técnicas, puedes usar capas y ordenamiento de elementos visuales en PixiJS para crear efectos visuales interesantes y organizar la interfaz de usuario de tu aplicación o juego de manera efectiva.</p><ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Ultima Modificación: </b>2025-06-10 21:14:06.362000+00:00</li><li><b>Versión Documento: </b>0.2.5</li></ul>
-
-        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
-    </main>
-    
-    <footer>
-        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- Lang Script -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
-    <script>
-        window.onload = function() {
-            getLanguagePreferences();
-        };
-    </script>
-
-    <!-- Contador de visitas (no visible en RT en la web) -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
-
-
-    <!-- mermaid -->
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
-        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
-        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
-            ,themeVariables: { 
-                primaryColor: '#000000'
-                ,primaryTextColor: '#ffffff'
-            }
-        });
-        function optimizeMermaidSVG() {
-            return
-            const mermaids = document.querySelectorAll('.mermaid');
-            
-            mermaids.forEach(container => {
-                const svg = container.querySelector('svg');
-                if (!svg) return;
-                
-                // Obtener el bounding box real del contenido
-                const bbox = svg.getBBox();
-                const padding = 20; // Padding adicional en píxeles
-                
-                // Calcular dimensiones reales
-                const width = Math.max(bbox.width + padding * 2, 100);
-                const height = Math.max(bbox.height + padding * 2, 50);
-                
-                // Establecer viewBox preciso
-                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-                
-                // Ajustar atributos de tamaño
-                svg.setAttribute('width', width);
-                svg.setAttribute('height', height);
-                
-                // Remover atributos problemáticos
-                svg.removeAttribute('style');
-                svg.style.height = 'auto';
-                svg.style.width = 'auto';
-                svg.style.maxWidth = '100%';
-                
-                // Ajustar contenedor
-                container.style.height = 'auto';
-                container.style.width = 'auto';
-                container.style.maxWidth = '100%';
-                
-                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
-            });
-            }
-
-            // Ejecutar después del renderizado
-            mermaid.initialize({
-            startOnLoad: true,
-            // Configuración que reduce padding interno
-            flowchart: {
-                diagramPadding: 8,
-                useMaxWidth: true
-            }
-            });
-
-            // Hook post-renderizado
-            const originalParse = mermaid.parse;
-            mermaid.parse = function() {
-            return originalParse.apply(this, arguments).then(() => {
-                //setTimeout(optimizeMermaidSVG, 50);
-            });
-            };
-    </script>
-
-</body>
-
-</html>
+</code></pre><p>Con estas técnicas, puedes usar capas y ordenamiento de elementos visuales en PixiJS para crear efectos visuales interesantes y organizar la interfaz de usuario de tu aplicación o juego de manera efectiva.<ul><li><b>Información IA: </b>Pendiente de Definición<li><b>Ultima Modificación: </b>2025-06-10 21:14:06.362000+00:00<li><b>Versión Documento: </b>0.2.5</ul></main><footer><p>© 2018-2026 <a href=https://www.linkedin.com/in/raulcarrillo/>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</footer><script src=https://metsuke.com/assets/js/lang.js></script><script>window.onload=function(){getLanguagePreferences()};</script><script src=https://metsuke.com/assets/js/counter.js></script><script type=module>import mermaid from"https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs";
+//import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+mermaid.initialize({useMaxWidth:!0,startOnLoad:!0,theme:`base`,themeVariables:{primaryColor:`#000000`,primaryTextColor:`#ffffff`}});function optimizeMermaidSVG(){}
+// Ejecutar después del renderizado
+mermaid.initialize({startOnLoad:!0,flowchart:{diagramPadding:8,useMaxWidth:!0}});
+// Hook post-renderizado
+const originalParse=mermaid.parse;mermaid.parse=function(){return originalParse.apply(this,arguments).then(()=>{
+//setTimeout(optimizeMermaidSVG, 50);
+})};</script>

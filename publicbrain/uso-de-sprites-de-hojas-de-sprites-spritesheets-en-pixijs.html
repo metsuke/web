@@ -1,183 +1,28 @@
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <meta name="googlebot" content="noindex, nofollow">
-    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construyendo la plena inclusión a través del videojuego</title>
-    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
-    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
-    
-    <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
-    <!-- Efenerudes -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
-</head>
-
-<body>
-
-    <header>
-        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
-        <h1>MetsuOS</h1>
-        <h2>Construyendo la plena inclusión a través del videojuego</h2>
-    </header>
-    <?php //include 'blacklist_blocker.php';?>
-    <nav>
-        <a href="../index.html">Inicio</a>
-        <a href="../apps.html">Apps</a>
-        <a href="../blog.html">Blog</a>
-        <a href="../juegos.html">Juegos</a>
-        <a href="../kb.html">KB</a>
-        <a href="../publicbrain/curso-e-introduccion-tecnica-sobre--mcl-metsuos-context-language-%F0%9F%9F%A1%E2%91%A2.html">MCL</a>
-        <a href="../noticias.html">Noticias</a>
-        <a href="../novedades.html">Nuevo</a>
-        <a href="../npl.html">NPL</a>
-        <a href="../el-proyecto.html">MOS</a>
-        <a href="../publicbrain/index.html">PB</a>
-        <a href="https://metsuke.com/quiosco/">Quiosco</a>
-        <a href="../noticias.html">Reportajes</a>
-    </nav>
-
-    <main>
-<h1>Uso de sprites de hojas de sprites (spritesheets) en PixiJS</h1>
-<p><a class='internal' href='../publicbrain/curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
-<p>¡Por supuesto! El uso de hojas de sprites (spritesheets) es una técnica común en el desarrollo de juegos y aplicaciones con PixiJS. Una hoja de sprites es una imagen que contiene múltiples frames de animación o imágenes de diferentes elementos del juego. Aquí te muestro cómo puedes usar hojas de sprites en PixiJS:</p>
-<ol>
-<li><strong>Preparación de la hoja de sprites</strong>:</li>
-<li>
-<p>Crea una hoja de sprites que contenga todas las imágenes que necesitas para tu juego. Puedes utilizar software de diseño como Photoshop o herramientas en línea para crear y organizar tus frames de animación en una sola imagen.</p>
-</li>
-<li>
-<p><strong>Carga de la hoja de sprites</strong>:</p>
-</li>
-<li>Utiliza la clase <code>PIXI.Loader</code> para cargar la hoja de sprites en tu proyecto PixiJS. Agrega la hoja de sprites a la cola de carga y luego maneja el evento <code>load</code> para obtener la referencia a la textura de la hoja de sprites.</li>
-</ol>
-<pre><code class="language-javascript">const loader = PIXI.Loader.shared;
-loader.add(&#x27;hoja-sprites&#x27;, &#x27;ruta/a/hoja-de-sprites.png&#x27;).load((loader, resources) =&gt; {
-    const hojaSprites = resources[&#x27;hoja-sprites&#x27;].texture;
-    // Ahora puedes usar &#x27;hojaSprites&#x27; para crear sprites individuales
+<!doctype html><html lang=es><meta charset=utf-8><meta content="noindex, nofollow" name=googlebot><meta a ciencia, comunicación, content"construyendo de felicidad, inclusión la name=description plena productividad través videojuegos." y><meta content="width=device-width,initial-scale=1.0" name=viewport><title>Construyendo la plena inclusión a través del videojuego</title><link href=../assets/css/transitions.css id=transition-stylesheet rel=stylesheet><link href=../assets/css/style.css id=main-stylesheet rel=stylesheet><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><script src=https://metsuke.com/assets/js/efemerides.js></script><body><header><img alt="Logo Metsuke" class=logo src=../assets/img/logo/MetsukeLogo.png><h1>MetsuOS</h1><h2>Construyendo la plena inclusión a través del videojuego</h2></header><?php //include 'blacklist_blocker.php';?><nav><a href=../index.html>Inicio</a><a href=../apps.html>Apps</a><a href=https://metsuke.com/publicbrain/la-biblioteca-del-archivero-del-retro-%F0%9F%9F%A1%E2%91%A2.html>Biblioteca</a><a href=../blog.html>Blog</a><a href=../juegos.html>Juegos</a><a href=../kb.html>KB</a><a href=../publicbrain/curso-e-introduccion-tecnica-sobre--mcl-metsuos-context-language-%F0%9F%9F%A1%E2%91%A2.html>MCL</a><a href=../noticias.html>Noticias</a><a href=../novedades.html>Novedades</a><a href=../npl.html>NPL</a><a href=../el-proyecto.html>MetsuOS</a><a href=../publicbrain/index.html>PublicBrain</a><a href=https://metsuke.com/quiosco/>Quiosco</a><a href=../reportajes.html>Reportajes</a></nav><main><h1>Uso de sprites de hojas de sprites (spritesheets) en PixiJS</h1><p><a class=internal href=../publicbrain/curso-de-pixijs-⚫①.html>Curso de PixiJS ⚫①</a><p>¡Por supuesto! El uso de hojas de sprites (spritesheets) es una técnica común en el desarrollo de juegos y aplicaciones con PixiJS. Una hoja de sprites es una imagen que contiene múltiples frames de animación o imágenes de diferentes elementos del juego. Aquí te muestro cómo puedes usar hojas de sprites en PixiJS:<ol><li><strong>Preparación de la hoja de sprites</strong>:<li><p>Crea una hoja de sprites que contenga todas las imágenes que necesitas para tu juego. Puedes utilizar software de diseño como Photoshop o herramientas en línea para crear y organizar tus frames de animación en una sola imagen.</p><li><p><strong>Carga de la hoja de sprites</strong>:</p><li>Utiliza la clase <code>PIXI.Loader</code> para cargar la hoja de sprites en tu proyecto PixiJS. Agrega la hoja de sprites a la cola de carga y luego maneja el evento <code>load</code> para obtener la referencia a la textura de la hoja de sprites.</ol><pre><code class=language-javascript>const loader = PIXI.Loader.shared;
+loader.add('hoja-sprites', 'ruta/a/hoja-de-sprites.png').load((loader, resources) => {
+    const hojaSprites = resources['hoja-sprites'].texture;
+    // Ahora puedes usar 'hojaSprites' para crear sprites individuales
 });
-</code></pre>
-<ol>
-<li><strong>Definición de frames de animación</strong>:</li>
-<li>Especifica las coordenadas y dimensiones de cada frame de animación en la hoja de sprites. Puedes hacer esto utilizando la clase <code>PIXI.Rectangle</code>, que define un área rectangular en una textura.</li>
-</ol>
-<pre><code class="language-javascript">// Define los frames de animación en la hoja de sprites
+</code></pre><ol><li><strong>Definición de frames de animación</strong>:<li>Especifica las coordenadas y dimensiones de cada frame de animación en la hoja de sprites. Puedes hacer esto utilizando la clase <code>PIXI.Rectangle</code>, que define un área rectangular en una textura.</ol><pre><code class=language-javascript>// Define los frames de animación en la hoja de sprites
 const frame1 = new PIXI.Rectangle(x, y, ancho, alto);
 const frame2 = new PIXI.Rectangle(x, y, ancho, alto);
 // Define más frames si es necesario
-</code></pre>
-<ol>
-<li><strong>Creación de sprites individuales</strong>:</li>
-<li>Utiliza la textura de la hoja de sprites cargada y las coordenadas de los frames de animación para crear sprites individuales. Puedes hacer esto utilizando la clase <code>PIXI.Sprite</code> y especificando la región de la textura que corresponde a cada frame.</li>
-</ol>
-<pre><code class="language-javascript">// Crea sprites individuales utilizando la hoja de sprites y las coordenadas de los frames
+</code></pre><ol><li><strong>Creación de sprites individuales</strong>:<li>Utiliza la textura de la hoja de sprites cargada y las coordenadas de los frames de animación para crear sprites individuales. Puedes hacer esto utilizando la clase <code>PIXI.Sprite</code> y especificando la región de la textura que corresponde a cada frame.</ol><pre><code class=language-javascript>// Crea sprites individuales utilizando la hoja de sprites y las coordenadas de los frames
 const sprite1 = new PIXI.Sprite(new PIXI.Texture(hojaSprites, frame1));
 const sprite2 = new PIXI.Sprite(new PIXI.Texture(hojaSprites, frame2));
 // Crea más sprites si es necesario
-</code></pre>
-<ol>
-<li><strong>Animación de sprites</strong>:</li>
-<li>Si estás creando una animación, puedes cambiar el frame de un sprite a intervalos regulares para simular la animación. Esto se hace cambiando la textura del sprite en cada frame.</li>
-</ol>
-<pre><code class="language-javascript">// Cambia la textura del sprite en cada frame para animar
+</code></pre><ol><li><strong>Animación de sprites</strong>:<li>Si estás creando una animación, puedes cambiar el frame de un sprite a intervalos regulares para simular la animación. Esto se hace cambiando la textura del sprite en cada frame.</ol><pre><code class=language-javascript>// Cambia la textura del sprite en cada frame para animar
 function animar() {
     requestAnimationFrame(animar);
     // Cambia la textura del sprite para el siguiente frame de animación
     sprite.texture = nuevaTextura;
 }
-</code></pre>
-<p>Con estos pasos, puedes usar hojas de sprites para crear y animar elementos visuales en tus proyectos de PixiJS de manera eficiente y dinámica.</p><ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Ultima Modificación: </b>2025-06-10 21:14:06.508000+00:00</li><li><b>Versión Documento: </b>0.2.5</li></ul>
-
-        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
-    </main>
-    
-    <footer>
-        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- Lang Script -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
-    <script>
-        window.onload = function() {
-            getLanguagePreferences();
-        };
-    </script>
-
-    <!-- Contador de visitas (no visible en RT en la web) -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
-
-
-    <!-- mermaid -->
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
-        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
-        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
-            ,themeVariables: { 
-                primaryColor: '#000000'
-                ,primaryTextColor: '#ffffff'
-            }
-        });
-        function optimizeMermaidSVG() {
-            return
-            const mermaids = document.querySelectorAll('.mermaid');
-            
-            mermaids.forEach(container => {
-                const svg = container.querySelector('svg');
-                if (!svg) return;
-                
-                // Obtener el bounding box real del contenido
-                const bbox = svg.getBBox();
-                const padding = 20; // Padding adicional en píxeles
-                
-                // Calcular dimensiones reales
-                const width = Math.max(bbox.width + padding * 2, 100);
-                const height = Math.max(bbox.height + padding * 2, 50);
-                
-                // Establecer viewBox preciso
-                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-                
-                // Ajustar atributos de tamaño
-                svg.setAttribute('width', width);
-                svg.setAttribute('height', height);
-                
-                // Remover atributos problemáticos
-                svg.removeAttribute('style');
-                svg.style.height = 'auto';
-                svg.style.width = 'auto';
-                svg.style.maxWidth = '100%';
-                
-                // Ajustar contenedor
-                container.style.height = 'auto';
-                container.style.width = 'auto';
-                container.style.maxWidth = '100%';
-                
-                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
-            });
-            }
-
-            // Ejecutar después del renderizado
-            mermaid.initialize({
-            startOnLoad: true,
-            // Configuración que reduce padding interno
-            flowchart: {
-                diagramPadding: 8,
-                useMaxWidth: true
-            }
-            });
-
-            // Hook post-renderizado
-            const originalParse = mermaid.parse;
-            mermaid.parse = function() {
-            return originalParse.apply(this, arguments).then(() => {
-                //setTimeout(optimizeMermaidSVG, 50);
-            });
-            };
-    </script>
-
-</body>
-
-</html>
+</code></pre><p>Con estos pasos, puedes usar hojas de sprites para crear y animar elementos visuales en tus proyectos de PixiJS de manera eficiente y dinámica.<ul><li><b>Información IA: </b>Pendiente de Definición<li><b>Ultima Modificación: </b>2025-06-10 21:14:06.508000+00:00<li><b>Versión Documento: </b>0.2.5</ul></main><footer><p>© 2018-2026 <a href=https://www.linkedin.com/in/raulcarrillo/>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</footer><script src=https://metsuke.com/assets/js/lang.js></script><script>window.onload=function(){getLanguagePreferences()};</script><script src=https://metsuke.com/assets/js/counter.js></script><script type=module>import mermaid from"https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs";
+//import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+mermaid.initialize({useMaxWidth:!0,startOnLoad:!0,theme:`base`,themeVariables:{primaryColor:`#000000`,primaryTextColor:`#ffffff`}});function optimizeMermaidSVG(){}
+// Ejecutar después del renderizado
+mermaid.initialize({startOnLoad:!0,flowchart:{diagramPadding:8,useMaxWidth:!0}});
+// Hook post-renderizado
+const originalParse=mermaid.parse;mermaid.parse=function(){return originalParse.apply(this,arguments).then(()=>{
+//setTimeout(optimizeMermaidSVG, 50);
+})};</script>

@@ -1,191 +1,24 @@
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <meta name="googlebot" content="noindex, nofollow">
-    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construyendo la plena inclusión a través del videojuego</title>
-    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
-    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
-    
-    <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
-    <!-- Efenerudes -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
-</head>
-
-<body>
-
-    <header>
-        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
-        <h1>MetsuOS</h1>
-        <h2>Construyendo la plena inclusión a través del videojuego</h2>
-    </header>
-    <?php //include 'blacklist_blocker.php';?>
-    <nav>
-        <a href="../index.html">Inicio</a>
-        <a href="../apps.html">Apps</a>
-        <a href="../blog.html">Blog</a>
-        <a href="../juegos.html">Juegos</a>
-        <a href="../kb.html">KB</a>
-        <a href="../publicbrain/curso-e-introduccion-tecnica-sobre--mcl-metsuos-context-language-%F0%9F%9F%A1%E2%91%A2.html">MCL</a>
-        <a href="../noticias.html">Noticias</a>
-        <a href="../novedades.html">Nuevo</a>
-        <a href="../npl.html">NPL</a>
-        <a href="../el-proyecto.html">MOS</a>
-        <a href="../publicbrain/index.html">PB</a>
-        <a href="https://metsuke.com/quiosco/">Quiosco</a>
-        <a href="../noticias.html">Reportajes</a>
-    </nav>
-
-    <main>
-<h1>Precarga de recursos para una experiencia más fluida en PixiJS</h1>
-<p><a class='internal' href='../publicbrain/curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
-<p>La precarga de recursos es una técnica esencial en el desarrollo de juegos y aplicaciones web con PixiJS para garantizar una experiencia más fluida y evitar retrasos durante la ejecución. Aquí te explico cómo puedes implementar la precarga de recursos en PixiJS:</p>
-<ol>
-<li><strong>Identificar los recursos a precargar</strong>:</li>
-<li>
-<p>Antes de comenzar a precargar recursos, identifica todos los archivos necesarios para tu juego o aplicación, como imágenes, archivos de audio, archivos JSON para datos de mapa, entre otros.</p>
-</li>
-<li>
-<p><strong>Usar el cargador de PixiJS</strong>:</p>
-</li>
-<li>PixiJS proporciona una clase llamada <code>Loader</code> que te permite cargar recursos de manera asíncrona antes de que comience la renderización de la escena.</li>
-<li>Para usar el cargador, primero crea una instancia de la clase <code>Loader</code>:<br />
-<code>javascript
-     const loader = PIXI.Loader.shared;</code></li>
-<li>
-<p>Luego, puedes agregar recursos a cargar utilizando el método <code>add()</code>:<br />
-<code>javascript
-     loader.add(&quot;imagen1&quot;, &quot;ruta/a/imagen1.png&quot;);
-     loader.add(&quot;imagen2&quot;, &quot;ruta/a/imagen2.png&quot;);
-     // Agrega más recursos según sea necesario</code></p>
-</li>
-<li>
-<p><strong>Escuchar eventos de progreso y completado</strong>:</p>
-</li>
-<li>El cargador de PixiJS emite eventos que te permiten monitorear el progreso de carga y saber cuándo se han cargado todos los recursos.</li>
-<li>Puedes escuchar el evento <code>&#x27;progress&#x27;</code> para actualizar una barra de progreso, por ejemplo:<br />
-<code>javascript
-     loader.onProgress.add((loader, recurso) =&gt; {
+<!doctype html><html lang=es><meta charset=utf-8><meta content="noindex, nofollow" name=googlebot><meta a ciencia, comunicación, content"construyendo de felicidad, inclusión la name=description plena productividad través videojuegos." y><meta content="width=device-width,initial-scale=1.0" name=viewport><title>Construyendo la plena inclusión a través del videojuego</title><link href=../assets/css/transitions.css id=transition-stylesheet rel=stylesheet><link href=../assets/css/style.css id=main-stylesheet rel=stylesheet><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><script src=https://metsuke.com/assets/js/efemerides.js></script><body><header><img alt="Logo Metsuke" class=logo src=../assets/img/logo/MetsukeLogo.png><h1>MetsuOS</h1><h2>Construyendo la plena inclusión a través del videojuego</h2></header><?php //include 'blacklist_blocker.php';?><nav><a href=../index.html>Inicio</a><a href=../apps.html>Apps</a><a href=https://metsuke.com/publicbrain/la-biblioteca-del-archivero-del-retro-%F0%9F%9F%A1%E2%91%A2.html>Biblioteca</a><a href=../blog.html>Blog</a><a href=../juegos.html>Juegos</a><a href=../kb.html>KB</a><a href=../publicbrain/curso-e-introduccion-tecnica-sobre--mcl-metsuos-context-language-%F0%9F%9F%A1%E2%91%A2.html>MCL</a><a href=../noticias.html>Noticias</a><a href=../novedades.html>Novedades</a><a href=../npl.html>NPL</a><a href=../el-proyecto.html>MetsuOS</a><a href=../publicbrain/index.html>PublicBrain</a><a href=https://metsuke.com/quiosco/>Quiosco</a><a href=../reportajes.html>Reportajes</a></nav><main><h1>Precarga de recursos para una experiencia más fluida en PixiJS</h1><p><a class=internal href=../publicbrain/curso-de-pixijs-⚫①.html>Curso de PixiJS ⚫①</a><p>La precarga de recursos es una técnica esencial en el desarrollo de juegos y aplicaciones web con PixiJS para garantizar una experiencia más fluida y evitar retrasos durante la ejecución. Aquí te explico cómo puedes implementar la precarga de recursos en PixiJS:<ol><li><strong>Identificar los recursos a precargar</strong>:<li><p>Antes de comenzar a precargar recursos, identifica todos los archivos necesarios para tu juego o aplicación, como imágenes, archivos de audio, archivos JSON para datos de mapa, entre otros.</p><li><p><strong>Usar el cargador de PixiJS</strong>:</p><li>PixiJS proporciona una clase llamada <code>Loader</code> que te permite cargar recursos de manera asíncrona antes de que comience la renderización de la escena.<li>Para usar el cargador, primero crea una instancia de la clase <code>Loader</code>:<br> <code>javascript
+     const loader = PIXI.Loader.shared;</code><li><p>Luego, puedes agregar recursos a cargar utilizando el método <code>add()</code>:<br> <code>javascript
+     loader.add("imagen1", "ruta/a/imagen1.png");
+     loader.add("imagen2", "ruta/a/imagen2.png");
+     // Agrega más recursos según sea necesario</code></p><li><p><strong>Escuchar eventos de progreso y completado</strong>:</p><li>El cargador de PixiJS emite eventos que te permiten monitorear el progreso de carga y saber cuándo se han cargado todos los recursos.<li>Puedes escuchar el evento <code>'progress'</code> para actualizar una barra de progreso, por ejemplo:<br> <code>javascript
+     loader.onProgress.add((loader, recurso) => {
          console.log(`Progreso: ${loader.progress}%`);
-     });</code></li>
-<li>
-<p>También puedes escuchar el evento <code>&#x27;complete&#x27;</code> para realizar acciones una vez que todos los recursos se hayan cargado:<br />
-<code>javascript
-     loader.onComplete.add(() =&gt; {
-         console.log(&quot;¡Todos los recursos se han cargado!&quot;);
+     });</code><li><p>También puedes escuchar el evento <code>'complete'</code> para realizar acciones una vez que todos los recursos se hayan cargado:<br> <code>javascript
+     loader.onComplete.add(() => {
+         console.log("¡Todos los recursos se han cargado!");
          // Aquí puedes inicializar tu juego o aplicación
-     });</code></p>
-</li>
-<li>
-<p><strong>Iniciar la carga de recursos</strong>:</p>
-</li>
-<li>
-<p>Una vez que hayas agregado todos los recursos y configurado los manejadores de eventos, puedes iniciar la carga utilizando el método <code>load()</code> del cargador:<br />
-<code>javascript
-     loader.load();</code></p>
-</li>
-<li>
-<p><strong>Acceder a los recursos cargados</strong>:</p>
-</li>
-<li>Después de que todos los recursos se hayan cargado con éxito, puedes acceder a ellos a través del objeto <code>resources</code> del cargador:<br />
-<code>javascript
-     const imagen1 = loader.resources[&quot;imagen1&quot;].texture;
-     const imagen2 = loader.resources[&quot;imagen2&quot;].texture;
-     // Usa las texturas en tu juego o aplicación</code></li>
-</ol>
-<p>Implementar la precarga de recursos en PixiJS garantiza que tu juego o aplicación tenga acceso rápido a todos los recursos necesarios, lo que ayuda a mejorar la experiencia del usuario al evitar retrasos causados por la carga de recursos durante la ejecución.</p><ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Ultima Modificación: </b>2025-06-10 21:14:05.613000+00:00</li><li><b>Versión Documento: </b>0.3.4</li></ul>
-
-        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
-    </main>
-    
-    <footer>
-        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- Lang Script -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
-    <script>
-        window.onload = function() {
-            getLanguagePreferences();
-        };
-    </script>
-
-    <!-- Contador de visitas (no visible en RT en la web) -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
-
-
-    <!-- mermaid -->
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
-        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
-        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
-            ,themeVariables: { 
-                primaryColor: '#000000'
-                ,primaryTextColor: '#ffffff'
-            }
-        });
-        function optimizeMermaidSVG() {
-            return
-            const mermaids = document.querySelectorAll('.mermaid');
-            
-            mermaids.forEach(container => {
-                const svg = container.querySelector('svg');
-                if (!svg) return;
-                
-                // Obtener el bounding box real del contenido
-                const bbox = svg.getBBox();
-                const padding = 20; // Padding adicional en píxeles
-                
-                // Calcular dimensiones reales
-                const width = Math.max(bbox.width + padding * 2, 100);
-                const height = Math.max(bbox.height + padding * 2, 50);
-                
-                // Establecer viewBox preciso
-                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-                
-                // Ajustar atributos de tamaño
-                svg.setAttribute('width', width);
-                svg.setAttribute('height', height);
-                
-                // Remover atributos problemáticos
-                svg.removeAttribute('style');
-                svg.style.height = 'auto';
-                svg.style.width = 'auto';
-                svg.style.maxWidth = '100%';
-                
-                // Ajustar contenedor
-                container.style.height = 'auto';
-                container.style.width = 'auto';
-                container.style.maxWidth = '100%';
-                
-                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
-            });
-            }
-
-            // Ejecutar después del renderizado
-            mermaid.initialize({
-            startOnLoad: true,
-            // Configuración que reduce padding interno
-            flowchart: {
-                diagramPadding: 8,
-                useMaxWidth: true
-            }
-            });
-
-            // Hook post-renderizado
-            const originalParse = mermaid.parse;
-            mermaid.parse = function() {
-            return originalParse.apply(this, arguments).then(() => {
-                //setTimeout(optimizeMermaidSVG, 50);
-            });
-            };
-    </script>
-
-</body>
-
-</html>
+     });</code></p><li><p><strong>Iniciar la carga de recursos</strong>:</p><li><p>Una vez que hayas agregado todos los recursos y configurado los manejadores de eventos, puedes iniciar la carga utilizando el método <code>load()</code> del cargador:<br> <code>javascript
+     loader.load();</code></p><li><p><strong>Acceder a los recursos cargados</strong>:</p><li>Después de que todos los recursos se hayan cargado con éxito, puedes acceder a ellos a través del objeto <code>resources</code> del cargador:<br> <code>javascript
+     const imagen1 = loader.resources["imagen1"].texture;
+     const imagen2 = loader.resources["imagen2"].texture;
+     // Usa las texturas en tu juego o aplicación</code></ol><p>Implementar la precarga de recursos en PixiJS garantiza que tu juego o aplicación tenga acceso rápido a todos los recursos necesarios, lo que ayuda a mejorar la experiencia del usuario al evitar retrasos causados por la carga de recursos durante la ejecución.<ul><li><b>Información IA: </b>Pendiente de Definición<li><b>Ultima Modificación: </b>2025-06-10 21:14:05.613000+00:00<li><b>Versión Documento: </b>0.3.4</ul></main><footer><p>© 2018-2026 <a href=https://www.linkedin.com/in/raulcarrillo/>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</footer><script src=https://metsuke.com/assets/js/lang.js></script><script>window.onload=function(){getLanguagePreferences()};</script><script src=https://metsuke.com/assets/js/counter.js></script><script type=module>import mermaid from"https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs";
+//import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+mermaid.initialize({useMaxWidth:!0,startOnLoad:!0,theme:`base`,themeVariables:{primaryColor:`#000000`,primaryTextColor:`#ffffff`}});function optimizeMermaidSVG(){}
+// Ejecutar después del renderizado
+mermaid.initialize({startOnLoad:!0,flowchart:{diagramPadding:8,useMaxWidth:!0}});
+// Hook post-renderizado
+const originalParse=mermaid.parse;mermaid.parse=function(){return originalParse.apply(this,arguments).then(()=>{
+//setTimeout(optimizeMermaidSVG, 50);
+})};</script>

@@ -69,25 +69,6 @@
 
   // Mostrar la página de error 404
   header('HTTP/1.1 404 Not Found');
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página no encontrada</title>
-</head>
-<body style="<?php echo $background_style; ?> background-color:rgb(0, 0, 0);">
-  <center>
-    <div style="opacity: 1.0; border: 10px solid rgb(148, 26, 26); border-radius: 100px; background-color: white; min-width: 80vw; position: relative; margin-top: 4rem; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
-      <img style="max-width: 20vw; height: auto;" class="logo" src="https://www.metsuke.com/assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
-      <h1>Página no encontrada</h1>
-      <p><?php echo $requested_url; ?></p>
-      <a href="https://metsuke.com">Volver a la página principal</a>
-    </div>
-  </center>
-</body>
-</html>
-<?php
+?><!doctype html><html lang=es><meta charset=UTF-8><meta content="width=device-width,initial-scale=1.0" name=viewport><title>Página no encontrada</title><body style="<?php echo $background_style; ?> background-color:rgb(0, 0, 0);"><center> <div style="opacity:1;background-color:#fff;border:10px solid #941a1a;border-radius:100px;min-width:80vw;margin-top:4rem;padding:20px;position:relative;box-shadow:0 0 10px #0003"><img alt="Logo Metsuke" class=logo src=https://www.metsuke.com/assets/img/logo/MetsukeLogo.png style=max-width:20vw;height:auto><h1>Página no encontrada</h1><p><?php echo $requested_url; ?></p><a href=https://metsuke.com>Volver a la página principal</a></div> </center><?php
   exit;
 ?>

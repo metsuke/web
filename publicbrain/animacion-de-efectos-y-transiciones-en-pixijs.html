@@ -1,77 +1,19 @@
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <meta name="googlebot" content="noindex, nofollow">
-    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construyendo la plena inclusión a través del videojuego</title>
-    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
-    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
-    
-    <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
-    <!-- Efenerudes -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
-</head>
-
-<body>
-
-    <header>
-        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
-        <h1>MetsuOS</h1>
-        <h2>Construyendo la plena inclusión a través del videojuego</h2>
-    </header>
-    <?php //include 'blacklist_blocker.php';?>
-    <nav>
-        <a href="../index.html">Inicio</a>
-        <a href="../apps.html">Apps</a>
-        <a href="../blog.html">Blog</a>
-        <a href="../juegos.html">Juegos</a>
-        <a href="../kb.html">KB</a>
-        <a href="../publicbrain/curso-e-introduccion-tecnica-sobre--mcl-metsuos-context-language-%F0%9F%9F%A1%E2%91%A2.html">MCL</a>
-        <a href="../noticias.html">Noticias</a>
-        <a href="../novedades.html">Nuevo</a>
-        <a href="../npl.html">NPL</a>
-        <a href="../el-proyecto.html">MOS</a>
-        <a href="../publicbrain/index.html">PB</a>
-        <a href="https://metsuke.com/quiosco/">Quiosco</a>
-        <a href="../noticias.html">Reportajes</a>
-    </nav>
-
-    <main>
-<h1>Animación de efectos y transiciones en PixiJS</h1>
-<p><a class='internal' href='../publicbrain/curso-de-pixijs-⚫①.html'>Curso de PixiJS ⚫①</a></p>
-<p>¡Por supuesto! Animar efectos y transiciones es una parte emocionante del desarrollo con PixiJS, ya que te permite agregar movimiento y dinamismo a tus aplicaciones y juegos. Aquí tienes algunos pasos y conceptos clave para animar efectos y transiciones en PixiJS:</p>
-<ol>
-<li><strong>Usar Tweening</strong>: Tweening es una técnica común para crear animaciones suaves entre dos estados de un objeto. PixiJS no incluye una biblioteca de tweening integrada, pero puedes usar bibliotecas populares como GSAP (GreenSock Animation Platform) o TweenJS para gestionar tus animaciones. Por ejemplo, puedes animar la posición de un sprite de la siguiente manera usando GSAP:</li>
-</ol>
-<pre><code class="language-javascript">// Importa GSAP
-import gsap from &#x27;gsap&#x27;;
+<!doctype html><html lang=es><meta charset=utf-8><meta content="noindex, nofollow" name=googlebot><meta a ciencia, comunicación, content"construyendo de felicidad, inclusión la name=description plena productividad través videojuegos." y><meta content="width=device-width,initial-scale=1.0" name=viewport><title>Construyendo la plena inclusión a través del videojuego</title><link href=../assets/css/transitions.css id=transition-stylesheet rel=stylesheet><link href=../assets/css/style.css id=main-stylesheet rel=stylesheet><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><script src=https://metsuke.com/assets/js/efemerides.js></script><body><header><img alt="Logo Metsuke" class=logo src=../assets/img/logo/MetsukeLogo.png><h1>MetsuOS</h1><h2>Construyendo la plena inclusión a través del videojuego</h2></header><?php //include 'blacklist_blocker.php';?><nav><a href=../index.html>Inicio</a><a href=../apps.html>Apps</a><a href=https://metsuke.com/publicbrain/la-biblioteca-del-archivero-del-retro-%F0%9F%9F%A1%E2%91%A2.html>Biblioteca</a><a href=../blog.html>Blog</a><a href=../juegos.html>Juegos</a><a href=../kb.html>KB</a><a href=../publicbrain/curso-e-introduccion-tecnica-sobre--mcl-metsuos-context-language-%F0%9F%9F%A1%E2%91%A2.html>MCL</a><a href=../noticias.html>Noticias</a><a href=../novedades.html>Novedades</a><a href=../npl.html>NPL</a><a href=../el-proyecto.html>MetsuOS</a><a href=../publicbrain/index.html>PublicBrain</a><a href=https://metsuke.com/quiosco/>Quiosco</a><a href=../reportajes.html>Reportajes</a></nav><main><h1>Animación de efectos y transiciones en PixiJS</h1><p><a class=internal href=../publicbrain/curso-de-pixijs-⚫①.html>Curso de PixiJS ⚫①</a><p>¡Por supuesto! Animar efectos y transiciones es una parte emocionante del desarrollo con PixiJS, ya que te permite agregar movimiento y dinamismo a tus aplicaciones y juegos. Aquí tienes algunos pasos y conceptos clave para animar efectos y transiciones en PixiJS:<ol><li><strong>Usar Tweening</strong>: Tweening es una técnica común para crear animaciones suaves entre dos estados de un objeto. PixiJS no incluye una biblioteca de tweening integrada, pero puedes usar bibliotecas populares como GSAP (GreenSock Animation Platform) o TweenJS para gestionar tus animaciones. Por ejemplo, puedes animar la posición de un sprite de la siguiente manera usando GSAP:</ol><pre><code class=language-javascript>// Importa GSAP
+import gsap from 'gsap';
 
 // Crea un sprite
-const sprite = PIXI.Sprite.from(&#x27;imagen.png&#x27;);
+const sprite = PIXI.Sprite.from('imagen.png');
 app.stage.addChild(sprite);
 
 // Anima la posición del sprite
-gsap.to(sprite.position, { x: 100, y: 200, duration: 1, ease: &#x27;power2.out&#x27; });
-</code></pre>
-<ol>
-<li><strong>Utilizar filtros animados</strong>: Puedes animar los parámetros de los filtros aplicados a sprites para crear efectos visuales dinámicos. Por ejemplo, puedes cambiar gradualmente el radio de desenfoque de un filtro de desenfoque para crear una transición de enfoque a desenfoque.</li>
-</ol>
-<pre><code class="language-javascript">// Crea un filtro de desenfoque
+gsap.to(sprite.position, { x: 100, y: 200, duration: 1, ease: 'power2.out' });
+</code></pre><ol><li><strong>Utilizar filtros animados</strong>: Puedes animar los parámetros de los filtros aplicados a sprites para crear efectos visuales dinámicos. Por ejemplo, puedes cambiar gradualmente el radio de desenfoque de un filtro de desenfoque para crear una transición de enfoque a desenfoque.</ol><pre><code class=language-javascript>// Crea un filtro de desenfoque
 const blurFilter = new PIXI.filters.BlurFilter();
 sprite.filters = [blurFilter];
 
 // Anima el radio de desenfoque del filtro
-gsap.to(blurFilter, { blur: 10, duration: 1, ease: &#x27;power2.out&#x27; });
-</code></pre>
-<ol>
-<li><strong>Manejar animaciones frame-by-frame</strong>: Para animaciones más complejas o específicas, puedes controlar manualmente los cambios de los frames de tus sprites utilizando la función <code>requestAnimationFrame</code> de JavaScript. Por ejemplo, puedes crear una secuencia de frames para una animación de un personaje y cambiar el frame que se muestra a medida que avanza la animación.</li>
-</ol>
-<pre><code class="language-javascript">// Definir una función para actualizar la animación en cada frame
+gsap.to(blurFilter, { blur: 10, duration: 1, ease: 'power2.out' });
+</code></pre><ol><li><strong>Manejar animaciones frame-by-frame</strong>: Para animaciones más complejas o específicas, puedes controlar manualmente los cambios de los frames de tus sprites utilizando la función <code>requestAnimationFrame</code> de JavaScript. Por ejemplo, puedes crear una secuencia de frames para una animación de un personaje y cambiar el frame que se muestra a medida que avanza la animación.</ol><pre><code class=language-javascript>// Definir una función para actualizar la animación en cada frame
 function animate() {
     // Lógica para cambiar el frame del sprite
     sprite.texture = nuevaTextura;
@@ -82,95 +24,12 @@ function animate() {
 
 // Llama a la función animate para comenzar la animación
 animate();
-</code></pre>
-<p>Estos son solo algunos ejemplos de cómo puedes animar efectos y transiciones en PixiJS. Con la combinación adecuada de técnicas de animación y creatividad, puedes crear experiencias visuales impresionantes y fluidas en tus proyectos. Experimenta con diferentes enfoques y encuentra el que mejor se adapte a tus necesidades y estilo de desarrollo.</p><ul><li><b>Información IA: </b>Pendiente de Definición</li><li><b>Ultima Modificación: </b>2025-06-10 21:14:02.452000+00:00</li><li><b>Versión Documento: </b>0.2.5</li></ul>
-
-        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
-    </main>
-    
-    <footer>
-        <p>&copy; 2018-2026 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- Lang Script -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
-    <script>
-        window.onload = function() {
-            getLanguagePreferences();
-        };
-    </script>
-
-    <!-- Contador de visitas (no visible en RT en la web) -->
-    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
-
-
-    <!-- mermaid -->
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
-        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
-        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
-            ,themeVariables: { 
-                primaryColor: '#000000'
-                ,primaryTextColor: '#ffffff'
-            }
-        });
-        function optimizeMermaidSVG() {
-            return
-            const mermaids = document.querySelectorAll('.mermaid');
-            
-            mermaids.forEach(container => {
-                const svg = container.querySelector('svg');
-                if (!svg) return;
-                
-                // Obtener el bounding box real del contenido
-                const bbox = svg.getBBox();
-                const padding = 20; // Padding adicional en píxeles
-                
-                // Calcular dimensiones reales
-                const width = Math.max(bbox.width + padding * 2, 100);
-                const height = Math.max(bbox.height + padding * 2, 50);
-                
-                // Establecer viewBox preciso
-                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-                
-                // Ajustar atributos de tamaño
-                svg.setAttribute('width', width);
-                svg.setAttribute('height', height);
-                
-                // Remover atributos problemáticos
-                svg.removeAttribute('style');
-                svg.style.height = 'auto';
-                svg.style.width = 'auto';
-                svg.style.maxWidth = '100%';
-                
-                // Ajustar contenedor
-                container.style.height = 'auto';
-                container.style.width = 'auto';
-                container.style.maxWidth = '100%';
-                
-                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
-            });
-            }
-
-            // Ejecutar después del renderizado
-            mermaid.initialize({
-            startOnLoad: true,
-            // Configuración que reduce padding interno
-            flowchart: {
-                diagramPadding: 8,
-                useMaxWidth: true
-            }
-            });
-
-            // Hook post-renderizado
-            const originalParse = mermaid.parse;
-            mermaid.parse = function() {
-            return originalParse.apply(this, arguments).then(() => {
-                //setTimeout(optimizeMermaidSVG, 50);
-            });
-            };
-    </script>
-
-</body>
-
-</html>
+</code></pre><p>Estos son solo algunos ejemplos de cómo puedes animar efectos y transiciones en PixiJS. Con la combinación adecuada de técnicas de animación y creatividad, puedes crear experiencias visuales impresionantes y fluidas en tus proyectos. Experimenta con diferentes enfoques y encuentra el que mejor se adapte a tus necesidades y estilo de desarrollo.<ul><li><b>Información IA: </b>Pendiente de Definición<li><b>Ultima Modificación: </b>2025-06-10 21:14:02.452000+00:00<li><b>Versión Documento: </b>0.2.5</ul></main><footer><p>© 2018-2026 <a href=https://www.linkedin.com/in/raulcarrillo/>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</footer><script src=https://metsuke.com/assets/js/lang.js></script><script>window.onload=function(){getLanguagePreferences()};</script><script src=https://metsuke.com/assets/js/counter.js></script><script type=module>import mermaid from"https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs";
+//import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+mermaid.initialize({useMaxWidth:!0,startOnLoad:!0,theme:`base`,themeVariables:{primaryColor:`#000000`,primaryTextColor:`#ffffff`}});function optimizeMermaidSVG(){}
+// Ejecutar después del renderizado
+mermaid.initialize({startOnLoad:!0,flowchart:{diagramPadding:8,useMaxWidth:!0}});
+// Hook post-renderizado
+const originalParse=mermaid.parse;mermaid.parse=function(){return originalParse.apply(this,arguments).then(()=>{
+//setTimeout(optimizeMermaidSVG, 50);
+})};</script>
