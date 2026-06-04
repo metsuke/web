@@ -32,22 +32,72 @@
     exit;
   }
 
-  // Buscar el fichero que coincide con la URL solicitada
-  $files = scandir($directory);
-  foreach ($files as $file) {
-    $jander_url = $requested_url;
-    $jander_url = implode('---', array_slice(explode('---', $jander_url), 0, -1));
-    if (strpos($file, basename($jander_url)) === 0) {
-      // Redirigir a la URL completa
-      $redirect_url = $base_url . '/' . $file;
-      
-      if (substr($redirect_url, -5) === '.html') {
-        // Guardar el contenido en el archivo de caché
-        file_put_contents($cache_file, $redirect_url);
+  // --- NUEVA FUNCIONALIDAD: BÚSQUEDA PRIORITARIA POR SÍMBOLOS ---
+  if (is_dir($directory)) {
+    $files = scandir($directory);
+    $simbolos = ['⚪⑥', '🔵⑤', '🟢④', '🟡③', '🔴②', '⚫①'];
+    $base_requested_name = basename($requested_url);
 
+    foreach ($simbolos as $simbolo) {
+      // Definimos las variantes posibles del símbolo (normal, codificado, y variaciones de espacios)
+      $variantes_simbolo = [
+        ' ' . $simbolo, 
+        $simbolo, 
+        ' ' . urlencode($simbolo), 
+        urlencode($simbolo),
+        ' ' . rawurlencode($simbolo),
+        rawurlencode($simbolo)
+      ];
+
+      foreach ($files as $file) {
+        foreach ($variantes_simbolo as $variante) {
+          // Buscamos si el archivo real en disco contiene esta combinación específica
+          if (strpos($file, $base_requested_name . $variante) === 0 && substr($file, -5) === '.html') {
+            $redirect_url = $base_url . '/' . $file;
+            file_put_contents($cache_file, $redirect_url);
+            header('Location: ' . $redirect_url);
+            exit;
+          }
+        }
+      }
+    }
+  }
+  // ---------------------------------------------------------------
+
+  // Buscar el fichero que coincide con la URL solicitada (Proceso actual de respaldo)
+  if (is_dir($directory)) {
+    $files = scandir($directory);
+    foreach ($files as $file) {
+      $jander_url = $requested_url;
+      $jander_url = implode('---', array_slice(explode('---', $jander_url), 0, -1));
+      if (strpos($file, basename($jander_url)) === 0) {
         // Redirigir a la URL completa
-        header('Location: ' . $redirect_url);
-        exit;
+        $redirect_url = $base_url . '/' . $file;
+        
+        if (substr($redirect_url, -5) === '.html') {
+          
+          // --- DETECCIÓN POST-BÚSQUEDA (CORRECCIÓN CAPTURA) ---
+          // Si la URL original tiene '/publicbrain' pero el buscador ha acabado
+          // emparejándola con el archivo del 'modulo-7', cancelamos esa redirección
+          // y forzamos la redirección limpia eliminando '/publicbrain' de la original.
+          if (strpos($requested_url, '/publicbrain') !== false && strpos($redirect_url, '-modulo-7-viajes-y-turismo.html') !== false) {
+            $fixed_url = str_replace('/publicbrain/', '/', $requested_url);
+            $redirect_url = 'https://' . $_SERVER['HTTP_HOST'] . $fixed_url;
+            
+            // Guardamos en caché la redirección corregida a la raíz
+            file_put_contents($cache_file, $redirect_url);
+            header('Location: ' . $redirect_url);
+            exit;
+          }
+          // ----------------------------------------------------
+
+          // Guardar el contenido en el archivo de caché original si pasa los filtros
+          file_put_contents($cache_file, $redirect_url);
+
+          // Redirigir a la URL completa
+          header('Location: ' . $redirect_url);
+          exit;
+        }
       }
     }
   }
