@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carátula Erbe 80s - Solo Frente</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #111;
+            color: #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #ff69b4;
+        }
+        select {
+            margin: 20px 0;
+            padding: 12px 20px;
+            font-size: 18px;
+            background: #222;
+            color: white;
+            border: 2px solid #444;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .cover-container {
+            perspective: 1200px;
+            margin: 20px 0;
+        }
+        .cover {
+            width: 420px;
+            height: 580px;
+            border: 3px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.08);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .cover:hover {
+            transform: rotateY(8deg) rotateX(5deg) scale(1.04);
+        }
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 70%, black 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px 25px;
+            color: white;
+            text-shadow: 1px 1px 4px black, 2px 2px 8px black;
+        }
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            letter-spacing: 2px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .code-area {
+            background: rgba(0,0,0,0.65);
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #0f0;
+            white-space: pre;
+            box-shadow: inset 0 0 10px #000;
+        }
+        .footer {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Pequeños ajustes visuales por "sistema" (sin lomo) */
+        .spectrum .overlay { background: linear-gradient(to bottom, rgba(255,105,180,0.15), rgba(0,0,0,0.75)); }
+        .amstrad   .overlay { background: linear-gradient(to bottom, rgba(0,100,200,0.15), rgba(0,0,0,0.75)); }
+        .commodore .overlay { background: linear-gradient(to bottom, rgba(255,204,0,0.12), rgba(0,0,0,0.75)); }
+        .msx       .overlay { background: linear-gradient(to bottom, rgba(20,20,20,0.2), rgba(0,0,0,0.85)); }
+
+        .spectrum .title { color: #ff69b4; }
+        .amstrad   .title { color: #4da6ff; }
+        .commodore .title { color: #ffeb3b; }
+        .msx       .title { color: #ccc; }
+    </style>
+</head>
+<body>
+
+    <h1>Carátula Erbe Style - Solo Parte Frontal</h1>
+
+    <select id="system-selector">
+        <option value="spectrum">ZX Spectrum (rosa)</option>
+        <option value="amstrad">Amstrad CPC (azul)</option>
+        <option value="commodore">Commodore 64 (amarillo)</option>
+        <option value="msx">MSX (negro)</option>
+    </select>
+
+    <div class="cover-container">
+        <div id="cover" class="cover spectrum"
+             style="background-image: url('https://www.worldofspectrum.org/pub/sinclair/games-inlays/Rereleases/g/GreenBeret(ErbeSoftwareS.A.).jpg');">
+            <div class="overlay">
+                <div class="title">GREEN BERET</div>
+                
+                <div class="code-area">
+10 REM CARATULA ERBE STYLE
+20 PRINT "¡CARGANDO...!"
+30 FOR i=1 TO 999: NEXT i
+40 PRINT "PULSA PLAY EN EL CARGADOR"
+50 GOTO 30
+                </div>
+                
+                <div class="footer">ERBE SOFTWARE S.A. · 198X</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const selector = document.getElementById('system-selector');
+        const cover = document.getElementById('cover');
+
+        selector.addEventListener('change', (e) => {
+            cover.className = 'cover ' + e.target.value;
+        });
+    </script>
+
+</body>
+</html>
