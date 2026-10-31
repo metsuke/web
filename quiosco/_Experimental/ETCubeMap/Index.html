@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Cubo Atari 2600 - Versión Final</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #000022;
+            color: white;
+            font-family: sans-serif;
+            overflow: hidden;
+            touch-action: none; /* Evita scroll en móvil mientras giras */
+        }
+
+        .escena {
+            width: 250px;
+            height: 250px;
+            perspective: 1000px;
+            -webkit-perspective: 1000px;
+            /* Forzar a Safari a mantener el 3D */
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+        }
+
+        .cubo {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            transform: rotateX(-20deg) rotateY(30deg);
+            will-change: transform;
+        }
+
+        .cara {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border: 2px solid #ffcc00;
+            background-color: rgba(0, 100, 0, 0.9);
+            background-size: 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Fix para Safari: Evitar backface oculto que causa parpadeos */
+            -webkit-backface-visibility: visible;
+            backface-visibility: visible;
+        }
+
+        /* Coordenadas 3D */
+        .front  { transform: translateZ(125px); -webkit-transform: translateZ(125px); }
+        .back   { transform: rotateY(180deg) translateZ(125px); -webkit-transform: rotateY(180deg) translateZ(125px); }
+        .right  { transform: rotateY(90deg) translateZ(125px); -webkit-transform: rotateY(90deg) translateZ(125px); }
+        .left   { transform: rotateY(-90deg) translateZ(125px); -webkit-transform: rotateY(-90deg) translateZ(125px); }
+        .top    { transform: rotateX(90deg) translateZ(125px); -webkit-transform: rotateX(90deg) translateZ(125px); }
+        .bottom { transform: rotateX(-90deg) translateZ(125px); -webkit-transform: rotateX(-90deg) translateZ(125px); }
+
+        .alerta-safari {
+            display: none;
+            position: fixed;
+            top: 10px;
+            background: rgba(255, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            text-align: center;
+            z-index: 100;
+        }
+
+        .instrucciones {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #aaa;
+            text-align: center;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="safariNotice" class="alerta-safari">
+        ⚠️ Si solo ves una cara, usa <strong>Google Chrome</strong> para una experiencia 3D completa en macOS.
+    </div>
+
+    <div class="escena">
+        <div class="cubo" id="cubo">
+            <div class="cara front"></div>
+            <div class="cara back"></div>
+            <div class="cara right"></div>
+            <div class="cara left"></div>
+            <div class="cara top"></div>
+            <div class="cara bottom"></div>
+        </div>
+    </div>
+
+    <div class="instrucciones">
+        Desktop: Flechas o Ratón<br>
+        Móvil: Swipe para girar
+    </div>
+
+    <script>
+        const cubo = document.getElementById('cubo');
+        let rotX = -20;
+        let rotY = 30;
+
+        // Detección de Safari para mostrar el aviso
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        if (isSafari) document.getElementById('safariNotice').style.display = 'block';
+
+        // Aplicar logo
+        const img = "https://www.metsuke.com/assets/img/logo/MetsukeLogo.png";
+        document.querySelectorAll('.cara').forEach(c => c.style.backgroundImage = `url(${img})`);
+
+        function render() {
+            const css = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+            cubo.style.transform = css;
+            cubo.style.webkitTransform = css;
+        }
+
+        // --- CONTROLES TECLADO ---
+        document.addEventListener('keydown', e => {
+            if(e.key === 'ArrowLeft')  rotY -= 10;
+            if(e.key === 'ArrowRight') rotY += 10;
+            if(e.key === 'ArrowUp')    rotX += 10;
+            if(e.key === 'ArrowDown')  rotX -= 10;
+            render();
+        });
+
+        // --- CONTROLES RATÓN ---
+        let isDown = false, lastX, lastY;
+        document.addEventListener('mousedown', e => { isDown = true; lastX = e.clientX; lastY = e.clientY; });
+        document.addEventListener('mousemove', e => {
+            if(!isDown) return;
+            rotY += (e.clientX - lastX) * 0.5;
+            rotX -= (e.clientY - lastY) * 0.5;
+            lastX = e.clientX; lastY = e.clientY;
+            render();
+        });
+        document.addEventListener('mouseup', () => isDown = false);
+
+        // --- CONTROLES TOUCH (Móvil) ---
+        document.addEventListener('touchstart', e => {
+            lastX = e.touches[0].clientX;
+            lastY = e.touches[0].clientY;
+        }, {passive: false});
+
+        document.addEventListener('touchmove', e => {
+            let deltaX = e.touches[0].clientX - lastX;
+            let deltaY = e.touches[0].clientY - lastY;
+            rotY += deltaX * 0.6;
+            rotX -= deltaY * 0.6;
+            lastX = e.touches[0].clientX;
+            lastY = e.touches[0].clientY;
+            render();
+            e.preventDefault(); // Evita que la pantalla se mueva
+        }, {passive: false});
+
+        render();
+    </script>
+</body>
+</html>
