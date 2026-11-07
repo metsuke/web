@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content"construyendo="" la="" plena="" inclusión="" a="" través="" de="" ciencia,="" comunicación,="" felicidad,="" productividad="" y="" videojuegos."="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construyendo la plena inclusión a través del videojuego</title>
+    <link id="transition-stylesheet" rel="stylesheet" href="../assets/css/transitions.css">
+    <link id="main-stylesheet" rel="stylesheet" href="../assets/css/style.css">
+    
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- Efenerudes -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/efemerides.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class='logo' src="../assets/img/logo/MetsukeLogo.png" alt="Logo Metsuke">
+        <h1>MetsuOS</h1>
+        <h2>Construyendo la plena inclusión a través del videojuego</h2>
+    </header>
+    <?php //include 'blacklist_blocker.php';?>
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../apps.html">Apps</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../kb.html">KB</a>
+        <a href="../noticias.html">Noticias</a>
+        <a href="../novedades.html">Novedades</a>
+        <a href="../el-proyecto.html">MetsuOS</a>
+        <a href="../publicbrain/index.html">PublicBrain</a>
+        <a href="https://metsuke.itch.io">Itch.io</a>
+    </nav>
+
+    <main>
+<h1>Requisitos Previos para el Curso de MetsuDepManager - Prepárate sin Complicaciones  🔴②</h1>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_7ca926b2ca82e9120c0ce1718119fb0c_MD5.jpg" alt="Requisitos Previos para el Curso de MetsuDepManager - Prepárate sin Complicaciones">
+<a class='internal' href='./curso-sobre-desarrollo-de-un-gestor-de-paquetes-python-que-use-poetry-como-backend-🟡③.html'>Curso sobre desarrollo de un gestor de paquetes python que use poetry como backend 🟡③</a></p>
+<p>Si estás a punto de sumergirte en el curso de Metsuke para crear MetsuDepManager —ese gestor de paquetes Python que pone la ética y la seguridad en el centro, usando Poetry como base—, lo primero es asegurarte de que tu setup no te frene. No te pido que seas un experto, solo que tengas lo básico para no atascarte en los primeros pasos. Piensa en esto como el calentamiento antes de una buena partida: rápido, efectivo y sin sorpresas. Vamos a repasarlo de forma sencilla, con trucos para que lo tengas listo en media hora.</p>
+<h2>1. Python ≥ 3.9: La Base Sólida que Necesitas</h2>
+<p>¿Por qué no menos? Poetry y las herramientas modernas que usaremos exigen al menos 3.9 para sacarle jugo a features como los tipos genéricos nativos (PEP 585) o las uniones con or (PEP 604), que evitan dolores de cabeza en el código. Si vas con algo más viejo, te arriesgas a errores raros o dependencias que no cuadran.</p>
+<ul>
+<li><strong>Compruébalo ya:</strong> Abre tu terminal y teclea <code class='language-html'>python --version</code>. Si no ves 3.9 o superior, actualiza desde <a href="https://www.python.org/downloads/">python.org</a> o usa pyenv para alternar versiones sin dramas (ideal si pruebas en varios entornos).</li>
+<li><strong>Consejo de amigo:</strong> Apunta a 3.12 si puedes; es estable y vuela en desarrollo. Y desde el principio, crea un venv con <code class='language-html'>python -m venv mi-env</code> para que nada se mezcle con tu Python global.</li>
+</ul>
+<h2>2. Lo Básico de Poetry: No Reinventes la Rueda</h2>
+<p>No hace falta ser un gurú, pero sí saber moverte con comandos como <code class='language-html'>poetry init</code> (para arrancar un proyecto), <code class='language-html'>poetry add paquete</code> (añadir dependencias), <code class='language-html'>poetry install</code> (montar todo) o <code class='language-html'>poetry lock</code> (fijar versiones para que sea repetible). Entiende el <code class='language-html'>pyproject.toml</code> como el manifiesto de tu proyecto y el lockfile como tu salvavidas contra sorpresas.</p>
+<ul>
+<li><strong>Por qué importa aquí:</strong> MetsuDepManager es un wrapper sobre Poetry, así que si lo conoces, extenderlo será coser y cantar.</li>
+<li><strong>Repaso express:</strong> Si hace meses que no lo usas, echa un ojo a la <a href="https://python-poetry.org/docs/">docu oficial</a>. Prueba: <code class='language-html'>poetry new prueba-rapida</code>, añade <code class='language-html'>requests</code> y corre <code class='language-html'>poetry install</code>. En 10 minutos, listo.</li>
+<li><strong>Extra para el curso:</strong> Échale un vistazo a la API de Poetry (como <code class='language-html'>poetry.core</code>) —lo desgranamos después, pero adelantar te da ventaja.</li>
+</ul>
+<h2>3. Git en Sus Fundamentos: Versiona sin Sudor</h2>
+<p>Basta con lo esencial: <code class='language-html'>git init</code> para empezar un repo, <code class='language-html'>git add .</code> y <code class='language-html'>git commit -m &quot;cambio claro&quot;</code> para guardar, <code class='language-html'>git push</code> para subir y <code class='language-html'>git pull</code> para sincronizar. Conoce el <code class='language-html'>.gitignore</code> para esconder carpetas como <code class='language-html'>__pycache__</code> o venvs.</p>
+<ul>
+<li><strong>Razones prácticas:</strong> El curso usa GitHub Actions para CI/CD, y clonarás el repo, crearás branches para features (como políticas éticas) y harás merges.</li>
+<li><strong>Si necesitas refrescar:</strong> Instala Git (<code class='language-html'>git --version</code>) y crea una cuenta en GitHub. Prueba un repo de prueba: commit, push y branch. Configura tu identidad con <code class='language-html'>git config --global user.name &quot;Tú&quot;</code> y <code class='language-html'>git config --global user.email &quot;tú@ejemplo.com&quot;</code>.</li>
+<li><strong>Truco útil:</strong> Usa branches descriptivas como <code class='language-html'>feature/motor-etico</code> para no liarte.</li>
+</ul>
+<h2>4. Línea de Comandos: Tu Aliada Diaria</h2>
+<p>Maneja lo básico: <code class='language-html'>cd</code> para cambiar de carpeta, <code class='language-html'>ls</code> para listar (o <code class='language-html'>dir</code> en Windows), <code class='language-html'>mkdir</code> para crear directorios y <code class='language-html'>echo &quot;texto&quot; &gt; archivo.txt</code> para escribir rápido. En Linux/macOS, bash o zsh; en Windows, PowerShell o Git Bash.</p>
+<ul>
+<li><strong>Por qué no puedes evitarla:</strong> El curso es puro terminal: comandos de MetsuDepManager, tests y debug de auditorías.</li>
+<li><strong>Si eres nuevo:</strong> Practica con un cheat sheet. Usa VS Code con su terminal integrada para no saltar ventanas.</li>
+<li><strong>Plus:</strong> Aprende <code class='language-html'>|</code> y <code class='language-html'>grep</code> para filtrar outputs —te salvará al chequear logs de Safety.</li>
+</ul>
+<p>Con estos pilares, el módulo 1 (motivación y setup) será un paseo. El curso no es para absolutos principiantes, pero si cubres esto, disfrutarás cada paso hacia tu gestor personalizado. Invierte el tiempo ahora y agradece después.</p>
+<h2>Referencias bibliográficas que apoyan estos requisitos previos</h2>
+<ol>
+<li>
+<p>Poetry Project (2025). <em>Poetry Documentation: "I"ntroduction</em>.<br>
+<a href="https://python-poetry.org/docs/">Enlace oficial</a><br>
+.- Documentación que confirma Python 3.9+ como requisito mínimo para Poetry, destacando compatibilidad multiplataforma y soporte para PEPs modernos como 585 y 604, esencial para desarrollo de wrappers como MetsuDepManager.</p>
+</li>
+<li>
+<p>Atlassian (2025). <em>How to Use Git: Tutorials, Workflows & Commands</em>.<br>
+<a href="https://www.atlassian.com/git">Enlace al tutorial</a><br>
+.- Guía completa de Git como sistema de control de versiones distribuido, cubriendo comandos básicos (init, add, commit, push) y branching/merging, recomendada para prerrequisitos en cursos de desarrollo colaborativo.</p>
+</li>
+<li>
+<p>Real Python (2024). <em>Build Command-Line Interfaces With Python's argparse</em>.<br>
+<a href="https://realpython.com/command-line-interfaces-python-argparse/">Enlace al tutorial</a><br>
+.- Tutorial actualizado que explica el uso de argparse para CLIs en Python, enfatizando conocimientos básicos de terminal para parsing de argumentos, ideal para devs que manejan comandos en entornos como el de Poetry.</p>
+</li>
+</ol>
+<h2>Referencias que refutan o matizan la necesidad de estos prerrequisitos estrictos</h2>
+<ol>
+<li>
+<p>Stack Overflow (2023). <em>How can I specify which Python version poetry should create venv?</em>.<br>
+<a href="https://stackoverflow.com/questions/66555963/how-can-i-specify-which-python-version-poetry-should-create-venv">Enlace a la discusión</a><br>
+.- Debate que muestra cómo Poetry puede usar versiones inferiores a 3.9 con pyenv o env use, matizando que el mínimo no es absoluto si se configura manualmente, aunque recomienda 3.9+ para estabilidad.</p>
+</li>
+<li>
+<p>W3Schools (2025). <em>Git Tutorial</em>.<br>
+<a href="https://www.w3schools.com/git/">Enlace al tutorial</a><br>
+.- Tutorial básico de Git que asume cero conocimientos previos, cubriendo desde instalación hasta workflows, sugiriendo que no se necesitan fundamentos avanzados para empezar en proyectos simples como un curso introductorio.</p>
+</li>
+<li>
+<p>HubSpot (2025). <em>An Intro to Git and GitHub for Beginners (Tutorial)</em>.<br>
+<a href="https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners">Enlace al artículo</a><br>
+.- Guía para principiantes que integra Git con GitHub sin requerir experiencia previa en terminal, enfocándose en PRs y branches básicas, cuestionando la necesidad de CLI profunda para flujos iniciales.</p>
+</li>
+</ol>
+<h2>One More Thing</h2>
+<p><img mos="mos" style="view-transition-name: image-hero;" src="https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg" alt="Un escenario de retrocomputación del siglo 24"></p>
+<p>¡Desbloquea el poder de <a class='internal' href='./creando-metsuos-⚫①.html'>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!</p>
+<h2>Contenido registrado en Safe Creative</h2>
+<center><a href="https://www.safecreative.org/user/0801120040408" ><img alt='Logo Safe Creative' src="https://resources.safecreative.org/user/0801120040408/label/standard-male-150" style="border:2px solid red;" title="Safe Creative #0801120040408"/></a><br/>
+<a href="https://www.safecreative.org/?ref5mjalg">¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a>
+</center>
+<h2>MetsuOS Needs You!</h2>
+<p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.</p>
+<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.</p>
+<p><strong><iframe width="100%" height="640" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></strong></p>
+<h2>Sobre el sistema de validez de un contenido en MetsuOS</h2>
+<p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?</p>
+<ul>
+<li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.</li>
+<li>🔴② - Rojo2 - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".</li>
+<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.</li>
+<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.</li>
+<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".</li>
+<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</li>
+</ul>
+<p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)</p>
+<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:</p>
+<ul>
+<li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)</li>
+<li>⚖️ - Analisis
+<ul>
+<li>⚖️📚 - Análisis Bibligráfico</li>
+<li>⚖️🔬 - Análisis Científico</li>
+<li>⚖️🏛️ - Análisis Estructural</li>
+<li>⚖️🧠 - Análisis Filosófico</li>
+</ul>
+</li>
+<li>📖 - Referencia
+<ul>
+<li>📖📚 - Referencia Bibliográfica / Libro</li>
+<li>📖🔬- Referencia Científica / Paper</li>
+<li>📖🏛️ - Referencia Estructural</li>
+<li>📖🧠 - Referencia Filosófica</li>
+</ul>
+</li>
+<li>🔍️- Paradigma</li>
+</ul>
+<p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.</p>
+<ul>
+<li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.</li>
+<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</li>
+</ul>
+<p>También aplicamos el <a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).</p>
+<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo:  ⚫①-D4 o  🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.</p>
+<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).</p>
+<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href="https://twitter.com/metsuke">contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a></p>
+<p>Consulta la versión completa de la descripcion en <a class='internal' href='./⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html'>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a></p>
+<h2>Bibliografía de referencia</h2>
+<ul>
+<li><a class='internal' href='./elementos-del-conocimiento-humano-y-cientifico-🔴②-⚖️🔴②.html'>Elementos del conocimiento humano y científico 🔴② ⚖️🔴②</a></li>
+<li><a class='internal' href='./sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html'>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a></li>
+</ul>
+<p>⚫🔴🟡🟢🔵⚪ | ①②③④⑤⑥ | ⚫① 🔴② 🟡③ 🟢④ 🔵⑤ ⚪⑥</p>
+<ul><li><b>Información IA: </b>Generado asistido por IA (Grok-4, Raul Carrillo aka Metsuke). Supervisado por Humano. </li><li><b>Accesibilidad Documento: </b>Pendiente de analisis</li><li><b>Credibilidad Documento: </b>Pendiente de comprobación</li><li><b>Ultima Modificación: </b>Mon Dec 01 2025 10:16:09 GMT+0100 (hora estándar de Europa central)</li><li><b>Ultima Supervisión: </b>Primera Supervisión Programada</li><li><b> Versión Documento: </b>0.2.1</li></ul><!--(iaStatus: 8
+iaStatus_Model: Grok-4, Raul Carrillo aka Metsuke
+iaStatus_Generado: I
+iaStatus_Supervisado: H
+iaStatus_Validado: '-'
+a11y: 0
+checked: 0
+lang: ES
+translations: null
+created: 2025-12-01T09:00:15.625Z
+modified: 2025-12-01T09:16:09.617Z
+supervisado: ''
+ACCION: ''
+ver_major: 0
+ver_minor: 2
+ver_rev: 1
+nav_primary: []
+nav_secondary: []
+tags: []
+MOS_TopImg_Video: CursoMetsuDepManager_004.mp4
+)--><script id='toggleVideo' src='https://metsuke.com/assets/js/videoToggle.js' data-video='https://metsuke.com/assets/videos/toggle/CursoMetsuDepManager_004.mp4'></script>        <!--<p>Esta página ha sido visitada <?php //include 'contador_visitas.php'; echo $contador_actual; ?>42 veces.</p>-->
+    </main>
+    
+    <footer>
+        <p>© 2018-2025 <a href='https://www.linkedin.com/in/raulcarrillo/'>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lang Script -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/lang.js"></script>
+    <script>
+        window.onload = function() {
+            getLanguagePreferences();
+        };
+    </script>
+
+    <!-- Contador de visitas (no visible en RT en la web) -->
+    <script type="text/javascript" src="https://metsuke.com/assets/js/counter.js"></script>
+
+
+    <!-- mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs';
+        //import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+        mermaid.initialize({ useMaxWidth: true,startOnLoad: true,theme:'base'
+            ,themeVariables: { 
+                primaryColor: '#000000'
+                ,primaryTextColor: '#ffffff'
+            }
+        });
+        function optimizeMermaidSVG() {
+            return
+            const mermaids = document.querySelectorAll('.mermaid');
+            
+            mermaids.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (!svg) return;
+                
+                // Obtener el bounding box real del contenido
+                const bbox = svg.getBBox();
+                const padding = 20; // Padding adicional en píxeles
+                
+                // Calcular dimensiones reales
+                const width = Math.max(bbox.width + padding * 2, 100);
+                const height = Math.max(bbox.height + padding * 2, 50);
+                
+                // Establecer viewBox preciso
+                svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+                
+                // Ajustar atributos de tamaño
+                svg.setAttribute('width', width);
+                svg.setAttribute('height', height);
+                
+                // Remover atributos problemáticos
+                svg.removeAttribute('style');
+                svg.style.height = 'auto';
+                svg.style.width = 'auto';
+                svg.style.maxWidth = '100%';
+                
+                // Ajustar contenedor
+                container.style.height = 'auto';
+                container.style.width = 'auto';
+                container.style.maxWidth = '100%';
+                
+                console.log(`SVG ajustado: ${width}x${height} (bbox: ${bbox.width}x${bbox.height})`);
+            });
+            }
+
+            // Ejecutar después del renderizado
+            mermaid.initialize({
+            startOnLoad: true,
+            // Configuración que reduce padding interno
+            flowchart: {
+                diagramPadding: 8,
+                useMaxWidth: true
+            }
+            });
+
+            // Hook post-renderizado
+            const originalParse = mermaid.parse;
+            mermaid.parse = function() {
+            return originalParse.apply(this, arguments).then(() => {
+                //setTimeout(optimizeMermaidSVG, 50);
+            });
+            };
+    </script>
+
+</body>
+
+</html>
