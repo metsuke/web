@@ -1,0 +1,116 @@
+<!doctype html><html lang=es><meta charset=utf-8><meta content="noindex, nofollow" name=googlebot><meta a ciencia, comunicación, content"construyendo de felicidad, inclusión la name=description plena productividad través videojuegos." y><meta content="width=device-width,initial-scale=1.0" name=viewport><title>Construyendo la plena inclusión a través del videojuego</title><link href=../assets/css/transitions.css id=transition-stylesheet rel=stylesheet><link href=../assets/css/style.css id=main-stylesheet rel=stylesheet><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><script src=https://metsuke.com/assets/js/efemerides.js></script><body><header><img alt="Logo Metsuke" class=logo src=../assets/img/logo/MetsukeLogo.png><h1>MetsuOS</h1><h2>Construyendo la plena inclusión a través del videojuego</h2></header><?php //include 'blacklist_blocker.php';?><nav><a href=../index.html>Inicio</a><a href=../apps.html>Apps</a><a href=https://metsuke.com/publicbrain/la-biblioteca-del-archivero-del-retro-%F0%9F%9F%A1%E2%91%A2.html>Biblioteca</a><a href=../blog.html>Blog</a><a href=../publicbrain/hemeroteca.html>Hemeroteca</a><a href=../juegos.html>Juegos</a><a href=../kb.html>KB</a><a href=../publicbrain/curso-e-introduccion-tecnica-sobre--mcl-metsuos-context-language-%F0%9F%9F%A1%E2%91%A2.html>MCL</a><a href=../noticias.html>Noticias</a><a href=../novedades.html>Novedades</a><a href=../npl.html>NPL</a><a href=../el-proyecto.html>MetsuOS</a><a href=../publicbrain/index.html>PublicBrain</a><a href=../quiosco/>Quiosco</a><a href=../publicbrain/curso-sobre-spec-driven-development--%F0%9F%9F%A1%E2%91%A2.html>SDD</a><a href=../publicbrain/hemeroteca---turra-news.html>TurraNews</a><a href=../publicbrain/hemereotca---tuxnsec.html>TuxNSec</a><a href=../reportajes.html>Reportajes</a></nav><main><h1>MPL (Metsu Programming Language) Specs (WIP tentativo alpha)</h1><p><a class=internal href=../el-proyecto.html>El Proyecto</a><h1>Especificación Técnica Oficial: Metsu Programming Language (MPL)</h1><p><strong>Versión de la Especificación:</strong> 0.1.0-alpha<br> <strong>Autor:</strong> Metsuke<br> <strong>Referencia del Proyecto:</strong> MetsuOS / mom-py integration<hr><h2>1. Visión General de la Arquitectura MPL</h2><p>El lenguaje MPL (<em>Metsu Programming Language</em>) se concibe como un lenguaje de programación y especificación estructurado en capas jerárquicas de abstracción. Su objetivo principal es cerrar la brecha entre la definición en lenguaje humano de alto nivel (requisitos y flujos de usuario) y la ejecución lógica formal en código computable.<p>MPL se estructura en tres capas principales de pseudocódigo, sobre las cuales se sitúa una capa superior de definición funcional (URD):<pre class=mermaid>graph TD
+    classDef urd fill:#2b4c7e,stroke:#4a90e2,stroke-width:2px,color:#ffffff;
+    classDef capa3 fill:#1e5128,stroke:#4e9f3d,stroke-width:2px,color:#ffffff;
+    classDef capa2 fill:#7b4b94,stroke:#b873d9,stroke-width:2px,color:#ffffff;
+    classDef capa1 fill:#9e472a,stroke:#e67e22,stroke-width:2px,color:#ffffff;
+
+    URD["<b>Capa URD (User Requirements Definition)</b><br>Definición funcional en lenguaje humano (es-ES)<br><i>Ejemplo: Pantalla de carga de la que se sale al pulsar tecla...</i>"]:::urd
+
+    Capa3["<b>Capa 3: Pseudocódigo de Alto Nivel (Human-Centric / DSL)</b><br>Traducción declarativa en es-ES formalizado"]:::capa3
+
+    Capa2["<b>Capa 2: Pseudocódigo Orientado a Objetos Conceptuales e Interacciones</b><br>Entidades, estados, eventos, transferencia de datos e interfaces"]:::capa2
+
+    Capa1["<b>Capa 1: Pseudocódigo Estructurado Imperativo (Base / Estándar)</b><br>Variables, bucles, condicionales, funciones primitivas, E/S"]:::capa1
+
+    URD --> Capa3
+    Capa3 --> Capa2
+    Capa2 --> Capa1</pre><hr><h2>2. Descripción Detallada de Capas</h2><h3>2.1. Capa URD (User Requirements Definition)</h3><ul><li><strong>Naturaleza:</strong> Capa de definición narrativa e intuitiva escrita strictly en castellano (<code>es-ES</code>).<li><strong>Propósito:</strong> Definir el comportamiento global del sistema, pantallas, transiciones, casos de uso y experiencias de usuario de forma legible para personal no técnico.<li><strong>Mapeo:</strong> Sirve como la especificación origen que el compilador/transpilador de MPL analiza para derivar las capas de pseudocódigo formal.</ul><h3>2.2. Capa 3: Pseudocódigo de Alto Nivel (Human-Centric DSL)</h3><ul><li><strong>Naturaleza:</strong> Pseudocódigo estructurado pero expresado mediante léxico y gramática formalizada en <code>es-ES</code>.<li><strong>Sintaxis:</strong> Utiliza palabras clave en español (<code>PANTALLA</code>, <code>CUANDO_PULSAR</code>, <code>TRANSICIONAR_A</code>, <code>MENÚ_OPCIONES</code>).<li><strong>Función:</strong> Define la topología de la aplicación, vistas, estados de interfaz y flujos directos de navegación.</ul><h3>2.3. Capa 2: Objetos Conceptuales e Interacciones</h3><ul><li><strong>Naturaleza:</strong> Orientada a entidades relacionales, modelos de datos y buses de eventos.<li><strong>Componentes:</strong><li><strong>Objetos de Datos (DataHolders):</strong> Almacenan el estado local o persistente (p. ej., documentos PDF, vectores, prompts, estados de la IA).<li><strong>Interacciones:</strong> Definición de eventos, emisores, receptores y canalización de señales.</ul><h3>2.4. Capa 1: Pseudocódigo Formal Estándar</h3><ul><li><strong>Naturaleza:</strong> Código imperativo/estructurado clásico de bajo nivel conceptual.<li><strong>Componentes:</strong> Control de flujo (<code>SI</code>, <code>MIENTRAS</code>, <code>PARA</code>), tipos de datos primitivos (<code>entero</code>, <code>cadena</code>, <code>booleano</code>, <code>arreglo</code>), invocación de métodos del sistema base.</ul><hr><h2>3. Mapeo del Código Adjunto (<code>mom-py</code>) a Componentes MPL</h2><p>A partir del análisis del código base <code>mom-py</code>, se extraen las siguientes entidades y módulos del motor base que darán soporte a las librerías nativas de MPL en la Capa 1 y Capa 2:<pre class=mermaid>graph LR
+    classDef capa1 fill:#9e472a,stroke:#e67e22,stroke-width:2px,color:#ffffff;
+    classDef mom fill:#2c3e50,stroke:#7f8c8d,stroke-width:1px,color:#ffffff;
+
+    C1["<b>Capa 1: Pseudocódigo Imperativo</b>"]:::capa1
+
+    subgraph Modulos_MomPy ["Módulos Extraídos de mom-py"]
+        PDF["<b>1. ExtractorDocumental</b><br>pdf_extractor_ultra.py<br>pdf_parser.py<br>ingest_agent.py"]:::mom
+        AI["<b>2. ClusterConocimiento / AgenteIA</b><br>ai_cluster_manager.py<br>ingest_agent_ai.py<br>agent.py"]:::mom
+        DB["<b>3. RepositorioProyecto</b><br>schemas.py<br>crud.py<br>projects.py<br>migrate.py"]:::mom
+        CLI["<b>4. SistemaCLI / Compilador</b><br>cli.py<br>compiler.py"]:::mom
+    end
+
+    C1 --> PDF
+    C1 --> AI
+    C1 --> DB
+    C1 --> CLI</pre><h3>3.1. Extracción de Módulos del Sistema (<code>mom-py</code>)</h3><ol><li><strong>Agente de Ingesta y Extracción (<code>pdf_extractor_ultra.py</code>, <code>pdf_parser.py</code>, <code>ingest_agent.py</code>)</strong><li><strong>Funcionalidad:</strong> Extracción intensiva de texto y estructura desde documentos PDF, procesamiento OCR, normalización de documentos.<li><p><strong>Mapeo en MPL (Capa 2):</strong> Objeto conceptual <code>ExtractorDocumental</code> y <code>DocumentoPDF</code>.</p><li><p><strong>Gestión de Clusters e IA (<code>ai_cluster_manager.py</code>, <code>ingest_agent_ai.py</code>, <code>agent.py</code>)</strong></p><li><strong>Funcionalidad:</strong> Agrupamiento de contexto, procesamiento mediante modelos de lenguaje, orquestación de embeddings y clusters de conocimiento.<li><p><strong>Mapeo en MPL (Capa 2):</strong> Objeto conceptual <code>ClusterConocimiento</code> y <code>AgenteIA</code>.</p><li><p><strong>Esquemas y Persistencia (<code>schemas.py</code>, <code>crud.py</code>, <code>projects.py</code>, <code>migrate.py</code>)</strong></p><li><strong>Funcionalidad:</strong> Gestión de esquemas de datos, operaciones CRUD, migración de base de datos y gestión de proyectos.<li><p><strong>Mapeo en MPL (Capa 2):</strong> Objeto conceptual <code>RepositorioProyecto</code> y <code>GestorEstructuras</code>.</p><li><p><strong>Interfaz de Línea de Comandos (<code>cli.py</code>, <code>compiler.py</code>)</strong></p><li><strong>Funcionalidad:</strong> Punto de entrada para ejecución de comandos, compilación de tareas y pipeline de transformación.<li><strong>Mapeo en MPL (Capa 1/2):</strong> Módulo nativo <code>SistemaCLI</code> y <code>PipelineCompilador</code>.</ol><hr><h2>4. Ejemplo de Mapeo Multi-Capa en MPL</h2><p>A continuación se ilustra cómo se define un flujo de la aplicación en las diferentes capas de MPL:<h3>4.1. Definición en Capa URD (Español <code>es-ES</code>)</h3><blockquote><p>La aplicación muestra una pantalla de carga mientras inicializa los agentes de ingesta de documentos. Al pulsar cualquier tecla, el usuario pasa a la pantalla del menú principal con 3 opciones: 'Procesar PDF', 'Consultar Cluster IA' y 'Salir'.</blockquote><h3>4.2. Definición en Capa 3 (Pseudocódigo de Alto Nivel es-ES)</h3><pre><code class=language-mpl>PANTALLA PantallaCarga:
+    MOSTRAR "Inicializando componentes de mom-py..."
+    AL_PULSAR_TECLA:
+        TRANSICIONAR_A PantallaMenuPrincipal
+
+PANTALLA PantallaMenuPrincipal:
+    TITULO "Menú Principal - MPL Manager"
+    OPCION "1. Procesar PDF" CON_ACCION IniciarIngestaPDF
+    OPCION "2. Consultar Cluster IA" CON_ACCION IniciarConsultaIA
+    OPCION "3. Salir" CON_ACCION FinalizarAplicacion
+</code></pre><h3>4.3. Definición en Capa 2 (Objetos Conceptuales e Interacciones)</h3><pre><code class=language-mpl>OBJETO_CONCEPTUAL GestorMenu:
+    DATOS:
+        estado_interfaz: Cadena
+        lista_opciones: Lista[Cadena]
+    INTERACCIONES:
+        METODO inicializar_agentes():
+            llamar IngestAgent.conectar()
+            llamar AIClusterManager.sincronizar()
+        METODO capturar_evento_tecla(tecla: EventoTecla):
+            SI estado_interfaz == "CARGA":
+                CAMBIAR_ESTADO("MENU_PRINCIPAL")
+
+OBJETO_CONCEPTUAL DocumentoProcesable:
+    DATOS:
+        ruta_archivo: Cadena
+        metadatos: Diccionario
+        contenido_extraido: Cadena
+    INTERACCIONES:
+        METODO ejecutar_ocr():
+            llamar OCREngine.procesar(ruta_archivo)
+</code></pre><h3>4.4. Definición en Capa 1 (Pseudocódigo Formal Imperativo)</h3><pre><code class=language-mpl>FUNCION IniciarIngestaPDF(ruta: cadena) -> booleano:
+    VARIABLE doc: DocumentoProcesable
+    doc.ruta_archivo = ruta
+
+    SI NO Archivo.existe(ruta) ENTONCES:
+        Imprimir("Error: El archivo no existe.")
+        RETORNAR Falso
+    FIN_SI
+
+    VARIABLE resultado_ocr: cadena
+    resultado_ocr = OCREngine_ProcesarPaginas(doc.ruta_archivo)
+
+    SI Longitud(resultado_ocr) > 0 ENTONCES:
+        doc.contenido_extraido = resultado_ocr
+        CRUD_GuardarDocumento(doc)
+        RETORNAR Verdadero
+    SINO:
+        RETORNAR Falso
+    FIN_SI
+FIN_FUNCION
+</code></pre><h3>4.5. Diagrama de Secuencia Multi-Capa</h3><pre class=mermaid>sequenceDiagram
+    autonumber
+    participant URD as Capa URD (Usuario)
+    participant C3 as Capa 3 (DSL Alto Nivel)
+    participant C2 as Capa 2 (Objetos/Eventos)
+    participant C1 as Capa 1 (Imperativo)
+    participant Mom as Motor Base (mom-py)
+
+    Note over URD: "El usuario pulsa la opción de procesar PDF"
+    URD->>C3: Seleccionar '1. Procesar PDF'
+
+    Note over C3: PANTALLA PantallaMenuPrincipal<br>OPCION "1. Procesar PDF" CON_ACCION IniciarIngestaPDF
+    C3->>C2: IniciarIngestaPDF(ruta)
+
+    Note over C2: OBJETO_CONCEPTUAL DocumentoProcesable<br>Ejecutar evento de ingesta
+    C2->>C1: IniciarIngestaPDF(ruta: cadena)
+
+    Note over C1: FUNCION IniciarIngestaPDF(...)<br>Validar archivo y llamar componentes
+    C1->>Mom: pdf_extractor_ultra.procesar(ruta)
+    Mom-->>C1: Retorna texto extraído
+    C1->>Mom: crud.guardar_documento(datos)
+    Mom-->>C1: Confirmación de guardado
+
+    C1-->>C2: Estado actualizado (Éxito)
+    C2-->>C3: Transicionar a PantallaResultado
+    C3-->>URD: Visualización de resultados en pantalla</pre><hr><h2>5. Próximos Pasos de Desarrollo de MPL</h2><ol><li><strong>Formalización de la Gramática Antlr/EBNF:</strong> Definir la sintaxis léxica de las Capas 1, 2 y 3.<li><strong>Desarrollo del Parser en <code>compiler.py</code>:</strong> Extender el compilador actual de <code>mom-py</code> para procesar la sintaxis de las capas de MPL.<li><strong>Mapeo Completo de APIs:</strong> Vincular las llamadas de la Capa 1 directamente con los métodos Python de <code>pdf_extractor_ultra.py</code>, <code>ai_cluster_manager.py</code> y <code>crud.py</code>.</ol><ul><li><b>Información IA: </b>Pendiente de Definición<li><b>Ultima Modificación: </b>2026-10-27 20:42:31.362000+00:00<li><b>Versión Documento: </b>0.1.2</ul></main><footer><p>© 2018-2026 <a href=https://www.linkedin.com/in/raulcarrillo/>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</footer><script src=https://metsuke.com/assets/js/lang.js></script><script>window.onload=function(){getLanguagePreferences()};</script><script src=https://metsuke.com/assets/js/counter_20260409.js></script><script type=module>import mermaid from"https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs";
+//import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+mermaid.initialize({useMaxWidth:!0,startOnLoad:!0,theme:`base`,themeVariables:{primaryColor:`#000000`,primaryTextColor:`#ffffff`}});function optimizeMermaidSVG(){}
+// Ejecutar después del renderizado
+mermaid.initialize({startOnLoad:!0,flowchart:{diagramPadding:8,useMaxWidth:!0}});
+// Hook post-renderizado
+const originalParse=mermaid.parse;mermaid.parse=function(){return originalParse.apply(this,arguments).then(()=>{
+//setTimeout(optimizeMermaidSVG, 50);
+})};</script>
