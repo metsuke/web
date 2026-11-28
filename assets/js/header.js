@@ -1,0 +1,11 @@
+function drawTedtalkVideo(video) {
+    var vid = document.getElementById("tt-" + video);
+    var TT = '<iframe width="100%" height="480" src="https://embed.ted.com/talks/' + video + '" title="Ted Talk video player" frameborder="0" scrolling="no"  allowfullscreen="1"></iframe>';
+    vid.innerHTML = TT;
+}
+
+function drawYoutubeVideo(video) {
+    var vid = document.getElementById("yt-" + video);
+    var YT = '<iframe width="100%" height="480" src="https://www.youtube.com/embed/' + video + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    vid.innerHTML = YT;
+}

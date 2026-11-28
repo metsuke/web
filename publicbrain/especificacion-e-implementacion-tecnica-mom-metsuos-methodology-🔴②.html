@@ -1,0 +1,420 @@
+<!doctype html><html lang=es><meta charset=utf-8><meta content="noindex, nofollow" name=googlebot><meta a ciencia, comunicación, content"construyendo de felicidad, inclusión la name=description plena productividad través videojuegos." y><meta content="width=device-width,initial-scale=1.0" name=viewport><title>Construyendo la plena inclusión a través del videojuego</title><link href=../assets/css/transitions.css id=transition-stylesheet rel=stylesheet><link href=../assets/css/style.css id=main-stylesheet rel=stylesheet><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><script src=https://metsuke.com/assets/js/efemerides.js></script><body><header><img alt="Logo Metsuke" class=logo src=../assets/img/logo/MetsukeLogo.png><h1>MetsuOS</h1><h2>Construyendo la plena inclusión a través del videojuego</h2></header><?php //include 'blacklist_blocker.php';?><nav><a href=../index.html>Inicio</a><a href=../apps.html>Apps</a><a href=https://metsuke.com/publicbrain/la-biblioteca-del-archivero-del-retro-%F0%9F%9F%A1%E2%91%A2.html>Biblioteca</a><a href=../blog.html>Blog</a><a href=../publicbrain/hemeroteca.html>Hemeroteca</a><a href=../juegos.html>Juegos</a><a href=../kb.html>KB</a><a href=../publicbrain/curso-e-introduccion-tecnica-sobre--mcl-metsuos-context-language-%F0%9F%9F%A1%E2%91%A2.html>MCL</a><a href=../noticias.html>Noticias</a><a href=../novedades.html>Novedades</a><a href=../npl.html>NPL</a><a href=../el-proyecto.html>MetsuOS</a><a href=../publicbrain/index.html>PublicBrain</a><a href=../quiosco/>Quiosco</a><a href=../publicbrain/curso-sobre-spec-driven-development--%F0%9F%9F%A1%E2%91%A2.html>SDD</a><a href=../publicbrain/hemeroteca---turra-news.html>TurraNews</a><a href=../publicbrain/hemereotca---tuxnsec.html>TuxNSec</a><a href=../reportajes.html>Reportajes</a></nav><main><h1>Especificación e Implementación Técnica: MOM (MetsuOS Methodology) 🔴②</h1><p><a class=internal href=../publicbrain/mom-metsuos-methodology-🟡③.html>MOM (MetsuOS Methodology) 🟡③</a><h2>1. Introducción y Visión General</h2><p><strong>MOM (MetsuOS Methodology)</strong> es un marco metodológico y de ingeniería de software enfocado en el <strong>Desarrollo A Prueba de IA</strong>. Se fundamenta en la norma <strong>ESA PSS-05</strong> (European Space Agency Software Engineering Standards), aplicando un principio de <strong>atomización extrema de especificaciones</strong>:<ul><li>Ningún componente, línea de código o documento de usuario se escribe sin trazabilidad previa e inmutable.<li>La verdad del sistema no reside en archivos de texto monolíticos, sino en <strong>unidades mínimas independientes (ficheros JSON atómicos)</strong>.<li>Los agentes de IA (LLMs) no deciden la arquitectura global; únicamente ejecutan, refactorizan u onboardean bajo los <strong>límites estrictos (guardrails)</strong> impuestos por los esquemas JSON y la jerarquía ESA.<li><strong>Modelo Multiproyecto Standalone y Herencia Múltiple (DAG):</strong> MOM opera como un gestor centralizado que administra un directorio de datos global (<code>data/projects/</code>), permitiendo que un proyecto herede especificaciones de uno o varios proyectos base/estándares (ej. POSIX, ESA-PSS05, A11Y, W3C Vanilla) mediante un Grafo Acíclico Dirigido.<li><strong>Unicidad de Slugs y Proveniencia:</strong> Cada ítem utiliza un identificador global único por espacio de nombres (<code>FASE-NAMESPACE-SLUG</code>). El compilador resuelve automáticamente los diamantes de herencia sin duplicar datos y manteniendo la atribución del proyecto de origen.<li><strong>Despliegue e Integración de Documentación Target:</strong> Además de mantener las carpetas locales de <code>doc/</code> y <code>vault/</code> del propio MOM, el motor es capaz de desplegar/copiar automáticamente los entregables generados hacia la carpeta de documentación (<code>docs/</code>) del proyecto destino.<li><strong>Triángulo Tecnológico Soberano y Dual-Core Agnóstico:</strong> MOM se sustenta en tres lenguajes independientes de gobernanza corporativa única (Python 3.11+ stdlib, ANSI C/C++98 y JavaScript Vanilla Core), e incluye dos motores de compilación paralelos:<li><strong>Motor Python (<code>mom-py</code>):</strong> Basado exclusivamente en la biblioteca estándar (<code>stdlib</code> sin dependencias de PyPI), gestionado mediante Poetry.<li><strong>Motor C/C++ (<code>mom-core-native</code>):</strong> Implementación nativa en <strong>ANSI C (C89/C99)</strong> y <strong>C++98</strong>, sin dependencias externas, compilable en sistemas modernos y legacy (ej. aislados o sin Python 3.11+).</ul><hr><h2>2. Metodología ESA PSS-05 Completa, Herencia Múltiple y Flujo de Cambios</h2><h3>2.1 Fases del Ciclo de Vida ESA PSS-05</h3><p>MOM cubre el 100% de la jerarquía de especificación del estándar ESA PSS-05, integrando la documentación de usuario y el onboarding en la misma cascada:<ol><li><strong>URD (<em>User Requirements Document</em>):</strong> Definición de las necesidades del usuario, objetivos del sistema, guía de usuario requerida y onboarding.<li><strong>SRD (<em>Software Requirements Document</em>):</strong> Requisitos funcionales, no funcionales y especificaciones de interfaces/documentación derivables de los URD.<li><strong>ADD (<em>Architectural Design Document</em>):</strong> Diseño de la arquitectura, componentes principales, estructuras de datos, conectores de agentes y módulos de documentación.<li><strong>DDD (<em>Detailed Design Document</em>):</strong> Especificación de funciones, clases, manuales de usuario, contratos de código y archivos de contexto (<code>AGENTS.md</code>).</ol><h3>2.2 Herencia Múltiple de Proyectos y Resolución de Diamantes (DAG)</h3><p>MOM permite que un proyecto declare múltiples proyectos padre en su archivo de configuración <code>project.json</code> mediante el campo <code>parent_projects</code>:<ul><li><strong>Linearización C3 / Orden Topológico:</strong> El compilador recorre el árbol de herencia resolviendo las dependencias desde las raíces (estándares base) hasta el proyecto actual.<li><strong>Deduplicación:</strong> Si un mismo slug/ID de ítem llega a través de múltiples rutas de herencia, el compilador lo procesa una sola vez, consolidando sus rutas de proveniencia (<code>inherited_via</code>).<li><strong>Sobrescritura (<em>Override</em>):</strong> Si el proyecto actual define un ítem con un ID idéntico al de un proyecto heredado, la definición local prevalece sobre la heredada, conservando el historial de atribución de la especificación original.<li><strong>Trazabilidad Inter-Proyecto:</strong> Un ítem <code>SRD</code> declarado en un proyecto derivado puede tener como <code>parent_ids</code> válidos elementos <code>URD</code> definidos en cualquiera de sus proyectos ancestros.</ul><pre class=mermaid>flowchart TD
+    P1[std-posix] --> W1[std-html-css-js]
+    P2[std-esa-pss05] --> W1
+    P3[std-crypto-base] --> W1
+
+    W1 --> B1[std-browser-core]
+    P4[std-a11y-universal] --> B1
+
+    B1 --> NAV[Navegador Web Soberano Final]</pre><h3>2.3 Reglas de Trazabilidad e Integridad Estricta</h3><ul><li><strong>Relación de Parentesco Obligatoria:</strong><li>Todo ítem <strong>SRD</strong> debe incluir al menos un <code>parent_ids</code> hacia un <strong>URD</strong>.<li>Todo ítem <strong>ADD</strong> debe apuntar a un <strong>SRD</strong>.<li>Todo ítem <strong>DDD</strong> debe apuntar a un <strong>ADD</strong>.<li><strong>Validación de Huérfanos:</strong> No se permite la existencia de elementos en SRD, ADD o DDD que carezcan de padres válidos en el proyecto local o en el árbol de herencia acumulado.</ul><hr><h2>3. Arquitectura Multiproyecto y Estructura del Repositorio</h2><p>MOM se organiza de forma que el mismo repositorio aloje tanto el motor Python como el motor C/C++, compartiendo la misma carpeta raíz de proyectos/datos (<code>data/projects/</code>).<h3>3.1 Estructura del Repositorio de Directorios</h3><table><thead><tr><th style=text-align:left>Nivel 1 (Raíz)<th style=text-align:left>Nivel 2 (Directorio)<th style=text-align:left>Nivel 3 (Ficheros / Contenido)<th style=text-align:left>Descripción del Elemento<tbody><tr><td style=text-align:left><code>data/</code><td style=text-align:left><code>projects/</code><td style=text-align:left><code>&lt;project_name>/</code><td style=text-align:left>Carpeta global de almacenamiento de proyectos administrados por MOM.<tr><td style=text-align:left><code>data/</code><td style=text-align:left><code>projects/&lt;proj>/</code><td style=text-align:left><code>project.json</code><td style=text-align:left>Metafichero con configuración del proyecto y lista de <code>parent_projects</code>.<tr><td style=text-align:left><code>data/</code><td style=text-align:left><code>projects/&lt;proj>/</code><td style=text-align:left><code>src/{urd,srd,add,ddd}/</code><td style=text-align:left>Fuente de la verdad atómica en ficheros JSON por fase ESA para el proyecto.<tr><td style=text-align:left><code>data/</code><td style=text-align:left><code>projects/&lt;proj>/</code><td style=text-align:left><code>doc/</code><td style=text-align:left>Documentos consolidados renderizados (<code>URD.md</code>, <code>SRD.md</code>, <code>ADD.md</code>, <code>DDD.md</code>, <code>USER_MANUAL.md</code>).<tr><td style=text-align:left><code>data/</code><td style=text-align:left><code>projects/&lt;proj>/</code><td style=text-align:left><code>vault/</code><td style=text-align:left>Vault hipervinculado navegable en Obsidian específico del proyecto.<tr><td style=text-align:left><code>data/</code><td style=text-align:left><code>projects/&lt;proj>/</code><td style=text-align:left><code>AGENTS.md</code><td style=text-align:left>Fichero auto-generado con reglas inmutables de IA acumuladas por herencia.<tr><td style=text-align:left><code>mom/</code><td style=text-align:left>(python engine)<td style=text-align:left><code>*.py</code><td style=text-align:left>Motor en Python 3.11+ (Gestor CRUD, resolutor DAG, CLI, compilador).<tr><td style=text-align:left><code>native/</code><td style=text-align:left><code>src/</code><td style=text-align:left><code>*.c</code>, <code>*.cpp</code>, <code>*.h</code><td style=text-align:left>Motor nativo en C/C++ agnóstico y compatible con sistemas modernos y legacy.<tr><td style=text-align:left><code>native/</code><td style=text-align:left><code>Makefile</code> / <code>CMakeLists.txt</code><td style=text-align:left>Build scripts<td style=text-align:left>Scripts de compilación nativa multiplataforma.<tr><td style=text-align:left><code>COMPILING_NATIVE.txt</code><td style=text-align:left>--<td style=text-align:left>--<td style=text-align:left>Instrucciones en texto plano para compilar la versión C/C++ sin dependencias.<tr><td style=text-align:left><code>pyproject.toml</code><td style=text-align:left>--<td style=text-align:left>--<td style=text-align:left>Configuración de entorno y empaquetado Poetry para la versión Python.</table><hr><h2>4. Motor Nativo C/C++ Agnosticismo y Compatibilidad Legacy</h2><p>Para garantizar la viabilidad a muy largo plazo y la ejecución en sistemas donde Python 3.11+ no esté disponible, se proporciona <code>mom-core-native</code>.<h3>4.1 Estándares y Dialectos Seleccionados</h3><ul><li><strong>ANSI C (C89/C99):</strong> Garantiza compilación sin errores en compiladores clásicos (<code>gcc</code>, <code>clang</code>, <code>MSVC</code>, <code>tcc</code>, <code>watcom</code>) en sistemas Unix antiguos, Windows legacy o arquitecturas embebidas (x86, ARM, Loongson, RISC-V).<li><strong>C++98:</strong> Estándar C++ de máxima compatibilidad, evitando características modernas (C++11/14/17/20) para garantizar portabilidad absoluta.<li><strong>Parser JSON Embedded Nativo:</strong> Utiliza un parser ligero monolítico en C en un único archivo <code>.c/.h</code>, evitando dependencias externas.</ul><h3>4.2 Instrucciones de Compilación Nativa (<code>COMPILING_NATIVE.txt</code>)</h3><pre><code class=language-text>========================================================================
+MOM (MetsuOS Methodology) - GUÍA DE COMPILACIÓN DEL MOTOR NATIVO C/C++
+========================================================================
+
+Este motor nativo está escrito en C89/C99 y C++98 para garantizar la 
+máxima compatibilidad con sistemas modernos y máquinas antiguas/legacy 
+donde no exista un intérprete de Python 3.11+.
+
+1. COMPILACIÓN EN SISTEMAS UNIX / LINUX / MACOS (GCC / CLANG)
+-------------------------------------------------------------
+Para compilar con GCC utilizando el estándar C99:
+    gcc -O2 -std=c99 -I native/include native/src/*.c -o mom-native
+
+Para compilar con C++98:
+    g++ -O2 -std=c++98 -I native/include native/src/*.cpp -o mom-native
+
+Si se dispone de Make:
+    make -f native/Makefile
+
+2. COMPILACIÓN EN WINDOWS (MSVC / MINDEV / CLANG-CL)
+-------------------------------------------------------------
+Usando el Símbolo del sistema de herramientas nativas de Visual Studio:
+    cl /O2 /I native\include native\src\*.c /Femom-native.exe
+
+Usando GCC / MinGW:
+    gcc -O2 -std=c99 -I native/include native/src/*.c -o mom-native.exe
+
+3. COMPILACIÓN EN COMPILADORES LEGACY / EMBEBIDOS (ej. TCC, WATCOM)
+-------------------------------------------------------------------
+Usando Tiny C Compiler (TCC):
+    tcc -I native/include native/src/*.c -o mom-native
+
+4. USO DEL EJECUTABLE NATIVO
+----------------------------
+Listar proyectos:
+    ./mom-native list
+
+Crear proyecto con herencia:
+    ./mom-native create --name "MiAppSoberana" --parents "std-posix,std-a11y-universal"
+
+Compilar un proyecto y desplegarlo en su carpeta de destino:
+    ./mom-native compile --project "data/projects/MiAppSoberana" --target-docs "/ruta/destino/proyecto/docs"
+</code></pre><hr><h2>5. Implementación en Python 3.11+ (<code>stdlib</code> sin dependencias de PyPI)</h2><h3>5.1 Fichero de Configuración Poetry (<code>pyproject.toml</code>)</h3><pre><code class=language-toml>[tool.poetry]
+name = "mom-core"
+version = "0.2.0"
+description = "MetsuOS Methodology (MOM) - Sistema multiproyecto de especificación atómica con herencia DAG y cero-dependencias"
+authors = ["Metsuke &lt;metsuke@metsuos.org>"]
+readme = "README.md"
+packages = [{include = "mom"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+mypy = "^1.8.0"
+ruff = "^0.2.0"
+
+[tool.poetry.scripts]
+mom = "mom.cli:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+</code></pre><h3>5.2 Modelos de Datos Nativos (<code>mom/schemas.py</code>)</h3><pre><code class=language-python>from enum import Enum
+from dataclasses import dataclass, field, asdict
+from typing import List, Dict, Any, Optional
+
+class ESAPhase(str, Enum):
+    URD = "urd"
+    SRD = "srd"
+    ADD = "add"
+    DDD = "ddd"
+
+class PriorityEnum(str, Enum):
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+    CRITICAL = "CRITICAL"
+
+class StatusEnum(str, Enum):
+    DRAFT = "DRAFT"
+    REVIEW = "REVIEW"
+    APPROVED = "APPROVED"
+    REJECTED = "REJECTED"
+    DEPRECATED = "DEPRECATED"
+
+class VerificationMethod(str, Enum):
+    INSPECTION = "INSPECTION"
+    ANALYSIS = "ANALYSIS"
+    DEMONSTRATION = "DEMONSTRATION"
+    UNIT_TEST = "UNIT_TEST"
+    INTEGRATION_TEST = "INTEGRATION_TEST"
+    SYSTEM_TEST = "SYSTEM_TEST"
+
+@dataclass
+class ItemAttributes:
+    priority: PriorityEnum = PriorityEnum.MEDIUM
+    verification_method: VerificationMethod = VerificationMethod.UNIT_TEST
+    status: StatusEnum = StatusEnum.DRAFT
+    is_user_doc: bool = False
+    extra: Dict[str, Any] = field(default_factory=dict)
+
+@dataclass
+class ItemMetadata:
+    author: str = "Metsuke"
+    declared_in_project: str = ""
+    ai_guardrails: Optional[str] = None
+    created_at: Optional[str] = None
+    updated_at: Optional[str] = None
+
+@dataclass
+class MOMItem:
+    id: str
+    phase: ESAPhase
+    title: str
+    description: str
+    parent_ids: List[str] = field(default_factory=list)
+    child_ids: List[str] = field(default_factory=list)
+    attributes: ItemAttributes = field(default_factory=ItemAttributes)
+    metadata: ItemMetadata = field(default_factory=ItemMetadata)
+
+    def __post_init__(self) -> None:
+        if isinstance(self.phase, str):
+            self.phase = ESAPhase(self.phase)
+
+        prefix = self.phase.value.upper()
+        if not self.id.startswith(f"{prefix}-"):
+            raise ValueError(f"El ID '{self.id}' debe comenzar con el prefijo '{prefix}-'")
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "MOMItem":
+        attr_data = data.get("attributes", {})
+        meta_data = data.get("metadata", {})
+
+        attr = ItemAttributes(
+            priority=PriorityEnum(attr_data.get("priority", "MEDIUM")),
+            verification_method=VerificationMethod(attr_data.get("verification_method", "UNIT_TEST")),
+            status=StatusEnum(attr_data.get("status", "DRAFT")),
+            is_user_doc=attr_data.get("is_user_doc", False),
+            extra=attr_data.get("extra", {})
+        )
+        meta = ItemMetadata(
+            author=meta_data.get("author", "Metsuke"),
+            declared_in_project=meta_data.get("declared_in_project", ""),
+            ai_guardrails=meta_data.get("ai_guardrails"),
+            created_at=meta_data.get("created_at"),
+            updated_at=meta_data.get("updated_at")
+        )
+        return cls(
+            id=data["id"],
+            phase=ESAPhase(data["phase"]),
+            title=data["title"],
+            description=data["description"],
+            parent_ids=data.get("parent_ids", []),
+            child_ids=data.get("child_ids", []),
+            attributes=attr,
+            metadata=meta
+        )
+</code></pre><hr><h2>6. Gestor Multiproyecto y Herencia Resolutiva (<code>mom/projects.py</code>)</h2><p>Administración de proyectos con resolución de herencia múltiple mediante un Grafo Acíclico Dirigido (DAG).<pre><code class=language-python>import json
+import shutil
+from pathlib import Path
+from typing import List, Dict, Set, Optional
+from mom.schemas import MOMItem, ESAPhase
+
+class ProjectManager:
+    def __init__(self, data_dir: Path = Path("data/projects")) -> None:
+        self.data_dir = data_dir
+        self.data_dir.mkdir(parents=True, exist_ok=True)
+
+    def create_project(self, project_name: str, parent_projects: Optional[List[str]] = None) -> Path:
+        proj_dir = self.data_dir / project_name
+        if proj_dir.exists():
+            raise FileExistsError(f"El proyecto '{project_name}' ya existe.")
+
+        for phase in ESAPhase:
+            (proj_dir / "src" / phase.value).mkdir(parents=True, exist_ok=True)
+
+        (proj_dir / "doc").mkdir(parents=True, exist_ok=True)
+        (proj_dir / "vault").mkdir(parents=True, exist_ok=True)
+
+        meta = {
+            "name": project_name,
+            "version": "0.1.0",
+            "parent_projects": parent_projects or []
+        }
+        with open(proj_dir / "project.json", "w", encoding="utf-8") as f:
+            json.dump(meta, f, indent=2)
+
+        return proj_dir
+
+    def get_inheritance_chain(self, target_project: str) -> List[str]:
+        """Calcula el orden topológico de resolución de proyectos evitando ciclos."""
+        resolved: List[str] = []
+        visited: Set[str] = set()
+
+        def dfs(p_name: str, path: Set[str]) -> None:
+            if p_name in path:
+                raise ValueError(f"Ciclo de herencia detectado: {' -> '.join(path)} -> {p_name}")
+            if p_name not in visited:
+                visited.add(p_name)
+                path.add(p_name)
+                p_json = self.data_dir / p_name / "project.json"
+                if p_json.exists():
+                    with open(p_json, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                    for parent in data.get("parent_projects", []):
+                        dfs(parent, path)
+                path.remove(p_name)
+                resolved.append(p_name)
+
+        dfs(target_project, set())
+        return resolved
+
+class MOMInheritedRepository:
+    """Repositorio que agrega y consolida los elementos del proyecto objetivo y todos sus ancestros."""
+    def __init__(self, pm: ProjectManager, project_name: str) -> None:
+        self.pm = pm
+        self.project_name = project_name
+        self.chain = pm.get_inheritance_chain(project_name)
+        self.project_dir = pm.data_dir / project_name
+
+    def list_all_consolidated(self) -> Dict[str, MOMItem]:
+        """Devuelve un mapa con los elementos acumulados, aplicando sobrescritura de especialización."""
+        items: Dict[str, MOMItem] = {}
+        for proj_name in self.chain:
+            proj_src = self.pm.data_dir / proj_name / "src"
+            for phase in ESAPhase:
+                p_dir = proj_src / phase.value
+                if p_dir.exists():
+                    for f_path in p_dir.glob("*.json"):
+                        with open(f_path, "r", encoding="utf-8") as f:
+                            data = json.load(f)
+                            item = MOMItem.from_dict(data)
+                            if not item.metadata.declared_in_project:
+                                item.metadata.declared_in_project = proj_name
+                            items[item.id] = item
+        return items
+</code></pre><hr><h2>7. Compilador y Despliegue en Carpeta Target (<code>mom/compiler.py</code>)</h2><p>Compila el proyecto consolidado y copia automáticamente los entregables a la carpeta <code>docs/</code> del software destino.<pre><code class=language-python>import shutil
+from pathlib import Path
+from typing import Dict, List, Optional
+from mom.projects import MOMInheritedRepository
+from mom.schemas import ESAPhase, MOMItem
+
+class MOMCompiler:
+    def __init__(self, repo: MOMInheritedRepository, target_docs_dir: Optional[Path] = None) -> None:
+        self.repo = repo
+        self.project_dir = repo.project_dir
+        self.doc_out = self.project_dir / "doc"
+        self.vault_out = self.project_dir / "vault"
+        self.agents_out = self.project_dir / "AGENTS.md"
+        self.target_docs_dir = target_docs_dir
+
+    def validate_graph(self) -> List[str]:
+        errors: List[str] = []
+        all_items = self.repo.list_all_consolidated()
+
+        for item_id, item in all_items.items():
+            for pid in item.parent_ids:
+                if pid not in all_items:
+                    errors.append(f"[{item.id}] (de '{item.metadata.declared_in_project}') apunta a parent_id inexistente: '{pid}'")
+
+            if item.phase != ESAPhase.URD and not item.parent_ids:
+                errors.append(f"[{item.id}] El elemento de fase '{item.phase.value}' no tiene padres.")
+
+        return errors
+
+    def compile_all(self) -> None:
+        self.doc_out.mkdir(parents=True, exist_ok=True)
+        self.vault_out.mkdir(parents=True, exist_ok=True)
+        all_items = self.repo.list_all_consolidated()
+
+        # 1. Compilación de documentos consolidados
+        for phase in ESAPhase:
+            phase_items = [i for i in all_items.values() if i.phase == phase]
+            phase_items.sort(key=lambda x: x.id)
+
+            blocks: List[str] = []
+            for item in phase_items:
+                guardrail = f"\n> ⚠️ **AI Guardrails:** {item.metadata.ai_guardrails}\n" if item.metadata.ai_guardrails else ""
+                parents = f"**Padres:** {', '.join(item.parent_ids)}\n" if item.parent_ids else ""
+                children = f"**Hijos:** {', '.join(item.child_ids)}\n" if item.child_ids else ""
+                origin = f"**Origen:** `{item.metadata.declared_in_project}`\n"
+
+                block = f"## {item.id}: {item.title}\n" \
+                        f"**Estado:** `{item.attributes.status.value}` | **Prioridad:** `{item.attributes.priority.value}` | {origin}\n" \
+                        f"### Descripción\n{item.description}\n\n" \
+                        f"{parents}{children}{guardrail}\n---"
+                blocks.append(block)
+
+            content = f"# Documentación Consolidada ESA PSS-05 - Fase {phase.value.upper()}\n\n" + "\n\n".join(blocks)
+            with open(self.doc_out / f"{phase.value.upper()}.md", "w", encoding="utf-8") as f:
+                f.write(content)
+
+        # 2. Compilación de AGENTS.md acumulado
+        guardrail_items = [i for i in all_items.values() if i.metadata.ai_guardrails]
+        blocks = [f"### Componente `{i.id}` ({i.title}) - Origen: `{i.metadata.declared_in_project}`\n> 🛑 **Guardrail Inmutable:** {i.metadata.ai_guardrails}\n" for i in guardrail_items]
+        agents_content = "# AGENTS.md - Contexto de Onboarding e Instrucciones para IA\n\n" + "\n".join(blocks)
+        with open(self.agents_out, "w", encoding="utf-8") as f:
+            f.write(agents_content)
+
+        # 3. Despliegue en carpeta target
+        if self.target_docs_dir:
+            self.target_docs_dir.mkdir(parents=True, exist_ok=True)
+            for md_file in self.doc_out.glob("*.md"):
+                shutil.copy(md_file, self.target_docs_dir / md_file.name)
+            if self.agents_out.exists():
+                shutil.copy(self.agents_out, self.target_docs_dir / "AGENTS.md")
+</code></pre><hr><h2>8. Interfaz CLI Unificada (<code>mom/cli.py</code>)</h2><pre><code class=language-python>import sys
+import argparse
+from pathlib import Path
+from mom.projects import ProjectManager, MOMInheritedRepository
+from mom.compiler import MOMCompiler
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="MOM (MetsuOS Methodology) Multi-Project Standalone CLI")
+    subparsers = parser.add_subparsers(dest="command")
+
+    # Comando: projects
+    proj_parser = subparsers.add_parser("projects", help="Gestión de proyectos MOM")
+    proj_parser.add_argument("--action", choices=["list", "create"], required=True)
+    proj_parser.add_argument("--name", help="Nombre del proyecto")
+    proj_parser.add_argument("--parents", help="Proyectos padres separados por coma (ej. std-posix,std-a11y)")
+
+    # Comando: compile
+    compile_parser = subparsers.add_parser("compile", help="Compila las especificaciones con herencia de un proyecto")
+    compile_parser.add_argument("--project", required=True, help="Nombre del proyecto")
+    compile_parser.add_argument("--target-docs", help="Ruta destino opcional (ej. /mi-repo/docs)")
+
+    args = parser.parse_args()
+    pm = ProjectManager()
+
+    if args.command == "projects":
+        if args.action == "list":
+            print(f"📋 Proyectos MOM disponibles:")
+            for p in pm.data_dir.iterdir():
+                if p.is_dir() and (p / "project.json").exists():
+                    print(f"  - {p.name}")
+        elif args.action == "create":
+            if not args.name:
+                print("❌ Debe especificar --name para crear un proyecto.")
+                sys.exit(1)
+            parents = [p.strip() for p in args.parents.split(",")] if args.parents else []
+            proj_dir = pm.create_project(args.name, parent_projects=parents)
+            print(f"✅ Proyecto '{args.name}' creado. Hereda de: {parents}")
+
+    elif args.command == "compile":
+        repo = MOMInheritedRepository(pm, args.project)
+        target_path = Path(args.target_docs) if args.target_docs else None
+        compiler = MOMCompiler(repo, target_docs_dir=target_path)
+
+        errors = compiler.validate_graph()
+        if errors:
+            print("❌ Error de validación en el grafo de herencia del proyecto:")
+            for err in errors:
+                print(f"  - {err}")
+            sys.exit(1)
+
+        compiler.compile_all()
+        print(f"✅ Proyecto '{args.project}' y sus dependencias compilados correctamente.")
+        if target_path:
+            print(f"📦 Documentación desplegada en: {target_path}")
+
+    else:
+        parser.print_help()
+
+if __name__ == "__main__":
+    main()
+</code></pre><hr><h2>9. Ejemplo de Especificación JSON Atómica con Namespace (<code>data/projects/std-a11y/src/urd/URD-A11Y-001.json</code>)</h2><pre><code class=language-json>{
+  "id": "URD-A11Y-001",
+  "phase": "urd",
+  "title": "Soporte Universal de Navegación por Teclado",
+  "description": "Todos los componentes interactivos de la interfaz deben ser plenamente operables a través de secuencias de teclado estándar sin atrapar el foco.",
+  "parent_ids": [],
+  "child_ids": [
+    "SRD-A11Y-KEYBOARD-01"
+  ],
+  "attributes": {
+    "priority": "CRITICAL",
+    "verification_method": "DEMONSTRATION",
+    "status": "APPROVED",
+    "is_user_doc": true,
+    "extra": {}
+  },
+  "metadata": {
+    "author": "Metsuke",
+    "declared_in_project": "std-a11y",
+    "ai_guardrails": "Prohibido eliminar eventos onKeyDown/onKeyPress en componentes reutilizables.",
+    "created_at": null,
+    "updated_at": null
+  }
+}
+</code></pre><hr><h2>10. Bibliografía y Referencias</h2><ol><li><a href=https://segoldmine.ppi-int.com/node/67926>ESA Board for Software Standardisation and Control (BSSC) (1991): ESA Software Engineering Standards (PSS-05-0 Issue 2). European Space Agency. 🟡③🌐</a> .- Estándar normativo de la ESA (PSS-05-0 Issue 2, febrero 1991) que define el ciclo de vida del software, prácticas obligatorias, gestión de requisitos, diseño, trazabilidad formal y aseguramiento de calidad para software entregable, ya sea desarrollado internamente o por industria.<li><a href=https://x.com/metsuke/status/2107771825870524895>Metsuke (2026): Novedades MOS / Definición de MOM (MetsuOS Methodology). 🟡③🌐</a> .- Anuncio conceptual de MOM (MetsuOS Methodology) como marco metodológico de atomización extrema y trazabilidad estricta inspirado en los estándares ESA, orientado a la contención de agentes de IA y al desarrollo controlado de MetsuOS (MOS2/MOS3) y sistemas relacionados.<li><a href=https://www.pearson.com/en-us/subject-catalog/p/clean-architec-ture-a-craftsmans-guide-to-software-structure-and-design/P200000009528/9780134494166>Martin, R. C. (2017): Clean Architecture: A Craftsman's Guide to Software Structure and Design. Prentice Hall. 🟡③🌐</a> .- Principios de arquitectura de software, fronteras entre componentes, inmutabilidad, capas y prácticas de diseño mantenible basados en las reglas de Robert C. Martin (Uncle Bob), aplicables a aplicaciones web, de base de datos, thick-client, consola y embebidas.<li><a href=https://www.open-std.org/jtc1/sc22/wg14/www/standards.html>ISO/IEC (1990/1999): Programming Languages — C (ISO/IEC 9899:1990 / ISO/IEC 9899:1999) y ISO/IEC 14882:1998 (C++98). 🟡③🌐</a> .- Especificaciones formales de los lenguajes C (C90/C99) y C++98 que definen la sintaxis, semántica y requisitos de implementación para software nativo portable, independiente de dependencias corporativas y compatible con plataformas modernas y legacy.</ol><ul><li><b>Información IA: </b>Generado asistido por IA (Gemini para articular documento en torno a conversaciones e investigacion previas.). Supervisado por Humano.<li><b>Ultima Modificación: </b>2026-10-14 19:28:29.435000+00:00<li><b>Versión Documento: </b>0.2.7</ul></main><footer><p>© 2018-2026 <a href=https://www.linkedin.com/in/raulcarrillo/>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</footer><script src=https://metsuke.com/assets/js/lang.js></script><script>window.onload=function(){getLanguagePreferences()};</script><script src=https://metsuke.com/assets/js/counter_20260409.js></script><script type=module>import mermaid from"https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs";
+//import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+mermaid.initialize({useMaxWidth:!0,startOnLoad:!0,theme:`base`,themeVariables:{primaryColor:`#000000`,primaryTextColor:`#ffffff`}});function optimizeMermaidSVG(){}
+// Ejecutar después del renderizado
+mermaid.initialize({startOnLoad:!0,flowchart:{diagramPadding:8,useMaxWidth:!0}});
+// Hook post-renderizado
+const originalParse=mermaid.parse;mermaid.parse=function(){return originalParse.apply(this,arguments).then(()=>{
+//setTimeout(optimizeMermaidSVG, 50);
+})};</script>

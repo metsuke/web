@@ -1,0 +1,380 @@
+<!doctype html><html lang=es><meta charset=utf-8><meta content="noindex, nofollow" name=googlebot><meta a ciencia, comunicación, content"construyendo de felicidad, inclusión la name=description plena productividad través videojuegos." y><meta content="width=device-width,initial-scale=1.0" name=viewport><title>Construyendo la plena inclusión a través del videojuego</title><link href=../assets/css/transitions.css id=transition-stylesheet rel=stylesheet><link href=../assets/css/style.css id=main-stylesheet rel=stylesheet><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><script src=https://metsuke.com/assets/js/efemerides.js></script><body><header><img alt="Logo Metsuke" class=logo src=../assets/img/logo/MetsukeLogo.png><h1>MetsuOS</h1><h2>Construyendo la plena inclusión a través del videojuego</h2></header><?php //include 'blacklist_blocker.php';?><nav><a href=../index.html>Inicio</a><a href=../apps.html>Apps</a><a href=https://metsuke.com/publicbrain/la-biblioteca-del-archivero-del-retro-%F0%9F%9F%A1%E2%91%A2.html>Biblioteca</a><a href=../blog.html>Blog</a><a href=../publicbrain/hemeroteca.html>Hemeroteca</a><a href=../juegos.html>Juegos</a><a href=../kb.html>KB</a><a href=../publicbrain/curso-e-introduccion-tecnica-sobre--mcl-metsuos-context-language-%F0%9F%9F%A1%E2%91%A2.html>MCL</a><a href=../noticias.html>Noticias</a><a href=../novedades.html>Novedades</a><a href=../npl.html>NPL</a><a href=../el-proyecto.html>MetsuOS</a><a href=../publicbrain/index.html>PublicBrain</a><a href=../quiosco/>Quiosco</a><a href=../publicbrain/curso-sobre-spec-driven-development--%F0%9F%9F%A1%E2%91%A2.html>SDD</a><a href=../publicbrain/hemeroteca---turra-news.html>TurraNews</a><a href=../publicbrain/hemereotca---tuxnsec.html>TuxNSec</a><a href=../reportajes.html>Reportajes</a></nav><main><h1>Especificación Técnica Oficial: Metsu Programming Language (MPL)</h1><p><strong>Versión de la Especificación:</strong> 1.0.0-draft<br> <strong>Autor:</strong> Metsuke<br> <strong>Ecosistema de Referencia:</strong> MetsuOS<p><a class=internal href=../publicbrain/especificacion-de-arquitectura-runtime-standalone-de-mpl-metsu-programming-language.html>Especificación de Arquitectura Runtime Standalone de MPL (Metsu Programming Language)</a><h2>1. Visión General de la Arquitectura MPL</h2><p>El lenguaje <strong>MPL</strong> (<em>Metsu Programming Language</em>) es un lenguaje de especificación y programación estructurado en capas jerárquicas de abstracción. Su objetivo principal es permitir la representación continua de sistemas software desde su descripción declarativa orientada a requisitos de usuario hasta su ejecución lógica e imperativa.<pre class=mermaid>graph TD
+    classDef urd fill:#2b4c7e,stroke:#4a90e2,stroke-width:2px,color:#ffffff;
+    classDef capa3 fill:#1e5128,stroke:#4e9f3d,stroke-width:2px,color:#ffffff;
+    classDef capa2 fill:#7b4b94,stroke:#b873d9,stroke-width:2px,color:#ffffff;
+    classDef capa1 fill:#9e472a,stroke:#e67e22,stroke-width:2px,color:#ffffff;
+
+    URD["<b>Capa URD (User Requirements Definition)</b><br>Definición narrativa en lenguaje natural formalizado (es-ES)<br><i>Requisitos, historias de usuario, vistas narrativas</i>"]:::urd
+
+    Capa3["<b>Capa 3: Pseudocódigo de Alto Nivel (Human-Centric / DSL)</b><br>Gramática declarativa en es-ES para flujos, vistas y transiciones"]:::capa3
+
+    Capa2["<b>Capa 2: Pseudocódigo Orientado a Objetos Conceptuales e Interacciones</b><br>Entidades, estados, señales, buses de eventos y canalización de datos"]:::capa2
+
+    Capa1["<b>Capa 1: Pseudocódigo Estructurado Imperativo (Base Formal)</b><br>Primitivas de control, tipos básicos, rutinas y E/S de bajo nivel"]:::capa1
+
+    URD -->|Abstracción declarativa| Capa3
+    Capa3 -->|Binding estructural| Capa2
+    Capa2 -->|Implementación lógica| Capa1</pre><hr><h2>2. Definición Formal de las Capas de Abstracción</h2><h3>2.1. Capa URD (User Requirements Definition)</h3><ul><li><strong>Definición:</strong> Especificación semántica formalizada en castellano (<code>es-ES</code>) sin construcciones sintácticas rígidas de código.<li><strong>Propósito:</strong> Capturar la intención del dominio, reglas de negocio, flujos de experiencia de usuario (UX) y estados globales del sistema.</ul><h3>2.2. Capa 3: Pseudocódigo de Alto Nivel (Human-Centric DSL)</h3><ul><li><strong>Definición:</strong> DSL declarativo con lexemas formales en español.<li><strong>Construcciones Principales:</strong> <code>PANTALLA</code>, <code>VISTA</code>, <code>OPCION</code>, <code>CUANDO</code>, <code>TRANSICIONAR_A</code>, <code>MOSTRAR</code>, <code>SOLICITAR</code>.<li><strong>Propósito:</strong> Mapear directamente la topología de la aplicación, las decisiones del usuario y las transiciones de estado.</ul><h3>2.3. Capa 2: Objetos Conceptuales e Interacciones</h3><ul><li><strong>Definición:</strong> Capa orientada a entidades de dominio, modelos de datos, máquinas de estado y buses de comunicación.<li><strong>Construcciones Principales:</strong> <code>OBJETO_CONCEPTUAL</code>, <code>ESTADO</code>, <code>EVENTO</code>, <code>PROPAGAR</code>, <code>SUSCRIBIR</code>, <code>CONEXION</code>.<li><strong>Propósito:</strong> Formalizar los modelos de información y el desacoplamiento mediante patrones de eventos/señales.</ul><h3>2.4. Capa 1: Pseudocódigo Formal Imperativo</h3><ul><li><strong>Definición:</strong> Lenguaje estructurado de control de flujo imperativo, tipos de datos fuertemente tipados y funciones primitivas.<li><strong>Construcciones Principales:</strong> <code>FUNCION</code>, <code>VARIABLE</code>, <code>SI...SINO</code>, <code>MIENTRAS</code>, <code>PARA</code>, <code>RETORNAR</code>, <code>INCAPSULAR</code>.<li><strong>Propósito:</strong> Proporcionar la base ejecutable determinista subyacente.</ul><hr><h2>3. Gramática y Léxico Reservado de MPL</h2><table><thead><tr><th style=text-align:left>Categoria<th style=text-align:left>Palabras Clave / Reservadas (Capa 3 & 2)<th style=text-align:left>Palabras Clave / Reservadas (Capa 1)<tbody><tr><td style=text-align:left><strong>Control de Flujo</strong><td style=text-align:left><code>TRANSICIONAR_A</code>, <code>DISPARAR</code>, <code>EJECUTAR</code><td style=text-align:left><code>SI</code>, <code>ENTONCES</code>, <code>SINO</code>, <code>FIN_SI</code>, <code>MIENTRAS</code>, <code>PARA</code><tr><td style=text-align:left><strong>Estructuras</strong><td style=text-align:left><code>PANTALLA</code>, <code>COMPONENTE</code>, <code>OBJETO_CONCEPTUAL</code><td style=text-align:left><code>FUNCION</code>, <code>ESTRUCTURA</code>, <code>VARIABLE</code>, <code>CONSTANTE</code><tr><td style=text-align:left><strong>Eventos / Estado</strong><td style=text-align:left><code>AL_PULSAR</code>, <code>CUANDO_CAMBIE</code>, <code>ESTADO</code><td style=text-align:left><code>RETORNAR</code>, <code>EVALUAR</code>, <code>ASIGNAR</code><tr><td style=text-align:left><strong>Tipos Primitivos</strong><td style=text-align:left><code>Texto</code>, <code>Numero</code>, <code>Booleano</code>, <code>Colección</code><td style=text-align:left><code>cadena</code>, <code>entero</code>, <code>decimal</code>, <code>booleano</code>, <code>arreglo</code></table><hr><h2>4. Flujo de Ejecución e Interacción entre Capas</h2><p>El siguiente diagrama de secuencia ilustra cómo interactúan las capas de MPL durante el ciclo de vida de una acción del sistema, desde la intención del usuario hasta la resolución lógica imperativa.<pre class=mermaid>sequenceDiagram
+    autonumber
+    participant URD as Capa URD (Requisito)
+    participant C3 as Capa 3 (DSL Declarativo)
+    participant C2 as Capa 2 (Objeto / Evento)
+    participant C1 as Capa 1 (Imperativo)
+
+    Note over URD: "El usuario selecciona procesar una entrada"
+    URD->>C3: Dispara evento de UI
+
+    Note over C3: PANTALLA Principal<br>OPCION "Procesar" CON_ACCION AccionProcesar
+    C3->>C2: AccionProcesar(origen)
+
+    Note over C2: OBJETO_CONCEPTUAL GestorProceso<br>METODO procesar_solicitud()
+    C2->>C1: EjecutarRutinaProcesamiento(datos: Cadena)
+
+    Note over C1: FUNCION EjecutarRutinaProcesamiento(...)<br>Validación, iteración y retorno
+    C1-->>C2: Retorna EstadoResultado
+
+    C2-->>C3: Notifica cambio de estado / Evento
+    C3-->>URD: Renderiza nueva vista de usuario</pre><hr><h2>5. Especificación Sintáctica por Capas (Sintaxis Canónica)</h2><h3>5.1. Ejemplo Sintáctico: Capa 3 (DSL Declarativo)</h3><pre><code class=language-mpl>PANTALLA VistaPrincipal:
+    ENCABEZADO: "MetsuOS Terminal v1.0"
+
+    COMPONENTE MenuOpciones:
+        OPCION "1. Cargar Recurso" CON_ACCION CargarRecurso
+        OPCION "2. Consultar Estado" CON_ACCION ConsultarEstado
+        OPCION "3. Finalizar" CON_ACCION Salir
+
+    CUANDO AL_PULSAR_TECLA(Escape):
+        TRANSICIONAR_A VistaSalida
+</code></pre><h3>5.2. Ejemplo Sintáctico: Capa 2 (Objetos y Eventos)</h3><pre><code class=language-mpl>OBJETO_CONCEPTUAL GestorRecursos:
+    PROPIEDADES:
+        identificador: Cadena
+        activo: Booleano
+        metadatos: Diccionario[Cadena, Cadena]
+
+    EVENTOS:
+        EventoRecursoCargado(id: Cadena)
+
+    INTERACCIONES:
+        METODO inicializar(id: Cadena):
+            ESTADO.activo = Verdadero
+            DISPARAR EventoRecursoCargado(id)
+</code></pre><h3>5.3. Ejemplo Sintáctico: Capa 1 (Imperativo Formal)</h3><pre><code class=language-mpl>FUNCION ValidarYProcesarEntrada(entrada: cadena) -> booleano:
+    VARIABLE es_valida: booleano
+    es_valida = Falso
+
+    SI Longitud(entrada) > 0 ENTONCES:
+        VARIABLE i: entero
+        PARA i = 0 HASTA Longitud(entrada) - 1 HACER:
+            SI CaracterEn(entrada, i) == ' ' ENTONCES:
+                RETORNAR Falso
+            FIN_SI
+        FIN_PARA
+        es_valida = Verdadero
+    SINO:
+        es_valida = Falso
+    FIN_SI
+
+    RETORNAR es_valida
+FIN_FUNCION
+</code></pre><hr><h2>6. Gramática Formal EBNF (Extended Backus-Naur Form)</h2><p>Esta sección establece las reglas sintácticas estrictas para el análisis léxico y sintáctico (<em>parsing</em>) de MPL en sus tres capas de pseudocódigo.<pre class=mermaid>graph TD
+    classDef lexer fill:#2b4c7e,stroke:#4a90e2,stroke-width:2px,color:#ffffff;
+    classDef c3 fill:#1e5128,stroke:#4e9f3d,stroke-width:2px,color:#ffffff;
+    classDef c2 fill:#7b4b94,stroke:#b873d9,stroke-width:2px,color:#ffffff;
+    classDef c1 fill:#9e472a,stroke:#e67e22,stroke-width:2px,color:#ffffff;
+
+    subgraph Pipeline_Gramatica ["Pipeline del Parser MPL"]
+        Tokens["<b>Analizador Léxico (Lexer)</b><br>Identificadores, Literales, Palabras Reservadas"]:::lexer
+        ParserC3["<b>Parser Capa 3 (DSL UI)</b><br>Gramática de Pantallas y Menús"]:::c3
+        ParserC2["<b>Parser Capa 2 (Modelos)</b><br>Gramática de Objetos y Eventos"]:::c2
+        ParserC1["<b>Parser Capa 1 (Imperativo)</b><br>Gramática de Control de Flujo"]:::c1
+    end
+
+    Tokens --> ParserC3
+    Tokens --> ParserC2
+    Tokens --> ParserC1</pre><h3>6.1. Reglas EBNF: Capa 3 (DSL Declarativo de Interfaz y Flujo)</h3><pre><code class=language-ebnf>ProgramaC3         ::= { DefinicionPantalla | DefinicionVista } ;
+
+DefinicionPantalla ::= "PANTALLA" Identificador ":" [ SeccionEncabezado ] { SeccionComponente } { SeccionEventoUI } ;
+DefinicionVista    ::= "VISTA" Identificador ":" { SeccionComponente } ;
+
+SeccionEncabezado  ::= "ENCABEZADO" ":" Cadena ;
+SeccionComponente  ::= "COMPONENTE" Identificador ":" { DefinicionOpcion } ;
+DefinicionOpcion   ::= "OPCION" Cadena "CON_ACCION" Identificador ;
+
+SeccionEventoUI    ::= "CUANDO" TriggerUI ":" AccionUI ;
+TriggerUI          ::= "AL_PULSAR_TECLA" "(" Identificador ")" | "AL_SELECCIONAR" "(" Identificador ")" ;
+AccionUI           ::= "TRANSICIONAR_A" Identificador | "EJECUTAR" Identificador ;
+</code></pre><h3>6.2. Reglas EBNF: Capa 2 (Objetos Conceptuales y Bus de Eventos)</h3><pre><code class=language-ebnf>ProgramaC2            ::= { DefinicionObjeto } ;
+
+DefinicionObjeto      ::= "OBJETO_CONCEPTUAL" Identificador ":" [ BloquePropiedades ] [ BloqueEventos ] [ BloqueInteracciones ] ;
+
+BloquePropiedades     ::= "PROPIEDADES" ":" { DeclaracionPropiedad } ;
+DeclaracionPropiedad  ::= Identificador ":" TipoDatoC2 ;
+
+BloqueEventos         ::= "EVENTOS" ":" { DeclaracionEvento } ;
+DeclaracionEvento     ::= Identificador "(" [ ListaParametrosC2 ] ")" ;
+
+BloqueInteracciones   ::= "INTERACCIONES" ":" { DefinicionMetodo } ;
+DefinicionMetodo      ::= "METODO" Identificador "(" [ ListaParametrosC2 ] ")" ":" { SentenciaC2 } ;
+
+SentenciaC2           ::= AsignacionEstado | DisparoEvento | InvocacionC1 ;
+AsignacionEstado      ::= "ESTADO" "." Identificador "=" Expresion ;
+DisparoEvento         ::= "DISPARAR" Identificador "(" [ ListaArgumentos ] ")" ;
+InvocacionC1          ::= Identificador "(" [ ListaArgumentos ] ")" ;
+
+TipoDatoC2            ::= "Texto" | "Numero" | "Booleano" | "Coleccion" | "Diccionario" "[" TipoDatoC2 "," TipoDatoC2 "]" ;
+</code></pre><h3>6.3. Reglas EBNF: Capa 1 (Imperativo Formal)</h3><pre><code class=language-ebnf>ProgramaC1          ::= { DefinicionFuncion | DeclaracionGlobal } ;
+
+DefinicionFuncion   ::= "FUNCION" Identificador "(" [ ListaParametrosC1 ] ")" [ "->" TipoDatoC1 ] ":" BloqueSentencias "FIN_FUNCION" ;
+
+ListaParametrosC1   ::= ParametroC1 { "," ParametroC1 } ;
+ParametroC1         ::= Identificador ":" TipoDatoC1 ;
+
+BloqueSentencias    ::= { SentenciaC1 } ;
+
+SentenciaC1         ::= DeclaracionVariable
+                      | Asignacion
+                      | Condicional
+                      | BucleMientras
+                      | BuclePara
+                      | Retorno ;
+
+DeclaracionVariable ::= "VARIABLE" Identificador ":" TipoDatoC1 [ "=" Expresion ] ;
+Asignacion          ::= Identificador "=" Expresion ;
+
+Condicional         ::= "SI" Expresion "ENTONCES" ":" BloqueSentencias [ "SINO" ":" BloqueSentencias ] "FIN_SI" ;
+BucleMientras       ::= "MIENTRAS" Expresion "HACER" ":" BloqueSentencias "FIN_MIENTRAS" ;
+BuclePara           ::= "PARA" Identificador "=" Expresion "HASTA" Expresion "HACER" ":" BloqueSentencias "FIN_PARA" ;
+
+Retorno             ::= "RETORNAR" Expresion ;
+
+TipoDatoC1          ::= "cadena" | "entero" | "decimal" | "booleano" | "arreglo" "[" TipoDatoC1 "]" ;
+</code></pre><hr><h2>7. Sistema de Tipos e Inferencia Cruzada entre Capas</h2><p>MPL implementa un sistema de verificación de tipos dinámico-estático escalar. A medida que una entidad desciende de la Capa 3 a la Capa 1, las restricciones de tipo se vuelven más estrictas y deterministas.<pre class=mermaid>graph LR
+    classDef c3 fill:#1e5128,stroke:#4e9f3d,stroke-width:2px,color:#ffffff;
+    classDef c2 fill:#7b4b94,stroke:#b873d9,stroke-width:2px,color:#ffffff;
+    classDef c1 fill:#9e472a,stroke:#e67e22,stroke-width:2px,color:#ffffff;
+
+    subgraph Inferencia_Tipos ["Mapeo y Coerción de Tipos MPL"]
+        C3_Types["<b>Capa 3 (Tipos Implícitos)</b><br>Etiquetas, Entradas, Comandos"]:::c3
+        C2_Types["<b>Capa 2 (Tipos Conceptuales)</b><br>Texto, Numero, Booleano, Coleccion"]:::c2
+        C1_Types["<b>Capa 1 (Tipos Primitivos)</b><br>cadena, entero, decimal, booleano, arreglo"]:::c1
+    end
+
+    C3_Types -->|Asignación semántica| C2_Types
+    C2_Types -->|Binding estricto| C1_Types</pre><h3>7.1. Tabla de Mapeo Equivalente de Tipos</h3><table><thead><tr><th style=text-align:left>Tipo Conceptual (Capa 2)<th style=text-align:left>Tipo Primitivo (Capa 1)<th style=text-align:left>Valor por Defecto<th style=text-align:left>Restricciones de Validez<tbody><tr><td style=text-align:left><strong>Texto</strong><td style=text-align:left><code>cadena</code><td style=text-align:left><code>""</code><td style=text-align:left>Cadenas UTF-8 codificadas.<tr><td style=text-align:left><strong>Numero</strong><td style=text-align:left><code>decimal</code> / <code>entero</code><td style=text-align:left><code>0</code><td style=text-align:left>Inferencia automática a decimal si contiene coma/punto.<tr><td style=text-align:left><strong>Booleano</strong><td style=text-align:left><code>booleano</code><td style=text-align:left><code>Falso</code><td style=text-align:left>Valores válidos: <code>Verdadero</code>, <code>Falso</code>.<tr><td style=text-align:left><strong>Coleccion</strong><td style=text-align:left><code>arreglo[T]</code><td style=text-align:left><code>[]</code><td style=text-align:left>Homogéneo en Capa 1, Heterogéneo en Capa 2.<tr><td style=text-align:left><strong>Diccionario[K, V]</strong><td style=text-align:left><code>Estructura</code> personalizada<td style=text-align:left><code>{}</code><td style=text-align:left>Claves mapeadas a identificadores de bajo nivel.</table><hr><h2>8. Mecanismo de Transpilación y Semántica de Compilación</h2><p>El proceso de compilación en MPL no genera directamente lenguaje máquina; transforma las representaciones de alto nivel mediante pasadas de análisis semántico hasta consolidar un AST (<em>Abstract Syntax Tree</em>) ejecutable de Capa 1.<pre class=mermaid>sequenceDiagram
+    autonumber
+    participant Parser as Analizador Sintáctico
+    participant Semantico as Chequeador Semántico
+    participant Transpiler as Generador AST MPL
+    participant Target as Target de Ejecución
+
+    Parser->>Semantico: Entrega Árbol Sintáctico C3 / C2 / C1
+    Note over Semantico: Valida referencias cruzadas entre<br>Acciones de UI y Métodos C2
+    Semantico->>Transpiler: Árbol Validado + Tabla de Símbolos
+    Note over Transpiler: Reduce abstracciones de C3 y C2<br>a bloques de control imperativo C1
+    Transpiler->>Target: Emite AST Consolidado Capa 1</pre><h3>8.1. Pasadas del Compilador MPL</h3><ol><li><strong>Pasada 1 (Lexing y Parsing):</strong> Convierte el código fuente escrito en cualquier capa de MPL en nodos del AST correspondiente.<li><strong>Pasada 2 (Resolución de Símbolos):</strong> Mapea los identificadores de UI en Capa 3 con sus correspondientes métodos/eventos en Capa 2, y las invocaciones de Capa 2 con funciones de Capa 1.<li><strong>Pasada 3 (Lowering / Descenso de Capa):</strong> Traduce de forma autómata las estructuras declarativas (<code>PANTALLA</code>, <code>OBJETO_CONCEPTUAL</code>) a bucles de eventos imperativos y estructuras de datos en Capa 1.<li><strong>Pasada 4 (Emisión):</strong> Generación del ejecutable final o representación intermedia para el runtime objetivo de MetsuOS.</ol><hr><h2>9. Especificación del Runtime y Event Loop (Motor de Ejecución)</h2><p>El runtime de <strong>MPL</strong> opera bajo una arquitectura de ejecución híbrida impulsada por eventos (<em>Event-Driven Loop</em>). Las construcciones declarativas de la Capa 3 y los eventos de la Capa 2 se traducen en un ciclo de eventos no bloqueante en la Capa 1.<pre class=mermaid>graph TD
+    classDef loop fill:#2b4c7e,stroke:#4a90e2,stroke-width:2px,color:#ffffff;
+    classDef queue fill:#7b4b94,stroke:#b873d9,stroke-width:2px,color:#ffffff;
+    classDef exec fill:#1e5128,stroke:#4e9f3d,stroke-width:2px,color:#ffffff;
+
+    subgraph Runtime_MetsuOS ["Motor de Ejecución MPL (Event Loop)"]
+        EventQueue["<b>Cola de Eventos (FIFO)</b><br>Señales UI, Temporizadores, I/O, Mensajes C2"]:::queue
+        Loop["<b>Bucle Principal (Event Loop)</b><br>Despachador de Eventos"]:::loop
+        Handler["<b>Manejador de Contexto / Pila</b><br>Ejecución de Rutinas Imperativas C1"]:::exec
+    end
+
+    EventQueue -->|Desencola Siguiente Evento| Loop
+    Loop -->|Sincrónico / Asincrónico| Handler
+    Handler -->|Modifica Estado / Semiactivo| EventQueue</pre><h3>11.1. Modelo de Concurrencia y Asincronía</h3><ul><li><strong>Aislamiento de Estado:</strong> Los objetos conceptuales (Capa 2) gestionan su estado de forma aislada.<li><strong>Canales de Comunicación:</strong> La interacción entre entidades se realiza mediante el paso de mensajes asincrónicos o el disparo directo de eventos (<code>DISPARAR</code>).<li><strong>Primitivas Asincrónicas (Capa 1):</strong><li><code>ESPERAR</code>: Pausa la ejecución de la rutina actual cediendo el control al Event Loop hasta que se resuelva una promesa o evento.<li><code>EN_SEGUNDO_PLANO</code>: Ejecuta un bloque imperativo sin bloquear el hilo principal.</ul><hr><h2>10. Manejo de Excepciones y Propagación Cruzada de Errores</h2><p>El sistema de errores de MPL es uniforme a través de todas las capas, permitiendo capturar fallos técnicos de bajo nivel (Capa 1) o errores de estado/dominio (Capa 2) y representarlos de forma amigable en la interfaz (Capa 3).<pre class=mermaid>sequenceDiagram
+    autonumber
+    participant C1 as Capa 1 (Imperativo)
+    participant C2 as Capa 2 (Objeto / Estado)
+    participant C3 as Capa 3 (DSL UI)
+
+    Note over C1: Error I/O o Condición Inválida
+    C1->>C1: LANZAR_ERROR ExcepcionLectura
+    C1-->>C2: Propaga Excepción no capturada
+
+    Note over C2: Intercepta error en Método
+    C2->>C2: PROPAGAR_ERROR ErrorDominio
+    C2-->>C3: Notifica fallo de acción
+
+    Note over C3: Captura evento en UI
+    C3->>C3: MOSTRAR_AVISO "Error de Procesamiento"</pre><h3>10.1. Sintaxis Canónica de Manejo de Errores</h3><h4>Capa 1: Captura Técnica Imperativa</h4><pre><code class=language-mpl>INTENTAR:
+    VARIABLE resultado: cadena
+    resultado = LeerArchivo(ruta)
+CAPTURAR ExcepcionArchivoNoEncontrado COMO error:
+    Imprimir("Error de lectura: " + error.mensaje)
+    RETORNAR Falso
+FIN_INTENTAR
+</code></pre><h4>Capa 2: Propagación Semántica de Dominio</h4><pre><code class=language-mpl>OBJETO_CONCEPTUAL GestorArchivos:
+    INTERACCIONES:
+        METODO procesar_documento(ruta: Texto):
+            INTENTAR:
+                EjecutarLectura(ruta)
+            CAPTURAR ErrorTecnico COMO e:
+                PROPAGAR_ERROR ErrorNegocio("El documento no se pudo validar.")
+</code></pre><hr><h2>11. Catálogo de la Librería Estándar (<code>StdLib</code>)</h2><p>La Librería Estándar de MPL provee el conjunto de rutinas nativas indispensables en la Capa 1 para la interacción con el sistema operativo base, almacenamiento y red.<pre class=mermaid>graph LR
+    classDef std fill:#9e472a,stroke:#e67e22,stroke-width:2px,color:#ffffff;
+
+    StdLib["<b>Librería Estándar (StdLib MPL)</b>"]:::std
+
+    IO["<b>Módulo Sistema.IO</b><br>Archivo.leer(), Archivo.escribir()"]:::std
+    TextoMod["<b>Módulo Texto.Utils</b><br>Concatenar(), Reemplazar()"]:::std
+    RedMod["<b>Módulo Red.HTTP</b><br>Peticion.obtener(), Peticion.enviar()"]:::std
+    MathMod["<b>Módulo Mate.Base</b><br>Redondear(), Aleatorio()"]:::std
+
+    StdLib --> IO
+    StdLib --> TextoMod
+    StdLib --> RedMod
+    StdLib --> MathMod</pre><h3>11.1. Funciones Nativas Primitivas (Capa 1)</h3><table><thead><tr><th style=text-align:left>Módulo<th style=text-align:left>Función / Firma<th style=text-align:left>Descripción<tbody><tr><td style=text-align:left><strong>Sistema.IO</strong><td style=text-align:left><code>Archivo_Leer(ruta: cadena) -> cadena</code><td style=text-align:left>Lee el contenido completo de un archivo codificado en UTF-8.<tr><td style=text-align:left><strong>Sistema.IO</strong><td style=text-align:left><code>Archivo_Existe(ruta: cadena) -> booleano</code><td style=text-align:left>Verifica la existencia física de un recurso en disco.<tr><td style=text-align:left><strong>Texto.Utils</strong><td style=text-align:left><code>Texto_Subcadena(s: cadena, inicio: entero, fin: entero) -> cadena</code><td style=text-align:left>Extrae un fragmento de una cadena de texto.<tr><td style=text-align:left><strong>Red.HTTP</strong><td style=text-align:left><code>HTTP_Solicitar(url: cadena, metodo: cadena) -> cadena</code><td style=text-align:left>Realiza una petición de red sincrónica/asincrónica.<tr><td style=text-align:left><strong>Metsus.Core</strong><td style=text-align:left><code>Tiempo_ObtenerMarca() -> entero</code><td style=text-align:left>Devuelve la marca de tiempo actual del sistema en milisegundos.</table><hr><h2>12. Modelo de Memoria y Ciclo de Vida de Objetos</h2><p>MPL adopta un esquema de gestión de memoria basado en <strong>Conteo de Referencias con Recolector de Ciclos (ARC/Garbage Collector híbrido)</strong> en la Capa 1, completamente transparente para el desarrollador en las Capas 2 y 3.<ul><li><strong>Creación de Instancias:</strong> Ocurre automáticamente al entrar en un estado de la Capa 3 o al invocar un <code>OBJETO_CONCEPTUAL</code> en la Capa 2.<li><strong>Destrucción de Instancias:</strong> Cuando un objeto o vista deja de estar activo o referenciado en el árbol de contexto, el runtime libera de forma determinista sus recursos e invoca su destructor implícito <code>AL_DESTRUIR</code>.</ul><pre><code class=language-mpl>OBJETO_CONCEPTUAL SesionUsuario:
+    PROPIEDADES:
+        token: Texto
+
+    INTERACCIONES:
+        METODO AL_CREAR():
+            ESTADO.token = GenerarToken()
+
+        METODO AL_DESTRUIR():
+            LimpiarMesaTrabajo()
+</code></pre><hr><h2>13. Sistema de Pruebas Unitarias e Integración Integrado (Nativo)</h2><p>MPL integra el marco de pruebas directamente en la sintaxis del lenguaje. Esto permite validar formalmente los componentes de las tres capas (pantallas y flujos en Capa 3, reglas de negocio y eventos en Capa 2, y algoritmos/rutinas en Capa 1) sin recurrir a herramientas externas.<pre class=mermaid>graph TD
+    classDef test3 fill:#1e5128,stroke:#4e9f3d,stroke-width:2px,color:#ffffff;
+    classDef test2 fill:#7b4b94,stroke:#b873d9,stroke-width:2px,color:#ffffff;
+    classDef test1 fill:#9e472a,stroke:#e67e22,stroke-width:2px,color:#ffffff;
+    classDef runner fill:#2b4c7e,stroke:#4a90e2,stroke-width:2px,color:#ffffff;
+
+    Runner["<b>Ejecutor Nativode Pruebas (MPL Test Runner)</b>"]:::runner
+
+    subgraph Suite_Pruebas ["Niveles de Pruebas Integradas"]
+        PruebaC3["<b>Pruebas de Flujo UI (Capa 3)</b><br>SIMULAR_PULSACION, AFIRMAR_PANTALLA"]:::test3
+        PruebaC2["<b>Pruebas de Estado y Eventos (Capa 2)</b><br>AFIRMAR_EVENTO, AFIRMAR_ESTADO"]:::test2
+        PruebaC1["<b>Pruebas Unitarias Formales (Capa 1)</b><br>AFIRMAR_IGUAL, AFIRMAR_VERDADERO"]:::test1
+    end
+
+    Runner --> PruebaC3
+    Runner --> PruebaC2
+    Runner --> PruebaC1</pre><hr><h3>13.1. Pruebas Unitarias en Capa 1 (Imperativo Formal)</h3><p>Las pruebas de Capa 1 verifican la corrección determinista de las funciones y algoritmos puros mediante aserciones estrictas.<pre><code class=language-mpl>PRUEBA "Validación de formato de cadena no vacía":
+    VARIABLE entrada: cadena
+    entrada = "MetsuOS"
+
+    VARIABLE resultado: booleano
+    resultado = ValidarYProcesarEntrada(entrada)
+
+    AFIRMAR_VERDADERO(resultado)
+    AFIRMAR_IGUAL(Longitud(entrada), 7)
+FIN_PRUEBA
+</code></pre><hr><h3>13.2. Pruebas de Integración y Estado en Capa 2 (Objetos y Eventos)</h3><p>Las pruebas de Capa 2 verifican la mutación de propiedades de un <code>OBJETO_CONCEPTUAL</code>, la correcta emisión de eventos y el manejo de excepciones de dominio.<pre><code class=language-mpl>PRUEBA "Ciclo de vida y emisión de eventos en GestorRecursos":
+    VARIABLE gestor: GestorRecursos
+
+    ESCUCHAR_EVENTO gestor.EventoRecursoCargado COMO evento_capturado
+
+    gestor.inicializar("RES-001")
+
+    AFIRMAR_VERDADERO(gestor.PROPIEDADES.activo)
+    AFIRMAR_IGUAL(gestor.PROPIEDADES.identificador, "RES-001")
+    AFIRMAR_EVENTO_DISPARADO(evento_capturado)
+FIN_PRUEBA
+</code></pre><hr><h3>13.3. Pruebas de Interfaz y Flujo de Usuario en Capa 3 (DSL Declarativo)</h3><p>Las pruebas de Capa 3 simulan la interacción del usuario sobre pantallas y componentes para verificar el comportamiento de la experiencia de usuario (UX).<pre><code class=language-mpl>PRUEBA "Navegación desde VistaPrincipal por pulsación de tecla":
+    CARGAR_PANTALLA VistaPrincipal
+
+    SIMULAR_PULSAR_TECLA(Escape)
+
+    AFIRMAR_PANTALLA_ACTIVA(VistaSalida)
+FIN_PRUEBA
+</code></pre><hr><h3>13.4. Sintaxis y Primitivas de Aserción Nativas</h3><table><thead><tr><th style=text-align:left>Primitiva de Aserción<th style=text-align:left>Capa aplicable<th style=text-align:left>Descripción<tbody><tr><td style=text-align:left><code>AFIRMAR_IGUAL(v1, v2)</code><td style=text-align:left>Capa 1, 2, 3<td style=text-align:left>Verifica la igualdad de valor o referencia entre dos expresiones.<tr><td style=text-align:left><code>AFIRMAR_DIFERENTE(v1, v2)</code><td style=text-align:left>Capa 1, 2, 3<td style=text-align:left>Verifica que dos expresiones evalúen a valores distintos.<tr><td style=text-align:left><code>AFIRMAR_VERDADERO(condicion)</code><td style=text-align:left>Capa 1, 2, 3<td style=text-align:left>Evalúa que una expresión booleana sea verdadera.<tr><td style=text-align:left><code>AFIRMAR_FALSO(condicion)</code><td style=text-align:left>Capa 1, 2, 3<td style=text-align:left>Evalúa que una expresión booleana sea falsa.<tr><td style=text-align:left><code>AFIRMAR_LANZA_ERROR(bloque)</code><td style=text-align:left>Capa 1, 2<td style=text-align:left>Comprueba que la ejecución de un bloque genera una excepción esperada.<tr><td style=text-align:left><code>AFIRMAR_EVENTO_DISPARADO(evento)</code><td style=text-align:left>Capa 2<td style=text-align:left>Valida que un evento específico se haya propagado en el bus.<tr><td style=text-align:left><code>AFIRMAR_PANTALLA_ACTIVA(pantalla)</code><td style=text-align:left>Capa 3<td style=text-align:left>Verifica que el contexto actual de interfaz sea la pantalla indicada.</table><hr><h2>14. Extensibilidad, Módulos y Espacios de Nombres (<em>Namespaces</em>)</h2><p>Para permitir la organización modular en proyectos de gran escala, MPL define un sistema estricto de paquetes, visibilidad e importación.<pre class=mermaid>graph LR
+    classDef ns fill:#2b4c7e,stroke:#4a90e2,stroke-width:2px,color:#ffffff;
+    classDef vis fill:#7b4b94,stroke:#b873d9,stroke-width:2px,color:#ffffff;
+
+    subgraph Estructura_Modulos ["Sistema de Espacios de Nombres MPL"]
+        NS["<b>PAQUETE MetsuOS.Interfaz</b>"]:::ns
+        Export["<b>PUBLICO</b><br>PANTALLA, OBJETO_CONCEPTUAL, FUNCION"]:::vis
+        Priv["<b>PRIVADO</b><br>Variables internas, métodos auxiliares"]:::vis
+    end
+
+    NS --> Export
+    NS --> Priv</pre><h3>14.1. Definición de Paquetes e Importación</h3><pre><code class=language-mpl>PAQUETE MetsuOS.Sistema.Seguridad
+
+IMPORTAR MetsuOS.StdLib.Sistema.IO
+IMPORTAR MetsuOS.Interfaz.Vistas COMO VistasUI
+
+PUBLICO OBJETO_CONCEPTUAL ControlAcceso:
+    PROPIEDADES:
+        PUBLICO nivel_permiso: Numero
+        PRIVADO clave_hash: Texto
+
+    INTERACCIONES:
+        PUBLICO METODO autenticar(usuario: Texto, clave: Texto):
+            // Lógica de autenticación
+</code></pre><hr><h2>15. Hoja de Ruta Consolidada del Lenguaje MPL</h2><pre class=mermaid>timeline
+    title Hoja de Ruta de Desarrollo MPL
+    sección Fase 1 : Especificación Formal : Gramática EBNF : Definición de Capas 1, 2 y 3
+    sección Fase 2 : Tooling & Parser : Lexer y Parser (ANTLR4) : Transpilador de Referencia (Bootstrap)
+    sección Fase 3 : Runtime & StdLib : Bucle de Eventos (Event Loop) : Librería Estándar y I/O : Framework de Pruebas
+    sección Fase 4 : Ecosistema MetsuOS : Integración de Entorno de Ejecución : Tooling CLI y Depurador</pre><ol><li><strong>Fase 1: Finalización de la Especificación Formal (Completada):</strong> Consolidación de la sintaxis, semántica de capas, runtime y pruebas.<li><strong>Fase 2: Construcción del Front-end del Compilador:</strong> Generación de gramáticas ANTLR4 para C1, C2 y C3, y construcción del AST unificado.<li><strong>Fase 3: Implementación del Runtime:</strong> Desarrollo del motor de ejecución híbrido con cola de eventos asíncrona y recolector de referencias.<li><strong>Fase 4: Integración en MetsuOS:</strong> Despliegue de herramientas de depuración, empaquetador de módulos y entorno de ejecución final.</ol><h2>16. Modelo de Compilación Cruzada y Emisión de Código (Targets)</h2><p>El compilador de <strong>MPL</strong> utiliza una arquitectura modular dividida en <em>Front-end</em> (análisis y lowering de capas C3/C2/C1) y <em>Back-end</em> (generación de código destino). Esto permite que una especificación MPL pueda ser compilada hacia múltiples entornos de ejecución sin alterar la lógica de negocio ni la interfaz.<pre class=mermaid>graph TD
+    classDef frontend fill:#2b4c7e,stroke:#4a90e2,stroke-width:2px,color:#ffffff;
+    classDef ir fill:#7b4b94,stroke:#b873d9,stroke-width:2px,color:#ffffff;
+    classDef backend fill:#1e5128,stroke:#4e9f3d,stroke-width:2px,color:#ffffff;
+
+    subgraph Pipeline_Compilacion ["Pipeline de Emisión MPL"]
+        Fuente["<b>Código Fuente MPL</b><br> Archivos .mpl (C3, C2, C1)"]:::frontend
+        AST["<b>AST Unificado + Tabla de Símbolos</b><br>Lowering semántico completo"]:::frontend
+        MIR["<b>Metsu Intermediate Representation (MIR)</b><br>Representación intermedia optimizada"]:::ir
+    end
+
+    subgraph Emision_Targets ["Back-ends de Ejecución (Targets)"]
+        TargetNative["<b>Target MetsuOS Native</b><br>Bytecode para la VM de MetsuOS"]:::backend
+        TargetWeb["<b>Target Web / WASM</b><br>WebAssembly + Canvas/DOM Driver"]:::backend
+        TargetHost["<b>Target Transpilación</b><br>Código fuente en C / C++ / Python"]:::backend
+    end
+
+    Fuente --> AST
+    AST --> MIR
+    MIR --> TargetNative
+    MIR --> TargetWeb
+    MIR --> TargetHost</pre><hr><h3>16.1. Metsu Intermediate Representation (MIR)</h3><p><strong>MIR</strong> es la representación intermedia de tipo SSA (<em>Static Single Assignment</em>) en la que se reducen todas las construcciones de las tres capas a un grafo de flujo de control linealizado.<ul><li><strong>Instrucciones en tres direcciones (3AC):</strong> Las llamadas a eventos de Capa 2 y transiciones de Capa 3 quedan aplanadas a instrucciones condicionales y saltos de bloque.<li><strong>Optimizaciones del Compiler Pass:</strong><li><em>Dead Code Elimination:</em> Eliminación de vistas o componentes no transitados en Capa 3.<li><em>Inlining de Métodos:</em> Inserción directa de métodos C1 en eventos C2 de alta frecuencia.<li><em>Análisis de Duración de Variables:</em> Minimización del impacto del Garbage Collector/ARC.</ul><hr><h3>16.2. Estrategia de Directivas de Compilación (<code>#COMPILADOR</code>)</h3><p>MPL permite especificar bloques condicionales o configuraciones para entornos específicos mediante directivas de preprocesamiento e inspección de destino.<pre><code class=language-mpl>#COMPILADOR.TARGET == "METSUOS_NATIVO" ENTONCES:
+    #CONFIGURAR_MEMORIA(PAGINACION_ESTATICA)
+#FIN_COMPILADOR
+
+PANTALLA VistaConfiguracion:
+    COMPONENTE PanelControl:
+        OPCION "Reiniciar Motor" CON_ACCION ReiniciarSistema
+
+#COMPILADOR.TARGET == "WEB_WASM" ENTONCES:
+    // Sustitución de llamada nativa por puente JavaScript/DOM
+    FUNCION ReiniciarSistema():
+        HTTP_Solicitar("/api/v1/reset", "POST")
+    FIN_FUNCION
+#SINO:
+    FUNCION ReiniciarSistema():
+        Metsus_Core_Reiniciar()
+    FIN_FUNCION
+#FIN_COMPILADOR
+</code></pre><hr><h2>17. Depuración, Trazabilidad e Inspección Dinámica (<em>Reflection</em>)</h2><p>Para facilitar el diagnóstico en tiempo de desarrollo, MPL incluye herramientas sintácticas para inspeccionar el estado de la aplicación en las tres capas simultáneamente.<pre class=mermaid>sequenceDiagram
+    autonumber
+    participant Depurador as Depurador MPL
+    participant C3 as Monitor UI (Capa 3)
+    participant C2 as Monitor Objetos (Capa 2)
+    participant C1 as Pila de Ejecución (Capa 1)
+
+    Note over Depurador: Punto de interrupción disparado
+    Depurador->>C3: Obtener Pantalla y Componente Activo
+    C3-->>Depurador: VistaPrincipal -> PanelControl
+    Depurador->>C2: Inspeccionar PROPIEDADES de Objetos
+    C2-->>Depurador: GestorRecursos.activo = Verdadero
+    Depurador->>C1: Volcar Pila de Llamadas (Stack Trace)
+    C1-->>Depurador: IniciarIngesta() [Línea 42]</pre><hr><h3>17.1. Primitivas de Inspección y Reflexión Sintáctica</h3><p>MPL permite a los programas (en entorno de pruebas o <em>debug</em>) consultar la estructura de sus propios tipos y vistas.<table><thead><tr><th style=text-align:left>Primitiva de Reflexión<th style=text-align:left>Capa<th style=text-align:left>Descripción<tbody><tr><td style=text-align:left><code>OBTENER_TIPO(variable)</code><td style=text-align:left>Capa 1, 2<td style=text-align:left>Devuelve el nombre del tipo conceptual o primitivo en tiempo de ejecución.<tr><td style=text-align:left><code>INSPECCIONAR_PANTALLA()</code><td style=text-align:left>Capa 3<td style=text-align:left>Devuelve la ruta topológica de la pantalla y el componente enfocado actualmente.<tr><td style=text-align:left><code>LISTAR_EVENTOS(objeto)</code><td style=text-align:left>Capa 2<td style=text-align:left>Retorna la lista de suscriptores y eventos registrados en un <code>OBJETO_CONCEPTUAL</code>.<tr><td style=text-align:left><code>RASTREAR_PILA()</code><td style=text-align:left>Capa 1<td style=text-align:left>Genera una captura de la pila de llamadas con número de línea y paquete.</table><hr><h3>17.2. Sintaxis de Puntos de Interrupción (<em>Breakpoints</em>) Nativos</h3><pre><code class=language-mpl>OBJETO_CONCEPTUAL GestorAuditoria:
+    INTERACCIONES:
+        METODO registrar_evento(datos: Texto):
+            // Punto de interrupción condicional para el depurador de MetsuOS
+            #DEPURAR_SI(Longitud(datos) == 0)
+
+            SI Longitud(datos) == 0 ENTONCES:
+                LANZAR_ERROR ExcepcionDatosVacios
+            FIN_SI
+</code></pre><hr><h2>18. Apéndice: Manual de Estilo y Convenciones Sintácticas Canónicas</h2><p>Para garantizar un código limpio y consistente dentro del ecosistema MetsuOS, se establecen las siguientes reglas de estilo para MPL:<ol><li><strong>Palabras Reservadas de Estructura:</strong> Siempre en Mayúsculas Sostenidas (<code>PANTALLA</code>, <code>OBJETO_CONCEPTUAL</code>, <code>FUNCION</code>, <code>SI</code>, <code>FIN_FUNCION</code>).<li><strong>Identificadores de Capa 3 (UI/Vistas):</strong> Estilo <em>PascalCase</em> (<code>VistaPrincipal</code>, <code>MenuOpciones</code>).<li><strong>Identificadores de Capa 2 (Objetos/Propiedades):</strong><li>Nombres de Objetos en <em>PascalCase</em> (<code>GestorRecursos</code>).<li>Métodos y Propiedades en <em>snake_case</em> (<code>cargado_exitoso</code>, <code>procesar_entrada()</code>).<li><strong>Identificadores de Capa 1 (Imperativo/Variables):</strong><li>Variables y Funciones en <em>snake_case</em> (<code>i</code>, <code>longitud_total</code>, <code>calcular_hash()</code>).<li>Tipos Primitivos en minúsculas (<code>cadena</code>, <code>entero</code>, <code>booleano</code>).</ol><hr><h2>19. Estado de la Especificación</h2><ul><li>ESTADO DE LA ESPECIFICACIÓN METSU PROGRAMMING LANGUAGE (MPL)<li>Versión: 1.4.0-draft<li>Estado: REVISIÓN DE ARQUITECTURA COMPLETADA<li>Aprobado para implementación de prototipo en MetsuOS.</ul><h2>One More Thing</h2><p><img alt="Un escenario de retrocomputación del siglo 24" mos=mos src=https://metsuke.com/assets/img/content-publicbrain/MOS_3f28ddd6b87f618984bc33b2f965ca5b_MD5.jpeg style=view-transition-name:image-hero><p>¡Desbloquea el poder de <a class=internal href=../publicbrain/creando-metsuos-⚫①.html>MetsuOS</a> y descubre que la privacidad y la seguridad son la clave para desencadenar tu verdadero potencial en línea!<h2>Contenido registrado en Safe Creative</h2><center><a href=https://www.safecreative.org/user/0801120040408><img alt="Logo Safe Creative" style="border:2px solid red" title="Safe Creative #0801120040408" src=https://resources.safecreative.org/user/0801120040408/label/standard-male-150></a><br> <a href=https://www.safecreative.org/?ref5mjalg>¡Usa el código de promocional 7ZYM4Z y ahorrate unos eurillos en tu suscripcion de Safe Creative!</a> </center><h2>MetsuOS Needs You!</h2><p>Apoyanos en este proyecto difundiendolo en tus redes, o mejor, <a href="https://paypal.me/RaulCarrilloGarrido?country.x=ES&locale.x=es_ES">haznos una donación a la cuenta paypal</a> para poder dedicar más tiempo y recursos a el. No olvides comentarnos que parete te interesa más junto con tu donación.<p>En este momento, además de mantener los servicios, estoy centrado en crear la siguiente iteración del software que me permite hacer todo esto y creando una biblioteca personal física para poder contrastar contenido.<p><strong><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" src="https://www.youtube.com/embed/YzVVC3I4chY?si=_iJJ4ajT9AqZB62s" title="YouTube video player" allowfullscreen frameborder=0 height=640 referrerpolicy=strict-origin-when-cross-origin width=100%></iframe></strong><h2>Sobre el sistema de validez de un contenido en MetsuOS</h2><p>Empezando a incorporar los niveles de validación de un contenido (también llamada sabiduría o niveles de conocimiento) ⚫🔴 🟡 🟢 🔵⚪ ¿Qué són?<ul><li>⚫① - Dark1 - Conocimiento en Bruto. Modo Cuñao, hablo pero no puedo respaldarlo.<li>🔴② - <a class=internal href=../publicbrain/rojo2--🟡③.html>Rojo2</a> - Conocimiento Impulsivo, pasional, "lo mio es lo correcto".<li>🟡③ - Yellow3 - Conocimiento Crítico: se comienza a explorar el hecho de que pueda haber otras perspectivas.<li>🟢④ - Green4 - Conocimiento Natural: Surge al comprender la naturaleza de la realidad y del ser humano en una materia.<li>🔵⑤ - Blue5 - Conocimiento Científico: Supone la suma de las fases anteriores aplicando el rigor de lo descubierto por la ciencia hasta ahora, sin caer en la -anticientífica- "opinión científica/opinión de expertos".<li>⚪⑥ - Light6 Conocimiento Consolidado: Se alcanza al integrar todo lo anterior desde una perspectiva empática y asumiendo una verdad probabilística dinámica dependiente del contexto.</ul><h3>Sobre la categorización de los tipos de conocimiento</h3><ul><li>Conocimiento Gnoseológico: ⚫① 🔴② 🟡③ 🟢④<li>Conocimiento Epistemológico: 🔵⑤<li>Conocimiento Metsukeológico: ⚪⑥</ul><p>La Metsukeología (de Metsuke vision global y logos conocimiento) es la ciencia que estudia el conocimiento como un conjunto potencial de conocimiento del que podemos obtener, procesar o percibir partes concretas dentro de un marco contextual específico, y cuyo contexto general real está muy por encima de lo que somos capaces, como especie, de percibir, procesar e integrar de forma completa (definición en progreso).<p>La Metsucología (de Metsu aniquilación - en este contexto en forma de colapso - , logos conocimiento) es la ciencia que estudia como extraemos verdades percibidas - colapsadas - como conocimiento desde nuestra perspectiva real (tanto epistemológico como gnoseológico) al tomar una parte específica del conocimiento metsukeológico potencial enmarcado en un contexto concreto, obligando a colapsar el conocimiento potencial en conocimiento específico (definición en progreso).<h3>Mas sobre el contexto</h3><p>DISCLAIMER: Mi consideración de anticientífico respecto al consenso científico es una hipotesis de trabajo propia, que supone que toda asignación de validez, incluso aquella derivada de la conclusión por acumulación de evidencia NO debe ser supeditada a debate, ni acuerdo, debe ser algo probabilistico sin intervención del ego humano. Podría estar equivocado y, en este punto, es donde se aplicaría entonces ese mismo consenso que ahora considero no valido (incluso dañino)<p>Existen indicadores para algunas cuestiones adicoinales como los siguientes:<ul><li>🌐 - Contenido Externo sobre cuya validez/validación no tenemos control (usualmente enlaces que salen de #MetsuOS)<li>⚖️ - Analisis<ul><li>⚖️📚 - Análisis Bibligráfico<li>⚖️🔬 - Análisis Científico<li>⚖️🏛️ - Análisis Estructural<li>⚖️🧠 - Análisis Filosófico</ul><li>📖 - Referencia<ul><li>📖📚 - Referencia Bibliográfica / Libro<li>📖🔬- Referencia Científica / Paper<li>📖🏛️ - Referencia Estructural<li>📖🧠 - Referencia Filosófica</ul><li>🔍️- Paradigma</ul><p>Cuando hablamos de un contenido que incluye un texto que hace referencia a otro.<ul><li>🔴②-🌐🟡③ - Nivel del contenido del documento Rojo2, nivel del contenido externo del que habla el documento Yellow3.<li>🔴②-⚖️📚 🔴② - Nivel del contenido del documento Rojo2, en base a análisis bibliográfico nivel Rojo2</ul><p>También aplicaremos el <a class=internal href=../publicbrain/sistema-de-fiabilidad-de-fuentes-y-credibilidad-de-contenidos-de-la-otan-🔴②.html>Sistema de fiabilidad de fuentes y credibilidad de contenidos de la OTAN 🔴②</a>, este sistema incluye una valoración de la fiabilidad de la fuente de A a F (siendo A la de mayor fiabilidad) y una varloración de credibilidad del contenido de 1 a 6 (siendo 1 la mayor credibilidad).<p>En MetsuOS la agregaremos al final uniendo amos valores como si fuera una coordenada. Por ejemplo: ⚫①-D4 o 🟡③-B2. Esto ayudarña a contextualizar la información sobre la solidez del conocimiento al que se hace referencia en cada momento.<p>Hay que tener en cuenta que, cuando hay elementos subjetivos o parcialmente subjetivos, el punto de referencia seré yo mismo. Quizá más adelante pueda objetivizar esto más (seria lo deseable), pero en tanto no tenga herramientas que me lo permitan, debo ceñirme al principio de honestidar intelectual, y esperar que mis sesgos dañen lo menos posible la información (en parte este es el nudo gordiano que pretendo resolver, y por ello es dificil resolverlo a priori).<p>Así de forma resumida, podríamos decir que esta definición es nivel 🔴② (Rojo2 xD) ¿Crees que me dejo algo? Si es así por favor ayudame a mejorarlo <a href=https://twitter.com/metsuke>contactándome a través de X (Twitter) en mi cuenta, @metsuke 🌐</a><p>Consulta la versión completa de la descripcion en <a class=internal href=../publicbrain/⚫🔴🟡🟢🔵⚪-🔴②-un-poco-mas-de-detalle.html>⚫🔴🟡🟢🔵⚪ (🔴②) Un poco más de detalle</a><ul><li><b>Información IA: </b>Generado asistido por IA (Gemini para articular documento en torno a conversaciones e investigacion previas.). Supervisado por Humano.<li><b>Ultima Modificación: </b>2026-10-28 17:25:18.923000+00:00<li><b>Versión Documento: </b>0.2.7</ul></main><footer><p>© 2018-2026 <a href=https://www.linkedin.com/in/raulcarrillo/>Raúl Carrillo Garrido</a>. Todos los derechos reservados.</footer><script src=https://metsuke.com/assets/js/lang.js></script><script>window.onload=function(){getLanguagePreferences()};</script><script src=https://metsuke.com/assets/js/counter_20260409.js></script><script type=module>import mermaid from"https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mjs";
+//import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.11.0/dist/mermaid.esm.mjs'
+mermaid.initialize({useMaxWidth:!0,startOnLoad:!0,theme:`base`,themeVariables:{primaryColor:`#000000`,primaryTextColor:`#ffffff`}});function optimizeMermaidSVG(){}
+// Ejecutar después del renderizado
+mermaid.initialize({startOnLoad:!0,flowchart:{diagramPadding:8,useMaxWidth:!0}});
+// Hook post-renderizado
+const originalParse=mermaid.parse;mermaid.parse=function(){return originalParse.apply(this,arguments).then(()=>{
+//setTimeout(optimizeMermaidSVG, 50);
+})};</script>
